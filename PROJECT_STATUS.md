@@ -16,3 +16,14 @@
 | 개입 효과·복구·안전 평가 | 미수행 | 독립 실행 환경 미확보 | 실제 반응 기록 전 수치 생성 금지 |
 
 10월 중순 이후의 연구 질문 확대는 **연구 방향 제안**이며 지표별 후속 성능 비교가 구현되거나 입증된 것은 아니다.
+
+## 2026-10-23 Slack·자산·시뮬레이터 회수 점검
+
+| 작업 흐름 | 상태 | 근거 | 다음 관문 |
+|---|---|---|---|
+| Slack 의사결정·파일 단서 | PARTIAL | `docs/audit/SLACK_RESEARCH_TIMELINE.md`, `SLACK_ASSET_REGISTER.md`; 채널과 주요 thread 직접 읽음 | 미확보 실행 코드 원본 바이트 회수·해시/권리 대조 |
+| 데이터·GT 팀 재현 | PARTIAL | 공개 소스 커밋·SHA를 고정한 `src/acquire_reference_data.py`; 원본 라이선스 미확인 | 재배포 권리 확인 전 `data/local/` 유지 |
+| 문서 동기화 | VERIFIED | `AGENTS.md`, `PRIORITIES.md`, `WORK_LOG.md`, PR 대상 CI의 파일 변경 검사 | 각 실질 변경에서 내용의 진실성은 리뷰로 검증 |
+| 8월 시뮬레이터 재현 | BLOCKED | `docs/SIMULATOR_SETUP.md`; 보고서 외 실행 코드·로그 미확보 | 당시 저장소/ZIP·버전·정상 운전 로그 회수 |
+
+현재 다음 최우선 작업은 **SIM-01**이며 시뮬레이터 Gate A는 여전히 `BLOCKED`이다. 정상 운전·Fault·XMV 개입·Recovery/Safety 측정은 이번 작업에서 수행하지 않았다.

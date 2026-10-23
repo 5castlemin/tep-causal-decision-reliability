@@ -4,9 +4,17 @@
 
 처음 합류했다면 [팀 소개](introduction.md) → [현재 상태](PROJECT_STATUS.md) → [연구 설계](RESEARCH_DESIGN.md) → [파일럿 계획](PILOT_PLAN.md) 순서로 읽는다.
 
+실무 순서는 [우선순위](PRIORITIES.md), [작업 기록](WORK_LOG.md), [협업 규칙](AGENTS.md)을 따른다. Slack의 파일 목록과 실제 반입 여부는 [자산 감사](docs/audit/SLACK_ASSET_REGISTER.md)에 구분했다.
+
 ## 빠른 시작
 
 Python 3.11+와 `numpy`, `pandas`가 필요하다. 원본 CPCaD-Bench의 Git 커밋과 검증된 ZIP 세트가 있는 환경에서만 로컬 입력을 준비한다. 입력 ZIP과 기존 저장소는 수정하지 않는다.
+
+데이터·GT만 필요하면 공개 CPCaD-Bench checkout을 준비한 후 다음 명령을 사용한다. 해시 검증 후 Git 제외된 로컬 폴더에만 쓰며 기존 다른 내용은 덮어쓰지 않는다. 원본 재배포 권리가 명확하지 않아 데이터 바이트는 이 저장소에 포함하지 않았다.
+
+```powershell
+python -X utf8 src/acquire_reference_data.py --source-git <CPCaD-Bench Git 경로>
+```
 
 ```powershell
 python -m pip install -r requirements.txt
