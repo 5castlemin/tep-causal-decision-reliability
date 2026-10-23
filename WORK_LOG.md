@@ -71,3 +71,28 @@
 - 외부 simulator 실행은 로컬 검증이며 CI는 source 다운로드 없이 저장된 증거 재계산만 수행한다. CI/PR 결과는 GitHub checks를 따른다.
 
 - `scripts/check_research_docs.py --base origin/main` PASS. 검증기의 기존 recovery_validation 기록 재저장은 원래 바이트/내용으로 복원하여 이번 PR에 포함하지 않았다. 원본 simulator source와 이전 실험·Final 결과 변경 없음.
+
+## 2026-10-23 — Benchmark Compatibility & Research Design Decision Gate
+
+- `git fetch origin` 후 clean 상태 확인. main `172e84b`; PR #4는 OPEN/미병합 head `71c5448ed9a82548d86f40f60be842020f69538d`, CI run39947597305 성공. PR #4를 병합하지 않고 그 head에서 `feature/benchmark-compatibility-decision` 생성. 새 PR은 PR #4 브랜치를 base로 하는 의존 PR이다.
+- 기존 source·동결·감사를 재사용. 신규 simulator/discovery/SCM/Recovery/Safety 실행 없음.
+- 작성자 공개 Manca 기술보고서 v1.1의 모델·controller·밸브 정책·timestamp 별도 저장 서술을 읽음(REPORTED). 공식 Dataport 원자료 페이지는 접근 실패, 실제 timestamp/seed/정상 원시 Excel은 여전히 미회수.
+- 대학 공식 URL의 `temexd_mod.zip` 639921B 및 `tecode.zip` 29307B를 urllib.request로 회수하여 저장소 밖 작업 영역에 보존. SHA/멤버 목록은 `docs/research_design/evidence/local_20261023_v2/local_audit.json` 및 별도 retrieval.json. 권리 미확정 ZIP/source/mex 바이너리를 Git에 반입하지 않음. MATLAB PATH 명령 미확인, 두 모델 실행 NOT_RUN.
+- 실제 source의 Constant→TE Plant port→이름 있는 입력을 추적하여 원자로 level65/pressure2800/temperature122.9 확인. 블록 xmv 이름을 MV 번호로 오독하지 않음. archive Ts_base1.8초/Ts_save36초/ode45 기본값은 Manca의 실제 변경 설정과 동일하다고 주장하지 않음.
+- `python -X utf8 scripts/audit_benchmark_compatibility.py --benchmark-git ../work/asset_recovery/fresh-CPCaD-Bench --modified-archive ../work/compat_gate_20261023/temexd_mod.zip --original-archive ../work/compat_gate_20261023/tecode.zip --candidate ../tep-python-candidate --output docs/research_design/evidence/local_20261023_v2` 실제 실행 성공. 고정 CSV/GT byte identity 및 공식 NumPy1499×31 exact 일치 확인. 1500/1499 원인은 미확정.
+- 첫 로컬 감사는 Windows 긴 경로의 git show stat 실패. 명령 단위 `-c core.longpaths=true`로 수정한 뒤 새 출력 v2에서 성공. 전역 Git 설정·사용자 파일 변경 없음. 초벌 NumPy 탐색의 delimiter 누락은 comma 지정으로 수정. 실패를 데이터 손상·simulator 실패로 해석하지 않음.
+- PR4 156변경/145신규/내용16740258B 및 byte중복24그룹(88경로) 확인. 가장 큰 terminal JSON3.81MB. raw/manifest와 반복 증거를 그대로 유지함.
+- 현재 가설 Gate D(증거 부족), 다음 A의 제한적 복원 확인 권고. B/C는 제안이며 채택 미실행. RESEARCH_DESIGN.md 불변. 상태 JSON의 COMPAT-01과 BENCH-ENV 및 PR4 미병합 의존성을 기록하고 dashboard 재생성.
+- `validate_benchmark_decision.py` PASS, 단위 테스트13개 PASS. 배선 이름/port 혼동·모호한 배선 거부 검증 추가. 최종 기존 증거/동결/문서 동기화 검사와 CI 결과는 후속 기록 및 PR checks를 따른다.
+
+### Benchmark Gate 최종 로컬 검사
+
+- `scripts/validate_benchmark_decision.py`: PR4 156개 파일 inventory hash·설계 불변·외부 코드 정적 근거·주장 수준·상태 일치 PASS.
+- 기존 `experiments/simulator/diagnostics/validate_diagnostics.py`: 원시 SHA·시계·reset·분석 재계산 PASS. `graphs/final/verify_and_load.py`: 39개 hash/lag 변환 PASS.
+- `scripts/check_research_state.py`, `scripts/check_asset_manifest.py`, `scripts/validate_pr_integration.py`, `scripts/check_research_docs.py --base origin/feature/simulator-numerical-validation`: PASS.
+- 단위 테스트13개 PASS, `git diff --check` PASS. 명령/출력은 `docs/research_design/evidence/validation_results.json`. 외부 코드 다운로드·정적 분석은 로컬에서만 수행했고 CI는 고정 증거 및 회귀 검사를 수행한다.
+- 기존 `RESEARCH_DESIGN.md`, simulator 원시 tree, 7개 frozen graph, Step6 점수표 불변. 신규 evidence 파일의 byte hash를 Windows checkout에서도 보존하는 속성만 추가했으며 기존 파일의 보존·중복 제거 정책은 변경하지 않았다.
+
+## 2026-10-23 — 승인된 PR4→PR5 병합 준비
+
+사용자의 명시적 승인 후 PR #4 head71c5448을 merge commit 1e4fcc7c91839afd49770fcc8b3380d368e1dea3로 병합했다. PR #5 base를 main으로 조정하고 현재 상태의 미병합 표시를 갱신했다. 작성 당시 decision JSON과 원시 hash는 보존하며 github_current에 실제 상태를 분리했다. 로컬 사용자 변경은 없었다. 선행검토에서 단위 테스트13개와 보존 검사가 통과했으며 CI 재검증 후 PR #5를 병합한다. Track A 신규 조사와 실험은 아직 시작하지 않았다.

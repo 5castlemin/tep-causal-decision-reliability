@@ -14,3 +14,8 @@
 | 2026-10-23 | 공개 후보의 반복 단위는 동일 source/backend/seed/mode의 새 객체 | `docs/audit/SIMULATOR_RELIABILITY_REPORT.md` 및 reset 10경우 | fresh twin 경로 exact, 같은 객체 운전 후 reset 관측 약 1e-12 차이. 관측값 강제 복원·원본 패치 기각 |
 | 2026-10-23 | 관측 시계와 Euler 상태 시계를 별도 기록 | `experiments/simulator/diagnostics/run_20261023_aligned` | 추가 evaluate 호출 없이 공통 시각 비교. 기존 CSV에 누락된 상태를 소급 생성하지 않음 |
 | 2026-10-23 | 후보 내부 탐색 CONDITIONAL / benchmark 개입 정답 직접 사용 NO-GO | 3 dt 수렴 경향, 압력 종료 및 2시간 정상 분포 차이 | 수치 수렴을 실제 모델/제어기 동등성으로 승격하지 않음. 독립 기준·생성 계보 확보 전 Recovery/Safety 주장 보류 |
+
+| 2026-10-23 | Benchmark 호환성 Gate는 현재 증거 부족, 다음 최소 복원 경로는 A 권고 | `docs/research_design/BENCHMARK_COMPATIBILITY_DECISION.md` | 공식 수정 모델 source·setpoint 배선은 확보했으나 원시 timestamp/seed/export·실행 동등성 미확인. RESEARCH_DESIGN은 유지하며 B Primary 전환·C Secondary 도입은 승인 전 실행하지 않음 |
+| 2026-10-23 | PR #4 raw·중간 결과의 중복은 보존 | `docs/research_design/evidence/local_20261023_v2/pr4_asset_review.json` | 동일 바이트 24그룹/88경로는 반복·빈 기록·파생 통계를 포함. 보존정책을 임의 변경하거나 원시 manifest를 깨는 삭제를 하지 않음 |
+
+| 2026-10-23 | 사용자 승인으로 PR4→PR5 순서 통합 | PR4 merge 1e4fcc7, PR5 base main | 최초 decision의 dependency는 당시 기록으로 보존하고 현재 병합 상태를 github_current에 분리. 연구 질문·Track B/C 채택 변경 없음 |

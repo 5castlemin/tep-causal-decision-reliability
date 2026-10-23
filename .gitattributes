@@ -5,3 +5,5 @@ experiments/simulator/benchmark_reference_mapping.csv -text whitespace=cr-at-eol
 experiments/simulator/diagnostics/run_*/** -text whitespace=cr-at-eol
 experiments/simulator/diagnostics/analysis_*/** -text whitespace=cr-at-eol
 experiments/simulator/diagnostics/execution_logs/** -text whitespace=cr-at-eol,-blank-at-eof
+# Preserve newly recorded compatibility evidence checksums on Windows too.
+docs/research_design/evidence/** -text whitespace=cr-at-eol

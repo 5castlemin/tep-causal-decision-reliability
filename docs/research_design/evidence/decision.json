@@ -1,0 +1,31 @@
+{
+  "protocol": "BENCHMARK-COMPATIBILITY-DECISION-v1",
+  "checked_at": "2026-10-23",
+  "overall_hypothesis_gate": "INSUFFICIENT_EVIDENCE",
+  "recommended_next_step": "TRACK_A_BOUNDED_RESTORATION",
+  "primary_research_changed": false,
+  "secondary_track_adopted": false,
+  "approval_required_for": [
+    "TRACK_B_PRIMARY_REDESIGN",
+    "TRACK_C_SECONDARY_TRANSFER_EXPERIMENT",
+    "NEW_REFERENCE_STRUCTURE_CONTRACT",
+    "EXTERNAL_AUTHOR_CONTACT"
+  ],
+  "track_status": {
+    "A": "PARTIAL_SOURCE_RECOVERED_NOT_EXECUTED",
+    "B": "PROPOSED_GT_VALIDITY_UNRESOLVED",
+    "C": "PROPOSED_EXPLORATORY_ONLY"
+  },
+  "benchmark_direct_effect_oracle": "NO-GO",
+  "new_simulator_run": "NOT_RUN",
+  "dependency": {
+    "pr": 4,
+    "head_sha": "71c5448ed9a82548d86f40f60be842020f69538d",
+    "merged": false,
+    "ci_run": 39947597305,
+    "ci_conclusion": "success",
+    "base_for_this_pr": "feature/simulator-numerical-validation"
+  },
+  "rationale": "공식 수정 모델의 설정 배선이 benchmark 운전점과 가까워 A의 다음 최소 관문을 구체화할 수 있다. 원시 계보와 실행·개입 동등성이 없어 현재 가설 검증은 보류한다.",
+  "research_design_git_blob_sha256": "2c69450a928e984df970af2721189064a8f3c116a2efcdc5300dbb0bf3d12ec3"
+}
