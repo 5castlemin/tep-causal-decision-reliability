@@ -1,0 +1,52 @@
+[
+  {
+    "command": "python -X utf8 graphs/final/verify_and_load.py",
+    "exit_code": 0,
+    "output": "OK: 39개 파일 해시 일치, 변수 순서 일치, 시계열 3개 엄격 재변환 일치\r\n"
+  },
+  {
+    "command": "python -X utf8 src/verify_recovery.py",
+    "exit_code": 0,
+    "output": "[PASS] 데이터·GT 및 7개 최종 그래프의 Step 6 점수 독립 대조\r\n"
+  },
+  {
+    "command": "python -X utf8 experiments/simulator/validate_feasibility.py",
+    "exit_code": 0,
+    "output": "[PASS] 실행 CSV hash·반복·시계열·shutdown/reset 한계·mapping 검증\r\nSIMULATOR FEASIBILITY: PARTIAL — 종료·reset·모델 호환성 관문 미해결\r\n"
+  },
+  {
+    "command": "python -X utf8 experiments/simulator/diagnostics/validate_diagnostics.py",
+    "exit_code": 0,
+    "output": "[PASS] 원시 hash·105열·두 시계·12개 수동 조건·2시간 정상·reset·분석 재계산\r\nSIM-03 PARTIAL; SIM-04 VERIFIED(새 객체 계약); COMPAT-01 PARTIAL; 직접 효과 정답 NO-GO\r\n"
+  },
+  {
+    "command": "python -X utf8 scripts/check_research_state.py",
+    "exit_code": 0,
+    "output": "[PASS] 현재 상태·의존성·우선순위 ID 유일성·상단 문서 일치\r\n"
+  },
+  {
+    "command": "python -X utf8 scripts/check_asset_manifest.py",
+    "exit_code": 0,
+    "output": "[PASS] Final config·미회수 생성 코드·평가 재현 범위의 기록 정합성\r\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_pr_integration.py",
+    "exit_code": 0,
+    "output": "{\r\n  \"status\": \"PASS\",\r\n  \"source_base_main\": \"ceb447deb03f5532dc274cb97de2cd7f317349e7\",\r\n  \"pr2_source\": \"e5a0291e48d5426628c0dde8a122fe8ab6b6e195\",\r\n  \"pr3_source\": \"b2e455fd37d1e236aa30fe246e4944142bef4bab\",\r\n  \"preserved_file_counts\": {\r\n    \"graphs/final\": 46,\r\n    \"experiments/simulator\": 30\r\n  },\r\n  \"required_states\": {\r\n    \"SIM-01\": \"BLOCKED\",\r\n    \"SIM-02\": \"PARTIAL\",\r\n    \"GRAPH-01\": \"VERIFIED\",\r\n    \"GRAPH-GEN\": \"BLOCKED\",\r\n    \"SCM-01\": \"PARTIAL\",\r\n    \"EFFECT-01\": \"NOT_RUN\"\r\n  }\r\n}\r\n"
+  },
+  {
+    "command": "python -X utf8 -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "output": "test_duplicate_workstream_rejected (test_asset_recovery.AssetRecoveryTests.test_duplicate_workstream_rejected) ... ok\r\ntest_unknown_dependency_rejected (test_asset_recovery.AssetRecoveryTests.test_unknown_dependency_rejected) ... ok\r\ntest_unverified_zip_bytes_rejected (test_asset_recovery.AssetRecoveryTests.test_unverified_zip_bytes_rejected) ... ok\r\ntest_ridge_penalty_and_intercept (test_pilot_fit.PilotFitTest.test_ridge_penalty_and_intercept) ... ok\r\ntest_root_and_parent_lag (test_pilot_fit.PilotFitTest.test_root_and_parent_lag) ... ok\r\ntest_document_only_change_is_exempt (test_research_ops.ResearchOpsTest.test_document_only_change_is_exempt) ... ok\r\ntest_pinned_inputs (test_research_ops.ResearchOpsTest.test_pinned_inputs) ... ok\r\ntest_substantive_change_requires_all_three (test_research_ops.ResearchOpsTest.test_substantive_change_requires_all_three) ... ok\r\ntest_measurements_match_evaluation_clock_not_state_clock (test_simulator_diagnostics.ClockTests.test_measurements_match_evaluation_clock_not_state_clock) ... ok\r\ntest_no_matching_time_is_failure (test_simulator_diagnostics.ClockTests.test_no_matching_time_is_failure) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 10 tests in 0.063s\r\n\r\nOK\r\n"
+  },
+  {
+    "command": "python -X utf8 src/reproduce_step6.py --step6-zip ../work/asset_recovery/TEP_step6_results_slack.zip --output ../work/asset_recovery/numerical_validation_step6.json",
+    "exit_code": 0,
+    "output": "[PASS] 회수한 원본 평가기로 Final 7개 엄격 지표 일치 (인과발견 재실행 아님)\r\n"
+  },
+  {
+    "command": "git diff --check",
+    "exit_code": 0,
+    "output": ""
+  }
+]

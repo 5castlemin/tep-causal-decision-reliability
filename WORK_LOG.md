@@ -47,3 +47,27 @@
 - PR #2를 사용자 승인 후 merge `0549c4d`로 병합. PR #3에 최신 main을 merge하고 사전검토와 동일한 네 충돌을 해결했다.
 - state JSON 및 생성 MD, README/소개서의 PR #2 병합 상태를 갱신. CI 양쪽 검사와 원본 작업 기록을 모두 유지.
 - simulator/frozen 파일 변경 없음. 검증 unit 8개, graph 39파일, state/asset/raw simulator 검사와 원본 strict evaluator 재현 PASS. 최종 head CI 성공 확인 후 승인 범위 내 PR #3 병합 예정. 실제 병합 여부는 GitHub PR 기록이 기준이다.
+
+## 2026-10-23 — SIM-03/SIM-04/COMPAT-01 실증 진단
+
+- `git fetch origin`, clean 상태·PR #2/#3 병합 확인 후 main `172e84bcafb82dd5074f097fcabfb94f28ff96e3`에 fast-forward 동기화, `feature/simulator-numerical-validation` 생성. main 자동 병합 없음.
+- pinned 외부 source `9a6c8e5fcef4a2850778704e7793c87b0a187005`를 수정하지 않고 Python 3.11.15/NumPy 2.4.6에서 실행.
+- 실제 명령: `python -X utf8 experiments/simulator/diagnostics/run_diagnostics.py --source ../tep-python-candidate --output experiments/simulator/diagnostics/run_20261023`; 기록 시계 보완 후 같은 명령의 출력만 `run_20261023_aligned`로 변경하여 실행. 두 번째는 2시간 폐루프 정상 조건 포함. stdout은 `experiments/simulator/diagnostics/execution_logs/`.
+- 12개 수동 조건: dt=1/.5/.25초, XMV10 600초 +0/+1 pp, 원본 잡음/관측 표준편차 0. 각 모드 fresh/초기화반복/운전후/IDV4후 초기화 등 10경우 실행. 각 plan은 실행 전 저장. 첫 실행의 단일 시계 표본은 보존하고 정렬 분석에서 제외.
+- SIM-03: 기존 1788초 종료 및 모든 공통 manual 측정·조작값 exact 재현. 내부 pressure 3000.574119 kPa 초과, 유한 state/미분. dt=.25 원본 잡음에서는 raw2999.986/관측3000.341의 다른 종료 경로 확인. 잡음 통제 후 dt 축소 시 경로 차이 약 절반 감소. 독립 Fortran 대조 NOT_RUN(backend/compiler 미확보).
+- SIM-04: process yy/XMV/IDV/RNG/controller 복원. cache와 관측 약 1e-12 차이로 같은 객체 bit reset은 미보장. 새 객체 동일 조건의 60초 경로는 수동·폐루프 모두 exact. 공식 계약을 새 객체 반복으로 한정하여 VERIFIED.
+- COMPAT-01: 기존 1499×31 데이터와 새 2시간 정상 기록의 31변수 통계 비교. 온도·압력·level 운전점 차이. 3분 진단 창은 benchmark sliding preprocessing 재현 아님. upstream Dataport 접근 HTTP 오류. 기존 GT를 효과 정답으로 취급하지 않음.
+- 분석 첫 시도는 이름 없는 index 열로 NumPy header 해석 실패. csv.reader로 index를 명시적으로 제외하여 수정하고 v2 성공, v3에 공통 관측 시점 반응 추가. 데이터 수정 없음. `analyze_diagnostics.py --dataset data/local/datasetTE.csv --output experiments/simulator/diagnostics/analysis_20261023_v3` 실제 실행.
+- 판단: 후보 내부 조건부 탐색 CONDITIONAL / 원래 benchmark 효과 정답 직접 활용 NO-GO. Recovery/Safety 계산 및 새 SCM/discovery 학습 없음.
+- `docs/research_state.json` 갱신 후 `python -X utf8 scripts/check_research_state.py --write` 실행. SIM-03/COMPAT-01 PARTIAL, 8월 복구 BLOCKED 유지. 현재 상위 3과제는 COMPAT-01, SIM-03, SRC-01.
+- 원시 SHA·시계·분석 재계산 validator와 시계 혼동 방지 단위 테스트 추가. CI의 외부 source 없는 검사와 실제 로컬 실험을 분리. 최종 검증 명령 및 결과는 같은 작업의 후속 기록에 남긴다.
+
+### 이번 진단 최종 로컬 검증
+
+- `graphs/final/verify_and_load.py`: 39개 hash·변수 순서·시계열3종 재변환 PASS. `src/verify_recovery.py`: 데이터/GT 및 점수 독립 대조 PASS.
+- `src/reproduce_step6.py --step6-zip ../work/asset_recovery/TEP_step6_results_slack.zip --output ../work/asset_recovery/numerical_validation_step6.json`: 원본 평가기의 7 strict 지표 모두 일치. 결과 사본 `experiments/simulator/diagnostics/step6_verification.json`. 인과발견 학습 재실행 아님.
+- 기존 `validate_feasibility.py`, 새 `diagnostics/validate_diagnostics.py`, `check_research_state.py`, `check_asset_manifest.py`, `validate_pr_integration.py`: PASS. 기존 PR2 30파일 및 graph tree 46파일 불변 검증.
+- `python -X utf8 -m unittest discover -s tests -v`: 10개 PASS. `git diff --check`: PASS. 상세 명령/출력은 `experiments/simulator/diagnostics/local_verification.json`.
+- 외부 simulator 실행은 로컬 검증이며 CI는 source 다운로드 없이 저장된 증거 재계산만 수행한다. CI/PR 결과는 GitHub checks를 따른다.
+
+- `scripts/check_research_docs.py --base origin/main` PASS. 검증기의 기존 recovery_validation 기록 재저장은 원래 바이트/내용으로 복원하여 이번 PR에 포함하지 않았다. 원본 simulator source와 이전 실험·Final 결과 변경 없음.

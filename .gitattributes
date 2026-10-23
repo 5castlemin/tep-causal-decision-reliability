@@ -1,3 +1,7 @@
 # Preserve exact simulator evidence bytes, including original CRLF line endings.
 experiments/simulator/**/*.csv -text whitespace=cr-at-eol
 experiments/simulator/benchmark_reference_mapping.csv -text whitespace=cr-at-eol
+# JSON/log hashes refer to measured Windows bytes too; do not normalize them.
+experiments/simulator/diagnostics/run_*/** -text whitespace=cr-at-eol
+experiments/simulator/diagnostics/analysis_*/** -text whitespace=cr-at-eol
+experiments/simulator/diagnostics/execution_logs/** -text whitespace=cr-at-eol,-blank-at-eof

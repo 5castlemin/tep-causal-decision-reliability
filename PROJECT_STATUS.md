@@ -6,11 +6,11 @@
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
 |---|---|---|---|---|
 | SRC-01 | Final 생성 코드 회수 | BLOCKED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | FREEZE.code의 algos/run_*.py 및 common/config.py·data_io.py 원본을 해시로 대조하여 회수 |
-| SIM-03 | 공개 후보 수치·shutdown 검증 | PARTIAL | experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지) | 1788초 종료 원인과 적분 step/Fortran 기준 동등성 조사 |
-| SIM-04 | 공개 후보 초기화 검증 | BLOCKED | experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지) | 동일 객체 reset 후 관측 불일치의 RNG/state/controller 원인 확인 |
-| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지) | 모델 revision·controller·운전모드·단위·전처리 계보 대조 |
+| SIM-03 | 공개 후보 수치·shutdown 검증 | PARTIAL | docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 압력 한계 종료와 제한적 dt 수렴 확인; 동일 모델·controller 독립 기준 대조 및 폐루프 시간 계약 검증 |
+| SIM-04 | 공개 후보 새 객체 초기화 계약 | VERIFIED | docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 동일 source/backend/seed/mode의 새 객체를 반복 단위로 사용; 같은 객체 reset의 비트 일치 미보장 |
+| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 기존 원자료 controller·운전점·scale·집계 및 개입 기제 근거 확보; 직접 효과 정답은 NO-GO |
 | SIM-01 | 기존 8월 시뮬레이터 복구 | BLOCKED | docs/SIMULATOR_SETUP.md | 당시 저장소 URL/ZIP·버전·실행 명령·로그의 구체 소재 확보 |
-| SIM-02 | 공개 Python 후보 관측·쓰기·Fault smoke | PARTIAL | experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지) | PR #2 검토 및 수치·reset 제한 해결 후 장기 운전 확인 |
+| SIM-02 | 공개 Python 후보 관측·쓰기·Fault smoke | PARTIAL | docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/run_20261023_v3/summary.json | 2시간 정상 실행 추가 확인; 수치 기준·controller/override·호환성 제한 해결 뒤 Gate 재평가 |
 | TASK-01 | 실행 가능한 복구 과제 확정 | BLOCKED | experiments/pilot/TASK_SPEC.md | 모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정 |
 | EFFECT-01 | 독립 개입·Recovery/Safety 측정 | NOT_RUN | experiments/pilot/PILOT_RESULT.md | 확정 과제로 no-action 대비 동일 조건 실험 |
 | DATA-01 | 원자료 취득·권리 | PARTIAL | docs/reproducibility/TEAM_GUIDE.md | 고정 커밋 취득은 검증됨; 재배포 권리 추가 확인 |

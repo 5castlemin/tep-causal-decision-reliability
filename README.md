@@ -22,7 +22,7 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 
 회수한 Step 6 ZIP을 제공하면 `src/reproduce_step6.py`로 **원본 strict 평가 함수의 결과**를 비교할 수 있다. ZIP hash·출처·실제 검증 결과는 [복원 보고서](docs/reproducibility/ASSET_RECOVERY_REPORT.md)에 있다. Final 7개 생성 학습 코드는 아직 없어 인과발견 재실행은 BLOCKED다. 설정과 과거 코드로 이를 대신 재구성하지 않는다.
 
-[PR #2](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)의 공개 simulator는 정상 30분 반복·쓰기·Fault smoke만 부분 통과했다. PR #2는 사용자 승인 후 병합했으며, 동일 객체 reset과 수치·기존 데이터 호환성 문제가 남아 있다. 기존 8월 구현 회수 BLOCKED와 구분한다.
+[PR #2](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)의 공개 simulator는 정상 30분 반복·쓰기·Fault smoke만 부분 통과했다. PR #2는 사용자 승인 후 병합했으며, 후속 [신뢰성 검증](docs/audit/SIMULATOR_RELIABILITY_REPORT.md)에서 2시간 정상 운전, 압력 한계 종료, 새 객체 초기화 계약을 확인했다. 같은 객체 reset은 비트 일치를 보장하지 않으며 수치 기준·기존 데이터 호환성은 여전히 미완료다. 후보 내부 탐색은 조건부이고 기존 데이터의 효과 정답 직접 사용은 보류한다. 기존 8월 구현 회수 BLOCKED와 구분한다.
 
 ## 폴더
 
