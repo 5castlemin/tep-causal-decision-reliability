@@ -27,3 +27,7 @@
 | 8월 시뮬레이터 재현 | BLOCKED | `docs/SIMULATOR_SETUP.md`; 보고서 외 실행 코드·로그 미확보 | 당시 저장소/ZIP·버전·정상 운전 로그 회수 |
 
 현재 다음 최우선 작업은 **SIM-01**이며 시뮬레이터 Gate A는 여전히 `BLOCKED`이다. 정상 운전·Fault·XMV 개입·Recovery/Safety 측정은 이번 작업에서 수행하지 않았다.
+
+## 2026-10-23 — Simulator feasibility
+
+공개 Python 후보에서 30분 정상 운전 2회와 raw 시계열 기록, manual XMV10 쓰기, IDV4 주입을 실제 실행했다. 반례도 기록했다: manual 개입은 1788초 shutdown, clear/initialize 뒤 초기 관측 exact 복원 실패. 기존 8월 구현은 미회수이며 기존 데이터/GT와 동적 동등성은 미확인이다. 상태 **PARTIAL**; 원본 Gate A 전체 및 실제 복구·안전 관문은 아직 통과하지 않았다. 근거: `docs/audit/SIMULATOR_FEASIBILITY_REPORT.md`, `experiments/simulator/run_20261023_v3/summary.json`.
