@@ -1,0 +1,160 @@
+{
+  "checked_at": "2026-10-23",
+  "workstreams": [
+    {
+      "id": "SRC-01",
+      "title": "Final 생성 코드 회수",
+      "status": "BLOCKED",
+      "evidence": "docs/reproducibility/GRAPH_REPRODUCIBILITY.json",
+      "next_action": "FREEZE.code의 algos/run_*.py 및 common/config.py·data_io.py 원본을 해시로 대조하여 회수",
+      "acceptance": "코드 원본 hash·의존성·실행 명령·frozen 재생성 일치",
+      "depends_on": []
+    },
+    {
+      "id": "SIM-03",
+      "title": "공개 후보 수치·shutdown 검증",
+      "status": "PARTIAL",
+      "evidence": "[PR #2 commit e5a0291・미병합](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)",
+      "next_action": "1788초 종료 원인과 적분 step/Fortran 기준 동등성 조사",
+      "acceptance": "동일 조건 수치 수렴·종료 원인 원시 로그",
+      "depends_on": []
+    },
+    {
+      "id": "SIM-04",
+      "title": "공개 후보 초기화 검증",
+      "status": "BLOCKED",
+      "evidence": "[PR #2 commit e5a0291・미병합](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)",
+      "next_action": "동일 객체 reset 후 관측 불일치의 RNG/state/controller 원인 확인",
+      "acceptance": "reset 계약 및 재현 로그",
+      "depends_on": []
+    },
+    {
+      "id": "COMPAT-01",
+      "title": "공개 후보와 기존 데이터/GT 대응",
+      "status": "PARTIAL",
+      "evidence": "[PR #2 commit e5a0291・미병합](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)",
+      "next_action": "모델 revision·controller·운전모드·단위·전처리 계보 대조",
+      "acceptance": "변수 대응 이상의 모델 호환 근거",
+      "depends_on": [
+        "SIM-03",
+        "SIM-04"
+      ]
+    },
+    {
+      "id": "SIM-01",
+      "title": "기존 8월 시뮬레이터 복구",
+      "status": "BLOCKED",
+      "evidence": "docs/SIMULATOR_SETUP.md",
+      "next_action": "당시 저장소 URL/ZIP·버전·실행 명령·로그의 구체 소재 확보",
+      "acceptance": "당시 구현 반복 정상 운전 로그",
+      "depends_on": []
+    },
+    {
+      "id": "SIM-02",
+      "title": "공개 Python 후보 관측·쓰기·Fault smoke",
+      "status": "PARTIAL",
+      "evidence": "[PR #2 commit e5a0291・미병합](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)",
+      "next_action": "PR #2 검토 및 수치·reset 제한 해결 후 장기 운전 확인",
+      "acceptance": "30분 smoke 외 장기 운전·setpoint/override 검증",
+      "depends_on": [
+        "SIM-03",
+        "SIM-04"
+      ]
+    },
+    {
+      "id": "TASK-01",
+      "title": "실행 가능한 복구 과제 확정",
+      "status": "BLOCKED",
+      "evidence": "experiments/pilot/TASK_SPEC.md",
+      "next_action": "모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정",
+      "acceptance": "결과 확인 전 버전된 과제 계약",
+      "depends_on": [
+        "COMPAT-01",
+        "SIM-02"
+      ]
+    },
+    {
+      "id": "EFFECT-01",
+      "title": "독립 개입·Recovery/Safety 측정",
+      "status": "NOT_RUN",
+      "evidence": "experiments/pilot/PILOT_RESULT.md",
+      "next_action": "확정 과제로 no-action 대비 동일 조건 실험",
+      "acceptance": "원시 trajectory·실패 포함 독립 평가",
+      "depends_on": [
+        "TASK-01"
+      ]
+    },
+    {
+      "id": "DATA-01",
+      "title": "원자료 취득·권리",
+      "status": "PARTIAL",
+      "evidence": "docs/reproducibility/TEAM_GUIDE.md",
+      "next_action": "고정 커밋 취득은 검증됨; 재배포 권리 추가 확인",
+      "acceptance": "권리 근거 확보 전 data/local 유지",
+      "depends_on": []
+    },
+    {
+      "id": "GRAPH-01",
+      "title": "Final 7개 산출물·평가 보존",
+      "status": "VERIFIED",
+      "evidence": "docs/reproducibility/GRAPH_REPRODUCIBILITY.json",
+      "next_action": "동결 파일 수정 없이 생성 코드 회수와 분리 유지",
+      "acceptance": "39파일 hash·lag 재변환 및 원본 평가기 7개 strict 지표 일치",
+      "depends_on": []
+    },
+    {
+      "id": "SCM-01",
+      "title": "정상 관측 수치 적합",
+      "status": "PARTIAL",
+      "evidence": "experiments/pilot/logs/normal_fit_summary.json",
+      "next_action": "관측 적합을 독립 효과 검증과 구분",
+      "acceptance": "PC/BOSS/DirectLiNGAM 수치 적합; 인과효과 미검증",
+      "depends_on": []
+    },
+    {
+      "id": "PCMCI-ID",
+      "title": "PCMCI+ 순환 식별",
+      "status": "BLOCKED",
+      "evidence": "docs/audit/pre_fitting_final_freeze.json",
+      "next_action": "동시점 순환의 인과계수 식별 근거 검토",
+      "acceptance": "별도 식별 방법 승인 전 primary fitting 보류",
+      "depends_on": []
+    },
+    {
+      "id": "TASK-STRUCT",
+      "title": "12개 구조 평가 후보",
+      "status": "VERIFIED",
+      "evidence": "docs/tasks/structural_task_candidates_v1_1.json",
+      "next_action": "독립 표본/실제 복구 과제와 구분 유지",
+      "acceptance": "과제 재선정 없음",
+      "depends_on": []
+    },
+    {
+      "id": "DOC-01",
+      "title": "현재 상태 동기화",
+      "status": "VERIFIED",
+      "evidence": "scripts/check_research_state.py",
+      "next_action": "state JSON 수정 후 문서 생성·일치 검사",
+      "acceptance": "중복 ID·구형 상단 상태 검사 통과",
+      "depends_on": []
+    }
+  ],
+  "priority_order": [
+    "SRC-01",
+    "SIM-03",
+    "SIM-04",
+    "COMPAT-01",
+    "SIM-01",
+    "SIM-02",
+    "DATA-01",
+    "TASK-01",
+    "EFFECT-01",
+    "PCMCI-ID"
+  ],
+  "id_history": [
+    "SIM-01은 기존 8월 구현 복구에만 사용한다.",
+    "SIM-02는 PR #2 공개 후보의 인터페이스 smoke로 범위를 명확히 했다. 이전 단일 Gate와 구분한다.",
+    "SIM-03·SIM-04·COMPAT-01은 PR #2 ID를 유지한다. SRC-01은 미회수 Final 코드에 한정한다.",
+    "중복된 하단 우선순위 추가 문단을 제거하고 과거 본문은 docs/history/에 보존했다."
+  ]
+}
