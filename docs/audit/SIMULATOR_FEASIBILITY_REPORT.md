@@ -1,5 +1,9 @@
 # Simulator feasibility — 2026-10-23
 
+## 최신 후속 판정
+
+2026-10-23 [수치·초기화·호환성 검증](SIMULATOR_RELIABILITY_REPORT.md)을 추가했다. 기존 아래 원시 결과는 변경하지 않았다. SIM-03 PARTIAL, SIM-04는 **새 객체 반복 초기화 계약만 VERIFIED**, COMPAT-01 PARTIAL이다. 후보 내부 탐색 CONDITIONAL / benchmark 효과 정답 직접 사용 NO-GO. 기존 same-object exact reset 실패와 새 객체 계약은 서로 다른 판정이다.
+
 PR #1은 사용자 승인 후 merge commit `ceb447deb03f5532dc274cb97de2cd7f317349e7`로 병합했다. 최신 main의 AGENTS.md를 확인하고 `feature/simulator-feasibility`에서 작업했다.
 
 ## Track A: 기존 실행 자료

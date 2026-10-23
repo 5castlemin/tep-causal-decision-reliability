@@ -1,0 +1,861 @@
+{
+  "convergence": [
+    {
+      "delta": 0,
+      "dt_pair": [
+        1,
+        0.5
+      ],
+      "state": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 4.723276987306235e-07
+      },
+      "pressure": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 6.346234840748366e-06
+      },
+      "temperature": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 7.038351839128154e-07
+      },
+      "reactor_level": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 8.293235964629275e-08
+      }
+    },
+    {
+      "delta": 0,
+      "dt_pair": [
+        0.5,
+        0.25
+      ],
+      "state": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 2.3621994671430002e-07
+      },
+      "pressure": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 3.178704901074525e-06
+      },
+      "temperature": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 3.51973213241763e-07
+      },
+      "reactor_level": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 4.140645160077838e-08
+      }
+    },
+    {
+      "delta": 1,
+      "dt_pair": [
+        1,
+        0.5
+      ],
+      "state": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 0.0347360137538999
+      },
+      "pressure": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 0.6478599585034317
+      },
+      "temperature": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 0.05213146117696965
+      },
+      "reactor_level": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 0.004060044246216421
+      }
+    },
+    {
+      "delta": 1,
+      "dt_pair": [
+        0.5,
+        0.25
+      ],
+      "state": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 0.0173846592279574
+      },
+      "pressure": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 0.32443160123330017
+      },
+      "temperature": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 0.0260784598113446
+      },
+      "reactor_level": {
+        "count": 60,
+        "start_seconds": 0,
+        "end_seconds": 1770,
+        "max_abs": 0.0020298986014068987
+      }
+    }
+  ],
+  "resets": {
+    "manual": {
+      "fresh1": {
+        "initial_differences": {},
+        "trajectory_exact": true,
+        "state_max_abs": 0.0,
+        "measurement_max_abs": 0.0,
+        "mv_max_abs": 0.0
+      },
+      "fresh2": {
+        "initial_differences": {},
+        "trajectory_exact": true,
+        "state_max_abs": 0.0,
+        "measurement_max_abs": 0.0,
+        "mv_max_abs": 0.0
+      },
+      "initialize_twice": {
+        "initial_differences": {},
+        "trajectory_exact": true,
+        "state_max_abs": 0.0,
+        "measurement_max_abs": 0.0,
+        "mv_max_abs": 0.0
+      },
+      "run60_reset": {
+        "initial_differences": {
+          ".xmeas": {
+            "max_abs": 1.3642420526593924e-12
+          },
+          ".cache.ucvr": {
+            "max_abs": 8.881784197001252e-16
+          },
+          ".cache.utvr": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.xvr": {
+            "max_abs": 5.551115123125783e-17
+          },
+          ".cache.tcr": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.dlr": {
+            "max_abs": 1.1102230246251565e-16
+          },
+          ".cache.vlr": {
+            "max_abs": 1.1368683772161603e-13
+          },
+          ".cache.vvr": {
+            "max_abs": 1.1368683772161603e-13
+          },
+          ".cache.ptr": {
+            "max_abs": 7.275957614183426e-12
+          },
+          ".cache.ppr": {
+            "max_abs": 9.094947017729282e-13
+          },
+          ".cache.crxr": {
+            "max_abs": 5.684341886080802e-14
+          },
+          ".cache.rr": {
+            "max_abs": 5.684341886080802e-14
+          },
+          ".cache.rh": {
+            "max_abs": 3.552713678800501e-15
+          },
+          ".cache.qur": {
+            "max_abs": 1.0658141036401503e-14
+          },
+          ".cache.qus": {
+            "max_abs": 1.2256862191861728e-13
+          },
+          ".cache.ftm": {
+            "max_abs": 2.319211489520967e-11
+          },
+          ".cache.fcm": {
+            "max_abs": 6.139089236967266e-12
+          },
+          ".cache.xst": {
+            "max_abs": 5.551115123125783e-17
+          },
+          ".cache.xmws": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.hst": {
+            "max_abs": 1.734723475976807e-18
+          },
+          ".cache.tst": {
+            "max_abs": 1.4210854715202004e-14
+          }
+        },
+        "trajectory_exact": false,
+        "state_max_abs": 5.684341886080802e-14,
+        "measurement_max_abs": 1.3642420526593924e-12,
+        "mv_max_abs": 0.0
+      },
+      "fault600_reset": {
+        "initial_differences": {
+          ".xmeas": {
+            "max_abs": 4.547473508864641e-13
+          },
+          ".cache.tcv": {
+            "max_abs": 4.263256414560601e-14
+          },
+          ".cache.tkv": {
+            "max_abs": 5.684341886080802e-14
+          },
+          ".cache.ptv": {
+            "max_abs": 3.637978807091713e-12
+          },
+          ".cache.ftm": {
+            "max_abs": 9.094947017729282e-12
+          },
+          ".cache.fcm": {
+            "max_abs": 2.9558577807620168e-12
+          },
+          ".cache.hst": {
+            "max_abs": 1.734723475976807e-18
+          },
+          ".cache.tst": {
+            "max_abs": 4.263256414560601e-14
+          },
+          ".cache.cpdh": {
+            "max_abs": 4.440892098500626e-16
+          }
+        },
+        "trajectory_exact": false,
+        "state_max_abs": 5.684341886080802e-14,
+        "measurement_max_abs": 1.3642420526593924e-12,
+        "mv_max_abs": 0.0
+      }
+    },
+    "closed_loop": {
+      "fresh1": {
+        "initial_differences": {},
+        "trajectory_exact": true,
+        "state_max_abs": 0.0,
+        "measurement_max_abs": 0.0,
+        "mv_max_abs": 0.0
+      },
+      "fresh2": {
+        "initial_differences": {},
+        "trajectory_exact": true,
+        "state_max_abs": 0.0,
+        "measurement_max_abs": 0.0,
+        "mv_max_abs": 0.0
+      },
+      "initialize_twice": {
+        "initial_differences": {},
+        "trajectory_exact": true,
+        "state_max_abs": 0.0,
+        "measurement_max_abs": 0.0,
+        "mv_max_abs": 0.0
+      },
+      "run60_reset": {
+        "initial_differences": {
+          ".xmeas": {
+            "max_abs": 1.3642420526593924e-12
+          },
+          ".cache.ucvr": {
+            "max_abs": 8.881784197001252e-16
+          },
+          ".cache.utvr": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.xvr": {
+            "max_abs": 5.551115123125783e-17
+          },
+          ".cache.tcr": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.dlr": {
+            "max_abs": 1.1102230246251565e-16
+          },
+          ".cache.vlr": {
+            "max_abs": 1.1368683772161603e-13
+          },
+          ".cache.vvr": {
+            "max_abs": 1.1368683772161603e-13
+          },
+          ".cache.ptr": {
+            "max_abs": 7.275957614183426e-12
+          },
+          ".cache.ppr": {
+            "max_abs": 9.094947017729282e-13
+          },
+          ".cache.crxr": {
+            "max_abs": 5.684341886080802e-14
+          },
+          ".cache.rr": {
+            "max_abs": 5.684341886080802e-14
+          },
+          ".cache.rh": {
+            "max_abs": 3.552713678800501e-15
+          },
+          ".cache.qur": {
+            "max_abs": 1.0658141036401503e-14
+          },
+          ".cache.qus": {
+            "max_abs": 1.2256862191861728e-13
+          },
+          ".cache.tcv": {
+            "max_abs": 7.105427357601002e-14
+          },
+          ".cache.tkv": {
+            "max_abs": 1.1368683772161603e-13
+          },
+          ".cache.ptv": {
+            "max_abs": 1.0913936421275139e-11
+          },
+          ".cache.ftm": {
+            "max_abs": 3.001332515850663e-11
+          },
+          ".cache.fcm": {
+            "max_abs": 9.890754881780595e-12
+          },
+          ".cache.xst": {
+            "max_abs": 5.551115123125783e-17
+          },
+          ".cache.xmws": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.hst": {
+            "max_abs": 4.336808689942018e-18
+          },
+          ".cache.tst": {
+            "max_abs": 7.105427357601002e-14
+          },
+          ".cache.cpdh": {
+            "max_abs": 1.9984014443252818e-15
+          }
+        },
+        "trajectory_exact": false,
+        "state_max_abs": 9.308109838457312e-13,
+        "measurement_max_abs": 1.8189894035458565e-12,
+        "mv_max_abs": 1.2221335055073723e-12
+      },
+      "fault600_reset": {
+        "initial_differences": {
+          ".xmeas": {
+            "max_abs": 1.3642420526593924e-12
+          },
+          ".cache.ucvr": {
+            "max_abs": 8.881784197001252e-16
+          },
+          ".cache.utvr": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.xvr": {
+            "max_abs": 5.551115123125783e-17
+          },
+          ".cache.tcr": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.dlr": {
+            "max_abs": 1.1102230246251565e-16
+          },
+          ".cache.vlr": {
+            "max_abs": 1.1368683772161603e-13
+          },
+          ".cache.vvr": {
+            "max_abs": 1.1368683772161603e-13
+          },
+          ".cache.ptr": {
+            "max_abs": 7.275957614183426e-12
+          },
+          ".cache.ppr": {
+            "max_abs": 9.094947017729282e-13
+          },
+          ".cache.crxr": {
+            "max_abs": 5.684341886080802e-14
+          },
+          ".cache.rr": {
+            "max_abs": 5.684341886080802e-14
+          },
+          ".cache.rh": {
+            "max_abs": 3.552713678800501e-15
+          },
+          ".cache.qur": {
+            "max_abs": 1.0658141036401503e-14
+          },
+          ".cache.qus": {
+            "max_abs": 1.2256862191861728e-13
+          },
+          ".cache.ftm": {
+            "max_abs": 2.319211489520967e-11
+          },
+          ".cache.fcm": {
+            "max_abs": 6.139089236967266e-12
+          },
+          ".cache.xst": {
+            "max_abs": 5.551115123125783e-17
+          },
+          ".cache.xmws": {
+            "max_abs": 1.4210854715202004e-14
+          },
+          ".cache.hst": {
+            "max_abs": 1.734723475976807e-18
+          },
+          ".cache.tst": {
+            "max_abs": 1.4210854715202004e-14
+          }
+        },
+        "trajectory_exact": false,
+        "state_max_abs": 9.308109838457312e-13,
+        "measurement_max_abs": 1.8189894035458565e-12,
+        "mv_max_abs": 1.2221335055073723e-12
+      }
+    }
+  },
+  "terminals": {
+    "upstream_dt1_delta0": {
+      "state_seconds": 1799.9999999999432,
+      "observation_seconds": 1798.9999999999432,
+      "physical": [
+        2704.9906252770757,
+        120.40032372438628,
+        16.554795581831872,
+        4.884717299069072,
+        4.431617991435583
+      ],
+      "flags": {
+        "pressure_high": false,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": false,
+      "backend_shutdown": false,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 331939082.0,
+      "measured_pressure_kpa": 2705.103462693382,
+      "measured_temperature_degC": 120.40846041386295
+    },
+    "upstream_dt1_delta1": {
+      "state_seconds": 1787.9999999999436,
+      "observation_seconds": 1786.9999999999436,
+      "physical": [
+        3000.5741190846725,
+        89.98220707830052,
+        16.010096594429353,
+        3.8810772390053345,
+        4.3302108912807125
+      ],
+      "flags": {
+        "pressure_high": true,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": true,
+      "backend_shutdown": true,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 1392919626.0,
+      "measured_pressure_kpa": 3000.5741190846725,
+      "measured_temperature_degC": 89.98220707830052
+    },
+    "upstream_dt0.5_delta0": {
+      "state_seconds": 1800.0000000001119,
+      "observation_seconds": 1799.500000000112,
+      "physical": [
+        2704.9906303243197,
+        120.40032275802953,
+        16.55479554694429,
+        4.8847172780636505,
+        4.431617996837785
+      ],
+      "flags": {
+        "pressure_high": false,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": false,
+      "backend_shutdown": false,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 2863393166.0,
+      "measured_pressure_kpa": 2704.7562959072598,
+      "measured_temperature_degC": 120.40675855259909
+    },
+    "upstream_dt0.5_delta1": {
+      "state_seconds": 1786.50000000011,
+      "observation_seconds": 1786.0000000001098,
+      "physical": [
+        3000.182040662227,
+        90.02498608702543,
+        16.01082743794197,
+        3.8823751178142993,
+        4.330316686076092
+      ],
+      "flags": {
+        "pressure_high": true,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": true,
+      "backend_shutdown": true,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 261514894.0,
+      "measured_pressure_kpa": 3000.182040662227,
+      "measured_temperature_degC": 90.02498608702543
+    },
+    "upstream_dt0.25_delta0": {
+      "state_seconds": 1800.0000000001967,
+      "observation_seconds": 1799.7500000001967,
+      "physical": [
+        2704.990632862598,
+        120.40032227425282,
+        16.55479552952567,
+        4.884717267497843,
+        4.431617999525951
+      ],
+      "flags": {
+        "pressure_high": false,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": false,
+      "backend_shutdown": false,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 1297756254.0,
+      "measured_pressure_kpa": 2704.549857212976,
+      "measured_temperature_degC": 120.40481149169062
+    },
+    "upstream_dt0.25_delta1": {
+      "state_seconds": 1785.7500000001944,
+      "observation_seconds": 1785.5000000001944,
+      "physical": [
+        2999.98600027021,
+        90.04637284792973,
+        16.011193066003315,
+        3.8830238429783352,
+        4.330369575198299
+      ],
+      "flags": {
+        "pressure_high": false,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": true,
+      "backend_shutdown": false,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 2783907614.0,
+      "measured_pressure_kpa": 3000.3405125038694,
+      "measured_temperature_degC": 90.03702547770007
+    },
+    "zero_xns_diagnostic_dt1_delta0": {
+      "state_seconds": 1799.9999999999432,
+      "observation_seconds": 1798.9999999999432,
+      "physical": [
+        2704.9906252770757,
+        120.40032372438628,
+        16.554795581831872,
+        4.884717299069072,
+        4.431617991435583
+      ],
+      "flags": {
+        "pressure_high": false,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": false,
+      "backend_shutdown": false,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 331939082.0,
+      "measured_pressure_kpa": 2704.9906252770757,
+      "measured_temperature_degC": 120.40032372438628
+    },
+    "zero_xns_diagnostic_dt1_delta1": {
+      "state_seconds": 1787.9999999999436,
+      "observation_seconds": 1786.9999999999436,
+      "physical": [
+        3000.5741190846725,
+        89.98220707830052,
+        16.010096594429353,
+        3.8810772390053345,
+        4.3302108912807125
+      ],
+      "flags": {
+        "pressure_high": true,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": true,
+      "backend_shutdown": true,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 1392919626.0,
+      "measured_pressure_kpa": 3000.5741190846725,
+      "measured_temperature_degC": 89.98220707830052
+    },
+    "zero_xns_diagnostic_dt0.5_delta0": {
+      "state_seconds": 1800.0000000001119,
+      "observation_seconds": 1799.500000000112,
+      "physical": [
+        2704.9906303243197,
+        120.40032275802953,
+        16.55479554694429,
+        4.8847172780636505,
+        4.431617996837785
+      ],
+      "flags": {
+        "pressure_high": false,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": false,
+      "backend_shutdown": false,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 2863393166.0,
+      "measured_pressure_kpa": 2704.9906303243197,
+      "measured_temperature_degC": 120.40032275802953
+    },
+    "zero_xns_diagnostic_dt0.5_delta1": {
+      "state_seconds": 1786.50000000011,
+      "observation_seconds": 1786.0000000001098,
+      "physical": [
+        3000.182040662227,
+        90.02498608702543,
+        16.01082743794197,
+        3.8823751178142993,
+        4.330316686076092
+      ],
+      "flags": {
+        "pressure_high": true,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": true,
+      "backend_shutdown": true,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 261514894.0,
+      "measured_pressure_kpa": 3000.182040662227,
+      "measured_temperature_degC": 90.02498608702543
+    },
+    "zero_xns_diagnostic_dt0.25_delta0": {
+      "state_seconds": 1800.0000000001967,
+      "observation_seconds": 1799.7500000001967,
+      "physical": [
+        2704.990632862598,
+        120.40032227425282,
+        16.55479552952567,
+        4.884717267497843,
+        4.431617999525951
+      ],
+      "flags": {
+        "pressure_high": false,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": false,
+      "backend_shutdown": false,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 1297756254.0,
+      "measured_pressure_kpa": 2704.990632862598,
+      "measured_temperature_degC": 120.40032227425282
+    },
+    "zero_xns_diagnostic_dt0.25_delta1": {
+      "state_seconds": 1786.0000000001944,
+      "observation_seconds": 1785.7500000001944,
+      "physical": [
+        3000.2519237772913,
+        90.02259035448029,
+        16.010911969626445,
+        3.882138293299622,
+        4.330291299168692
+      ],
+      "flags": {
+        "pressure_high": true,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": true,
+      "backend_shutdown": true,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 2783907614.0,
+      "measured_pressure_kpa": 3000.2519237772913,
+      "measured_temperature_degC": 90.02259035448029
+    },
+    "closed_normal_7200": {
+      "state_seconds": 7200.000000000787,
+      "observation_seconds": 7199.000000000787,
+      "physical": [
+        2706.351662946233,
+        120.42031431416555,
+        16.551770693179353,
+        4.891627069417166,
+        4.430590832375059
+      ],
+      "flags": {
+        "pressure_high": false,
+        "temperature_high": false,
+        "reactor_high": false,
+        "reactor_low": false,
+        "separator_high": false,
+        "separator_low": false,
+        "stripper_high": false,
+        "stripper_low": false
+      },
+      "shutdown": false,
+      "backend_shutdown": false,
+      "finite_state": true,
+      "finite_derivative": true,
+      "rng": 623598218.0,
+      "measured_pressure_kpa": 2706.048949725294,
+      "measured_temperature_degC": 120.41915597161784
+    }
+  },
+  "independent_reference": {
+    "status": "NOT_RUN",
+    "reason": "Fortran backend 미설치, gfortran/flang/cl 명령 미확보"
+  },
+  "reset_tolerance": {
+    "atol": 1e-09,
+    "rtol": 1e-12,
+    "timing": "첫 진단 결과 확인 후 보고용으로 설정; 사전 합격 기준 아님"
+  },
+  "decision": {
+    "within_candidate": "CONDITIONAL",
+    "original_benchmark_effect_oracle": "NO-GO"
+  },
+  "compatibility": {
+    "dataset_sha256": "52ae445b4355201db9591822282381c8de861afe49bdbc9452db08b01e7d3711",
+    "rows": 1499,
+    "variables": [
+      "X1",
+      "X2",
+      "X3",
+      "X4",
+      "X5",
+      "X6",
+      "X7",
+      "X8",
+      "X9",
+      "X10",
+      "X11",
+      "X12",
+      "X13",
+      "X14",
+      "X15",
+      "X16",
+      "X17",
+      "X18",
+      "X19",
+      "X20",
+      "X21",
+      "X22",
+      "X23",
+      "X24",
+      "X25",
+      "X26",
+      "X28",
+      "X29",
+      "X30",
+      "X32",
+      "X33"
+    ],
+    "simulator_horizon_seconds": 7200,
+    "simulator_record_interval_seconds": 30,
+    "diagnostic_windows_seconds": 180,
+    "warning": "30초 관측 6개를 180초 비중첩 중앙값으로 요약한 진단용 근사. benchmark 원자료 0.1Hz/75시간/슬라이딩 처리의 재현이 아님. 초기 구간 제거 없음.",
+    "level1": "VERIFIED_MAPPING_ONLY",
+    "level2": "DESCRIPTIVE_ONLY",
+    "level3": "UNVERIFIED",
+    "level4": "UNVERIFIED",
+    "level5": "NO-GO_DIRECT_ORACLE"
+  }
+}

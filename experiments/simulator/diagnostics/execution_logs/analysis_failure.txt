@@ -1,0 +1,1 @@
+첫 분석은 NumPy genfromtxt(names=True)가 이름 없는 CSV index 열을 누락하여 32/31열 오류로 실패했다. 입력 데이터는 변경하지 않았다. csv.reader로 header[1:]와 row[1:]를 명시하여 수정 후 analysis_20261023_v2 생성 성공. v3는 같은 결과에 동일 시점 reference 대비 반응을 추가하였다. 빈 analysis_20261023 디렉터리는 실패 시 생성된 디렉터리다.

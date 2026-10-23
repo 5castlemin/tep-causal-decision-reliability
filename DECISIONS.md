@@ -10,3 +10,7 @@
 | 2026-10월 중순 이후 | 전체 정확도 대 경로 정확도에서 여러 구조 지표의 유용성 비교로 **질문 확대 제안** | 구조 지표 순위 불일치와 팀 연구방향 문서 | 후속 성능 미측정이므로 설명력 결론 없음. 파일럿 실행 가능성에 따라 범위 축소 |
 | 2026-10-23 | 실제 개입 전 1과제·정적 3그래프 파일럿 우선, 현 단계에서는 정상상태 수치 적합만 기록 | 시뮬레이터 소스/API 미확보, 기존 결과 감사 | 12과제 일괄 실험·알고리즘 확장을 보류. Gate A 재현 후 갱신 |
 | 2026-10-23 | 공개 Python simulator 후보를 기존 8월 구현과 별도로 smoke 검증 | `docs/audit/SIMULATOR_FEASIBILITY_REPORT.md` | 30분 실행 성공을 장기 안정성·기존 GT 개입 정답으로 승격하지 않음. 수치·reset·controller 호환 관문 필요 |
+
+| 2026-10-23 | 공개 후보의 반복 단위는 동일 source/backend/seed/mode의 새 객체 | `docs/audit/SIMULATOR_RELIABILITY_REPORT.md` 및 reset 10경우 | fresh twin 경로 exact, 같은 객체 운전 후 reset 관측 약 1e-12 차이. 관측값 강제 복원·원본 패치 기각 |
+| 2026-10-23 | 관측 시계와 Euler 상태 시계를 별도 기록 | `experiments/simulator/diagnostics/run_20261023_aligned` | 추가 evaluate 호출 없이 공통 시각 비교. 기존 CSV에 누락된 상태를 소급 생성하지 않음 |
+| 2026-10-23 | 후보 내부 탐색 CONDITIONAL / benchmark 개입 정답 직접 사용 NO-GO | 3 dt 수렴 경향, 압력 종료 및 2시간 정상 분포 차이 | 수치 수렴을 실제 모델/제어기 동등성으로 승격하지 않음. 독립 기준·생성 계보 확보 전 Recovery/Safety 주장 보류 |

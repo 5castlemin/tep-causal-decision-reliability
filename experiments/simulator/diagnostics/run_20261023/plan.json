@@ -1,0 +1,47 @@
+{
+  "source_commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+  "seed": 42,
+  "backend": "python",
+  "solver": "upstream Euler sim.dt",
+  "dt_seconds": [
+    1,
+    0.5,
+    0.25
+  ],
+  "horizon_seconds": 1800,
+  "intervention_seconds": 600,
+  "mv10_delta_percentage_points": [
+    0,
+    1
+  ],
+  "mode": "MANUAL",
+  "noise_conditions": [
+    "upstream",
+    "zero_xns_diagnostic"
+  ],
+  "record_seconds": 30,
+  "noise_note": "dt変更はRNG消費も変更。zero_xnsは観測雑音の標準偏差のみ実行中に0、原ソース無変更。Faultなし。",
+  "convergence_policy": "report 1->.5 and .5->.25 differences; no arbitrary accuracy PASS",
+  "reset_plan": [
+    "fresh twins",
+    "initialize twice",
+    "run60->initialize",
+    "IDV4 run600->clear->initialize"
+  ],
+  "physical_thresholds": {
+    "pressure_kpa": 3000,
+    "temperature_degC": 175,
+    "reactor_m3": [
+      2,
+      24
+    ],
+    "separator_m3": [
+      1,
+      12
+    ],
+    "stripper_m3": [
+      1,
+      8
+    ]
+  }
+}
