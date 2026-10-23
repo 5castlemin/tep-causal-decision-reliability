@@ -1,0 +1,564 @@
+[
+  {
+    "task_id": "x23_to_x22",
+    "action": "X23",
+    "target": "X22",
+    "existing_seed_task": false,
+    "seed_task_structural_validation": null,
+    "gt_path": [
+      [
+        "X23",
+        "X6",
+        "X9",
+        "X7",
+        "X22"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 4,
+    "longest_path_length": 4,
+    "process_areas": [
+      "공급",
+      "반응기",
+      "분리기"
+    ],
+    "structure_type": "다단계 경로(역할 기반 분류)",
+    "retention_reason": "D 공급 X23을 추가하고, reactor에서 separator 냉각수 출구 온도까지 이어지는 4간선 경로를 대표한다.",
+    "subgraph_path": "task_gt_subgraphs/x23_to_x22.json",
+    "nested_with": [],
+    "contains_task": [],
+    "contained_by_task": [],
+    "shared_action_group": [],
+    "shared_target_group": [],
+    "dependency_notes": [
+      "같은 Action Task 0개",
+      "같은 Target Task 0개",
+      "엄격 간선 포함 관계 Task 0개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "x24_to_x14",
+    "action": "X24",
+    "target": "X14",
+    "existing_seed_task": false,
+    "seed_task_structural_validation": null,
+    "gt_path": [
+      [
+        "X24",
+        "X6",
+        "X9",
+        "X7",
+        "X22",
+        "X11",
+        "X14"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 6,
+    "longest_path_length": 6,
+    "process_areas": [
+      "공급",
+      "반응기",
+      "분리기"
+    ],
+    "structure_type": "다단계 경로(역할 기반 분류)",
+    "retention_reason": "E 공급 X24와 separator underflow X14를 추가하며 6간선 긴 경로를 대표한다.",
+    "subgraph_path": "task_gt_subgraphs/x24_to_x14.json",
+    "nested_with": [],
+    "contains_task": [],
+    "contained_by_task": [],
+    "shared_action_group": [],
+    "shared_target_group": [],
+    "dependency_notes": [
+      "같은 Action Task 0개",
+      "같은 Target Task 0개",
+      "엄격 간선 포함 관계 Task 0개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "a_feed_loss_idv6_candidate",
+    "action": "X25",
+    "target": "X6",
+    "existing_seed_task": true,
+    "seed_task_structural_validation": "PASS",
+    "gt_path": [
+      [
+        "X25",
+        "X6"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 1,
+    "longest_path_length": 1,
+    "process_areas": [
+      "공급",
+      "반응기"
+    ],
+    "structure_type": "직접 경로(역할 기반 분류)",
+    "retention_reason": "기존 seed 연속성; A 공급 조작과 반응기 공급량 간 직접 GT 경로를 대표한다.",
+    "subgraph_path": "task_gt_subgraphs/a_feed_loss_idv6_candidate.json",
+    "nested_with": [
+      "a_feed_action_to_reactor_pressure"
+    ],
+    "contains_task": [],
+    "contained_by_task": [
+      "a_feed_action_to_reactor_pressure"
+    ],
+    "shared_action_group": [
+      "a_feed_action_to_reactor_pressure"
+    ],
+    "shared_target_group": [],
+    "dependency_notes": [
+      "같은 Action Task 1개",
+      "같은 Target Task 0개",
+      "엄격 간선 포함 관계 Task 1개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "a_feed_action_to_reactor_pressure",
+    "action": "X25",
+    "target": "X7",
+    "existing_seed_task": true,
+    "seed_task_structural_validation": "PASS",
+    "gt_path": [
+      [
+        "X25",
+        "X6",
+        "X9",
+        "X7"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 3,
+    "longest_path_length": 3,
+    "process_areas": [
+      "공급",
+      "반응기"
+    ],
+    "structure_type": "다단계 경로(역할 기반 분류)",
+    "retention_reason": "기존 seed 연속성; 같은 X25에서 출발하는 3간선 반응기 압력 경로를 대표해 직접 Task와 길이를 비교할 수 있다.",
+    "subgraph_path": "task_gt_subgraphs/a_feed_action_to_reactor_pressure.json",
+    "nested_with": [
+      "a_feed_loss_idv6_candidate"
+    ],
+    "contains_task": [
+      "a_feed_loss_idv6_candidate"
+    ],
+    "contained_by_task": [],
+    "shared_action_group": [
+      "a_feed_loss_idv6_candidate"
+    ],
+    "shared_target_group": [
+      "x32_to_x7"
+    ],
+    "dependency_notes": [
+      "같은 Action Task 1개",
+      "같은 Target Task 1개",
+      "엄격 간선 포함 관계 Task 1개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "x26_to_x8",
+    "action": "X26",
+    "target": "X8",
+    "existing_seed_task": false,
+    "seed_task_structural_validation": null,
+    "gt_path": [
+      [
+        "X26",
+        "X8"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 1,
+    "longest_path_length": 1,
+    "process_areas": [
+      "공급",
+      "반응기"
+    ],
+    "structure_type": "직접 경로(역할 기반 분류)",
+    "retention_reason": "A/C 공급 X26과 reactor level X8을 추가하며 직접 관계를 대표한다.",
+    "subgraph_path": "task_gt_subgraphs/x26_to_x8.json",
+    "nested_with": [
+      "x26_to_x13"
+    ],
+    "contains_task": [],
+    "contained_by_task": [
+      "x26_to_x13"
+    ],
+    "shared_action_group": [
+      "x26_to_x13"
+    ],
+    "shared_target_group": [],
+    "dependency_notes": [
+      "같은 Action Task 1개",
+      "같은 Target Task 0개",
+      "엄격 간선 포함 관계 Task 1개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "x26_to_x13",
+    "action": "X26",
+    "target": "X13",
+    "existing_seed_task": false,
+    "seed_task_structural_validation": null,
+    "gt_path": [
+      [
+        "X26",
+        "X8",
+        "X9",
+        "X7",
+        "X22",
+        "X11",
+        "X13"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 6,
+    "longest_path_length": 6,
+    "process_areas": [
+      "공급",
+      "반응기",
+      "분리기"
+    ],
+    "structure_type": "다단계 경로(역할 기반 분류)",
+    "retention_reason": "X26의 직접 Task와 대조할 수 있는 6간선 separator pressure 경로를 대표한다.",
+    "subgraph_path": "task_gt_subgraphs/x26_to_x13.json",
+    "nested_with": [
+      "x26_to_x8"
+    ],
+    "contains_task": [
+      "x26_to_x8"
+    ],
+    "contained_by_task": [],
+    "shared_action_group": [
+      "x26_to_x8"
+    ],
+    "shared_target_group": [],
+    "dependency_notes": [
+      "같은 Action Task 1개",
+      "같은 Target Task 0개",
+      "엄격 간선 포함 관계 Task 1개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "separator_pot_to_stripper_underflow",
+    "action": "X29",
+    "target": "X17",
+    "existing_seed_task": true,
+    "seed_task_structural_validation": "PASS",
+    "gt_path": [
+      [
+        "X29",
+        "X15",
+        "X17"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 2,
+    "longest_path_length": 2,
+    "process_areas": [
+      "분리기",
+      "스트리퍼"
+    ],
+    "structure_type": "다단계 경로(역할 기반 분류)",
+    "retention_reason": "기존 seed 연속성; separator에서 stripper로 이어지는 2간선 경로를 대표한다.",
+    "subgraph_path": "task_gt_subgraphs/separator_pot_to_stripper_underflow.json",
+    "nested_with": [
+      "x29_to_x19"
+    ],
+    "contains_task": [],
+    "contained_by_task": [
+      "x29_to_x19"
+    ],
+    "shared_action_group": [
+      "x29_to_x18",
+      "x29_to_x19"
+    ],
+    "shared_target_group": [],
+    "dependency_notes": [
+      "같은 Action Task 2개",
+      "같은 Target Task 0개",
+      "엄격 간선 포함 관계 Task 1개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "x29_to_x18",
+    "action": "X29",
+    "target": "X18",
+    "existing_seed_task": false,
+    "seed_task_structural_validation": null,
+    "gt_path": [
+      [
+        "X29",
+        "X15",
+        "X18"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 2,
+    "longest_path_length": 2,
+    "process_areas": [
+      "분리기",
+      "스트리퍼"
+    ],
+    "structure_type": "다단계 경로(역할 기반 분류)",
+    "retention_reason": "X29의 기존 stripper underflow Task와 다른 stripper 온도 Target을 제공하는 2간선 경로다.",
+    "subgraph_path": "task_gt_subgraphs/x29_to_x18.json",
+    "nested_with": [],
+    "contains_task": [],
+    "contained_by_task": [],
+    "shared_action_group": [
+      "separator_pot_to_stripper_underflow",
+      "x29_to_x19"
+    ],
+    "shared_target_group": [],
+    "dependency_notes": [
+      "같은 Action Task 2개",
+      "같은 Target Task 0개",
+      "엄격 간선 포함 관계 Task 0개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "x29_to_x19",
+    "action": "X29",
+    "target": "X19",
+    "existing_seed_task": false,
+    "seed_task_structural_validation": null,
+    "gt_path": [
+      [
+        "X29",
+        "X15",
+        "X17",
+        "X30",
+        "X19"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 4,
+    "longest_path_length": 4,
+    "process_areas": [
+      "분리기",
+      "스트리퍼"
+    ],
+    "structure_type": "측정값→XMV 전환 포함",
+    "retention_reason": "X29→X19 4간선 경로에 X17(XMEAS)→X30(XMV) 전환이 있어 mixed topology 사례로 유지한다; 제어기 해석은 미확인이다.",
+    "subgraph_path": "task_gt_subgraphs/x29_to_x19.json",
+    "nested_with": [
+      "separator_pot_to_stripper_underflow",
+      "x30_to_x19"
+    ],
+    "contains_task": [
+      "separator_pot_to_stripper_underflow",
+      "x30_to_x19"
+    ],
+    "contained_by_task": [],
+    "shared_action_group": [
+      "separator_pot_to_stripper_underflow",
+      "x29_to_x18"
+    ],
+    "shared_target_group": [
+      "x30_to_x19"
+    ],
+    "dependency_notes": [
+      "같은 Action Task 2개",
+      "같은 Target Task 1개",
+      "엄격 간선 포함 관계 Task 2개",
+      "경로 포함은 표본 독립성을 보장하지 않는다.",
+      "XMEAS→XMV 전환: SCM 사용 전 controller 동작 확인 필요."
+    ],
+    "controller_dependency_flag": true,
+    "xmeas_to_xmv_edges": [
+      [
+        "X17",
+        "X30"
+      ]
+    ],
+    "controller_semantics": "확인 필요",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "x30_to_x19",
+    "action": "X30",
+    "target": "X19",
+    "existing_seed_task": false,
+    "seed_task_structural_validation": null,
+    "gt_path": [
+      [
+        "X30",
+        "X19"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 1,
+    "longest_path_length": 1,
+    "process_areas": [
+      "스트리퍼"
+    ],
+    "structure_type": "직접 경로(역할 기반 분류)",
+    "retention_reason": "X30 조작변수를 추가하고 stripper steam flow X19와의 직접 GT 관계를 대표한다; 물리적 개입 의미는 미확인이다.",
+    "subgraph_path": "task_gt_subgraphs/x30_to_x19.json",
+    "nested_with": [
+      "x29_to_x19"
+    ],
+    "contains_task": [],
+    "contained_by_task": [
+      "x29_to_x19"
+    ],
+    "shared_action_group": [],
+    "shared_target_group": [
+      "x29_to_x19"
+    ],
+    "dependency_notes": [
+      "같은 Action Task 0개",
+      "같은 Target Task 1개",
+      "엄격 간선 포함 관계 Task 1개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "x32_to_x7",
+    "action": "X32",
+    "target": "X7",
+    "existing_seed_task": false,
+    "seed_task_structural_validation": null,
+    "gt_path": [
+      [
+        "X32",
+        "X9",
+        "X7"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 2,
+    "longest_path_length": 2,
+    "process_areas": [
+      "반응기"
+    ],
+    "structure_type": "다단계 경로(역할 기반 분류)",
+    "retention_reason": "기존 X32→X9 직접 Task의 prefix를 포함하는 2간선 reactor pressure 경로를 대표한다.",
+    "subgraph_path": "task_gt_subgraphs/x32_to_x7.json",
+    "nested_with": [
+      "reactor_cooling_idv4_candidate"
+    ],
+    "contains_task": [
+      "reactor_cooling_idv4_candidate"
+    ],
+    "contained_by_task": [],
+    "shared_action_group": [
+      "reactor_cooling_idv4_candidate"
+    ],
+    "shared_target_group": [
+      "a_feed_action_to_reactor_pressure"
+    ],
+    "dependency_notes": [
+      "같은 Action Task 1개",
+      "같은 Target Task 1개",
+      "엄격 간선 포함 관계 Task 1개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  },
+  {
+    "task_id": "reactor_cooling_idv4_candidate",
+    "action": "X32",
+    "target": "X9",
+    "existing_seed_task": true,
+    "seed_task_structural_validation": "PASS",
+    "gt_path": [
+      [
+        "X32",
+        "X9"
+      ]
+    ],
+    "path_count": 1,
+    "shortest_path_length": 1,
+    "longest_path_length": 1,
+    "process_areas": [
+      "반응기"
+    ],
+    "structure_type": "직접 경로(역할 기반 분류)",
+    "retention_reason": "기존 seed 연속성; 반응기 냉각 조작과 온도 간 직접 GT 경로를 대표한다.",
+    "subgraph_path": "task_gt_subgraphs/reactor_cooling_idv4_candidate.json",
+    "nested_with": [
+      "x32_to_x7"
+    ],
+    "contains_task": [],
+    "contained_by_task": [
+      "x32_to_x7"
+    ],
+    "shared_action_group": [
+      "x32_to_x7"
+    ],
+    "shared_target_group": [],
+    "dependency_notes": [
+      "같은 Action Task 1개",
+      "같은 Target Task 0개",
+      "엄격 간선 포함 관계 Task 1개",
+      "경로 포함은 표본 독립성을 보장하지 않는다."
+    ],
+    "controller_dependency_flag": false,
+    "xmeas_to_xmv_edges": [],
+    "controller_semantics": "해당 전환 없음",
+    "simulator_feasibility": "UNKNOWN",
+    "scm_main_task_status": "선정 보류"
+  }
+]

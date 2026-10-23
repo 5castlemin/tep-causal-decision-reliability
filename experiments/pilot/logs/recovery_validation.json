@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "dataset_shape": [
+    1499,
+    31
+  ],
+  "raw_gt_shape": [
+    33,
+    33
+  ],
+  "evaluation_gt_shape": [
+    31,
+    31
+  ],
+  "evaluation_gt_edges": 28,
+  "gt_use": "구조 평가 대조만 사용; 모델 학습·방향 보정 금지",
+  "step6_metric_definition": "skeleton=무방향 쌍 F1; strict direction=확정 정방향 TP/전체 예측 쌍; SHD=누락+추가+역방향+미확정",
+  "results": {
+    "pc": {
+      "pairs": 22,
+      "confirmed": 9,
+      "unresolved": 13,
+      "skeleton_f1": 0.36,
+      "strict_directed_f1": 0.08,
+      "shd": 39
+    },
+    "boss": {
+      "pairs": 39,
+      "confirmed": 38,
+      "unresolved": 1,
+      "skeleton_f1": 0.3283582089552239,
+      "strict_directed_f1": 0.11940298507462686,
+      "shd": 52
+    },
+    "directlingam": {
+      "pairs": 63,
+      "confirmed": 63,
+      "unresolved": 0,
+      "skeleton_f1": 0.21978021978021978,
+      "strict_directed_f1": 0.13186813186813187,
+      "shd": 75
+    },
+    "dagma": {
+      "pairs": 47,
+      "confirmed": 47,
+      "unresolved": 0,
+      "skeleton_f1": 0.26666666666666666,
+      "strict_directed_f1": 0.08,
+      "shd": 62
+    },
+    "pcmciplus": {
+      "pairs": 53,
+      "confirmed": 43,
+      "unresolved": 10,
+      "skeleton_f1": 0.32098765432098764,
+      "strict_directed_f1": 0.12345679012345678,
+      "shd": 63
+    },
+    "varlingam": {
+      "pairs": 200,
+      "confirmed": 132,
+      "unresolved": 68,
+      "skeleton_f1": 0.17543859649122806,
+      "strict_directed_f1": 0.043859649122807015,
+      "shd": 203
+    },
+    "dynotears": {
+      "pairs": 170,
+      "confirmed": 148,
+      "unresolved": 22,
+      "skeleton_f1": 0.16161616161616163,
+      "strict_directed_f1": 0.050505050505050504,
+      "shd": 177
+    }
+  }
+}

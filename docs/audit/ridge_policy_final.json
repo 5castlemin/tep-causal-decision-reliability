@@ -1,0 +1,81 @@
+{
+  "status": "FROZEN",
+  "method": "RIDGE",
+  "ols": "DIAGNOSTIC_ONLY",
+  "objective": "train-only z-score 변수에 대해 각 비-root equation의 squared_error/n + alpha*sum(beta^2); intercept unpenalized",
+  "alpha_grid": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "selection_metric": "inner forward validation에서 standardized target MSE; eligible 6개 graph×비-root equation×fold를 동일 가중 평균",
+  "inner_folds_relative_to_train": [
+    {
+      "train_half_open": [
+        0,
+        717
+      ],
+      "validation_half_open": [
+        717,
+        836
+      ]
+    },
+    {
+      "train_half_open": [
+        0,
+        836
+      ],
+      "validation_half_open": [
+        836,
+        955
+      ]
+    },
+    {
+      "train_half_open": [
+        0,
+        955
+      ],
+      "validation_half_open": [
+        955,
+        1074
+      ]
+    }
+  ],
+  "alpha_scope": "하나의 공통 alpha를 6개 eligible graph의 모든 비-root equation에서 선택; graph별 임의 변경 금지",
+  "tie_break": "동일 loss면 더 큰 alpha",
+  "scaling": "각 fold/train에서만 변수별 z-score fit; validation transform-only; 상수 열은 실패로 기록하며 임의 보정 금지",
+  "intercept": "unpenalized",
+  "root_equations": "alpha 선택에서 제외; intercept-only exogenous equation",
+  "random_seed": 0,
+  "fit_rows": "COMMON_TARGET_ROWS_V1",
+  "coefficient_artifacts": {
+    "naming": "<algorithm>__<STATIC_CONFIRMED|NATIVE_LAG>__LINEAR_RIDGE__<split_version>__<hash8>",
+    "required": [
+      "coefficient_table.csv",
+      "intercepts.csv",
+      "fit_metadata.json",
+      "train_residuals_by_timestamp_variable.csv",
+      "validation_one_step_residuals_by_timestamp_variable.csv",
+      "residual_diagnostics.json"
+    ],
+    "metadata": [
+      "source_graph_hash",
+      "dataset_hash",
+      "variable_order",
+      "parent_and_lag",
+      "alpha",
+      "scaler_parameters",
+      "split",
+      "seed",
+      "software_versions",
+      "fit_status"
+    ]
+  },
+  "failure_status_policy": "fit 실패·singular/ill-conditioned/insufficient-data 등은 실패 상태와 이유를 저장하고 graph를 조용히 제외하지 않음",
+  "gt_or_recovery_for_selection": false,
+  "actual_alpha_selected": null,
+  "actual_fit_performed": false
+}

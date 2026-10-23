@@ -1,0 +1,17 @@
+{
+  "algo": "PC-stable",
+  "stage": "Final",
+  "alpha": 0.01,
+  "n_used": 114.36261788876175,
+  "n_eff_source": "Bartlett median (raw)",
+  "indep_test": "fisherz(n_eff)",
+  "uc_rule": 0,
+  "uc_priority": 2,
+  "stable": true,
+  "selection_rule": "max mean neighbor-alpha skeleton Jaccard among dir-acyclic; ties: sparser, closer to 0.05",
+  "n_dir": 9,
+  "n_unres": 13,
+  "n_pairs": 22,
+  "dir_acyclic": true,
+  "convention": "A[i,j]=1 <=> X_i -> X_j (row=parent)"
+}

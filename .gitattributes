@@ -1,0 +1,6 @@
+# 동결 산출물은 Windows autocrlf 설정과 무관하게 원래 바이트를 보존한다.
+graphs/final/** -text -diff
+docs/tasks/** -text -diff
+docs/audit/*.json -text -diff
+docs/audit/*.csv -text -diff
+experiments/pilot/logs/*.json -text -diff

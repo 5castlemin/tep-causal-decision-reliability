@@ -1,0 +1,58 @@
+{
+  "protocol_version": "COMMON_TARGET_ROWS_V1",
+  "status": "FROZEN",
+  "index_convention": "zero_based_in_datasetTE_csv_after_dropping_index_column",
+  "total_data_rows": 1499,
+  "max_lag": 5,
+  "common_target_rows": [
+    5,
+    1498
+  ],
+  "common_target_row_count": 1494,
+  "train_rows": [
+    5,
+    1199
+  ],
+  "train_count": 1195,
+  "validation_rows": [
+    1200,
+    1498
+  ],
+  "validation_count": 299,
+  "split_rule": "chronological floor(0.8*N) train, later 0.2 validation; no shuffle",
+  "inner_folds_relative_to_train": [
+    {
+      "train_half_open": [
+        0,
+        717
+      ],
+      "validation_half_open": [
+        717,
+        836
+      ]
+    },
+    {
+      "train_half_open": [
+        0,
+        836
+      ],
+      "validation_half_open": [
+        836,
+        955
+      ]
+    },
+    {
+      "train_half_open": [
+        0,
+        955
+      ],
+      "validation_half_open": [
+        955,
+        1074
+      ]
+    }
+  ],
+  "same_rows_all_eligible_graphs": true,
+  "validation_lag_context": "one-step validation may read earlier observed lag values including train tail; no future target/feature leakage; rollout prediction is separate future policy",
+  "sampling_caveat": "3분은 benchmark-defined 빈도; 각 row의 raw timestamp와 무누락성은 직접 검증되지 않았다"
+}

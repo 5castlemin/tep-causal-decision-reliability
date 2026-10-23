@@ -1,0 +1,8 @@
+algo,key,type,tau_max,n_dir,n_unres,n_pairs,dir_acyclic,lag_to_static_strict_reproduces,settings
+PC-stable,pc,static,,9,13,22,True,,"{""alpha"": 0.01, ""n_used"": 114.36261788876175, ""indep_test"": ""fisherz(n_eff)"", ""uc_rule"": 0, ""uc_priority"": 2, ""stable"": true}"
+BOSS,boss,static,,38,1,39,True,,"{""penalty_discount"": 8.495119523093898, ""n_eff"": 114.36261788876175, ""score"": ""SemBicScore""}"
+DirectLiNGAM,directlingam,static,,63,0,63,True,,"{""measure"": ""pwling"", ""gamma"": 0.5, ""threshold"": 0.15, ""n_eff"": 114.36261788876175}"
+DAGMA,dagma,static,,47,0,47,True,,"{""lambda1"": 0.01, ""threshold"": 0.25, ""loss_type"": ""l2"", ""n_eff"": 114.36261788876175}"
+PCMCI+,pcmciplus,time-series,3.0,43,10,53,False,True,"{""tau_max"": 3, ""pc_alpha"": 0.01, ""test"": ""ParCorr analytic""}"
+VarLiNGAM,varlingam,time-series,5.0,132,68,200,False,True,"{""lags"": 5, ""threshold"": 0, ""n_eff_resid"": 1494.0}"
+DYNOTEARS,dynotears,time-series,3.0,148,22,170,False,True,"{""p"": 3, ""lambda_w"": 0.005, ""lambda_a"": 0.005, ""w_threshold"": 0.05, ""scale"": ""zscore"", ""n_eff_resid"": 1496.0}"

@@ -1,0 +1,121 @@
+{
+  "protocol_version": "pre-scm-chunk3.3-v1",
+  "created_at_utc": "2026-10-06T11:21:00.412206+00:00",
+  "source_sha256": {
+    "dataset_csv": "52ae445b4355201db9591822282381c8de861afe49bdbc9452db08b01e7d3711",
+    "gt_txt": "238542dbdde50887b5944fb3acc64a792b19a0c56bbfa06e3b267261f2fe6c43",
+    "final_graph_freeze": "c519cd160f93d96ddd564eef7e58d616b4d5e177d352f523abbe2d6738f891cf",
+    "chunk0_manifest": "40a3614646246afa3e8cb49fc872b41ea737ef29c7c45950cacc7bdba3a66929",
+    "chunk1_1_freeze": "ae69817290b2df7a12dc95accbaee466947f94c2cc43960f447b6a22edd68dc2",
+    "chunk2_lag_audit": "c32d61ba6e2f9fb3cc344710a3bb88697c5633581ea77eea3c2005031f0f59c0",
+    "chunk3_model_decision": "0a08aa28b2a652992398830434783038751a5d6625aadae719ade5a06f805ce0",
+    "chunk3_1_decision": "13413ee9b17160ed77486b8ac2b692cc3ace796724f52814bb0427ab7a3a246b",
+    "chunk3_2_identity": "4223a5695b68930b94ded752bd77fa807ba164b96b11800f0169653cc59e51e6",
+    "chunk3_2_order_evidence": "5ed15edf6f5f2569fd4b9f87ccfefbe2b8226d2429f8c0c20badf5ae811a0723",
+    "chunk3_2_continuity": "b224f1667208e676623be63e32dabd9edab3ef8798f9208fa07bb2508975d259",
+    "chunk3_2_discrepancy": "98e3bfac63222bd8fa650ccbaa8c26cb02aed93b58d6ad88b24bb8348f448bac",
+    "step6_report": "bca181bed35c0ee14bfe94a8e736a06eb29c8b9932ea28abc9beed0548cf9ccc"
+  },
+  "dataset_sha256": "52ae445b4355201db9591822282381c8de861afe49bdbc9452db08b01e7d3711",
+  "temporal_order_status": "VERIFIED_MODERATE",
+  "temporal_order_evidence_level": "공식 benchmark의 시간 기반 생성 서술 + 공개 CSV byte identity + 상충하는 shuffle 증거 부재; 직접 행별 timestamp 검증은 없음",
+  "raw_timestamp_verified": false,
+  "row_interval_status": "BENCHMARK_DEFINED",
+  "benchmark_sampling_interval": {
+    "minutes": 3,
+    "source": "https://arxiv.org/html/2208.01529",
+    "location": "Table III: TE Frequencies 3 min"
+  },
+  "physical_interval_directly_verified": false,
+  "row_count_discrepancy_status": "ROW_COUNT_DISCREPANCY_UNRESOLVED",
+  "max_lag": 5,
+  "lag_interpretation": {
+    "1": {
+      "benchmark_minutes_before": 3,
+      "exact_raw_interval_verified": false
+    },
+    "2": {
+      "benchmark_minutes_before": 6,
+      "exact_raw_interval_verified": false
+    },
+    "3": {
+      "benchmark_minutes_before": 9,
+      "exact_raw_interval_verified": false
+    },
+    "4": {
+      "benchmark_minutes_before": 12,
+      "exact_raw_interval_verified": false
+    },
+    "5": {
+      "benchmark_minutes_before": 15,
+      "exact_raw_interval_verified": false
+    }
+  },
+  "common_target_rows": [
+    5,
+    1498
+  ],
+  "common_target_row_count": 1494,
+  "train_rows": [
+    5,
+    1199
+  ],
+  "validation_rows": [
+    1200,
+    1498
+  ],
+  "common_row_policy": "COMMON_TARGET_ROWS_V1",
+  "split_policy": "CHRONOLOGICAL_80_20_V1",
+  "primary_scm_family": "LINEAR_ADDITIVE_SCM",
+  "primary_scm_family_status": "FROZEN",
+  "fitting_method": "RIDGE",
+  "fitting_method_status": "FROZEN",
+  "ols_policy": "DIAGNOSTIC_ONLY",
+  "ridge_policy": "ridge_policy_final.json",
+  "scaling_policy": "각 fold/train에서만 변수별 z-score fit; validation transform-only; 상수 열은 실패로 기록하며 임의 보정 금지",
+  "graph_representation": {
+    "pc": "CONFIRMED_ONLY_STATIC",
+    "boss": "CONFIRMED_ONLY_STATIC",
+    "directlingam": "CONFIRMED_ONLY_STATIC",
+    "dagma": "CONFIRMED_ONLY_STATIC",
+    "varlingam": "NATIVE_LAG",
+    "dynotears": "NATIVE_LAG",
+    "pcmciplus": "NATIVE_LAG_IDENTIFICATION_BLOCKED"
+  },
+  "unresolved_rule": "CONFIRMED_ONLY_NO_ORIENTATION",
+  "static_graph_status": {
+    "pc": "READY_STATIC_FIT",
+    "boss": "READY_STATIC_FIT",
+    "directlingam": "READY_STATIC_FIT",
+    "dagma": "READY_STATIC_FIT"
+  },
+  "varlingam_status": "READY_WITH_INTERVAL_WARNING",
+  "dynotears_status": "READY_WITH_INTERVAL_WARNING",
+  "pcmciplus_status": "KEEP_BLOCKED_IDENTIFICATION",
+  "nonlinear_policy": "SENSITIVITY_ONLY",
+  "strict_counterfactual_policy": "NOT_PRIMARY_YET",
+  "residual_policy": "적합 후 train equation residual과 validation one-step residual 저장; 평균·분산·변수간 상관·시간 자기상관 진단; noise law는 추후 freeze",
+  "random_seed": 0,
+  "artifact_naming_policy": "<algorithm>__<STATIC_CONFIRMED|NATIVE_LAG>__LINEAR_RIDGE__<split_version>__<hash8>",
+  "fitting_blockers": {
+    "protocol_wide": [],
+    "graph_specific": {
+      "pcmciplus": "tau=0 SCC causal coefficient identification unresolved"
+    }
+  },
+  "downstream_blockers": [
+    "SIMULATOR_UNAVAILABLE",
+    "INTERVENTION_SEMANTICS_UNVERIFIED",
+    "SAFETY_RECOVERY_CRITERIA_UNFROZEN"
+  ],
+  "warnings": [
+    "raw timestamp 직접 대조 미완료",
+    "CSV 인접 row의 실제 무누락 3분 간격 미검증",
+    "논문 1500 vs 공개 CSV 1499 원인 미확정",
+    "Linear SCM의 비선형 공정 단순화 가능성",
+    "Task 12개 사이 구조적 의존성"
+  ],
+  "scm_fitting_gate": "PASS WITH WARNINGS",
+  "actual_scm_fitting_performed": false,
+  "gt_used_for_orientation_or_fitting_policy": false
+}

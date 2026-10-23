@@ -1,0 +1,95 @@
+{
+  "status": "NORMAL_OBSERVATIONAL_FIT_ONLY",
+  "pilot_graphs": [
+    "pc",
+    "directlingam",
+    "boss"
+  ],
+  "common_alpha_selection_graphs": [
+    "pc",
+    "boss",
+    "directlingam",
+    "dagma",
+    "varlingam",
+    "dynotears"
+  ],
+  "alpha_losses": {
+    "0.0001": {
+      "mean_standardized_mse": 0.4223760639182594,
+      "equation_fold_count": 402
+    },
+    "0.001": {
+      "mean_standardized_mse": 0.4229140788884755,
+      "equation_fold_count": 402
+    },
+    "0.01": {
+      "mean_standardized_mse": 0.4243972775613431,
+      "equation_fold_count": 402
+    },
+    "0.1": {
+      "mean_standardized_mse": 0.4312275313378226,
+      "equation_fold_count": 402
+    },
+    "1.0": {
+      "mean_standardized_mse": 0.5147000952777885,
+      "equation_fold_count": 402
+    },
+    "10.0": {
+      "mean_standardized_mse": 0.7518207078115798,
+      "equation_fold_count": 402
+    }
+  },
+  "selected_alpha": 0.0001,
+  "train_rows": [
+    5,
+    1199
+  ],
+  "train_count": 1195,
+  "validation_rows": [
+    1200,
+    1498
+  ],
+  "validation_count": 299,
+  "standardization": "각 fold 및 최종 train 구간에서만 평균·표준편차 추정; ddof=0",
+  "prediction": "관측 부모를 사용한 one-step 검증; rollout/개입 결과 아님",
+  "dataset_sha256": "52ae445b4355201db9591822282381c8de861afe49bdbc9452db08b01e7d3711",
+  "numpy_version": "2.4.6",
+  "pandas_version": "3.0.3",
+  "python_version": "3.11.15",
+  "random_seed": 0,
+  "results": {
+    "pc": {
+      "non_root_equations": 3,
+      "confirmed_parent_links": 9,
+      "train_standardized_mse_all_variables": 0.9541079138070084,
+      "validation_standardized_mse_all_variables": 0.9517344790304463,
+      "validation_standardized_mse_nonroot": 0.46815898724772537,
+      "train_median_absolute_residual_correlation": 0.052441401224416526,
+      "train_median_absolute_lag1_residual_autocorrelation": 0.5555001201652198,
+      "artifact_sha256": "b862603d69b8f2a3e51240ad60415d9bcad459df560d59ff412b1841f4caaf78"
+    },
+    "directlingam": {
+      "non_root_equations": 23,
+      "confirmed_parent_links": 63,
+      "train_standardized_mse_all_variables": 0.6330204210294036,
+      "validation_standardized_mse_all_variables": 0.6163324837789544,
+      "validation_standardized_mse_nonroot": 0.469261801536197,
+      "train_median_absolute_residual_correlation": 0.027167117219387076,
+      "train_median_absolute_lag1_residual_autocorrelation": 0.1923818600438931,
+      "artifact_sha256": "0253d9f2b3168e8242d3e833ebeaf74533a8bc70707b7c785bfa7c011158c3e7"
+    },
+    "boss": {
+      "non_root_equations": 20,
+      "confirmed_parent_links": 38,
+      "train_standardized_mse_all_variables": 0.6572462324336745,
+      "validation_standardized_mse_all_variables": 0.650079916345095,
+      "validation_standardized_mse_nonroot": 0.4242368303639651,
+      "train_median_absolute_residual_correlation": 0.02557406032093049,
+      "train_median_absolute_lag1_residual_autocorrelation": 0.15530923505333757,
+      "artifact_sha256": "c73946f5e40e2192e41df6cf59b90c7c83d20080899c9c631e88ac69763d379f"
+    }
+  },
+  "intervention_effect": null,
+  "recovery": null,
+  "safety": null
+}

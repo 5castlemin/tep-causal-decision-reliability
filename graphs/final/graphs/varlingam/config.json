@@ -1,0 +1,22 @@
+{
+  "algo": "VarLiNGAM",
+  "stage": "Final",
+  "lags": 5,
+  "criterion": null,
+  "prune": true,
+  "threshold": 0,
+  "n_eff_resid": 1494.0,
+  "bic_eff": -93444.34388275536,
+  "random_state": 20261005,
+  "conversion": {
+    "n_conflict": 68,
+    "n_mixed_marks": 0,
+    "mode": "strict"
+  },
+  "selection_rule": "min BIC_eff (OLS refit, n_eff_resid); dBIC<2 -> fewer coefficients -> fewer pairs -> closer to default",
+  "n_dir": 132,
+  "n_unres": 68,
+  "n_pairs": 200,
+  "dir_acyclic": false,
+  "convention": "A[i,j]=1 <=> X_i -> X_j (row=parent)"
+}

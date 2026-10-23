@@ -1,0 +1,24 @@
+{
+  "algo": "DYNOTEARS",
+  "stage": "Final",
+  "p": 3,
+  "lambda_w": 0.005,
+  "lambda_a": 0.005,
+  "w_threshold": 0.05,
+  "scale": "zscore",
+  "n_eff_resid": 1496.0,
+  "bic_eff": -87416.84389824282,
+  "conversion": {
+    "n_conflict": 22,
+    "n_mixed_marks": 0,
+    "mode": "strict"
+  },
+  "seed": 20261005,
+  "install_note": "causalnex 0.12.2 / Python 3.10 venv / torch 미설치, dynotears.py 원본 실행",
+  "selection_rule": "min BIC_eff (OLS refit, n_eff_resid); contemp-cyclic excluded; dBIC<2 -> sparser",
+  "n_dir": 148,
+  "n_unres": 22,
+  "n_pairs": 170,
+  "dir_acyclic": false,
+  "convention": "A[i,j]=1 <=> X_i -> X_j (row=parent)"
+}
