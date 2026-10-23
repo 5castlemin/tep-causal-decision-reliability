@@ -1,35 +1,25 @@
-# 프로젝트 상태
+# 프로젝트 현재 상태
 
-마지막 확인: 2026-10-23. 상태는 현재 로컬 원본과 재현 결과를 구분한다. 자세한 근거는 `docs/audit/`에 기록한다.
+기준일: 2026-10-23. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
+과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
-| 단계 | 상태 | 근거 | 다음 일 |
-|---|---|---|---|
-| 데이터·GT 정렬 | 완료 | 정상 데이터 1,499×31; GT 33×33에서 X27·X31 제외 후 31×31·28간선 | 원자료 시간 정보가 생기면 행별 대응 재확인 |
-| 7개 최종 그래프 보존 | 완료 | 동결 ZIP·해시·변수 순서·방향 규약 기록 | 복사본 검증기를 새 환경에서 재실행 |
-| 전체 구조 평가 | 완료·수치 대조 재현 성공 | Step 6 CSV와 보고서; 7개 최종 그래프의 연결·엄격한 방향 F1·SHD를 독립 재계산해 일치 | 기존 무작위 기준선 전체 재시뮬레이션은 별도 |
-| 구조 평가 과제 | 완료(후보 선정) | 198쌍→GT 경로 65쌍→대표 12개. 사람이 대표성을 고려한 목록 | 실제 개입 과제와 분리 유지 |
-| SCM 학습 조건 설계 | 완료 | 선형 가산 SCM·공통 Ridge 규칙·행 5..1498 동결 | 실제 개입 전 식별 가정 검토 |
-| 정적 3개 정상 데이터 수치 적합 | 부분 완료 | PC-stable·DirectLiNGAM·BOSS의 공통 alpha 선택, 계수·잔차·one-step 검증 저장 | 시뮬레이터 반응과 대조 전 인과효과 주장 금지 |
-| PCMCI+ 순환 식별 | 차단 | 동일 시점 순환의 인과계수 식별 근거 없음 | 별도 식별 전략 검토 |
-| 시뮬레이터 현재 재현 | 차단 | 8월 보고는 있으나 해당 코드·실행 로그를 현재 조사 범위에서 찾지 못함 | 실행 소스·환경·제어기 설정 확보 |
-| 복구 과제 1개 확정 | 미수행 | Fault 주입·XMV 쓰기·안전 기준 미검증 | 시뮬레이터 Gate A 뒤 결정 |
-| 개입 효과·복구·안전 평가 | 미수행 | 독립 실행 환경 미확보 | 실제 반응 기록 전 수치 생성 금지 |
+| ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
+|---|---|---|---|---|
+| SRC-01 | Final 생성 코드 회수 | BLOCKED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | FREEZE.code의 algos/run_*.py 및 common/config.py·data_io.py 원본을 해시로 대조하여 회수 |
+| SIM-03 | 공개 후보 수치·shutdown 검증 | PARTIAL | experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지) | 1788초 종료 원인과 적분 step/Fortran 기준 동등성 조사 |
+| SIM-04 | 공개 후보 초기화 검증 | BLOCKED | experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지) | 동일 객체 reset 후 관측 불일치의 RNG/state/controller 원인 확인 |
+| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지) | 모델 revision·controller·운전모드·단위·전처리 계보 대조 |
+| SIM-01 | 기존 8월 시뮬레이터 복구 | BLOCKED | docs/SIMULATOR_SETUP.md | 당시 저장소 URL/ZIP·버전·실행 명령·로그의 구체 소재 확보 |
+| SIM-02 | 공개 Python 후보 관측·쓰기·Fault smoke | PARTIAL | experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지) | PR #2 검토 및 수치·reset 제한 해결 후 장기 운전 확인 |
+| TASK-01 | 실행 가능한 복구 과제 확정 | BLOCKED | experiments/pilot/TASK_SPEC.md | 모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정 |
+| EFFECT-01 | 독립 개입·Recovery/Safety 측정 | NOT_RUN | experiments/pilot/PILOT_RESULT.md | 확정 과제로 no-action 대비 동일 조건 실험 |
+| DATA-01 | 원자료 취득·권리 | PARTIAL | docs/reproducibility/TEAM_GUIDE.md | 고정 커밋 취득은 검증됨; 재배포 권리 추가 확인 |
+| GRAPH-01 | Final 7개 산출물·평가 보존 | VERIFIED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | 동결 파일 수정 없이 생성 코드 회수와 분리 유지 |
+| SCM-01 | 정상 관측 수치 적합 | PARTIAL | experiments/pilot/logs/normal_fit_summary.json | 관측 적합을 독립 효과 검증과 구분 |
+| PCMCI-ID | PCMCI+ 순환 식별 | BLOCKED | docs/audit/pre_fitting_final_freeze.json | 동시점 순환의 인과계수 식별 근거 검토 |
+| TASK-STRUCT | 12개 구조 평가 후보 | VERIFIED | docs/tasks/structural_task_candidates_v1_1.json | 독립 표본/실제 복구 과제와 구분 유지 |
+| DOC-01 | 현재 상태 동기화 | VERIFIED | scripts/check_research_state.py | state JSON 수정 후 문서 생성·일치 검사 |
+| GRAPH-GEN | Final 7개 생성 학습 재실행 | BLOCKED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | 정확한 algos/common 원본 회수 후 환경과 frozen 동일성 검증 |
 
-10월 중순 이후의 연구 질문 확대는 **연구 방향 제안**이며 지표별 후속 성능 비교가 구현되거나 입증된 것은 아니다.
-
-## 2026-10-23 Slack·자산·시뮬레이터 회수 점검
-
-| 작업 흐름 | 상태 | 근거 | 다음 관문 |
-|---|---|---|---|
-| Slack 의사결정·파일 단서 | PARTIAL | `docs/audit/SLACK_RESEARCH_TIMELINE.md`, `SLACK_ASSET_REGISTER.md`; 채널과 주요 thread 직접 읽음 | 미확보 실행 코드 원본 바이트 회수·해시/권리 대조 |
-| 데이터·GT 팀 재현 | PARTIAL | 공개 소스 커밋·SHA를 고정한 `src/acquire_reference_data.py`; 원본 라이선스 미확인 | 재배포 권리 확인 전 `data/local/` 유지 |
-| 문서 동기화 | VERIFIED | `AGENTS.md`, `PRIORITIES.md`, `WORK_LOG.md`, PR 대상 CI의 파일 변경 검사 | 각 실질 변경에서 내용의 진실성은 리뷰로 검증 |
-| 8월 시뮬레이터 재현 | BLOCKED | `docs/SIMULATOR_SETUP.md`; 보고서 외 실행 코드·로그 미확보 | 당시 저장소/ZIP·버전·정상 운전 로그 회수 |
-
-현재 다음 최우선 작업은 **SIM-01**이며 시뮬레이터 Gate A는 여전히 `BLOCKED`이다. 정상 운전·Fault·XMV 개입·Recovery/Safety 측정은 이번 작업에서 수행하지 않았다.
-
-## 2026-10-23 — Simulator feasibility
-
-공개 Python 후보에서 30분 정상 운전 2회와 raw 시계열 기록, manual XMV10 쓰기, IDV4 주입을 실제 실행했다. 반례도 기록했다: manual 개입은 1788초 shutdown, clear/initialize 뒤 초기 관측 exact 복원 실패. 기존 8월 구현은 미회수이며 기존 데이터/GT와 동적 동등성은 미확인이다. 상태 **PARTIAL**; 원본 Gate A 전체 및 실제 복구·안전 관문은 아직 통과하지 않았다. 근거: `docs/audit/SIMULATOR_FEASIBILITY_REPORT.md`, `experiments/simulator/run_20261023_v3/summary.json`.
-
-재현성 보완: 원시 simulator CSV는 `.gitattributes`의 `-text` 규칙으로 OS별 줄바꿈 변환을 막고 byte hash를 보존한다.
+실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
+이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

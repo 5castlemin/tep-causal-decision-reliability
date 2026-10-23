@@ -1,6 +1,6 @@
 # TEP 인과구조와 공정 의사결정의 신뢰성
 
-추정 인과그래프의 어떤 구조적 정확도가 실제 공정 개입의 효과·복구·안전 성능을 설명하는지 검증하기 위한 협업 저장소다. **현재는 구조 평가를 복원했고 정적 그래프 3개의 정상 관측 데이터 수치 적합만 파일럿으로 수행했다. 실제 시뮬레이터 개입 결과는 없다.**
+추정 인과그래프의 어떤 구조적 정확도가 실제 공정 개입의 효과·복구·안전 성능을 설명하는지 검증하기 위한 협업 저장소다. **구조 평가를 복원했고 정적 그래프 3개의 정상 관측 수치 적합 및 공개 시뮬레이터의 제한된 개입 smoke를 수행했다. 독립 Recovery/Safety 검증은 미수행이다.**
 
 처음 합류했다면 [팀 소개](introduction.md) → [현재 상태](PROJECT_STATUS.md) → [연구 설계](RESEARCH_DESIGN.md) → [파일럿 계획](PILOT_PLAN.md) 순서로 읽는다.
 
@@ -8,25 +8,21 @@
 
 ## 빠른 시작
 
-Python 3.11+와 `numpy`, `pandas`가 필요하다. 원본 CPCaD-Bench의 Git 커밋과 검증된 ZIP 세트가 있는 환경에서만 로컬 입력을 준비한다. 입력 ZIP과 기존 저장소는 수정하지 않는다.
-
-데이터·GT만 필요하면 공개 CPCaD-Bench checkout을 준비한 후 다음 명령을 사용한다. 해시 검증 후 Git 제외된 로컬 폴더에만 쓰며 기존 다른 내용은 덮어쓰지 않는다. 원본 재배포 권리가 명확하지 않아 데이터 바이트는 이 저장소에 포함하지 않았다.
+실제 단계별 명령과 미완료 범위는 [팀 재현 가이드](docs/reproducibility/TEAM_GUIDE.md)를 따른다. Python 환경 생성 후 공개 원본 저장소를 별도 clone하여 고정 커밋의 데이터·GT만 취득한다. 데이터 바이트와 ZIP 전체는 Git에 포함하지 않는다.
 
 ```powershell
-python -X utf8 src/acquire_reference_data.py --source-git <CPCaD-Bench Git 경로>
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
+.\.venv\Scripts\python.exe -X utf8 src/acquire_reference_data.py --source-git ../CPCaD-Bench
+.\.venv\Scripts\python.exe -X utf8 graphs/final/verify_and_load.py
+.\.venv\Scripts\python.exe -X utf8 scripts/check_asset_manifest.py
+.\.venv\Scripts\python.exe -X utf8 -m unittest discover -s tests -v
 ```
 
-```powershell
-python -m pip install -r requirements.txt
-python src/prepare_local_inputs.py --source-git <CPCaD-Bench 경로> --graph-zip <TEP_final_graphs_v1.zip 경로> --step6-zip <TEP_step6_results.zip 경로> --task-dir <pre_scm_task_selection_v1_1 경로> --freeze-dir <pre_scm_final_freeze 경로>
-python -X utf8 graphs/final/verify_and_load.py
-python -X utf8 src/verify_recovery.py
-python -X utf8 -m unittest discover -s tests -v
-python -X utf8 tests/smoke/check_simulator.py --output experiments/pilot/logs/simulator_smoke.json
-python -X utf8 src/pilot_fit.py
-```
+회수한 Step 6 ZIP을 제공하면 `src/reproduce_step6.py`로 **원본 strict 평가 함수의 결과**를 비교할 수 있다. ZIP hash·출처·실제 검증 결과는 [복원 보고서](docs/reproducibility/ASSET_RECOVERY_REPORT.md)에 있다. Final 7개 생성 학습 코드는 아직 없어 인과발견 재실행은 BLOCKED다. 설정과 과거 코드로 이를 대신 재구성하지 않는다.
 
-`check_simulator.py`는 실제 소스 경로를 전달하지 않으면 의도적으로 `BLOCKED`를 기록한다. `pilot_fit.py`의 결과는 관측 부모를 이용한 정상 상태 one-step 예측 진단이며 인과효과 검증이 아니다. 원자료의 자동 검색이나 임의 시뮬레이터 설치는 하지 않는다.
+[PR #2](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)의 공개 simulator는 정상 30분 반복·쓰기·Fault smoke만 부분 통과했다. PR #2는 사용자 승인 후 병합했으며, 동일 객체 reset과 수치·기존 데이터 호환성 문제가 남아 있다. 기존 8월 구현 회수 BLOCKED와 구분한다.
 
 ## 폴더
 
