@@ -30,6 +30,9 @@ Investigate which causal-graph structural accuracy measures, if any, explain *in
 6. End every result with: branch/commit/PR, files changed, tests actually executed, current gate state, updated docs, next highest-priority actionable item, unresolved blockers.
 
 ## Evidence and epistemic safeguards
+- Current dashboards use `docs/research_state.json` as a single explicit record. Update it, then run `python -X utf8 scripts/check_research_state.py --write` to refresh the top-level current tables. Preserve superseded text in `docs/history/` and append chronology only to `WORK_LOG.md`. Do not append a second contradictory current-status section.
+- Keep original August simulator recovery and the public Python candidate as distinct workstreams. For unmerged PR evidence, record the PR and head SHA; do not imply its artifacts are already on main. Keep priority IDs unique and record aliases/scope changes.
+- Asset levels are LOCATED (pointer only), VERIFIED (bytes/hash/provenance), REPRODUCIBLE (observed rerun), INTEGRATED (team-accessible procedure). Report artifact/evaluator/algorithm-generation levels separately. No exact Final generation claim without matching original code and rerun evidence.
 - States: `VERIFIED`, `PARTIAL`, `REPORTED_ONLY`, `BLOCKED`, `NOT_RUN`, `INACCESSIBLE`, `PROPOSED`; use explicit dates, actual paths, hashes/log IDs and source links when known.
 - Existing frozen 7 causal graphs and Step 6 metrics must not be silently modified. Never use GT to tune the original primary discovery graphs or to orient ambiguous edges; if a benchmark upper bound uses GT, isolate and label it.
 - `datasetTE.csv`: 1,499 rows × 31 analysis variables; 33-node source GT reduced to 31 nodes, 28 scored edges. These are **structural evaluation references**, not known simulator intervention ground truth.

@@ -23,3 +23,7 @@
 Slack 메시지에 Step 6 ZIP(`F0C6TP4168H`), 과제 ZIP(`F0C7E97KXEC`), PCMCI+ 실행 설명 3개가 공유된 사실을 확인했다. ZIP의 Slack 원본 바이트는 다운로드하지 않았으므로 위 로컬 ZIP과 *Slack 첨부 자체*의 해시 동일성은 아직 미검증이다. 기존 Final graph, Step 6 표, 과제 freeze는 수정하지 않았다. 상세 상태는 `SLACK_ASSET_REGISTER.md`와 `SLACK_IMPORT_AUDIT.md`에 기록했다.
 
 공개 CPCaD-Bench checkout에서 LICENSE/COPYING 파일을 찾지 못했고 README의 인용 요청만 확인했다. 따라서 데이터·GT 원본은 계속 `data/local/`에서만 사용한다. `src/acquire_reference_data.py`가 고정 커밋과 두 SHA-256을 검증하며 재배포 권리 확인 후에만 추적 저장을 재검토한다.
+
+## 자산 복원 추가 검증 — 2026-10-23
+
+Slack Step 6/과제 ZIP의 원본 바이트를 회수하여 위 로컬 SHA와 exact 일치를 확인했다. 새 공개 clone·빈 환경 데이터 취득 및 회수한 원본 strict 평가기 실행 결과는 `docs/reproducibility/validation/`에 있다. ZIP 내부 파일 hash는 `STEP6_ARCHIVE_CONTENTS.json`에 보존한다. 생성 코드의 기대 hash는 존재하지만 bytes 미회수인 상태를 `MISSING_FINAL_SOURCES.json`에 명시했다. 원본 ZIP/코드/CSV 바이트는 이 저장소에 새로 반입하지 않았다.

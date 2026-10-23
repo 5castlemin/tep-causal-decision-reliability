@@ -16,6 +16,9 @@ jobs:
       - run: python -X utf8 graphs/final/verify_and_load.py
       - run: python -X utf8 -m unittest discover -s tests -v
       - run: python -X utf8 experiments/simulator/validate_feasibility.py
+      - run: python -X utf8 scripts/check_research_state.py
+      - run: python -X utf8 scripts/check_asset_manifest.py
+      - run: python -X utf8 scripts/validate_pr_integration.py
       - name: 연구 상태 문서 동기화
         if: github.event_name == 'pull_request'
         run: python -X utf8 scripts/check_research_docs.py --base origin/${{ github.base_ref }}
