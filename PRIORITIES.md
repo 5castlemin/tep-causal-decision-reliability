@@ -13,3 +13,11 @@
 | DOC-01 | P2 | VERIFIED | 없음 | 모든 실질 연구 변경 PR에서 상태·우선순위·작업 기록 동시 갱신 | CI 문서 동기화 검사 통과 |
 
 새 알고리즘·비선형 탐색은 독립 개입 환경 복구보다 뒤에 둔다.
+
+## 2026-10-23 feasibility 후 다음 행동
+
+- P0 SIM-03 (PARTIAL): 공개 Python 후보의 큰 수동 반응/1788초 shutdown에 대해 적분 step·Fortran 기준 수치 동등성과 종료 원인을 확인. 수치 정확성 확인 전 실제 효과 정답 사용 금지.
+- P0 SIM-04 (BLOCKED): 동일 객체 reset 후 초기 관측 불일치 원인 조사. 새 인스턴스 재현은 통과했으나 RNG·controller·state 초기화 계약 확인 필요.
+- P0 COMPAT-01 (PARTIAL): CPCaD/Manca 모델 revision·운전모드·controller·전처리와 후보 대응 확인. 이름 mapping만으로 동일 구현 판단 금지.
+- 기존 SIM-01은 여전히 8월 소스 회수 BLOCKED. 새 후보의 정상 운전/쓰기/Fault smoke는 일부 통과했으므로 SIM-02의 공개 후보 실행 근거는 이번 보고서에 추가한다. TASK-01과 EFFECT-01은 아직 보류한다.
+- DOC-02 (VERIFIED): simulator raw CSV의 Git 줄바꿈 정규화 방지 규칙 추가. 새 환경에서 hash 검증으로 바이트 보존을 확인한다.

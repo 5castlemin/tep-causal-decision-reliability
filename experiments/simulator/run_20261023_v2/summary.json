@@ -1,0 +1,58 @@
+{
+  "runs": {
+    "closed_normal_1": {
+      "record_count": 61,
+      "reached_seconds": 1799.9999999999432,
+      "shutdown": false,
+      "finite": true,
+      "initial_mv10": 41.10581288,
+      "final_mv10": 40.86510524355083
+    },
+    "closed_normal_2": {
+      "record_count": 61,
+      "reached_seconds": 1799.9999999999432,
+      "shutdown": false,
+      "finite": true,
+      "initial_mv10": 41.10581288,
+      "final_mv10": 40.86510524355083
+    },
+    "manual_reference": {
+      "record_count": 61,
+      "reached_seconds": 1799.9999999999432,
+      "shutdown": false,
+      "finite": true,
+      "initial_mv10": 41.10581288,
+      "final_mv10": 41.10581288
+    },
+    "manual_intervention": {
+      "record_count": 60,
+      "reached_seconds": 1787.9999999999436,
+      "shutdown": true,
+      "finite": true,
+      "initial_mv10": 41.10581288,
+      "final_mv10": 42.10581288
+    },
+    "closed_fault": {
+      "record_count": 61,
+      "reached_seconds": 1799.9999999999432,
+      "shutdown": false,
+      "finite": true,
+      "initial_mv10": 41.10581288,
+      "final_mv10": 44.31586197477956,
+      "reset_time_hours": 0.0
+    }
+  },
+  "repeat_exact": true,
+  "last_common_reactor_temperature_difference_degC": -28.70710121869331,
+  "last_common_seconds": 1769.9999999999443,
+  "python": "3.11.15",
+  "numpy": "2.4.6",
+  "compatibility": "VARIABLE_MAPPING_ONLY_NOT_EFFECT_ORACLE",
+  "csv_sha256": {
+    "closed_fault.csv": "0eaf793ba99bf29831a4bb7e3cc8cad7a64eb5cde4e4da163f1a580efe60510c",
+    "closed_normal_1.csv": "8f4bb2064886d1355020d79b19e89d2e0fca476c3effec8c1ef4a8db113e6814",
+    "closed_normal_2.csv": "8f4bb2064886d1355020d79b19e89d2e0fca476c3effec8c1ef4a8db113e6814",
+    "manual_intervention.csv": "c534f7ad600caf0d5e66866da3378816426db2fe559264df569cc0547daee9a9",
+    "manual_reference.csv": "7211c476de79ead95aec022567417965af0fb76a3e6b34291e0a39b3e8138987"
+  }
+}
