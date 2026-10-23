@@ -1,0 +1,47 @@
+{
+  "access_records": [
+    {
+      "name": "datacite_record",
+      "url": "https://api.datacite.org/dois/10.21227/326k-qr90",
+      "attempted_at": "2026-10-23T13:21:20.785260+00:00",
+      "status": 200,
+      "final_url": "https://api.datacite.org/dois/10.21227/326k-qr90",
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 6385,
+      "sha256": "55b947eb0dea326029672f31ba158da35e2c428c572a55bb612badb08b8c438b",
+      "file": "datacite_record.json",
+      "access": "RETRIEVED_METADATA_NOT_RAW_DATA"
+    },
+    {
+      "name": "dataport_landing",
+      "url": "https://ieee-dataport.org/open-access/tennessee-eastman-process-alarm-management-case-study",
+      "attempted_at": "2026-10-23T13:21:21.997974+00:00",
+      "status": 200,
+      "final_url": "https://ieee-dataport.org/open-access/tennessee-eastman-process-alarm-management-dataset",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 66144,
+      "sha256": "e97e9ceafd452b13367f520fe8ea62dcb230f68f76e699d6b786d1b013665439",
+      "file": "dataport_landing.html",
+      "access": "RETRIEVED_METADATA_NOT_RAW_DATA"
+    }
+  ],
+  "pdf_document_access": [
+    {
+      "route": "public_document",
+      "status": 403,
+      "error": "HTTPError"
+    },
+    {
+      "route": "provider_document",
+      "status": 403,
+      "error": "HTTPError"
+    },
+    {
+      "route": "refreshed_public_page_document",
+      "status": 200,
+      "bytes": 5990722,
+      "sha256": "657307d7119538a0c21bdc49933c4ff31de929038a0213f9f4a8dfc3fde9faf0"
+    }
+  ],
+  "note": "정상 ZIP은 목록 확인뿐. 임시 서명 URL과 raw HTML 및 로컬 개인 경로는 Git 반입하지 않음."
+}

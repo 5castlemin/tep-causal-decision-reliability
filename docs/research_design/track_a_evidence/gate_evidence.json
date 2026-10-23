@@ -1,0 +1,196 @@
+{
+  "protocol": "TRACK-A-RECOVERY-GATE-v1",
+  "checked_at": "2026-10-23T22:20:22.7548185+09:00",
+  "base_main": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
+  "source_hashes": {
+    "temexd_mod.zip": "e43227aaded739cfeba1ec281c54ac8a549f60753e064305a669b906c4b16b0d",
+    "tecode.zip": "2536e8a80e326c6a15ac2f636b1e2c48e1791e1b21dddc644f0725e87a8db724"
+  },
+  "official_archives_unchanged": true,
+  "dataset_listing": {
+    "status": "VERIFIED_METADATA_ONLY",
+    "landing_url": "https://ieee-dataport.org/open-access/tennessee-eastman-process-alarm-management-dataset",
+    "landing_http_status": 200,
+    "landing_sha256": "e97e9ceafd452b13367f520fe8ea62dcb230f68f76e699d6b786d1b013665439",
+    "raw_package": "3_Normal Steady-State.zip",
+    "displayed_size": "61.88 MB",
+    "download_access": "LOGIN_REQUIRED",
+    "raw_package_sha256": null,
+    "license_reported_by_datacite": [
+      {
+        "rights": "Creative Commons Attribution 4.0 International",
+        "rightsUri": "https://creativecommons.org/licenses/by/4.0/legalcode",
+        "schemeUri": "https://spdx.org/licenses/",
+        "rightsIdentifier": "cc-by-4.0",
+        "rightsIdentifierScheme": "SPDX"
+      }
+    ],
+    "doi_metadata_url": "https://api.datacite.org/dois/10.21227/326k-qr90",
+    "doi_metadata_sha256": "55b947eb0dea326029672f31ba158da35e2c428c572a55bb612badb08b8c438b",
+    "normal_package_inventory": "UNKNOWN"
+  },
+  "technical_report": {
+    "status": "RETRIEVED_DOCUMENT_NOT_RAW_DATA",
+    "file_name": "Technical_Report_V1_2.pdf",
+    "sha256": "657307d7119538a0c21bdc49933c4ff31de929038a0213f9f4a8dfc3fde9faf0",
+    "bytes": 5990722,
+    "pages": 55,
+    "source_page": "https://ieee-dataport.org/open-access/tennessee-eastman-process-alarm-management-dataset",
+    "pdf_page_to_printed_page": {
+      "12": "10",
+      "13": "11",
+      "14": "12",
+      "42": "40"
+    },
+    "documented_filenames": [
+      "SIMOUT.xlsx",
+      "XMV.xlsx",
+      "TOUT.xlsx",
+      "ALARMS.xlsx",
+      "random_seed.txt"
+    ],
+    "file_layout_scope": "Table2.1/Figure6.2는 측정 명세 및 Tests 폴더이다. 정상 ZIP 내부 구성의 검증이 아님.",
+    "model_flag_bits_reported": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "15": 0
+    },
+    "model_flag_decimal_inferred": 225,
+    "report_queried_not_manca_runtime_verified": true
+  },
+  "raw_data": {
+    "acquired": false,
+    "timestamp_acquired": false,
+    "seed_acquired": false,
+    "export_reproduced": false,
+    "configuration_matched": false,
+    "documented_time_file": "TOUT.xlsx",
+    "documented_seed_file": "random_seed.txt",
+    "actual_timestamp_status": "UNKNOWN",
+    "actual_seed_status": "UNKNOWN",
+    "median_stride_boundary_status": "UNKNOWN",
+    "row_1500_1499_cause": "UNKNOWN",
+    "targeted_local_file_search_count": 11971,
+    "targeted_local_exact_name_matches": 0
+  },
+  "execution_environment": {
+    "matlab_invocable": false,
+    "simulink_available": false,
+    "license_available": false,
+    "model_load_verified": false,
+    "mex_compatible": false,
+    "boolean_semantics": "false는 미검증을 뜻하며 설치/권리의 전역 부재를 뜻하지 않음",
+    "registry_roots_checked": 3,
+    "registry_mathworks_matches": 0,
+    "registered_products": 0,
+    "installation_paths_checked": 20,
+    "installation_path_matches": 0,
+    "matlab_shortcut_matches": 0,
+    "app_path_registry_matches": 0,
+    "active_matlab_processes": 0,
+    "path_commands": {
+      "matlab": false,
+      "mex": false,
+      "mcc": false,
+      "octave": false,
+      "cl": false,
+      "gcc": false,
+      "gfortran": false
+    },
+    "license_test_status": "NOT_RUN",
+    "simulink_ver_status": "NOT_RUN",
+    "mdl_load_status": "NOT_RUN",
+    "mex_build_status": "NOT_RUN",
+    "search_scope": "PATH, MathWorks registry, uninstall records, C/D 일반 설치경로, Start Menu, App Paths. 전체 디스크/원격 환경 전수 아님."
+  },
+  "static_model": {
+    "temexd_mod.zip": {
+      "sha256": "e43227aaded739cfeba1ec281c54ac8a549f60753e064305a669b906c4b16b0d",
+      "bytes": 639921,
+      "unchanged": true
+    },
+    "tecode.zip": {
+      "sha256": "2536e8a80e326c6a15ac2f636b1e2c48e1791e1b21dddc644f0725e87a8db724",
+      "bytes": 29307,
+      "unchanged": true
+    },
+    "model_static_fields": {
+      "StartTime": [
+        "\"0.0\"\r"
+      ],
+      "StopTime": [
+        "\"72\"\r"
+      ],
+      "RelTol": [
+        "\"1e-6\"\r"
+      ],
+      "AbsTol": [
+        "\"auto\"\r"
+      ],
+      "Solver": [
+        "\"ode45\"\r"
+      ],
+      "InitialState": [
+        "\"xInitial\"\r"
+      ],
+      "SFunctionName": [],
+      "Parameters": []
+    },
+    "initial_mat": {
+      "sha256": "40eaebc92badb04ad026e358cfd28ec9c778fcf2d24a1b8f5d85565854da2747",
+      "bytes": 13592,
+      "header": "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Wed Nov 27 16:53:09 2002"
+    }
+  },
+  "normal_runs": [],
+  "repeatability_verified": false,
+  "intervention_interface_verified": false,
+  "levels": {
+    "L1": {
+      "status": "VERIFIED",
+      "scope": "문서·코드의 이름/선언 단위 대응만"
+    },
+    "L2": {
+      "status": "PARTIAL",
+      "scope": "공식 설정값·문서 운전점과 평균 근접; 공식 모델 실행 없음"
+    },
+    "L3": {
+      "status": "PARTIAL",
+      "scope": "수정 모델 계열/버전 확보; 실제 원자료 실행 바이너리 동일성 미확인"
+    },
+    "L4": {
+      "status": "PARTIAL",
+      "scope": "정적 controller wiring만; do/setpoint/override 의미 미검증"
+    },
+    "L5": {
+      "status": "UNKNOWN",
+      "scope": "실제 초기상태/seed/noise/export 연결 미확인"
+    },
+    "L6": {
+      "status": "NOT_RUN",
+      "scope": "A2 차단으로 정상 반복 실행 없음"
+    },
+    "L7": {
+      "status": "BLOCKED",
+      "scope": "개입 효과 정답 활용 NO-GO"
+    }
+  },
+  "no_new_discovery_or_scm": true,
+  "research_design_changed": false,
+  "external_contact_sent": false,
+  "gate_decision": {
+    "A1": "BLOCKED",
+    "A2": "BLOCKED",
+    "A3": "NOT_RUN",
+    "A4": "NO-GO",
+    "hypothesis_gate": "INSUFFICIENT_EVIDENCE",
+    "recommendation": "C",
+    "track_b_or_c_adopted": false
+  }
+}

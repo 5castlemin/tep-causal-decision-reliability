@@ -96,3 +96,12 @@
 ## 2026-10-23 — 승인된 PR4→PR5 병합 준비
 
 사용자의 명시적 승인 후 PR #4 head71c5448을 merge commit 1e4fcc7c91839afd49770fcc8b3380d368e1dea3로 병합했다. PR #5 base를 main으로 조정하고 현재 상태의 미병합 표시를 갱신했다. 작성 당시 decision JSON과 원시 hash는 보존하며 github_current에 실제 상태를 분리했다. 로컬 사용자 변경은 없었다. 선행검토에서 단위 테스트13개와 보존 검사가 통과했으며 CI 재검증 후 PR #5를 병합한다. Track A 신규 조사와 실험은 아직 시작하지 않았다.
+# 2026-10-23 Track A 복원 Gate
+
+- 사용자 승인 후 PR #4 병합(1e4fcc7), PR #5 main 재정렬 및 상태 시점 구분 수정(a2dc2b2, Actions 39960138640 성공), PR #5 병합(7b16638). 최신 main에서 feature/track-a-recovery-gate 생성. 사용자 변경사항 덮어쓰기 없음.
+- 기존 temexd_mod.zip/tecode.zip SHA 재확인. 원본 재다운로드·수정 없음. 공식 DataCite DOI JSON과 IEEE DataPort 목록 HTTP 200 확인. 정상 패키지 3_Normal Steady-State.zip은 로그인 필요, 원본 미회수.
+- 공개 Technical_Report_V1_2.pdf 실제 회수(5,990,722 bytes, SHA 657307d7119538a0c21bdc49933c4ff31de929038a0213f9f4a8dfc3fde9faf0). 오래된 공개 문서 링크 403 후 공개 페이지 갱신 링크에서 200. PDF 12/13/14/42쪽 시각 확인. TOUT.xlsx/random_seed.txt는 문서상 명칭이며 정상 ZIP 실재 검증 아님.
+- PowerShell 읽기 전용 PATH/MathWorks registry/제품 목록/C·D 일반 설치경로/Start Menu/App Paths/프로세스 검사: inspected 범위 MATLAB 미발견. 라이선스·Simulink·.mdl 로딩·MEX NOT_RUN. 신규 파일명 단서의 제한적 os.walk 탐색 11,971개 이름, 일치 0. 전수 Slack/전체 디스크 재감사 없음.
+- 실제 명령: collect_track_a_evidence.py --local-records <지정 아카이브 기록 폴더>, 일회성 상태 JSON 갱신 후 python -X utf8 scripts/check_research_state.py --write. 개인 경로·서명 URL·PDF 전체는 Git에 반입하지 않음.
+- A1/A2 BLOCKED, A3 NOT_RUN, A4 NO-GO. 정상 운전·새 시뮬레이터/SCM/Recovery/Safety 실행 없음. 원시 기록/PDF/시각 확인 이미지는 지정 아카이브의 10_TrackA_원환경_복원Gate에 보존.
+- 로컬 검증 통과: validate_track_a_recovery.py, unittest discover(16개), validate_benchmark_decision.py, validate_feasibility.py, validate_diagnostics.py, graphs/final/verify_and_load.py(39 hash), check_asset_manifest.py, validate_pr_integration.py, src/verify_recovery.py. 마지막 명령은 기존 점수 독립 대조이며 새 discovery 실행은 아니다. 12조건 시뮬레이션 재실행 없음.
