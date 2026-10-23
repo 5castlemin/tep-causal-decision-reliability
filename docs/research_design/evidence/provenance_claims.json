@@ -1,0 +1,87 @@
+{
+  "checked_at": "2026-10-23",
+  "claims": [
+    {
+      "id": "BM-ID",
+      "status": "VERIFIED",
+      "statement": "고정 공식 CSV/GT와 현재 입력 바이트 동일, 공식 NumPy도 1499×31이며 CSV와 exact 일치",
+      "source": "local_20261023_v2/local_audit.json",
+      "location": "input_hashes; dataset"
+    },
+    {
+      "id": "BM-PIPE",
+      "status": "REPORTED",
+      "statement": "정상 데이터, 원측정 0.1Hz, 75시간·3분 sliding median, 최종 3분 빈도·1500 samples",
+      "source": "https://arxiv.org/html/2208.01529",
+      "location": "IV-A; Table III"
+    },
+    {
+      "id": "BM-GT",
+      "status": "REPORTED",
+      "statement": "GT는 기계적 공정 관계에 기반. 정상 데이터에서 지연은 확정 못함",
+      "source": "https://arxiv.org/html/2208.01529",
+      "location": "IV-A Causal Structure; reference 43"
+    },
+    {
+      "id": "BM-ROW",
+      "status": "UNKNOWN",
+      "statement": "1500/1499 차이 원인, 원시 파일명·timestamp·구간·seed·median stride/경계",
+      "source": "local_20261023_v2/local_audit.json",
+      "location": "pinned_repository_tree; dataset_commits; dataset"
+    },
+    {
+      "id": "MANCA-MODEL",
+      "status": "REPORTED",
+      "statement": "수정 Simulink/Ricker 제어, 2015 모델, MV5·MV9 닫힘/MV12=100, 별도 시간 및 seed 파일",
+      "source": "https://www.researchgate.net/publication/355917633_Tennessee-Eastman-Process_Alarm_Management_Dataset_-_Technical_Report",
+      "location": "v1.1 (2021-09-24), §1.2–1.3/§2.1/§6.2"
+    },
+    {
+      "id": "ARCHIVE-STATIC",
+      "status": "VERIFIED",
+      "statement": "공식 ZIP 회수·hash 및 C1.3.3, setpoint2800/65/122.9, ode45, Ts_base1.8초·Ts_save36초의 정적 확인",
+      "source": "local_20261023_v2/local_audit.json",
+      "location": "official_archive; original_fortran_archive"
+    },
+    {
+      "id": "ARCHIVE-LINK",
+      "status": "UNKNOWN",
+      "statement": "현재 공식 archive와 Manca 실제 사용 버전의 byte identity 및 수정 설정 대응",
+      "source": "local_20261023_v2/local_audit.json",
+      "location": "official_archive.exact_manca_archive_byte_identity"
+    },
+    {
+      "id": "POINT-LINK",
+      "status": "INFERRED",
+      "statement": "archive 설정값과 benchmark 평균의 근접성은 조정 운전점 복원 후보의 근거이며 생성 표본 동일성 증명 아님",
+      "source": "local_20261023_v2/local_audit.json; ../../../experiments/simulator/diagnostics/analysis_20261023_v3/compatibility_statistics.csv",
+      "location": "official_archive.setpoints"
+    },
+    {
+      "id": "BM-EXCLUSIONS",
+      "status": "INFERRED",
+      "statement": "현재 X27/X31 부재는 직접 확인. 분산0 제거·밸브닫힘의 원인 연결은 원본33열 없이 확정 못함",
+      "source": "local_20261023_v2/local_audit.json",
+      "location": "dataset.absent"
+    },
+    {
+      "id": "PY-DIFF",
+      "status": "VERIFIED",
+      "statement": "고정 후보 초기 MV5/MV9/MV12 및 이전 정상 분포가 benchmark 운전점과 다름",
+      "source": "local_20261023_v2/local_audit.json",
+      "location": "candidate.normal_initial; 기존 진단 통계"
+    },
+    {
+      "id": "NO-EFFECT-ORACLE",
+      "status": "INFERRED",
+      "statement": "환경·개입 동등성 미확인으로 직접 효과 정답 사용 NO-GO를 유지",
+      "source": "../BENCHMARK_COMPATIBILITY_DECISION.md",
+      "location": "§4–6"
+    }
+  ],
+  "access_limitations": [
+    "Dataport 페이지 접근 실패; 원시 Excel/시간/seed 파일 미회수",
+    "작성자 기술보고서는 공개 HTML 본문으로 읽었으며 PDF/source 원시 바이트 동일성은 검증하지 않음",
+    "공식 ZIP은 외부 로컬 보존, 라이선스/재배포 권리 미확정으로 Git 반입 없음"
+  ]
+}

@@ -1,0 +1,1116 @@
+{
+  "base": "172e84bcafb82dd5074f097fcabfb94f28ff96e3",
+  "head": "71c5448ed9a82548d86f40f60be842020f69538d",
+  "changed_files": 156,
+  "added_files": 145,
+  "total_changed_content_bytes": 16740258,
+  "largest": [
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/closed_normal_7200_terminal.json",
+      "bytes": 3809278,
+      "sha256": "d87a49d9ee1d8604dd4d5f27e4ea000d6777f4a3c2ae86cad760d3012b56c119"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/closed_normal_7200.csv",
+      "bytes": 1263432,
+      "sha256": "b74707d1c6f9db623c1f2e223bedfbb83aa0f6970e11fda72d8ce8c3f8cb31d2"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.5_delta0.csv",
+      "bytes": 318491,
+      "sha256": "94b32830624fd6b8f4996ff9f666be3ab62353109e259526bc9863960beb8cb4"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.5_delta1.csv",
+      "bytes": 318491,
+      "sha256": "44bff2974bdb34b9775e5ad9ed1b1026061ce1b06877bb7791f0b0ca68fada69"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.25_delta0.csv",
+      "bytes": 318432,
+      "sha256": "038db11b6fb1b03e3e15acef378dda9afa9f2a69399dfcb6538a9185db3a107c"
+    }
+  ],
+  "duplicate_groups": [
+    [
+      "experiments/simulator/diagnostics/analysis_20261023_v2/compatibility_statistics.csv",
+      "experiments/simulator/diagnostics/analysis_20261023_v3/compatibility_statistics.csv"
+    ],
+    [
+      "experiments/simulator/diagnostics/execution_logs/run_aligned_stdout.txt",
+      "experiments/simulator/diagnostics/execution_logs/run_initial_stdout.txt"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fault600_reset_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fault600_reset_after.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fault600_reset_before.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fault600_reset_before.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fault600_reset_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh2_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_initialize_twice_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_run60_reset_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fault600_reset_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh2_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_initialize_twice_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_run60_reset_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fault600_reset_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh2_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_initialize_twice_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_run60_reset_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fault600_reset_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh2_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_initialize_twice_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_run60_reset_terminal.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh1.csv",
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh2.csv",
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_initialize_twice.csv"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh1_after.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh2_after.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_initialize_twice_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh1_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh2_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_initialize_twice_after.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_run60_reset_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_run60_reset_after.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_run60_reset_before.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_run60_reset_before.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fault600_reset_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fault600_reset_after.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fault600_reset_before.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fault600_reset_before.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh1.csv",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh2.csv",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_initialize_twice.csv"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh1_after.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh2_after.json",
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_initialize_twice_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh1_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh2_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_initialize_twice_after.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_run60_reset_after.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_run60_reset_after.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/reset_manual_run60_reset_before.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_run60_reset_before.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/upstream_dt0.25_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.25_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.25_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.25_delta0_terminal.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/upstream_dt0.25_delta1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.25_delta1_terminal.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/upstream_dt0.5_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.5_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.5_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.5_delta0_terminal.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/upstream_dt0.5_delta1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.5_delta1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.5_delta1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.5_delta1_terminal.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/upstream_dt1_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt1_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt1_delta0_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt1_delta0_terminal.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/upstream_dt1_delta1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt1_delta1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt1_delta1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt1_delta1_terminal.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.25_delta1_terminal.json",
+      "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.25_delta1_terminal.json"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh1.csv",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh2.csv",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_initialize_twice.csv"
+    ],
+    [
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh1.csv",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh2.csv",
+      "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_initialize_twice.csv"
+    ]
+  ],
+  "files": [
+    {
+      "change": "M",
+      "path": ".gitattributes",
+      "bytes": 536,
+      "sha256": "99a66bebe9f907308b81afc059d51baedb08d7b36475878055b32540c0fe4205"
+    },
+    {
+      "change": "M",
+      "path": ".github/workflows/verify.yml",
+      "bytes": 1081,
+      "sha256": "58cf91a2952870a6a899e3a70feebe23be835202ef518ae21c18713535766b82"
+    },
+    {
+      "change": "M",
+      "path": "DECISIONS.md",
+      "bytes": 2950,
+      "sha256": "db5aa931e4e20ff870fa22f7a3b45a2b4d9d03fc7679c5955b55ee3daf397279"
+    },
+    {
+      "change": "M",
+      "path": "PRIORITIES.md",
+      "bytes": 3381,
+      "sha256": "c49fc22692a51748c27bb0ac3f8ce9df50cd9706753f739ea287e8d60f40b5da"
+    },
+    {
+      "change": "M",
+      "path": "PROJECT_STATUS.md",
+      "bytes": 3610,
+      "sha256": "994987d9cff506b9d2938b8705266f6ae918d201b4f2750769429ea1741b1adf"
+    },
+    {
+      "change": "M",
+      "path": "README.md",
+      "bytes": 3536,
+      "sha256": "32a856db479bcb0ef56b9b9e1f4bcab146a7bfedbf10c1e3175412efe53d2fd1"
+    },
+    {
+      "change": "M",
+      "path": "WORK_LOG.md",
+      "bytes": 11646,
+      "sha256": "cefec6f1c88d1b3f4b75c7597395a55decc9d1b3ad9e1044221440f1b61dccba"
+    },
+    {
+      "change": "M",
+      "path": "docs/SIMULATOR_SETUP.md",
+      "bytes": 2679,
+      "sha256": "0f65ee34f2f979135208fa7cb990318a980460810263a6bf8b4fa61eede7c977"
+    },
+    {
+      "change": "M",
+      "path": "docs/audit/SIMULATOR_FEASIBILITY_REPORT.md",
+      "bytes": 8575,
+      "sha256": "f4108b341e6573c5772c2eb5a974d1953e63eee4c5f8f6d34c44af271234aaf2"
+    },
+    {
+      "change": "A",
+      "path": "docs/audit/SIMULATOR_RELIABILITY_REPORT.md",
+      "bytes": 14672,
+      "sha256": "4f64aa469b4ab167a7978f0bfb67bea92b5a168477bcbc30d9529cd2a4958679"
+    },
+    {
+      "change": "M",
+      "path": "docs/research_state.json",
+      "bytes": 7637,
+      "sha256": "35e425694d1c3cd125cf646aa8bc5606126e8bbd0dcd0fd1f6313ba8f57bc80f"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/README.md",
+      "bytes": 4021,
+      "sha256": "d060deda265e4170b05de1db2bb7bb20ea1260c27f041a76080eeb6634317682"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/analysis_20261023_v2/SHA256.json",
+      "bytes": 194,
+      "sha256": "7b91f0603e23c89c54baf8ab3ee5391df1f3064748e9bbbbf706e998c8214e23"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/analysis_20261023_v2/analysis.json",
+      "bytes": 24457,
+      "sha256": "6b9644a2476c83344c672fac23dceaa8e6a5bd0e18282b431577a2706fa9df28"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/analysis_20261023_v2/compatibility_statistics.csv",
+      "bytes": 6506,
+      "sha256": "2f39d5840f19e903e47e37b401a2c0fda5a07abc0386beec0e2d9ff30087afaa"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/analysis_20261023_v3/SHA256.json",
+      "bytes": 194,
+      "sha256": "961e3c3589a9d79cecb1196a06d66b604fd37aec6f7e17021f0844e4f89b1b7e"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json",
+      "bytes": 64801,
+      "sha256": "5dadafe1e92ea19b96361643e5925884d231c676e9ecfe3628d6d4a10b9f328b"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/analysis_20261023_v3/compatibility_statistics.csv",
+      "bytes": 6506,
+      "sha256": "2f39d5840f19e903e47e37b401a2c0fda5a07abc0386beec0e2d9ff30087afaa"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/analyze_diagnostics.py",
+      "bytes": 6832,
+      "sha256": "8cbac8de64b6ca5c99140467e41a717e0b5f69d324416092a28f559ce51d6d43"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/execution_logs/SHA256.json",
+      "bytes": 474,
+      "sha256": "ab054160c8287712bce93ab671ec6aaf96ad37b20e1247fa6a9997bfc0c7a6cd"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/execution_logs/analysis_failure.txt",
+      "bytes": 424,
+      "sha256": "b4c7e94d9e9ff9ed20d929f1045764a7e65c3ace2578c92a02f2c29334601e4a"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/execution_logs/environment.json",
+      "bytes": 368,
+      "sha256": "389220ff7830f40cf693b57cdcd64f08555819762ac919ee052dcf9d4fcf45ef"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/execution_logs/numpy_config.txt",
+      "bytes": 1877,
+      "sha256": "6211156449da3809acf4ba6ffceabb838571ebca72cd299f468e218070546980"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/execution_logs/run_aligned_stdout.txt",
+      "bytes": 6447,
+      "sha256": "51867ab21b1c05c81718320cc5fdf07090e85f1db877d034c7a1a28424871a76"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/execution_logs/run_initial_stdout.txt",
+      "bytes": 6447,
+      "sha256": "51867ab21b1c05c81718320cc5fdf07090e85f1db877d034c7a1a28424871a76"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/local_verification.json",
+      "bytes": 3937,
+      "sha256": "fa6187148cfee1a6372b0b826138cf933e066342e94b0dd13f63dc97730cfdd1"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/SHA256.json",
+      "bytes": 6601,
+      "sha256": "43c7ef9171fa40b44e44f3a087fbf7a55041262d572cb7d44b349995825ff972"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/plan.json",
+      "bytes": 1053,
+      "sha256": "aea62eb63c4d280b8142b840a197c09bd19b8d86e52a07a4143cd136846c33fc"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fault600_reset.csv",
+      "bytes": 8682,
+      "sha256": "b3c127507b9833eb8c33b3ae1363b78b0237c39e7673bc105abc60c621fa6e28"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fault600_reset_after.json",
+      "bytes": 23417,
+      "sha256": "258f73033e8985a0bee34d0a7f4d12a0db36be8b64f8f756bf3e4e39353d64f4"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fault600_reset_before.json",
+      "bytes": 24862,
+      "sha256": "8ab9ecb898202b23e99a3597dba8aa2fad183e032410c361ad7c5d47b84dae8e"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fault600_reset_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh1.csv",
+      "bytes": 8682,
+      "sha256": "08535485fe7904391680638b60b59530aea4c9830c4e14ec7cfbc11b097be484"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh1_after.json",
+      "bytes": 23406,
+      "sha256": "a272128a01ad1d46cc0c36622c598a7e5e4073c5af9fc96c958bafd205cb28e3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh1_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh2.csv",
+      "bytes": 8682,
+      "sha256": "08535485fe7904391680638b60b59530aea4c9830c4e14ec7cfbc11b097be484"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh2_after.json",
+      "bytes": 23406,
+      "sha256": "a272128a01ad1d46cc0c36622c598a7e5e4073c5af9fc96c958bafd205cb28e3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_fresh2_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_initialize_twice.csv",
+      "bytes": 8682,
+      "sha256": "08535485fe7904391680638b60b59530aea4c9830c4e14ec7cfbc11b097be484"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_initialize_twice_after.json",
+      "bytes": 23406,
+      "sha256": "a272128a01ad1d46cc0c36622c598a7e5e4073c5af9fc96c958bafd205cb28e3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_initialize_twice_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_run60_reset.csv",
+      "bytes": 8682,
+      "sha256": "e068958814174939d37b13eed7fafbec25cf854c1dd09bb08475bb165617493d"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_run60_reset_after.json",
+      "bytes": 23408,
+      "sha256": "d330d24616cb22cc784af5915a583938763f7107f8221e1690a0fd5e6c053c25"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_run60_reset_before.json",
+      "bytes": 24701,
+      "sha256": "5645346ee788f3e194d256f315312e0472df7b45e96881505e3bb37f26729288"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_closed_loop_run60_reset_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fault600_reset.csv",
+      "bytes": 8682,
+      "sha256": "fd6f5c18bc7fd296289da556a7f97db8045be997d6403362a2a5c36407a64805"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fault600_reset_after.json",
+      "bytes": 19083,
+      "sha256": "e8032e39a1b7a737f031482f0a57e333857f15e8e7f1455976d2207b58d338db"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fault600_reset_before.json",
+      "bytes": 19772,
+      "sha256": "1b9ebd86e402324452e2bec5f8c66d2681bae95dbef00d7214d9a86fcca112fb"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fault600_reset_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh1.csv",
+      "bytes": 8682,
+      "sha256": "910f94c6ea2473cd149da7073690c06cd9a2c953697d0add7d78c5d40b1d4a58"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh1_after.json",
+      "bytes": 19079,
+      "sha256": "960b5240a39bf8a700223e7364f031ed117a6fed7017e2c80a2e783a7b3e5ce0"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh1_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh2.csv",
+      "bytes": 8682,
+      "sha256": "910f94c6ea2473cd149da7073690c06cd9a2c953697d0add7d78c5d40b1d4a58"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh2_after.json",
+      "bytes": 19079,
+      "sha256": "960b5240a39bf8a700223e7364f031ed117a6fed7017e2c80a2e783a7b3e5ce0"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_fresh2_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_initialize_twice.csv",
+      "bytes": 8682,
+      "sha256": "910f94c6ea2473cd149da7073690c06cd9a2c953697d0add7d78c5d40b1d4a58"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_initialize_twice_after.json",
+      "bytes": 19079,
+      "sha256": "960b5240a39bf8a700223e7364f031ed117a6fed7017e2c80a2e783a7b3e5ce0"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_initialize_twice_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_run60_reset.csv",
+      "bytes": 8682,
+      "sha256": "b975f718d59337d6845bbb6841fc63e4e49940f3d8d62cff3193ba158443f862"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_run60_reset_after.json",
+      "bytes": 19090,
+      "sha256": "00e00d8f67a09f7e50f3afcae50a7009b1b9ab340a88926c207ce9335da79d7f"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_run60_reset_before.json",
+      "bytes": 19595,
+      "sha256": "315f4df1ac4e36f95bc26bfb04e804480cb2797789e17e68a0995f888ee1b0bd"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/reset_manual_run60_reset_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/results.json",
+      "bytes": 60757,
+      "sha256": "24ed5d23d078e6982ec9a190f7025219d70d2149800d56eb6dcad88e3c314819"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt0.25_delta0.csv",
+      "bytes": 160932,
+      "sha256": "9a5c93582013579dc09735bedd7846ecd9bc72d1da6107e04c24f67e8e286eea"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt0.25_delta0_terminal.json",
+      "bytes": 201469,
+      "sha256": "9e324807ea3921c4ab7489d10eddf9023bbe0d04bba737645d9d258d3da8799e"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt0.25_delta1.csv",
+      "bytes": 160932,
+      "sha256": "deeca6007c733382305a6fbc68ac0a7bb329f608a3a456e4aadfe8c0512e9132"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt0.25_delta1_terminal.json",
+      "bytes": 192004,
+      "sha256": "cc525052652f52fd65b9a338fa5b850b869d25bd67fad5454a9bdb314aebbdf1"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt0.5_delta0.csv",
+      "bytes": 160962,
+      "sha256": "0535ccd855dce31dfd42f5a60a6071c3f8391004e51ecb7b63f99f77384e9b31"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt0.5_delta0_terminal.json",
+      "bytes": 201385,
+      "sha256": "250285c7583e064bd63f945a49db9f4dedeb376466c347602eaa1e178c82d2a2"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt0.5_delta1.csv",
+      "bytes": 160962,
+      "sha256": "3f9131e72c4047277e981c6ba51ac2e89857c6e0fefece51af4608e0fafaa807"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt0.5_delta1_terminal.json",
+      "bytes": 192654,
+      "sha256": "34e111b533528863695d8dee0602aaca2059cb31bd47943c320490b44778ca87"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt1_delta0.csv",
+      "bytes": 160932,
+      "sha256": "d48a5bc3a5fcfd340011e74946fb73f9346e72e2fcede087a65eef5af1635e79"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt1_delta0_terminal.json",
+      "bytes": 201455,
+      "sha256": "39fd17eddf8547f943cbcbc723ab5ae710bcb267aef1995827163aa3f40766d3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt1_delta1.csv",
+      "bytes": 160932,
+      "sha256": "2ec4d458766f7bc966ca27f46ab878ec61332f32e264e315ee31b09eb3bee42d"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/upstream_dt1_delta1_terminal.json",
+      "bytes": 193314,
+      "sha256": "a6a780d2a1512b5399fc16847e4545910ead8167a97f01174d341da71c77a46a"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.25_delta0.csv",
+      "bytes": 160932,
+      "sha256": "a63f7c00a32ae683b6cfe3b882377e94fb8998f57226871764dc8e0b0c752f51"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.25_delta0_terminal.json",
+      "bytes": 201469,
+      "sha256": "9e324807ea3921c4ab7489d10eddf9023bbe0d04bba737645d9d258d3da8799e"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.25_delta1.csv",
+      "bytes": 160932,
+      "sha256": "6b0eab7b410f41a64e2cbb663f6fb034036c78ff822f570c7202e18105cd32fb"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.25_delta1_terminal.json",
+      "bytes": 192003,
+      "sha256": "2684b652aac8d1f9be75e28a8697ba423281aeb54c5274f4c48587f1a22bed35"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.5_delta0.csv",
+      "bytes": 160932,
+      "sha256": "045aec380dd4f672754682dadc2eddf7fd4fba40d5da8c159ba88f37274b13ab"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.5_delta0_terminal.json",
+      "bytes": 201385,
+      "sha256": "250285c7583e064bd63f945a49db9f4dedeb376466c347602eaa1e178c82d2a2"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.5_delta1.csv",
+      "bytes": 160932,
+      "sha256": "33ed242750a7979e55f8da199cce784f18dc153189e14137ff4665e5ceed170b"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt0.5_delta1_terminal.json",
+      "bytes": 192654,
+      "sha256": "34e111b533528863695d8dee0602aaca2059cb31bd47943c320490b44778ca87"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt1_delta0.csv",
+      "bytes": 160932,
+      "sha256": "8b3070e4412724c8425a08f2d8715942cfb8fbc372585d32ddb4345e94348e67"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt1_delta0_terminal.json",
+      "bytes": 201455,
+      "sha256": "39fd17eddf8547f943cbcbc723ab5ae710bcb267aef1995827163aa3f40766d3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt1_delta1.csv",
+      "bytes": 160932,
+      "sha256": "c52fe96a15663f0f191230d1e1c98d00463505098b2b1d19470d1cf339cca436"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023/zero_xns_diagnostic_dt1_delta1_terminal.json",
+      "bytes": 193314,
+      "sha256": "a6a780d2a1512b5399fc16847e4545910ead8167a97f01174d341da71c77a46a"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/SHA256.json",
+      "bytes": 6805,
+      "sha256": "ea2a8d442db0332b03f178eddc7e6e9db427ce70a10d4e874f1486a2551b13bc"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/closed_normal_7200.csv",
+      "bytes": 1263432,
+      "sha256": "b74707d1c6f9db623c1f2e223bedfbb83aa0f6970e11fda72d8ce8c3f8cb31d2"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/closed_normal_7200_terminal.json",
+      "bytes": 3809278,
+      "sha256": "d87a49d9ee1d8604dd4d5f27e4ea000d6777f4a3c2ae86cad760d3012b56c119"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/plan.json",
+      "bytes": 1194,
+      "sha256": "dd694558c1f23bdd6485321b2c85ef14256e21737e46ddce35409237a4bc6516"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fault600_reset.csv",
+      "bytes": 13932,
+      "sha256": "4edb6660e7abbd767d9b3b14a93f0bd93d4623e4e24912ba2f5d36dd8387dedb"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fault600_reset_after.json",
+      "bytes": 23417,
+      "sha256": "258f73033e8985a0bee34d0a7f4d12a0db36be8b64f8f756bf3e4e39353d64f4"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fault600_reset_before.json",
+      "bytes": 24862,
+      "sha256": "8ab9ecb898202b23e99a3597dba8aa2fad183e032410c361ad7c5d47b84dae8e"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fault600_reset_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh1.csv",
+      "bytes": 13932,
+      "sha256": "a4ebf902e6a30f5f6d9c7ad0fe1a800a259a19d81b383bb3f3dad1c82e26cf2a"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh1_after.json",
+      "bytes": 23406,
+      "sha256": "a272128a01ad1d46cc0c36622c598a7e5e4073c5af9fc96c958bafd205cb28e3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh1_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh2.csv",
+      "bytes": 13932,
+      "sha256": "a4ebf902e6a30f5f6d9c7ad0fe1a800a259a19d81b383bb3f3dad1c82e26cf2a"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh2_after.json",
+      "bytes": 23406,
+      "sha256": "a272128a01ad1d46cc0c36622c598a7e5e4073c5af9fc96c958bafd205cb28e3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_fresh2_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_initialize_twice.csv",
+      "bytes": 13932,
+      "sha256": "a4ebf902e6a30f5f6d9c7ad0fe1a800a259a19d81b383bb3f3dad1c82e26cf2a"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_initialize_twice_after.json",
+      "bytes": 23406,
+      "sha256": "a272128a01ad1d46cc0c36622c598a7e5e4073c5af9fc96c958bafd205cb28e3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_initialize_twice_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_run60_reset.csv",
+      "bytes": 13932,
+      "sha256": "a8536324c88ef855c25844524628679347f5e4b2c6637b0be89b84ddf2c74e85"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_run60_reset_after.json",
+      "bytes": 23408,
+      "sha256": "d330d24616cb22cc784af5915a583938763f7107f8221e1690a0fd5e6c053c25"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_run60_reset_before.json",
+      "bytes": 24701,
+      "sha256": "5645346ee788f3e194d256f315312e0472df7b45e96881505e3bb37f26729288"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_closed_loop_run60_reset_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fault600_reset.csv",
+      "bytes": 13932,
+      "sha256": "f31b60ea8f69ee1c640c8ffba6ab3f995daafa14e856a527a4bafc461a3d800c"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fault600_reset_after.json",
+      "bytes": 19083,
+      "sha256": "e8032e39a1b7a737f031482f0a57e333857f15e8e7f1455976d2207b58d338db"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fault600_reset_before.json",
+      "bytes": 19772,
+      "sha256": "1b9ebd86e402324452e2bec5f8c66d2681bae95dbef00d7214d9a86fcca112fb"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fault600_reset_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh1.csv",
+      "bytes": 13932,
+      "sha256": "5d90a40d526e47c88636d4a21f5a7671945bd82d303dceefa109104e2431e690"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh1_after.json",
+      "bytes": 19079,
+      "sha256": "960b5240a39bf8a700223e7364f031ed117a6fed7017e2c80a2e783a7b3e5ce0"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh1_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh2.csv",
+      "bytes": 13932,
+      "sha256": "5d90a40d526e47c88636d4a21f5a7671945bd82d303dceefa109104e2431e690"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh2_after.json",
+      "bytes": 19079,
+      "sha256": "960b5240a39bf8a700223e7364f031ed117a6fed7017e2c80a2e783a7b3e5ce0"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_fresh2_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_initialize_twice.csv",
+      "bytes": 13932,
+      "sha256": "5d90a40d526e47c88636d4a21f5a7671945bd82d303dceefa109104e2431e690"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_initialize_twice_after.json",
+      "bytes": 19079,
+      "sha256": "960b5240a39bf8a700223e7364f031ed117a6fed7017e2c80a2e783a7b3e5ce0"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_initialize_twice_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_run60_reset.csv",
+      "bytes": 13932,
+      "sha256": "33686e2eb018de9434cbcb2610913bcfd8dbe94764cd9a4d7af1b78247134821"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_run60_reset_after.json",
+      "bytes": 19090,
+      "sha256": "00e00d8f67a09f7e50f3afcae50a7009b1b9ab340a88926c207ce9335da79d7f"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_run60_reset_before.json",
+      "bytes": 19595,
+      "sha256": "315f4df1ac4e36f95bc26bfb04e804480cb2797789e17e68a0995f888ee1b0bd"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/reset_manual_run60_reset_terminal.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/results.json",
+      "bytes": 62770,
+      "sha256": "18f5c334a3f2329e5f3e560a97cc40dbeb090e79bd66a41313083da2bebea27c"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.25_delta0.csv",
+      "bytes": 318432,
+      "sha256": "038db11b6fb1b03e3e15acef378dda9afa9f2a69399dfcb6538a9185db3a107c"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.25_delta0_terminal.json",
+      "bytes": 201469,
+      "sha256": "9e324807ea3921c4ab7489d10eddf9023bbe0d04bba737645d9d258d3da8799e"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.25_delta1.csv",
+      "bytes": 318432,
+      "sha256": "6fdd84e4fefca8fa8f9d474d0470654bbabd2da26da033d90bd3469ffed96494"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.25_delta1_terminal.json",
+      "bytes": 192004,
+      "sha256": "cc525052652f52fd65b9a338fa5b850b869d25bd67fad5454a9bdb314aebbdf1"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.5_delta0.csv",
+      "bytes": 318491,
+      "sha256": "94b32830624fd6b8f4996ff9f666be3ab62353109e259526bc9863960beb8cb4"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.5_delta0_terminal.json",
+      "bytes": 201385,
+      "sha256": "250285c7583e064bd63f945a49db9f4dedeb376466c347602eaa1e178c82d2a2"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.5_delta1.csv",
+      "bytes": 318491,
+      "sha256": "44bff2974bdb34b9775e5ad9ed1b1026061ce1b06877bb7791f0b0ca68fada69"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt0.5_delta1_terminal.json",
+      "bytes": 192654,
+      "sha256": "34e111b533528863695d8dee0602aaca2059cb31bd47943c320490b44778ca87"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt1_delta0.csv",
+      "bytes": 318432,
+      "sha256": "7f1903cda649a96d39368f12b10ee75a27925e044f1945192abcdc9f8bd2b78b"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt1_delta0_terminal.json",
+      "bytes": 201455,
+      "sha256": "39fd17eddf8547f943cbcbc723ab5ae710bcb267aef1995827163aa3f40766d3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt1_delta1.csv",
+      "bytes": 318432,
+      "sha256": "8b9825a4848e7e64d6d7944c4e613ca0b0b3e00c6419a27780906c545cf1b8b3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/upstream_dt1_delta1_terminal.json",
+      "bytes": 193314,
+      "sha256": "a6a780d2a1512b5399fc16847e4545910ead8167a97f01174d341da71c77a46a"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.25_delta0.csv",
+      "bytes": 318432,
+      "sha256": "b499d00fb92720492632babef016f06a417e0723e4e8b183937260d27ce4f81c"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.25_delta0_terminal.json",
+      "bytes": 201469,
+      "sha256": "9e324807ea3921c4ab7489d10eddf9023bbe0d04bba737645d9d258d3da8799e"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.25_delta1.csv",
+      "bytes": 318432,
+      "sha256": "17fc7c832352f7bf8be4fcefb7b122bfde78fc838b9c923b8eab0547e39ab247"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.25_delta1_terminal.json",
+      "bytes": 192003,
+      "sha256": "2684b652aac8d1f9be75e28a8697ba423281aeb54c5274f4c48587f1a22bed35"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.5_delta0.csv",
+      "bytes": 318432,
+      "sha256": "cfba5052c57e3837eab70fd84404368804673ac8ea8990afce22431c87f6bdc9"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.5_delta0_terminal.json",
+      "bytes": 201385,
+      "sha256": "250285c7583e064bd63f945a49db9f4dedeb376466c347602eaa1e178c82d2a2"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.5_delta1.csv",
+      "bytes": 318432,
+      "sha256": "2e170f167fd1416cc57e654ef2d9e89e8840d0397d1cbdea54499183d9780d71"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt0.5_delta1_terminal.json",
+      "bytes": 192654,
+      "sha256": "34e111b533528863695d8dee0602aaca2059cb31bd47943c320490b44778ca87"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt1_delta0.csv",
+      "bytes": 318432,
+      "sha256": "1c73cf69ed5349763ee9f849178b44859bd52de6e0876237c2fcbe2a3bb31c3d"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt1_delta0_terminal.json",
+      "bytes": 201455,
+      "sha256": "39fd17eddf8547f943cbcbc723ab5ae710bcb267aef1995827163aa3f40766d3"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt1_delta1.csv",
+      "bytes": 318432,
+      "sha256": "b4404d9c0f4fa748d167ad02a61e173fd1f5af9c3352644bc7fae9dd190e850d"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_20261023_aligned/zero_xns_diagnostic_dt1_delta1_terminal.json",
+      "bytes": 193314,
+      "sha256": "a6a780d2a1512b5399fc16847e4545910ead8167a97f01174d341da71c77a46a"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/run_diagnostics.py",
+      "bytes": 8273,
+      "sha256": "28137e9b9843b2559375ff3d30388ca248a1d8643bad7467080c63f86f492231"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/step6_verification.json",
+      "bytes": 1349,
+      "sha256": "8a142ad262895d63d41810b5fa7d07f55684eaded4337fc5c9ad2ddf27c643cb"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/validate_diagnostics.py",
+      "bytes": 3284,
+      "sha256": "adb3586a1b7ca5659558ccc43b422dd3dff51099c0b9c92f5614cd98ad0c4c78"
+    },
+    {
+      "change": "A",
+      "path": "experiments/simulator/diagnostics/variable_compatibility.csv",
+      "bytes": 3927,
+      "sha256": "2a4bfa1ab8cf905c2bc5b9ca1d0195deae07c9794d143787238aff066991736d"
+    },
+    {
+      "change": "M",
+      "path": "introduction.md",
+      "bytes": 6149,
+      "sha256": "cbb7954b4d7dcee90190c93f62d4ca12cde5c5a801469e538709121be6cf281b"
+    },
+    {
+      "change": "A",
+      "path": "tests/test_simulator_diagnostics.py",
+      "bytes": 984,
+      "sha256": "2e34f998c486f9c0ca90dfb90abf1cdbdf2fd8d0c1cdff59d51f423c7fd3043e"
+    }
+  ],
+  "policy": "파일 삭제·이동·압축 보존정책 변경 없음. Git는 동일 blob을 공유하며, 원시 재실행 이력과 파생 분석은 구분하여 유지한다."
+}

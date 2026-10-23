@@ -17,6 +17,7 @@ jobs:
       - run: python -X utf8 -m unittest discover -s tests -v
       - run: python -X utf8 experiments/simulator/validate_feasibility.py
       - run: python -X utf8 experiments/simulator/diagnostics/validate_diagnostics.py
+      - run: python -X utf8 scripts/validate_benchmark_decision.py
       - run: python -X utf8 scripts/check_research_state.py
       - run: python -X utf8 scripts/check_asset_manifest.py
       - run: python -X utf8 scripts/validate_pr_integration.py
