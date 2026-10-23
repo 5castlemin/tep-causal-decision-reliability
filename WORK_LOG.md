@@ -92,3 +92,7 @@
 - `scripts/check_research_state.py`, `scripts/check_asset_manifest.py`, `scripts/validate_pr_integration.py`, `scripts/check_research_docs.py --base origin/feature/simulator-numerical-validation`: PASS.
 - 단위 테스트13개 PASS, `git diff --check` PASS. 명령/출력은 `docs/research_design/evidence/validation_results.json`. 외부 코드 다운로드·정적 분석은 로컬에서만 수행했고 CI는 고정 증거 및 회귀 검사를 수행한다.
 - 기존 `RESEARCH_DESIGN.md`, simulator 원시 tree, 7개 frozen graph, Step6 점수표 불변. 신규 evidence 파일의 byte hash를 Windows checkout에서도 보존하는 속성만 추가했으며 기존 파일의 보존·중복 제거 정책은 변경하지 않았다.
+
+## 2026-10-23 — 승인된 PR4→PR5 병합 준비
+
+사용자의 명시적 승인 후 PR #4 head71c5448을 merge commit 1e4fcc7c91839afd49770fcc8b3380d368e1dea3로 병합했다. PR #5 base를 main으로 조정하고 현재 상태의 미병합 표시를 갱신했다. 작성 당시 decision JSON과 원시 hash는 보존하며 github_current에 실제 상태를 분리했다. 로컬 사용자 변경은 없었다. 선행검토에서 단위 테스트13개와 보존 검사가 통과했으며 CI 재검증 후 PR #5를 병합한다. Track A 신규 조사와 실험은 아직 시작하지 않았다.

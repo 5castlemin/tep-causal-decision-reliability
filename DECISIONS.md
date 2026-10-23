@@ -17,3 +17,5 @@
 
 | 2026-10-23 | Benchmark 호환성 Gate는 현재 증거 부족, 다음 최소 복원 경로는 A 권고 | `docs/research_design/BENCHMARK_COMPATIBILITY_DECISION.md` | 공식 수정 모델 source·setpoint 배선은 확보했으나 원시 timestamp/seed/export·실행 동등성 미확인. RESEARCH_DESIGN은 유지하며 B Primary 전환·C Secondary 도입은 승인 전 실행하지 않음 |
 | 2026-10-23 | PR #4 raw·중간 결과의 중복은 보존 | `docs/research_design/evidence/local_20261023_v2/pr4_asset_review.json` | 동일 바이트 24그룹/88경로는 반복·빈 기록·파생 통계를 포함. 보존정책을 임의 변경하거나 원시 manifest를 깨는 삭제를 하지 않음 |
+
+| 2026-10-23 | 사용자 승인으로 PR4→PR5 순서 통합 | PR4 merge 1e4fcc7, PR5 base main | 최초 decision의 dependency는 당시 기록으로 보존하고 현재 병합 상태를 github_current에 분리. 연구 질문·Track B/C 채택 변경 없음 |

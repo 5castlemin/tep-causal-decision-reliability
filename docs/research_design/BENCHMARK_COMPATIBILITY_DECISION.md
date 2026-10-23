@@ -6,6 +6,8 @@ Track B/C 채택 및 연구 범위 변경은 아래 근거를 검토한 사용�
 
 ## 1. GitHub 기준과 증거 수준
 
+**승인 후 갱신:** PR #4는 `1e4fcc7`로 병합됐고 PR #5의 base를 main으로 조정했다. 아래 최초 작성 시점의 상태 및 동결 evidence JSON은 이력으로 보존한다. 연구 판단·원본 데이터·실험 결과는 변경하지 않았다.
+
 [PR #4](https://github.com/5castlemin/tep-causal-decision-reliability/pull/4)는 확인 시 OPEN/미병합, head `71c5448ed9a82548d86f40f60be842020f69538d`, CI run `39947597305` 성공이다. main은 `172e84bcafb82dd5074f097fcabfb94f28ff96e3`이다.
 이번 브랜치 `feature/benchmark-compatibility-decision`는 PR #4 head에 의존한다. 새 PR의 base도 PR #4 브랜치로 둔다. PR #4나 이번 PR을 자동 병합하지 않는다. PR #4 병합 후 이번 PR의 base를 main으로 조정하여 검증한다.
 
