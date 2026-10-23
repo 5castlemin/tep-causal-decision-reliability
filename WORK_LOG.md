@@ -13,6 +13,17 @@
 - 실제 검증: `python -X utf8 src/acquire_reference_data.py --source-git <로컬 CPCaD-Bench>` 데이터·GT 해시 PASS, `python -X utf8 graphs/final/verify_and_load.py` 39파일 PASS, `python -X utf8 src/verify_recovery.py` 7개 Step 6 수치 대조 PASS, `python -X utf8 -m unittest discover -s tests -v` 5개 PASS, `git diff --check` PASS. 문서 동기화 검사는 커밋 뒤 `origin/main...HEAD`로 다시 실행한다.
 - 로컬 PCMCI+ baseline의 실행·축약 코드 두 파일을 발견하고 SHA-256을 확인했다. 현 Final의 재실행 설정과 primary 설정이 다르므로 Final 생성 코드로 반입하지 않았다.
 
+## 2026-10-23 — Simulator feasibility 실제 실행
+
+- 사용자 승인으로 PR #1 병합 (`ceb447d`), main fast-forward 후 `feature/simulator-feasibility` 생성. 기존 동결 그래프 불변.
+- pyTEP·TEP Studio·TEP-Rust·Python TEP 후보의 source/license/interface 검토. Studio 설치는 인코딩 오류 해결 후 MSVC 부재로 실패. Python 후보 commit `9a6c8e5fcef4a2850778704e7793c87b0a187005`를 저장소 밖에서 실행.
+- 명령: `python -X utf8 experiments/simulator/run_feasibility.py --source ../tep-python-candidate --output experiments/simulator/run_20261023_v3`.
+- 정상 운전 2회 exact 동일; 수동 밸브 개입은 1788초 shutdown. IDV4 주입/clear 성공, 같은 객체 reset 관측 복원 실패. 최초 요약은 길이 불일치 오류, 공통 timestamp 비교로 수정; 실패 raw CSV 보존.
+- 결과: 후보 실행 가능성 PARTIAL. 기존 GT 효과 oracle·Recovery·Safety는 미검증. raw CSV와 source/환경/hash 및 재현 검증기를 추가.
+- 검증: `python -X utf8 experiments/simulator/validate_feasibility.py` PASS (실험 gate는 PARTIAL), `python -X utf8 graphs/final/verify_and_load.py` 39파일 PASS, `python -X utf8 -m unittest discover -s tests -v` 5 tests PASS, `git diff --check` PASS. CI에 원시 결과 hash 검증 추가. 실제 simulator source 없이 저장된 증거를 검사하므로 CI 성공이 새 simulator 실행을 뜻하지 않는다.
+- CI 첫 실행에서 CSV SHA 불일치 확인: Windows 원시 CRLF가 Git의 text 정규화로 LF로 저장된 것이 원인. 실험 수치는 수정하지 않고 `.gitattributes`에서 simulator CSV에만 `-text`를 지정해 원본 바이트 보존. 재검증은 최신 CI 참조.
+
+
 ## 2026-10-23 — 미완료 연구 자산 복원과 현재 상태 정합성
 
 - 브랜치 `feature/research-asset-recovery`, origin/main `ceb447d`에서 생성. PR #1 병합 확인; PR #2 open/head `e5a0291`/CI success 확인. PR #2 병합·simulator 재실행·코드 변경 없음.
@@ -23,3 +34,16 @@
 - 검증 및 PR 최종 정보는 이번 commit/PR과 validation JSON에서 확인한다. 자동 문서 검사는 사실의 진실성을 보증하지 않는다.
 - 검증 완료: `scripts/check_research_state.py`, `scripts/check_asset_manifest.py` PASS; unit tests 8개 PASS; frozen verifier 39파일/시계열 3개 재변환 PASS; diff 검사 PASS. 새 venv는 NumPy 2.4.6/pandas 3.1.0, 데이터 1499×31·GT 33×33→28간선 확인. 실제 생성 알고리즘 실행 0개, simulator 재실행 0개.
 - GitHub의 이번 feature branch를 새 clone한 경로에서도 전체 가이드 검증 통과 (`validation/team_checkout.json`, 검사 commit `1b63ec7`). 기존 통합 lag converter는 freeze source SHA와 동일함을 확인해 미회수 목록에서 제외했다. 생성 코드 미회수 상태는 그대로다.
+
+## 2026-10-23 — PR #2·#3 임시 통합 검토
+
+- main `ceb447d`, PR #2 `e5a0291`/open/CI success, PR #3 `b2e455f`/open/CI success 확인. 시작 시 사용자 미커밋 변경 없음.
+- `feature/pr2-pr3-integration`에서 두 PR을 시험 병합. PROJECT_STATUS/PRIORITIES/WORK_LOG/workflow 4개 충돌 해결. 상태 JSON 구조와 simulator 기록/검사의 합집합 유지.
+- 원본 graph 46 tracked 파일, simulator 30파일, Step6 결과표·raw CSV hash·양쪽 작업 기록 불변 검사 PASS. unit 8개, graph verifier, state/asset checker, 원본 evaluator strict 재현 PASS.
+- main 병합·기존 PR 종료·기존 PR branch 수정 없음. 검토 보고서 `docs/audit/PR2_PR3_INTEGRATION_REVIEW.md`. 승인 후 #2→#3 순서로 실제 main 통합 및 재검증 예정.
+
+## 2026-10-23 — 사용자 승인에 따른 실제 통합
+
+- PR #2를 사용자 승인 후 merge `0549c4d`로 병합. PR #3에 최신 main을 merge하고 사전검토와 동일한 네 충돌을 해결했다.
+- state JSON 및 생성 MD, README/소개서의 PR #2 병합 상태를 갱신. CI 양쪽 검사와 원본 작업 기록을 모두 유지.
+- simulator/frozen 파일 변경 없음. 검증 unit 8개, graph 39파일, state/asset/raw simulator 검사와 원본 strict evaluator 재현 PASS. 최종 head CI 성공 확인 후 승인 범위 내 PR #3 병합 예정. 실제 병합 여부는 GitHub PR 기록이 기준이다.

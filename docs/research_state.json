@@ -14,7 +14,7 @@
       "id": "SIM-03",
       "title": "공개 후보 수치·shutdown 검증",
       "status": "PARTIAL",
-      "evidence": "[PR #2 commit e5a0291・미병합](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)",
+      "evidence": "experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지)",
       "next_action": "1788초 종료 원인과 적분 step/Fortran 기준 동등성 조사",
       "acceptance": "동일 조건 수치 수렴·종료 원인 원시 로그",
       "depends_on": []
@@ -23,7 +23,7 @@
       "id": "SIM-04",
       "title": "공개 후보 초기화 검증",
       "status": "BLOCKED",
-      "evidence": "[PR #2 commit e5a0291・미병합](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)",
+      "evidence": "experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지)",
       "next_action": "동일 객체 reset 후 관측 불일치의 RNG/state/controller 원인 확인",
       "acceptance": "reset 계약 및 재현 로그",
       "depends_on": []
@@ -32,7 +32,7 @@
       "id": "COMPAT-01",
       "title": "공개 후보와 기존 데이터/GT 대응",
       "status": "PARTIAL",
-      "evidence": "[PR #2 commit e5a0291・미병합](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)",
+      "evidence": "experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지)",
       "next_action": "모델 revision·controller·운전모드·단위·전처리 계보 대조",
       "acceptance": "변수 대응 이상의 모델 호환 근거",
       "depends_on": [
@@ -53,7 +53,7 @@
       "id": "SIM-02",
       "title": "공개 Python 후보 관측·쓰기·Fault smoke",
       "status": "PARTIAL",
-      "evidence": "[PR #2 commit e5a0291・미병합](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)",
+      "evidence": "experiments/simulator/run_20261023_v3/summary.json (PR #2 검증 증거; 부분 통과 한계 유지)",
       "next_action": "PR #2 검토 및 수치·reset 제한 해결 후 장기 운전 확인",
       "acceptance": "30분 smoke 외 장기 운전·setpoint/override 검증",
       "depends_on": [
@@ -137,6 +137,17 @@
       "next_action": "state JSON 수정 후 문서 생성·일치 검사",
       "acceptance": "중복 ID·구형 상단 상태 검사 통과",
       "depends_on": []
+    },
+    {
+      "id": "GRAPH-GEN",
+      "title": "Final 7개 생성 학습 재실행",
+      "status": "BLOCKED",
+      "evidence": "docs/reproducibility/GRAPH_REPRODUCIBILITY.json",
+      "next_action": "정확한 algos/common 원본 회수 후 환경과 frozen 동일성 검증",
+      "acceptance": "7개 생성 실행·frozen 배열 일치의 실제 로그",
+      "depends_on": [
+        "SRC-01"
+      ]
     }
   ],
   "priority_order": [
@@ -155,6 +166,15 @@
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",
     "SIM-02는 PR #2 공개 후보의 인터페이스 smoke로 범위를 명확히 했다. 이전 단일 Gate와 구분한다.",
     "SIM-03·SIM-04·COMPAT-01은 PR #2 ID를 유지한다. SRC-01은 미회수 Final 코드에 한정한다.",
-    "중복된 하단 우선순위 추가 문단을 제거하고 과거 본문은 docs/history/에 보존했다."
-  ]
+    "중복된 하단 우선순위 추가 문단을 제거하고 과거 본문은 docs/history/에 보존했다.",
+    "승인된 PR #2+#3 통합 검증에서 GRAPH-GEN을 별도 표시하여 산출물 평가 VERIFIED와 생성 학습 BLOCKED를 명확히 구분했다."
+  ],
+  "integration_review": {
+    "user_approved": true,
+    "pr2_merge_commit": "0549c4d8dac3cf906131d1a114b9f120a1d95bc3",
+    "pr2_source": "e5a0291e48d5426628c0dde8a122fe8ab6b6e195",
+    "pr3_source": "b2e455fd37d1e236aa30fe246e4944142bef4bab",
+    "validation": "PASS",
+    "merge_status_source": "GitHub PR #2/#3 status"
+  }
 }

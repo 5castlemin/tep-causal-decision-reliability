@@ -3,7 +3,7 @@
 **확인된 사실:** TEP 정상 데이터·7개 최종 그래프·전체 구조 평가·12개 구조 평가 후보가 있다. 이번 복원 작업에서 정적 그래프 3개의 **정상 관측 데이터 수치 적합**을 실행했다.
 
 **현재 제안:** 실제 조작 과제 1개와 그래프 3개로 독립 개입 반응을 비교한다.
-**현재 제한:** 기존 8월 시뮬레이터 복구는 BLOCKED. 공개 Python 후보는 [미병합 PR #2](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)에서 30분 반복·쓰기·Fault 실행을 했지만 수치·reset·모델 호환성 문제가 남은 PARTIAL 상태다. 검증된 개입 효과·복구·안전 결과와 개인 단위 반사실 추론은 없다.
+**현재 제한:** 기존 8월 시뮬레이터 복구는 BLOCKED. 공개 Python 후보는 [PR #2](https://github.com/5castlemin/tep-causal-decision-reliability/pull/2)에서 30분 반복·쓰기·Fault 실행을 했고 사용자 승인 후 병합되었지만 수치·reset·모델 호환성 문제가 남은 PARTIAL 상태다. 검증된 개입 효과·복구·안전 결과와 개인 단위 반사실 추론은 없다.
 
 ## 어디에서 출발했나
 

@@ -7,7 +7,7 @@
 ```powershell
 git clone https://github.com/5castlemin/tep-causal-decision-reliability.git
 cd tep-causal-decision-reliability
-# 이 문서가 있는 PR 병합 전에는 PR의 feature/research-asset-recovery 브랜치 사용
+# 승인된 통합 후 최신 main 사용
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
