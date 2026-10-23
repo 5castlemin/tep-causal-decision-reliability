@@ -1,0 +1,63 @@
+{
+  "scope": "ORIGINAL_EVALUATOR_STRICT_METRICS_ONLY_NOT_DISCOVERY_RERUN",
+  "archive_sha256": "28824bc2a98acb77ce8fc5f56439ea4910f7dc9f22ed45b7d1391f7f703f6b22",
+  "evaluator_sha256": "5d120b8404b1a897e8fd69a022e749815f892c59751b6f05bbbd9fc0beba4ef2",
+  "gt_sha256": "238542dbdde50887b5944fb3acc64a792b19a0c56bbfa06e3b267261f2fe6c43",
+  "python": "3.11.15",
+  "numpy": "2.4.6",
+  "pandas": "3.1.0",
+  "results": {
+    "pc": {
+      "matched": true,
+      "sk_F1": 0.36000000000000004,
+      "dS_F1": 0.08,
+      "SHD_S": 39
+    },
+    "boss": {
+      "matched": true,
+      "sk_F1": 0.32835820895522383,
+      "dS_F1": 0.11940298507462686,
+      "SHD_S": 52
+    },
+    "directlingam": {
+      "matched": true,
+      "sk_F1": 0.21978021978021978,
+      "dS_F1": 0.13186813186813184,
+      "SHD_S": 75
+    },
+    "dagma": {
+      "matched": true,
+      "sk_F1": 0.26666666666666666,
+      "dS_F1": 0.08,
+      "SHD_S": 62
+    },
+    "pcmciplus": {
+      "matched": true,
+      "sk_F1": 0.32098765432098764,
+      "dS_F1": 0.1234567901234568,
+      "SHD_S": 63
+    },
+    "varlingam": {
+      "matched": true,
+      "sk_F1": 0.1754385964912281,
+      "dS_F1": 0.04385964912280702,
+      "SHD_S": 203
+    },
+    "dynotears": {
+      "matched": true,
+      "sk_F1": 0.1616161616161616,
+      "dS_F1": 0.050505050505050504,
+      "SHD_S": 177
+    }
+  },
+  "validation_context": {
+    "fresh_github_clone": true,
+    "checked_branch": "feature/research-asset-recovery",
+    "checked_commit": "1b63ec7cb0fea4b3a86410f5bf72ff3393ce1924",
+    "clean_venv": true,
+    "source_clone": "CPCaD-Bench public repository",
+    "graph_verifier": "PASS_39_FILES",
+    "state_checker": "PASS",
+    "asset_manifest_checker": "PASS"
+  }
+}

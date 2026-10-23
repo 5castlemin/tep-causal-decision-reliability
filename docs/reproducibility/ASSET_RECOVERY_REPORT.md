@@ -48,3 +48,5 @@ PCMCI+ README/FILES가 가리킨 로컬 src와 config는 baseline 계열로 확�
 모든 7개는 산출물 검사와 strict 평가 재현이 가능해 `PARTIALLY_REPRODUCIBLE`이며 **생성 학습은 전부 BLOCKED**다. 원본 코드와 정확한 환경이 없으므로 새로운 discovery 실행은 하지 않았다. seed·threshold·library version의 확인값은 Final config/freeze 원문에 근거하여 JSON에 기록했고 미확인은 null로 남겼다. U규칙/무작위 기준선 재실험은 이번 범위 밖이다.
 
 문서 상단은 `docs/research_state.json` 하나에서 생성하며, 이전 상단/하단 충돌 문서는 `docs/history/`로 보존했다. 기존 8월 simulator BLOCKED와 PR #2 공개 후보 PARTIAL을 다른 ID로 유지한다. 우선 작업은 SRC-01, SIM-03, SIM-04다. 새 연구 결론이나 효과/Recovery/Safety 결과는 만들지 않았다.
+
+추가 확인: `common/lagconv.py`는 이미 `graphs/final/conversion/lagconv.py`로 통합되어 있고 freeze의 기대 SHA `b6f46788...`와 바이트 hash가 일치했다. 이 파일을 미회수 목록에서 제외했다. 최종 생성 `algos/run_*.py`와 data_io/config는 여전히 미회수다. 새 GitHub clone(`1b63ec7`)과 clean venv에서 가이드의 데이터 취득→39파일 검증→원본 strict 평가→상태 검사까지 실제 통과했으며 `validation/team_checkout.json`에 기록했다.

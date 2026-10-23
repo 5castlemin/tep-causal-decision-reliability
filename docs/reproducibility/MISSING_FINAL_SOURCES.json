@@ -1,6 +1,12 @@
 {
   "source": "graphs/final/FREEZE.json:code",
-  "expected": {
+  "recovered_sources": {
+    "common/lagconv.py": {
+      "integrated_path": "graphs/final/conversion/lagconv.py",
+      "sha256": "b6f467881101abe894150c3327cf9b9ef15f8748c920183889bd3cbd122b8ef7"
+    }
+  },
+  "expected_missing": {
     "algos/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "algos/run_b_initial.py": "062ee9ea2cfc524bc925decfd9f98341df55d1c7395f74d9388e4f8892b3f207",
     "algos/run_b_retune.py": "93593b14ddf884aee54b92802fa41c123e28121d449e9750cb762f7b3a242ad3",
@@ -18,7 +24,6 @@
     "common/dynsem.py": "5e2aeeaefb0d9b978eea42ec4b8e7263f5fe69499b99f808f204e27c750e6f9e",
     "common/gt_guard.py": "7d5575da7ed46306b34f2725594b6945b3398a98c92fdbc4510e1fabc677074c",
     "common/io_utils.py": "759e64f8c7ded0cd274c1bf55b146fd9283c6e47b382e6221938b178c39575de",
-    "common/lagconv.py": "b6f467881101abe894150c3327cf9b9ef15f8748c920183889bd3cbd122b8ef7",
     "common/neff.py": "e00031a3f036e372b8336619e8b680654cc77df02aa2dc4fc78eb144674ad1fc",
     "common/tetrad_boot.py": "5576122eacbc0c1f697a55b74245e6eeadc70aa794c6e020d3f602e2ad4030b7",
     "evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -29,6 +34,5 @@
     "make_report.py": "521be96e76d591b785e4eff33007051e00bdde42cf1f7d42b57cc148f09d55d0",
     "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "tests/test_units.py": "bb76191d5395808e08c712227c581be1acc12867a4730ff8af835ff43bdb20fd"
-  },
-  "bytes_recovered": false
+  }
 }
