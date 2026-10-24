@@ -22,9 +22,9 @@
 | GRAPH-GEN | Final 7개 생성 학습 재실행 | BLOCKED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | 정확한 algos/common 원본 회수 후 환경과 frozen 동일성 검증 |
 | BENCH-ENV | 공식 수정 TEP 복원 환경 | BLOCKED | docs/research_design/TRACK_A_RECOVERY_GATE.md | 승인된 MATLAB/Simulink 위치·버전·라이선스 확보; PATH/registry/제품/일반 경로 탐색은 미발견, 라이선스 조회·로딩 NOT_RUN |
 | EXPORT-01 | 정상 run과 benchmark export 연결 | BLOCKED | docs/research_design/TRACK_A_RECOVERY_GATE.md | 원시 run·median stride/경계·1499행 생성 코드를 회수; 불가 시 전환 대안의 승인 요청만 준비 |
-| REF-B | Track B 참조 구조 타당성 | BLOCKED | docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md | 노드·시간·정책·잠재변수와 직접 간선의 독립 검토안 작성; 코드 의존성/기존 28간선 자동 GT화 금지 |
-| SIM-B | Track B 제어기·잡음 정렬 계약 | PARTIAL | docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md | 30초 probe 밖 종료/Fault/장기 구간의 noise·controller·시각 계약을 사전 설계; 대규모 실행 전 승인 |
-| DESIGN-B | Track B 가설 유지·통계 설계 | BLOCKED | docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md | 독립 graph-fit·과제 family·평가 seed 분리 및 precision 기준 작성; Q2 미해결이면 전환 권고 금지 |
+| REF-B | Track B 참조 구조 타당성 | PARTIAL | docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md | 최소 내부 상태식 검산 완료; 관측 projection/비간선/알고리즘 의미의 외부 방법론 검토 전 추가 GT·실험 중단 |
+| SIM-B | Track B 제어기·잡음 정렬 계약 | PARTIAL | docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md | 5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류 |
+| DESIGN-B | Track B 가설 유지·통계 설계 | BLOCKED | docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md | 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

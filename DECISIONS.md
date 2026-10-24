@@ -30,3 +30,9 @@
 현재 채택은 NO-GO이다. Q2 관측 노드 수준 참조 구조가 확립되지 않았고 Q3/Q4 실험 단위·통계 조건도 미충족이다. 같은 simulator의 관측/개입 생성 능력은 독립 참조의 충분조건이 아니다. 코드 의존성·기존 28간선·자기 추정 그래프를 새 GT로 삼지 않는다. 국소 총반응과 직접 간선·매개경로를 구분한다.
 기존 가설은 질문으로 유지하되 검증 가능성을 입증한 것으로 보고하지 않는다. 새 GT 생성·Track B/C 채택·연구 질문 변경은 하지 않았다. 먼저 REF-B/SIM-B/DESIGN-B의 참조/잡음/통계 계약을 검토하며, 참조가 해결되지 않으면 전환을 권고하지 않는다. 한 seed의 30초 RNG 일치를 다른 분기·horizon으로 일반화하지 않는다.
 근거: docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md 및 track_b_evidence/. PR6 미병합 stacked dependency는 현재 상태에 명시한다.
+
+## 2026-10-24 — REF-B 국소 진전과 조사 중단
+
+원자로 냉각수 명령/밸브/냉각수 온도/에너지/센서·제어기 일부 식은 한 초기점에서 독립 수치 해법·해석 미분과 대조할 수 있었다. 이 범위만 REF-B PARTIAL로 기록한다. 같은 모델 상수를 쓴 구현 검산이며 실물/독립 기준 모델 또는 전체 관측 GT 증명이 아니다. 모든 구조는 CANDIDATE다.
+내부 상태 전개와 기존 discovery의 관측 Xi 그래프가 의미상 다르고 관측 주변화·음성 쌍 채점 계약이 없어 이 블록에서 조사를 종료한다. 추가 GT 후보·실험을 확장하지 않는다. 전체 Q2 BLOCKED·Track B 채택 NO-GO·가설 검증 증거 부족을 유지한다. 외부 방법론 검토 후 유지/축소/보류를 판단해야 하며 연구 질문 변경은 승인하지 않았다.
+근거: docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md 및 ref_b_minimal_evidence/.

@@ -4,17 +4,17 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **REF-B — Track B 참조 구조 타당성**: 노드·시간·정책·잠재변수와 직접 간선의 독립 검토안 작성; 코드 의존성/기존 28간선 자동 GT화 금지 (BLOCKED)
-2. **SIM-B — Track B 제어기·잡음 정렬 계약**: 30초 probe 밖 종료/Fault/장기 구간의 noise·controller·시각 계약을 사전 설계; 대규모 실행 전 승인 (PARTIAL)
-3. **DESIGN-B — Track B 가설 유지·통계 설계**: 독립 graph-fit·과제 family·평가 seed 분리 및 precision 기준 작성; Q2 미해결이면 전환 권고 금지 (BLOCKED)
+1. **REF-B — Track B 참조 구조 타당성**: 최소 내부 상태식 검산 완료; 관측 projection/비간선/알고리즘 의미의 외부 방법론 검토 전 추가 GT·실험 중단 (PARTIAL)
+2. **SIM-B — Track B 제어기·잡음 정렬 계약**: 5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류 (PARTIAL)
+3. **DESIGN-B — Track B 가설 유지·통계 설계**: 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 (BLOCKED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| REF-B | BLOCKED | 없음 | 노드·시간·정책·잠재변수와 직접 간선의 독립 검토안 작성; 코드 의존성/기존 28간선 자동 GT화 금지 / 검산 가능한 참조 범위·불확실 쌍·채점 분모의 사전 계약; 승인 전 새 GT 생성 없음 |
-| SIM-B | PARTIAL | 없음 | 30초 probe 밖 종료/Fault/장기 구간의 noise·controller·시각 계약을 사전 설계; 대규모 실행 전 승인 / 참조/조작 mode·실제 입력·외생 잡음 정렬·안정 horizon 검증 계약 |
-| DESIGN-B | BLOCKED | REF-B, SIM-B | 독립 graph-fit·과제 family·평가 seed 분리 및 precision 기준 작성; Q2 미해결이면 전환 권고 금지 / Q1~Q4 근거와 승인 가능한 최소 실험 계약; Track B 채택은 별도 승인 |
+| REF-B | PARTIAL | 없음 | 최소 내부 상태식 검산 완료; 관측 projection/비간선/알고리즘 의미의 외부 방법론 검토 전 추가 GT·실험 중단 / 기존 discovery와 동일한 참조 정의·불확실/음성 쌍·채점 계약 검토; 현재 전체 Q2 BLOCKED |
+| SIM-B | PARTIAL | 없음 | 5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류 / 관측 정의 일치 후에만 정책·잡음·horizon의 별도 사전 계약 |
+| DESIGN-B | BLOCKED | REF-B, SIM-B | 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 / 독립 graph-fit·과제 family·평가 seed의 비교 계약과 유지/축소/보류 의사결정 |
 | COMPAT-01 | PARTIAL | SIM-03, SIM-04 | 합법적 IEEE 계정으로 3_Normal Steady-State.zip 회수 후 목록·SHA·실제 시간축/seed 확인; 기술문서만 회수됨 / 정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지 |
 | BENCH-ENV | BLOCKED | 없음 | 승인된 MATLAB/Simulink 위치·버전·라이선스 확보; PATH/registry/제품/일반 경로 탐색은 미발견, 라이선스 조회·로딩 NOT_RUN / 합법 환경에서 사본 .mdl/MAT 실제 로딩·MEX 검증 후 사전 계획된 정상 반복 |
 | EXPORT-01 | BLOCKED | COMPAT-01 | 원시 run·median stride/경계·1499행 생성 코드를 회수; 불가 시 전환 대안의 승인 요청만 준비 / timestamp와 1499×31 값의 재현 연결 또는 복원 불가 근거 및 별도 연구 설계 승인 |
@@ -38,5 +38,6 @@
 - Benchmark 결정 Gate에서 BENCH-ENV를 별도로 추가했다. 기존 SIM-03 수치 신뢰성과 공식 수정 모델 복원환경을 구분한다. A/B/C 연구 전환은 확정하지 않았다.
 - Track A Gate에서 EXPORT-01을 추가해 원시 ZIP 접근과 실제 CSV export 연결을 구분했다. 기존 ID/실험 상태는 유지한다.
 - 2026-10-24 REF-B/SIM-B/DESIGN-B는 Track B 채택 전 타당성 조건이다. Track A 차단을 해제하거나 연구 전환을 뜻하지 않는다.
+- 2026-10-24 REF-B PARTIAL은 내부 물리 블록의 한 점 구현 검산만 뜻한다. 전체 Q2 BLOCKED/Track B NO-GO 유지, 추가 GT 후보/실험은 중단한다.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.
