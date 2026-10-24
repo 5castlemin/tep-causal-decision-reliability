@@ -51,3 +51,7 @@
 ## 재현 가능한 범위
 
 [팀 재현 가이드](docs/reproducibility/TEAM_GUIDE.md)는 새 환경 데이터 취득, Final 검증, 회수한 원본 Step 6 strict 평가를 지원한다. 인과발견 Final 생성 코드가 전부 확보된 것은 아니다. 원본 코드 없이 설정만으로 Final 재실행을 안내하지 않는다. 현재 상태·우선순위는 상단 dashboard, 과거 기록은 WORK_LOG/history로 구분한다.
+
+## 별도 합성 예제의 통합 실험
+
+[첫 통합 실험 보고서](docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md)와 [실행 안내](research_runs/first_integrated_pilot/README.md)에 새4변수 IID 환경의 실제 PC/BOSS/Direct 학습·공통 추천·독립 do 평가를 보존했다. Normal/Uniform은 별도 실험이며 Gaussian Direct는 가정 불일치 진단이다. 기존 TEP 7개 그래프·F1·적합과 혼합하지 않는다. 제조 환경/Recovery/Safety/원래 가설의 검증 완료를 뜻하지 않는다.

@@ -23,6 +23,7 @@ jobs:
       - run: python -X utf8 scripts/validate_ref_b_minimal_records.py
       - run: python -X utf8 scripts/validate_decision_mvp.py
       - run: python -X utf8 scripts/validate_env_acceptance.py
+      - run: python -X utf8 scripts/validate_first_integrated_pilot.py
       - run: python -X utf8 scripts/check_research_state.py
       - run: python -X utf8 scripts/check_asset_manifest.py
       - run: python -X utf8 scripts/validate_pr_integration.py

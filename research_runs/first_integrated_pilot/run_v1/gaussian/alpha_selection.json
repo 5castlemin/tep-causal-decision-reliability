@@ -1,0 +1,38 @@
+{
+  "selected_alpha": 0.001,
+  "criterion": "OBSERVATIONAL_VALIDATION_NOT_CAUSAL_EFFECT",
+  "scores": [
+    {
+      "alpha": 0.0001,
+      "per_graph_standardized_mse": {
+        "pc": 0.8114505679453687,
+        "boss": 0.8114505679453687
+      },
+      "mean_mse": 0.8114505679453687
+    },
+    {
+      "alpha": 0.001,
+      "per_graph_standardized_mse": {
+        "pc": 0.8114478373473137,
+        "boss": 0.8114478373473137
+      },
+      "mean_mse": 0.8114478373473137
+    },
+    {
+      "alpha": 0.01,
+      "per_graph_standardized_mse": {
+        "pc": 0.8115062756654072,
+        "boss": 0.8115062756654072
+      },
+      "mean_mse": 0.8115062756654072
+    },
+    {
+      "alpha": 0.1,
+      "per_graph_standardized_mse": {
+        "pc": 0.8131426327506379,
+        "boss": 0.8131426327506379
+      },
+      "mean_mse": 0.8131426327506379
+    }
+  ]
+}

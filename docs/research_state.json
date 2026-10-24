@@ -213,17 +213,17 @@
       "title": "구조·추천 평가환경 대응",
       "status": "PARTIAL",
       "evidence": "docs/research_design/ENV_MVP_ACCEPTANCE.md",
-      "next_action": "예제 IID FCM의 GT/관측/do acceptance 통과. 제조 generator/연구 환경 채택은 별도 승인; 시계·짝지은 잡음 한계 유지",
+      "next_action": "검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인",
       "acceptance": "예제 계약과 broader 연구 채택 구분; 제조/동적/TEP 동등성 자동 승격 금지",
       "depends_on": []
     },
     {
       "id": "POLICY-MVP",
       "title": "실제 추천 정책 연결",
-      "status": "BLOCKED",
-      "evidence": "docs/research_design/ENV_MVP_ACCEPTANCE.md",
-      "next_action": "예제 연결 파일럿의 범위·noise 가정·목표·비용·Action 경계·분포수준 기준정책을 사전 고정하고 실행 승인",
-      "acceptance": "무차원 Action에 TEP 제약 이식 없이 공통 추천/독립 do 평가 contract",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md",
+      "next_action": "다음 합성 다중과제의 목표·비용·확정 경로 없는 기준대체 정책을 사전 확정; 제조 Fault/안전 계약은 분리 유지",
+      "acceptance": "합성 통합 6행 검증; 제조 일반화와 기준대체/정보 있는 추천 구분",
       "depends_on": [
         "ENV-MVP"
       ]
@@ -231,10 +231,10 @@
     {
       "id": "EVAL-MVP",
       "title": "구조 지표–추천 성능 비교",
-      "status": "BLOCKED",
-      "evidence": "docs/research_design/ENV_MVP_ACCEPTANCE.md",
-      "next_action": "승인 후 동일 새 관측 데이터에서 PC/BOSS/Direct 학습과 공통 Ridge 연결. Gaussian fixture의 가정 차이 명시; 과거 F1 혼합 금지",
-      "acceptance": "별도 graph-fit/holdout batch의 실제 학습·정책·평가 로그; 지금은 미실행",
+      "status": "PARTIAL",
+      "evidence": "research_runs/first_integrated_pilot/run_v1/summary.csv",
+      "next_action": "독립 graph-fit seed·표본수·다중 과제의 다음 사전 실험 계획 고정; CPDAG/DAG와 기준대체 정책 혼란 분리",
+      "acceptance": "graph-fit cluster·과제 family·holdout을 구분한 반복계획 및 정밀도 기준, 상관/우월성 현재 미주장",
       "depends_on": [
         "ENV-MVP",
         "POLICY-MVP"
@@ -248,12 +248,23 @@
       "next_action": "고정 source/lock/원시 잡음/배치 검증 재사용. 제조/시간/반사실 검증으로 확대하지 않음",
       "acceptance": "6항목 예제 범위 통과·18batch/9통제·26단위 테스트 및 기록 검사",
       "depends_on": []
+    },
+    {
+      "id": "PILOT-IID",
+      "title": "4변수 합성 통합 학습·추천·do 실행",
+      "status": "VERIFIED",
+      "evidence": "docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md; research_runs/first_integrated_pilot/reproducibility_check.json",
+      "next_action": "두 잡음군 별도 3학습/1과제 연결 결과를 유지하고 다중 독립 학습 조건 계획에 활용; 제조 채택 아님",
+      "acceptance": "fresh Normal/Uniform acceptance·6학습·추천동결·독립 do·동일seed 전체 replay 검증",
+      "depends_on": [
+        "ENV-EXAMPLE"
+      ]
     }
   ],
   "priority_order": [
-    "ENV-MVP",
-    "POLICY-MVP",
     "EVAL-MVP",
+    "POLICY-MVP",
+    "ENV-MVP",
     "REF-B",
     "SIM-B",
     "DESIGN-B",
@@ -281,7 +292,8 @@
     "2026-10-24 REF-B/SIM-B/DESIGN-B는 Track B 채택 전 타당성 조건이다. Track A 차단을 해제하거나 연구 전환을 뜻하지 않는다.",
     "2026-10-24 REF-B PARTIAL은 내부 물리 블록의 한 점 구현 검산만 뜻한다. 전체 Q2 BLOCKED/Track B NO-GO 유지, 추가 GT 후보/실험은 중단한다.",
     "MVP-TECH는 실행 검증만 VERIFIED. ENV/POLICY/EVAL-MVP는 원래 지표–추천 성능 질문의 선결 단계다. REF-B 등 과거 ID와 차단 근거를 보존한다.",
-    "ENV-EXAMPLE VERIFIED는 별도 승인된4노드IID fixture만 뜻한다. ENV-MVP는 broader 채택 미승인으로 PARTIAL; POLICY/EVAL 학습은 미실행이다."
+    "ENV-EXAMPLE VERIFIED는 별도 승인된4노드IID fixture만 뜻한다. ENV-MVP는 broader 채택 미승인으로 PARTIAL; POLICY/EVAL 학습은 미실행이다.",
+    "2026-10-24 PILOT-IID 신규: 사용자 명시 실행 지시로 두 잡음군 합성 통합만 VERIFIED. POLICY/EVAL-MVP는 해당 진전 PARTIAL이며 제조 가설 입증·Track B 채택 아님. env_acceptance/decision_mvp는 과거 실행 불변 기록이다."
   ],
   "integration_review": {
     "user_approved": true,
@@ -506,5 +518,34 @@
     "scm_fitted": false,
     "recovery_safety_computed": false,
     "next_stage": "승인 범위/가정 고정 후 같은 환경의3개 새 학습 및 공통 정책 연결; 이번에는 미실행"
+  },
+  "first_integrated_pilot": {
+    "protocol": "FIRST-INTEGRATED-PILOT-v1",
+    "checked_at": "2026-10-24",
+    "base_branch": "feature/env-mvp-acceptance",
+    "base_commit": "ee5e0bd83b78a753bf78d2b72b835fcce8ca2813",
+    "pr6_to_pr10": "OPEN_STACKED_CI_SUCCESS",
+    "explicit_execution_requested": true,
+    "status": "VERIFIED_SMALL_SYNTHETIC_INTEGRATION_ONLY",
+    "families": [
+      "gaussian",
+      "uniform"
+    ],
+    "learned_graphs": 6,
+    "graph_fit_datasets_per_family": 1,
+    "task_count": 1,
+    "train_rows_per_family": 512,
+    "validation_rows_per_family": 256,
+    "do_evaluation_rows_per_family": 18432,
+    "algorithm_failures": 0,
+    "gaussian_directlingam": "ASSUMPTION_MISMATCH_DIAGNOSTIC",
+    "uniform_boss": "GAUSSIAN_BIC_QUASI_SCORE_CAVEAT",
+    "replay": "EXACT_DATA_MODELS_POLICY_SUMMARY_NOT_INDEPENDENT",
+    "hypothesis_proven": false,
+    "manufacturing_generator_validated": false,
+    "track_b_adopted": false,
+    "recovery_safety_computed": false,
+    "old_frozen_or_fit_regenerated": false,
+    "report": "docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md"
   }
 }
