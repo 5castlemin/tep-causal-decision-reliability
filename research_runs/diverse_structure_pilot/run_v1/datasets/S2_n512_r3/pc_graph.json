@@ -1,0 +1,139 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "A",
+      "Y"
+    ],
+    [
+      "B",
+      "Y"
+    ],
+    [
+      "C",
+      "A"
+    ],
+    [
+      "C",
+      "Y"
+    ],
+    [
+      "M",
+      "A"
+    ],
+    [
+      "M",
+      "Y"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "B",
+      "M"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "B",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "B",
+        "node2": "M",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "A",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "C",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "M",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "C",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        -1,
+        -1,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        -1,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        -1,
+        0,
+        -1,
+        0
+      ]
+    ]
+  },
+  "seconds": 24.484000000054948,
+  "seed": 3111203,
+  "column_order": [
+    "B",
+    "Y",
+    "M",
+    "A",
+    "C"
+  ],
+  "train_sha256": "0fee992e9fc2583c6ecc36b046c21ab348241a96a1c1b3d1550f659636d81a6a",
+  "graph_id": "S2_n512_r3__pc",
+  "source_type": "discovery",
+  "dataset_id": "S2_n512_r3",
+  "structure_id": "S2",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 3,
+  "train_seed": 3111201,
+  "validation_seed": 3111202,
+  "algorithm_seed": 3111203,
+  "algorithm": "pc"
+}

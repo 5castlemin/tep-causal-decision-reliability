@@ -1,0 +1,486 @@
+{
+  "structure_id": "S7",
+  "status": "PASS",
+  "records": [
+    {
+      "condition": "observational",
+      "seed": 4106000,
+      "checks": {
+        "returned_gt": true,
+        "observation_equations": true,
+        "exact_repeat": true,
+        "new_seed_different": true,
+        "hook_transparent": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M1"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M1",
+            "M2"
+          ],
+          [
+            "M2",
+            "M3"
+          ],
+          [
+            "M3",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "M1": "0.8*A + u_M1",
+          "M2": "0.7*M1 + u_M2",
+          "M3": "0.9*M2 + u_M3",
+          "Y": "0.4*C + 1.0*M3 + u_Y",
+          "S": "u_S",
+          "T": "0.6*S + u_T"
+        },
+        "intervention": null,
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M1": 0.0,
+          "M2": 0.0,
+          "M3": 0.0,
+          "Y": 0.0,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "M3",
+      "value": -0.5,
+      "seed": 4106100,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M1"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M1",
+            "M2"
+          ],
+          [
+            "M2",
+            "M3"
+          ],
+          [
+            "M3",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "M1": "0.8*A + u_M1",
+          "M2": "0.7*M1 + u_M2",
+          "M3": "0.9*M2 + u_M3",
+          "Y": "0.4*C + 1.0*M3 + u_Y",
+          "S": "u_S",
+          "T": "0.6*S + u_T"
+        },
+        "intervention": {
+          "action": "M3",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M1"
+            ],
+            [
+              "C",
+              "A"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M1",
+              "M2"
+            ],
+            [
+              "M3",
+              "Y"
+            ],
+            [
+              "S",
+              "T"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M1": 0.0,
+          "M2": 0.0,
+          "M3": 0.0,
+          "Y": 0.0,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "M3",
+      "value": 0.5,
+      "seed": 4106101,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M1"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M1",
+            "M2"
+          ],
+          [
+            "M2",
+            "M3"
+          ],
+          [
+            "M3",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "M1": "0.8*A + u_M1",
+          "M2": "0.7*M1 + u_M2",
+          "M3": "0.9*M2 + u_M3",
+          "Y": "0.4*C + 1.0*M3 + u_Y",
+          "S": "u_S",
+          "T": "0.6*S + u_T"
+        },
+        "intervention": {
+          "action": "M3",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M1"
+            ],
+            [
+              "C",
+              "A"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M1",
+              "M2"
+            ],
+            [
+              "M3",
+              "Y"
+            ],
+            [
+              "S",
+              "T"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M1": 0.0,
+          "M2": 0.0,
+          "M3": 0.0,
+          "Y": 0.0,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "A",
+      "value": -0.5,
+      "seed": 4106120,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M1"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M1",
+            "M2"
+          ],
+          [
+            "M2",
+            "M3"
+          ],
+          [
+            "M3",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "M1": "0.8*A + u_M1",
+          "M2": "0.7*M1 + u_M2",
+          "M3": "0.9*M2 + u_M3",
+          "Y": "0.4*C + 1.0*M3 + u_Y",
+          "S": "u_S",
+          "T": "0.6*S + u_T"
+        },
+        "intervention": {
+          "action": "A",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M1"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M1",
+              "M2"
+            ],
+            [
+              "M2",
+              "M3"
+            ],
+            [
+              "M3",
+              "Y"
+            ],
+            [
+              "S",
+              "T"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M1": 0.0,
+          "M2": 0.0,
+          "M3": 0.0,
+          "Y": 0.0,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "A",
+      "value": 0.5,
+      "seed": 4106121,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M1"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M1",
+            "M2"
+          ],
+          [
+            "M2",
+            "M3"
+          ],
+          [
+            "M3",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "M1": "0.8*A + u_M1",
+          "M2": "0.7*M1 + u_M2",
+          "M3": "0.9*M2 + u_M3",
+          "Y": "0.4*C + 1.0*M3 + u_Y",
+          "S": "u_S",
+          "T": "0.6*S + u_T"
+        },
+        "intervention": {
+          "action": "A",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M1"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M1",
+              "M2"
+            ],
+            [
+              "M2",
+              "M3"
+            ],
+            [
+              "M3",
+              "Y"
+            ],
+            [
+              "S",
+              "T"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M1": 0.0,
+          "M2": 0.0,
+          "M3": 0.0,
+          "Y": 0.0,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    }
+  ]
+}

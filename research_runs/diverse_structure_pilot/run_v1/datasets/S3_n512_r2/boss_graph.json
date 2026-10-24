@@ -1,0 +1,142 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [],
+  "unresolved_pairs": [
+    [
+      "A",
+      "L1"
+    ],
+    [
+      "L1",
+      "L2"
+    ],
+    [
+      "L1",
+      "S"
+    ],
+    [
+      "L2",
+      "L3"
+    ],
+    [
+      "L2",
+      "S"
+    ],
+    [
+      "L3",
+      "Y"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "A",
+        "node2": "L1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "L3",
+        "node2": "L2",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "L3",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "S",
+        "node2": "L2",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "S",
+        "node2": "L1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "L2",
+        "node2": "L1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      [
+        0,
+        -1,
+        -1,
+        0,
+        -1,
+        0
+      ],
+      [
+        -1,
+        0,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.5310000000754371,
+  "seed": 3121103,
+  "column_order": [
+    "A",
+    "L3",
+    "S",
+    "L2",
+    "L1",
+    "Y"
+  ],
+  "train_sha256": "cff99688293b77b505f33fb83c69e03bc2ba2b1ee48afbc1e7b389ca9312f24d",
+  "graph_id": "S3_n512_r2__boss",
+  "source_type": "discovery",
+  "dataset_id": "S3_n512_r2",
+  "structure_id": "S3",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 2,
+  "train_seed": 3121101,
+  "validation_seed": 3121102,
+  "algorithm_seed": 3121103,
+  "algorithm": "boss"
+}

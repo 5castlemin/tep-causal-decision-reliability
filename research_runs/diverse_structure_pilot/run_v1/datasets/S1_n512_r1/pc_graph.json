@@ -1,0 +1,98 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [],
+  "unresolved_pairs": [
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "S",
+      "T"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "T",
+        "node2": "S",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "Y",
+        "node2": "M",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 3.4839999999385327,
+  "seed": 3101003,
+  "column_order": [
+    "T",
+    "Y",
+    "M",
+    "A",
+    "S"
+  ],
+  "train_sha256": "f4101219ec1b362e629256a60724388f5c8c1c200228b79ae90e36160e5e5e7e",
+  "graph_id": "S1_n512_r1__pc",
+  "source_type": "discovery",
+  "dataset_id": "S1_n512_r1",
+  "structure_id": "S1",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 1,
+  "train_seed": 3101001,
+  "validation_seed": 3101002,
+  "algorithm_seed": 3101003,
+  "algorithm": "pc"
+}

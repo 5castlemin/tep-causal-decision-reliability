@@ -1,0 +1,113 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "A",
+      "B"
+    ],
+    [
+      "A",
+      "M"
+    ],
+    [
+      "A",
+      "Y"
+    ],
+    [
+      "B",
+      "M"
+    ],
+    [
+      "B",
+      "Y"
+    ],
+    [
+      "C",
+      "A"
+    ],
+    [
+      "C",
+      "B"
+    ],
+    [
+      "C",
+      "M"
+    ],
+    [
+      "C",
+      "Y"
+    ],
+    [
+      "M",
+      "Y"
+    ]
+  ],
+  "unresolved_pairs": [],
+  "native": {
+    "adjacency_child_parent": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.4742259450803009,
+        0.46300545162492085
+      ],
+      [
+        0.22000411457470267,
+        0.0,
+        0.6073522038049814,
+        0.13860669041675577,
+        0.06847662200240533
+      ],
+      [
+        0.5442442336394648,
+        0.0,
+        0.0,
+        0.3098951368679451,
+        0.17952325375572636
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5371505790970106
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "causal_order": [
+      "C",
+      "A",
+      "B",
+      "M",
+      "Y"
+    ]
+  },
+  "seconds": 3.25,
+  "seed": 3111003,
+  "column_order": [
+    "B",
+    "Y",
+    "M",
+    "A",
+    "C"
+  ],
+  "train_sha256": "5fa0dcd4b252c5f89cc10a77a3d291163ad9dffd7b76d10b2b2fe916c925ca59",
+  "graph_id": "S2_n512_r1__directlingam",
+  "source_type": "discovery",
+  "dataset_id": "S2_n512_r1",
+  "structure_id": "S2",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 1,
+  "train_seed": 3111001,
+  "validation_seed": 3111002,
+  "algorithm_seed": 3111003,
+  "algorithm": "directlingam"
+}

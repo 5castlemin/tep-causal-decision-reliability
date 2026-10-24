@@ -1,0 +1,138 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [],
+  "unresolved_pairs": [
+    [
+      "A",
+      "C"
+    ],
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "S",
+      "T"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "Y",
+        "node2": "M",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "A",
+        "node2": "C",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "A",
+        "node2": "M",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "T",
+        "node2": "S",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 3.875,
+  "seed": 3140203,
+  "column_order": [
+    "B",
+    "Y",
+    "A",
+    "C",
+    "T",
+    "S",
+    "M"
+  ],
+  "train_sha256": "9fc3475009f4fbd6082ef70bc00d75dada5bd1a802693973451a2b868571b68a",
+  "graph_id": "S5_n256_r3__pc",
+  "source_type": "discovery",
+  "dataset_id": "S5_n256_r3",
+  "structure_id": "S5",
+  "train_n": 256,
+  "validation_n": 256,
+  "replicate": 3,
+  "train_seed": 3140201,
+  "validation_seed": 3140202,
+  "algorithm_seed": 3140203,
+  "algorithm": "pc"
+}

@@ -1,0 +1,548 @@
+{
+  "structure_id": "S2",
+  "status": "PASS",
+  "records": [
+    {
+      "condition": "observational",
+      "seed": 4101000,
+      "checks": {
+        "returned_gt": true,
+        "observation_equations": true,
+        "exact_repeat": true,
+        "new_seed_different": true,
+        "hook_transparent": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "B",
+            "M"
+          ],
+          [
+            "B",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "B"
+          ],
+          [
+            "C",
+            "M"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "B": "0.6*A + 0.8*C + u_B",
+          "M": "0.8*A + 0.9*B + 0.4*C + u_M",
+          "Y": "0.5*A + 0.6*B + 0.3*C + 1.0*M + u_Y"
+        },
+        "intervention": null,
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "B": 0.0,
+          "M": 2.220446049250313e-16,
+          "Y": 8.881784197001252e-16
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "M",
+      "value": -0.5,
+      "seed": 4101100,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "B",
+            "M"
+          ],
+          [
+            "B",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "B"
+          ],
+          [
+            "C",
+            "M"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "B": "0.6*A + 0.8*C + u_B",
+          "M": "0.8*A + 0.9*B + 0.4*C + u_M",
+          "Y": "0.5*A + 0.6*B + 0.3*C + 1.0*M + u_Y"
+        },
+        "intervention": {
+          "action": "M",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "Y"
+            ],
+            [
+              "B",
+              "Y"
+            ],
+            [
+              "C",
+              "A"
+            ],
+            [
+              "C",
+              "B"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "B": 0.0,
+          "M": 0.0,
+          "Y": 1.7763568394002505e-15
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "M",
+      "value": 0.5,
+      "seed": 4101101,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "B",
+            "M"
+          ],
+          [
+            "B",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "B"
+          ],
+          [
+            "C",
+            "M"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "B": "0.6*A + 0.8*C + u_B",
+          "M": "0.8*A + 0.9*B + 0.4*C + u_M",
+          "Y": "0.5*A + 0.6*B + 0.3*C + 1.0*M + u_Y"
+        },
+        "intervention": {
+          "action": "M",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "Y"
+            ],
+            [
+              "B",
+              "Y"
+            ],
+            [
+              "C",
+              "A"
+            ],
+            [
+              "C",
+              "B"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "B": 0.0,
+          "M": 0.0,
+          "Y": 4.440892098500626e-16
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "A",
+      "value": -0.5,
+      "seed": 4101120,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "B",
+            "M"
+          ],
+          [
+            "B",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "B"
+          ],
+          [
+            "C",
+            "M"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "B": "0.6*A + 0.8*C + u_B",
+          "M": "0.8*A + 0.9*B + 0.4*C + u_M",
+          "Y": "0.5*A + 0.6*B + 0.3*C + 1.0*M + u_Y"
+        },
+        "intervention": {
+          "action": "A",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "M"
+            ],
+            [
+              "A",
+              "Y"
+            ],
+            [
+              "B",
+              "M"
+            ],
+            [
+              "B",
+              "Y"
+            ],
+            [
+              "C",
+              "B"
+            ],
+            [
+              "C",
+              "M"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "B": 0.0,
+          "M": 8.881784197001252e-16,
+          "Y": 4.440892098500626e-16
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "A",
+      "value": 0.5,
+      "seed": 4101121,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "B",
+            "M"
+          ],
+          [
+            "B",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "B"
+          ],
+          [
+            "C",
+            "M"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.7*C + u_A",
+          "B": "0.6*A + 0.8*C + u_B",
+          "M": "0.8*A + 0.9*B + 0.4*C + u_M",
+          "Y": "0.5*A + 0.6*B + 0.3*C + 1.0*M + u_Y"
+        },
+        "intervention": {
+          "action": "A",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "M"
+            ],
+            [
+              "A",
+              "Y"
+            ],
+            [
+              "B",
+              "M"
+            ],
+            [
+              "B",
+              "Y"
+            ],
+            [
+              "C",
+              "B"
+            ],
+            [
+              "C",
+              "M"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "B": 0.0,
+          "M": 8.881784197001252e-16,
+          "Y": 0.0
+        }
+      }
+    }
+  ]
+}

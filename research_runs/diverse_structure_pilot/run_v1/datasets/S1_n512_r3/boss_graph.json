@@ -1,0 +1,98 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [],
+  "unresolved_pairs": [
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "S",
+      "T"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "T",
+        "node2": "S",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "Y",
+        "node2": "M",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.6559999999590218,
+  "seed": 3101203,
+  "column_order": [
+    "T",
+    "Y",
+    "M",
+    "A",
+    "S"
+  ],
+  "train_sha256": "a4e055db6fd3022ec97e0bc78290eb9d14981cc6ff44699934972ff3091c7189",
+  "graph_id": "S1_n512_r3__boss",
+  "source_type": "discovery",
+  "dataset_id": "S1_n512_r3",
+  "structure_id": "S1",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 3,
+  "train_seed": 3101201,
+  "validation_seed": 3101202,
+  "algorithm_seed": 3101203,
+  "algorithm": "boss"
+}

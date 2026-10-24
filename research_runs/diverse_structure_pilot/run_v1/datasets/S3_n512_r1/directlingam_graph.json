@@ -1,0 +1,108 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "A",
+      "L1"
+    ],
+    [
+      "L1",
+      "L2"
+    ],
+    [
+      "L2",
+      "L3"
+    ],
+    [
+      "L3",
+      "Y"
+    ],
+    [
+      "S",
+      "L2"
+    ]
+  ],
+  "unresolved_pairs": [],
+  "native": {
+    "adjacency_child_parent": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.79005329009098,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.2991966320333513,
+        0.0,
+        0.7250107044383333,
+        0.0
+      ],
+      [
+        0.7020813608828614,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.8670965794266329,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "causal_order": [
+      "S",
+      "A",
+      "L1",
+      "L2",
+      "L3",
+      "Y"
+    ]
+  },
+  "seconds": 2.89000000001397,
+  "seed": 3121003,
+  "column_order": [
+    "A",
+    "L3",
+    "S",
+    "L2",
+    "L1",
+    "Y"
+  ],
+  "train_sha256": "6cece953b26b71792c64d5f2180ec2b67905f3ff42254fe76dbfda8be1c50143",
+  "graph_id": "S3_n512_r1__directlingam",
+  "source_type": "discovery",
+  "dataset_id": "S3_n512_r1",
+  "structure_id": "S3",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 1,
+  "train_seed": 3121001,
+  "validation_seed": 3121002,
+  "algorithm_seed": 3121003,
+  "algorithm": "directlingam"
+}

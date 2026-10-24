@@ -20,3 +20,20 @@ research_runs/repeated_metric_pilot/** -text whitespace=cr-at-eol
 src/repeated_metric_pilot.py -text
 scripts/run_repeated_metric_pilot.py -text
 scripts/summarize_repeated_metric_pilot.py -text
+research_runs/diverse_structure_pilot/** -text whitespace=cr-at-eol
+src/diverse_structure_pilot.py -text
+src/diverse_metric_analysis.py -text
+scripts/run_diverse_structure_pilot.py -text
+scripts/learn_diverse_graph.py -text
+scripts/analyze_diverse_structure_pilot.py -text
+scripts/export_diverse_reference_graphs.py -text
+scripts/render_diverse_overview.py -text
+# Collapse generated evidence in PR diffs; all bytes remain tracked and validated.
+research_runs/diverse_structure_pilot/run_v1/** linguist-generated=true
+research_runs/diverse_structure_pilot/analysis_v1/** linguist-generated=true
+research_runs/diverse_structure_pilot/reference_graphs_v1/** linguist-generated=true
+research_runs/diverse_structure_pilot/figures_v1/** linguist-generated=true
+# Preserve measured machine output bytes; generated SVG path separators use EOL spaces.
+research_runs/diverse_structure_pilot/reference_graphs_v1/*.svg whitespace=-blank-at-eol
+research_runs/diverse_structure_pilot/figures_v1/*.svg whitespace=-blank-at-eol
+research_runs/diverse_structure_pilot/run_v1/datasets/*/*_console.txt whitespace=cr-at-eol,-blank-at-eof

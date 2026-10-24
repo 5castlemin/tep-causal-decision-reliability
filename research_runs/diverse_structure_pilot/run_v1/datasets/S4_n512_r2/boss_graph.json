@@ -1,0 +1,143 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "C",
+      "A"
+    ],
+    [
+      "M",
+      "A"
+    ],
+    [
+      "Y",
+      "A"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "C",
+      "Y"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "S",
+      "T"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "T",
+        "node2": "S",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "Y",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "Y",
+        "node2": "C",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "C",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.5,
+  "seed": 3131103,
+  "column_order": [
+    "T",
+    "S",
+    "M",
+    "Y",
+    "A",
+    "C"
+  ],
+  "train_sha256": "d881ea36c674134064e190df710dbdf5999773810975d3b818e7a4a706331e4c",
+  "graph_id": "S4_n512_r2__boss",
+  "source_type": "discovery",
+  "dataset_id": "S4_n512_r2",
+  "structure_id": "S4",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 2,
+  "train_seed": 3131101,
+  "validation_seed": 3131102,
+  "algorithm_seed": 3131103,
+  "algorithm": "boss"
+}

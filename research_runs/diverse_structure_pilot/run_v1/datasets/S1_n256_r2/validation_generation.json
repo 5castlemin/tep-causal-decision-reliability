@@ -1,0 +1,34 @@
+{
+  "seed": 3100102,
+  "metadata": {
+    "returned_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "S",
+        "T"
+      ]
+    ],
+    "equation_terms": {
+      "A": "u_A",
+      "M": "1.1*A + u_M",
+      "Y": "0.9*M + u_Y",
+      "S": "u_S",
+      "T": "0.7*S + u_T"
+    },
+    "intervention": null,
+    "reconstruction_errors": {
+      "A": 0.0,
+      "M": 0.0,
+      "Y": 0.0,
+      "S": 0.0,
+      "T": 0.0
+    }
+  }
+}

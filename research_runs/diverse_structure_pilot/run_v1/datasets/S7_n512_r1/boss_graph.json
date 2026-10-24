@@ -1,0 +1,187 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "C",
+      "Y"
+    ],
+    [
+      "M3",
+      "Y"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "A",
+      "C"
+    ],
+    [
+      "A",
+      "M1"
+    ],
+    [
+      "M1",
+      "M2"
+    ],
+    [
+      "M2",
+      "M3"
+    ],
+    [
+      "S",
+      "T"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "S",
+        "node2": "T",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "A",
+        "node2": "M1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "A",
+        "node2": "C",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M2",
+        "node2": "M1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M2",
+        "node2": "M3",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M3",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "C",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.375,
+  "seed": 3161003,
+  "column_order": [
+    "S",
+    "A",
+    "M2",
+    "Y",
+    "M1",
+    "M3",
+    "C",
+    "T"
+  ],
+  "train_sha256": "70d5c543af79b2b1d2c05a1b0148b330cf82b992817bd2a2f992e08b05a5ac0f",
+  "graph_id": "S7_n512_r1__boss",
+  "source_type": "discovery",
+  "dataset_id": "S7_n512_r1",
+  "structure_id": "S7",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 1,
+  "train_seed": 3161001,
+  "validation_seed": 3161002,
+  "algorithm_seed": 3161003,
+  "algorithm": "boss"
+}

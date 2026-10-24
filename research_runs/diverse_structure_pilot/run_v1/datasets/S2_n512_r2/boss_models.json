@@ -1,0 +1,495 @@
+{
+  "primary": {
+    "scaler_mean": {
+      "B": -0.12856903365076897,
+      "Y": -0.1372713650966508,
+      "M": -0.05077275796401959,
+      "A": 0.009227675606071656,
+      "C": 0.0030255522410693805
+    },
+    "scaler_std": {
+      "B": 1.7428852271236825,
+      "Y": 4.742024119333785,
+      "M": 2.8957860335313677,
+      "A": 1.296733197867902,
+      "C": 0.9914374665552508
+    },
+    "equations": [
+      {
+        "target": "B",
+        "intercept_standardized": 6.938893903907228e-18,
+        "parents": []
+      },
+      {
+        "target": "Y",
+        "intercept_standardized": -3.469446951953614e-18,
+        "parents": []
+      },
+      {
+        "target": "M",
+        "intercept_standardized": 6.938893903907228e-18,
+        "parents": []
+      },
+      {
+        "target": "A",
+        "intercept_standardized": 1.3877787807814457e-17,
+        "parents": []
+      },
+      {
+        "target": "C",
+        "intercept_standardized": 1.3877787807814457e-17,
+        "parents": []
+      }
+    ],
+    "alpha": 0.0001,
+    "status": "NEW_SYNTHETIC_MODEL_NOT_TEP_FIT"
+  },
+  "extensions": [
+    {
+      "edges": [
+        [
+          "A",
+          "Y"
+        ],
+        [
+          "Y",
+          "B"
+        ],
+        [
+          "Y",
+          "C"
+        ],
+        [
+          "Y",
+          "M"
+        ]
+      ],
+      "model": {
+        "scaler_mean": {
+          "B": -0.12856903365076897,
+          "Y": -0.1372713650966508,
+          "M": -0.05077275796401959,
+          "A": 0.009227675606071656,
+          "C": 0.0030255522410693805
+        },
+        "scaler_std": {
+          "B": 1.7428852271236825,
+          "Y": 4.742024119333785,
+          "M": 2.8957860335313677,
+          "A": 1.296733197867902,
+          "C": 0.9914374665552508
+        },
+        "equations": [
+          {
+            "target": "B",
+            "intercept_standardized": 1.012710475263005e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.9189392121783466
+              }
+            ]
+          },
+          {
+            "target": "Y",
+            "intercept_standardized": -1.5289024590509454e-17,
+            "parents": [
+              {
+                "source": "A",
+                "lag": 0,
+                "coefficient_standardized": 0.8516903271788275
+              }
+            ]
+          },
+          {
+            "target": "M",
+            "intercept_standardized": 1.0298910085149718e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.9684587277953609
+              }
+            ]
+          },
+          {
+            "target": "A",
+            "intercept_standardized": 1.3877787807814457e-17,
+            "parents": []
+          },
+          {
+            "target": "C",
+            "intercept_standardized": 1.6499127902773806e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.7555498415916968
+              }
+            ]
+          }
+        ],
+        "alpha": 0.0001,
+        "status": "NEW_SYNTHETIC_MODEL_NOT_TEP_FIT"
+      }
+    },
+    {
+      "edges": [
+        [
+          "B",
+          "Y"
+        ],
+        [
+          "Y",
+          "A"
+        ],
+        [
+          "Y",
+          "C"
+        ],
+        [
+          "Y",
+          "M"
+        ]
+      ],
+      "model": {
+        "scaler_mean": {
+          "B": -0.12856903365076897,
+          "Y": -0.1372713650966508,
+          "M": -0.05077275796401959,
+          "A": 0.009227675606071656,
+          "C": 0.0030255522410693805
+        },
+        "scaler_std": {
+          "B": 1.7428852271236825,
+          "Y": 4.742024119333785,
+          "M": 2.8957860335313677,
+          "A": 1.296733197867902,
+          "C": 0.9914374665552508
+        },
+        "equations": [
+          {
+            "target": "B",
+            "intercept_standardized": 6.938893903907228e-18,
+            "parents": []
+          },
+          {
+            "target": "Y",
+            "intercept_standardized": -9.845868649399255e-18,
+            "parents": [
+              {
+                "source": "B",
+                "lag": 0,
+                "coefficient_standardized": 0.9189392121783466
+              }
+            ]
+          },
+          {
+            "target": "M",
+            "intercept_standardized": 1.0298910085149718e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.9684587277953609
+              }
+            ]
+          },
+          {
+            "target": "A",
+            "intercept_standardized": 1.6832682217453417e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.8516903271788275
+              }
+            ]
+          },
+          {
+            "target": "C",
+            "intercept_standardized": 1.6499127902773806e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.7555498415916968
+              }
+            ]
+          }
+        ],
+        "alpha": 0.0001,
+        "status": "NEW_SYNTHETIC_MODEL_NOT_TEP_FIT"
+      }
+    },
+    {
+      "edges": [
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "Y",
+          "A"
+        ],
+        [
+          "Y",
+          "B"
+        ],
+        [
+          "Y",
+          "M"
+        ]
+      ],
+      "model": {
+        "scaler_mean": {
+          "B": -0.12856903365076897,
+          "Y": -0.1372713650966508,
+          "M": -0.05077275796401959,
+          "A": 0.009227675606071656,
+          "C": 0.0030255522410693805
+        },
+        "scaler_std": {
+          "B": 1.7428852271236825,
+          "Y": 4.742024119333785,
+          "M": 2.8957860335313677,
+          "A": 1.296733197867902,
+          "C": 0.9914374665552508
+        },
+        "equations": [
+          {
+            "target": "B",
+            "intercept_standardized": 1.012710475263005e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.9189392121783466
+              }
+            ]
+          },
+          {
+            "target": "Y",
+            "intercept_standardized": -1.395480733179101e-17,
+            "parents": [
+              {
+                "source": "C",
+                "lag": 0,
+                "coefficient_standardized": 0.7555498415916969
+              }
+            ]
+          },
+          {
+            "target": "M",
+            "intercept_standardized": 1.0298910085149718e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.9684587277953609
+              }
+            ]
+          },
+          {
+            "target": "A",
+            "intercept_standardized": 1.6832682217453417e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.8516903271788275
+              }
+            ]
+          },
+          {
+            "target": "C",
+            "intercept_standardized": 1.3877787807814457e-17,
+            "parents": []
+          }
+        ],
+        "alpha": 0.0001,
+        "status": "NEW_SYNTHETIC_MODEL_NOT_TEP_FIT"
+      }
+    },
+    {
+      "edges": [
+        [
+          "M",
+          "Y"
+        ],
+        [
+          "Y",
+          "A"
+        ],
+        [
+          "Y",
+          "B"
+        ],
+        [
+          "Y",
+          "C"
+        ]
+      ],
+      "model": {
+        "scaler_mean": {
+          "B": -0.12856903365076897,
+          "Y": -0.1372713650966508,
+          "M": -0.05077275796401959,
+          "A": 0.009227675606071656,
+          "C": 0.0030255522410693805
+        },
+        "scaler_std": {
+          "B": 1.7428852271236825,
+          "Y": 4.742024119333785,
+          "M": 2.8957860335313677,
+          "A": 1.296733197867902,
+          "C": 0.9914374665552508
+        },
+        "equations": [
+          {
+            "target": "B",
+            "intercept_standardized": 1.012710475263005e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.9189392121783466
+              }
+            ]
+          },
+          {
+            "target": "Y",
+            "intercept_standardized": -1.0189479314438594e-17,
+            "parents": [
+              {
+                "source": "M",
+                "lag": 0,
+                "coefficient_standardized": 0.968458727795361
+              }
+            ]
+          },
+          {
+            "target": "M",
+            "intercept_standardized": 6.938893903907228e-18,
+            "parents": []
+          },
+          {
+            "target": "A",
+            "intercept_standardized": 1.6832682217453417e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.8516903271788275
+              }
+            ]
+          },
+          {
+            "target": "C",
+            "intercept_standardized": 1.6499127902773806e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.7555498415916968
+              }
+            ]
+          }
+        ],
+        "alpha": 0.0001,
+        "status": "NEW_SYNTHETIC_MODEL_NOT_TEP_FIT"
+      }
+    },
+    {
+      "edges": [
+        [
+          "Y",
+          "A"
+        ],
+        [
+          "Y",
+          "B"
+        ],
+        [
+          "Y",
+          "C"
+        ],
+        [
+          "Y",
+          "M"
+        ]
+      ],
+      "model": {
+        "scaler_mean": {
+          "B": -0.12856903365076897,
+          "Y": -0.1372713650966508,
+          "M": -0.05077275796401959,
+          "A": 0.009227675606071656,
+          "C": 0.0030255522410693805
+        },
+        "scaler_std": {
+          "B": 1.7428852271236825,
+          "Y": 4.742024119333785,
+          "M": 2.8957860335313677,
+          "A": 1.296733197867902,
+          "C": 0.9914374665552508
+        },
+        "equations": [
+          {
+            "target": "B",
+            "intercept_standardized": 1.012710475263005e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.9189392121783466
+              }
+            ]
+          },
+          {
+            "target": "Y",
+            "intercept_standardized": -3.469446951953614e-18,
+            "parents": []
+          },
+          {
+            "target": "M",
+            "intercept_standardized": 1.0298910085149718e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.9684587277953609
+              }
+            ]
+          },
+          {
+            "target": "A",
+            "intercept_standardized": 1.6832682217453417e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.8516903271788275
+              }
+            ]
+          },
+          {
+            "target": "C",
+            "intercept_standardized": 1.6499127902773806e-17,
+            "parents": [
+              {
+                "source": "Y",
+                "lag": 0,
+                "coefficient_standardized": 0.7555498415916968
+              }
+            ]
+          }
+        ],
+        "alpha": 0.0001,
+        "status": "NEW_SYNTHETIC_MODEL_NOT_TEP_FIT"
+      }
+    }
+  ],
+  "auxiliary_block": null
+}

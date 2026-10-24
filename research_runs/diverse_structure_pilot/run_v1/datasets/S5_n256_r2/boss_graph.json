@@ -1,0 +1,159 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "C",
+      "Y"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "Y",
+      "B"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "A",
+      "C"
+    ],
+    [
+      "A",
+      "M"
+    ],
+    [
+      "S",
+      "T"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "Y",
+        "node2": "B",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "C",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "M",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "A",
+        "node2": "C",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "A",
+        "node2": "M",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "T",
+        "node2": "S",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.46799999999348074,
+  "seed": 3140103,
+  "column_order": [
+    "B",
+    "Y",
+    "A",
+    "C",
+    "T",
+    "S",
+    "M"
+  ],
+  "train_sha256": "7be8bb6f8a080f43e9818a5be1b5b7a585bd68d4990c25d276c8b92a6af4ea0c",
+  "graph_id": "S5_n256_r2__boss",
+  "source_type": "discovery",
+  "dataset_id": "S5_n256_r2",
+  "structure_id": "S5",
+  "train_n": 256,
+  "validation_n": 256,
+  "replicate": 2,
+  "train_seed": 3140101,
+  "validation_seed": 3140102,
+  "algorithm_seed": 3140103,
+  "algorithm": "boss"
+}

@@ -1,0 +1,116 @@
+{
+  "structure_id": "S1",
+  "nodes": [
+    "A",
+    "M",
+    "Y",
+    "S",
+    "T"
+  ],
+  "equations": [
+    {
+      "target": "A",
+      "parents": [],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "M",
+      "parents": [
+        {
+          "source": "A",
+          "target": "M",
+          "coefficient": 1.1
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "Y",
+      "parents": [
+        {
+          "source": "M",
+          "target": "Y",
+          "coefficient": 0.9
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "S",
+      "parents": [],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "T",
+      "parents": [
+        {
+          "source": "S",
+          "target": "T",
+          "coefficient": 0.7
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "direct",
+      "action": "M",
+      "target": "Y",
+      "target_value": 0.6,
+      "task_kind": "direct",
+      "action_values": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "reference_action": 0.0,
+      "cost_weight": 0.2,
+      "loss_scale": 1.0,
+      "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+      "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+    },
+    {
+      "task_id": "path",
+      "action": "A",
+      "target": "Y",
+      "target_value": 0.8,
+      "task_kind": "indirect",
+      "action_values": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "reference_action": 0.0,
+      "cost_weight": 0.2,
+      "loss_scale": 1.0,
+      "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+      "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+    },
+    {
+      "task_id": "negative",
+      "action": "S",
+      "target": "Y",
+      "target_value": 0.0,
+      "task_kind": "negative_control",
+      "action_values": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "reference_action": 0.0,
+      "cost_weight": 0.2,
+      "loss_scale": 1.0,
+      "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+      "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+    }
+  ],
+  "source_gt_checked": true,
+  "classification": "DECLARED_SYNTHETIC_REFERENCE_ONLY"
+}

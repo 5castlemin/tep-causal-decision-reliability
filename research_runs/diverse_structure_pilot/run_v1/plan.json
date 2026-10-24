@@ -1,0 +1,1680 @@
+{
+  "protocol": "DIVERSE-STRUCTURE-PILOT-v1",
+  "scope": "user explicitly authorized small synthetic execution; not manufacturing adoption",
+  "base_commit": "23d19f56cd6510783398cfa95f66f1d1d8194937",
+  "base_branch": "feature/repeated-metric-pilot",
+  "base_pr": 12,
+  "base_pr_status": "OPEN",
+  "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "source_sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "noise_family": "independent symmetric Uniform with node SD1",
+  "structures": [
+    {
+      "structure_id": "S1",
+      "label": "희소 사슬과 독립 주변 가지",
+      "nodes": [
+        "A",
+        "M",
+        "Y",
+        "S",
+        "T"
+      ],
+      "algorithm_column_order": [
+        "T",
+        "Y",
+        "M",
+        "A",
+        "S"
+      ],
+      "edges": [
+        {
+          "source": "A",
+          "target": "M",
+          "coefficient": 1.1
+        },
+        {
+          "source": "M",
+          "target": "Y",
+          "coefficient": 0.9
+        },
+        {
+          "source": "S",
+          "target": "T",
+          "coefficient": 0.7
+        }
+      ],
+      "noise_sd": {
+        "A": 1.0,
+        "M": 1.0,
+        "Y": 1.0,
+        "S": 1.0,
+        "T": 1.0
+      },
+      "tags": [
+        "sparse",
+        "peripheral_branch"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "M",
+          "target": "Y",
+          "target_value": 0.6,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.8,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "negative",
+          "action": "S",
+          "target": "Y",
+          "target_value": 0.0,
+          "task_kind": "negative_control",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S1_n256_r1",
+          "structure_id": "S1",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3100001,
+          "validation_seed": 3100002,
+          "algorithm_seed": 3100003
+        },
+        {
+          "dataset_id": "S1_n256_r2",
+          "structure_id": "S1",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3100101,
+          "validation_seed": 3100102,
+          "algorithm_seed": 3100103
+        },
+        {
+          "dataset_id": "S1_n256_r3",
+          "structure_id": "S1",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3100201,
+          "validation_seed": 3100202,
+          "algorithm_seed": 3100203
+        },
+        {
+          "dataset_id": "S1_n512_r1",
+          "structure_id": "S1",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3101001,
+          "validation_seed": 3101002,
+          "algorithm_seed": 3101003
+        },
+        {
+          "dataset_id": "S1_n512_r2",
+          "structure_id": "S1",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3101101,
+          "validation_seed": 3101102,
+          "algorithm_seed": 3101103
+        },
+        {
+          "dataset_id": "S1_n512_r3",
+          "structure_id": "S1",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3101201,
+          "validation_seed": 3101202,
+          "algorithm_seed": 3101203
+        }
+      ],
+      "acceptance_seed": 4100000,
+      "evaluation_seed_base": 5100000
+    },
+    {
+      "structure_id": "S2",
+      "label": "조밀한 다중 직접·간접 구조",
+      "nodes": [
+        "C",
+        "A",
+        "B",
+        "M",
+        "Y"
+      ],
+      "algorithm_column_order": [
+        "B",
+        "Y",
+        "M",
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "source": "C",
+          "target": "A",
+          "coefficient": 0.7
+        },
+        {
+          "source": "C",
+          "target": "B",
+          "coefficient": 0.8
+        },
+        {
+          "source": "C",
+          "target": "M",
+          "coefficient": 0.4
+        },
+        {
+          "source": "C",
+          "target": "Y",
+          "coefficient": 0.3
+        },
+        {
+          "source": "A",
+          "target": "B",
+          "coefficient": 0.6
+        },
+        {
+          "source": "A",
+          "target": "M",
+          "coefficient": 0.8
+        },
+        {
+          "source": "A",
+          "target": "Y",
+          "coefficient": 0.5
+        },
+        {
+          "source": "B",
+          "target": "M",
+          "coefficient": 0.9
+        },
+        {
+          "source": "B",
+          "target": "Y",
+          "coefficient": 0.6
+        },
+        {
+          "source": "M",
+          "target": "Y",
+          "coefficient": 1.0
+        }
+      ],
+      "noise_sd": {
+        "C": 1.0,
+        "A": 1.0,
+        "B": 1.0,
+        "M": 1.0,
+        "Y": 1.0
+      },
+      "tags": [
+        "dense",
+        "observed_common_cause",
+        "direct_and_indirect"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "M",
+          "target": "Y",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 1.6,
+          "task_kind": "direct_and_indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.6,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S2_n256_r1",
+          "structure_id": "S2",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3110001,
+          "validation_seed": 3110002,
+          "algorithm_seed": 3110003
+        },
+        {
+          "dataset_id": "S2_n256_r2",
+          "structure_id": "S2",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3110101,
+          "validation_seed": 3110102,
+          "algorithm_seed": 3110103
+        },
+        {
+          "dataset_id": "S2_n256_r3",
+          "structure_id": "S2",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3110201,
+          "validation_seed": 3110202,
+          "algorithm_seed": 3110203
+        },
+        {
+          "dataset_id": "S2_n512_r1",
+          "structure_id": "S2",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3111001,
+          "validation_seed": 3111002,
+          "algorithm_seed": 3111003
+        },
+        {
+          "dataset_id": "S2_n512_r2",
+          "structure_id": "S2",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3111101,
+          "validation_seed": 3111102,
+          "algorithm_seed": 3111103
+        },
+        {
+          "dataset_id": "S2_n512_r3",
+          "structure_id": "S2",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3111201,
+          "validation_seed": 3111202,
+          "algorithm_seed": 3111203
+        }
+      ],
+      "acceptance_seed": 4101000,
+      "evaluation_seed_base": 5110000
+    },
+    {
+      "structure_id": "S3",
+      "label": "긴 매개 사슬과 외부 관측 원인",
+      "nodes": [
+        "A",
+        "L1",
+        "L2",
+        "L3",
+        "Y",
+        "S"
+      ],
+      "algorithm_column_order": [
+        "A",
+        "L3",
+        "S",
+        "L2",
+        "L1",
+        "Y"
+      ],
+      "edges": [
+        {
+          "source": "A",
+          "target": "L1",
+          "coefficient": 0.9
+        },
+        {
+          "source": "L1",
+          "target": "L2",
+          "coefficient": 0.8
+        },
+        {
+          "source": "L2",
+          "target": "L3",
+          "coefficient": 0.9
+        },
+        {
+          "source": "L3",
+          "target": "Y",
+          "coefficient": 1.1
+        },
+        {
+          "source": "S",
+          "target": "L2",
+          "coefficient": 0.4
+        }
+      ],
+      "noise_sd": {
+        "A": 1.0,
+        "L1": 1.0,
+        "L2": 1.0,
+        "L3": 1.0,
+        "Y": 1.0,
+        "S": 1.0
+      },
+      "tags": [
+        "sparse",
+        "long_path"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "L3",
+          "target": "Y",
+          "target_value": 0.8,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.3,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S3_n256_r1",
+          "structure_id": "S3",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3120001,
+          "validation_seed": 3120002,
+          "algorithm_seed": 3120003
+        },
+        {
+          "dataset_id": "S3_n256_r2",
+          "structure_id": "S3",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3120101,
+          "validation_seed": 3120102,
+          "algorithm_seed": 3120103
+        },
+        {
+          "dataset_id": "S3_n256_r3",
+          "structure_id": "S3",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3120201,
+          "validation_seed": 3120202,
+          "algorithm_seed": 3120203
+        },
+        {
+          "dataset_id": "S3_n512_r1",
+          "structure_id": "S3",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3121001,
+          "validation_seed": 3121002,
+          "algorithm_seed": 3121003
+        },
+        {
+          "dataset_id": "S3_n512_r2",
+          "structure_id": "S3",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3121101,
+          "validation_seed": 3121102,
+          "algorithm_seed": 3121103
+        },
+        {
+          "dataset_id": "S3_n512_r3",
+          "structure_id": "S3",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3121201,
+          "validation_seed": 3121202,
+          "algorithm_seed": 3121203
+        }
+      ],
+      "acceptance_seed": 4102000,
+      "evaluation_seed_base": 5120000
+    },
+    {
+      "structure_id": "S4",
+      "label": "직접·간접 부호가 다른 혼합 구조",
+      "nodes": [
+        "C",
+        "A",
+        "M",
+        "Y",
+        "S",
+        "T"
+      ],
+      "algorithm_column_order": [
+        "T",
+        "S",
+        "M",
+        "Y",
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "source": "C",
+          "target": "A",
+          "coefficient": 0.8
+        },
+        {
+          "source": "C",
+          "target": "Y",
+          "coefficient": 0.6
+        },
+        {
+          "source": "A",
+          "target": "M",
+          "coefficient": 1.0
+        },
+        {
+          "source": "M",
+          "target": "Y",
+          "coefficient": 1.1
+        },
+        {
+          "source": "A",
+          "target": "Y",
+          "coefficient": -0.4
+        },
+        {
+          "source": "S",
+          "target": "T",
+          "coefficient": 0.8
+        }
+      ],
+      "noise_sd": {
+        "C": 1.0,
+        "A": 1.0,
+        "M": 1.0,
+        "Y": 1.0,
+        "S": 1.0,
+        "T": 1.0
+      },
+      "tags": [
+        "observed_common_cause",
+        "opposed_signs",
+        "peripheral_branch"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.6,
+          "task_kind": "direct_and_indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "C",
+          "target": "M",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S4_n256_r1",
+          "structure_id": "S4",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3130001,
+          "validation_seed": 3130002,
+          "algorithm_seed": 3130003
+        },
+        {
+          "dataset_id": "S4_n256_r2",
+          "structure_id": "S4",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3130101,
+          "validation_seed": 3130102,
+          "algorithm_seed": 3130103
+        },
+        {
+          "dataset_id": "S4_n256_r3",
+          "structure_id": "S4",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3130201,
+          "validation_seed": 3130202,
+          "algorithm_seed": 3130203
+        },
+        {
+          "dataset_id": "S4_n512_r1",
+          "structure_id": "S4",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3131001,
+          "validation_seed": 3131002,
+          "algorithm_seed": 3131003
+        },
+        {
+          "dataset_id": "S4_n512_r2",
+          "structure_id": "S4",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3131101,
+          "validation_seed": 3131102,
+          "algorithm_seed": 3131103
+        },
+        {
+          "dataset_id": "S4_n512_r3",
+          "structure_id": "S4",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3131201,
+          "validation_seed": 3131202,
+          "algorithm_seed": 3131203
+        }
+      ],
+      "acceptance_seed": 4103000,
+      "evaluation_seed_base": 5130000
+    },
+    {
+      "structure_id": "S5",
+      "label": "관측 공통 원인과 음의 총효과",
+      "nodes": [
+        "C",
+        "A",
+        "B",
+        "M",
+        "Y",
+        "S",
+        "T"
+      ],
+      "algorithm_column_order": [
+        "B",
+        "Y",
+        "A",
+        "C",
+        "T",
+        "S",
+        "M"
+      ],
+      "edges": [
+        {
+          "source": "C",
+          "target": "A",
+          "coefficient": 0.9
+        },
+        {
+          "source": "C",
+          "target": "Y",
+          "coefficient": 0.8
+        },
+        {
+          "source": "A",
+          "target": "M",
+          "coefficient": -1.0
+        },
+        {
+          "source": "M",
+          "target": "Y",
+          "coefficient": 0.9
+        },
+        {
+          "source": "B",
+          "target": "M",
+          "coefficient": 0.6
+        },
+        {
+          "source": "B",
+          "target": "Y",
+          "coefficient": 0.3
+        },
+        {
+          "source": "S",
+          "target": "T",
+          "coefficient": 0.7
+        }
+      ],
+      "noise_sd": {
+        "C": 1.0,
+        "A": 1.0,
+        "B": 1.0,
+        "M": 1.0,
+        "Y": 1.0,
+        "S": 1.0,
+        "T": 1.0
+      },
+      "tags": [
+        "observed_common_cause",
+        "negative_effect",
+        "peripheral_branch"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "M",
+          "target": "Y",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S5_n256_r1",
+          "structure_id": "S5",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3140001,
+          "validation_seed": 3140002,
+          "algorithm_seed": 3140003
+        },
+        {
+          "dataset_id": "S5_n256_r2",
+          "structure_id": "S5",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3140101,
+          "validation_seed": 3140102,
+          "algorithm_seed": 3140103
+        },
+        {
+          "dataset_id": "S5_n256_r3",
+          "structure_id": "S5",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3140201,
+          "validation_seed": 3140202,
+          "algorithm_seed": 3140203
+        },
+        {
+          "dataset_id": "S5_n512_r1",
+          "structure_id": "S5",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3141001,
+          "validation_seed": 3141002,
+          "algorithm_seed": 3141003
+        },
+        {
+          "dataset_id": "S5_n512_r2",
+          "structure_id": "S5",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3141101,
+          "validation_seed": 3141102,
+          "algorithm_seed": 3141103
+        },
+        {
+          "dataset_id": "S5_n512_r3",
+          "structure_id": "S5",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3141201,
+          "validation_seed": 3141202,
+          "algorithm_seed": 3141203
+        }
+      ],
+      "acceptance_seed": 4104000,
+      "evaluation_seed_base": 5140000
+    },
+    {
+      "structure_id": "S6",
+      "label": "조밀한 분기·합류와 관측 교란",
+      "nodes": [
+        "C",
+        "A",
+        "B",
+        "D",
+        "M",
+        "Y",
+        "S"
+      ],
+      "algorithm_column_order": [
+        "S",
+        "Y",
+        "M",
+        "B",
+        "C",
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "source": "C",
+          "target": "A",
+          "coefficient": 0.6
+        },
+        {
+          "source": "C",
+          "target": "B",
+          "coefficient": 0.5
+        },
+        {
+          "source": "C",
+          "target": "Y",
+          "coefficient": 0.4
+        },
+        {
+          "source": "A",
+          "target": "B",
+          "coefficient": 0.7
+        },
+        {
+          "source": "A",
+          "target": "D",
+          "coefficient": 0.4
+        },
+        {
+          "source": "A",
+          "target": "M",
+          "coefficient": 0.5
+        },
+        {
+          "source": "A",
+          "target": "Y",
+          "coefficient": 0.3
+        },
+        {
+          "source": "B",
+          "target": "D",
+          "coefficient": 0.8
+        },
+        {
+          "source": "B",
+          "target": "M",
+          "coefficient": 0.6
+        },
+        {
+          "source": "D",
+          "target": "M",
+          "coefficient": 0.9
+        },
+        {
+          "source": "D",
+          "target": "Y",
+          "coefficient": 0.4
+        },
+        {
+          "source": "M",
+          "target": "Y",
+          "coefficient": 0.8
+        },
+        {
+          "source": "S",
+          "target": "B",
+          "coefficient": 0.3
+        },
+        {
+          "source": "S",
+          "target": "Y",
+          "coefficient": 0.2
+        }
+      ],
+      "noise_sd": {
+        "C": 1.0,
+        "A": 1.0,
+        "B": 1.0,
+        "D": 1.0,
+        "M": 1.0,
+        "Y": 1.0,
+        "S": 1.0
+      },
+      "tags": [
+        "dense",
+        "observed_common_cause",
+        "multiple_paths"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "D",
+          "target": "Y",
+          "target_value": 0.9,
+          "task_kind": "direct_and_indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "B",
+          "target": "Y",
+          "target_value": -0.8,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S6_n256_r1",
+          "structure_id": "S6",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3150001,
+          "validation_seed": 3150002,
+          "algorithm_seed": 3150003
+        },
+        {
+          "dataset_id": "S6_n256_r2",
+          "structure_id": "S6",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3150101,
+          "validation_seed": 3150102,
+          "algorithm_seed": 3150103
+        },
+        {
+          "dataset_id": "S6_n256_r3",
+          "structure_id": "S6",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3150201,
+          "validation_seed": 3150202,
+          "algorithm_seed": 3150203
+        },
+        {
+          "dataset_id": "S6_n512_r1",
+          "structure_id": "S6",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3151001,
+          "validation_seed": 3151002,
+          "algorithm_seed": 3151003
+        },
+        {
+          "dataset_id": "S6_n512_r2",
+          "structure_id": "S6",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3151101,
+          "validation_seed": 3151102,
+          "algorithm_seed": 3151103
+        },
+        {
+          "dataset_id": "S6_n512_r3",
+          "structure_id": "S6",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3151201,
+          "validation_seed": 3151202,
+          "algorithm_seed": 3151203
+        }
+      ],
+      "acceptance_seed": 4105000,
+      "evaluation_seed_base": 5150000
+    },
+    {
+      "structure_id": "S7",
+      "label": "긴 경로·공통 원인·주변 가지",
+      "nodes": [
+        "C",
+        "A",
+        "M1",
+        "M2",
+        "M3",
+        "Y",
+        "S",
+        "T"
+      ],
+      "algorithm_column_order": [
+        "S",
+        "A",
+        "M2",
+        "Y",
+        "M1",
+        "M3",
+        "C",
+        "T"
+      ],
+      "edges": [
+        {
+          "source": "C",
+          "target": "A",
+          "coefficient": 0.7
+        },
+        {
+          "source": "C",
+          "target": "Y",
+          "coefficient": 0.4
+        },
+        {
+          "source": "A",
+          "target": "M1",
+          "coefficient": 0.8
+        },
+        {
+          "source": "M1",
+          "target": "M2",
+          "coefficient": 0.7
+        },
+        {
+          "source": "M2",
+          "target": "M3",
+          "coefficient": 0.9
+        },
+        {
+          "source": "M3",
+          "target": "Y",
+          "coefficient": 1.0
+        },
+        {
+          "source": "S",
+          "target": "T",
+          "coefficient": 0.6
+        }
+      ],
+      "noise_sd": {
+        "C": 1.0,
+        "A": 1.0,
+        "M1": 1.0,
+        "M2": 1.0,
+        "M3": 1.0,
+        "Y": 1.0,
+        "S": 1.0,
+        "T": 1.0
+      },
+      "tags": [
+        "long_path",
+        "observed_common_cause",
+        "peripheral_branch"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "M3",
+          "target": "Y",
+          "target_value": -0.65,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.4,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S7_n256_r1",
+          "structure_id": "S7",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3160001,
+          "validation_seed": 3160002,
+          "algorithm_seed": 3160003
+        },
+        {
+          "dataset_id": "S7_n256_r2",
+          "structure_id": "S7",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3160101,
+          "validation_seed": 3160102,
+          "algorithm_seed": 3160103
+        },
+        {
+          "dataset_id": "S7_n256_r3",
+          "structure_id": "S7",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3160201,
+          "validation_seed": 3160202,
+          "algorithm_seed": 3160203
+        },
+        {
+          "dataset_id": "S7_n512_r1",
+          "structure_id": "S7",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3161001,
+          "validation_seed": 3161002,
+          "algorithm_seed": 3161003
+        },
+        {
+          "dataset_id": "S7_n512_r2",
+          "structure_id": "S7",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3161101,
+          "validation_seed": 3161102,
+          "algorithm_seed": 3161103
+        },
+        {
+          "dataset_id": "S7_n512_r3",
+          "structure_id": "S7",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3161201,
+          "validation_seed": 3161202,
+          "algorithm_seed": 3161203
+        }
+      ],
+      "acceptance_seed": 4106000,
+      "evaluation_seed_base": 5160000
+    },
+    {
+      "structure_id": "S8",
+      "label": "두 매개 경로와 부호 혼합",
+      "nodes": [
+        "C",
+        "A",
+        "B",
+        "M1",
+        "M2",
+        "Y",
+        "S",
+        "T"
+      ],
+      "algorithm_column_order": [
+        "B",
+        "S",
+        "M1",
+        "M2",
+        "A",
+        "C",
+        "T",
+        "Y"
+      ],
+      "edges": [
+        {
+          "source": "C",
+          "target": "A",
+          "coefficient": 0.5
+        },
+        {
+          "source": "C",
+          "target": "Y",
+          "coefficient": 0.4
+        },
+        {
+          "source": "A",
+          "target": "M1",
+          "coefficient": 0.9
+        },
+        {
+          "source": "A",
+          "target": "M2",
+          "coefficient": -0.6
+        },
+        {
+          "source": "M1",
+          "target": "Y",
+          "coefficient": 1.0
+        },
+        {
+          "source": "M2",
+          "target": "Y",
+          "coefficient": -0.7
+        },
+        {
+          "source": "B",
+          "target": "M1",
+          "coefficient": 0.4
+        },
+        {
+          "source": "B",
+          "target": "M2",
+          "coefficient": 0.5
+        },
+        {
+          "source": "S",
+          "target": "T",
+          "coefficient": 0.8
+        }
+      ],
+      "noise_sd": {
+        "C": 1.0,
+        "A": 1.0,
+        "B": 1.0,
+        "M1": 1.0,
+        "M2": 1.0,
+        "Y": 1.0,
+        "S": 1.0,
+        "T": 1.0
+      },
+      "tags": [
+        "multiple_paths",
+        "observed_common_cause",
+        "mixed_signs",
+        "peripheral_branch"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "M2",
+          "target": "Y",
+          "target_value": 0.6,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 1.0,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S8_n256_r1",
+          "structure_id": "S8",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3170001,
+          "validation_seed": 3170002,
+          "algorithm_seed": 3170003
+        },
+        {
+          "dataset_id": "S8_n256_r2",
+          "structure_id": "S8",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3170101,
+          "validation_seed": 3170102,
+          "algorithm_seed": 3170103
+        },
+        {
+          "dataset_id": "S8_n256_r3",
+          "structure_id": "S8",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3170201,
+          "validation_seed": 3170202,
+          "algorithm_seed": 3170203
+        },
+        {
+          "dataset_id": "S8_n512_r1",
+          "structure_id": "S8",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3171001,
+          "validation_seed": 3171002,
+          "algorithm_seed": 3171003
+        },
+        {
+          "dataset_id": "S8_n512_r2",
+          "structure_id": "S8",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3171101,
+          "validation_seed": 3171102,
+          "algorithm_seed": 3171103
+        },
+        {
+          "dataset_id": "S8_n512_r3",
+          "structure_id": "S8",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3171201,
+          "validation_seed": 3171202,
+          "algorithm_seed": 3171203
+        }
+      ],
+      "acceptance_seed": 4107000,
+      "evaluation_seed_base": 5170000
+    }
+  ],
+  "algorithms": {
+    "pc": {
+      "package": "causal-learn==0.1.4.8",
+      "stable": true,
+      "alpha": 0.01,
+      "uc_rule": 0,
+      "uc_priority": 2,
+      "background_knowledge": null,
+      "kci_approx": true
+    },
+    "boss": {
+      "package": "causal-learn==0.1.4.8",
+      "score_func": "local_score_BIC",
+      "lambda_value": 2.0,
+      "scope": "공식 문서에 있는 Python BOSS, 과거 Tetrad Final 재현 아님. Uniform에서는 Gaussian BIC의 quasi-score 가정 차이 명시"
+    },
+    "directlingam": {
+      "package": "lingam==1.13.0",
+      "measure": "pwling",
+      "prior_knowledge": null,
+      "edge_abs_threshold": 0.05
+    }
+  },
+  "families": {
+    "uniform": {
+      "pc_test": "kci",
+      "directlingam_role": "NON_GAUSSIAN_PRIMARY"
+    }
+  },
+  "scm": {
+    "family": "LINEAR_ADDITIVE_RIDGE",
+    "parents": "CONFIRMED_ONLY",
+    "scaler": "train-only mean/std ddof0",
+    "intercept_penalized": false,
+    "alpha_grid": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "selection": "각 family 공통 alpha: 별도 validation seed의 전체 노드 표준화 MSE를 graph 등가 평균해 최소 선택, 정확동률 더 강한 규제. Gaussian은 PC/BOSS만 선택에 사용하고 진단 Direct에도 같은 alpha 적용",
+    "cycle_policy": "실패 기록; 간선 수정 금지",
+    "no_confirmed_path_policy": "기준 A=0을 사전 fallback으로 실행하고 NO_CONFIRMED_PATH_BASELINE_FALLBACK 기록. 정보 있는 추천과 구분"
+  },
+  "learner_timeout_seconds": 180,
+  "policy": {
+    "action_values": [
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "reference_action": 0.0,
+    "cost_weight": 0.2,
+    "modes": [
+      "confirmed_only",
+      "mec_minimax",
+      "abstain_on_disagreement"
+    ],
+    "primary": "confirmed_only",
+    "mec_max_unresolved": 12,
+    "mec_max_extensions": 128,
+    "mec_limit_policy": "if cap exceeded, block auxiliary policies, do not truncate or select DAGs with truth",
+    "fitting": "common alpha per observed dataset; extension models same alpha/data",
+    "point_prediction": "unweighted mean over extension models; not posterior probability",
+    "no_path_rule": "fallback baseline distinguished from computed baseline; relationship with path metric is mechanical and not a new causal effect"
+  },
+  "acceptance": {
+    "first_stage": [
+      "S1",
+      "S2"
+    ],
+    "all_stage": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8"
+    ],
+    "n": 32,
+    "actions": "unique task actions",
+    "values": [
+      -0.5,
+      0.5
+    ],
+    "checks": [
+      "returned GT=declared edges",
+      "row-noise reconstruction",
+      "only action equation replaced",
+      "other equations unchanged",
+      "fresh seed data differs",
+      "same seed replay exact",
+      "unhooked control exact"
+    ],
+    "failure": "stop before learning if any structure fails; no silent redesign"
+  },
+  "evaluation": {
+    "n_per_batch": 256,
+    "batches": 3,
+    "condition_index": "0..4 candidates,5 independent reference",
+    "seed_formula": "structure evaluation base + action_index*1000 + condition_index*10 + batch",
+    "reuse_action_rollouts": true,
+    "paired_noise_assumed": false,
+    "freeze_all_policies_before_any_holdout": true,
+    "relative_loss_floor": ".01*loss_scale^2",
+    "relative_regret": "(loss-best_grid_loss)/independent_reference_loss only if denominator>=floor; else null/UNSTABLE_REFERENCE",
+    "fraction_reference_gap_lost": "regret/(reference_loss-best_loss) only if gap>=floor, else null/UNSTABLE_REFERENCE_GAP",
+    "primary_cross_structure_outcome": "scale_normalized_regret = regret/loss_scale^2",
+    "analytic_check": "post-freeze only, not learner/recommender input"
+  },
+  "metrics": {
+    "strict_directed_f1": "2*correct confirmed/(all predicted pairs+true edges)",
+    "confirmed_directed_f1": "2*correct confirmed/(confirmed edges+true edges)",
+    "confirmed_precision": "correct confirmed/confirmed edges;null if none",
+    "key_paths": "all simple directed reference paths, union-edge recall and complete-path fraction",
+    "direct_xy": "direction-specific; unresolved=null",
+    "normalized_shd": "(missing+extra+reverse+unresolved true pairs)/true_edge_count",
+    "pair_normalized_shd": "same errors / (n*(n-1)/2)",
+    "density": "predicted pairs/(n*(n-1)/2)",
+    "error_direction": "higher F1/path=better;higher error/unresolved=not better"
+  },
+  "analysis": {
+    "primary_policy": "confirmed_only",
+    "primary_population": "positive tasks from actual discovery only, exclude negative controls and controlled-error graphs",
+    "metric_candidates": [
+      "skeleton_f1",
+      "strict_directed_f1",
+      "key_path_edge_recall",
+      "direct_xy_correct",
+      "normalized_shd",
+      "unresolved_ratio"
+    ],
+    "correlation": {
+      "strata": [
+        "structure_id",
+        "task_id"
+      ],
+      "min_datasets": 6,
+      "min_unique": 2,
+      "within_algorithm": true,
+      "within_sample_size": true,
+      "no_p_values": true
+    },
+    "loso": {
+      "folds": "hold out every row of one structure, train on seven; no random row split",
+      "regressor": "linear Ridge alpha=.01 fixed before all evaluation, train-only feature imputation/standardization and outcome standardization",
+      "models": [
+        "training_mean",
+        "covariates_only",
+        "metric_only per candidate",
+        "covariates_plus_metric per candidate",
+        "joint_quality_ridge"
+      ],
+      "covariates": [
+        "algorithm onehot",
+        "log2(train_n/256)",
+        "n_nodes",
+        "predicted_density",
+        "unresolved_ratio"
+      ],
+      "unresolved_increment": "ALREADY_IN_COVARIATES, do not duplicate column",
+      "loss": "per-structure macro MAE/RMSE of scale_normalized_regret",
+      "rank_diagnostics": "SVD rank and condition of training standardized features; joint coefficients not independent causal effects",
+      "correlation_diagnostics": "metric correlation/collinearity; condition >1e6 or deficient rank flagged, Ridge predictions retained but no OLS coefficient interpretation",
+      "hyperparameter_selection": "none; no selecting metrics/settings from heldout structure outcomes",
+      "formal_claim": "8 hand-designed structures only; exploratory predictive feasibility, no pvalue or definitive winner"
+    },
+    "independent_units": "8 fixed reference structures,48 independent datasets,144 correlated algorithm graphs; tasks/policies/rollouts are repeated clustered measurements"
+  },
+  "controlled_errors": {
+    "enabled": true,
+    "scope": "separate artificial graph-error study, not discovered graphs",
+    "structures": [
+      "S1",
+      "S7"
+    ],
+    "datasets": "all6 existing observed datasets per selected structure; no new data learning",
+    "modes": [
+      "oracle_reference",
+      "remove_key",
+      "remove_peripheral",
+      "reverse_key",
+      "add_peripheral_to_target"
+    ],
+    "key_edges": {
+      "S1": [
+        "A",
+        "M"
+      ],
+      "S7": [
+        "A",
+        "M1"
+      ]
+    },
+    "peripheral_edge": [
+      "S",
+      "T"
+    ],
+    "added_edge": [
+      "S",
+      "Y"
+    ],
+    "tasks": "positive tasks only",
+    "policy": "confirmed_only",
+    "alpha": "reuse common alpha selected without GT from real algorithms",
+    "use_in_primary_analysis": false
+  },
+  "forbidden": [
+    "alter_previous_results",
+    "GT_orientation",
+    "posthoc_retuning",
+    "manufacturing_claim",
+    "Recovery_Safety",
+    "automatic_merge",
+    "automatic_extra_repetitions"
+  ]
+}
