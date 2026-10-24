@@ -19,3 +19,8 @@
 | 2026-10-23 | PR #4 raw·중간 결과의 중복은 보존 | `docs/research_design/evidence/local_20261023_v2/pr4_asset_review.json` | 동일 바이트 24그룹/88경로는 반복·빈 기록·파생 통계를 포함. 보존정책을 임의 변경하거나 원시 manifest를 깨는 삭제를 하지 않음 |
 
 | 2026-10-23 | 사용자 승인으로 PR4→PR5 순서 통합 | PR4 merge 1e4fcc7, PR5 base main | 최초 decision의 dependency는 당시 기록으로 보존하고 현재 병합 상태를 github_current에 분리. 연구 질문·Track B/C 채택 변경 없음 |
+# 2026-10-23 Track A 복원 접근·실행 Gate
+
+정상 원시 ZIP의 공식 목록과 공개 기술보고서를 확보한 사실을 원시 바이트 회수와 구분한다. 문서상 Tests의 시간/seed 파일 구조를 정상 ZIP 또는 benchmark 선택 run에 전이하지 않는다. MATLAB 검색 범위 미발견을 전역 설치/라이선스 부재로 단정하지 않는다.
+현재 A1/A2 BLOCKED이므로 A3는 NOT_RUN, 직접 효과 참조 NO-GO와 가설 INSUFFICIENT_EVIDENCE를 유지한다. 새로운 자료가 없는 반복 검색은 종료한다. 요청의 C(차단 명시 및 Track B 참조 구조 검증 설계 검토 제안)를 권고하되 연구 방향을 변경하거나 Track B/C를 채택하지 않는다. 새로운 실행환경/원본이 제공되면 Track A 재개 가능하다. 전환은 사용자 승인 대상이다.
+근거: docs/research_design/TRACK_A_RECOVERY_GATE.md 및 track_a_evidence/gate_evidence.json.
