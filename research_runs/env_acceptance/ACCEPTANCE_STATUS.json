@@ -1,0 +1,33 @@
+{
+  "protocol": "ENV-MVP-EXAMPLE-FCM-v1",
+  "checked_at": "2026-10-24",
+  "base_commit": "baf03e900a021d3d646779da219fd6bbd0de14ad",
+  "base_branch": "feature/causal-metric-decision-mvp",
+  "pr6_to_pr9": "OPEN_STACKED_CI_SUCCESS",
+  "explicit_execution_approval_received": true,
+  "approval_scope": "소규모 예제 FCM acceptance만",
+  "status": "PASS_EXAMPLE_IID_FCM_ONLY",
+  "environment_id": "CAUSALASSEMBLY_EXAMPLE_IID_fc2162fe0666",
+  "checks": {
+    "declared_direct_graph": "PASS",
+    "observation_same_fcm": "PASS",
+    "do_replaces_equation": "PASS",
+    "same_variables_axis": "PASS_IID_SCHEMA_PHYSICAL_TIME_NOT_APPLICABLE",
+    "new_seed_reproducibility_and_split": "PASS",
+    "action_target_api": "PASS_EXAMPLE_ONLY"
+  },
+  "reference_scope": "검사에서 선언한4노드 IID linear Gaussian fixture",
+  "raw_batches": 18,
+  "sampler_calls": 27,
+  "physical_clock_validated": false,
+  "strict_counterfactual_ready": false,
+  "train_holdout_seed_split": true,
+  "unexpected_acceptance_failures": [],
+  "expected_failure": "승인 flag 없는 CLI는 PermissionError/exit1로 source 실행 전 거부",
+  "manufacturing_generator_validated": false,
+  "track_b_adopted": false,
+  "discovery_trained": false,
+  "scm_fitted": false,
+  "recovery_safety_computed": false,
+  "next_stage": "승인 범위/가정 고정 후 같은 환경의3개 새 학습 및 공통 정책 연결; 이번에는 미실행"
+}

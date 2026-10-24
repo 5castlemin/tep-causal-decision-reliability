@@ -137,3 +137,14 @@
 - causalAssembly 공식 commit8da3729의 실제 FCM 소스/README/pyproject와 참조/do/seed API를 읽고 기록. 헤더 AGPL-3.0-or-later, LICENSE URL404 확인. 외부 코드 Git 반입·환경 설치·runtime/생산 generator 실행/채택 없음. 기존 TEP GT 이식 없음.
 - G1 BLOCKED/G2 PASS_TECHNICAL/G3 PARTIAL_TECHNICAL_ONLY/G4 NOT_RUN_RESEARCH/G5 BLOCKED. 실제 목표 달성·효과오차·Recovery/Safety·지표 상관/순위는 null. 기술 실행과 가설 검증을 분리. 상태 JSON/현재 MD와 우선순위를 ENV/POLICY/EVAL-MVP 중심으로 갱신. 과거 감사 validator의 고정 상위우선순위 검사는 과거 ID 보존 검사로만 변경하여 현재 우선순위 진화를 허용.
 - 검증 통과: 단위 테스트23개, validate_decision_mvp.py(v1/v2 raw hash·시계·명령·반복·84행·재사용·Gate·성능null), Track A/B/REF-B·benchmark validators, graph39파일 hash/lag 재변환, PR integration, asset manifest, canonical 상태/문서 동기화, git diff --check. 16개 raw CSV 약0.93MB는 반복 증거로 보존하며 대용량 외부 데이터는 반입하지 않음.
+
+## 2026-10-24 — ENV-MVP 승인된 예제 acceptance 실행
+
+- git fetch/status: 사용자 변경 없음, PR6→7→8→9 OPEN/stacked·각 최신 CI 성공 확인. main7b16638은 유지하고 PR9 headbaf03e9에서 feature/env-mvp-acceptance 생성. 병합 없음.
+- 사용자가 소규모 acceptance 실제 실행을 별도 승인했다. 제조 generator/R/DRF·학습·Track B 채택은 제외. 지정 archive04/로컬실행환경/.venv에 Python3.11 격리 venv 생성(시스템 site-packages false), numpy2.4.6/pandas3.0.3/sympy1.14.0/networkx3.6.1/scipy1.17.1/matplotlib3.11.2 설치. 전역 환경 변경 없음. 원시 설치/실행 console은 로컬 archive에 보존, Git에는 lock과 정제 기록만 반입.
+- PLAN_v1을 실행 전에 고정하고 원본 hashc1f1b7f의 models_fcm.py만 직접 import했다. `격리python -X utf8 scripts/run_env_acceptance.py --module <고정 원본> --output research_runs/env_acceptance/run_20261024_v1 --execution-approved` 실행 성공. 원본 파일 수정·전체 package 설치·제조 generator 실행 없음.
+- 선언4노드 IID Gaussian FCM의 adjacency/관측 재구성/do A식·부모 대체/원본 구조 보존을 실행 확인. 3seed×3조건×2회=18batch 각64행, hook 없는 원본API9통제 exact(총 sampler27회). train3101/holdout7101·7102 분리, 새seed관측 상이, 같은조건2회 data/noise CSV exact. 각 행 source 잡음으로 재구성 오차0. 이 표본 수는 검정력 근거 아님.
+- 같은seed 관측vsdo의 u_R/u_M/u_Y는6비교 모두 행별 불일치, u_A 제거. 분포수준 do만 허용하며 strict counterfactual/물리 시계 검증 안 됨. Action A/Target Y는 무차원 fixture에만 해당. PR9 static_mean_response를 선언 oracle 산술 입력으로 재사용, 환경 guard는 fixture동일계약 수용/CPCaD혼합 거부 확인. 적합/추천 성능 결과 아님.
+- 승인 flag 없는 negative CLI를 별도 실행해 PermissionError/exit1로 source 실행 전 거부된 FAILURE.json/source·plan SHA 보존. 정상 acceptance 예기치 않은 실패 없음. 단위 테스트26개 통과; 변조source 거부·잘못된 식 탐지·삭제된 noise 없는 do 재구성 포함.
+- 예제 acceptance PASS_EXAMPLE_IID_FCM_ONLY, ENV-EXAMPLE VERIFIED, broader ENV-MVP PARTIAL로 기록. 제조/TrackB 채택·discovery/SCM 학습·Recovery/Safety 없음. 기존 CPCaD GT/frozenF1/적합/진단/과거MVP기록 불변. canonical JSON에서 상태 MD 재생성.
+- 추가 검증 통과: validate_env_acceptance.py(저장된 graph/data/noise 식·do·seed/split·hash·negative guard), validate_decision_mvp.py, REF-B/TrackA/TrackB/benchmark validators, graph39파일 hash·lag변환, PR integration, asset manifest, 상태·문서 동기화, git diff --check. CI는 이 기록 검사와 로컬26단위 테스트만 수행하며 후보 실행을 반복하지 않는다.

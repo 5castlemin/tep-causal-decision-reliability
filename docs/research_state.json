@@ -211,19 +211,19 @@
     {
       "id": "ENV-MVP",
       "title": "구조·추천 평가환경 대응",
-      "status": "BLOCKED",
-      "evidence": "docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md",
-      "next_action": "새 통제 환경 후보 acceptance adapter의 범위/채택 승인 또는 A의 새로운 동등성 근거 확보",
-      "acceptance": "동일 환경 reference/do/반복·정책·독립 효과 로그; Gate1 승인 전 연구 실행 금지",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/ENV_MVP_ACCEPTANCE.md",
+      "next_action": "예제 IID FCM의 GT/관측/do acceptance 통과. 제조 generator/연구 환경 채택은 별도 승인; 시계·짝지은 잡음 한계 유지",
+      "acceptance": "예제 계약과 broader 연구 채택 구분; 제조/동적/TEP 동등성 자동 승격 금지",
       "depends_on": []
     },
     {
       "id": "POLICY-MVP",
       "title": "실제 추천 정책 연결",
       "status": "BLOCKED",
-      "evidence": "docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md",
-      "next_action": "승인 환경의 단일 Action/Target·범위·목표·비용·기준정책 고정 후 공통 추천기와 실제 dispatcher 연결",
-      "acceptance": "공통 목적/행동 공간·물리 목표·정책 contract와 추천 적용 로그",
+      "evidence": "docs/research_design/ENV_MVP_ACCEPTANCE.md",
+      "next_action": "예제 연결 파일럿의 범위·noise 가정·목표·비용·Action 경계·분포수준 기준정책을 사전 고정하고 실행 승인",
+      "acceptance": "무차원 Action에 TEP 제약 이식 없이 공통 추천/독립 do 평가 contract",
       "depends_on": [
         "ENV-MVP"
       ]
@@ -232,13 +232,22 @@
       "id": "EVAL-MVP",
       "title": "구조 지표–추천 성능 비교",
       "status": "BLOCKED",
-      "evidence": "docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md",
-      "next_action": "새 graph-fit/Task/holdout batch 키로 실제 추천 성능 측정 후 Gate5 연결; 과거 F1 이식 금지",
-      "acceptance": "동일 참조환경·독립 효과/목표달성·실패 포함 비교; 반복/통계 정밀도 사전 고정",
+      "evidence": "docs/research_design/ENV_MVP_ACCEPTANCE.md",
+      "next_action": "승인 후 동일 새 관측 데이터에서 PC/BOSS/Direct 학습과 공통 Ridge 연결. Gaussian fixture의 가정 차이 명시; 과거 F1 혼합 금지",
+      "acceptance": "별도 graph-fit/holdout batch의 실제 학습·정책·평가 로그; 지금은 미실행",
       "depends_on": [
         "ENV-MVP",
         "POLICY-MVP"
       ]
+    },
+    {
+      "id": "ENV-EXAMPLE",
+      "title": "예제 FCM GT·관측·do adapter acceptance",
+      "status": "VERIFIED",
+      "evidence": "docs/research_design/ENV_MVP_ACCEPTANCE.md",
+      "next_action": "고정 source/lock/원시 잡음/배치 검증 재사용. 제조/시간/반사실 검증으로 확대하지 않음",
+      "acceptance": "6항목 예제 범위 통과·18batch/9통제·26단위 테스트 및 기록 검사",
+      "depends_on": []
     }
   ],
   "priority_order": [
@@ -271,7 +280,8 @@
     "Track A Gate에서 EXPORT-01을 추가해 원시 ZIP 접근과 실제 CSV export 연결을 구분했다. 기존 ID/실험 상태는 유지한다.",
     "2026-10-24 REF-B/SIM-B/DESIGN-B는 Track B 채택 전 타당성 조건이다. Track A 차단을 해제하거나 연구 전환을 뜻하지 않는다.",
     "2026-10-24 REF-B PARTIAL은 내부 물리 블록의 한 점 구현 검산만 뜻한다. 전체 Q2 BLOCKED/Track B NO-GO 유지, 추가 GT 후보/실험은 중단한다.",
-    "MVP-TECH는 실행 검증만 VERIFIED. ENV/POLICY/EVAL-MVP는 원래 지표–추천 성능 질문의 선결 단계다. REF-B 등 과거 ID와 차단 근거를 보존한다."
+    "MVP-TECH는 실행 검증만 VERIFIED. ENV/POLICY/EVAL-MVP는 원래 지표–추천 성능 질문의 선결 단계다. REF-B 등 과거 ID와 차단 근거를 보존한다.",
+    "ENV-EXAMPLE VERIFIED는 별도 승인된4노드IID fixture만 뜻한다. ENV-MVP는 broader 채택 미승인으로 PARTIAL; POLICY/EVAL 학습은 미실행이다."
   ],
   "integration_review": {
     "user_approved": true,
@@ -318,15 +328,17 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "미병합 PR6→7→8 위 기술 MVP. 가설 직접 검증/새 환경 채택은 미승인.",
+    "note": "미병합 PR6→7→8→9 위 예제 acceptance. 실행 승인과 Track B 채택/학습 승인을 구분.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "OPEN",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
-    "current_work_base": "feature/ref-b-minimal-subsystem",
+    "current_work_base": "feature/causal-metric-decision-mvp",
     "pr7_status": "OPEN",
     "pr7_head": "8634e5dce66460dc26441fc40e930c34ebc73af7",
     "pr8_status": "OPEN",
-    "pr8_head": "d508ab071f8e153698552ce69225a6eaf17a7150"
+    "pr8_head": "d508ab071f8e153698552ce69225a6eaf17a7150",
+    "pr9_status": "OPEN",
+    "pr9_head": "baf03e900a021d3d646779da219fd6bbd0de14ad"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -461,5 +473,38 @@
     "v1_executed_code_sha256": null,
     "v1_code_note": "명목 시계 버전 실행 당시 runner hash 별도 기록 없음. 원시 기록은 보존",
     "required_approval": "새 통제 평가환경 채택 및 새 관측 데이터/학습 실행은 별도 승인 필요"
+  },
+  "env_acceptance": {
+    "protocol": "ENV-MVP-EXAMPLE-FCM-v1",
+    "checked_at": "2026-10-24",
+    "base_commit": "baf03e900a021d3d646779da219fd6bbd0de14ad",
+    "base_branch": "feature/causal-metric-decision-mvp",
+    "pr6_to_pr9": "OPEN_STACKED_CI_SUCCESS",
+    "explicit_execution_approval_received": true,
+    "approval_scope": "소규모 예제 FCM acceptance만",
+    "status": "PASS_EXAMPLE_IID_FCM_ONLY",
+    "environment_id": "CAUSALASSEMBLY_EXAMPLE_IID_fc2162fe0666",
+    "checks": {
+      "declared_direct_graph": "PASS",
+      "observation_same_fcm": "PASS",
+      "do_replaces_equation": "PASS",
+      "same_variables_axis": "PASS_IID_SCHEMA_PHYSICAL_TIME_NOT_APPLICABLE",
+      "new_seed_reproducibility_and_split": "PASS",
+      "action_target_api": "PASS_EXAMPLE_ONLY"
+    },
+    "reference_scope": "검사에서 선언한4노드 IID linear Gaussian fixture",
+    "raw_batches": 18,
+    "sampler_calls": 27,
+    "physical_clock_validated": false,
+    "strict_counterfactual_ready": false,
+    "train_holdout_seed_split": true,
+    "unexpected_acceptance_failures": [],
+    "expected_failure": "승인 flag 없는 CLI는 PermissionError/exit1로 source 실행 전 거부",
+    "manufacturing_generator_validated": false,
+    "track_b_adopted": false,
+    "discovery_trained": false,
+    "scm_fitted": false,
+    "recovery_safety_computed": false,
+    "next_stage": "승인 범위/가정 고정 후 같은 환경의3개 새 학습 및 공통 정책 연결; 이번에는 미실행"
   }
 }

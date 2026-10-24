@@ -42,3 +42,9 @@
 완벽한 TEP 복원 자체를 최종 목표로 삼지 않고 구조 참조/독립 추천 평가가 같은 환경에 대응하는 최소 계약을 우선한다. 기존 정적3개 계수로 추천 계산을 구현했지만 benchmark와 Python TEP의 환경 차이가 있어 그 값을 실제 적용·채점하지 않는다. 기술 API 확인에는 사전 지정 동일 정책만 실행한다. 연구 join은 Gate1에서 거부한다.
 MVP-TECH VERIFIED는 dry 추천·로거·반복 실행만 뜻한다. 전체 가설 검증 NO-GO를 유지한다. 새 통제 후보 causalAssembly는 소스/API 검토만 했으며 채택·새 연구 데이터·학습은 별도 승인 대상이다. 그 후보의 adapter acceptance→공통 실제 정책→독립 평가 연결을 다음 실행 경로로 제안한다. RESEARCH_DESIGN·기존 frozen/Step6/적합/원시는 보존한다. 연관성 분석을 지표 개선의 인과효과로 해석하지 않는다.
 근거: docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md 및 research_runs/decision_mvp/.
+
+## 2026-10-24 — 예제 GT–관측–do 계약 acceptance
+
+사용자의 별도 실행 승인을 받아 고정 FCM 모듈을 격리 환경에서 검증했다. 직접 선언한4노드 IID 예제에서 reference·관측 생성·hard do 대체·seed분리·반복이 같은 계약으로 연결됨을 실행 확인했다. ENV-EXAMPLE만 VERIFIED이며 제조 generator나 Track B 채택으로 승격하지 않는다. 기존 TEP/CPCaD 결과와 혼합하지 않는다.
+같은 seed여도 do의 RNG 소비/순서 변화로 관측과 행별 잡음이 다름을 확인했다. 현재 계약은 IID 분포수준 do 평가에만 유효하고 물리시계/strict counterfactual은 미검증이다. 다음3개 알고리즘 학습·목표/비용·추천 연결은 가정/범위 고정과 별도 승인 후 실행한다. Gaussian 예제의 DirectLiNGAM 가정 차이를 숨기지 않는다.
+근거: docs/research_design/ENV_MVP_ACCEPTANCE.md 및 research_runs/env_acceptance/.

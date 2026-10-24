@@ -1,0 +1,81 @@
+{
+  "protocol": "ENV-MVP-EXAMPLE-FCM-v1",
+  "approved_scope": "사용자가 소규모 acceptance 실행을 별도 승인함. 격리 venv에서 고정 FCM 모듈만 실행",
+  "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "module_path": "causalAssembly/models_fcm.py",
+  "module_sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "nodes": [
+    "R",
+    "A",
+    "M",
+    "Y"
+  ],
+  "equations": {
+    "R": "u_R, u_R~Normal(0,1)",
+    "A": "2*R+u_A, u_A~Normal(0,0.5)",
+    "M": "3*A+u_M, u_M~Normal(0,1)",
+    "Y": "M+R+u_Y, u_Y~Normal(0,0.25)"
+  },
+  "expected_direct_edges": [
+    [
+      "R",
+      "A"
+    ],
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "R",
+      "Y"
+    ]
+  ],
+  "reference_scope": "선언된 완전관측 예제 FCM의 생성 구조. TEP/실물/제조 generator의 GT 아님",
+  "action": "A",
+  "target": "Y",
+  "action_values": [
+    -0.1,
+    0.1
+  ],
+  "units": "모든 예제 변수 무차원. 실제 밸브·공정 설정값 아님",
+  "sample_axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+  "sample_count": 64,
+  "train_seeds": [
+    3101
+  ],
+  "holdout_seeds": [
+    7101,
+    7102
+  ],
+  "repeats": 2,
+  "hook_control": "각 seed/조건에서 새 객체의 관찰 hook 없는 원래 API를1회 더 실행해 hook 결과와 exact 비교. 주 기록18batch+통제9batch",
+  "conditions": [
+    "observational",
+    "do_A_minus0.1",
+    "do_A_plus0.1"
+  ],
+  "mechanism_check": "무변경 원본 모듈의 sympy_sample 호출을 감싸 실제 반환 잡음/데이터를 기록하고 선언식과 행별 대조. 원래 sampler 반환값 유지",
+  "acceptance": {
+    "reference": "반환 노드/직접 adjacency가 선언된4간선 및 나머지 비간선과 정확 일치",
+    "observation": "각 행의 실제 잡음과 선언식 재구성 최대 절대 오차 <= 1e-10",
+    "do": "A부모 제거·A식 대체·A값 고정·나머지식/원본graph 보존과 샘플 재구성",
+    "schema": "동일 변수·단위·64개 sample index. 물리 시계 검증으로 표현 금지",
+    "repetition": "새 객체/seed에서 관측·각do 2회 CSV exact, train/holdout seed 분리",
+    "action_target": "A=-0.1/+0.1 실제 sampler 적용, Y기록. 성공/Recovery/Safety 기준 없음"
+  },
+  "same_seed_noise_policy": "개입으로 RNG소비가 달라질 수 있음. 기록한 공통 noise 비교로 검사; 불일치 시 개별 반사실/paired-noise 보장 금지. 분포 수준 do로만 사용",
+  "pr9_reuse": "static_mean_response의 선언 oracle 입력 단위 점검 및 require_research_environment의 환경ID/계약 guard 재사용. 학습/추천 성능 아님",
+  "forbidden": [
+    "manufacturing_generator_execution",
+    "discovery_training",
+    "SCM_fitting",
+    "TEP_GT_transfer",
+    "Track_B_adoption",
+    "Recovery_Safety_scoring"
+  ],
+  "failure_policy": "오류·check 실패는 출처 hash·환경과 함께 기록. 원본 모듈을 사후 패치해 PASS 만들지 않음"
+}

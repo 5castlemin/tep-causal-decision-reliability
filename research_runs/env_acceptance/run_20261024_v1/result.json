@@ -1,0 +1,1398 @@
+{
+  "protocol": "ENV-MVP-EXAMPLE-FCM-v1",
+  "status": "PASS_EXAMPLE_IID_FCM_ONLY",
+  "environment_id": "CAUSALASSEMBLY_EXAMPLE_IID_fc2162fe0666",
+  "approval": "사용자의 소규모 acceptance 별도 실행 승인",
+  "isolated_venv": true,
+  "python": "3.11.15",
+  "numpy": "2.4.6",
+  "pandas": "3.0.3",
+  "plan_sha256": "fc2162fe066676fb567ebaa099418f311ad3dbf04b7dbdf76b0d9d3ca893ec95",
+  "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "source_sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "source_loading_scope": "고정 원본 models_fcm.py 직접 import; 전체 package/R/DRF 제조 generator 설치·실행 아님",
+  "source_modified": false,
+  "source_hash_after": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "checks": {
+    "declared_direct_graph": "PASS",
+    "observation_same_fcm": "PASS",
+    "do_replaces_equation": "PASS",
+    "same_variables_axis": "PASS_IID_SCHEMA_PHYSICAL_TIME_NOT_APPLICABLE",
+    "new_seed_reproducibility_and_split": "PASS",
+    "action_target_api": "PASS_EXAMPLE_ONLY"
+  },
+  "records": [
+    {
+      "batch": "train__seed3101__observational__repeat0",
+      "split": "train",
+      "seed": 3101,
+      "condition": "observational",
+      "action": null,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/train__seed3101__observational__repeat0.csv",
+      "noise_file": "raw/train__seed3101__observational__repeat0__noise.csv",
+      "data_sha256": "03346622d5c53c6cd0e25ac11f3c5bd52489bb58043df2b9d4e2aeb614373a5d",
+      "noise_sha256": "8f95dda901c9eb654bc47443c37bf3021036187070aa26a5f4c2774abd8d4ee4",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": null
+      }
+    },
+    {
+      "batch": "train__seed3101__observational__repeat1",
+      "split": "train",
+      "seed": 3101,
+      "condition": "observational",
+      "action": null,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/train__seed3101__observational__repeat1.csv",
+      "noise_file": "raw/train__seed3101__observational__repeat1__noise.csv",
+      "data_sha256": "03346622d5c53c6cd0e25ac11f3c5bd52489bb58043df2b9d4e2aeb614373a5d",
+      "noise_sha256": "8f95dda901c9eb654bc47443c37bf3021036187070aa26a5f4c2774abd8d4ee4",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": null
+      }
+    },
+    {
+      "batch": "train__seed3101__do_A_minus0.1__repeat0",
+      "split": "train",
+      "seed": 3101,
+      "condition": "do_A_minus0.1",
+      "action": -0.1,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/train__seed3101__do_A_minus0.1__repeat0.csv",
+      "noise_file": "raw/train__seed3101__do_A_minus0.1__repeat0__noise.csv",
+      "data_sha256": "3402f0b26460bf2c213fbddfdfc244f590893da3a02bc1fdea047db2cc0e3d16",
+      "noise_sha256": "04e3971941554a341b203df082bef5463771db046249dcd4f1d27fc783054ca0",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "-0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "train__seed3101__do_A_minus0.1__repeat1",
+      "split": "train",
+      "seed": 3101,
+      "condition": "do_A_minus0.1",
+      "action": -0.1,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/train__seed3101__do_A_minus0.1__repeat1.csv",
+      "noise_file": "raw/train__seed3101__do_A_minus0.1__repeat1__noise.csv",
+      "data_sha256": "3402f0b26460bf2c213fbddfdfc244f590893da3a02bc1fdea047db2cc0e3d16",
+      "noise_sha256": "04e3971941554a341b203df082bef5463771db046249dcd4f1d27fc783054ca0",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "-0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "train__seed3101__do_A_plus0.1__repeat0",
+      "split": "train",
+      "seed": 3101,
+      "condition": "do_A_plus0.1",
+      "action": 0.1,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/train__seed3101__do_A_plus0.1__repeat0.csv",
+      "noise_file": "raw/train__seed3101__do_A_plus0.1__repeat0__noise.csv",
+      "data_sha256": "2edab3db41596bf99fc967dc40dc7175107186a77b0f57dd205a0193575451c2",
+      "noise_sha256": "04e3971941554a341b203df082bef5463771db046249dcd4f1d27fc783054ca0",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "train__seed3101__do_A_plus0.1__repeat1",
+      "split": "train",
+      "seed": 3101,
+      "condition": "do_A_plus0.1",
+      "action": 0.1,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/train__seed3101__do_A_plus0.1__repeat1.csv",
+      "noise_file": "raw/train__seed3101__do_A_plus0.1__repeat1__noise.csv",
+      "data_sha256": "2edab3db41596bf99fc967dc40dc7175107186a77b0f57dd205a0193575451c2",
+      "noise_sha256": "04e3971941554a341b203df082bef5463771db046249dcd4f1d27fc783054ca0",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "holdout__seed7101__observational__repeat0",
+      "split": "holdout",
+      "seed": 7101,
+      "condition": "observational",
+      "action": null,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7101__observational__repeat0.csv",
+      "noise_file": "raw/holdout__seed7101__observational__repeat0__noise.csv",
+      "data_sha256": "310e8fca4b35e7c78155596c5f8bb4141052d5e795f115de9d96f1be8f7aae1e",
+      "noise_sha256": "da1c4c670582db3bff1b90f0814506d5fa99438c3ad802831b3fb5603ec7055b",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": null
+      }
+    },
+    {
+      "batch": "holdout__seed7101__observational__repeat1",
+      "split": "holdout",
+      "seed": 7101,
+      "condition": "observational",
+      "action": null,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7101__observational__repeat1.csv",
+      "noise_file": "raw/holdout__seed7101__observational__repeat1__noise.csv",
+      "data_sha256": "310e8fca4b35e7c78155596c5f8bb4141052d5e795f115de9d96f1be8f7aae1e",
+      "noise_sha256": "da1c4c670582db3bff1b90f0814506d5fa99438c3ad802831b3fb5603ec7055b",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": null
+      }
+    },
+    {
+      "batch": "holdout__seed7101__do_A_minus0.1__repeat0",
+      "split": "holdout",
+      "seed": 7101,
+      "condition": "do_A_minus0.1",
+      "action": -0.1,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7101__do_A_minus0.1__repeat0.csv",
+      "noise_file": "raw/holdout__seed7101__do_A_minus0.1__repeat0__noise.csv",
+      "data_sha256": "bb1673a4cd7e066838ba41bb53a294f49442d3e1f8a0e6a5296d368c8d411f8a",
+      "noise_sha256": "c8da4934f172ddb24a2be10ac932ea5e10282ee47ec1f90b2cde73d4dd37a7f5",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "-0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "holdout__seed7101__do_A_minus0.1__repeat1",
+      "split": "holdout",
+      "seed": 7101,
+      "condition": "do_A_minus0.1",
+      "action": -0.1,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7101__do_A_minus0.1__repeat1.csv",
+      "noise_file": "raw/holdout__seed7101__do_A_minus0.1__repeat1__noise.csv",
+      "data_sha256": "bb1673a4cd7e066838ba41bb53a294f49442d3e1f8a0e6a5296d368c8d411f8a",
+      "noise_sha256": "c8da4934f172ddb24a2be10ac932ea5e10282ee47ec1f90b2cde73d4dd37a7f5",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "-0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "holdout__seed7101__do_A_plus0.1__repeat0",
+      "split": "holdout",
+      "seed": 7101,
+      "condition": "do_A_plus0.1",
+      "action": 0.1,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7101__do_A_plus0.1__repeat0.csv",
+      "noise_file": "raw/holdout__seed7101__do_A_plus0.1__repeat0__noise.csv",
+      "data_sha256": "f407f54a6f87e726a45c9fef7c6491f713887aba2bbd6b6380200227977181d6",
+      "noise_sha256": "c8da4934f172ddb24a2be10ac932ea5e10282ee47ec1f90b2cde73d4dd37a7f5",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "holdout__seed7101__do_A_plus0.1__repeat1",
+      "split": "holdout",
+      "seed": 7101,
+      "condition": "do_A_plus0.1",
+      "action": 0.1,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7101__do_A_plus0.1__repeat1.csv",
+      "noise_file": "raw/holdout__seed7101__do_A_plus0.1__repeat1__noise.csv",
+      "data_sha256": "f407f54a6f87e726a45c9fef7c6491f713887aba2bbd6b6380200227977181d6",
+      "noise_sha256": "c8da4934f172ddb24a2be10ac932ea5e10282ee47ec1f90b2cde73d4dd37a7f5",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "holdout__seed7102__observational__repeat0",
+      "split": "holdout",
+      "seed": 7102,
+      "condition": "observational",
+      "action": null,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7102__observational__repeat0.csv",
+      "noise_file": "raw/holdout__seed7102__observational__repeat0__noise.csv",
+      "data_sha256": "85998fcc15dbbffc30dd3005101f5c70fef6878f8747edbab9de4ae808ba4f14",
+      "noise_sha256": "a1c7fe60a70f682a9401d1535aa83a79fa79a5ca776a6a33999a35947bcc1bea",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": null
+      }
+    },
+    {
+      "batch": "holdout__seed7102__observational__repeat1",
+      "split": "holdout",
+      "seed": 7102,
+      "condition": "observational",
+      "action": null,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7102__observational__repeat1.csv",
+      "noise_file": "raw/holdout__seed7102__observational__repeat1__noise.csv",
+      "data_sha256": "85998fcc15dbbffc30dd3005101f5c70fef6878f8747edbab9de4ae808ba4f14",
+      "noise_sha256": "a1c7fe60a70f682a9401d1535aa83a79fa79a5ca776a6a33999a35947bcc1bea",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": null
+      }
+    },
+    {
+      "batch": "holdout__seed7102__do_A_minus0.1__repeat0",
+      "split": "holdout",
+      "seed": 7102,
+      "condition": "do_A_minus0.1",
+      "action": -0.1,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7102__do_A_minus0.1__repeat0.csv",
+      "noise_file": "raw/holdout__seed7102__do_A_minus0.1__repeat0__noise.csv",
+      "data_sha256": "341a21a86ef33c08e4ff91eebe2ef98b4ed53e0f54cffe079806eac4cc42ca73",
+      "noise_sha256": "feb0790a11ce87fd17da779818e08a154cb655c75812eed36590da6766583c7b",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "-0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "holdout__seed7102__do_A_minus0.1__repeat1",
+      "split": "holdout",
+      "seed": 7102,
+      "condition": "do_A_minus0.1",
+      "action": -0.1,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7102__do_A_minus0.1__repeat1.csv",
+      "noise_file": "raw/holdout__seed7102__do_A_minus0.1__repeat1__noise.csv",
+      "data_sha256": "341a21a86ef33c08e4ff91eebe2ef98b4ed53e0f54cffe079806eac4cc42ca73",
+      "noise_sha256": "feb0790a11ce87fd17da779818e08a154cb655c75812eed36590da6766583c7b",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "-0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "holdout__seed7102__do_A_plus0.1__repeat0",
+      "split": "holdout",
+      "seed": 7102,
+      "condition": "do_A_plus0.1",
+      "action": 0.1,
+      "repeat": 0,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7102__do_A_plus0.1__repeat0.csv",
+      "noise_file": "raw/holdout__seed7102__do_A_plus0.1__repeat0__noise.csv",
+      "data_sha256": "2820fb0123fbf7ba2720758de9c0cb1201f4c6a92b5f55daf545370f1f64c209",
+      "noise_sha256": "feb0790a11ce87fd17da779818e08a154cb655c75812eed36590da6766583c7b",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "batch": "holdout__seed7102__do_A_plus0.1__repeat1",
+      "split": "holdout",
+      "seed": 7102,
+      "condition": "do_A_plus0.1",
+      "action": 0.1,
+      "repeat": 1,
+      "count": 64,
+      "axis": "IID_SAMPLE_INDEX_ONLY_NO_PHYSICAL_CLOCK",
+      "data_file": "raw/holdout__seed7102__do_A_plus0.1__repeat1.csv",
+      "noise_file": "raw/holdout__seed7102__do_A_plus0.1__repeat1__noise.csv",
+      "data_sha256": "2820fb0123fbf7ba2720758de9c0cb1201f4c6a92b5f55daf545370f1f64c209",
+      "noise_sha256": "feb0790a11ce87fd17da779818e08a154cb655c75812eed36590da6766583c7b",
+      "mechanism_max_abs_error": {
+        "R": 0.0,
+        "A": 0.0,
+        "M": 0.0,
+        "Y": 0.0
+      },
+      "metadata": {
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "original_terms": {
+          "R": "u_R",
+          "A": "2*R + u_A",
+          "M": "3*A + u_M",
+          "Y": "M + R + u_Y"
+        },
+        "source_column_order": [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ],
+        "mutilated": {
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "action_term": "0.100000000000000",
+          "action_parents": [],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    }
+  ],
+  "repeat_checks": [
+    {
+      "seed": 3101,
+      "condition": "observational",
+      "data_exact": true,
+      "noise_exact": true
+    },
+    {
+      "seed": 3101,
+      "condition": "do_A_minus0.1",
+      "data_exact": true,
+      "noise_exact": true
+    },
+    {
+      "seed": 3101,
+      "condition": "do_A_plus0.1",
+      "data_exact": true,
+      "noise_exact": true
+    },
+    {
+      "seed": 7101,
+      "condition": "observational",
+      "data_exact": true,
+      "noise_exact": true
+    },
+    {
+      "seed": 7101,
+      "condition": "do_A_minus0.1",
+      "data_exact": true,
+      "noise_exact": true
+    },
+    {
+      "seed": 7101,
+      "condition": "do_A_plus0.1",
+      "data_exact": true,
+      "noise_exact": true
+    },
+    {
+      "seed": 7102,
+      "condition": "observational",
+      "data_exact": true,
+      "noise_exact": true
+    },
+    {
+      "seed": 7102,
+      "condition": "do_A_minus0.1",
+      "data_exact": true,
+      "noise_exact": true
+    },
+    {
+      "seed": 7102,
+      "condition": "do_A_plus0.1",
+      "data_exact": true,
+      "noise_exact": true
+    }
+  ],
+  "hook_controls": [
+    {
+      "seed": 3101,
+      "condition": "observational",
+      "exact": true
+    },
+    {
+      "seed": 3101,
+      "condition": "do_A_minus0.1",
+      "exact": true
+    },
+    {
+      "seed": 3101,
+      "condition": "do_A_plus0.1",
+      "exact": true
+    },
+    {
+      "seed": 7101,
+      "condition": "observational",
+      "exact": true
+    },
+    {
+      "seed": 7101,
+      "condition": "do_A_minus0.1",
+      "exact": true
+    },
+    {
+      "seed": 7101,
+      "condition": "do_A_plus0.1",
+      "exact": true
+    },
+    {
+      "seed": 7102,
+      "condition": "observational",
+      "exact": true
+    },
+    {
+      "seed": 7102,
+      "condition": "do_A_minus0.1",
+      "exact": true
+    },
+    {
+      "seed": 7102,
+      "condition": "do_A_plus0.1",
+      "exact": true
+    }
+  ],
+  "common_noise_checks": [
+    {
+      "seed": 3101,
+      "condition": "do_A_minus0.1",
+      "per_noise_equal": {
+        "u_M": false,
+        "u_R": false,
+        "u_Y": false
+      },
+      "removed_noise": [
+        "u_A"
+      ],
+      "interpretation": "동일 seed가 행별 동일 외생 잡음을 보장하는지 관찰. 불일치하면 분포수준 do만 허용"
+    },
+    {
+      "seed": 3101,
+      "condition": "do_A_plus0.1",
+      "per_noise_equal": {
+        "u_M": false,
+        "u_R": false,
+        "u_Y": false
+      },
+      "removed_noise": [
+        "u_A"
+      ],
+      "interpretation": "동일 seed가 행별 동일 외생 잡음을 보장하는지 관찰. 불일치하면 분포수준 do만 허용"
+    },
+    {
+      "seed": 7101,
+      "condition": "do_A_minus0.1",
+      "per_noise_equal": {
+        "u_M": false,
+        "u_R": false,
+        "u_Y": false
+      },
+      "removed_noise": [
+        "u_A"
+      ],
+      "interpretation": "동일 seed가 행별 동일 외생 잡음을 보장하는지 관찰. 불일치하면 분포수준 do만 허용"
+    },
+    {
+      "seed": 7101,
+      "condition": "do_A_plus0.1",
+      "per_noise_equal": {
+        "u_M": false,
+        "u_R": false,
+        "u_Y": false
+      },
+      "removed_noise": [
+        "u_A"
+      ],
+      "interpretation": "동일 seed가 행별 동일 외생 잡음을 보장하는지 관찰. 불일치하면 분포수준 do만 허용"
+    },
+    {
+      "seed": 7102,
+      "condition": "do_A_minus0.1",
+      "per_noise_equal": {
+        "u_M": false,
+        "u_R": false,
+        "u_Y": false
+      },
+      "removed_noise": [
+        "u_A"
+      ],
+      "interpretation": "동일 seed가 행별 동일 외생 잡음을 보장하는지 관찰. 불일치하면 분포수준 do만 허용"
+    },
+    {
+      "seed": 7102,
+      "condition": "do_A_plus0.1",
+      "per_noise_equal": {
+        "u_M": false,
+        "u_R": false,
+        "u_Y": false
+      },
+      "removed_noise": [
+        "u_A"
+      ],
+      "interpretation": "동일 seed가 행별 동일 외생 잡음을 보장하는지 관찰. 불일치하면 분포수준 do만 허용"
+    }
+  ],
+  "raw_batches": 18,
+  "sampler_calls_including_unhooked_controls": 27,
+  "new_seed_observations_distinct": true,
+  "pr9_reuse": {
+    "oracle_mean_response": {
+      "-0.1": -0.30000000000000004,
+      "0.1": 0.30000000000000004
+    },
+    "same_fixture_guard_accepted": true,
+    "cross_environment_rejected": true,
+    "learned_coefficients": false
+  },
+  "permitted_estimand": "IID 분포의 do(A=a)에서 Y 반응. 행별 동일 잡음 반사실과 구분",
+  "strict_counterfactual_ready": false,
+  "manufacturing_generator_validated": false,
+  "track_b_adopted": false,
+  "discovery_trained": false,
+  "scm_fitted": false,
+  "recovery_safety_computed": false
+}
