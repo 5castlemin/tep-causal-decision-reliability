@@ -34,3 +34,7 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 - `experiments/pilot/`: Gate 상태, 수치 진단 요약, 실제 시뮬레이터가 생겼을 때의 검증 자리
 
 원본 자료의 출처와 해시는 [산출물 목록](docs/audit/ARTIFACT_INVENTORY.md)에 있다. 팀원 초대와 브랜치 규칙은 [기여 안내](CONTRIBUTING.md), [협업자 설정](COLLABORATOR_SETUP.md)을 참고한다.
+
+## 별도 합성 예제의 통합 실험
+
+[첫 통합 실험 보고서](docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md)와 [실행 안내](research_runs/first_integrated_pilot/README.md)에 새4변수 IID 환경의 실제 PC/BOSS/Direct 학습·공통 추천·독립 do 평가를 보존했다. Normal/Uniform은 별도 실험이며 Gaussian Direct는 가정 불일치 진단이다. 기존 TEP 7개 그래프·F1·적합과 혼합하지 않는다. 제조 환경/Recovery/Safety/원래 가설의 검증 완료를 뜻하지 않는다.

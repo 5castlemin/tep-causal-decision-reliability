@@ -1,0 +1,7 @@
+{
+  "status": "FAILED_ENVIRONMENT_INVOCATION",
+  "cause": "nested subprocess python resolved to a different interpreter without numpy",
+  "original_raw_sha256": "f7bec70ddc12e58a43143b651cd0ad9da7f99580caa67884a4dc2218d82fbb7d",
+  "resolution": "use explicit isolated venv Python for every child process",
+  "final_results": "validation_results_final.json"
+}

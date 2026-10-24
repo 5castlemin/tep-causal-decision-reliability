@@ -48,3 +48,9 @@ MVP-TECH VERIFIED는 dry 추천·로거·반복 실행만 뜻한다. 전체 가�
 사용자의 별도 실행 승인을 받아 고정 FCM 모듈을 격리 환경에서 검증했다. 직접 선언한4노드 IID 예제에서 reference·관측 생성·hard do 대체·seed분리·반복이 같은 계약으로 연결됨을 실행 확인했다. ENV-EXAMPLE만 VERIFIED이며 제조 generator나 Track B 채택으로 승격하지 않는다. 기존 TEP/CPCaD 결과와 혼합하지 않는다.
 같은 seed여도 do의 RNG 소비/순서 변화로 관측과 행별 잡음이 다름을 확인했다. 현재 계약은 IID 분포수준 do 평가에만 유효하고 물리시계/strict counterfactual은 미검증이다. 다음3개 알고리즘 학습·목표/비용·추천 연결은 가정/범위 고정과 별도 승인 후 실행한다. Gaussian 예제의 DirectLiNGAM 가정 차이를 숨기지 않는다.
 근거: docs/research_design/ENV_MVP_ACCEPTANCE.md 및 research_runs/env_acceptance/.
+
+## 2026-10-24 — 합성 통합 실험 범위와 해석
+- 사용자 명시 실행 요청에 따라 고정4변수의 Normal과 독립 Uniform 잡음 실험을 분리했다. Gaussian Direct는 가정불일치 진단, Uniform BOSS는 quasi-Gaussian 점수 한계로 표시한다. 제조 Track B 채택이나 연구 질문 변경은 승인/실행하지 않았다.
+- GT 방향 보완 대신 confirmed-only 부모와 경로 없는 경우의 기준 조작0 대체를 사전 고정했다. 미확정 CPDAG와 DAG의 성능 차이에는 표현/정책/식별 가정이 혼재하므로 알고리즘 순위의 인과 주장을 금지한다.
+- 예측을 먼저 동결하고 독립 do 평균/별도 기준 평균으로 효과를 평가한다. 같은 seed 행별 반사실 정렬을 가정하지 않는다. 같은 seed 전체 replay/공유 action holdout을 독립 graph-fit으로 세지 않는다.
+- 다음은 graph-fit cluster·다중 과제·사전 정밀도 조건 설계다. 한 과제의 목표손실·효과오차와 F1 차이는 탐색 관찰일 뿐 원래 제조 가설의 검증 완료가 아니다.

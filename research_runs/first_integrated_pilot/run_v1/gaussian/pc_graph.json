@@ -1,0 +1,86 @@
+{
+  "status": "LEARNED",
+  "column_order": [
+    "Y",
+    "R",
+    "M",
+    "A"
+  ],
+  "seed": 51013,
+  "confirmed_edges": [
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "R",
+      "Y"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "A",
+      "M"
+    ],
+    [
+      "A",
+      "R"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "R",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "M",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "R",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        -1,
+        -1,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.0,
+  "assumption_role": "PRIMARY_COMPARISON"
+}

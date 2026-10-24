@@ -1,0 +1,177 @@
+{
+  "protocol": "FIRST-INTEGRATED-PILOT-v1",
+  "scope": "사용자의 이번 명시적 실행 지시에 따른 소규모 인공 IID 연결 실험. 제조 환경 채택 아님",
+  "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "source_sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "nodes": [
+    "R",
+    "A",
+    "M",
+    "Y"
+  ],
+  "algorithm_column_order": [
+    "Y",
+    "R",
+    "M",
+    "A"
+  ],
+  "equations": [
+    "R=u_R",
+    "A=2R+u_A",
+    "M=3A+u_M",
+    "Y=M+R+u_Y"
+  ],
+  "reference_edges": [
+    [
+      "R",
+      "A"
+    ],
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "R",
+      "Y"
+    ]
+  ],
+  "reference_use": "선언 환경 acceptance 및 학습/추천 고정 후 구조 채점만. 알고리즘/threshold/목적 튜닝에 사용 금지",
+  "data": {
+    "train_n": 512,
+    "validation_n": 256,
+    "graph_fit_repetitions_per_family": 1,
+    "reuse_acceptance_data": false
+  },
+  "families": {
+    "gaussian": {
+      "train_seed": 51011,
+      "validation_seed": 51012,
+      "algorithm_seed": 51013,
+      "pc_test": "fisherz",
+      "directlingam_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+    },
+    "uniform": {
+      "train_seed": 61011,
+      "validation_seed": 61012,
+      "algorithm_seed": 61013,
+      "pc_test": "kci",
+      "directlingam_role": "NON_GAUSSIAN_COMPARISON"
+    }
+  },
+  "noise": {
+    "gaussian_sd": {
+      "u_R": 1.0,
+      "u_A": 0.5,
+      "u_M": 1.0,
+      "u_Y": 0.25
+    },
+    "uniform_half_width": {
+      "u_R": 1.7320508075688772,
+      "u_A": 0.8660254037844386,
+      "u_M": 1.7320508075688772,
+      "u_Y": 0.4330127018922193
+    },
+    "uniform_validation": "실제 원본 sampler의 Uniform 분포 객체·범위·식 재구성·seed exact·hook 없는 대조·do 식 대체를 확인한 경우만 실험2 허용",
+    "uniform_acceptance_seeds": [
+      81011,
+      81012
+    ],
+    "acceptance_n": 64
+  },
+  "algorithms": {
+    "pc": {
+      "package": "causal-learn==0.1.4.8",
+      "stable": true,
+      "alpha": 0.01,
+      "uc_rule": 0,
+      "uc_priority": 2,
+      "background_knowledge": null,
+      "kci_approx": true
+    },
+    "boss": {
+      "package": "causal-learn==0.1.4.8",
+      "score_func": "local_score_BIC",
+      "lambda_value": 2.0,
+      "scope": "공식 문서에 있는 Python BOSS, 과거 Tetrad Final 재현 아님. Uniform에서는 Gaussian BIC의 quasi-score 가정 차이 명시"
+    },
+    "directlingam": {
+      "package": "lingam==1.13.0",
+      "measure": "pwling",
+      "prior_knowledge": null,
+      "edge_abs_threshold": 0.05
+    }
+  },
+  "scm": {
+    "family": "LINEAR_ADDITIVE_RIDGE",
+    "parents": "CONFIRMED_ONLY",
+    "scaler": "train-only mean/std ddof0",
+    "intercept_penalized": false,
+    "alpha_grid": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "selection": "각 family 공통 alpha: 별도 validation seed의 전체 노드 표준화 MSE를 graph 등가 평균해 최소 선택, 정확동률 더 강한 규제. Gaussian은 PC/BOSS만 선택에 사용하고 진단 Direct에도 같은 alpha 적용",
+    "cycle_policy": "실패 기록; 간선 수정 금지",
+    "no_confirmed_path_policy": "기준 A=0을 사전 fallback으로 실행하고 NO_CONFIRMED_PATH_BASELINE_FALLBACK 기록. 정보 있는 추천과 구분"
+  },
+  "policy": {
+    "action": "A",
+    "target": "Y",
+    "units": "dimensionless",
+    "action_values": [
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "reference_action": 0.0,
+    "target_value": 1.5,
+    "cost_weight": 0.2,
+    "objective": "(predicted_mean_Y-1.5)^2+0.2*(A-0)^2",
+    "ties": "작은 |A|, 이후 A값 순서",
+    "freeze_before_holdout": true
+  },
+  "evaluation": {
+    "n_per_batch": 1024,
+    "independent_batches_per_action": 3,
+    "seed_formula": "family gaussian base=910000, uniform base=920000. grid action index i의 batch j seed=base+100*i+j (i=0..4,j=0..2). 별도 기준 do(A=0)는 base+1000+j",
+    "paired_noise_assumed": false,
+    "same_action_shared_across_models": true,
+    "ci": "IID 평균 SE와 normal-approx 95% CI (1.96*SE), graph 품질 연관성의 검정력/유의성 아님",
+    "estimand": "독립 do 샘플의 평균 Y. 효과는 별도 기준 do(A=0) 평균과의 차이",
+    "loss": "(actual_mean_Y-target)^2+declared_cost",
+    "regret": "동일 holdout 후보집합의 경험적 최소 loss 대비 차이; 후보선택 튜닝에 사용 금지"
+  },
+  "metrics": {
+    "skeleton_f1": "무방향쌍 기준",
+    "strict_directed_f1": "2*confirmed_correct/(predicted_pairs+reference_edges)",
+    "key_path": [
+      "A",
+      "M",
+      "Y"
+    ],
+    "direct_xy": [
+      "A",
+      "Y"
+    ],
+    "unresolved_xy": "UNKNOWN/null",
+    "shd": "누락+추가+역방향+GT미확정"
+  },
+  "failure_policy": "데이터/그래프/적합/추천 실패를 기록하고 GT로 보정하지 않음. Uniform 검증 실패시 Uniform 학습 금지",
+  "forbidden": [
+    "TEP_frozen_mutation",
+    "GT_tuning",
+    "combining_families_as_one",
+    "Recovery_Safety",
+    "hypothesis_proven_claim",
+    "manufacturing_adoption",
+    "automatic_merge"
+  ]
+}

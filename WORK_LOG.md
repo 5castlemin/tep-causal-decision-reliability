@@ -148,3 +148,12 @@
 - 승인 flag 없는 negative CLI를 별도 실행해 PermissionError/exit1로 source 실행 전 거부된 FAILURE.json/source·plan SHA 보존. 정상 acceptance 예기치 않은 실패 없음. 단위 테스트26개 통과; 변조source 거부·잘못된 식 탐지·삭제된 noise 없는 do 재구성 포함.
 - 예제 acceptance PASS_EXAMPLE_IID_FCM_ONLY, ENV-EXAMPLE VERIFIED, broader ENV-MVP PARTIAL로 기록. 제조/TrackB 채택·discovery/SCM 학습·Recovery/Safety 없음. 기존 CPCaD GT/frozenF1/적합/진단/과거MVP기록 불변. canonical JSON에서 상태 MD 재생성.
 - 추가 검증 통과: validate_env_acceptance.py(저장된 graph/data/noise 식·do·seed/split·hash·negative guard), validate_decision_mvp.py, REF-B/TrackA/TrackB/benchmark validators, graph39파일 hash·lag변환, PR integration, asset manifest, 상태·문서 동기화, git diff --check. CI는 이 기록 검사와 로컬26단위 테스트만 수행하며 후보 실행을 반복하지 않는다.
+
+## 2026-10-24 — 첫 번째 합성 통합 실험
+- PR6~10 OPEN/stacked 및 각 최신 CI success 재확인. PR10 ee5e0bd에서 feature/first-integrated-pilot 생성. main/사용자 변경 덮어쓰기 없음.
+- 사전 PLAN_v1 고정 후 fresh Gaussian/Uniform sampler·hard do acceptance 통과. 실제 PC-stable/BOSS/DirectLiNGAM 각2잡음군=6학습, train512/validation256, 공통 Ridge·목표1.5·비용0.2A²·5후보 추천을 holdout 전에 SHA 동결.
+- 잡음군별 6정책(5후보+독립 기준)×3seed×1024=18432 do 표본 실제 생성. PC/BOSS 확정 경로 부재는 기준0 대체로 기록; Direct는 두군 모두0.5 추천. Gaussian Direct는 비정규성 가정 불일치 진단. Uniform BOSS 준Gaussian 점수 한계 포함.
+- 새 격리환경 설치2회 실패 및3번째 성공 로그 보존. 같은 seed 전체 replay 데이터/모형/추천/평가/요약 exact, 독립 표본 수 추가하지 않음. 결과·코드·환경·source SHA와 원시 noise/CSV 보존.
+- research_runs/first_integrated_pilot/ 및 한국어 FIRST_INTEGRATED_PILOT_REPORT.md 추가. 기존 src/decision_mvp.py 평균 전개와 pilot_fit.py fit_ridge 재사용, 기존 적합/7 frozen/Step6/TEP data/진단 log/RESEARCH_DESIGN.md 불변. 제조 채택·Recovery/Safety·가설 입증 없음.
+- 실제 명령·실패 이력은 해당 README/SETUP_AND_EXECUTION.md. canonical 상태에서 PILOT-IID만 합성범위 VERIFIED; POLICY/EVAL-MVP는 PARTIAL로 업데이트하고 다음 독립 반복/과제 계약을 최우선으로 둔다.
+- 최종 검사: 단위31개·신규 raw/통계/native그래프/추천 검증·기존8종 기록검사·39 graph hash·asset/PR 통합·상태/문서 동기화·diff 검사 통과. 하위 subprocess의 다른 Python 선택으로 난 NumPy 미설치 실패는 원시 로그 보존 후 실험 venv 명시 재검사로 해결했다. validation_results.json(첫 실패 요약)/validation_results_final.json(재검사)을 구분한다.

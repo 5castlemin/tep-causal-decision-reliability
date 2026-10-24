@@ -1,0 +1,227 @@
+{
+  "status": "PASS",
+  "records": [
+    {
+      "seed": 81011,
+      "action": null,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "graph": true,
+        "index": true
+      },
+      "metadata": {
+        "distributions": {
+          "u_R": "NormalDistribution(0, 1)",
+          "u_A": "NormalDistribution(0, 0.5)",
+          "u_M": "NormalDistribution(0, 1)",
+          "u_Y": "NormalDistribution(0, 0.25)"
+        },
+        "errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        },
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "mutilated": null
+      }
+    },
+    {
+      "seed": 81011,
+      "action": 0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "graph": true,
+        "index": true,
+        "action_constant": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "other_equations": true,
+        "removed_noise": true
+      },
+      "metadata": {
+        "distributions": {
+          "u_R": "NormalDistribution(0, 1)",
+          "u_A": "NormalDistribution(0, 0.5)",
+          "u_M": "NormalDistribution(0, 1)",
+          "u_Y": "NormalDistribution(0, 0.25)"
+        },
+        "errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        },
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "mutilated": {
+          "action_term": "0.500000000000000",
+          "action_parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    },
+    {
+      "seed": 81012,
+      "action": null,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "graph": true,
+        "index": true
+      },
+      "metadata": {
+        "distributions": {
+          "u_R": "NormalDistribution(0, 1)",
+          "u_A": "NormalDistribution(0, 0.5)",
+          "u_M": "NormalDistribution(0, 1)",
+          "u_Y": "NormalDistribution(0, 0.25)"
+        },
+        "errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        },
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "mutilated": null
+      }
+    },
+    {
+      "seed": 81012,
+      "action": 0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "graph": true,
+        "index": true,
+        "action_constant": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "other_equations": true,
+        "removed_noise": true
+      },
+      "metadata": {
+        "distributions": {
+          "u_R": "NormalDistribution(0, 1)",
+          "u_A": "NormalDistribution(0, 0.5)",
+          "u_M": "NormalDistribution(0, 1)",
+          "u_Y": "NormalDistribution(0, 0.25)"
+        },
+        "errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        },
+        "original_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "mutilated": {
+          "action_term": "0.500000000000000",
+          "action_parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "nonaction_terms_unchanged": true
+        }
+      }
+    }
+  ]
+}

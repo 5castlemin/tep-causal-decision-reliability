@@ -1,0 +1,66 @@
+{
+  "checked_at": "2026-10-24",
+  "prs": [
+    {
+      "pr": 6,
+      "state": "open",
+      "merged": false,
+      "base": "main",
+      "base_sha": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
+      "head": "feature/track-a-recovery-gate",
+      "head_sha": "5fe3997d79a8244f4b156d5a335013337833b166"
+    },
+    {
+      "pr": 7,
+      "state": "open",
+      "merged": false,
+      "base": "feature/track-a-recovery-gate",
+      "base_sha": "5fe3997d79a8244f4b156d5a335013337833b166",
+      "head": "feature/track-b-reference-validity",
+      "head_sha": "8634e5dce66460dc26441fc40e930c34ebc73af7"
+    },
+    {
+      "pr": 8,
+      "state": "open",
+      "merged": false,
+      "base": "feature/track-b-reference-validity",
+      "base_sha": "8634e5dce66460dc26441fc40e930c34ebc73af7",
+      "head": "feature/ref-b-minimal-subsystem",
+      "head_sha": "d508ab071f8e153698552ce69225a6eaf17a7150"
+    },
+    {
+      "pr": 9,
+      "state": "open",
+      "merged": false,
+      "base": "feature/ref-b-minimal-subsystem",
+      "base_sha": "d508ab071f8e153698552ce69225a6eaf17a7150",
+      "head": "feature/causal-metric-decision-mvp",
+      "head_sha": "baf03e900a021d3d646779da219fd6bbd0de14ad"
+    },
+    {
+      "pr": 10,
+      "state": "open",
+      "merged": false,
+      "base": "feature/causal-metric-decision-mvp",
+      "base_sha": "baf03e900a021d3d646779da219fd6bbd0de14ad",
+      "head": "feature/env-mvp-acceptance",
+      "head_sha": "ee5e0bd83b78a753bf78d2b72b835fcce8ca2813"
+    }
+  ],
+  "ci_run_ids": [
+    39963153945,
+    40076485580,
+    40077615216,
+    40080445007,
+    40089086160
+  ],
+  "ci_conclusions": [
+    "success",
+    "success",
+    "success",
+    "success",
+    "success"
+  ],
+  "new_pr_base": "feature/env-mvp-acceptance",
+  "merged_by_this_task": false
+}

@@ -1,0 +1,95 @@
+[
+  {
+    "sequence": 0,
+    "stage": "PLAN_FROZEN",
+    "sha256": "a9a0eb225a4f5e46f0c9c1fc392b7db210f986e5014d1d7cc2e3fd0de76eaca2"
+  },
+  {
+    "sequence": 1,
+    "stage": "ACCEPTANCE",
+    "family": "gaussian",
+    "status": "PASS"
+  },
+  {
+    "sequence": 2,
+    "stage": "OBSERVATIONS_CREATED",
+    "family": "gaussian"
+  },
+  {
+    "sequence": 3,
+    "stage": "GRAPH_LEARNED",
+    "family": "gaussian",
+    "algorithm": "pc"
+  },
+  {
+    "sequence": 4,
+    "stage": "GRAPH_LEARNED",
+    "family": "gaussian",
+    "algorithm": "boss"
+  },
+  {
+    "sequence": 5,
+    "stage": "GRAPH_LEARNED",
+    "family": "gaussian",
+    "algorithm": "directlingam"
+  },
+  {
+    "sequence": 6,
+    "stage": "RECOMMENDATIONS_FROZEN",
+    "family": "gaussian",
+    "sha256": "6e3e1873f7114ece2e23ac3264a9dbefc236ff736e3677bad05caef286739b70"
+  },
+  {
+    "sequence": 7,
+    "stage": "HOLDOUT_EVALUATED",
+    "family": "gaussian",
+    "recommendations_sha256": "6e3e1873f7114ece2e23ac3264a9dbefc236ff736e3677bad05caef286739b70"
+  },
+  {
+    "sequence": 8,
+    "stage": "ACCEPTANCE",
+    "family": "uniform",
+    "status": "PASS"
+  },
+  {
+    "sequence": 9,
+    "stage": "OBSERVATIONS_CREATED",
+    "family": "uniform"
+  },
+  {
+    "sequence": 10,
+    "stage": "GRAPH_LEARNED",
+    "family": "uniform",
+    "algorithm": "pc"
+  },
+  {
+    "sequence": 11,
+    "stage": "GRAPH_LEARNED",
+    "family": "uniform",
+    "algorithm": "boss"
+  },
+  {
+    "sequence": 12,
+    "stage": "GRAPH_LEARNED",
+    "family": "uniform",
+    "algorithm": "directlingam"
+  },
+  {
+    "sequence": 13,
+    "stage": "RECOMMENDATIONS_FROZEN",
+    "family": "uniform",
+    "sha256": "d40d647c4632d6d3d6f40134edccff6ea172b9b2466e9cb8c3c96e590c3f3b92"
+  },
+  {
+    "sequence": 14,
+    "stage": "HOLDOUT_EVALUATED",
+    "family": "uniform",
+    "recommendations_sha256": "d40d647c4632d6d3d6f40134edccff6ea172b9b2466e9cb8c3c96e590c3f3b92"
+  },
+  {
+    "sequence": 15,
+    "stage": "COMPLETED",
+    "successful_model_rows": 6,
+    "failures": 0
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "status": "LEARNED",
+  "column_order": [
+    "Y",
+    "R",
+    "M",
+    "A"
+  ],
+  "seed": 61013,
+  "confirmed_edges": [
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "R",
+      "A"
+    ],
+    [
+      "R",
+      "Y"
+    ]
+  ],
+  "unresolved_pairs": [],
+  "native": {
+    "adjacency_child_parent": [
+      [
+        0.0,
+        0.14144607903888592,
+        0.8625463257066921,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.9870659956868314
+      ],
+      [
+        0.0,
+        0.971591746031676,
+        0.0,
+        0.0
+      ]
+    ],
+    "causal_order": [
+      "R",
+      "A",
+      "M",
+      "Y"
+    ]
+  },
+  "seconds": 0.030999999959021807,
+  "assumption_role": "NON_GAUSSIAN_COMPARISON"
+}

@@ -4,17 +4,17 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **ENV-MVP — 구조·추천 평가환경 대응**: 예제 IID FCM의 GT/관측/do acceptance 통과. 제조 generator/연구 환경 채택은 별도 승인; 시계·짝지은 잡음 한계 유지 (PARTIAL)
-2. **POLICY-MVP — 실제 추천 정책 연결**: 예제 연결 파일럿의 범위·noise 가정·목표·비용·Action 경계·분포수준 기준정책을 사전 고정하고 실행 승인 (BLOCKED)
-3. **EVAL-MVP — 구조 지표–추천 성능 비교**: 승인 후 동일 새 관측 데이터에서 PC/BOSS/Direct 학습과 공통 Ridge 연결. Gaussian fixture의 가정 차이 명시; 과거 F1 혼합 금지 (BLOCKED)
+1. **EVAL-MVP — 구조 지표–추천 성능 비교**: 독립 graph-fit seed·표본수·다중 과제의 다음 사전 실험 계획 고정; CPDAG/DAG와 기준대체 정책 혼란 분리 (PARTIAL)
+2. **POLICY-MVP — 실제 추천 정책 연결**: 다음 합성 다중과제의 목표·비용·확정 경로 없는 기준대체 정책을 사전 확정; 제조 Fault/안전 계약은 분리 유지 (PARTIAL)
+3. **ENV-MVP — 구조·추천 평가환경 대응**: 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 (PARTIAL)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| ENV-MVP | PARTIAL | 없음 | 예제 IID FCM의 GT/관측/do acceptance 통과. 제조 generator/연구 환경 채택은 별도 승인; 시계·짝지은 잡음 한계 유지 / 예제 계약과 broader 연구 채택 구분; 제조/동적/TEP 동등성 자동 승격 금지 |
-| POLICY-MVP | BLOCKED | ENV-MVP | 예제 연결 파일럿의 범위·noise 가정·목표·비용·Action 경계·분포수준 기준정책을 사전 고정하고 실행 승인 / 무차원 Action에 TEP 제약 이식 없이 공통 추천/독립 do 평가 contract |
-| EVAL-MVP | BLOCKED | ENV-MVP, POLICY-MVP | 승인 후 동일 새 관측 데이터에서 PC/BOSS/Direct 학습과 공통 Ridge 연결. Gaussian fixture의 가정 차이 명시; 과거 F1 혼합 금지 / 별도 graph-fit/holdout batch의 실제 학습·정책·평가 로그; 지금은 미실행 |
+| EVAL-MVP | PARTIAL | ENV-MVP, POLICY-MVP | 독립 graph-fit seed·표본수·다중 과제의 다음 사전 실험 계획 고정; CPDAG/DAG와 기준대체 정책 혼란 분리 / graph-fit cluster·과제 family·holdout을 구분한 반복계획 및 정밀도 기준, 상관/우월성 현재 미주장 |
+| POLICY-MVP | PARTIAL | ENV-MVP | 다음 합성 다중과제의 목표·비용·확정 경로 없는 기준대체 정책을 사전 확정; 제조 Fault/안전 계약은 분리 유지 / 합성 통합 6행 검증; 제조 일반화와 기준대체/정보 있는 추천 구분 |
+| ENV-MVP | PARTIAL | 없음 | 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 / 예제 계약과 broader 연구 채택 구분; 제조/동적/TEP 동등성 자동 승격 금지 |
 | REF-B | PARTIAL | 없음 | 최소 내부 상태식 검산 완료; 관측 projection/비간선/알고리즘 의미의 외부 방법론 검토 전 추가 GT·실험 중단 / 기존 discovery와 동일한 참조 정의·불확실/음성 쌍·채점 계약 검토; 현재 전체 Q2 BLOCKED |
 | SIM-B | PARTIAL | 없음 | 5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류 / 관측 정의 일치 후에만 정책·잡음·horizon의 별도 사전 계약 |
 | DESIGN-B | BLOCKED | REF-B, SIM-B | 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 / 독립 graph-fit·과제 family·평가 seed의 비교 계약과 유지/축소/보류 의사결정 |
@@ -44,5 +44,6 @@
 - 2026-10-24 REF-B PARTIAL은 내부 물리 블록의 한 점 구현 검산만 뜻한다. 전체 Q2 BLOCKED/Track B NO-GO 유지, 추가 GT 후보/실험은 중단한다.
 - MVP-TECH는 실행 검증만 VERIFIED. ENV/POLICY/EVAL-MVP는 원래 지표–추천 성능 질문의 선결 단계다. REF-B 등 과거 ID와 차단 근거를 보존한다.
 - ENV-EXAMPLE VERIFIED는 별도 승인된4노드IID fixture만 뜻한다. ENV-MVP는 broader 채택 미승인으로 PARTIAL; POLICY/EVAL 학습은 미실행이다.
+- 2026-10-24 PILOT-IID 신규: 사용자 명시 실행 지시로 두 잡음군 합성 통합만 VERIFIED. POLICY/EVAL-MVP는 해당 진전 PARTIAL이며 제조 가설 입증·Track B 채택 아님. env_acceptance/decision_mvp는 과거 실행 불변 기록이다.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

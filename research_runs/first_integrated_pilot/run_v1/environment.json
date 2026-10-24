@@ -1,0 +1,32 @@
+{
+  "python": "3.11.15",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.12.0",
+    "sympy": "1.14.0",
+    "networkx": "3.6.1",
+    "causal-learn": "0.1.4.8",
+    "lingam": "1.13.0",
+    "scikit-learn": "1.9.1",
+    "semopy": "2.3.11"
+  },
+  "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "upstream_module_sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "package_source_sha256": {
+    "BOSS": "0ac87ccc8bf053921461c711026c89ac8cf7620d4e9a127c88d391b2a433fabd",
+    "PC": "c2f4736f4c2fd7546e9b00791f7855d5463b79c51c12478bc6cdb3cf17b851cc",
+    "DirectLiNGAM": "b50514bdbff85f964933f2ad8772c1301878d862e87a6d5e7430ccaff2ddf0c0"
+  },
+  "plan_sha256": "a9a0eb225a4f5e46f0c9c1fc392b7db210f986e5014d1d7cc2e3fd0de76eaca2",
+  "base_commit": "ee5e0bd83b78a753bf78d2b72b835fcce8ca2813",
+  "command": "python -X utf8 scripts/run_first_integrated_pilot.py --module <pinned models_fcm.py> --output research_runs/first_integrated_pilot/run_v1",
+  "code_sha256": {
+    "scripts/run_first_integrated_pilot.py": "d6a67b999647aba83e8f0b052df7cd904bf1ac99a16ee826903b829f1dc78e68",
+    "src/integrated_pilot.py": "c2ff4d1bf0cb91f5206c285cf7b107c519aaa5598b2dc03e3d5c08327162d176",
+    "src/decision_mvp.py": "fb5c8247e9d91f554c2d6fdcb1fc81336d4d939ac2df20ea5c7fc4a666b486ca",
+    "src/fcm_acceptance_adapter.py": "7898c5d9739cfd32fd6db7610abe1452db4bd7cb9dd049c33c9a9e363897b605",
+    "src/pilot_fit.py": "a8889cbda6073d28bd4e9cbe660c6bab35ef07f16852c8f14f616ca13d1ff633"
+  }
+}

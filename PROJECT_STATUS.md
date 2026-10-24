@@ -26,10 +26,11 @@
 | SIM-B | Track B 제어기·잡음 정렬 계약 | PARTIAL | docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md | 5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류 |
 | DESIGN-B | Track B 가설 유지·통계 설계 | BLOCKED | docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md | 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 |
 | MVP-TECH | 공통 추천 dry-run·API 기술 파일럿 | VERIFIED | docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md | 기존3모델 추천 dry-run/정해진 조작 반복·로거 재사용; 가설 검증으로 해석 금지 |
-| ENV-MVP | 구조·추천 평가환경 대응 | PARTIAL | docs/research_design/ENV_MVP_ACCEPTANCE.md | 예제 IID FCM의 GT/관측/do acceptance 통과. 제조 generator/연구 환경 채택은 별도 승인; 시계·짝지은 잡음 한계 유지 |
-| POLICY-MVP | 실제 추천 정책 연결 | BLOCKED | docs/research_design/ENV_MVP_ACCEPTANCE.md | 예제 연결 파일럿의 범위·noise 가정·목표·비용·Action 경계·분포수준 기준정책을 사전 고정하고 실행 승인 |
-| EVAL-MVP | 구조 지표–추천 성능 비교 | BLOCKED | docs/research_design/ENV_MVP_ACCEPTANCE.md | 승인 후 동일 새 관측 데이터에서 PC/BOSS/Direct 학습과 공통 Ridge 연결. Gaussian fixture의 가정 차이 명시; 과거 F1 혼합 금지 |
+| ENV-MVP | 구조·추천 평가환경 대응 | PARTIAL | docs/research_design/ENV_MVP_ACCEPTANCE.md | 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 |
+| POLICY-MVP | 실제 추천 정책 연결 | PARTIAL | docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md | 다음 합성 다중과제의 목표·비용·확정 경로 없는 기준대체 정책을 사전 확정; 제조 Fault/안전 계약은 분리 유지 |
+| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | research_runs/first_integrated_pilot/run_v1/summary.csv | 독립 graph-fit seed·표본수·다중 과제의 다음 사전 실험 계획 고정; CPDAG/DAG와 기준대체 정책 혼란 분리 |
 | ENV-EXAMPLE | 예제 FCM GT·관측·do adapter acceptance | VERIFIED | docs/research_design/ENV_MVP_ACCEPTANCE.md | 고정 source/lock/원시 잡음/배치 검증 재사용. 제조/시간/반사실 검증으로 확대하지 않음 |
+| PILOT-IID | 4변수 합성 통합 학습·추천·do 실행 | VERIFIED | docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md; research_runs/first_integrated_pilot/reproducibility_check.json | 두 잡음군 별도 3학습/1과제 연결 결과를 유지하고 다중 독립 학습 조건 계획에 활용; 제조 채택 아님 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.
