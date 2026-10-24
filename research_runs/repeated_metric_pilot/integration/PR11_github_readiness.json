@@ -1,0 +1,960 @@
+{
+  "pr": 11,
+  "state": "closed",
+  "merged": true,
+  "mergeable": null,
+  "mergeable_state": "unknown",
+  "head_sha": "6d37d095998bf45bc532606fe8113fedd1b8f913",
+  "base": "main",
+  "base_sha": "c2d3a5c37a62d5dc28c204d31cf77081d6666bd6",
+  "main_sha": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
+  "main_protected": false,
+  "pr_workflows": [
+    {
+      "id": 40091401501,
+      "event": "pull_request",
+      "head_sha": "6d37d095998bf45bc532606fe8113fedd1b8f913",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40091401501"
+    },
+    {
+      "id": 40091367640,
+      "event": "push",
+      "head_sha": "6d37d095998bf45bc532606fe8113fedd1b8f913",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40091367640"
+    }
+  ],
+  "main_workflows": [
+    {
+      "id": 40093211965,
+      "event": "push",
+      "head_sha": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40093211965"
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 0
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "path": "DECISIONS.md",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 0
+    },
+    {
+      "path": "PRIORITIES.md",
+      "status": "modified",
+      "additions": 7,
+      "deletions": 6
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 3
+    },
+    {
+      "path": "README.md",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 0
+    },
+    {
+      "path": "WORK_LOG.md",
+      "status": "modified",
+      "additions": 9,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md",
+      "status": "added",
+      "additions": 100,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_state.json",
+      "status": "modified",
+      "additions": 53,
+      "deletions": 12
+    },
+    {
+      "path": "introduction.md",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/PLAN_v1.json",
+      "status": "added",
+      "additions": 50,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/README.md",
+      "status": "added",
+      "additions": 41,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/SETUP_AND_EXECUTION.md",
+      "status": "added",
+      "additions": 18,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/execution_console_provenance.json",
+      "status": "added",
+      "additions": 31,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/github_dependency_snapshot.json",
+      "status": "added",
+      "additions": 66,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/reproducibility_check.json",
+      "status": "added",
+      "additions": 177,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/SHA256.json",
+      "status": "added",
+      "additions": 131,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/environment.json",
+      "status": "added",
+      "additions": 32,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/execution_ledger.json",
+      "status": "added",
+      "additions": 95,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/failures.json",
+      "status": "added",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/81011_do.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/81011_do_noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/81011_obs.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/81011_obs_noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/81012_do.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/81012_do_noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/81012_obs.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/81012_obs_noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/acceptance/acceptance.json",
+      "status": "added",
+      "additions": 227,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_0_batch0.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_0_batch0_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_0_batch1.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_0_batch1_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_0_batch2.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_0_batch2_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_1_batch0.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_1_batch0_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_1_batch1.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_1_batch1_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_1_batch2.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_1_batch2_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_2_batch0.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_2_batch0_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_2_batch1.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_2_batch1_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_2_batch2.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_2_batch2_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_3_batch0.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_3_batch0_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_3_batch1.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_3_batch1_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_3_batch2.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_3_batch2_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_4_batch0.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_4_batch0_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_4_batch1.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_4_batch1_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_4_batch2.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/action_4_batch2_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/alpha_selection.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/boss_graph.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/boss_model.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/directlingam_graph.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/directlingam_model.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/independent_reference_batch0.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/independent_reference_batch0_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/independent_reference_batch1.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/independent_reference_batch1_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/independent_reference_batch2.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/independent_reference_batch2_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/intervention_evaluation.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/pc_graph.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/pc_model.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/recommendations_frozen.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/structural_metrics.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/train.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/train_generation.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/train_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/validation.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/validation_generation.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/gaussian/validation_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/plan.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/requirements.lock.txt",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/summary.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/summary.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/81011_do.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/81011_do_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/81011_obs.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/81011_obs_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/81012_do.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/81012_do_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/81012_obs.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/81012_obs_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/acceptance/acceptance.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_0_batch0.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_0_batch0_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_0_batch1.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_0_batch1_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_0_batch2.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_0_batch2_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_1_batch0.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_1_batch0_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_1_batch1.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_1_batch1_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_1_batch2.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_1_batch2_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_2_batch0.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_2_batch0_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_2_batch1.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_2_batch1_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_2_batch2.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_2_batch2_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_3_batch0.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_3_batch0_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_3_batch1.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_3_batch1_noise.csv",
+      "status": "added",
+      "additions": 1025,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_3_batch2.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_3_batch2_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_4_batch0.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_4_batch0_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_4_batch1.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_4_batch1_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_4_batch2.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/action_4_batch2_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/alpha_selection.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/boss_graph.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/boss_model.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/directlingam_graph.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/directlingam_model.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/independent_reference_batch0.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/independent_reference_batch0_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/independent_reference_batch1.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/independent_reference_batch1_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/independent_reference_batch2.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/independent_reference_batch2_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/intervention_evaluation.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/pc_graph.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/pc_model.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/recommendations_frozen.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/structural_metrics.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/train.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/train_generation.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/train_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/validation.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/validation_generation.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/uniform/validation_noise.csv",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/validation_results.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/validation_results_final.json",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "scripts/check_first_pilot_replay.py",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "scripts/run_first_integrated_pilot.py",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "scripts/validate_first_integrated_pilot.py",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "src/integrated_pilot.py",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "path": "tests/test_integrated_pilot.py",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    }
+  ]
+}

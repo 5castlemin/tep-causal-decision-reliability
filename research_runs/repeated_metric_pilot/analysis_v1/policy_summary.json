@@ -1,0 +1,420 @@
+[
+  {
+    "family": "gaussian",
+    "task_id": "A_M",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.9031496196831996,
+    "mean_target_loss": 2.09582979088938,
+    "mean_effect_absolute_error": 0.02737209063617445,
+    "fallback_count": 10,
+    "abstention_count": 6,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 16,
+      "0.5": 2
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "A_M",
+    "policy": "confirmed_only",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.9031496196831996,
+    "mean_target_loss": 2.09582979088938,
+    "mean_effect_absolute_error": 0.02737209063617445,
+    "fallback_count": 16,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 16,
+      "0.5": 2
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "A_M",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.6209153635321998,
+    "mean_target_loss": 1.4566702049120093,
+    "mean_effect_absolute_error": 0.22629563981182974,
+    "fallback_count": 10,
+    "abstention_count": 0,
+    "computed_baseline_count": 1,
+    "action_counts": {
+      "0.0": 11,
+      "0.5": 7
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "A_Y",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.9419312678319058,
+    "mean_target_loss": 2.144376999407719,
+    "mean_effect_absolute_error": 0.07703991471503305,
+    "fallback_count": 4,
+    "abstention_count": 12,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 16,
+      "0.5": 2
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "A_Y",
+    "policy": "confirmed_only",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.9419312678319058,
+    "mean_target_loss": 2.144376999407719,
+    "mean_effect_absolute_error": 0.07703991471503305,
+    "fallback_count": 16,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 16,
+      "0.5": 2
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "A_Y",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.41209492967645883,
+    "mean_target_loss": 0.9675189310809108,
+    "mean_effect_absolute_error": 0.48029881517475265,
+    "fallback_count": 4,
+    "abstention_count": 0,
+    "computed_baseline_count": 3,
+    "action_counts": {
+      "0.0": 7,
+      "0.5": 11
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "M_Y",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.3493295447824201,
+    "mean_target_loss": 0.5585385836944025,
+    "mean_effect_absolute_error": 0.019096158569001376,
+    "fallback_count": 4,
+    "abstention_count": 4,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "1.0": 9,
+      "0.0": 8,
+      "0.5": 1
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "M_Y",
+    "policy": "confirmed_only",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.263228660101211,
+    "mean_target_loss": 0.4702553350882069,
+    "mean_effect_absolute_error": 0.012856960316287504,
+    "fallback_count": 6,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "1.0": 11,
+      "0.0": 6,
+      "0.5": 1
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "M_Y",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.19190579359275295,
+    "mean_target_loss": 0.397124677039964,
+    "mean_effect_absolute_error": 0.03559542592448073,
+    "fallback_count": 4,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "1.0": 10,
+      "0.0": 4,
+      "0.5": 4
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "R_Y",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.9249288727720212,
+    "mean_target_loss": 11.934999037231622,
+    "mean_effect_absolute_error": 2.733394102126452,
+    "fallback_count": 3,
+    "abstention_count": 6,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "1.0": 8,
+      "0.0": 9,
+      "0.5": 1
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "R_Y",
+    "policy": "confirmed_only",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.9243892129855975,
+    "mean_target_loss": 11.928064808471289,
+    "mean_effect_absolute_error": 4.084333915854892,
+    "fallback_count": 5,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "1.0": 12,
+      "0.0": 5,
+      "0.5": 1
+    }
+  },
+  {
+    "family": "gaussian",
+    "task_id": "R_Y",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.5981024519444205,
+    "mean_target_loss": 7.735521470155568,
+    "mean_effect_absolute_error": 3.436680708763487,
+    "fallback_count": 3,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "1.0": 8,
+      "0.5": 7,
+      "0.0": 3
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "A_M",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.6564839311479661,
+    "mean_target_loss": 1.5271841667958228,
+    "mean_effect_absolute_error": 0.017109843033006358,
+    "fallback_count": 4,
+    "abstention_count": 8,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 12,
+      "0.5": 6
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "A_M",
+    "policy": "confirmed_only",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.6564839311479661,
+    "mean_target_loss": 1.5271841667958228,
+    "mean_effect_absolute_error": 0.017109843033006358,
+    "fallback_count": 12,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 12,
+      "0.5": 6
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "A_M",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.5470699426233051,
+    "mean_target_loss": 1.2811455271982202,
+    "mean_effect_absolute_error": 0.07516673914210202,
+    "fallback_count": 4,
+    "abstention_count": 0,
+    "computed_baseline_count": 6,
+    "action_counts": {
+      "0.0": 10,
+      "0.5": 8
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "A_Y",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.6148217734577309,
+    "mean_target_loss": 1.434171103640694,
+    "mean_effect_absolute_error": 0.04805694984779845,
+    "fallback_count": 2,
+    "abstention_count": 10,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 12,
+      "0.5": 6
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "A_Y",
+    "policy": "confirmed_only",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.6148217734577309,
+    "mean_target_loss": 1.434171103640694,
+    "mean_effect_absolute_error": 0.04805694984779845,
+    "fallback_count": 12,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 12,
+      "0.5": 6
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "A_Y",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.26503981192972237,
+    "mean_target_loss": 0.6489705455514195,
+    "mean_effect_absolute_error": 0.2827649779068998,
+    "fallback_count": 2,
+    "abstention_count": 0,
+    "computed_baseline_count": 2,
+    "action_counts": {
+      "0.0": 4,
+      "0.5": 13,
+      "1.0": 1
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "M_Y",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.24186096481912078,
+    "mean_target_loss": 0.4511820070917908,
+    "mean_effect_absolute_error": 0.02585150842016512,
+    "fallback_count": 0,
+    "abstention_count": 6,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 6,
+      "1.0": 12
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "M_Y",
+    "policy": "confirmed_only",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.0806203216063736,
+    "mean_target_loss": 0.2840739800894834,
+    "mean_effect_absolute_error": 0.010547122392049153,
+    "fallback_count": 2,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 2,
+      "1.0": 16
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "M_Y",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.0806203216063736,
+    "mean_target_loss": 0.2840739800894834,
+    "mean_effect_absolute_error": 0.02765890767713773,
+    "fallback_count": 0,
+    "abstention_count": 0,
+    "computed_baseline_count": 2,
+    "action_counts": {
+      "0.0": 2,
+      "1.0": 16
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "R_Y",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.6386791291814895,
+    "mean_target_loss": 8.04127653350842,
+    "mean_effect_absolute_error": 1.0615709173613521,
+    "fallback_count": 1,
+    "abstention_count": 8,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 9,
+      "0.5": 6,
+      "1.0": 3
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "R_Y",
+    "policy": "confirmed_only",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.648847951362732,
+    "mean_target_loss": 8.168506916947946,
+    "mean_effect_absolute_error": 3.351537524443041,
+    "fallback_count": 2,
+    "abstention_count": 0,
+    "computed_baseline_count": 0,
+    "action_counts": {
+      "0.0": 2,
+      "1.0": 10,
+      "0.5": 6
+    }
+  },
+  {
+    "family": "uniform",
+    "task_id": "R_Y",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_rows": 18,
+    "mean_relative_regret": 0.37728406422573146,
+    "mean_target_loss": 4.770750827506043,
+    "mean_effect_absolute_error": 2.0436251369208533,
+    "fallback_count": 1,
+    "abstention_count": 0,
+    "computed_baseline_count": 1,
+    "action_counts": {
+      "0.0": 2,
+      "1.0": 5,
+      "0.5": 11
+    }
+  }
+]

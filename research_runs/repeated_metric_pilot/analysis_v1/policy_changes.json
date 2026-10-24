@@ -1,0 +1,42 @@
+[
+  {
+    "family": "gaussian",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_cells": 72,
+    "changed_actions": 23,
+    "improved": 22,
+    "worsened": 1,
+    "unchanged": 49
+  },
+  {
+    "family": "gaussian",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_cells": 72,
+    "changed_actions": 6,
+    "improved": 0,
+    "worsened": 6,
+    "unchanged": 66
+  },
+  {
+    "family": "uniform",
+    "policy": "mec_minimax",
+    "dataset_clusters": 6,
+    "dependent_graph_task_cells": 72,
+    "changed_actions": 15,
+    "improved": 14,
+    "worsened": 1,
+    "unchanged": 57
+  },
+  {
+    "family": "uniform",
+    "policy": "abstain_on_disagreement",
+    "dataset_clusters": 6,
+    "dependent_graph_task_cells": 72,
+    "changed_actions": 11,
+    "improved": 7,
+    "worsened": 4,
+    "unchanged": 61
+  }
+]

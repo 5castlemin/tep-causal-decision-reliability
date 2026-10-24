@@ -4,16 +4,17 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **EVAL-MVP — 구조 지표–추천 성능 비교**: 독립 graph-fit seed·표본수·다중 과제의 다음 사전 실험 계획 고정; CPDAG/DAG와 기준대체 정책 혼란 분리 (PARTIAL)
-2. **POLICY-MVP — 실제 추천 정책 연결**: 다음 합성 다중과제의 목표·비용·확정 경로 없는 기준대체 정책을 사전 확정; 제조 Fault/안전 계약은 분리 유지 (PARTIAL)
-3. **ENV-MVP — 구조·추천 평가환경 대응**: 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 (PARTIAL)
+1. **EVAL-MVP — 구조 지표–추천 성능 비교**: 독립 graph-fit 반복/정밀도·지표 공선성·데이터 단위 holdout 계약을 사전 확정; 현재 조건별3반복으로 우월성 검정 미수행 (PARTIAL)
+2. **POLICY-MVP — 실제 추천 정책 연결**: 같은 그래프의 확정전용/minimax/보류 paired 차이와 표현·밀도·알고리즘 교란을 통제할 후속 비교 설계 (PARTIAL)
+3. **PILOT-REPEAT — 합성 독립 반복·4과제·미확정 정책 비교**: 42.5초 실행/실패0 근거로 확대 가능성만 기록. 더 큰 반복은 새 seed·평가 자료·과제 변동 조건을 사전 확정 후 수행 (VERIFIED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| EVAL-MVP | PARTIAL | ENV-MVP, POLICY-MVP | 독립 graph-fit seed·표본수·다중 과제의 다음 사전 실험 계획 고정; CPDAG/DAG와 기준대체 정책 혼란 분리 / graph-fit cluster·과제 family·holdout을 구분한 반복계획 및 정밀도 기준, 상관/우월성 현재 미주장 |
-| POLICY-MVP | PARTIAL | ENV-MVP | 다음 합성 다중과제의 목표·비용·확정 경로 없는 기준대체 정책을 사전 확정; 제조 Fault/안전 계약은 분리 유지 / 합성 통합 6행 검증; 제조 일반화와 기준대체/정보 있는 추천 구분 |
+| EVAL-MVP | PARTIAL | ENV-MVP, POLICY-MVP | 독립 graph-fit 반복/정밀도·지표 공선성·데이터 단위 holdout 계약을 사전 확정; 현재 조건별3반복으로 우월성 검정 미수행 / 새 확인용 seed/자료와 cluster·과제 단위의 사전 분석계획; 현재 탐색적 연관과 공식 추론 분리 |
+| POLICY-MVP | PARTIAL | ENV-MVP | 같은 그래프의 확정전용/minimax/보류 paired 차이와 표현·밀도·알고리즘 교란을 통제할 후속 비교 설계 / 합성432행·동치류 제약·독립 do 검증 완료, 정책 차이를 구조 지표 효과로 오인하지 않는 비교 |
+| PILOT-REPEAT | VERIFIED | PILOT-IID | 42.5초 실행/실패0 근거로 확대 가능성만 기록. 더 큰 반복은 새 seed·평가 자료·과제 변동 조건을 사전 확정 후 수행 / 12데이터/36학습/432정책행/55296 do 원시 식·통계·고정추천·해시 검사. 제조 가설 입증 아님 |
 | ENV-MVP | PARTIAL | 없음 | 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 / 예제 계약과 broader 연구 채택 구분; 제조/동적/TEP 동등성 자동 승격 금지 |
 | REF-B | PARTIAL | 없음 | 최소 내부 상태식 검산 완료; 관측 projection/비간선/알고리즘 의미의 외부 방법론 검토 전 추가 GT·실험 중단 / 기존 discovery와 동일한 참조 정의·불확실/음성 쌍·채점 계약 검토; 현재 전체 Q2 BLOCKED |
 | SIM-B | PARTIAL | 없음 | 5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류 / 관측 정의 일치 후에만 정책·잡음·horizon의 별도 사전 계약 |
@@ -45,5 +46,6 @@
 - MVP-TECH는 실행 검증만 VERIFIED. ENV/POLICY/EVAL-MVP는 원래 지표–추천 성능 질문의 선결 단계다. REF-B 등 과거 ID와 차단 근거를 보존한다.
 - ENV-EXAMPLE VERIFIED는 별도 승인된4노드IID fixture만 뜻한다. ENV-MVP는 broader 채택 미승인으로 PARTIAL; POLICY/EVAL 학습은 미실행이다.
 - 2026-10-24 PILOT-IID 신규: 사용자 명시 실행 지시로 두 잡음군 합성 통합만 VERIFIED. POLICY/EVAL-MVP는 해당 진전 PARTIAL이며 제조 가설 입증·Track B 채택 아님. env_acceptance/decision_mvp는 과거 실행 불변 기록이다.
+- 2026-10-24 사용자 승인으로 PR6~11 순차 일반 merge, main34b8dbe에서 PILOT-REPEAT 신규.12독립 데이터·36학습·4과제·3정책 실제 평가만 VERIFIED. 공식 지표 우월성/제조/Recovery/Safety는 미검증이며 POLICY/EVAL-MVP PARTIAL 유지.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

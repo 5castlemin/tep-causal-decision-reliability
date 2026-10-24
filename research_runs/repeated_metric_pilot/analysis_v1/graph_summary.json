@@ -1,0 +1,110 @@
+[
+  {
+    "family": "gaussian",
+    "train_n": 256,
+    "algorithm": "boss",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 1.0,
+    "mean_strict_directed_f1": 0.5,
+    "mean_unresolved_ratio": 0.5
+  },
+  {
+    "family": "gaussian",
+    "train_n": 256,
+    "algorithm": "directlingam",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 0.7111111111111111,
+    "mean_strict_directed_f1": 0.14074074074074075,
+    "mean_unresolved_ratio": 0.0
+  },
+  {
+    "family": "gaussian",
+    "train_n": 256,
+    "algorithm": "pc",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 0.8571428571428571,
+    "mean_strict_directed_f1": 0.5714285714285714,
+    "mean_unresolved_ratio": 0.3333333333333333
+  },
+  {
+    "family": "gaussian",
+    "train_n": 512,
+    "algorithm": "boss",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 0.9259259259259259,
+    "mean_strict_directed_f1": 0.16666666666666666,
+    "mean_unresolved_ratio": 0.8333333333333334
+  },
+  {
+    "family": "gaussian",
+    "train_n": 512,
+    "algorithm": "directlingam",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 0.8592592592592593,
+    "mean_strict_directed_f1": 0.5777777777777777,
+    "mean_unresolved_ratio": 0.0
+  },
+  {
+    "family": "gaussian",
+    "train_n": 512,
+    "algorithm": "pc",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 0.8571428571428571,
+    "mean_strict_directed_f1": 0.5714285714285714,
+    "mean_unresolved_ratio": 0.3333333333333333
+  },
+  {
+    "family": "uniform",
+    "train_n": 256,
+    "algorithm": "boss",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 1.0,
+    "mean_strict_directed_f1": 0.5,
+    "mean_unresolved_ratio": 0.5
+  },
+  {
+    "family": "uniform",
+    "train_n": 256,
+    "algorithm": "directlingam",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 0.9629629629629629,
+    "mean_strict_directed_f1": 0.9629629629629629,
+    "mean_unresolved_ratio": 0.0
+  },
+  {
+    "family": "uniform",
+    "train_n": 256,
+    "algorithm": "pc",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 0.6626984126984127,
+    "mean_strict_directed_f1": 0.25,
+    "mean_unresolved_ratio": 0.6666666666666666
+  },
+  {
+    "family": "uniform",
+    "train_n": 512,
+    "algorithm": "boss",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 1.0,
+    "mean_strict_directed_f1": 0.5,
+    "mean_unresolved_ratio": 0.5
+  },
+  {
+    "family": "uniform",
+    "train_n": 512,
+    "algorithm": "directlingam",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 1.0,
+    "mean_strict_directed_f1": 1.0,
+    "mean_unresolved_ratio": 0.0
+  },
+  {
+    "family": "uniform",
+    "train_n": 512,
+    "algorithm": "pc",
+    "independent_datasets": 3,
+    "mean_skeleton_f1": 0.9047619047619048,
+    "mean_strict_directed_f1": 0.5476190476190476,
+    "mean_unresolved_ratio": 0.3888888888888889
+  }
+]

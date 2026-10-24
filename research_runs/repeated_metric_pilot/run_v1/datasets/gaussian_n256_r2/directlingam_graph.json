@@ -1,0 +1,76 @@
+{
+  "graph_id": "gaussian_n256_r2__directlingam",
+  "dataset_id": "gaussian_n256_r2",
+  "family": "gaussian",
+  "train_n": 256,
+  "validation_n": 256,
+  "replicate": 2,
+  "train_seed": 1100101,
+  "validation_seed": 1100102,
+  "algorithm_seed": 1100103,
+  "algorithm": "directlingam",
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "A",
+      "M"
+    ],
+    [
+      "A",
+      "R"
+    ],
+    [
+      "A",
+      "Y"
+    ],
+    [
+      "R",
+      "M"
+    ],
+    [
+      "Y",
+      "M"
+    ],
+    [
+      "Y",
+      "R"
+    ]
+  ],
+  "unresolved_pairs": [],
+  "native": {
+    "adjacency_child_parent": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.9906481779741342
+      ],
+      [
+        0.44262914014124716,
+        0.0,
+        0.0,
+        0.5295944533579713
+      ],
+      [
+        1.0714773463857448,
+        -0.15395585086684482,
+        0.0,
+        0.07686525100152923
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "causal_order": [
+      "A",
+      "Y",
+      "R",
+      "M"
+    ]
+  },
+  "seconds": 0.030999999959021807,
+  "assumption_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+}

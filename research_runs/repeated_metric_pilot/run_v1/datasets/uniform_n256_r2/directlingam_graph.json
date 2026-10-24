@@ -1,0 +1,68 @@
+{
+  "graph_id": "uniform_n256_r2__directlingam",
+  "dataset_id": "uniform_n256_r2",
+  "family": "uniform",
+  "train_n": 256,
+  "validation_n": 256,
+  "replicate": 2,
+  "train_seed": 1100701,
+  "validation_seed": 1100702,
+  "algorithm_seed": 1100703,
+  "algorithm": "directlingam",
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "R",
+      "A"
+    ],
+    [
+      "R",
+      "Y"
+    ]
+  ],
+  "unresolved_pairs": [],
+  "native": {
+    "adjacency_child_parent": [
+      [
+        0.0,
+        0.12668847927554155,
+        0.8773432082165292,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.9870891294425445
+      ],
+      [
+        0.0,
+        0.9707298245083471,
+        0.0,
+        0.0
+      ]
+    ],
+    "causal_order": [
+      "R",
+      "A",
+      "M",
+      "Y"
+    ]
+  },
+  "seconds": 0.030999999959021807,
+  "assumption_role": "NON_GAUSSIAN_COMPARISON"
+}

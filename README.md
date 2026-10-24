@@ -38,3 +38,7 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 ## 별도 합성 예제의 통합 실험
 
 [첫 통합 실험 보고서](docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md)와 [실행 안내](research_runs/first_integrated_pilot/README.md)에 새4변수 IID 환경의 실제 PC/BOSS/Direct 학습·공통 추천·독립 do 평가를 보존했다. Normal/Uniform은 별도 실험이며 Gaussian Direct는 가정 불일치 진단이다. 기존 TEP 7개 그래프·F1·적합과 혼합하지 않는다. 제조 환경/Recovery/Safety/원래 가설의 검증 완료를 뜻하지 않는다.
+
+## 반복·다중 과제 합성 결과
+
+사용자 승인으로 PR6~11은 main34b8dbe에 순차 병합했다. [반복 실험 보고서](docs/research_design/REPEATED_METRIC_PILOT_REPORT.md)에는 새12독립데이터의36학습·4과제·3정책·독립do55296개를 기록했다. 알고리즘/과제 결과는 상관된 관측이며432행을 독립표본으로 세지 않는다. 일부 층의 탐색적 연관만 계산했고 지표 우월성·제조 복구/안전 성능은 입증하지 않았다. 후속 변경은 별도 미병합 PR이며 [실행 안내](research_runs/repeated_metric_pilot/README.md)를 따른다.

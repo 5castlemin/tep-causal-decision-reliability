@@ -1,0 +1,445 @@
+[
+  {
+    "sequence": 0,
+    "utc": "2026-10-24T12:22:42.422781+00:00",
+    "stage": "PLAN_FROZEN",
+    "sha256": "f04caba26ec4e75d17ad17a0843ffc9839ec6745269d534e6b4c0197fae9d039"
+  },
+  {
+    "sequence": 1,
+    "utc": "2026-10-24T12:22:46.777952+00:00",
+    "stage": "API_ACCEPTANCE_PASSED",
+    "actions": [
+      "A",
+      "R",
+      "M"
+    ]
+  },
+  {
+    "sequence": 2,
+    "utc": "2026-10-24T12:22:47.671995+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r1__pc",
+    "seconds": 0.8599999999860302
+  },
+  {
+    "sequence": 3,
+    "utc": "2026-10-24T12:22:47.696741+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r1__boss",
+    "seconds": 0.015000000013969839
+  },
+  {
+    "sequence": 4,
+    "utc": "2026-10-24T12:22:49.323340+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r1__directlingam",
+    "seconds": 1.625
+  },
+  {
+    "sequence": 5,
+    "utc": "2026-10-24T12:22:49.349759+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "gaussian_n256_r1",
+    "seconds": 2.562999999965541,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 6,
+    "utc": "2026-10-24T12:22:49.351268+00:00",
+    "stage": "SMALL_CELL_FEASIBILITY_RECORDED",
+    "attempts": 3,
+    "seconds": 2.562999999965541,
+    "next_action": "continue only remaining cells already fixed in plan; no extra repetitions"
+  },
+  {
+    "sequence": 7,
+    "utc": "2026-10-24T12:22:49.411012+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r2__pc",
+    "seconds": 0.01600000006146729
+  },
+  {
+    "sequence": 8,
+    "utc": "2026-10-24T12:22:49.418073+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r2__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 9,
+    "utc": "2026-10-24T12:22:49.441140+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r2__directlingam",
+    "seconds": 0.030999999959021807
+  },
+  {
+    "sequence": 10,
+    "utc": "2026-10-24T12:22:49.469402+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "gaussian_n256_r2",
+    "seconds": 0.125,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 11,
+    "utc": "2026-10-24T12:22:49.527533+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r3__pc",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 12,
+    "utc": "2026-10-24T12:22:49.536852+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r3__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 13,
+    "utc": "2026-10-24T12:22:49.558439+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n256_r3__directlingam",
+    "seconds": 0.015999999945051968
+  },
+  {
+    "sequence": 14,
+    "utc": "2026-10-24T12:22:49.585296+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "gaussian_n256_r3",
+    "seconds": 0.10900000005494803,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 15,
+    "utc": "2026-10-24T12:22:49.645536+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r1__pc",
+    "seconds": 0.015000000013969839
+  },
+  {
+    "sequence": 16,
+    "utc": "2026-10-24T12:22:49.654083+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r1__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 17,
+    "utc": "2026-10-24T12:22:49.682231+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r1__directlingam",
+    "seconds": 0.015999999945051968
+  },
+  {
+    "sequence": 18,
+    "utc": "2026-10-24T12:22:49.713323+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "gaussian_n512_r1",
+    "seconds": 0.125,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 19,
+    "utc": "2026-10-24T12:22:49.770100+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r2__pc",
+    "seconds": 0.015000000013969839
+  },
+  {
+    "sequence": 20,
+    "utc": "2026-10-24T12:22:49.779162+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r2__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 21,
+    "utc": "2026-10-24T12:22:49.806508+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r2__directlingam",
+    "seconds": 0.015999999945051968
+  },
+  {
+    "sequence": 22,
+    "utc": "2026-10-24T12:22:49.832144+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "gaussian_n512_r2",
+    "seconds": 0.125,
+    "learned_algorithms": 3,
+    "alpha": 0.0001
+  },
+  {
+    "sequence": 23,
+    "utc": "2026-10-24T12:22:49.893283+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r3__pc",
+    "seconds": 0.015000000013969839
+  },
+  {
+    "sequence": 24,
+    "utc": "2026-10-24T12:22:49.902082+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r3__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 25,
+    "utc": "2026-10-24T12:22:49.931411+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "gaussian_n512_r3__directlingam",
+    "seconds": 0.03200000000651926
+  },
+  {
+    "sequence": 26,
+    "utc": "2026-10-24T12:22:49.965140+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "gaussian_n512_r3",
+    "seconds": 0.125,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 27,
+    "utc": "2026-10-24T12:22:50.948671+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r1__pc",
+    "seconds": 0.9370000000344589
+  },
+  {
+    "sequence": 28,
+    "utc": "2026-10-24T12:22:50.962243+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r1__boss",
+    "seconds": 0.01600000006146729
+  },
+  {
+    "sequence": 29,
+    "utc": "2026-10-24T12:22:50.983357+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r1__directlingam",
+    "seconds": 0.015999999945051968
+  },
+  {
+    "sequence": 30,
+    "utc": "2026-10-24T12:22:51.012049+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "uniform_n256_r1",
+    "seconds": 1.0309999999590218,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 31,
+    "utc": "2026-10-24T12:22:52.353182+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r2__pc",
+    "seconds": 1.2820000000065193
+  },
+  {
+    "sequence": 32,
+    "utc": "2026-10-24T12:22:52.364226+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r2__boss",
+    "seconds": 0.015000000013969839
+  },
+  {
+    "sequence": 33,
+    "utc": "2026-10-24T12:22:52.394198+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r2__directlingam",
+    "seconds": 0.030999999959021807
+  },
+  {
+    "sequence": 34,
+    "utc": "2026-10-24T12:22:52.422075+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "uniform_n256_r2",
+    "seconds": 1.4070000000065193,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 35,
+    "utc": "2026-10-24T12:22:53.776636+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r3__pc",
+    "seconds": 1.2959999999729916
+  },
+  {
+    "sequence": 36,
+    "utc": "2026-10-24T12:22:53.793179+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r3__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 37,
+    "utc": "2026-10-24T12:22:53.819765+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n256_r3__directlingam",
+    "seconds": 0.015000000013969839
+  },
+  {
+    "sequence": 38,
+    "utc": "2026-10-24T12:22:53.856905+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "uniform_n256_r3",
+    "seconds": 1.437000000034459,
+    "learned_algorithms": 3,
+    "alpha": 0.0001
+  },
+  {
+    "sequence": 39,
+    "utc": "2026-10-24T12:23:00.643111+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r1__pc",
+    "seconds": 6.733999999938533
+  },
+  {
+    "sequence": 40,
+    "utc": "2026-10-24T12:23:00.661162+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r1__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 41,
+    "utc": "2026-10-24T12:23:00.697560+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r1__directlingam",
+    "seconds": 0.030999999959021807
+  },
+  {
+    "sequence": 42,
+    "utc": "2026-10-24T12:23:00.736404+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "uniform_n512_r1",
+    "seconds": 6.875,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 43,
+    "utc": "2026-10-24T12:23:08.702093+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r2__pc",
+    "seconds": 7.89000000001397
+  },
+  {
+    "sequence": 44,
+    "utc": "2026-10-24T12:23:08.711031+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r2__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 45,
+    "utc": "2026-10-24T12:23:08.744073+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r2__directlingam",
+    "seconds": 0.030999999959021807
+  },
+  {
+    "sequence": 46,
+    "utc": "2026-10-24T12:23:08.779740+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "uniform_n512_r2",
+    "seconds": 8.047000000020489,
+    "learned_algorithms": 3,
+    "alpha": 0.001
+  },
+  {
+    "sequence": 47,
+    "utc": "2026-10-24T12:23:16.439501+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r3__pc",
+    "seconds": 7.592999999993481
+  },
+  {
+    "sequence": 48,
+    "utc": "2026-10-24T12:23:16.453082+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r3__boss",
+    "seconds": 0.0
+  },
+  {
+    "sequence": 49,
+    "utc": "2026-10-24T12:23:16.492221+00:00",
+    "stage": "GRAPH_LEARNED",
+    "graph_id": "uniform_n512_r3__directlingam",
+    "seconds": 0.030999999959021807
+  },
+  {
+    "sequence": 50,
+    "utc": "2026-10-24T12:23:16.535428+00:00",
+    "stage": "DATASET_COMPLETED",
+    "dataset_id": "uniform_n512_r3",
+    "seconds": 7.75,
+    "learned_algorithms": 3,
+    "alpha": 0.0001
+  },
+  {
+    "sequence": 51,
+    "utc": "2026-10-24T12:23:16.644291+00:00",
+    "stage": "ALL_RECOMMENDATIONS_FROZEN",
+    "attempted_graphs": 36,
+    "rows": 432,
+    "sha256": "428103859aaa4a91c5567f03ba1733be8530daad799fb7e5ee5daa310d579f6e"
+  },
+  {
+    "sequence": 52,
+    "utc": "2026-10-24T12:23:17.720282+00:00",
+    "stage": "ACTION_HOLDOUT_GENERATED",
+    "family": "gaussian",
+    "action": "A"
+  },
+  {
+    "sequence": 53,
+    "utc": "2026-10-24T12:23:20.175012+00:00",
+    "stage": "ACTION_HOLDOUT_GENERATED",
+    "family": "gaussian",
+    "action": "R"
+  },
+  {
+    "sequence": 54,
+    "utc": "2026-10-24T12:23:20.970938+00:00",
+    "stage": "ACTION_HOLDOUT_GENERATED",
+    "family": "gaussian",
+    "action": "M"
+  },
+  {
+    "sequence": 55,
+    "utc": "2026-10-24T12:23:21.953976+00:00",
+    "stage": "ACTION_HOLDOUT_GENERATED",
+    "family": "uniform",
+    "action": "A"
+  },
+  {
+    "sequence": 56,
+    "utc": "2026-10-24T12:23:24.034974+00:00",
+    "stage": "ACTION_HOLDOUT_GENERATED",
+    "family": "uniform",
+    "action": "R"
+  },
+  {
+    "sequence": 57,
+    "utc": "2026-10-24T12:23:24.778911+00:00",
+    "stage": "ACTION_HOLDOUT_GENERATED",
+    "family": "uniform",
+    "action": "M"
+  },
+  {
+    "sequence": 58,
+    "utc": "2026-10-24T12:23:24.945475+00:00",
+    "stage": "COMPLETED",
+    "graph_attempts": 36,
+    "learned_graphs": 36,
+    "evaluated_rows": 432,
+    "failure_records": 0
+  }
+]

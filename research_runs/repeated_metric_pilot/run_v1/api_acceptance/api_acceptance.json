@@ -1,0 +1,807 @@
+{
+  "status": "PASS",
+  "records": [
+    {
+      "family": "gaussian",
+      "seed": 1300001,
+      "action": "A",
+      "value": -0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "A",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "gaussian",
+      "seed": 1300001,
+      "action": "A",
+      "value": 0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "A",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "gaussian",
+      "seed": 1300001,
+      "action": "R",
+      "value": -0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "R",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "gaussian",
+      "seed": 1300001,
+      "action": "R",
+      "value": 0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "R",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "gaussian",
+      "seed": 1300001,
+      "action": "M",
+      "value": -0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "M",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "gaussian",
+      "seed": 1300001,
+      "action": "M",
+      "value": 0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "M",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "uniform",
+      "seed": 1300101,
+      "action": "A",
+      "value": -0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true,
+        "noise_range": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "A",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "uniform",
+      "seed": 1300101,
+      "action": "A",
+      "value": 0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true,
+        "noise_range": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "A",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "uniform",
+      "seed": 1300101,
+      "action": "R",
+      "value": -0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true,
+        "noise_range": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "R",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "uniform",
+      "seed": 1300101,
+      "action": "R",
+      "value": 0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true,
+        "noise_range": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "R",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "uniform",
+      "seed": 1300101,
+      "action": "M",
+      "value": -0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true,
+        "noise_range": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "M",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    },
+    {
+      "family": "uniform",
+      "seed": 1300101,
+      "action": "M",
+      "value": 0.5,
+      "checks": {
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "equations": true,
+        "returned_gt": true,
+        "intervened_edges": true,
+        "replaced_equation": true,
+        "removed_parents": true,
+        "removed_noise": true,
+        "other_equations": true,
+        "action_constant": true,
+        "noise_range": true
+      },
+      "metadata": {
+        "reference_returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "R",
+            "A"
+          ],
+          [
+            "R",
+            "Y"
+          ]
+        ],
+        "intervention": {
+          "action": "M",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "R": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 0.0
+        }
+      }
+    }
+  ]
+}

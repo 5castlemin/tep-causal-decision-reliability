@@ -1,0 +1,132 @@
+{
+  "pr": 8,
+  "state": "open",
+  "merged": false,
+  "mergeable": true,
+  "mergeable_state": "clean",
+  "head_sha": "d508ab071f8e153698552ce69225a6eaf17a7150",
+  "base": "main",
+  "base_sha": "9d68932fa83ed66bad77d1daff17402495eed880",
+  "main_sha": "9d68932fa83ed66bad77d1daff17402495eed880",
+  "main_protected": false,
+  "pr_workflows": [
+    {
+      "id": 40077615216,
+      "event": "pull_request",
+      "head_sha": "d508ab071f8e153698552ce69225a6eaf17a7150",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40077615216"
+    },
+    {
+      "id": 40077593324,
+      "event": "push",
+      "head_sha": "d508ab071f8e153698552ce69225a6eaf17a7150",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40077593324"
+    }
+  ],
+  "main_workflows": [
+    {
+      "id": 40092904779,
+      "event": "push",
+      "head_sha": "9d68932fa83ed66bad77d1daff17402495eed880",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40092904779"
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "path": "DECISIONS.md",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 0
+    },
+    {
+      "path": "PRIORITIES.md",
+      "status": "modified",
+      "additions": 7,
+      "deletions": 6
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 3
+    },
+    {
+      "path": "WORK_LOG.md",
+      "status": "modified",
+      "additions": 10,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_design/REF_B_MINIMAL_CHECK_PLAN.md",
+      "status": "added",
+      "additions": 12,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md",
+      "status": "added",
+      "additions": 133,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_design/ref_b_minimal_evidence/PROVENANCE.md",
+      "status": "added",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_design/ref_b_minimal_evidence/SHA256.json",
+      "status": "added",
+      "additions": 4,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_design/ref_b_minimal_evidence/decision.json",
+      "status": "added",
+      "additions": 50,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_design/ref_b_minimal_evidence/local_checks.json",
+      "status": "added",
+      "additions": 709,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_state.json",
+      "status": "modified",
+      "additions": 66,
+      "deletions": 13
+    },
+    {
+      "path": "scripts/validate_ref_b_minimal_records.py",
+      "status": "added",
+      "additions": 61,
+      "deletions": 0
+    },
+    {
+      "path": "scripts/validate_ref_b_subsystem_source.py",
+      "status": "added",
+      "additions": 151,
+      "deletions": 0
+    }
+  ]
+}

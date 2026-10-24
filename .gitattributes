@@ -16,3 +16,7 @@ research_runs/first_integrated_pilot/** -text whitespace=cr-at-eol
 # Exact executed source bytes for the new synthetic experiment.
 src/integrated_pilot.py -text
 scripts/run_first_integrated_pilot.py -text
+research_runs/repeated_metric_pilot/** -text whitespace=cr-at-eol
+src/repeated_metric_pilot.py -text
+scripts/run_repeated_metric_pilot.py -text
+scripts/summarize_repeated_metric_pilot.py -text

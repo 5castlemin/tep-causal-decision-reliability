@@ -1,0 +1,79 @@
+{
+  "graph_id": "gaussian_n256_r3__pc",
+  "dataset_id": "gaussian_n256_r3",
+  "family": "gaussian",
+  "train_n": 256,
+  "validation_n": 256,
+  "replicate": 3,
+  "train_seed": 1100201,
+  "validation_seed": 1100202,
+  "algorithm_seed": 1100203,
+  "algorithm": "pc",
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "R",
+      "Y"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "A",
+      "R"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "R",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "M",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "R",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      [
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.0,
+  "assumption_role": "PRIMARY_COMPARISON"
+}
