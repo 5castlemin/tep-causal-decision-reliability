@@ -1,0 +1,50 @@
+{
+  "protocol": "REF-B-MINIMAL-DECISION-v1",
+  "checked_at": "2026-10-24",
+  "dependency": {
+    "pr6_state": "OPEN",
+    "pr7_state": "OPEN",
+    "pr7_head": "8634e5dce66460dc26441fc40e930c34ebc73af7",
+    "base_branch": "feature/track-b-reference-validity",
+    "pr7_ci": 40076485580,
+    "ci_conclusion": "success"
+  },
+  "subsystem": "원자로 냉각수 명령·밸브·냉각수 온도·에너지·센서·cascade 제어기",
+  "classification": "CANDIDATE_NOT_OFFICIAL_GT",
+  "questions": {
+    "direct_structure": "PARTIAL",
+    "local_independent_calculation": "VERIFIED",
+    "matching_discovery_semantics": "BLOCKED",
+    "observational_structure_metric": "BLOCKED",
+    "structure_effect_comparison": "BLOCKED"
+  },
+  "representation": {
+    "A": "CONDITIONAL",
+    "B": "BLOCKED",
+    "C": "PARTIAL"
+  },
+  "overall_q2": "BLOCKED",
+  "track_b_adoption": "NO-GO",
+  "track_b_adopted": false,
+  "hypothesis_validation": "INSUFFICIENT_EVIDENCE",
+  "q2_progress": "한 점에서 내부 명령/상태/관측의 일부 직접 의존성 정의와 구현 검산 가능",
+  "q2_unresolved": "관측 projection·음성 간선·기존 discovery와 동일한 노드/간선 의미·효과 비교 계약",
+  "stopping_rule_triggered": true,
+  "stopping_reasons": [
+    "참조와 discovery 의미 불일치",
+    "관측 주변화 구조 지표 미정",
+    "구조 정확도/효과 성능 분리 계약 없음"
+  ],
+  "official_gt_created": false,
+  "precision_f1_computed": false,
+  "research_design_changed": false,
+  "discovery_or_scm_fitted": false,
+  "recovery_safety_computed": false,
+  "fortran_static_reference": {
+    "file": "teprob.f",
+    "sha256": "78b9939d08edeb2a9751e24f429a89b32c2886b73956fa7ce4255c8d46786455",
+    "execution": "NOT_RUN",
+    "scope": "동일 source 계보의 식 정적 대조, 독립 실행 아님"
+  },
+  "local_checks_status": "PASS_LOCAL_IMPLEMENTATION_CHECKS"
+}

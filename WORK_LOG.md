@@ -116,3 +116,13 @@
 - Q1 PARTIAL/Q2 BLOCKED/Q3 BLOCKED/Q4 UNKNOWN/Q5 VERIFIED(결과 분리 설계). 현재 채택 NO-GO, 가설 검증 INSUFFICIENT_EVIDENCE. 연구 질문·RESEARCH_DESIGN·7 frozen·Step6·기존 raw/evidence 미변경. Track B 채택/새 GT 생성 없음.
 - canonical JSON에 REF-B/SIM-B/DESIGN-B 및 PR6 미병합 의존성을 추가, `python -X utf8 scripts/check_research_state.py --write` 실행. `validate_track_b_audit.py`, `validate_track_a_recovery.py`, `python -X utf8 -m unittest discover -s tests -v`(16개) 통과. 새 source probe는 외부 source 필요로 CI 재실행과 분리한다.
 - 추가 통과: validate_benchmark_decision.py, validate_pr_integration.py, graphs/final/verify_and_load.py(39파일 hash), check_asset_manifest.py, check_research_state.py, check_research_docs.py --base origin/feature/track-a-recovery-gate. SIM-02의 구형 다음 행동 문구는 이미 확보된 2시간 기록 보존으로 정정했다. 작은 probe는 초기 RNG 스냅샷을 별도 저장하지 못한 제한을 보고서에 명시했다.
+
+## 2026-10-24 — REF-B 냉각수 최소 블록 검산 및 중단
+
+- git fetch origin/status 확인: 미커밋 변경 없음, main7b16638, PR6 OPEN/CI39963153945 성공, PR7 OPEN/head8634e5d/CI40076485580 성공. PR7은 PR6 기반 stacked임을 확인. feature/ref-b-minimal-subsystem을 PR7 위에서 생성. 자동 병합 없음.
+- 고정 Python source의 backend 상태·열/에너지/밸브 식, 센서식, PI/cascade의 호출 순서·3step 주기를 읽고 source 4파일 SHA를 대조했다. 동일 계보 teprob.f의 대응 식은 정적으로만 대조. source 수정·재설치 없음.
+- REF_B_MINIMAL_CHECK_PLAN.md를 먼저 기록한 후 `python -X utf8 scripts/validate_ref_b_subsystem_source.py --source ../tep-python-candidate --output docs/research_design/ref_b_minimal_evidence/local_checks.json` 실행 성공. t0/IDV0/초기점의 전체 process deepcopy에서 17회 고정 평가·2개 epsilon의 편미분, 별도 액체 엔탈피 이분법, 제어기 복사본의 phase 검산 수행. 0 국소 결과를 비간선 정답으로 사용하지 않았다.
+- 별도 수동2객체에 XMV10+0.1pp, dt1초, 각6step만 실행. 밸브/W/E 변화와 평가·상태 시계의 차이를 기록. 물리 dead time/총효과 성능으로 해석하지 않음. 원시 선택값·RNG·환경·해시는 새 evidence에 보존. 기존 raw 파일 변경 없음.
+- 국소 구현 검산은 PASS, 구조는 CANDIDATE 유지. REF-B PARTIAL로 국소 진전만 기록하며 전체 Q2 BLOCKED/Track B NO-GO 유지. 관측 projection/발견 알고리즘 의미 불일치/정확도·효과 계약 부재로 중단 기준 충족. 추가 GT 후보·실험 확장 없음.
+- canonical JSON 갱신 후 `python -X utf8 scripts/check_research_state.py --write` 실행. 기존 감사 JSON·RESEARCH_DESIGN·frozen·Step6·data·시뮬레이터 원시는 보존. 새 GT·precision/F1·새 학습·Recovery/Safety 계산 없음.
+- 검증 통과: validate_ref_b_minimal_records.py(저장된 차분/해석식·독립 역산·시간/제어 순서·보존), validate_track_b_audit.py, validate_track_a_recovery.py, validate_benchmark_decision.py, 단위 테스트16개, graph39파일 hash/시계열 재변환, validate_pr_integration.py, check_asset_manifest.py, 상태/문서 동기화 및 git diff --check. 외부 source 단위 검산 실행은 CI 기록 검사와 분리했다.
