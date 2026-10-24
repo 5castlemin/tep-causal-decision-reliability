@@ -1,0 +1,51 @@
+{
+  "repository": "https://github.com/boschresearch/causalAssembly",
+  "commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "files": [
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/boschresearch/causalAssembly/8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9/LICENSE",
+      "status": "FAILED",
+      "error": "HTTPError"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/boschresearch/causalAssembly/8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9/README.md",
+      "bytes": 12736,
+      "sha256": "fb2b44e598b4a6d71d7592ef55c27c6345a7bcca7c8a503b8261b93f63b3c3a1",
+      "status": "SOURCE_RETRIEVED"
+    },
+    {
+      "path": "causalAssembly/models_fcm.py",
+      "url": "https://raw.githubusercontent.com/boschresearch/causalAssembly/8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9/causalAssembly/models_fcm.py",
+      "bytes": 28460,
+      "sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+      "status": "SOURCE_RETRIEVED"
+    },
+    {
+      "path": "pyproject.toml",
+      "url": "https://raw.githubusercontent.com/boschresearch/causalAssembly/8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9/pyproject.toml",
+      "bytes": 2334,
+      "sha256": "323081e007de6e0861df80011d63b6b661f5c10a10f8f517bb01875d19079162",
+      "status": "SOURCE_RETRIEVED"
+    }
+  ],
+  "execution": "NOT_RUN",
+  "adopted": false,
+  "license_status": "models_fcm.py 헤더 AGPL-3.0-or-later 확인; LICENSE 경로404, 파일 미회수",
+  "api": {
+    "reference": "FCM.ground_truth",
+    "declaration": "FCM.input_fcm",
+    "observation": "FCM.sample",
+    "intervention": "FCM.intervene_on + FCM.interventional_sample",
+    "seed": "np.random.default_rng"
+  },
+  "scope": "공식 소스 정적 검토, runtime/do/repeat NOT_RUN. 제조 생성기/실물 GT 승인 아님",
+  "local_dependency_available": {
+    "sympy": false,
+    "networkx": false,
+    "scipy": false,
+    "matplotlib": false,
+    "rpy2": false
+  }
+}

@@ -126,3 +126,14 @@
 - 국소 구현 검산은 PASS, 구조는 CANDIDATE 유지. REF-B PARTIAL로 국소 진전만 기록하며 전체 Q2 BLOCKED/Track B NO-GO 유지. 관측 projection/발견 알고리즘 의미 불일치/정확도·효과 계약 부재로 중단 기준 충족. 추가 GT 후보·실험 확장 없음.
 - canonical JSON 갱신 후 `python -X utf8 scripts/check_research_state.py --write` 실행. 기존 감사 JSON·RESEARCH_DESIGN·frozen·Step6·data·시뮬레이터 원시는 보존. 새 GT·precision/F1·새 학습·Recovery/Safety 계산 없음.
 - 검증 통과: validate_ref_b_minimal_records.py(저장된 차분/해석식·독립 역산·시간/제어 순서·보존), validate_track_b_audit.py, validate_track_a_recovery.py, validate_benchmark_decision.py, 단위 테스트16개, graph39파일 hash/시계열 재변환, validate_pr_integration.py, check_asset_manifest.py, 상태/문서 동기화 및 git diff --check. 외부 source 단위 검산 실행은 CI 기록 검사와 분리했다.
+
+## 2026-10-24 — 구조 지표→추천 MVP 기술 실행
+
+- git fetch/status 및 PR6/7/8 OPEN·stacked·각 CI 성공 확인. PR8 head d508ab0 위 feature/causal-metric-decision-mvp 생성. main7b16638·기존 사용자 변경 보존, 자동 병합 없음.
+- 기존7 frozen/Step6 최종7행·loop_vs_flow 원본 ZIP member와 3개 적합 JSON을 해시로 재사용. 적합·discovery 재실행 없음. 고정12과제×7의 경로 edge recall/완전 복원/confirmed 도달성/직접XY 84행을 별도 benchmark 진단으로 산출. Task 선택은 미리 고정한 냉각수 API/공정 의미만 사용.
+- PLAN_v1.json 사전 기록 후 `python -X utf8 scripts/run_decision_mvp.py --source ../tep-python-candidate --step6-archive ../work/asset_recovery/TEP_step6_results_slack.zip --output research_runs/decision_mvp/run_20261024_v1` 실행. 기존 정적3개로 공통 grid/비용/목적 dry-run 추천 생성. 추천은 simulator 미적용. 같은 코드에서 잘못된 연구 환경 join 호출을 실제 거부하고 기록.
+- Python 후보에서 사전 지정 baseline/+0.1pp(10초)·수동·IDV0·2seed·2반복·60step의8run 실행. v1 명목 격자를 보완하는 CLOCK_REVISION을 먼저 남긴 후 동일 조건의 v2 별도8run을 실행해 source 실제 평가/상태 시각을 기록했다. 총16run, 최종v2의8run은60step/명령반영/유한값/동일조건 raw byte exact. 시계 보완 외 조건 변경 없음, v1 보존. 기존 방정식 검산·12조건 진단 반복 아님.
+- 미확정 X-Y를 비간선 정답으로 인정하지 않도록 파생 표시를 UNRESOLVED/null로 후처리 보완. 보완 전 파생 파일/원시 hash 보존, simulator 추가 실행·모델 추천 변경 없음. v2 실행 코드 hash는 후처리 보완 전 기록이며 현재 코드는 X-Y 처리 보완을 포함한다.
+- causalAssembly 공식 commit8da3729의 실제 FCM 소스/README/pyproject와 참조/do/seed API를 읽고 기록. 헤더 AGPL-3.0-or-later, LICENSE URL404 확인. 외부 코드 Git 반입·환경 설치·runtime/생산 generator 실행/채택 없음. 기존 TEP GT 이식 없음.
+- G1 BLOCKED/G2 PASS_TECHNICAL/G3 PARTIAL_TECHNICAL_ONLY/G4 NOT_RUN_RESEARCH/G5 BLOCKED. 실제 목표 달성·효과오차·Recovery/Safety·지표 상관/순위는 null. 기술 실행과 가설 검증을 분리. 상태 JSON/현재 MD와 우선순위를 ENV/POLICY/EVAL-MVP 중심으로 갱신. 과거 감사 validator의 고정 상위우선순위 검사는 과거 ID 보존 검사로만 변경하여 현재 우선순위 진화를 허용.
+- 검증 통과: 단위 테스트23개, validate_decision_mvp.py(v1/v2 raw hash·시계·명령·반복·84행·재사용·Gate·성능null), Track A/B/REF-B·benchmark validators, graph39파일 hash/lag 재변환, PR integration, asset manifest, canonical 상태/문서 동기화, git diff --check. 16개 raw CSV 약0.93MB는 반복 증거로 보존하며 대용량 외부 데이터는 반입하지 않음.

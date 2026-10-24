@@ -36,3 +36,9 @@
 원자로 냉각수 명령/밸브/냉각수 온도/에너지/센서·제어기 일부 식은 한 초기점에서 독립 수치 해법·해석 미분과 대조할 수 있었다. 이 범위만 REF-B PARTIAL로 기록한다. 같은 모델 상수를 쓴 구현 검산이며 실물/독립 기준 모델 또는 전체 관측 GT 증명이 아니다. 모든 구조는 CANDIDATE다.
 내부 상태 전개와 기존 discovery의 관측 Xi 그래프가 의미상 다르고 관측 주변화·음성 쌍 채점 계약이 없어 이 블록에서 조사를 종료한다. 추가 GT 후보·실험을 확장하지 않는다. 전체 Q2 BLOCKED·Track B 채택 NO-GO·가설 검증 증거 부족을 유지한다. 외부 방법론 검토 후 유지/축소/보류를 판단해야 하며 연구 질문 변경은 승인하지 않았다.
 근거: docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md 및 ref_b_minimal_evidence/.
+
+## 2026-10-24 — 원래 질문 중심의 최소 실행 파이프라인
+
+완벽한 TEP 복원 자체를 최종 목표로 삼지 않고 구조 참조/독립 추천 평가가 같은 환경에 대응하는 최소 계약을 우선한다. 기존 정적3개 계수로 추천 계산을 구현했지만 benchmark와 Python TEP의 환경 차이가 있어 그 값을 실제 적용·채점하지 않는다. 기술 API 확인에는 사전 지정 동일 정책만 실행한다. 연구 join은 Gate1에서 거부한다.
+MVP-TECH VERIFIED는 dry 추천·로거·반복 실행만 뜻한다. 전체 가설 검증 NO-GO를 유지한다. 새 통제 후보 causalAssembly는 소스/API 검토만 했으며 채택·새 연구 데이터·학습은 별도 승인 대상이다. 그 후보의 adapter acceptance→공통 실제 정책→독립 평가 연결을 다음 실행 경로로 제안한다. RESEARCH_DESIGN·기존 frozen/Step6/적합/원시는 보존한다. 연관성 분석을 지표 개선의 인과효과로 해석하지 않는다.
+근거: docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md 및 research_runs/decision_mvp/.

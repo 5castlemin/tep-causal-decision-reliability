@@ -1,0 +1,119 @@
+{
+  "environment": "CPCAD_PIN_72b0f5e",
+  "debug_target": 122.89016988878663,
+  "artifact_sha256": {
+    "pc": "b862603d69b8f2a3e51240ad60415d9bcad459df560d59ff412b1841f4caaf78",
+    "directlingam": "0253d9f2b3168e8242d3e833ebeaf74533a8bc70707b7c785bfa7c011158c3e7",
+    "boss": "c73946f5e40e2192e41df6cf59b90c7c83d20080899c9c631e88ac69763d379f"
+  },
+  "common_alpha": 0.0001,
+  "new_fit": false,
+  "baseline": "각 식의 저장된 intercept와 계수·잔차0으로 평균 전개. strict factual abduction 아님",
+  "rows": {
+    "pc": {
+      "status": "DRY_RUN_NOT_CAUSAL_VALIDATION",
+      "selected": {
+        "delta_pp": -0.1,
+        "absolute_command": 35.84560650313809,
+        "predicted_target": 122.89743768161061,
+        "normalized_command_cost": 1.0,
+        "surrogate_objective": 2.7368123535398436
+      },
+      "candidates": [
+        {
+          "delta_pp": -0.1,
+          "absolute_command": 35.84560650313809,
+          "predicted_target": 122.89743768161061,
+          "normalized_command_cost": 1.0,
+          "surrogate_objective": 2.7368123535398436
+        },
+        {
+          "delta_pp": 0.0,
+          "absolute_command": 35.945606503138094,
+          "predicted_target": 122.9001698887866,
+          "normalized_command_cost": 0.0,
+          "surrogate_objective": 5.162382445099613
+        },
+        {
+          "delta_pp": 0.1,
+          "absolute_command": 36.045606503138096,
+          "predicted_target": 122.90290209596262,
+          "normalized_command_cost": 1.0,
+          "surrogate_objective": 8.378691698265266
+        }
+      ],
+      "simulator_execution_allowed": false,
+      "strict_counterfactual": false
+    },
+    "directlingam": {
+      "status": "DRY_RUN_NOT_CAUSAL_VALIDATION",
+      "selected": {
+        "delta_pp": 0.0,
+        "absolute_command": 35.945606503138094,
+        "predicted_target": 122.9001698887866,
+        "normalized_command_cost": 0.0,
+        "surrogate_objective": 5.162382445099613
+      },
+      "candidates": [
+        {
+          "delta_pp": -0.1,
+          "absolute_command": 35.84560650313809,
+          "predicted_target": 122.9001698887866,
+          "normalized_command_cost": 1.0,
+          "surrogate_objective": 5.172382445099613
+        },
+        {
+          "delta_pp": 0.0,
+          "absolute_command": 35.945606503138094,
+          "predicted_target": 122.9001698887866,
+          "normalized_command_cost": 0.0,
+          "surrogate_objective": 5.162382445099613
+        },
+        {
+          "delta_pp": 0.1,
+          "absolute_command": 36.045606503138096,
+          "predicted_target": 122.9001698887866,
+          "normalized_command_cost": 1.0,
+          "surrogate_objective": 5.172382445099613
+        }
+      ],
+      "simulator_execution_allowed": false,
+      "strict_counterfactual": false
+    },
+    "boss": {
+      "status": "DRY_RUN_NOT_CAUSAL_VALIDATION",
+      "selected": {
+        "delta_pp": -0.1,
+        "absolute_command": 35.84560650313809,
+        "predicted_target": 122.89800366283343,
+        "normalized_command_cost": 1.0,
+        "surrogate_objective": 3.178051675423514
+      },
+      "candidates": [
+        {
+          "delta_pp": -0.1,
+          "absolute_command": 35.84560650313809,
+          "predicted_target": 122.89800366283343,
+          "normalized_command_cost": 1.0,
+          "surrogate_objective": 3.178051675423514
+        },
+        {
+          "delta_pp": 0.0,
+          "absolute_command": 35.945606503138094,
+          "predicted_target": 122.9001698887866,
+          "normalized_command_cost": 0.0,
+          "surrogate_objective": 5.162382445099613
+        },
+        {
+          "delta_pp": 0.1,
+          "absolute_command": 36.045606503138096,
+          "predicted_target": 122.9023361147398,
+          "normalized_command_cost": 1.0,
+          "surrogate_objective": 7.6512064085680604
+        }
+      ],
+      "simulator_execution_allowed": false,
+      "strict_counterfactual": false
+    }
+  }
+}
