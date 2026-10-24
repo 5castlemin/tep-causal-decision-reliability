@@ -177,3 +177,8 @@
 -전체 실행1001.555초.144학습 전체 replay NOT_RUN; API 반복과 모든 원시식/평균/SE/추천/손실/hash/LOSO분리 검증. 코드·도식·표·한국어 보고서 및 실제 명령은research_runs/diverse_structure_pilot와DIVERSE_STRUCTURE_PILOT_REPORT.md. 원시console는지정날짜아카이브07_다양한_인과구조_비교에만 보관.
 - 단위49개와 모든 과학적/원시/고정추천/LOSO/기존자산 검사는 통과. 최초 staged diff형식 검사는 Matplotlib SVG의 자동 끝공백·console EOF빈줄로 실패했다. 최초전체로그/SHA를 보존하고 해당 생성SVG/console에만 whitespace 예외를 추가해 원시바이트/hash를 유지했다. 코드/문서 일반형식 검사는 그대로 적용한다.
 - 한정된 생성파일 형식예외 적용 후 diff/cached-diff, raw/source/MEC/LOSO 해시 재검사, JSON-MD/문서동기화 재검사 모두 통과. 기존 과학적 검사49단위/전종validators 결과와 최초 형식실패를 별도 기록했다.
+
+### 2026-10-24 — PR #13 clean-checkout CI correction
+- First GitHub run 40102302710 failed: two original, SHA-listed PNG figures were excluded by the inherited `*.png` ignore rule. Local files existed, so the local validation had passed.
+- Added only the two exact generated PNGs with `git add -f`; no sampling, graph, recommendation, analysis, or hash manifest changed. Research state and priorities are unchanged because this is packaging repair, not a new experiment.
+- Preserve the failed CI record; rerun CI and verify the committed tree, rather than reporting the first run as passed.
