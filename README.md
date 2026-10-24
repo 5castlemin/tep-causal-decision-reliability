@@ -46,3 +46,6 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 ## 다양한 구조의 신규 합성 비교
 
 [8구조 보고서](docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md)에 source 검증된8개 합성DAG·48개 독립데이터·144실학습·17과제·918정책행·do78336개 및8회 구조전체holdout 예측을 기록했다. 기존4변수 반복 결과와 구분한다. 경로단독 모형의 평균예측오차는 작았지만 공변량 조정 후 연결지표와 거의 같아 우월성은 미확정이다.8개는 손설계 구조이고 행/rollout을 독립구조로 세지 않는다. [재현 절차](research_runs/diverse_structure_pilot/README.md)를 따르며 PR12 위 stacked 후속작업은 미병합이다. 제조 Recovery/Safety는 검증하지 않았다.
+
+## 2026-10-25 독립 확인 결과
+기존144회 전체 재실행 비교를 통과했습니다. 새12구조에서216개 그래프 기록을 생성했고 순환 PC2개를 보정하지 않고214개 SCM으로5088개 추천 결과와184320개 실제 do 표본을 평가했습니다. 사전 주요 비교는 경로 모형의 제한적 지지를 보였으나 기본 조건·연결 F1 이후의 추가 정보, 이론 평균과 고비용 조건의 안정성은 불명확합니다. [한국어 보고서](docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md)와 [재현 가이드](research_runs/independent_confirmation/README.md)를 참고하십시오. 제조 복구·안전 검증이 아니며 이 feature는 미병합 PR13 위에 있습니다.

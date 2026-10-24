@@ -1,0 +1,46 @@
+{
+  "algorithm": "boss",
+  "seed": 10525622,
+  "names": [
+    "V1",
+    "V2",
+    "V4",
+    "V6",
+    "Q",
+    "V7",
+    "V0",
+    "P",
+    "V5",
+    "V3"
+  ],
+  "algorithms": {
+    "pc": {
+      "package": "causal-learn==0.1.4.8",
+      "stable": true,
+      "alpha": 0.01,
+      "uc_rule": 0,
+      "uc_priority": 2,
+      "background_knowledge": null,
+      "kci_approx": true
+    },
+    "boss": {
+      "package": "causal-learn==0.1.4.8",
+      "score_func": "local_score_BIC",
+      "lambda_value": 2.0,
+      "scope": "공식 문서에 있는 Python BOSS, 과거 Tetrad Final 재현 아님. Uniform에서는 Gaussian BIC의 quasi-score 가정 차이 명시"
+    },
+    "directlingam": {
+      "package": "lingam==1.13.0",
+      "measure": "pwling",
+      "prior_knowledge": null,
+      "edge_abs_threshold": 0.05
+    }
+  },
+  "families": {
+    "uniform": {
+      "pc_test": "kci",
+      "directlingam_role": "NON_GAUSSIAN_PRIMARY"
+    }
+  },
+  "train_sha256": "5daddb70c4a23b0016e57aaa1a9a77f83657961f7c4eb8ba6bf0184fe51bc0c8"
+}

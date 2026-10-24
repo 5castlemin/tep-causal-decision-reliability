@@ -1,0 +1,32 @@
+{
+  "structures": 8,
+  "datasets": 48,
+  "learning_attempts": 144,
+  "learned_graphs": 144,
+  "discovery_comparison_rows": 918,
+  "discovery_evaluated": 918,
+  "primary_positive_evaluated": 288,
+  "controlled_rows": 120,
+  "reference_structures_are_hand_designed": true,
+  "run_wall_seconds": 1172.2339,
+  "recommendation_failures": {
+    "EVALUATED": 918
+  },
+  "correlation_status_counts": {
+    "CONSTANT_METRIC": 129,
+    "DESCRIPTIVE_ONLY": 176,
+    "INSUFFICIENT_DATASETS": 203,
+    "CONSTANT_OUTCOME": 68
+  },
+  "loso_rank_status_counts": {
+    "FULL_RANK": 112
+  },
+  "analysis_code_sha256": {
+    "scripts/analyze_diverse_structure_pilot.py": "c8373dd443c8c5f3ac2d29e9f10e88b58d63a4a77e3cbcffe81eb52b66bf115a",
+    "src/diverse_metric_analysis.py": "1929665e275d3c87c36d1a3ceca6931b58b22479c771b4b066e505fbc94b59a0"
+  },
+  "input_summary_sha256": "74c628af1c782611b62b23b1f48068319dc04ce5a6b7ce92501080383b12f1a7",
+  "manufacturing_validated": false,
+  "formal_metric_winner": false,
+  "analysis_settings_selected_from_holdout": false
+}

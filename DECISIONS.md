@@ -69,3 +69,10 @@ MVP-TECH VERIFIED는 dry 추천·로거·반복 실행만 뜻한다. 전체 가�
 - 구조간일차 손실은regret/사전scale². 기준분모·개선가능gap의 .01scale² 수치하한정책을사전고정, 결과를보고수정하지않음. 음성대조의분모가수치하한을넘더라도평균CI가목표를포함하므로안정성확증아님.
 - 8개구조전체holdout/훈련7구조전용전처리/고정모형으로예측비교. 지표간중복·알고리즘차이·경로fallback의기계적연결을독립인과효과로보지않음. 경로단독평균이작아도조정후거의같고구조별순서가달라공식지표1위미확정.
 - 다음확인은새구조/계수/seed와선택-확증분리의사전계획. 현재8fold를보고모형을선택한뒤같은8fold를새확증자료로재사용하지않음.
+
+## 2026-10-25 — Independent confirmation contract and restricted interpretation
+- Preserve the original research question and manufacturing NO-GO boundaries. Adopt only the user-authorized synthetic reproduction/confirmation contract; no Track B or manufacturing transition.
+- Freeze random structural families/uniqueness rules, all seeds/tasks/settings/code and old-only fitted loss predictors before new sampling. Use macro MAE over whole reference structures; main delta threshold .01 plus structure bootstrap lower>0, without using confirmation outcomes to choose models.
+- Retain cyclic PC outputs and incompatible PDAGs as failed/blocked cases. Do not orient to truth, delete edges, silently drop records, or retrospectively assign baseline losses. Current valid-loss analysis is conditional on usable graphs and remains selection-limited.
+- Report narrow primary endpoint support separately from the unresolved incremental-information and robustness question. M0/M1 augmentation, analytic mean and high-cost results do not establish stable superiority. Correlations and artificial graph-error contrasts are not causal effects of raising a graph score.
+- Exact replay evidence applies to the same host/installed environment; new216 second replay and manufacturing Recovery/Safety are NOT_RUN. Current full144 replay supersedes the old NOT_RUN state only in the live dashboard; historical artifacts stay unchanged.

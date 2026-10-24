@@ -1,0 +1,5 @@
+# Full replay evidence
+The original serial runner was executed unmodified in the original isolated dependency environment, with new worker processes and a separate output directory. This is a real 144-learning replay, not a second set of independent datasets.
+Full replay raw files, worker console, and analysis are retained in the designated local archive under `01_연구진행_날짜별/2026-10-25/01_재현성과_독립확인/`. No private absolute path is published.
+The original run manifest is preserved here as `SHA256.json`; its paths refer to that archived replay run, not this compact evidence directory. Identical observation/do/regression bytes are not duplicated in Git. The comparison report records hashes against the already tracked original artifacts. New team members can execute the original runner and check_confirmation_replay.py to regenerate the evidence.
+Timing/platform metadata are distinct from scientific equality. The two runs used the same machine and installed environment; this does not prove cross-platform portability.

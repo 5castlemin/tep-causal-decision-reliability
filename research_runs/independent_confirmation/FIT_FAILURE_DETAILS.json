@@ -1,0 +1,60 @@
+[
+  {
+    "graph_id": "C12_n256_r3__pc",
+    "learner_status": "LEARNED",
+    "confirmed_graph_is_dag": false,
+    "cycle_edges": [
+      [
+        "V0",
+        "V1"
+      ],
+      [
+        "V1",
+        "V7"
+      ],
+      [
+        "V7",
+        "V5"
+      ],
+      [
+        "V5",
+        "V4"
+      ],
+      [
+        "V4",
+        "V0"
+      ]
+    ],
+    "scm_action": "REFUSED_WITHOUT_EDGE_DELETION",
+    "loss_imputed": false
+  },
+  {
+    "graph_id": "C12_n512_r3__pc",
+    "learner_status": "LEARNED",
+    "confirmed_graph_is_dag": false,
+    "cycle_edges": [
+      [
+        "V0",
+        "V1"
+      ],
+      [
+        "V1",
+        "V7"
+      ],
+      [
+        "V7",
+        "V5"
+      ],
+      [
+        "V5",
+        "V4"
+      ],
+      [
+        "V4",
+        "V0"
+      ]
+    ],
+    "scm_action": "REFUSED_WITHOUT_EDGE_DELETION",
+    "loss_imputed": false
+  }
+]

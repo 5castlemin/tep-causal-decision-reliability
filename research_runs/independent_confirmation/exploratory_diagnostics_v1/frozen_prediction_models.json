@@ -1,0 +1,347 @@
+{
+  "M0": {
+    "features": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "predicted_density",
+      "unresolved_ratio"
+    ],
+    "feature_means": [
+      0.33333333333333326,
+      0.33333333333333326,
+      0.5,
+      6.499999999999998,
+      0.3594246031746029,
+      0.4287147266313931
+    ],
+    "feature_scales": [
+      0.4714045207910315,
+      0.4714045207910315,
+      0.5,
+      1.1180339887498951,
+      0.16075393274440958,
+      0.40819220585949906
+    ],
+    "feature_imputations": [
+      0.33333333333333365,
+      0.33333333333333365,
+      0.5000000000000002,
+      6.500000000000003,
+      0.359424603174605,
+      0.4287147266313939
+    ],
+    "outcome_mean": 0.21597480466620056,
+    "outcome_scale": 0.2619477902330289,
+    "coefficients_standardized": [
+      -0.013446064651231717,
+      -0.38769708562466265,
+      -0.06213332104282903,
+      -0.13114017597924613,
+      -0.01163925308118065,
+      0.2361707195624442
+    ],
+    "alpha": 0.01,
+    "training_structures": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8"
+    ],
+    "train_rows": 288,
+    "structure_equal_weights": true,
+    "rank": 6,
+    "column_count": 6,
+    "full_column_rank": true,
+    "condition_number": 3.2436480122038938,
+    "rank_status": "FULL_RANK",
+    "negative_predictions_clipped": false,
+    "coefficient_interpretation": "prediction only; not independent causal explanations"
+  },
+  "M1": {
+    "features": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "predicted_density",
+      "unresolved_ratio",
+      "skeleton_f1"
+    ],
+    "feature_means": [
+      0.33333333333333326,
+      0.33333333333333326,
+      0.5,
+      6.499999999999998,
+      0.3594246031746029,
+      0.4287147266313931,
+      0.8928775347755703
+    ],
+    "feature_scales": [
+      0.4714045207910315,
+      0.4714045207910315,
+      0.5,
+      1.1180339887498951,
+      0.16075393274440958,
+      0.40819220585949906,
+      0.14957382857896584
+    ],
+    "feature_imputations": [
+      0.33333333333333365,
+      0.33333333333333365,
+      0.5000000000000002,
+      6.500000000000003,
+      0.359424603174605,
+      0.4287147266313939,
+      0.8928775347755705
+    ],
+    "outcome_mean": 0.21597480466620056,
+    "outcome_scale": 0.2619477902330289,
+    "coefficients_standardized": [
+      0.033529612487752575,
+      -0.13755299007418414,
+      -0.003863367246186175,
+      -0.06993323241291363,
+      -0.017572754078860952,
+      0.31316269000621577,
+      -0.3974334219215525
+    ],
+    "alpha": 0.01,
+    "training_structures": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8"
+    ],
+    "train_rows": 288,
+    "structure_equal_weights": true,
+    "rank": 7,
+    "column_count": 7,
+    "full_column_rank": true,
+    "condition_number": 3.6425298262442287,
+    "rank_status": "FULL_RANK",
+    "negative_predictions_clipped": false,
+    "coefficient_interpretation": "prediction only; not independent causal explanations"
+  },
+  "M2": {
+    "features": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "predicted_density",
+      "unresolved_ratio",
+      "key_path_edge_recall"
+    ],
+    "feature_means": [
+      0.33333333333333326,
+      0.33333333333333326,
+      0.5,
+      6.499999999999998,
+      0.3594246031746029,
+      0.4287147266313931,
+      0.5125578703703703
+    ],
+    "feature_scales": [
+      0.4714045207910315,
+      0.4714045207910315,
+      0.5,
+      1.1180339887498951,
+      0.16075393274440958,
+      0.40819220585949906,
+      0.46317674100744666
+    ],
+    "feature_imputations": [
+      0.33333333333333365,
+      0.33333333333333365,
+      0.5000000000000002,
+      6.500000000000003,
+      0.359424603174605,
+      0.4287147266313939,
+      0.5125578703703708
+    ],
+    "outcome_mean": 0.21597480466620056,
+    "outcome_scale": 0.2619477902330289,
+    "coefficients_standardized": [
+      0.08188742049244019,
+      -0.10882459376616589,
+      -0.043914826371586196,
+      -0.015214617643914238,
+      0.007513964978308814,
+      -0.10716846862731691,
+      -0.6679051679123202
+    ],
+    "alpha": 0.01,
+    "training_structures": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8"
+    ],
+    "train_rows": 288,
+    "structure_equal_weights": true,
+    "rank": 7,
+    "column_count": 7,
+    "full_column_rank": true,
+    "condition_number": 4.416618839170155,
+    "rank_status": "FULL_RANK",
+    "negative_predictions_clipped": false,
+    "coefficient_interpretation": "prediction only; not independent causal explanations"
+  },
+  "M3": {
+    "features": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "predicted_density",
+      "unresolved_ratio",
+      "strict_directed_f1"
+    ],
+    "feature_means": [
+      0.33333333333333326,
+      0.33333333333333326,
+      0.5,
+      6.499999999999998,
+      0.3594246031746029,
+      0.4287147266313931,
+      0.4530370333564999
+    ],
+    "feature_scales": [
+      0.4714045207910315,
+      0.4714045207910315,
+      0.5,
+      1.1180339887498951,
+      0.16075393274440958,
+      0.40819220585949906,
+      0.4199531687766488
+    ],
+    "feature_imputations": [
+      0.33333333333333365,
+      0.33333333333333365,
+      0.5000000000000002,
+      6.500000000000003,
+      0.359424603174605,
+      0.4287147266313939,
+      0.4530370333565001
+    ],
+    "outcome_mean": 0.21597480466620056,
+    "outcome_scale": 0.2619477902330289,
+    "coefficients_standardized": [
+      0.059235750726069826,
+      0.03467547372615392,
+      -0.0373790421293515,
+      -0.10876432692100144,
+      -0.013003077034592636,
+      -0.1219486198897115,
+      -0.7346287412782717
+    ],
+    "alpha": 0.01,
+    "training_structures": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8"
+    ],
+    "train_rows": 288,
+    "structure_equal_weights": true,
+    "rank": 7,
+    "column_count": 7,
+    "full_column_rank": true,
+    "condition_number": 8.121348640040228,
+    "rank_status": "FULL_RANK",
+    "negative_predictions_clipped": false,
+    "coefficient_interpretation": "prediction only; not independent causal explanations"
+  },
+  "M4_incremental": {
+    "features": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "predicted_density",
+      "unresolved_ratio",
+      "skeleton_f1",
+      "key_path_edge_recall"
+    ],
+    "feature_means": [
+      0.33333333333333326,
+      0.33333333333333326,
+      0.5,
+      6.499999999999998,
+      0.3594246031746029,
+      0.4287147266313931,
+      0.8928775347755703,
+      0.5125578703703703
+    ],
+    "feature_scales": [
+      0.4714045207910315,
+      0.4714045207910315,
+      0.5,
+      1.1180339887498951,
+      0.16075393274440958,
+      0.40819220585949906,
+      0.14957382857896584,
+      0.46317674100744666
+    ],
+    "feature_imputations": [
+      0.33333333333333365,
+      0.33333333333333365,
+      0.5000000000000002,
+      6.500000000000003,
+      0.359424603174605,
+      0.4287147266313939,
+      0.8928775347755705,
+      0.5125578703703708
+    ],
+    "outcome_mean": 0.21597480466620056,
+    "outcome_scale": 0.2619477902330289,
+    "coefficients_standardized": [
+      0.08949388629261815,
+      -0.0038117030528199676,
+      -0.006272070017878043,
+      -0.0029664455678454424,
+      -0.002242921812351087,
+      0.04616915142982581,
+      -0.2917826138749472,
+      -0.4795734504416872
+    ],
+    "alpha": 0.01,
+    "training_structures": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8"
+    ],
+    "train_rows": 288,
+    "structure_equal_weights": true,
+    "rank": 8,
+    "column_count": 8,
+    "full_column_rank": true,
+    "condition_number": 4.944562766032575,
+    "rank_status": "FULL_RANK",
+    "negative_predictions_clipped": false,
+    "coefficient_interpretation": "prediction only; not independent causal explanations"
+  }
+}

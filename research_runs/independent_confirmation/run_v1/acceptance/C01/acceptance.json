@@ -1,0 +1,412 @@
+{
+  "structure_id": "C01",
+  "status": "PASS",
+  "records": [
+    {
+      "condition": "observational",
+      "seed": 930000,
+      "checks": {
+        "returned_gt": true,
+        "observation_equations": true,
+        "exact_repeat": true,
+        "new_seed_different": true,
+        "hook_transparent": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V3",
+            "V4"
+          ]
+        ],
+        "equation_terms": {
+          "V0": "u_V0",
+          "V1": "0.6543*V0 + u_V1",
+          "V2": "1.0472*V1 + u_V2",
+          "V3": "0.8851*V2 + u_V3",
+          "V4": "1.1808*V3 + u_V4",
+          "P": "u_P",
+          "Q": "1.1456*P + u_Q"
+        },
+        "intervention": null,
+        "reconstruction_errors": {
+          "V0": 0.0,
+          "V1": 0.0,
+          "V2": 0.0,
+          "V3": 0.0,
+          "V4": 0.0,
+          "P": 0.0,
+          "Q": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "V3",
+      "value": -0.5,
+      "seed": 930100,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V3",
+            "V4"
+          ]
+        ],
+        "equation_terms": {
+          "V0": "u_V0",
+          "V1": "0.6543*V0 + u_V1",
+          "V2": "1.0472*V1 + u_V2",
+          "V3": "0.8851*V2 + u_V3",
+          "V4": "1.1808*V3 + u_V4",
+          "P": "u_P",
+          "Q": "1.1456*P + u_Q"
+        },
+        "intervention": {
+          "action": "V3",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "P",
+              "Q"
+            ],
+            [
+              "V0",
+              "V1"
+            ],
+            [
+              "V1",
+              "V2"
+            ],
+            [
+              "V3",
+              "V4"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "V0": 0.0,
+          "V1": 0.0,
+          "V2": 0.0,
+          "V3": 0.0,
+          "V4": 0.0,
+          "P": 0.0,
+          "Q": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "V3",
+      "value": 0.5,
+      "seed": 930101,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V3",
+            "V4"
+          ]
+        ],
+        "equation_terms": {
+          "V0": "u_V0",
+          "V1": "0.6543*V0 + u_V1",
+          "V2": "1.0472*V1 + u_V2",
+          "V3": "0.8851*V2 + u_V3",
+          "V4": "1.1808*V3 + u_V4",
+          "P": "u_P",
+          "Q": "1.1456*P + u_Q"
+        },
+        "intervention": {
+          "action": "V3",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "P",
+              "Q"
+            ],
+            [
+              "V0",
+              "V1"
+            ],
+            [
+              "V1",
+              "V2"
+            ],
+            [
+              "V3",
+              "V4"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "V0": 0.0,
+          "V1": 0.0,
+          "V2": 0.0,
+          "V3": 0.0,
+          "V4": 0.0,
+          "P": 0.0,
+          "Q": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "V0",
+      "value": -0.5,
+      "seed": 930120,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V3",
+            "V4"
+          ]
+        ],
+        "equation_terms": {
+          "V0": "u_V0",
+          "V1": "0.6543*V0 + u_V1",
+          "V2": "1.0472*V1 + u_V2",
+          "V3": "0.8851*V2 + u_V3",
+          "V4": "1.1808*V3 + u_V4",
+          "P": "u_P",
+          "Q": "1.1456*P + u_Q"
+        },
+        "intervention": {
+          "action": "V0",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "P",
+              "Q"
+            ],
+            [
+              "V0",
+              "V1"
+            ],
+            [
+              "V1",
+              "V2"
+            ],
+            [
+              "V2",
+              "V3"
+            ],
+            [
+              "V3",
+              "V4"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "V0": 0.0,
+          "V1": 0.0,
+          "V2": 0.0,
+          "V3": 0.0,
+          "V4": 0.0,
+          "P": 0.0,
+          "Q": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "V0",
+      "value": 0.5,
+      "seed": 930121,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V3",
+            "V4"
+          ]
+        ],
+        "equation_terms": {
+          "V0": "u_V0",
+          "V1": "0.6543*V0 + u_V1",
+          "V2": "1.0472*V1 + u_V2",
+          "V3": "0.8851*V2 + u_V3",
+          "V4": "1.1808*V3 + u_V4",
+          "P": "u_P",
+          "Q": "1.1456*P + u_Q"
+        },
+        "intervention": {
+          "action": "V0",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "P",
+              "Q"
+            ],
+            [
+              "V0",
+              "V1"
+            ],
+            [
+              "V1",
+              "V2"
+            ],
+            [
+              "V2",
+              "V3"
+            ],
+            [
+              "V3",
+              "V4"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "V0": 0.0,
+          "V1": 0.0,
+          "V2": 0.0,
+          "V3": 0.0,
+          "V4": 0.0,
+          "P": 0.0,
+          "Q": 0.0
+        }
+      }
+    }
+  ]
+}

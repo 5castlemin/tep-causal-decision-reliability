@@ -1,0 +1,174 @@
+[
+  {
+    "setting": "primary",
+    "rows": 428,
+    "macro_mae": {
+      "M0": 0.3302108207992085,
+      "M1": 0.3398072449106213,
+      "M2": 0.3255431673529869,
+      "M3": 0.3266901411482306,
+      "M4_incremental": 0.3388425206107688
+    },
+    "delta": {
+      "left": "M1",
+      "right": "M2",
+      "delta": 0.014264077557634426,
+      "ci_low": 0.0029122371161108985,
+      "ci_high": 0.02527767601584533,
+      "right_better": 9,
+      "left_better": 3,
+      "ties": 0,
+      "by_structure": {
+        "C01": 0.019141896709954198,
+        "C02": -0.0012759025880066666,
+        "C03": 0.003609792995222766,
+        "C04": -0.02324235707290037,
+        "C05": 0.004275738266337925,
+        "C06": 0.048742892175379915,
+        "C07": -0.009251057943405083,
+        "C08": 0.032324179215938,
+        "C09": 0.033504617883986815,
+        "C10": 0.008469151720116586,
+        "C11": 0.032115171210824925,
+        "C12": 0.022754808118164105
+      },
+      "leave_one_structure_out_min": 0.011129639865112109,
+      "leave_one_structure_out_max": 0.01767375343313759,
+      "bootstrap_units": "whole generated reference structures, within selected generator; conditional on exploratory fitted models",
+      "bootstrap_repeats": 10000
+    },
+    "judgment": "INDEPENDENT_SUPPORT",
+    "same_action_as_primary": 428,
+    "unique_action_count": 5,
+    "interpretation": "predeclared supplementary distribution shift; fixed original models, not refitted"
+  },
+  {
+    "setting": "fine",
+    "rows": 428,
+    "macro_mae": {
+      "M0": 0.32422515075549324,
+      "M1": 0.32596730754718833,
+      "M2": 0.3094990689578706,
+      "M3": 0.31796117054967293,
+      "M4_incremental": 0.3206524641425223
+    },
+    "delta": {
+      "left": "M1",
+      "right": "M2",
+      "delta": 0.016468238589317705,
+      "ci_low": 0.0061439286525519785,
+      "ci_high": 0.026863199657522784,
+      "right_better": 9,
+      "left_better": 3,
+      "ties": 0,
+      "by_structure": {
+        "C01": 0.01914189670995419,
+        "C02": -0.0012759025880066388,
+        "C03": 0.005122473747319542,
+        "C04": 0.004473258147966383,
+        "C05": -0.009520719379793485,
+        "C06": 0.049485063930485435,
+        "C07": -0.008831791612721851,
+        "C08": 0.033629134580207484,
+        "C09": 0.028934319877117837,
+        "C10": 0.014794732040367797,
+        "C11": 0.04047780857962538,
+        "C12": 0.021188589039290384
+      },
+      "leave_one_structure_out_min": 0.01346670901284791,
+      "leave_one_structure_out_max": 0.018830871131964178,
+      "bootstrap_units": "whole generated reference structures, within selected generator; conditional on exploratory fitted models",
+      "bootstrap_repeats": 10000
+    },
+    "judgment": "INDEPENDENT_SUPPORT",
+    "same_action_as_primary": 337,
+    "unique_action_count": 8,
+    "interpretation": "predeclared supplementary distribution shift; fixed original models, not refitted"
+  },
+  {
+    "setting": "low_cost",
+    "rows": 428,
+    "macro_mae": {
+      "M0": 0.3497084402123161,
+      "M1": 0.35335725887082653,
+      "M2": 0.33078866838377363,
+      "M3": 0.3410234479797974,
+      "M4_incremental": 0.3463917621743371
+    },
+    "delta": {
+      "left": "M1",
+      "right": "M2",
+      "delta": 0.02256859048705287,
+      "ci_low": 0.011165454347454515,
+      "ci_high": 0.03291802943613067,
+      "right_better": 10,
+      "left_better": 2,
+      "ties": 0,
+      "by_structure": {
+        "C01": 0.03580856337662084,
+        "C02": 0.005943830807899703,
+        "C03": 0.0036097929952227797,
+        "C04": -0.00895981745519564,
+        "C05": 0.020631497490269102,
+        "C06": 0.04543145834849066,
+        "C07": -0.008551241660943454,
+        "C08": 0.032324179215938,
+        "C09": 0.038879360562054266,
+        "C10": 0.021458597060689283,
+        "C11": 0.04391750259440046,
+        "C12": 0.04032936250918845
+      },
+      "leave_one_structure_out_min": 0.02049014795419489,
+      "leave_one_structure_out_max": 0.025434809390893643,
+      "bootstrap_units": "whole generated reference structures, within selected generator; conditional on exploratory fitted models",
+      "bootstrap_repeats": 10000
+    },
+    "judgment": "INDEPENDENT_SUPPORT",
+    "same_action_as_primary": 393,
+    "unique_action_count": 5,
+    "interpretation": "predeclared supplementary distribution shift; fixed original models, not refitted"
+  },
+  {
+    "setting": "high_cost",
+    "rows": 428,
+    "macro_mae": {
+      "M0": 0.3124824632437334,
+      "M1": 0.3284368780880373,
+      "M2": 0.3235632582063555,
+      "M3": 0.3146363731628324,
+      "M4_incremental": 0.33475894916098803
+    },
+    "delta": {
+      "left": "M1",
+      "right": "M2",
+      "delta": 0.004873619881681787,
+      "ci_low": -0.007308684050234436,
+      "ci_high": 0.01740431276245625,
+      "right_better": 6,
+      "left_better": 6,
+      "ties": 0,
+      "by_structure": {
+        "C01": 0.0021357202052289456,
+        "C02": -0.02748996466043266,
+        "C03": -0.0021305795288715512,
+        "C04": -0.027849107583843735,
+        "C05": -0.0019045650986506124,
+        "C06": 0.04854325122247355,
+        "C07": -0.009251057943405083,
+        "C08": 0.032324179215938026,
+        "C09": 0.029621768952448252,
+        "C10": -0.00715638311922219,
+        "C11": 0.0113837429844105,
+        "C12": 0.010256433934107995
+      },
+      "leave_one_structure_out_min": 0.0009036533961552625,
+      "leave_one_structure_out_max": 0.007848413287638653,
+      "bootstrap_units": "whole generated reference structures, within selected generator; conditional on exploratory fitted models",
+      "bootstrap_repeats": 10000
+    },
+    "judgment": "INCONCLUSIVE",
+    "same_action_as_primary": 397,
+    "unique_action_count": 4,
+    "interpretation": "predeclared supplementary distribution shift; fixed original models, not refitted"
+  }
+]

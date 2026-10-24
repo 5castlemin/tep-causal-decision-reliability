@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-25",
+  "runner_exit_code": 2,
+  "runner_status": "COMPLETED_WITH_RECORDED_EXCEPTIONS",
+  "learning_attempts": 216,
+  "graph_records_generated": 216,
+  "scm_usable_graphs": 214,
+  "scm_refusals": 2,
+  "auxiliary_policy_blocked_graphs": 3,
+  "row_status_counts": {
+    "EVALUATED": 5088,
+    "POLICY_BLOCKED": 48,
+    "LEARNING_OR_FIT_FAILED": 48
+  },
+  "primary_evaluated": 428,
+  "actual_do_conditions": 240,
+  "actual_do_batches": 720,
+  "actual_do_samples": 184320,
+  "controlled_models": 552,
+  "controlled_rows": 1104,
+  "failures": [
+    {
+      "failed_stage": "LEARNING_OR_DAG_FIT",
+      "error": "ValueError: CYCLIC_OR_UNSUPPORTED: 간선 임의 삭제 금지",
+      "graph_id": "C12_n256_r3__pc"
+    },
+    {
+      "failed_stage": "LEARNING_OR_DAG_FIT",
+      "error": "ValueError: CYCLIC_OR_UNSUPPORTED: 간선 임의 삭제 금지",
+      "graph_id": "C12_n512_r3__pc"
+    }
+  ],
+  "loss_imputation_for_failures": false
+}

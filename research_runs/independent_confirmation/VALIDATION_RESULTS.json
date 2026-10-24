@@ -1,0 +1,152 @@
+{
+  "status": "PASS",
+  "scope": "stored records/code/tests/doc sync; actual learning separately recorded; two fit refusals and three auxiliary blocks preserved",
+  "checks": [
+    {
+      "command": "python -X utf8 -m unittest discover -s tests -v",
+      "returncode": 0,
+      "seconds": 21.18700000003446,
+      "stdout_tail": "ntercept (test_pilot_fit.PilotFitTest.test_ridge_penalty_and_intercept) ... ok\ntest_root_and_parent_lag (test_pilot_fit.PilotFitTest.test_root_and_parent_lag) ... ok\ntest_abstention_and_computed_baseline_differ (test_repeated_metric_pilot.RepeatedMetricTests.test_abstention_and_computed_baseline_differ) ... ok\ntest_chain_extensions_exclude_new_collider (test_repeated_metric_pilot.RepeatedMetricTests.test_chain_extensions_exclude_new_collider) ... ok\ntest_direct_edge_not_indirect_reachability_and_f1_denominators (test_repeated_metric_pilot.RepeatedMetricTests.test_direct_edge_not_indirect_reachability_and_f1_denominators) ... ok\ntest_extensions_match_independent_permutation_enumeration (test_repeated_metric_pilot.RepeatedMetricTests.test_extensions_match_independent_permutation_enumeration) ... ok\ntest_given_collider_cannot_be_reoriented (test_repeated_metric_pilot.RepeatedMetricTests.test_given_collider_cannot_be_reoriented) ... ok\ntest_invalid_endpoint_and_cycle_fail (test_repeated_metric_pilot.RepeatedMetricTests.test_invalid_endpoint_and_cycle_fail) ... ok\ntest_rank_ties_and_constant (test_repeated_metric_pilot.RepeatedMetricTests.test_rank_ties_and_constant) ... ok\ntest_saved_raw_and_policies (test_repeated_metric_pilot.RepeatedMetricTests.test_saved_raw_and_policies) ... ok\ntest_document_only_change_is_exempt (test_research_ops.ResearchOpsTest.test_document_only_change_is_exempt) ... ok\ntest_pinned_inputs (test_research_ops.ResearchOpsTest.test_pinned_inputs) ... ok\ntest_substantive_change_requires_all_three (test_research_ops.ResearchOpsTest.test_substantive_change_requires_all_three) ... ok\ntest_measurements_match_evaluation_clock_not_state_clock (test_simulator_diagnostics.ClockTests.test_measurements_match_evaluation_clock_not_state_clock) ... ok\ntest_no_matching_time_is_failure (test_simulator_diagnostics.ClockTests.test_no_matching_time_is_failure) ... ok\ntest_documented_filename_is_not_acquired_data (test_track_a_gate.GateTests.test_documented_filename_is_not_acquired_data) ... ok\ntest_matching_normal_runs_do_not_establish_effect_interface (test_track_a_gate.GateTests.test_matching_normal_runs_do_not_establish_effect_interface) ... ok\ntest_run_claim_requires_execution_gate (test_track_a_gate.GateTests.test_run_claim_requires_execution_gate) ... ok\n\n----------------------------------------------------------------------\nRan 55 tests in 20.525s\n\nOK\n",
+      "raw_log_sha256": "ed47405148c3231ea88808dd551bb7db461acacea0599a35a812d2a41688ee9e"
+    },
+    {
+      "command": "python -X utf8 graphs/final/verify_and_load.py",
+      "returncode": 0,
+      "seconds": 0.5940000000409782,
+      "stdout_tail": "OK: 39개 파일 해시 일치, 변수 순서 일치, 시계열 3개 엄격 재변환 일치\n",
+      "raw_log_sha256": "6dac5cada6fe0587487ccd285c409f2862a13e885a5025162c19b01e70d1f91b"
+    },
+    {
+      "command": "python -X utf8 experiments/simulator/validate_feasibility.py",
+      "returncode": 0,
+      "seconds": 0.26599999994505197,
+      "stdout_tail": "[PASS] 실행 CSV hash·반복·시계열·shutdown/reset 한계·mapping 검증\nSIMULATOR FEASIBILITY: PARTIAL — 종료·reset·모델 호환성 관문 미해결\n",
+      "raw_log_sha256": "4eee8c2756cd9e7b887b77f3cc651dd077bb94450c19b79880505f92aa3dd4e8"
+    },
+    {
+      "command": "python -X utf8 experiments/simulator/diagnostics/validate_diagnostics.py",
+      "returncode": 0,
+      "seconds": 0.4059999999590218,
+      "stdout_tail": "[PASS] 원시 hash·105열·두 시계·12개 수동 조건·2시간 정상·reset·분석 재계산\nSIM-03 PARTIAL; SIM-04 VERIFIED(새 객체 계약); COMPAT-01 PARTIAL; 직접 효과 정답 NO-GO\n",
+      "raw_log_sha256": "b55a7f98d50516fd704b05788aaed55f5f657de412d980ef984d70691de12f96"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_benchmark_decision.py",
+      "returncode": 0,
+      "seconds": 8.109000000054948,
+      "stdout_tail": "[PASS] 156개 PR4 파일 원본 hash·회수 코드 정적 근거·주장 수준·설계 보류·상태 동기화·원시 산출물 불변\nBENCHMARK COMPATIBILITY: PARTIAL; HYPOTHESIS GATE: INSUFFICIENT_EVIDENCE; 새 실험 NOT_RUN\n",
+      "raw_log_sha256": "f279992a48dc275a6a07764e76ae46dd2629f740b436f23b94eab8c2ae1b9cf3"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_track_a_recovery.py",
+      "returncode": 0,
+      "seconds": 0.18799999996554106,
+      "stdout_tail": "[PASS] 출처 hash·Gate·A3 미실행·L1~L7·상태·동결 산출물 보존\n",
+      "raw_log_sha256": "4ec2f8032b1b739902487f5273bf742cc56f2db37ab3d915ea1b6ef26782b617"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_track_b_audit.py",
+      "returncode": 0,
+      "seconds": 0.18700000003445894,
+      "stdout_tail": "[PASS] Q1~Q5·미채택·30초 범위·metadata/원본 구분·hash·동결 자료 보존\n",
+      "raw_log_sha256": "f558994eef444879285244516df3075d1918d2bede4d1fc9bbfbb16f73531d81"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_ref_b_minimal_records.py",
+      "returncode": 0,
+      "seconds": 0.18799999996554106,
+      "stdout_tail": "[PASS] 국소 차분·독립 역산·제어 순서·시간 기록·CANDIDATE·중단·동결 자료 보존\n",
+      "raw_log_sha256": "5eb6e174f2b518a6376b7f0b463e8d18e9c9c03628789d0b3a3f8668603958c9"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_decision_mvp.py",
+      "returncode": 0,
+      "seconds": 0.21799999999348074,
+      "stdout_tail": "[PASS] 기존 자산 재사용·84행·8회×2버전 raw/hash·Gate 거부·성능 null·상태 동기화·원본 보존\n",
+      "raw_log_sha256": "d2a63ca0b80cf6f4414b773587b868a7824dfcf0f7d4c0bc8dc2f6b78cc85aa3"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_env_acceptance.py",
+      "returncode": 0,
+      "seconds": 0.2190000000409782,
+      "stdout_tail": "[PASS] 예제 direct GT·행별 관측/do·seed/배치·음성 guard·범위·원본 보존. 제조 검증 아님\n",
+      "raw_log_sha256": "6d4be440bf15c27d35be2593f88b54bc275c0b982e2e908fd90f9046ae7d1349"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_first_integrated_pilot.py",
+      "returncode": 0,
+      "seconds": 0.375,
+      "stdout_tail": "[PASS] 6 learned graphs; raw do/noise reconstruction; seed separation; freeze-before-holdout; metrics/loss/SE; code/data hashes\n",
+      "raw_log_sha256": "c78e960bd3093ad145ae80afe10672f51bdc6cc2e5f7cdb00d079a8411eb0202"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_repeated_metric_pilot.py",
+      "returncode": 0,
+      "seconds": 1.7809999999590218,
+      "stdout_tail": "[PASS] ordered merge lineage; original assets; 12 independent datasets/36 learned graphs; 432 policies; 55296 raw do samples; no GT orientation; policy freeze; losses/SE/cluster-aware descriptive records\n",
+      "raw_log_sha256": "4f82ec71caaf8270350c70726d1e1010aba541aab9b5bd5189595e5743b40126"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_diverse_structure_pilot.py",
+      "returncode": 0,
+      "seconds": 3.2820000000065193,
+      "stdout_tail": "[PASS] 8 FCM source/observed/do contracts;144 attempts;48 datasets;native graph/MEC/policy freeze;78336 raw do;denominator guards;controlled graphs separated;8 whole-structure folds;old assets unchanged\n",
+      "raw_log_sha256": "6bb2842636ba3da2355b2aa4224026560ada7fad837944b8eed3a8afaa66d07f"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_independent_confirmation.py",
+      "returncode": 0,
+      "seconds": 16.875,
+      "stdout_tail": "[PASS] full144 replay; frozen rules/models/code before216 attempts;12 source/do contracts;raw equations/statistics;metrics/freeze/loss;cluster bootstrap;old assets unchanged\n",
+      "raw_log_sha256": "e6d65670991f9cbe1cdcf1964b2be36b7ddea248c518aff7269dd16e5020e2b7"
+    },
+    {
+      "command": "python -X utf8 scripts/check_research_state.py",
+      "returncode": 0,
+      "seconds": 0.125,
+      "stdout_tail": "[PASS] 현재 상태·의존성·우선순위 ID 유일성·상단 문서 일치\n",
+      "raw_log_sha256": "3543370717f81c444209f3dfa9b9abc0a6c7e3403a384524f28414cbed4da901"
+    },
+    {
+      "command": "python -X utf8 scripts/check_asset_manifest.py",
+      "returncode": 0,
+      "seconds": 0.125,
+      "stdout_tail": "[PASS] Final config·미회수 생성 코드·평가 재현 범위의 기록 정합성\n",
+      "raw_log_sha256": "564a4921b09982b560465189ba505658ae8d9dfd0b57f85111d065705ea042f0"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_pr_integration.py",
+      "returncode": 0,
+      "seconds": 8.047000000020489,
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"source_base_main\": \"ceb447deb03f5532dc274cb97de2cd7f317349e7\",\n  \"pr2_source\": \"e5a0291e48d5426628c0dde8a122fe8ab6b6e195\",\n  \"pr3_source\": \"b2e455fd37d1e236aa30fe246e4944142bef4bab\",\n  \"preserved_file_counts\": {\n    \"graphs/final\": 46,\n    \"experiments/simulator\": 30\n  },\n  \"required_states\": {\n    \"SIM-01\": \"BLOCKED\",\n    \"SIM-02\": \"PARTIAL\",\n    \"GRAPH-01\": \"VERIFIED\",\n    \"GRAPH-GEN\": \"BLOCKED\",\n    \"SCM-01\": \"PARTIAL\",\n    \"EFFECT-01\": \"NOT_RUN\"\n  }\n}\n",
+      "raw_log_sha256": "18df0f3a6e3b1dde8201c2abab69c7845fdf0ad2e2fbc06473508d2e525148fa"
+    },
+    {
+      "command": "python -X utf8 scripts/check_research_docs.py --base origin/feature/diverse-causal-structures",
+      "returncode": 0,
+      "seconds": 0.17099999997299165,
+      "stdout_tail": "[PASS] 연구 문서 동기화 파일 변경 확인 (내용의 진실성은 별도 검토 필요)\n",
+      "raw_log_sha256": "aceb1f3f63eff4fa15ed1239b2742a722b1e54a78ba874873797ddf4a1d8b591"
+    },
+    {
+      "command": "git diff --check",
+      "returncode": 0,
+      "stdout_tail": "warning: in the working copy of '.gitattributes', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'DECISIONS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'WORK_LOG.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'introduction.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'requirements.txt', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "command": "git diff a4ae7694aff24e8a40dce516cf44007d52676907 --name-only -- graphs/final data experiments RESEARCH_DESIGN.md research_runs/diverse_structure_pilot research_runs/repeated_metric_pilot research_runs/first_integrated_pilot",
+      "returncode": 0,
+      "stdout_tail": ""
+    },
+    {
+      "command": "private absolute-path scan including gzip",
+      "returncode": 0,
+      "findings": []
+    },
+    {
+      "command": "Markdown report table column consistency",
+      "returncode": 0,
+      "bad_lines": []
+    }
+  ]
+}

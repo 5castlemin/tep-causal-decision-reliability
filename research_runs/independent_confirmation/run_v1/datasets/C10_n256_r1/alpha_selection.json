@@ -1,0 +1,42 @@
+{
+  "selected_alpha": 0.0001,
+  "scores": [
+    {
+      "alpha": 0.0001,
+      "per_graph_mse": {
+        "pc": 0.9078407956688764,
+        "boss": 0.7365722787597959,
+        "directlingam": 0.5700943221467505
+      },
+      "mean_mse": 0.7381691321918075
+    },
+    {
+      "alpha": 0.001,
+      "per_graph_mse": {
+        "pc": 0.9078336885367293,
+        "boss": 0.7366067959096505,
+        "directlingam": 0.5701275576806724
+      },
+      "mean_mse": 0.738189347375684
+    },
+    {
+      "alpha": 0.01,
+      "per_graph_mse": {
+        "pc": 0.9077718622695187,
+        "boss": 0.7371389088017901,
+        "directlingam": 0.5707400264116549
+      },
+      "mean_mse": 0.7385502658276546
+    },
+    {
+      "alpha": 0.1,
+      "per_graph_mse": {
+        "pc": 0.9079447897729628,
+        "boss": 0.7485510612335384,
+        "directlingam": 0.5867654010100593
+      },
+      "mean_mse": 0.7477537506721869
+    }
+  ],
+  "scope": "all eligible algorithms, observational validation only"
+}

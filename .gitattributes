@@ -37,3 +37,18 @@ research_runs/diverse_structure_pilot/figures_v1/** linguist-generated=true
 research_runs/diverse_structure_pilot/reference_graphs_v1/*.svg whitespace=-blank-at-eol
 research_runs/diverse_structure_pilot/figures_v1/*.svg whitespace=-blank-at-eol
 research_runs/diverse_structure_pilot/run_v1/datasets/*/*_console.txt whitespace=cr-at-eol,-blank-at-eof
+# New confirmation artifacts/source retain exact executed bytes across platforms.
+research_runs/independent_confirmation/** -text linguist-generated=true whitespace=cr-at-eol
+src/independent_confirmation.py -text
+scripts/*confirmation*.py -text
+tests/test_independent_confirmation.py -text
+research_runs/independent_confirmation/run_v1/datasets/*/*_console.txt whitespace=cr-at-eol,-blank-at-eof
+# Keep the human protocol and interpretation visible in PR review.
+research_runs/independent_confirmation/README.md linguist-generated=false
+research_runs/independent_confirmation/PROVENANCE.md linguist-generated=false
+research_runs/independent_confirmation/PLAN_v1.json linguist-generated=false
+research_runs/independent_confirmation/EXECUTION_STATUS.json linguist-generated=false
+research_runs/independent_confirmation/HYPOTHESIS_ASSESSMENT.json linguist-generated=false
+# Preserve CRLF bytes of executed/frozen Windows source; CR is an EOL, not content whitespace.
+scripts/run_independent_confirmation.py whitespace=cr-at-eol
+scripts/write_confirmation_report.py whitespace=cr-at-eol
