@@ -1,0 +1,62 @@
+{
+  "protocol": "CAUSAL-METRIC-DECISION-MVP-v1",
+  "scope": "TECHNICAL_ONLY",
+  "structure_environment": "CPCAD_PIN_72b0f5e",
+  "outcome_environment": "PYTHON_TEP_PIN_9a6c8e5_MANUAL",
+  "gate1_approved": false,
+  "primary_graphs": [
+    "pc",
+    "directlingam",
+    "boss"
+  ],
+  "task_id": "reactor_cooling_idv4_candidate",
+  "action": "X32",
+  "target": "X9",
+  "selection_basis": "기존 12개 중 물리 의미·수동 XMV10 쓰기와 XMEAS9 로깅 근거로 고정. graph 점수/추천 결과 미사용",
+  "fault": null,
+  "fault_task_status": "UNCONFIRMED",
+  "dry_run": {
+    "reuse_existing_fit": true,
+    "delta_grid_pp": [
+      -0.1,
+      0.0,
+      0.1
+    ],
+    "target_rule": "공통 기존 train X9 평균 - 0.01°C; 계산 경로 점검용 임의 목표이며 공정 정상/복구 기준 아님",
+    "target_offset_c": -0.01,
+    "cost_weight": 0.01,
+    "execute_recommended_action": false
+  },
+  "simulator": {
+    "source_commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+    "backend": "python",
+    "mode": "manual",
+    "dt_seconds": 1,
+    "horizon_seconds": 60,
+    "action_time_seconds": 10,
+    "predefined_delta_pp": [
+      0.0,
+      0.1
+    ],
+    "seeds": [
+      465120799,
+      465120800
+    ],
+    "repeats": 2,
+    "initialization": "매 run 새 객체·initialize·IDV=0. source 초기 상태; 학습 데이터 운전점과 같다고 가정하지 않음",
+    "policy": "기준은 추가 명령 없음. 조작은 10초 평가 직전 초기 XMV10+0.1pp를 한 번 지정·수동 유지",
+    "termination": "60step 또는 step false/비유한 상태 시 즉시 중단. 실패 로그 보존, shutdown은 연구 Safety 점수가 아님"
+  },
+  "normal_target_range": null,
+  "goal_achievement_rule": null,
+  "recovery_rule": null,
+  "safety_thresholds": null,
+  "technical_acceptance": "요청한 명령과 로깅 시계·유한 상태·동일 조건 2회 raw byte 재현 확인. 실제 효과 정확도/정상 운전 안전성 합격 기준 아님",
+  "forbidden_outputs": [
+    "recovery_rate",
+    "safety_score",
+    "metric_performance_correlation",
+    "performance_ranking"
+  ],
+  "new_environment_adopted": false
+}

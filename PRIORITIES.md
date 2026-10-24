@@ -4,14 +4,17 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **REF-B — Track B 참조 구조 타당성**: 최소 내부 상태식 검산 완료; 관측 projection/비간선/알고리즘 의미의 외부 방법론 검토 전 추가 GT·실험 중단 (PARTIAL)
-2. **SIM-B — Track B 제어기·잡음 정렬 계약**: 5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류 (PARTIAL)
-3. **DESIGN-B — Track B 가설 유지·통계 설계**: 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 (BLOCKED)
+1. **ENV-MVP — 구조·추천 평가환경 대응**: 새 통제 환경 후보 acceptance adapter의 범위/채택 승인 또는 A의 새로운 동등성 근거 확보 (BLOCKED)
+2. **POLICY-MVP — 실제 추천 정책 연결**: 승인 환경의 단일 Action/Target·범위·목표·비용·기준정책 고정 후 공통 추천기와 실제 dispatcher 연결 (BLOCKED)
+3. **EVAL-MVP — 구조 지표–추천 성능 비교**: 새 graph-fit/Task/holdout batch 키로 실제 추천 성능 측정 후 Gate5 연결; 과거 F1 이식 금지 (BLOCKED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| ENV-MVP | BLOCKED | 없음 | 새 통제 환경 후보 acceptance adapter의 범위/채택 승인 또는 A의 새로운 동등성 근거 확보 / 동일 환경 reference/do/반복·정책·독립 효과 로그; Gate1 승인 전 연구 실행 금지 |
+| POLICY-MVP | BLOCKED | ENV-MVP | 승인 환경의 단일 Action/Target·범위·목표·비용·기준정책 고정 후 공통 추천기와 실제 dispatcher 연결 / 공통 목적/행동 공간·물리 목표·정책 contract와 추천 적용 로그 |
+| EVAL-MVP | BLOCKED | ENV-MVP, POLICY-MVP | 새 graph-fit/Task/holdout batch 키로 실제 추천 성능 측정 후 Gate5 연결; 과거 F1 이식 금지 / 동일 참조환경·독립 효과/목표달성·실패 포함 비교; 반복/통계 정밀도 사전 고정 |
 | REF-B | PARTIAL | 없음 | 최소 내부 상태식 검산 완료; 관측 projection/비간선/알고리즘 의미의 외부 방법론 검토 전 추가 GT·실험 중단 / 기존 discovery와 동일한 참조 정의·불확실/음성 쌍·채점 계약 검토; 현재 전체 Q2 BLOCKED |
 | SIM-B | PARTIAL | 없음 | 5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류 / 관측 정의 일치 후에만 정책·잡음·horizon의 별도 사전 계약 |
 | DESIGN-B | BLOCKED | REF-B, SIM-B | 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 / 독립 graph-fit·과제 family·평가 seed의 비교 계약과 유지/축소/보류 의사결정 |
@@ -39,5 +42,6 @@
 - Track A Gate에서 EXPORT-01을 추가해 원시 ZIP 접근과 실제 CSV export 연결을 구분했다. 기존 ID/실험 상태는 유지한다.
 - 2026-10-24 REF-B/SIM-B/DESIGN-B는 Track B 채택 전 타당성 조건이다. Track A 차단을 해제하거나 연구 전환을 뜻하지 않는다.
 - 2026-10-24 REF-B PARTIAL은 내부 물리 블록의 한 점 구현 검산만 뜻한다. 전체 Q2 BLOCKED/Track B NO-GO 유지, 추가 GT 후보/실험은 중단한다.
+- MVP-TECH는 실행 검증만 VERIFIED. ENV/POLICY/EVAL-MVP는 원래 지표–추천 성능 질문의 선결 단계다. REF-B 등 과거 ID와 차단 근거를 보존한다.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

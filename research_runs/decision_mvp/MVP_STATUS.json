@@ -1,0 +1,39 @@
+{
+  "protocol": "CAUSAL-METRIC-DECISION-MVP-v1",
+  "checked_at": "2026-10-24",
+  "base_commit": "d508ab071f8e153698552ce69225a6eaf17a7150",
+  "base_branch": "feature/ref-b-minimal-subsystem",
+  "pr6_status": "OPEN",
+  "pr7_status": "OPEN",
+  "pr8_status": "OPEN",
+  "concrete_outcome": "독립된 기술 파일럿 검증; 원래 가설 검증과 분리",
+  "gates": {
+    "G1": "BLOCKED",
+    "G2": "PASS_TECHNICAL",
+    "G3": "PARTIAL_TECHNICAL_ONLY",
+    "G4": "NOT_RUN_RESEARCH",
+    "G5": "BLOCKED"
+  },
+  "hypothesis_gate": "NO-GO",
+  "new_environment_adopted": false,
+  "global_metrics": "기존 Step6 7행/공정 흐름 표 재사용",
+  "task_metric_rows": 84,
+  "scm_fit": "기존 정적3개만 재사용; 신규 적합 없음",
+  "recommendation": "3개 동일 격자 dry-run, simulator에 미적용",
+  "final_simulator_runs": 8,
+  "total_simulator_runs_including_clock_revision": 16,
+  "active_results": "research_runs/decision_mvp/run_20261024_v2",
+  "technical_repeats": "2seed×2사전정책×2반복 raw exact",
+  "effect_prediction_error": null,
+  "goal_achievement": null,
+  "recovery": null,
+  "safety": null,
+  "metric_performance_relation": null,
+  "v2_executed_code_sha256": {
+    "src/decision_mvp.py": "517ffbaceddaa3fefe95a658d45162d9e99da247ef07922b1dbe9d6d7643a10e",
+    "scripts/run_decision_mvp.py": "83bd2b7f47ec280d0a7247d5d5be30a4de97591218fc895101e28e49eb50279b"
+  },
+  "v1_executed_code_sha256": null,
+  "v1_code_note": "명목 시계 버전 실행 당시 runner hash 별도 기록 없음. 원시 기록은 보존",
+  "required_approval": "새 통제 평가환경 채택 및 새 관측 데이터/학습 실행은 별도 승인 필요"
+}

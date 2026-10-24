@@ -43,7 +43,8 @@ def main():
     assert inventory['rieth']['license_status'] == 'VERIFIED_METADATA_CUSTOM_TERMS'
     state = read(ROOT/'docs/research_state.json')
     assert state['track_b_audit'] == decision
-    assert state['priority_order'][:3] == ['REF-B','SIM-B','DESIGN-B']
+    # Past audit IDs remain; a later authorized task may change current priorities.
+    assert {'REF-B','SIM-B','DESIGN-B'} <= {x['id'] for x in state['workstreams']}
     protected = ['graphs/final','experiments','data','docs/audit/step6_main_table.csv',
                  'RESEARCH_DESIGN.md','docs/research_design/track_a_evidence',
                  'docs/research_design/evidence','docs/reproducibility/GRAPH_REPRODUCIBILITY.json']
