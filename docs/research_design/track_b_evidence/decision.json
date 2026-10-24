@@ -1,0 +1,36 @@
+{
+  "protocol": "TRACK-B-REFERENCE-VALIDITY-AUDIT-v1",
+  "checked_at": "2026-10-24",
+  "dependency": {
+    "pr": 6,
+    "state": "OPEN",
+    "head": "5fe3997d79a8244f4b156d5a335013337833b166",
+    "ci_run": 39963153945,
+    "ci_conclusion": "success",
+    "base_branch": "feature/track-a-recovery-gate",
+    "main": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24"
+  },
+  "questions": {
+    "Q1": "PARTIAL",
+    "Q2": "BLOCKED",
+    "Q3": "BLOCKED",
+    "Q4": "UNKNOWN",
+    "Q5": "VERIFIED"
+  },
+  "q5_scope": "기존/신규 결과를 구분하는 설계 기록 검증; 실제 신규 효과 성과 아님",
+  "recommendation": "NO-GO",
+  "track_b_adopted": false,
+  "research_question_changed": false,
+  "hypothesis_validation": "INSUFFICIENT_EVIDENCE",
+  "reference_graph_created": false,
+  "new_discovery_or_scm_fitted": false,
+  "recovery_safety_computed": false,
+  "small_probe_execution": "COMPLETED_30_STEPS_PER_ARM_4_ARMS",
+  "first_probe_attempt": "FAILED_ATTRIBUTE_ERROR_NO_RESULT_FILE",
+  "randomness_claim_scope": "30초·동일 dt·단일 seed·IDV=0에서만 draw/측정 잡음 일치",
+  "next_conditions": [
+    "관측 노드/시간/정책의 참조 구조 타당성",
+    "잡음 정렬/제어기 개입 계약",
+    "독립 graph-fit 단위/표본 precision 설계"
+  ]
+}

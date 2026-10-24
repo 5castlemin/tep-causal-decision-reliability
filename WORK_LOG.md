@@ -105,3 +105,14 @@
 - 실제 명령: collect_track_a_evidence.py --local-records <지정 아카이브 기록 폴더>, 일회성 상태 JSON 갱신 후 python -X utf8 scripts/check_research_state.py --write. 개인 경로·서명 URL·PDF 전체는 Git에 반입하지 않음.
 - A1/A2 BLOCKED, A3 NOT_RUN, A4 NO-GO. 정상 운전·새 시뮬레이터/SCM/Recovery/Safety 실행 없음. 원시 기록/PDF/시각 확인 이미지는 지정 아카이브의 10_TrackA_원환경_복원Gate에 보존.
 - 로컬 검증 통과: validate_track_a_recovery.py, unittest discover(16개), validate_benchmark_decision.py, validate_feasibility.py, validate_diagnostics.py, graphs/final/verify_and_load.py(39 hash), check_asset_manifest.py, validate_pr_integration.py, src/verify_recovery.py. 마지막 명령은 기존 점수 독립 대조이며 새 discovery 실행은 아니다. 12조건 시뮬레이션 재실행 없음.
+
+## 2026-10-24 — Track B 참조 구조 타당성 감사
+
+- git fetch origin 후 사용자 변경 없음 확인. PR #6 OPEN/head5fe3997, Actions39963153945 성공, 변경16파일 검토. main7b16638은 그대로 두고 feature/track-b-reference-validity를 PR6 head에서 분기했다. PR base는 feature/track-a-recovery-gate이다. 자동 병합 없음.
+- RESEARCH_DESIGN/상태 JSON/우선순위/Track A·호환성·신뢰성 보고서/GRAPH_REPRODUCIBILITY/TASK_SPEC/PILOT_PLAN 재사용. 원자료 검색·Slack 전수 감사·기존 12조건 실행은 반복하지 않았다. 사용자의 MATLAB/정상 ZIP 위치 모름 답변을 차단 해제로 해석하지 않음.
+- 고정 Python source의 simulator/backend/controllers/constants 4파일 SHA를 기존 로그와 대조하고, 상태→측정·명령→밸브·제어기 주기·RNG 조건 분기를 코드로 검사했다. 코드 의존성을 GT로 변환하지 않았다.
+- 사전 범위 TRACK_B_SMALL_CHECK_PLAN.md 기록 후 `python -X utf8 scripts/audit_track_b_source.py --source ../tep-python-candidate --output docs/research_design/track_b_evidence/source_probe.json` 실행. 최초는 잘못된 process._process 접근 AttributeError로 실패/결과 파일 없음. 실제 API 직접 process로 고쳐 재실행 성공. 수동/폐루프 기준·조작 4객체 각30step, seed465120799/dt1초/IDV0, step6에 XMV10+0.1pp 1회 명령. 해당 구간 RNG·잡음 digest 일치, 상태 유한/계속 실행. 폐루프는 명령값을 controller가 갱신. 효과/복구/안전 점수 계산 없음.
+- 공식 Rieth DataCite/Dataverse API 메타데이터 HTTP200. v1.0 네 RData 목록·provider MD5·custom public-domain 이용 조건 확인. 데이터 본체는 다운로드하지 않았고 CC0로 축약하지 않음. Ricker/CIPCaD/Studio 공식 출처·기존 로컬 LICENSE 정적 확인. 외부 구현 재설치/교체 없음.
+- Q1 PARTIAL/Q2 BLOCKED/Q3 BLOCKED/Q4 UNKNOWN/Q5 VERIFIED(결과 분리 설계). 현재 채택 NO-GO, 가설 검증 INSUFFICIENT_EVIDENCE. 연구 질문·RESEARCH_DESIGN·7 frozen·Step6·기존 raw/evidence 미변경. Track B 채택/새 GT 생성 없음.
+- canonical JSON에 REF-B/SIM-B/DESIGN-B 및 PR6 미병합 의존성을 추가, `python -X utf8 scripts/check_research_state.py --write` 실행. `validate_track_b_audit.py`, `validate_track_a_recovery.py`, `python -X utf8 -m unittest discover -s tests -v`(16개) 통과. 새 source probe는 외부 source 필요로 CI 재실행과 분리한다.
+- 추가 통과: validate_benchmark_decision.py, validate_pr_integration.py, graphs/final/verify_and_load.py(39파일 hash), check_asset_manifest.py, check_research_state.py, check_research_docs.py --base origin/feature/track-a-recovery-gate. SIM-02의 구형 다음 행동 문구는 이미 확보된 2시간 기록 보존으로 정정했다. 작은 probe는 초기 RNG 스냅샷을 별도 저장하지 못한 제한을 보고서에 명시했다.

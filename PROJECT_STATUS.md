@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-10-23. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
+기준일: 2026-10-24. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
@@ -10,7 +10,7 @@
 | SIM-04 | 공개 후보 새 객체 초기화 계약 | VERIFIED | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 동일 source/backend/seed/mode의 새 객체를 반복 단위로 사용; 같은 객체 reset의 비트 일치 미보장 |
 | COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | docs/research_design/TRACK_A_RECOVERY_GATE.md | 합법적 IEEE 계정으로 3_Normal Steady-State.zip 회수 후 목록·SHA·실제 시간축/seed 확인; 기술문서만 회수됨 |
 | SIM-01 | 기존 8월 시뮬레이터 복구 | BLOCKED | docs/SIMULATOR_SETUP.md | 당시 저장소 URL/ZIP·버전·실행 명령·로그의 구체 소재 확보 |
-| SIM-02 | 공개 Python 후보 관측·쓰기·Fault smoke | PARTIAL | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/run_20261023_v3/summary.json | 2시간 정상 실행 추가 확인; 수치 기준·controller/override·호환성 제한 해결 뒤 Gate 재평가 |
+| SIM-02 | 공개 Python 후보 관측·쓰기·Fault smoke | PARTIAL | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/run_20261023_v3/summary.json | 기존 2시간 정상 기록 보존; controller/override·수치 기준·호환성 제한 해결 뒤 Gate 재평가 |
 | TASK-01 | 실행 가능한 복구 과제 확정 | BLOCKED | experiments/pilot/TASK_SPEC.md | 모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정 |
 | EFFECT-01 | 독립 개입·Recovery/Safety 측정 | NOT_RUN | experiments/pilot/PILOT_RESULT.md | 확정 과제로 no-action 대비 동일 조건 실험 |
 | DATA-01 | 원자료 취득·권리 | PARTIAL | docs/reproducibility/TEAM_GUIDE.md | 고정 커밋 취득은 검증됨; 재배포 권리 추가 확인 |
@@ -22,6 +22,9 @@
 | GRAPH-GEN | Final 7개 생성 학습 재실행 | BLOCKED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | 정확한 algos/common 원본 회수 후 환경과 frozen 동일성 검증 |
 | BENCH-ENV | 공식 수정 TEP 복원 환경 | BLOCKED | docs/research_design/TRACK_A_RECOVERY_GATE.md | 승인된 MATLAB/Simulink 위치·버전·라이선스 확보; PATH/registry/제품/일반 경로 탐색은 미발견, 라이선스 조회·로딩 NOT_RUN |
 | EXPORT-01 | 정상 run과 benchmark export 연결 | BLOCKED | docs/research_design/TRACK_A_RECOVERY_GATE.md | 원시 run·median stride/경계·1499행 생성 코드를 회수; 불가 시 전환 대안의 승인 요청만 준비 |
+| REF-B | Track B 참조 구조 타당성 | BLOCKED | docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md | 노드·시간·정책·잠재변수와 직접 간선의 독립 검토안 작성; 코드 의존성/기존 28간선 자동 GT화 금지 |
+| SIM-B | Track B 제어기·잡음 정렬 계약 | PARTIAL | docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md | 30초 probe 밖 종료/Fault/장기 구간의 noise·controller·시각 계약을 사전 설계; 대규모 실행 전 승인 |
+| DESIGN-B | Track B 가설 유지·통계 설계 | BLOCKED | docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md | 독립 graph-fit·과제 family·평가 seed 분리 및 precision 기준 작성; Q2 미해결이면 전환 권고 금지 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

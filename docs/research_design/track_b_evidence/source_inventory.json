@@ -1,0 +1,99 @@
+{
+  "checked_at": "2026-10-24",
+  "rieth": {
+    "doi": "10.7910/DVN/6C3JR1",
+    "version": "1.0",
+    "metadata_access": [
+      {
+        "name": "rieth_datacite",
+        "url": "https://api.datacite.org/dois/10.7910/DVN/6C3JR1",
+        "status": 200,
+        "sha256": "9dc5dbecba12275978eb3242750c26b4a43abc0a09b6c2af4bf1e5b28c14d3d7",
+        "bytes": 23696
+      },
+      {
+        "name": "rieth_dataverse",
+        "url": "https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/6C3JR1",
+        "status": 200,
+        "sha256": "a52a38d8a22932edb1effbce7913d20247e8f2bfc617ac11693e6822a6dc9aa3",
+        "bytes": 11206
+      }
+    ],
+    "license_status": "VERIFIED_METADATA_CUSTOM_TERMS",
+    "rights_summary": "public-domain dedication·면책·비후원 등 독자 이용 조건. CC0 표기와 동일시하지 않음.",
+    "terms_url": "https://dataverse.harvard.edu/api/datasets/:persistentId/versions/1.0/customlicense?persistentId=doi:10.7910/DVN/6C3JR1",
+    "files": [
+      {
+        "name": "TEP_FaultFree_Testing.RData",
+        "bytes": 47327663,
+        "provider_checksum": {
+          "type": "MD5",
+          "value": "38ad9810fc871026157086ae2c2f0ee9"
+        },
+        "restricted": false,
+        "bytes_recovered": false,
+        "local_sha256": null
+      },
+      {
+        "name": "TEP_FaultFree_Training.RData",
+        "bytes": 24678017,
+        "provider_checksum": {
+          "type": "MD5",
+          "value": "ec126484534331f85001d8c4ebce6d17"
+        },
+        "restricted": false,
+        "bytes_recovered": false,
+        "local_sha256": null
+      },
+      {
+        "name": "TEP_Faulty_Testing.RData",
+        "bytes": 836882037,
+        "provider_checksum": {
+          "type": "MD5",
+          "value": "556bdb64c83021bc0c5f92e427753565"
+        },
+        "restricted": false,
+        "bytes_recovered": false,
+        "local_sha256": null
+      },
+      {
+        "name": "TEP_Faulty_Training.RData",
+        "bytes": 494063194,
+        "provider_checksum": {
+          "type": "MD5",
+          "value": "c5f594d54c47e620ff877feb58407fda"
+        },
+        "restricted": false,
+        "bytes_recovered": false,
+        "local_sha256": null
+      }
+    ],
+    "intervention_status": "REPORTED_FAULTS_NOT_RECOVERY_ACTION_LABELS",
+    "controller_status": "UNKNOWN",
+    "reference_structure_status": "UNKNOWN"
+  },
+  "python_candidate": {
+    "url": "https://github.com/jkitchin/tennessee-eastman-profbraatz",
+    "commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+    "license_status": "VERIFIED_LOCAL_TERMS",
+    "license_sha256": "70a00a943dd2ef2a1749e694fca4340b588a9c71764e9860d4854e1362a8030d"
+  },
+  "studio": {
+    "url": "https://github.com/khalidlabs/tep-studio",
+    "commit": "852f0c69ab974540750d61bd1dbfafd56bfd80bb",
+    "license": "BSD-3-Clause",
+    "license_sha256": "64286de730ebc6595149e3a4caf4a4587e777be4569b2f3af1f1f06670898d47",
+    "execution": "NOT_RUN_THIS_AUDIT",
+    "reference_structure_status": "UNKNOWN"
+  },
+  "sources": [
+    {
+      "url": "https://arxiv.org/html/2208.01529#S4.SS1",
+      "status": "REPORTED_MECHANICAL_REFERENCE_NOT_TRANSFERRED"
+    },
+    {
+      "url": "https://depts.washington.edu/control/LARRY/TE/download.html",
+      "status": "OFFICIAL_LISTING_NO_NEW_RUN"
+    }
+  ]
+}

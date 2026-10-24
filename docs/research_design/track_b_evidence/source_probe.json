@@ -1,0 +1,1433 @@
+{
+  "protocol": "TRACK-B-SOURCE-PROBE-v1",
+  "source_commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+  "source_sha256": {
+    "src/tep/simulator.py": "c65d6e38658851febefe60a372e8a6031d6425d43a78f2c37c2ed34a95c6c3ed",
+    "src/tep/python_backend.py": "93ba3281980b9c47b882b84412c9cd0501f542ba9a9f214a84fcd6901d870598",
+    "src/tep/controllers.py": "030c49801bd93d719175b26ad5b94834c430729800825d9adc2a499e6be75b39",
+    "src/tep/constants.py": "c27d7c5a723c0b59598d35dcc0f028b8966a284b0da48669c89965b6c2e89468"
+  },
+  "python": "3.11.15",
+  "numpy": "2.4.6",
+  "seed": 465120799,
+  "dt_seconds": 1,
+  "modes": {
+    "manual": {
+      "initial_state_equal": true,
+      "initial_xmv10": 41.10581288,
+      "command_step": 6,
+      "commanded_xmv10": 41.20581288,
+      "records": [
+        {
+          "step": 0,
+          "evaluation_seconds": 0,
+          "state_seconds": 1,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            0,
+            0
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.10581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 1,
+          "evaluation_seconds": 1,
+          "state_seconds": 2,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.10581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 2,
+          "evaluation_seconds": 2,
+          "state_seconds": 3,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.10581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 3,
+          "evaluation_seconds": 3,
+          "state_seconds": 4,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.10581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 4,
+          "evaluation_seconds": 4,
+          "state_seconds": 5,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.10581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 5,
+          "evaluation_seconds": 5,
+          "state_seconds": 6,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.10581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 6,
+          "evaluation_seconds": 6,
+          "state_seconds": 7,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 7,
+          "evaluation_seconds": 7,
+          "state_seconds": 8,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 8,
+          "evaluation_seconds": 8,
+          "state_seconds": 9,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 9,
+          "evaluation_seconds": 9,
+          "state_seconds": 10,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 10,
+          "evaluation_seconds": 10,
+          "state_seconds": 11,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 11,
+          "evaluation_seconds": 11,
+          "state_seconds": 12,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 12,
+          "evaluation_seconds": 12,
+          "state_seconds": 13,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 13,
+          "evaluation_seconds": 13,
+          "state_seconds": 14,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 14,
+          "evaluation_seconds": 14,
+          "state_seconds": 15,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 15,
+          "evaluation_seconds": 15,
+          "state_seconds": 16,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 16,
+          "evaluation_seconds": 16,
+          "state_seconds": 17,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 17,
+          "evaluation_seconds": 17,
+          "state_seconds": 18,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 18,
+          "evaluation_seconds": 18,
+          "state_seconds": 19,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 19,
+          "evaluation_seconds": 19,
+          "state_seconds": 20,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 20,
+          "evaluation_seconds": 20,
+          "state_seconds": 21,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 21,
+          "evaluation_seconds": 21,
+          "state_seconds": 22,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 22,
+          "evaluation_seconds": 22,
+          "state_seconds": 23,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 23,
+          "evaluation_seconds": 23,
+          "state_seconds": 24,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 24,
+          "evaluation_seconds": 24,
+          "state_seconds": 25,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 25,
+          "evaluation_seconds": 25,
+          "state_seconds": 26,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 26,
+          "evaluation_seconds": 26,
+          "state_seconds": 27,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 27,
+          "evaluation_seconds": 27,
+          "state_seconds": 28,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 28,
+          "evaluation_seconds": 28,
+          "state_seconds": 29,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 29,
+          "evaluation_seconds": 29,
+          "state_seconds": 30,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10581288,
+            41.20581288
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        }
+      ],
+      "rng_digest": [
+        "085b9aaad00c702b43de481aff66f8a1f24130269e7de1e8cc5fe48cd874040e",
+        "085b9aaad00c702b43de481aff66f8a1f24130269e7de1e8cc5fe48cd874040e"
+      ],
+      "noise_digest": [
+        "3f43cdb34fd0afc488234206cd8a1247899df3f6de9e2dab69b71f24ca2483ea",
+        "3f43cdb34fd0afc488234206cd8a1247899df3f6de9e2dab69b71f24ca2483ea"
+      ],
+      "scope": "이 30초/seed/동일 dt/IDV=0에 한정; 효과 정답·장기 재현·안전성 검증 아님"
+    },
+    "closed_loop": {
+      "initial_state_equal": true,
+      "initial_xmv10": 41.10581288,
+      "command_step": 6,
+      "commanded_xmv10": 41.20581288,
+      "records": [
+        {
+          "step": 0,
+          "evaluation_seconds": 0,
+          "state_seconds": 1,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            0,
+            0
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.106099981561975,
+            41.106099981561975
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 1,
+          "evaluation_seconds": 1,
+          "state_seconds": 2,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.106099981561975,
+            41.106099981561975
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 2,
+          "evaluation_seconds": 2,
+          "state_seconds": 3,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.106099981561975,
+            41.106099981561975
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 3,
+          "evaluation_seconds": 3,
+          "state_seconds": 4,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10879287579453,
+            41.10879287579453
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 4,
+          "evaluation_seconds": 4,
+          "state_seconds": 5,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10879287579453,
+            41.10879287579453
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 5,
+          "evaluation_seconds": 5,
+          "state_seconds": 6,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.10879287579453,
+            41.10879287579453
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 6,
+          "evaluation_seconds": 6,
+          "state_seconds": 7,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.43309067389297,
+            41.530110678098445
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 7,
+          "evaluation_seconds": 7,
+          "state_seconds": 8,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.43309067389297,
+            41.530110678098445
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 8,
+          "evaluation_seconds": 8,
+          "state_seconds": 9,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.43309067389297,
+            41.530110678098445
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 9,
+          "evaluation_seconds": 9,
+          "state_seconds": 10,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.11837943283406,
+            41.21516208957988
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 10,
+          "evaluation_seconds": 10,
+          "state_seconds": 11,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.11837943283406,
+            41.21516208957988
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 11,
+          "evaluation_seconds": 11,
+          "state_seconds": 12,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.11837943283406,
+            41.21516208957988
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 12,
+          "evaluation_seconds": 12,
+          "state_seconds": 13,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.44894650952682,
+            41.54407889782348
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 13,
+          "evaluation_seconds": 13,
+          "state_seconds": 14,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.44894650952682,
+            41.54407889782348
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 14,
+          "evaluation_seconds": 14,
+          "state_seconds": 15,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.44894650952682,
+            41.54407889782348
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 15,
+          "evaluation_seconds": 15,
+          "state_seconds": 16,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.328479299443956,
+            41.42068718560647
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 16,
+          "evaluation_seconds": 16,
+          "state_seconds": 17,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.328479299443956,
+            41.42068718560647
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 17,
+          "evaluation_seconds": 17,
+          "state_seconds": 18,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.328479299443956,
+            41.42068718560647
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 18,
+          "evaluation_seconds": 18,
+          "state_seconds": 19,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.220176401002526,
+            41.3077497343513
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 19,
+          "evaluation_seconds": 19,
+          "state_seconds": 20,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.220176401002526,
+            41.3077497343513
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 20,
+          "evaluation_seconds": 20,
+          "state_seconds": 21,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.220176401002526,
+            41.3077497343513
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 21,
+          "evaluation_seconds": 21,
+          "state_seconds": 22,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.272213662922944,
+            41.35327346955297
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 22,
+          "evaluation_seconds": 22,
+          "state_seconds": 23,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.272213662922944,
+            41.35327346955297
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 23,
+          "evaluation_seconds": 23,
+          "state_seconds": 24,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.272213662922944,
+            41.35327346955297
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 24,
+          "evaluation_seconds": 24,
+          "state_seconds": 25,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.019711182358094,
+            41.09240641459394
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 25,
+          "evaluation_seconds": 25,
+          "state_seconds": 26,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.019711182358094,
+            41.09240641459394
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 26,
+          "evaluation_seconds": 26,
+          "state_seconds": 27,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.019711182358094,
+            41.09240641459394
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 27,
+          "evaluation_seconds": 27,
+          "state_seconds": 28,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.31670986292821,
+            41.37933711574679
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 28,
+          "evaluation_seconds": 28,
+          "state_seconds": 29,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.31670986292821,
+            41.37933711574679
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        },
+        {
+          "step": 29,
+          "evaluation_seconds": 29,
+          "state_seconds": 30,
+          "running": [
+            true,
+            true
+          ],
+          "rng_draw_counts": [
+            264,
+            264
+          ],
+          "rng_equal": true,
+          "measurement_noise_equal": true,
+          "xmv10_after_step": [
+            41.31670986292821,
+            41.37933711574679
+          ],
+          "finite_state": [
+            true,
+            true
+          ]
+        }
+      ],
+      "rng_digest": [
+        "085b9aaad00c702b43de481aff66f8a1f24130269e7de1e8cc5fe48cd874040e",
+        "085b9aaad00c702b43de481aff66f8a1f24130269e7de1e8cc5fe48cd874040e"
+      ],
+      "noise_digest": [
+        "3f43cdb34fd0afc488234206cd8a1247899df3f6de9e2dab69b71f24ca2483ea",
+        "3f43cdb34fd0afc488234206cd8a1247899df3f6de9e2dab69b71f24ca2483ea"
+      ],
+      "scope": "이 30초/seed/동일 dt/IDV=0에 한정; 효과 정답·장기 재현·안전성 검증 아님"
+    }
+  },
+  "reference_graph_created": false,
+  "model_fitted": false,
+  "recovery_safety_computed": false
+}
