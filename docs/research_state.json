@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-23",
+  "checked_at": "2026-10-24",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -54,7 +54,7 @@
       "title": "공개 Python 후보 관측·쓰기·Fault smoke",
       "status": "PARTIAL",
       "evidence": "PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/run_20261023_v3/summary.json",
-      "next_action": "2시간 정상 실행 추가 확인; 수치 기준·controller/override·호환성 제한 해결 뒤 Gate 재평가",
+      "next_action": "기존 2시간 정상 기록 보존; controller/override·수치 기준·호환성 제한 해결 뒤 Gate 재평가",
       "acceptance": "30분 smoke 외 장기 운전·setpoint/override 검증",
       "depends_on": [
         "SIM-03",
@@ -168,9 +168,42 @@
       "depends_on": [
         "COMPAT-01"
       ]
+    },
+    {
+      "id": "REF-B",
+      "title": "Track B 참조 구조 타당성",
+      "status": "BLOCKED",
+      "evidence": "docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md",
+      "next_action": "노드·시간·정책·잠재변수와 직접 간선의 독립 검토안 작성; 코드 의존성/기존 28간선 자동 GT화 금지",
+      "acceptance": "검산 가능한 참조 범위·불확실 쌍·채점 분모의 사전 계약; 승인 전 새 GT 생성 없음",
+      "depends_on": []
+    },
+    {
+      "id": "SIM-B",
+      "title": "Track B 제어기·잡음 정렬 계약",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md",
+      "next_action": "30초 probe 밖 종료/Fault/장기 구간의 noise·controller·시각 계약을 사전 설계; 대규모 실행 전 승인",
+      "acceptance": "참조/조작 mode·실제 입력·외생 잡음 정렬·안정 horizon 검증 계약",
+      "depends_on": []
+    },
+    {
+      "id": "DESIGN-B",
+      "title": "Track B 가설 유지·통계 설계",
+      "status": "BLOCKED",
+      "evidence": "docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md",
+      "next_action": "독립 graph-fit·과제 family·평가 seed 분리 및 precision 기준 작성; Q2 미해결이면 전환 권고 금지",
+      "acceptance": "Q1~Q4 근거와 승인 가능한 최소 실험 계약; Track B 채택은 별도 승인",
+      "depends_on": [
+        "REF-B",
+        "SIM-B"
+      ]
     }
   ],
   "priority_order": [
+    "REF-B",
+    "SIM-B",
+    "DESIGN-B",
     "COMPAT-01",
     "BENCH-ENV",
     "EXPORT-01",
@@ -191,7 +224,8 @@
     "승인된 PR #2+#3 통합 검증에서 GRAPH-GEN을 별도 표시하여 산출물 평가 VERIFIED와 생성 학습 BLOCKED를 명확히 구분했다.",
     "SIM-04는 2026-10-23 새 객체 초기화 재현 계약 VERIFIED로 범위를 명확히 했다. 같은 객체 reset 비트 일치는 보장하지 않는다. SIM-03/COMPAT-01은 PARTIAL 유지.",
     "Benchmark 결정 Gate에서 BENCH-ENV를 별도로 추가했다. 기존 SIM-03 수치 신뢰성과 공식 수정 모델 복원환경을 구분한다. A/B/C 연구 전환은 확정하지 않았다.",
-    "Track A Gate에서 EXPORT-01을 추가해 원시 ZIP 접근과 실제 CSV export 연결을 구분했다. 기존 ID/실험 상태는 유지한다."
+    "Track A Gate에서 EXPORT-01을 추가해 원시 ZIP 접근과 실제 CSV export 연결을 구분했다. 기존 ID/실험 상태는 유지한다.",
+    "2026-10-24 REF-B/SIM-B/DESIGN-B는 Track B 채택 전 타당성 조건이다. Track A 차단을 해제하거나 연구 전환을 뜻하지 않는다."
   ],
   "integration_review": {
     "user_approved": true,
@@ -238,8 +272,11 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "compatibility_decision은 작성 당시 동결 판단이다. 그 안 dependency는 당시 상태이며 현재 병합 상태는 이 항목을 따른다.",
-    "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24"
+    "note": "현재 감사는 미병합 PR #6 위 stacked branch. 과거 compatibility_decision/track_a_gate는 당시 기록으로 보존.",
+    "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
+    "pr6_status": "OPEN",
+    "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
+    "current_work_base": "feature/track-a-recovery-gate"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -249,5 +286,41 @@
     "hypothesis_gate": "INSUFFICIENT_EVIDENCE",
     "recommendation": "C",
     "track_b_or_c_adopted": false
+  },
+  "track_b_audit": {
+    "protocol": "TRACK-B-REFERENCE-VALIDITY-AUDIT-v1",
+    "checked_at": "2026-10-24",
+    "dependency": {
+      "pr": 6,
+      "state": "OPEN",
+      "head": "5fe3997d79a8244f4b156d5a335013337833b166",
+      "ci_run": 39963153945,
+      "ci_conclusion": "success",
+      "base_branch": "feature/track-a-recovery-gate",
+      "main": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24"
+    },
+    "questions": {
+      "Q1": "PARTIAL",
+      "Q2": "BLOCKED",
+      "Q3": "BLOCKED",
+      "Q4": "UNKNOWN",
+      "Q5": "VERIFIED"
+    },
+    "q5_scope": "기존/신규 결과를 구분하는 설계 기록 검증; 실제 신규 효과 성과 아님",
+    "recommendation": "NO-GO",
+    "track_b_adopted": false,
+    "research_question_changed": false,
+    "hypothesis_validation": "INSUFFICIENT_EVIDENCE",
+    "reference_graph_created": false,
+    "new_discovery_or_scm_fitted": false,
+    "recovery_safety_computed": false,
+    "small_probe_execution": "COMPLETED_30_STEPS_PER_ARM_4_ARMS",
+    "first_probe_attempt": "FAILED_ATTRIBUTE_ERROR_NO_RESULT_FILE",
+    "randomness_claim_scope": "30초·동일 dt·단일 seed·IDV=0에서만 draw/측정 잡음 일치",
+    "next_conditions": [
+      "관측 노드/시간/정책의 참조 구조 타당성",
+      "잡음 정렬/제어기 개입 계약",
+      "독립 graph-fit 단위/표본 precision 설계"
+    ]
   }
 }

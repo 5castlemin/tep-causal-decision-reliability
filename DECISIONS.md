@@ -24,3 +24,9 @@
 정상 원시 ZIP의 공식 목록과 공개 기술보고서를 확보한 사실을 원시 바이트 회수와 구분한다. 문서상 Tests의 시간/seed 파일 구조를 정상 ZIP 또는 benchmark 선택 run에 전이하지 않는다. MATLAB 검색 범위 미발견을 전역 설치/라이선스 부재로 단정하지 않는다.
 현재 A1/A2 BLOCKED이므로 A3는 NOT_RUN, 직접 효과 참조 NO-GO와 가설 INSUFFICIENT_EVIDENCE를 유지한다. 새로운 자료가 없는 반복 검색은 종료한다. 요청의 C(차단 명시 및 Track B 참조 구조 검증 설계 검토 제안)를 권고하되 연구 방향을 변경하거나 Track B/C를 채택하지 않는다. 새로운 실행환경/원본이 제공되면 Track A 재개 가능하다. 전환은 사용자 승인 대상이다.
 근거: docs/research_design/TRACK_A_RECOVERY_GATE.md 및 track_a_evidence/gate_evidence.json.
+
+## 2026-10-24 — Track B 채택 전 참조 타당성 감사
+
+현재 채택은 NO-GO이다. Q2 관측 노드 수준 참조 구조가 확립되지 않았고 Q3/Q4 실험 단위·통계 조건도 미충족이다. 같은 simulator의 관측/개입 생성 능력은 독립 참조의 충분조건이 아니다. 코드 의존성·기존 28간선·자기 추정 그래프를 새 GT로 삼지 않는다. 국소 총반응과 직접 간선·매개경로를 구분한다.
+기존 가설은 질문으로 유지하되 검증 가능성을 입증한 것으로 보고하지 않는다. 새 GT 생성·Track B/C 채택·연구 질문 변경은 하지 않았다. 먼저 REF-B/SIM-B/DESIGN-B의 참조/잡음/통계 계약을 검토하며, 참조가 해결되지 않으면 전환을 권고하지 않는다. 한 seed의 30초 RNG 일치를 다른 분기·horizon으로 일반화하지 않는다.
+근거: docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md 및 track_b_evidence/. PR6 미병합 stacked dependency는 현재 상태에 명시한다.
