@@ -1,0 +1,133 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "L1",
+      "L2"
+    ],
+    [
+      "L2",
+      "L3"
+    ],
+    [
+      "L3",
+      "Y"
+    ],
+    [
+      "S",
+      "L2"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "A",
+      "L1"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "A",
+        "node2": "L1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "L2",
+        "node2": "L3",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "L3",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "S",
+        "node2": "L2",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "L1",
+        "node2": "L2",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.48499999998603016,
+  "seed": 3120203,
+  "column_order": [
+    "A",
+    "L3",
+    "S",
+    "L2",
+    "L1",
+    "Y"
+  ],
+  "train_sha256": "b47a14bea1bbae9763a78dfbf17669338c0e313df7777ef2fb6dde63f41ebcb6",
+  "graph_id": "S3_n256_r3__boss",
+  "source_type": "discovery",
+  "dataset_id": "S3_n256_r3",
+  "structure_id": "S3",
+  "train_n": 256,
+  "validation_n": 256,
+  "replicate": 3,
+  "train_seed": 3120201,
+  "validation_seed": 3120202,
+  "algorithm_seed": 3120203,
+  "algorithm": "boss"
+}

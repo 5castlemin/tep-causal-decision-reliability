@@ -1,0 +1,133 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "A",
+      "C"
+    ],
+    [
+      "Y",
+      "C"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "S",
+      "T"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "T",
+        "node2": "S",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "M",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "Y",
+        "node2": "C",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "A",
+        "node2": "C",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    ]
+  },
+  "seconds": 7.265999999945052,
+  "seed": 3131003,
+  "column_order": [
+    "T",
+    "S",
+    "M",
+    "Y",
+    "A",
+    "C"
+  ],
+  "train_sha256": "11698d50ff5ac81fa0030e3623c57d3a2a2a74b53071d3fbedd64ce10e046d28",
+  "graph_id": "S4_n512_r1__pc",
+  "source_type": "discovery",
+  "dataset_id": "S4_n512_r1",
+  "structure_id": "S4",
+  "train_n": 512,
+  "validation_n": 256,
+  "replicate": 1,
+  "train_seed": 3131001,
+  "validation_seed": 3131002,
+  "algorithm_seed": 3131003,
+  "algorithm": "pc"
+}

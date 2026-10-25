@@ -166,3 +166,19 @@
 - 새 실행 약42.523초, 학습 기록 합28.590초. 더 큰 반복/36graph 전체 replay NOT_RUN. 탐색적 Spearman은 사전 변동/cluster 조건에 맞는 층만 계산; LODO범위는 CI 아님. 조건별 독립데이터3개로 공식 지표 순위·p-value·Recovery/Safety 없음. 정책 변경 자체가 손실을 바꾸므로 구조 지표의 인과 효과로 주장하지 않음.
 - 실제 명령은 research_runs/repeated_metric_pilot/README.md, 원시 log는 지정 아카이브 2026-10-24/06_순차통합과_반복다중과제에 보존. 신규 PLAN/run_v1/analysis_v1·한국어 보고서·검증코드와 canonical JSON/MD 동기화. 후속 PR은 승인 없이 병합하지 않음.
 - 최종 검증: 단위39개, 새36학습/432추천/원시55296행·동치류/손실/통계/해시 및 기존 전종 기록 validators, graph39파일, 원본data/GT hash, 자산/PR통합, JSON→MD·문서 동기화, diff 검사를 모두 통과했다. 12학습CSV hash 모두 다름. 개인경로 미반입 확인. 추가 약15MB는 재사용 do 원시/noise와 모델/추천/분석 기록이며 평가를 그래프별 중복 생성하지 않았다.
+
+## 2026-10-24 — 8개 합성 구조의 실제 비교
+- PR12 OPEN/head23d19f5/CI40097602131 success와 clean 작업사본 확인 후 feature/diverse-causal-structures 분기. PR12·main 병합 없음. 연구 질문·TEP/GT/7frozen/Step6/적합/기존원시/첫·반복 실험은 불변.
+- PLAN SHA0d010bf8를 실제 생성 전에 고정.5~8변수8개 DAG·모든계수·독립Uniform·양성16과제+음성1·48데이터 seed·144시도·3정책·구조 통째 제외 모형/정규화/한도를 사전 고정.
+- S1/S2 source GT·관측/do 식/32표본·새seed/동일seed/hook 통제 통과 뒤 나머지6개 통과, 이후48관측학습/검증 생성. GT 없는 worker 설정과 해시로 PC/BOSS/Direct 실제144학습 완료. 실패/timeout/보조정책 제한0. 고정 모듈/기존 venv 재사용, 외부 source 패치/재설치 없음.
+-918개 실제 discovery 정책 추천 및 별도60개 인위적 graph 모형/120추천을 동결한 뒤17고유Action×6조건×3seed×256=78336개 do 표본 생성/재사용. 원래 graph 점수는 정책별 고정, 통제오류 graph/음성대조는 일차 분석 제외.
+-8fold LOSO의 imputation/scaling/손실 표준화는7훈련구조만 사용.14개 사전 모형/고정alpha로 계산, 새 결과를 본 뒤 지표나 설정 선택 없음. 경로단독 macroMAE .133671, 연결 .174327, 공변량 조정 후 연결 .147939/경로 .148120. 공식 우월성·p-value·독립 인과효과 주장 없음.
+-방향/정규화SHD 상관-.978, 방향/경로 .901;112행렬 full rank/최대condition40.31은 수치 계산 가능성만 의미. Direct 내부경로 지표16과제 상수. 음성대조 baseline 평균구간은목표0 포함, 사전 수치cutoff 통과가 통계적 안정 보장 아님. 기본예측 outcome은 scale 정규화로 유지.
+-전체 실행1001.555초.144학습 전체 replay NOT_RUN; API 반복과 모든 원시식/평균/SE/추천/손실/hash/LOSO분리 검증. 코드·도식·표·한국어 보고서 및 실제 명령은research_runs/diverse_structure_pilot와DIVERSE_STRUCTURE_PILOT_REPORT.md. 원시console는지정날짜아카이브07_다양한_인과구조_비교에만 보관.
+- 단위49개와 모든 과학적/원시/고정추천/LOSO/기존자산 검사는 통과. 최초 staged diff형식 검사는 Matplotlib SVG의 자동 끝공백·console EOF빈줄로 실패했다. 최초전체로그/SHA를 보존하고 해당 생성SVG/console에만 whitespace 예외를 추가해 원시바이트/hash를 유지했다. 코드/문서 일반형식 검사는 그대로 적용한다.
+- 한정된 생성파일 형식예외 적용 후 diff/cached-diff, raw/source/MEC/LOSO 해시 재검사, JSON-MD/문서동기화 재검사 모두 통과. 기존 과학적 검사49단위/전종validators 결과와 최초 형식실패를 별도 기록했다.
+
+### 2026-10-24 — PR #13 clean-checkout CI correction
+- First GitHub run 40102302710 failed: two original, SHA-listed PNG figures were excluded by the inherited `*.png` ignore rule. Local files existed, so the local validation had passed.
+- Added only the two exact generated PNGs with `git add -f`; no sampling, graph, recommendation, analysis, or hash manifest changed. Research state and priorities are unchanged because this is packaging repair, not a new experiment.
+- Preserve the failed CI record; rerun CI and verify the committed tree, rather than reporting the first run as passed.

@@ -1,0 +1,23 @@
+{
+  "status": "FIRST_FORMAT_CHECK_FAILED",
+  "scientific_checks_passed": true,
+  "failed_commands": [
+    "git diff --cached --check"
+  ],
+  "reason": "machine-generated SVG trailing spaces and console EOF blank lines",
+  "resolution": "narrow per-file gitattributes exceptions; source/data/log bytes unchanged",
+  "full_first_log_sha256": "234ca8679c725a2953f4d433c48bff5a8790f398a0aec8384c8fb068aaabd7f9",
+  "full_first_log_location": "user-designated task archive/검증_최초실패_전체로그.json",
+  "samples": [
+    [
+      "research_runs/diverse_structure_pilot/figures_v1/eight_structures.svg:24: trailing whitespace.",
+      "+   <path d=\"M 0 1080 ",
+      "research_runs/diverse_structure_pilot/figures_v1/eight_structures.svg:25: trailing whitespace.",
+      "+L 1008 1080 ",
+      "research_runs/diverse_structure_pilot/figures_v1/eight_structures.svg:26: trailing whitespace.",
+      "+L 1008 0 ",
+      "research_runs/diverse_structure_pilot/figures_v1/eight_structures.svg:27: trailing whitespace.",
+      "+L 0 0 "
+    ]
+  ]
+}

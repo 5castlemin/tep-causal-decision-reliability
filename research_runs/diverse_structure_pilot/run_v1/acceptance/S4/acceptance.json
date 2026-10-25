@@ -1,0 +1,438 @@
+{
+  "structure_id": "S4",
+  "status": "PASS",
+  "records": [
+    {
+      "condition": "observational",
+      "seed": 4103000,
+      "checks": {
+        "returned_gt": true,
+        "observation_equations": true,
+        "exact_repeat": true,
+        "new_seed_different": true,
+        "hook_transparent": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.8*C + u_A",
+          "M": "1.0*A + u_M",
+          "Y": "-0.4*A + 0.6*C + 1.1*M + u_Y",
+          "S": "u_S",
+          "T": "0.8*S + u_T"
+        },
+        "intervention": null,
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 8.881784197001252e-16,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "A",
+      "value": -0.5,
+      "seed": 4103100,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.8*C + u_A",
+          "M": "1.0*A + u_M",
+          "Y": "-0.4*A + 0.6*C + 1.1*M + u_Y",
+          "S": "u_S",
+          "T": "0.8*S + u_T"
+        },
+        "intervention": {
+          "action": "A",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "A",
+              "Y"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "S",
+              "T"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 4.440892098500626e-16,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "A",
+      "value": 0.5,
+      "seed": 4103101,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.8*C + u_A",
+          "M": "1.0*A + u_M",
+          "Y": "-0.4*A + 0.6*C + 1.1*M + u_Y",
+          "S": "u_S",
+          "T": "0.8*S + u_T"
+        },
+        "intervention": {
+          "action": "A",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "A",
+              "Y"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "S",
+              "T"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 8.881784197001252e-16,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "C",
+      "value": -0.5,
+      "seed": 4103120,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.8*C + u_A",
+          "M": "1.0*A + u_M",
+          "Y": "-0.4*A + 0.6*C + 1.1*M + u_Y",
+          "S": "u_S",
+          "T": "0.8*S + u_T"
+        },
+        "intervention": {
+          "action": "C",
+          "value": -0.5,
+          "term": "-0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "A",
+              "Y"
+            ],
+            [
+              "C",
+              "A"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "S",
+              "T"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 4.440892098500626e-16,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    },
+    {
+      "condition": "do",
+      "action": "C",
+      "value": 0.5,
+      "seed": 4103121,
+      "checks": {
+        "returned_gt": true,
+        "reconstructed": true,
+        "exact_repeat": true,
+        "hook_transparent": true,
+        "action_constant": true,
+        "removed_parents": true,
+        "replaced_equation": true,
+        "other_equations_unchanged": true,
+        "removed_noise": true,
+        "correct_mutilated_graph": true,
+        "uniform_noise_ranges": true
+      },
+      "metadata": {
+        "returned_edges": [
+          [
+            "A",
+            "M"
+          ],
+          [
+            "A",
+            "Y"
+          ],
+          [
+            "C",
+            "A"
+          ],
+          [
+            "C",
+            "Y"
+          ],
+          [
+            "M",
+            "Y"
+          ],
+          [
+            "S",
+            "T"
+          ]
+        ],
+        "equation_terms": {
+          "C": "u_C",
+          "A": "0.8*C + u_A",
+          "M": "1.0*A + u_M",
+          "Y": "-0.4*A + 0.6*C + 1.1*M + u_Y",
+          "S": "u_S",
+          "T": "0.8*S + u_T"
+        },
+        "intervention": {
+          "action": "C",
+          "value": 0.5,
+          "term": "0.500000000000000",
+          "parents": [],
+          "edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "A",
+              "Y"
+            ],
+            [
+              "C",
+              "A"
+            ],
+            [
+              "C",
+              "Y"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "S",
+              "T"
+            ]
+          ],
+          "other_equations_unchanged": true
+        },
+        "reconstruction_errors": {
+          "C": 0.0,
+          "A": 0.0,
+          "M": 0.0,
+          "Y": 4.440892098500626e-16,
+          "S": 0.0,
+          "T": 0.0
+        }
+      }
+    }
+  ]
+}

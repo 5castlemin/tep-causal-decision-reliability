@@ -1,0 +1,112 @@
+[
+  {
+    "command": "<isolated-venv-python> -X utf8 graphs/final/verify_and_load.py",
+    "exit_code": 0,
+    "output": "OK: 39개 파일 해시 일치, 변수 순서 일치, 시계열 3개 엄격 재변환 일치\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "output": "test_duplicate_workstream_rejected (test_asset_recovery.AssetRecoveryTests.test_duplicate_workstream_rejected) ... ok\ntest_unknown_dependency_rejected (test_asset_recovery.AssetRecoveryTests.test_unknown_dependency_rejected) ... ok\ntest_unverified_zip_bytes_rejected (test_asset_recovery.AssetRecoveryTests.test_unverified_zip_bytes_rejected) ... ok\ntest_ambiguous_input_rejected (test_benchmark_wiring.WiringTests.test_ambiguous_input_rejected) ... ok\ntest_disconnected_constant_rejected (test_benchmark_wiring.WiringTests.test_disconnected_constant_rejected) ... ok\ntest_name_is_not_manipulated_variable_index (test_benchmark_wiring.WiringTests.test_name_is_not_manipulated_variable_index) ... ok\ntest_action_bounds_are_enforced (test_decision_mvp.MVPTests.test_action_bounds_are_enforced) ... ok\ntest_cycle_is_not_repaired (test_decision_mvp.MVPTests.test_cycle_is_not_repaired) ... ok\ntest_different_environments_cannot_join_even_with_flags (test_decision_mvp.MVPTests.test_different_environments_cannot_join_even_with_flags) ... ok\ntest_do_cuts_equation_and_respects_order (test_decision_mvp.MVPTests.test_do_cuts_equation_and_respects_order) ... ok\ntest_same_label_without_approvals_cannot_open_research_gate (test_decision_mvp.MVPTests.test_same_label_without_approvals_cannot_open_research_gate) ... ok\ntest_unresolved_or_missing_path_is_not_invented (test_decision_mvp.MVPTests.test_unresolved_or_missing_path_is_not_invented) ... ok\ntest_unresolved_pair_is_not_a_correct_absence (test_decision_mvp.MVPTests.test_unresolved_pair_is_not_a_correct_absence) ... ok\ntest_all_rows_of_structure_are_held_out_together (test_diverse_metric_analysis.DiverseAnalysisTests.test_all_rows_of_structure_are_held_out_together) ... ok\ntest_equal_structure_weights_not_row_weights (test_diverse_metric_analysis.DiverseAnalysisTests.test_equal_structure_weights_not_row_weights) ... ok\ntest_heldout_outcomes_cannot_change_predictions (test_diverse_metric_analysis.DiverseAnalysisTests.test_heldout_outcomes_cannot_change_predictions) ... ok\ntest_negative_controls_and_controlled_graphs_excluded (test_diverse_metric_analysis.DiverseAnalysisTests.test_negative_controls_and_controlled_graphs_excluded) ... ok\ntest_actual_saved_experiment (test_diverse_structure_pilot.DiverseStructureTests.test_actual_saved_experiment) ... ok\ntest_direct_and_total_effect_differ (test_diverse_structure_pilot.DiverseStructureTests.test_direct_and_total_effect_differ) ... ok\ntest_eight_distinct_dags_and_144_attempts (test_diverse_structure_pilot.DiverseStructureTests.test_eight_distinct_dags_and_144_attempts) ... ok\ntest_negative_control_has_no_fake_path_accuracy (test_diverse_structure_pilot.DiverseStructureTests.test_negative_control_has_no_fake_path_accuracy) ... ok\ntest_one_error_same_f1_different_location (test_diverse_structure_pilot.DiverseStructureTests.test_one_error_same_f1_different_location) ... ok\ntest_task_kinds_and_indirect_paths_are_predefined (test_diverse_structure_pilot.DiverseStructureTests.test_task_kinds_and_indirect_paths_are_predefined) ... ok\ntest_hard_do_does_not_require_removed_noise (test_fcm_acceptance_adapter.AdapterTests.test_hard_do_does_not_require_removed_noise) ... ok\ntest_modified_source_rejected_before_import (test_fcm_acceptance_adapter.AdapterTests.test_modified_source_rejected_before_import) ... ok\ntest_wrong_observation_mechanism_detected (test_fcm_acceptance_adapter.AdapterTests.test_wrong_observation_mechanism_detected) ... ok\ntest_cycle_rejected_without_repair (test_integrated_pilot.IntegratedPilotTests.test_cycle_rejected_without_repair) ... ok\ntest_direct_relation_is_distinct_from_reachability (test_integrated_pilot.IntegratedPilotTests.test_direct_relation_is_distinct_from_reachability) ... ok\ntest_no_path_fallback_and_real_path_optimization (test_integrated_pilot.IntegratedPilotTests.test_no_path_fallback_and_real_path_optimization) ... ok\ntest_stored_experiment_raw_validation (test_integrated_pilot.IntegratedPilotTests.test_stored_experiment_raw_validation) ... ok\ntest_unresolved_path_is_not_oriented_by_truth (test_integrated_pilot.IntegratedPilotTests.test_unresolved_path_is_not_oriented_by_truth) ... ok\ntest_ridge_penalty_and_intercept (test_pilot_fit.PilotFitTest.test_ridge_penalty_and_intercept) ... ok\ntest_root_and_parent_lag (test_pilot_fit.PilotFitTest.test_root_and_parent_lag) ... ok\ntest_abstention_and_computed_baseline_differ (test_repeated_metric_pilot.RepeatedMetricTests.test_abstention_and_computed_baseline_differ) ... ok\ntest_chain_extensions_exclude_new_collider (test_repeated_metric_pilot.RepeatedMetricTests.test_chain_extensions_exclude_new_collider) ... ok\ntest_direct_edge_not_indirect_reachability_and_f1_denominators (test_repeated_metric_pilot.RepeatedMetricTests.test_direct_edge_not_indirect_reachability_and_f1_denominators) ... ok\ntest_extensions_match_independent_permutation_enumeration (test_repeated_metric_pilot.RepeatedMetricTests.test_extensions_match_independent_permutation_enumeration) ... ok\ntest_given_collider_cannot_be_reoriented (test_repeated_metric_pilot.RepeatedMetricTests.test_given_collider_cannot_be_reoriented) ... ok\ntest_invalid_endpoint_and_cycle_fail (test_repeated_metric_pilot.RepeatedMetricTests.test_invalid_endpoint_and_cycle_fail) ... ok\ntest_rank_ties_and_constant (test_repeated_metric_pilot.RepeatedMetricTests.test_rank_ties_and_constant) ... ok\ntest_saved_raw_and_policies (test_repeated_metric_pilot.RepeatedMetricTests.test_saved_raw_and_policies) ... ok\ntest_document_only_change_is_exempt (test_research_ops.ResearchOpsTest.test_document_only_change_is_exempt) ... ok\ntest_pinned_inputs (test_research_ops.ResearchOpsTest.test_pinned_inputs) ... ok\ntest_substantive_change_requires_all_three (test_research_ops.ResearchOpsTest.test_substantive_change_requires_all_three) ... ok\ntest_measurements_match_evaluation_clock_not_state_clock (test_simulator_diagnostics.ClockTests.test_measurements_match_evaluation_clock_not_state_clock) ... ok\ntest_no_matching_time_is_failure (test_simulator_diagnostics.ClockTests.test_no_matching_time_is_failure) ... ok\ntest_documented_filename_is_not_acquired_data (test_track_a_gate.GateTests.test_documented_filename_is_not_acquired_data) ... ok\ntest_matching_normal_runs_do_not_establish_effect_interface (test_track_a_gate.GateTests.test_matching_normal_runs_do_not_establish_effect_interface) ... ok\ntest_run_claim_requires_execution_gate (test_track_a_gate.GateTests.test_run_claim_requires_execution_gate) ... ok\n\n----------------------------------------------------------------------\nRan 49 tests in 5.520s\n\nOK\n[PASS] 8 FCM source/observed/do contracts;144 attempts;48 datasets;native graph/MEC/policy freeze;78336 raw do;denominator guards;controlled graphs separated;8 whole-structure folds;old assets unchanged\n[PASS] 6 learned graphs; raw do/noise reconstruction; seed separation; freeze-before-holdout; metrics/loss/SE; code/data hashes\n[PASS] ordered merge lineage; original assets; 12 independent datasets/36 learned graphs; 432 policies; 55296 raw do samples; no GT orientation; policy freeze; losses/SE/cluster-aware descriptive records\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 experiments/simulator/validate_feasibility.py",
+    "exit_code": 0,
+    "output": "[PASS] 실행 CSV hash·반복·시계열·shutdown/reset 한계·mapping 검증\nSIMULATOR FEASIBILITY: PARTIAL — 종료·reset·모델 호환성 관문 미해결\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 experiments/simulator/diagnostics/validate_diagnostics.py",
+    "exit_code": 0,
+    "output": "[PASS] 원시 hash·105열·두 시계·12개 수동 조건·2시간 정상·reset·분석 재계산\nSIM-03 PARTIAL; SIM-04 VERIFIED(새 객체 계약); COMPAT-01 PARTIAL; 직접 효과 정답 NO-GO\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_benchmark_decision.py",
+    "exit_code": 0,
+    "output": "[PASS] 156개 PR4 파일 원본 hash·회수 코드 정적 근거·주장 수준·설계 보류·상태 동기화·원시 산출물 불변\nBENCHMARK COMPATIBILITY: PARTIAL; HYPOTHESIS GATE: INSUFFICIENT_EVIDENCE; 새 실험 NOT_RUN\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_track_a_recovery.py",
+    "exit_code": 0,
+    "output": "[PASS] 출처 hash·Gate·A3 미실행·L1~L7·상태·동결 산출물 보존\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_track_b_audit.py",
+    "exit_code": 0,
+    "output": "[PASS] Q1~Q5·미채택·30초 범위·metadata/원본 구분·hash·동결 자료 보존\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_ref_b_minimal_records.py",
+    "exit_code": 0,
+    "output": "[PASS] 국소 차분·독립 역산·제어 순서·시간 기록·CANDIDATE·중단·동결 자료 보존\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_decision_mvp.py",
+    "exit_code": 0,
+    "output": "[PASS] 기존 자산 재사용·84행·8회×2버전 raw/hash·Gate 거부·성능 null·상태 동기화·원본 보존\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_env_acceptance.py",
+    "exit_code": 0,
+    "output": "[PASS] 예제 direct GT·행별 관측/do·seed/배치·음성 guard·범위·원본 보존. 제조 검증 아님\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_first_integrated_pilot.py",
+    "exit_code": 0,
+    "output": "[PASS] 6 learned graphs; raw do/noise reconstruction; seed separation; freeze-before-holdout; metrics/loss/SE; code/data hashes\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_repeated_metric_pilot.py",
+    "exit_code": 0,
+    "output": "[PASS] ordered merge lineage; original assets; 12 independent datasets/36 learned graphs; 432 policies; 55296 raw do samples; no GT orientation; policy freeze; losses/SE/cluster-aware descriptive records\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_diverse_structure_pilot.py",
+    "exit_code": 0,
+    "output": "[PASS] 8 FCM source/observed/do contracts;144 attempts;48 datasets;native graph/MEC/policy freeze;78336 raw do;denominator guards;controlled graphs separated;8 whole-structure folds;old assets unchanged\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/check_research_state.py",
+    "exit_code": 0,
+    "output": "[PASS] 현재 상태·의존성·우선순위 ID 유일성·상단 문서 일치\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/check_asset_manifest.py",
+    "exit_code": 0,
+    "output": "[PASS] Final config·미회수 생성 코드·평가 재현 범위의 기록 정합성\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_pr_integration.py",
+    "exit_code": 0,
+    "output": "{\n  \"status\": \"PASS\",\n  \"source_base_main\": \"ceb447deb03f5532dc274cb97de2cd7f317349e7\",\n  \"pr2_source\": \"e5a0291e48d5426628c0dde8a122fe8ab6b6e195\",\n  \"pr3_source\": \"b2e455fd37d1e236aa30fe246e4944142bef4bab\",\n  \"preserved_file_counts\": {\n    \"graphs/final\": 46,\n    \"experiments/simulator\": 30\n  },\n  \"required_states\": {\n    \"SIM-01\": \"BLOCKED\",\n    \"SIM-02\": \"PARTIAL\",\n    \"GRAPH-01\": \"VERIFIED\",\n    \"GRAPH-GEN\": \"BLOCKED\",\n    \"SCM-01\": \"PARTIAL\",\n    \"EFFECT-01\": \"NOT_RUN\"\n  }\n}\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/check_research_docs.py --base origin/feature/repeated-metric-pilot",
+    "exit_code": 0,
+    "output": "[PASS] 연구 문서 동기화 파일 변경 확인 (내용의 진실성은 별도 검토 필요)\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/validate_diverse_structure_pilot.py",
+    "exit_code": 0,
+    "output": "[PASS] 8 FCM source/observed/do contracts;144 attempts;48 datasets;native graph/MEC/policy freeze;78336 raw do;denominator guards;controlled graphs separated;8 whole-structure folds;old assets unchanged\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/check_research_state.py",
+    "exit_code": 0,
+    "output": "[PASS] 현재 상태·의존성·우선순위 ID 유일성·상단 문서 일치\n"
+  },
+  {
+    "command": "<isolated-venv-python> -X utf8 scripts/check_research_docs.py --base origin/feature/repeated-metric-pilot",
+    "exit_code": 0,
+    "output": "[PASS] 연구 문서 동기화 파일 변경 확인 (내용의 진실성은 별도 검토 필요)\n"
+  },
+  {
+    "command": "git diff --check",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "git diff --cached --check",
+    "exit_code": 0,
+    "output": ""
+  }
+]

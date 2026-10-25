@@ -1,0 +1,141 @@
+{
+  "source_type": "controlled_error",
+  "variant": "oracle_reference",
+  "edges": [
+    [
+      "A",
+      "M1"
+    ],
+    [
+      "C",
+      "A"
+    ],
+    [
+      "C",
+      "Y"
+    ],
+    [
+      "M1",
+      "M2"
+    ],
+    [
+      "M2",
+      "M3"
+    ],
+    [
+      "M3",
+      "Y"
+    ],
+    [
+      "S",
+      "T"
+    ]
+  ],
+  "model": {
+    "scaler_mean": {
+      "S": -0.06453926781371491,
+      "A": 0.007912524287643476,
+      "M2": 0.032676849886995714,
+      "Y": 0.06338323012546379,
+      "M1": 0.02767568835239554,
+      "M3": 0.08916319246382409,
+      "C": 0.006125337707258517,
+      "T": -0.052527211683911446
+    },
+    "scaler_std": {
+      "S": 0.9510099843694972,
+      "A": 1.2180635877468837,
+      "M2": 1.4889345927434903,
+      "Y": 2.1487028370099535,
+      "M1": 1.4581071528604097,
+      "M3": 1.7162285082655249,
+      "C": 0.9818901785460504,
+      "T": 1.152546993954994
+    },
+    "equations": [
+      {
+        "target": "S",
+        "intercept_standardized": -2.949029909160572e-17,
+        "parents": []
+      },
+      {
+        "target": "A",
+        "intercept_standardized": 2.0286269235116133e-17,
+        "parents": [
+          {
+            "source": "C",
+            "lag": 0,
+            "coefficient_standardized": 0.5867797530881053
+          }
+        ]
+      },
+      {
+        "target": "M2",
+        "intercept_standardized": -1.2358293836407273e-17,
+        "parents": [
+          {
+            "source": "M1",
+            "lag": 0,
+            "coefficient_standardized": 0.7396607198231585
+          }
+        ]
+      },
+      {
+        "target": "Y",
+        "intercept_standardized": -4.3647249326104774e-17,
+        "parents": [
+          {
+            "source": "C",
+            "lag": 0,
+            "coefficient_standardized": 0.16937719014005437
+          },
+          {
+            "source": "M3",
+            "lag": 0,
+            "coefficient_standardized": 0.8144929629527358
+          }
+        ]
+      },
+      {
+        "target": "M1",
+        "intercept_standardized": -2.98826932407234e-17,
+        "parents": [
+          {
+            "source": "A",
+            "lag": 0,
+            "coefficient_standardized": 0.7465999751999771
+          }
+        ]
+      },
+      {
+        "target": "M3",
+        "intercept_standardized": 3.636260175587376e-17,
+        "parents": [
+          {
+            "source": "M2",
+            "lag": 0,
+            "coefficient_standardized": 0.8101007977437985
+          }
+        ]
+      },
+      {
+        "target": "C",
+        "intercept_standardized": -1.3877787807814457e-17,
+        "parents": []
+      },
+      {
+        "target": "T",
+        "intercept_standardized": -1.4942321627940194e-18,
+        "parents": [
+          {
+            "source": "S",
+            "lag": 0,
+            "coefficient_standardized": 0.47874316490116403
+          }
+        ]
+      }
+    ],
+    "alpha": 0.01,
+    "status": "NEW_SYNTHETIC_MODEL_NOT_TEP_FIT"
+  }
+}

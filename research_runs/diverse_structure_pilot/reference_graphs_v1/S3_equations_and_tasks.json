@@ -1,0 +1,114 @@
+{
+  "structure_id": "S3",
+  "nodes": [
+    "A",
+    "L1",
+    "L2",
+    "L3",
+    "Y",
+    "S"
+  ],
+  "equations": [
+    {
+      "target": "A",
+      "parents": [],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "L1",
+      "parents": [
+        {
+          "source": "A",
+          "target": "L1",
+          "coefficient": 0.9
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "L2",
+      "parents": [
+        {
+          "source": "L1",
+          "target": "L2",
+          "coefficient": 0.8
+        },
+        {
+          "source": "S",
+          "target": "L2",
+          "coefficient": 0.4
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "L3",
+      "parents": [
+        {
+          "source": "L2",
+          "target": "L3",
+          "coefficient": 0.9
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "Y",
+      "parents": [
+        {
+          "source": "L3",
+          "target": "Y",
+          "coefficient": 1.1
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "S",
+      "parents": [],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "direct",
+      "action": "L3",
+      "target": "Y",
+      "target_value": 0.8,
+      "task_kind": "direct",
+      "action_values": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "reference_action": 0.0,
+      "cost_weight": 0.2,
+      "loss_scale": 1.0,
+      "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+      "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+    },
+    {
+      "task_id": "path",
+      "action": "A",
+      "target": "Y",
+      "target_value": 0.3,
+      "task_kind": "indirect",
+      "action_values": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "reference_action": 0.0,
+      "cost_weight": 0.2,
+      "loss_scale": 1.0,
+      "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+      "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+    }
+  ],
+  "source_gt_checked": true,
+  "classification": "DECLARED_SYNTHETIC_REFERENCE_ONLY"
+}

@@ -1,0 +1,122 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [],
+  "unresolved_pairs": [
+    [
+      "A",
+      "L1"
+    ],
+    [
+      "L1",
+      "L2"
+    ],
+    [
+      "L2",
+      "L3"
+    ],
+    [
+      "L3",
+      "Y"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "A",
+        "node2": "L1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "L3",
+        "node2": "L2",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "L3",
+        "node2": "Y",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "L2",
+        "node2": "L1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.5,
+  "seed": 3120103,
+  "column_order": [
+    "A",
+    "L3",
+    "S",
+    "L2",
+    "L1",
+    "Y"
+  ],
+  "train_sha256": "4f97ff32b52606fe0cf44bcb19c04058e59e5fb42f95d5df2cfeec26913a7ae7",
+  "graph_id": "S3_n256_r2__boss",
+  "source_type": "discovery",
+  "dataset_id": "S3_n256_r2",
+  "structure_id": "S3",
+  "train_n": 256,
+  "validation_n": 256,
+  "replicate": 2,
+  "train_seed": 3120101,
+  "validation_seed": 3120102,
+  "algorithm_seed": 3120103,
+  "algorithm": "boss"
+}

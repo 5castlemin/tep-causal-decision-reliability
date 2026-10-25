@@ -1,0 +1,128 @@
+[
+  {
+    "model": "training_mean",
+    "heldout_structures": 8,
+    "macro_mae": 0.22916489204470933,
+    "macro_rmse": 0.25547179243393753,
+    "min_structure_mae": 0.14372261027260627,
+    "max_structure_mae": 0.33556347251469115,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "covariates_only",
+    "heldout_structures": 8,
+    "macro_mae": 0.17062871622761622,
+    "macro_rmse": 0.21609700428550724,
+    "min_structure_mae": 0.07043683714706331,
+    "max_structure_mae": 0.2461973249869416,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "metric_only__skeleton_f1",
+    "heldout_structures": 8,
+    "macro_mae": 0.17432697778067632,
+    "macro_rmse": 0.2140373190674127,
+    "min_structure_mae": 0.10533027686818816,
+    "max_structure_mae": 0.2740906460576252,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "metric_only__strict_directed_f1",
+    "heldout_structures": 8,
+    "macro_mae": 0.14749740860826038,
+    "macro_rmse": 0.19930901518268945,
+    "min_structure_mae": 0.044436647915560734,
+    "max_structure_mae": 0.2106384803861726,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "metric_only__key_path_edge_recall",
+    "heldout_structures": 8,
+    "macro_mae": 0.13367055968294592,
+    "macro_rmse": 0.1887689932080709,
+    "min_structure_mae": 0.05418268878114455,
+    "max_structure_mae": 0.19607393078960944,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "metric_only__direct_xy_correct",
+    "heldout_structures": 8,
+    "macro_mae": 0.22498035585859488,
+    "macro_rmse": 0.26174635977073324,
+    "min_structure_mae": 0.12791582227155818,
+    "max_structure_mae": 0.3039839587058014,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "metric_only__normalized_shd",
+    "heldout_structures": 8,
+    "macro_mae": 0.15038823535084106,
+    "macro_rmse": 0.20179121240342685,
+    "min_structure_mae": 0.0538710220296407,
+    "max_structure_mae": 0.2169136762978748,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "metric_only__unresolved_ratio",
+    "heldout_structures": 8,
+    "macro_mae": 0.16508527420005853,
+    "macro_rmse": 0.21337678145277542,
+    "min_structure_mae": 0.0687991876804939,
+    "max_structure_mae": 0.24679046569530164,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "covariates_plus__skeleton_f1",
+    "heldout_structures": 8,
+    "macro_mae": 0.1479392306079287,
+    "macro_rmse": 0.2054327416040872,
+    "min_structure_mae": 0.10688477057588469,
+    "max_structure_mae": 0.22295761646684167,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "covariates_plus__strict_directed_f1",
+    "heldout_structures": 8,
+    "macro_mae": 0.1591055775394224,
+    "macro_rmse": 0.20902735045421578,
+    "min_structure_mae": 0.06177243500715561,
+    "max_structure_mae": 0.22517547002875946,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "covariates_plus__key_path_edge_recall",
+    "heldout_structures": 8,
+    "macro_mae": 0.14811986603657462,
+    "macro_rmse": 0.20582332528634636,
+    "min_structure_mae": 0.05962470798944355,
+    "max_structure_mae": 0.2212220811776958,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "covariates_plus__direct_xy_correct",
+    "heldout_structures": 8,
+    "macro_mae": 0.17131956868416637,
+    "macro_rmse": 0.22997538406270424,
+    "min_structure_mae": 0.06682488253255531,
+    "max_structure_mae": 0.2382658882665477,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "covariates_plus__normalized_shd",
+    "heldout_structures": 8,
+    "macro_mae": 0.16093394838775968,
+    "macro_rmse": 0.2112793203019246,
+    "min_structure_mae": 0.06131893308496785,
+    "max_structure_mae": 0.2300349339427282,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  },
+  {
+    "model": "joint_quality_ridge",
+    "heldout_structures": 8,
+    "macro_mae": 0.1626978540773774,
+    "macro_rmse": 0.22496735093160905,
+    "min_structure_mae": 0.09819138884673141,
+    "max_structure_mae": 0.23353129104432893,
+    "interpretation": "eight fixed hand-designed structures; no pvalue, no definitive metric winner"
+  }
+]

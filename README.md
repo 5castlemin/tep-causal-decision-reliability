@@ -42,3 +42,7 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 ## 반복·다중 과제 합성 결과
 
 사용자 승인으로 PR6~11은 main34b8dbe에 순차 병합했다. [반복 실험 보고서](docs/research_design/REPEATED_METRIC_PILOT_REPORT.md)에는 새12독립데이터의36학습·4과제·3정책·독립do55296개를 기록했다. 알고리즘/과제 결과는 상관된 관측이며432행을 독립표본으로 세지 않는다. 일부 층의 탐색적 연관만 계산했고 지표 우월성·제조 복구/안전 성능은 입증하지 않았다. 후속 변경은 별도 미병합 PR이며 [실행 안내](research_runs/repeated_metric_pilot/README.md)를 따른다.
+
+## 다양한 구조의 신규 합성 비교
+
+[8구조 보고서](docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md)에 source 검증된8개 합성DAG·48개 독립데이터·144실학습·17과제·918정책행·do78336개 및8회 구조전체holdout 예측을 기록했다. 기존4변수 반복 결과와 구분한다. 경로단독 모형의 평균예측오차는 작았지만 공변량 조정 후 연결지표와 거의 같아 우월성은 미확정이다.8개는 손설계 구조이고 행/rollout을 독립구조로 세지 않는다. [재현 절차](research_runs/diverse_structure_pilot/README.md)를 따르며 PR12 위 stacked 후속작업은 미병합이다. 제조 Recovery/Safety는 검증하지 않았다.

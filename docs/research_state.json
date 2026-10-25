@@ -221,9 +221,9 @@
       "id": "POLICY-MVP",
       "title": "실제 추천 정책 연결",
       "status": "PARTIAL",
-      "evidence": "research_runs/repeated_metric_pilot/run_v1/comparison.csv",
-      "next_action": "같은 그래프의 확정전용/minimax/보류 paired 차이와 표현·밀도·알고리즘 교란을 통제할 후속 비교 설계",
-      "acceptance": "합성432행·동치류 제약·독립 do 검증 완료, 정책 차이를 구조 지표 효과로 오인하지 않는 비교",
+      "evidence": "research_runs/diverse_structure_pilot/analysis_v1/policy_paired_changes.json",
+      "next_action": "경로 지표-기준대체 규칙의 기계적 연결 및 알고리즘/정책 차이를 분리하는 확인 비교 설계",
+      "acceptance": "같은 그래프의 정책 차이와 원래 점수 고정. 현재306쌍 정책 비교는 탐색, 제조 안전/복구 미검증",
       "depends_on": [
         "ENV-MVP"
       ]
@@ -232,9 +232,9 @@
       "id": "EVAL-MVP",
       "title": "구조 지표–추천 성능 비교",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/REPEATED_METRIC_PILOT_REPORT.md",
-      "next_action": "독립 graph-fit 반복/정밀도·지표 공선성·데이터 단위 holdout 계약을 사전 확정; 현재 조건별3반복으로 우월성 검정 미수행",
-      "acceptance": "새 확인용 seed/자료와 cluster·과제 단위의 사전 분석계획; 현재 탐색적 연관과 공식 추론 분리",
+      "evidence": "docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md",
+      "next_action": "8개 구조 LOSO의 경로단독 개선과 공변량 조정 후 거의 같은 오차를 새 확인용 구조/계수/seed에서 검증할 사전 계약",
+      "acceptance": "확인용 구조를 통째 holdout하고 지표/모형 선택 자료와 분리; 현재8손설계 구조의 탐색 결과만 인정",
       "depends_on": [
         "ENV-MVP",
         "POLICY-MVP"
@@ -265,16 +265,28 @@
       "title": "합성 독립 반복·4과제·미확정 정책 비교",
       "status": "VERIFIED",
       "evidence": "docs/research_design/REPEATED_METRIC_PILOT_REPORT.md",
-      "next_action": "42.5초 실행/실패0 근거로 확대 가능성만 기록. 더 큰 반복은 새 seed·평가 자료·과제 변동 조건을 사전 확정 후 수행",
+      "next_action": "기존12데이터/36학습 결과 보존. 새8구조 결과는 PILOT-DIVERSE로 분리하며 과거 수치와 혼합하지 않음",
       "acceptance": "12데이터/36학습/432정책행/55296 do 원시 식·통계·고정추천·해시 검사. 제조 가설 입증 아님",
       "depends_on": [
         "PILOT-IID"
+      ]
+    },
+    {
+      "id": "PILOT-DIVERSE",
+      "title": "8개 선언 구조의 실제 학습·정책·구조외 예측",
+      "status": "VERIFIED",
+      "evidence": "docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md; research_runs/diverse_structure_pilot/analysis_v1/analysis_summary.json",
+      "next_action": "구조·계수·격자/손실 예측 민감도는 별도 사전 계획.8개 구조 밖 확인 전 지표 우월성·제조 검증으로 확대하지 않음",
+      "acceptance": "8FCM 검증/48데이터/144실학습/918정책행/78336 do/8 LOSO+별도120통제행 및 원시·해시 검증",
+      "depends_on": [
+        "PILOT-REPEAT"
       ]
     }
   ],
   "priority_order": [
     "EVAL-MVP",
     "POLICY-MVP",
+    "PILOT-DIVERSE",
     "PILOT-REPEAT",
     "ENV-MVP",
     "REF-B",
@@ -306,7 +318,8 @@
     "MVP-TECH는 실행 검증만 VERIFIED. ENV/POLICY/EVAL-MVP는 원래 지표–추천 성능 질문의 선결 단계다. REF-B 등 과거 ID와 차단 근거를 보존한다.",
     "ENV-EXAMPLE VERIFIED는 별도 승인된4노드IID fixture만 뜻한다. ENV-MVP는 broader 채택 미승인으로 PARTIAL; POLICY/EVAL 학습은 미실행이다.",
     "2026-10-24 PILOT-IID 신규: 사용자 명시 실행 지시로 두 잡음군 합성 통합만 VERIFIED. POLICY/EVAL-MVP는 해당 진전 PARTIAL이며 제조 가설 입증·Track B 채택 아님. env_acceptance/decision_mvp는 과거 실행 불변 기록이다.",
-    "2026-10-24 사용자 승인으로 PR6~11 순차 일반 merge, main34b8dbe에서 PILOT-REPEAT 신규.12독립 데이터·36학습·4과제·3정책 실제 평가만 VERIFIED. 공식 지표 우월성/제조/Recovery/Safety는 미검증이며 POLICY/EVAL-MVP PARTIAL 유지."
+    "2026-10-24 사용자 승인으로 PR6~11 순차 일반 merge, main34b8dbe에서 PILOT-REPEAT 신규.12독립 데이터·36학습·4과제·3정책 실제 평가만 VERIFIED. 공식 지표 우월성/제조/Recovery/Safety는 미검증이며 POLICY/EVAL-MVP PARTIAL 유지.",
+    "2026-10-24 PILOT-DIVERSE 추가: 미병합 PR12 위에서 사용자 명시 승인된8개 합성 구조의144학습·918평가와8fold LOSO 실행만 VERIFIED. EVAL/POLICY는 지표 우월성/제조 검증 미완료로 PARTIAL, 기존 protocol 수치/상태기록 보존."
   ],
   "integration_review": {
     "user_approved": true,
@@ -353,11 +366,11 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "사용자 승인으로 PR6→11 일반 병합 완료. 하위 프로토콜의 OPEN/stacked는 작성 당시 기록이며 덮어쓰지 않는다. 후속 실험 변경은 별도 미병합 PR로 관리한다.",
+    "note": "PR6~11 승인 병합은 유지. 이번 작업은 미병합 PR12 위 stacked 연구이며 PR12/후속PR 자동병합 없음. 과거 protocol snapshot은 작성 당시 기록으로 보존.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
-    "current_work_base": "main",
+    "current_work_base": "feature/repeated-metric-pilot",
     "pr7_status": "MERGED",
     "pr7_head": "8634e5dce66460dc26441fc40e930c34ebc73af7",
     "pr8_status": "MERGED",
@@ -375,7 +388,10 @@
     "pr11_head": "6d37d095998bf45bc532606fe8113fedd1b8f913",
     "pr11_merge_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
     "main_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
-    "current_feature": "feature/repeated-metric-pilot"
+    "current_feature": "feature/diverse-causal-structures",
+    "pr12_status": "OPEN",
+    "pr12_head": "23d19f56cd6510783398cfa95f66f1d1d8194937",
+    "pr12_ci": 40097602131
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -596,5 +612,40 @@
     "research_design_changed": false,
     "full_36_graph_replay": "NOT_RUN",
     "report": "docs/research_design/REPEATED_METRIC_PILOT_REPORT.md"
+  },
+  "diverse_structure_pilot": {
+    "protocol": "DIVERSE-STRUCTURE-PILOT-v1",
+    "checked_at": "2026-10-24",
+    "base_pr": 12,
+    "base_pr_state": "OPEN",
+    "base_commit": "23d19f56cd6510783398cfa95f66f1d1d8194937",
+    "branch": "feature/diverse-causal-structures",
+    "structures": 8,
+    "structures_hand_designed": true,
+    "independent_datasets": 48,
+    "learning_attempts": 144,
+    "learned_graphs": 144,
+    "learning_failures": 0,
+    "positive_tasks": 16,
+    "negative_control_tasks": 1,
+    "policies": 3,
+    "evaluated_rows": 918,
+    "controlled_graphs": 60,
+    "controlled_rows": 120,
+    "do_samples": 78336,
+    "policy_blocks": 0,
+    "source_acceptance": "FIRST2_THEN_ALL8_PASS",
+    "loso": "EXECUTED_8_WHOLE_STRUCTURE_FOLDS_TRAIN_ONLY_TRANSFORMS",
+    "primary_positive_rows": 288,
+    "statistical_scope": "EXPLORATORY_NO_DEFINITIVE_METRIC_WINNER",
+    "key_path_rule_mechanical_dependency": true,
+    "within_algorithm_identification": "PARTIAL;Direct path metric constant",
+    "full_144_graph_replay": "NOT_RUN",
+    "recovery_safety_computed": false,
+    "manufacturing_validated": false,
+    "track_b_adopted": false,
+    "research_design_changed": false,
+    "old_assets_modified": false,
+    "report": "docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md"
   }
 }

@@ -1,0 +1,133 @@
+{
+  "structure_id": "S2",
+  "nodes": [
+    "C",
+    "A",
+    "B",
+    "M",
+    "Y"
+  ],
+  "equations": [
+    {
+      "target": "C",
+      "parents": [],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "A",
+      "parents": [
+        {
+          "source": "C",
+          "target": "A",
+          "coefficient": 0.7
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "B",
+      "parents": [
+        {
+          "source": "C",
+          "target": "B",
+          "coefficient": 0.8
+        },
+        {
+          "source": "A",
+          "target": "B",
+          "coefficient": 0.6
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "M",
+      "parents": [
+        {
+          "source": "C",
+          "target": "M",
+          "coefficient": 0.4
+        },
+        {
+          "source": "A",
+          "target": "M",
+          "coefficient": 0.8
+        },
+        {
+          "source": "B",
+          "target": "M",
+          "coefficient": 0.9
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    },
+    {
+      "target": "Y",
+      "parents": [
+        {
+          "source": "C",
+          "target": "Y",
+          "coefficient": 0.3
+        },
+        {
+          "source": "A",
+          "target": "Y",
+          "coefficient": 0.5
+        },
+        {
+          "source": "B",
+          "target": "Y",
+          "coefficient": 0.6
+        },
+        {
+          "source": "M",
+          "target": "Y",
+          "coefficient": 1.0
+        }
+      ],
+      "noise": "Uniform(-sqrt(3),sqrt(3))"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "direct",
+      "action": "M",
+      "target": "Y",
+      "target_value": 0.65,
+      "task_kind": "direct",
+      "action_values": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "reference_action": 0.0,
+      "cost_weight": 0.2,
+      "loss_scale": 1.0,
+      "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+      "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+    },
+    {
+      "task_id": "path",
+      "action": "A",
+      "target": "Y",
+      "target_value": 1.6,
+      "task_kind": "direct_and_indirect",
+      "action_values": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "reference_action": 0.0,
+      "cost_weight": 0.2,
+      "loss_scale": 1.6,
+      "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+      "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+    }
+  ],
+  "source_gt_checked": true,
+  "classification": "DECLARED_SYNTHETIC_REFERENCE_ONLY"
+}
