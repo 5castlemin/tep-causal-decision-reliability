@@ -198,3 +198,12 @@
 - Primary model comparison is narrowly INDEPENDENT_SUPPORT, while broader incremental superiority remains unresolved. Two fit failures and three incompatible-MEC auxiliary blocks are explicit PARTIAL outcomes, not erased by validation PASS.
 - Lossless528-record compression preserves both original and compressed SHA. No original TEP or prior run bytes changed. Optional system-interpreter rule check was blocked before sampling by missing NetworkX; clean static CI installs the declared dependency. NumPy wheel-builder metadata path sanitized and original retained locally.
 - Staged diff check initially classified preserved CRLF endings in two new Windows-written scripts as trailing spaces because their executed bytes are marked -text. Added only cr-at-eol for those two files; source/plan hashes remain unchanged. Rechecked staged diff after this formatting-policy correction.
+
+
+## 2026-10-25 — PR12~14 통합과 경로 지표 추가 정보
+
+사용자의 이번3개 한정 검토 예외 승인 후 실제 diff·원시 기록·CI·39/49/55개 단위 검사를 검토하여 #12→#13→#14를 일반 병합했다. 별도 APPROVED 검토 생성 없음. merge94dab9b/5e78b98/e960fa8, main tree=검증 PR14 head. main CI40157415320 성공. 과거 결과·동결 파일 불변.
+
+`run_path_incremental_development.py --output research_runs/path_metric_incremental_validation/development_v1` 및 `run_path_development_supplement.py --output .../development_supplement_v1` 실제 실행: 기존20구조/360graph/2160정책행의 이론 운영 손실, M0~M6 구조 LOSO, 과제 대조·정책·알고리즘·C07 분석. 실패24행은 실제 기준 조작 손실로 평가. M1→M4 .005200, M5→M6 .004642 모두 개발 구간0 포함. 새 독립 확인 정밀도150구조/1350학습 필요 추정으로 사전30/288 범위 초과하여 NOT_RUN. 확인 seed/구조를 만들지 않음.
+
+`run_path_mc_calibration.py --source <verified pinned FCM> --output .../mc_calibration_v1` 실제 실행: 기존3구조 새18 do조건/69120유일표본 및69120재실행 exact 검산. C07 6조건은 상한8192에서도 목표 반폭 미달. 원시 표본/잡음 압축·계획/hash 보존. 제조 검증/새 발견학습 없음. 보고서: `docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md`. 정밀도 차단을 성공으로 재분류하지 않음.

@@ -1,0 +1,241 @@
+{
+  "case": [
+    {
+      "task": "direct",
+      "algorithm": "pc",
+      "chosen_action_counts": {
+        "0": 6
+      },
+      "oracle_total_effect": 1.1055,
+      "oracle_best_action": 0.5,
+      "oracle_improvement_gap": 0.36304243750000004,
+      "mean_analytic_regret": 0.36304243750000004,
+      "max_analytic_loss": 0.42250000000000004,
+      "mean_predicted_slope": 0.0,
+      "target_sd": 13.622243134231649,
+      "mean_skeleton_f1": 0.6676828110161444,
+      "mean_path": 0.0
+    },
+    {
+      "task": "direct",
+      "algorithm": "boss",
+      "chosen_action_counts": {
+        "0": 5,
+        "0.5": 1
+      },
+      "oracle_total_effect": 1.1055,
+      "oracle_best_action": 0.5,
+      "oracle_improvement_gap": 0.36304243750000004,
+      "mean_analytic_regret": 0.30253536458333335,
+      "max_analytic_loss": 0.42250000000000004,
+      "mean_predicted_slope": 0.1914088085248348,
+      "target_sd": 13.622243134231649,
+      "mean_skeleton_f1": 0.7235708285404026,
+      "mean_path": 0.16666666666666666
+    },
+    {
+      "task": "direct",
+      "algorithm": "directlingam",
+      "chosen_action_counts": {
+        "0.5": 5,
+        "0": 1
+      },
+      "oracle_total_effect": 1.1055,
+      "oracle_best_action": 0.5,
+      "oracle_improvement_gap": 0.36304243750000004,
+      "mean_analytic_regret": 0.060507072916666675,
+      "max_analytic_loss": 0.42250000000000004,
+      "mean_predicted_slope": 1.0761686034791877,
+      "target_sd": 13.622243134231649,
+      "mean_skeleton_f1": 0.9812169312169312,
+      "mean_path": 1.0
+    },
+    {
+      "task": "path",
+      "algorithm": "pc",
+      "chosen_action_counts": {
+        "0": 6
+      },
+      "oracle_total_effect": 8.813814493643205,
+      "oracle_best_action": 0,
+      "oracle_improvement_gap": 0.0,
+      "mean_analytic_regret": 0.0,
+      "max_analytic_loss": 0.36,
+      "mean_predicted_slope": 0.0,
+      "target_sd": 13.622243134231649,
+      "mean_skeleton_f1": 0.6676828110161444,
+      "mean_path": 0.10416666666666667
+    },
+    {
+      "task": "path",
+      "algorithm": "boss",
+      "chosen_action_counts": {
+        "0": 5,
+        "1": 1
+      },
+      "oracle_total_effect": 8.813814493643205,
+      "oracle_best_action": 0,
+      "oracle_improvement_gap": 0.0,
+      "mean_analytic_regret": 11.217791422663865,
+      "max_analytic_loss": 67.66674853598319,
+      "mean_predicted_slope": 0.1291637654891086,
+      "target_sd": 13.622243134231649,
+      "mean_skeleton_f1": 0.7235708285404026,
+      "mean_path": 0.13541666666666666
+    },
+    {
+      "task": "path",
+      "algorithm": "directlingam",
+      "chosen_action_counts": {
+        "0": 6
+      },
+      "oracle_total_effect": 8.813814493643205,
+      "oracle_best_action": 0,
+      "oracle_improvement_gap": 0.0,
+      "mean_analytic_regret": 0.0,
+      "max_analytic_loss": 0.36,
+      "mean_predicted_slope": 9.014643533974041,
+      "target_sd": 13.622243134231649,
+      "mean_skeleton_f1": 0.9812169312169312,
+      "mean_path": 1.0
+    }
+  ],
+  "kept_in_primary": true,
+  "loss_scale_reference": 1.0,
+  "without_C07_sensitivity_macro": {
+    "M0": 0.11354012328315911,
+    "M1": 0.11417465372936088,
+    "M2": 0.11209611002376263,
+    "M3": 0.11159317658957871,
+    "M4": 0.11211994211878262,
+    "M5": 0.11185361883622724,
+    "M6": 0.11135472719425159
+  },
+  "without_C07_paired": [
+    {
+      "left": "M1",
+      "right": "M4",
+      "delta": 0.0020547116105782428,
+      "ci_low": -0.0041982010156022456,
+      "ci_high": 0.006885849491507394,
+      "right_better": 14,
+      "structures": 19,
+      "by_structure": {
+        "C01": 0.0017449406428160855,
+        "C02": 0.001095606147652653,
+        "C03": 0.002278386988917358,
+        "C04": -0.001718393240106482,
+        "C05": 0.005602942158172919,
+        "C06": 0.011493854530241654,
+        "C08": 0.010741809804107383,
+        "C09": -0.006337652916419412,
+        "C10": 0.0098077606341688,
+        "C11": 0.008624812549955008,
+        "C12": 0.0024217657322993524,
+        "S1": 0.0020599289500798645,
+        "S2": -0.042196490264628184,
+        "S3": 0.011553322040892433,
+        "S4": -0.009634459510823444,
+        "S5": 0.010780061580214523,
+        "S6": -0.0026451633760697923,
+        "S7": 0.0035242026685483596,
+        "S8": 0.01984228548096753
+      },
+      "scope": "development uncertainty only; fixed sequence will apply only to new independent cohort"
+    },
+    {
+      "left": "M5",
+      "right": "M6",
+      "delta": 0.0004988916419756414,
+      "ci_low": -0.005071765401922728,
+      "ci_high": 0.004903748954558495,
+      "right_better": 13,
+      "structures": 19,
+      "by_structure": {
+        "C01": 0.0008749458066545021,
+        "C02": 0.0004473653676541206,
+        "C03": 0.0021054924806125225,
+        "C04": -0.003833695521073842,
+        "C05": 0.005165356460458043,
+        "C06": 0.007532350588912579,
+        "C08": 0.00737356472622723,
+        "C09": -0.005329730653645885,
+        "C10": 0.006082609474033565,
+        "C11": 0.008480439532813022,
+        "C12": 0.002043125419606634,
+        "S1": -0.0008936995260399455,
+        "S2": -0.039330135342887346,
+        "S3": 0.005498474968724881,
+        "S4": -0.013163922517288658,
+        "S5": 0.007016239669348945,
+        "S6": -0.00011810915850421488,
+        "S7": 0.0016929070700719973,
+        "S8": 0.017835362351859035
+      },
+      "scope": "development uncertainty only; fixed sequence will apply only to new independent cohort"
+    },
+    {
+      "left": "M0",
+      "right": "M2",
+      "delta": 0.0014440132593964844,
+      "ci_low": -0.00478420304732681,
+      "ci_high": 0.006293164251825911,
+      "right_better": 13,
+      "structures": 19,
+      "by_structure": {
+        "C01": 0.0003047195043825793,
+        "C02": 0.0013691933465334316,
+        "C03": 0.000355355840318497,
+        "C04": -0.0010606782534371348,
+        "C05": 0.004708753509475916,
+        "C06": 0.008051043797268675,
+        "C08": 0.010560353099315231,
+        "C09": -0.004117599341365109,
+        "C10": 0.004375339016710306,
+        "C11": 0.009012697795594077,
+        "C12": 0.0023998984312404437,
+        "S1": -0.00029819610224454673,
+        "S2": -0.044055529617838374,
+        "S3": 0.012655244879228339,
+        "S4": -0.009117130271966707,
+        "S5": 0.009646170473559229,
+        "S6": -0.0006043929457276442,
+        "S7": 0.0033219930641002343,
+        "S8": 0.01992901570338576
+      },
+      "scope": "development uncertainty only; fixed sequence will apply only to new independent cohort"
+    },
+    {
+      "left": "M1",
+      "right": "M2",
+      "delta": 0.0020785437055982382,
+      "ci_low": -0.004282382630398016,
+      "ci_high": 0.006975040248922648,
+      "right_better": 14,
+      "structures": 19,
+      "by_structure": {
+        "C01": 0.0011320823293524268,
+        "C02": 0.0013082958118992155,
+        "C03": 0.00132571801252436,
+        "C04": -0.0013963929264434669,
+        "C05": 0.005472128039545304,
+        "C06": 0.01099890380894357,
+        "C08": 0.010546003199093226,
+        "C09": -0.005283521270461354,
+        "C10": 0.008617145363655154,
+        "C11": 0.008954943967803705,
+        "C12": 0.0024027449747059393,
+        "S1": 0.0016659458858812037,
+        "S2": -0.0425068285093122,
+        "S3": 0.012223092343755182,
+        "S4": -0.009149767647770896,
+        "S5": 0.00978298760331757,
+        "S6": -0.0003566927174944168,
+        "S7": 0.003364041870642334,
+        "S8": 0.020391500266729673
+      },
+      "scope": "development uncertainty only; fixed sequence will apply only to new independent cohort"
+    }
+  ],
+  "interpretation": "post-observation development diagnosis; no change of old primary endpoint or deletion"
+}

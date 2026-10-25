@@ -52,3 +52,12 @@ research_runs/independent_confirmation/HYPOTHESIS_ASSESSMENT.json linguist-gener
 # Preserve CRLF bytes of executed/frozen Windows source; CR is an EOL, not content whitespace.
 scripts/run_independent_confirmation.py whitespace=cr-at-eol
 scripts/write_confirmation_report.py whitespace=cr-at-eol
+# Exact executed plan/raw bytes, compressed shared do arrays (not duplicated repeats).
+research_runs/path_metric_incremental_validation/** -text linguist-generated=true whitespace=cr-at-eol
+research_runs/path_metric_incremental_validation/README.md linguist-generated=false
+research_runs/path_metric_incremental_validation/DESIGN_GATE_PLAN_v1.json linguist-generated=false
+src/path_metric_incremental.py -text whitespace=cr-at-eol
+scripts/*path*incremental*.py -text whitespace=cr-at-eol
+scripts/run_path_mc_calibration.py -text whitespace=cr-at-eol
+scripts/run_path_development_supplement.py -text whitespace=cr-at-eol
+tests/test_path_metric_incremental.py -text whitespace=cr-at-eol

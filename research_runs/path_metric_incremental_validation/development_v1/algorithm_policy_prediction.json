@@ -1,0 +1,86 @@
+[
+  {
+    "scope": "policy",
+    "group": "abstain_on_disagreement",
+    "macro_mae": {
+      "M0": 0.18301402496684538,
+      "M1": 0.18251866793626875,
+      "M2": 0.17736545673388207,
+      "M3": 0.18587741612038935,
+      "M4": 0.17677216884940478,
+      "M5": 0.18401294281466968,
+      "M6": 0.1796327393565893
+    },
+    "scope_note": "same heldout pooled model; not refitted within algorithm or policy"
+  },
+  {
+    "scope": "policy",
+    "group": "confirmed_only",
+    "macro_mae": {
+      "M0": 0.32386038145385965,
+      "M1": 0.3272459876147571,
+      "M2": 0.31964260075303647,
+      "M3": 0.3266033691987972,
+      "M4": 0.32397158550503546,
+      "M5": 0.32894245759676677,
+      "M6": 0.3246577837503723
+    },
+    "scope_note": "same heldout pooled model; not refitted within algorithm or policy"
+  },
+  {
+    "scope": "policy",
+    "group": "mec_minimax",
+    "macro_mae": {
+      "M0": 0.17481737470230696,
+      "M1": 0.1721812977730706,
+      "M2": 0.16926295192845928,
+      "M3": 0.177207799016547,
+      "M4": 0.16560309446490856,
+      "M5": 0.1734827124936886,
+      "M6": 0.1682215047754119
+    },
+    "scope_note": "same heldout pooled model; not refitted within algorithm or policy"
+  },
+  {
+    "scope": "algorithm",
+    "group": "boss",
+    "macro_mae": {
+      "M0": 0.35988236601017876,
+      "M1": 0.3643041233014806,
+      "M2": 0.35081656301845016,
+      "M3": 0.364697655448962,
+      "M4": 0.3537693719089944,
+      "M5": 0.3665691343919143,
+      "M6": 0.3589159781368055
+    },
+    "scope_note": "same heldout pooled model; not refitted within algorithm or policy"
+  },
+  {
+    "scope": "algorithm",
+    "group": "directlingam",
+    "macro_mae": {
+      "M0": 0.09581795559570529,
+      "M1": 0.09451028225643791,
+      "M2": 0.09648103975932479,
+      "M3": 0.09592263839164882,
+      "M4": 0.0955063153583303,
+      "M5": 0.09503556759774795,
+      "M6": 0.09542262391259522
+    },
+    "scope_note": "same heldout pooled model; not refitted within algorithm or policy"
+  },
+  {
+    "scope": "algorithm",
+    "group": "pc",
+    "macro_mae": {
+      "M0": 0.22599145951712798,
+      "M1": 0.2231315477661779,
+      "M2": 0.2189734066376029,
+      "M3": 0.2290682904951227,
+      "M4": 0.2170711615520241,
+      "M5": 0.2248334109154628,
+      "M6": 0.21817342583297283
+    },
+    "scope_note": "same heldout pooled model; not refitted within algorithm or policy"
+  }
+]
