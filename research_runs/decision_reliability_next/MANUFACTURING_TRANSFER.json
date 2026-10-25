@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-25",
+  "decision": "MANUFACTURING_ENVIRONMENT_CONSISTENCY_FIRST",
+  "manufacturing_ready": false,
+  "new_manufacturing_runs": 0,
+  "existing_workstreams": {
+    "COMPAT-01": {
+      "id": "COMPAT-01",
+      "title": "공개 후보와 기존 데이터/GT 대응",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/TRACK_A_RECOVERY_GATE.md",
+      "next_action": "합법적 IEEE 계정으로 3_Normal Steady-State.zip 회수 후 목록·SHA·실제 시간축/seed 확인; 기술문서만 회수됨",
+      "acceptance": "정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지",
+      "depends_on": [
+        "SIM-03",
+        "SIM-04"
+      ]
+    },
+    "TASK-01": {
+      "id": "TASK-01",
+      "title": "실행 가능한 복구 과제 확정",
+      "status": "BLOCKED",
+      "evidence": "experiments/pilot/TASK_SPEC.md",
+      "next_action": "모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정",
+      "acceptance": "결과 확인 전 버전된 과제 계약",
+      "depends_on": [
+        "COMPAT-01",
+        "SIM-02"
+      ]
+    },
+    "EFFECT-01": {
+      "id": "EFFECT-01",
+      "title": "독립 개입·Recovery/Safety 측정",
+      "status": "NOT_RUN",
+      "evidence": "experiments/pilot/PILOT_RESULT.md",
+      "next_action": "확정 과제로 no-action 대비 동일 조건 실험",
+      "acceptance": "원시 trajectory·실패 포함 독립 평가",
+      "depends_on": [
+        "TASK-01"
+      ]
+    },
+    "BENCH-ENV": {
+      "id": "BENCH-ENV",
+      "title": "공식 수정 TEP 복원 환경",
+      "status": "BLOCKED",
+      "evidence": "docs/research_design/TRACK_A_RECOVERY_GATE.md",
+      "next_action": "승인된 MATLAB/Simulink 위치·버전·라이선스 확보; PATH/registry/제품/일반 경로 탐색은 미발견, 라이선스 조회·로딩 NOT_RUN",
+      "acceptance": "합법 환경에서 사본 .mdl/MAT 실제 로딩·MEX 검증 후 사전 계획된 정상 반복",
+      "depends_on": []
+    },
+    "REF-B": {
+      "id": "REF-B",
+      "title": "Track B 참조 구조 타당성",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md",
+      "next_action": "최소 내부 상태식 검산 완료; 관측 projection/비간선/알고리즘 의미의 외부 방법론 검토 전 추가 GT·실험 중단",
+      "acceptance": "기존 discovery와 동일한 참조 정의·불확실/음성 쌍·채점 계약 검토; 현재 전체 Q2 BLOCKED",
+      "depends_on": []
+    },
+    "SIM-B": {
+      "id": "SIM-B",
+      "title": "Track B 제어기·잡음 정렬 계약",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md",
+      "next_action": "5초 밸브/3step cascade/관측 cache 순서 확인; 방법론 문제 해결 전 장기·Fault 실험 확장 보류",
+      "acceptance": "관측 정의 일치 후에만 정책·잡음·horizon의 별도 사전 계약",
+      "depends_on": []
+    }
+  },
+  "transferable": [
+    "matched-error graph contrasts",
+    "effect prediction separate from action choice",
+    "reference improvement/regret/large loss/availability",
+    "documented operational fallback"
+  ],
+  "not_transferable": [
+    "synthetic effect coefficients/loss thresholds",
+    "CPCaD31-node28edge structure as new simulator effect GT",
+    "manufacturing Recovery/Safety results"
+  ],
+  "acceptance": [
+    "same model/controller/node/time definition for structure and observations",
+    "explicit XMV command/actual actuator/setpoint/manual override semantics",
+    "source/version/license and reset/noise/horizon contract",
+    "reference structure validity at observed nodes",
+    "independent do outcome with task and reference policy fixed before outputs"
+  ],
+  "no_repeat_audit": true
+}

@@ -1,0 +1,1931 @@
+{
+  "scope": "development nested whole-structure CV; no independent cohort",
+  "features": {
+    "BASE": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes"
+    ],
+    "SIMPLE": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "target_goal",
+      "range_std",
+      "cost_range_squared"
+    ],
+    "SKELETON": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "target_goal",
+      "range_std",
+      "cost_range_squared",
+      "skeleton_f1"
+    ],
+    "DIRECTION": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "target_goal",
+      "range_std",
+      "cost_range_squared",
+      "strict_directed_f1"
+    ],
+    "PATH": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "target_goal",
+      "range_std",
+      "cost_range_squared",
+      "key_path_edge_recall"
+    ],
+    "SKEL_DIRECTION": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "target_goal",
+      "range_std",
+      "cost_range_squared",
+      "skeleton_f1",
+      "strict_directed_f1"
+    ],
+    "SKEL_PATH": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "target_goal",
+      "range_std",
+      "cost_range_squared",
+      "skeleton_f1",
+      "key_path_edge_recall"
+    ],
+    "DIRECTION_PATH": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "target_goal",
+      "range_std",
+      "cost_range_squared",
+      "strict_directed_f1",
+      "key_path_edge_recall"
+    ],
+    "ALL": [
+      "algorithm_boss",
+      "algorithm_directlingam",
+      "log_n",
+      "n_nodes",
+      "target_goal",
+      "range_std",
+      "cost_range_squared",
+      "skeleton_f1",
+      "strict_directed_f1",
+      "key_path_edge_recall"
+    ]
+  },
+  "folds": [
+    {
+      "held_out": "C01",
+      "training_structures": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3365382947234134,
+        "SIMPLE": 0.3538450917864303,
+        "SKELETON": 0.36344753688332737,
+        "DIRECTION": 0.37840652297042765,
+        "PATH": 0.3586645361570901,
+        "SKEL_DIRECTION": 0.38275506479796545,
+        "SKEL_PATH": 0.36640077816229416,
+        "DIRECTION_PATH": 0.36538971497887834,
+        "ALL": 0.37167009306524695
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.12552894250161664
+    },
+    {
+      "held_out": "C02",
+      "training_structures": [
+        "C01",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.33796156132811406,
+        "SIMPLE": 0.35460423462015767,
+        "SKELETON": 0.3642907255076345,
+        "DIRECTION": 0.37730703116270814,
+        "PATH": 0.3579732163247503,
+        "SKEL_DIRECTION": 0.3821371856579782,
+        "SKEL_PATH": 0.3657039461337001,
+        "DIRECTION_PATH": 0.3654226366423965,
+        "ALL": 0.3709628127672589
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.19923589626100965
+    },
+    {
+      "held_out": "C03",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3368978869853796,
+        "SIMPLE": 0.35393512426321266,
+        "SKELETON": 0.3633155065361815,
+        "DIRECTION": 0.3776693788717654,
+        "PATH": 0.35813086422657187,
+        "SKEL_DIRECTION": 0.3823367662901763,
+        "SKEL_PATH": 0.36591446521974286,
+        "DIRECTION_PATH": 0.3644904394953894,
+        "ALL": 0.37128233314345
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.14323984752959856
+    },
+    {
+      "held_out": "C04",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.33762590789749114,
+        "SIMPLE": 0.35440923104654837,
+        "SKELETON": 0.3639240332711273,
+        "DIRECTION": 0.3804703828251433,
+        "PATH": 0.36247216126512755,
+        "SKEL_DIRECTION": 0.3848443686568754,
+        "SKEL_PATH": 0.3694179310356205,
+        "DIRECTION_PATH": 0.36843210362131434,
+        "ALL": 0.37420369232608514
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.27120658130009434
+    },
+    {
+      "held_out": "C05",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3225365716169454,
+        "SIMPLE": 0.33973333401439826,
+        "SKELETON": 0.3483312296363447,
+        "DIRECTION": 0.3645776411694527,
+        "PATH": 0.34444302061800214,
+        "SKEL_DIRECTION": 0.36894612402518323,
+        "SKEL_PATH": 0.3517070728365066,
+        "DIRECTION_PATH": 0.3513819329694488,
+        "ALL": 0.35758302864811387
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.3352685884489039
+    },
+    {
+      "held_out": "C06",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.337216710026233,
+        "SIMPLE": 0.3548344317121054,
+        "SKELETON": 0.36217802870199395,
+        "DIRECTION": 0.3776329384327142,
+        "PATH": 0.35989099827765036,
+        "SKEL_DIRECTION": 0.38225745306405806,
+        "SKEL_PATH": 0.36629825712062947,
+        "DIRECTION_PATH": 0.36731466142765545,
+        "ALL": 0.37394692084876713
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.3659276941851871
+    },
+    {
+      "held_out": "C07",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.14148709669961232,
+        "SIMPLE": 0.14743798322045587,
+        "SKELETON": 0.14904119702415053,
+        "DIRECTION": 0.14018323578667746,
+        "PATH": 0.1298718028586748,
+        "SKEL_DIRECTION": 0.14241454281229646,
+        "SKEL_PATH": 0.13200479839581605,
+        "DIRECTION_PATH": 0.1307278191304803,
+        "ALL": 0.13332517667128432
+      },
+      "selected": "PATH",
+      "selected_test_mae": 1.986052659986125
+    },
+    {
+      "held_out": "C08",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3328528547396625,
+        "SIMPLE": 0.3511398301118549,
+        "SKELETON": 0.3599215956600033,
+        "DIRECTION": 0.37444541141313337,
+        "PATH": 0.35635043561837415,
+        "SKEL_DIRECTION": 0.3786020735794041,
+        "SKEL_PATH": 0.3636428963477751,
+        "DIRECTION_PATH": 0.3632411830100575,
+        "ALL": 0.36927423535274034
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.2563443514165952
+    },
+    {
+      "held_out": "C09",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3383422963338759,
+        "SIMPLE": 0.3539286208269177,
+        "SKELETON": 0.3624864212115053,
+        "DIRECTION": 0.3786138038888246,
+        "PATH": 0.3610287263520842,
+        "SKEL_DIRECTION": 0.3835250189895672,
+        "SKEL_PATH": 0.3674722380773616,
+        "DIRECTION_PATH": 0.3689812388386913,
+        "ALL": 0.37540439036366974
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.3346994801280224
+    },
+    {
+      "held_out": "C10",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.33847805880769866,
+        "SIMPLE": 0.3551017551627308,
+        "SKELETON": 0.3644448184040554,
+        "DIRECTION": 0.3851433475923637,
+        "PATH": 0.3630446739407468,
+        "SKEL_DIRECTION": 0.3892763486398746,
+        "SKEL_PATH": 0.37008543988279713,
+        "DIRECTION_PATH": 0.3738911176631244,
+        "ALL": 0.379724140414486
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.31651104599147756
+    },
+    {
+      "held_out": "C11",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.33428346173814,
+        "SIMPLE": 0.3521561008422267,
+        "SKELETON": 0.36036361742508966,
+        "DIRECTION": 0.3770933694059657,
+        "PATH": 0.35876662270563403,
+        "SKEL_DIRECTION": 0.3815330205011347,
+        "SKEL_PATH": 0.36503857691827185,
+        "DIRECTION_PATH": 0.3647276103397328,
+        "ALL": 0.37120455264478225
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.19646501624509344
+    },
+    {
+      "held_out": "C12",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3284878104074308,
+        "SIMPLE": 0.3445220024551142,
+        "SKELETON": 0.3533285392703717,
+        "DIRECTION": 0.37278105313301696,
+        "PATH": 0.35138045059785883,
+        "SKEL_DIRECTION": 0.37707655553647457,
+        "SKEL_PATH": 0.35806131158055954,
+        "DIRECTION_PATH": 0.3619014107327786,
+        "ALL": 0.36748974353658165
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.3250710584527375
+    },
+    {
+      "held_out": "S1",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.33721059140439913,
+        "SIMPLE": 0.3538073450236527,
+        "SKELETON": 0.3613238527519036,
+        "DIRECTION": 0.377462192575302,
+        "PATH": 0.358878502187224,
+        "SKEL_DIRECTION": 0.38040485304157795,
+        "SKEL_PATH": 0.36495916095770936,
+        "DIRECTION_PATH": 0.36560008556117096,
+        "ALL": 0.3696773266221913
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.14079112093568427
+    },
+    {
+      "held_out": "S2",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3343191071591036,
+        "SIMPLE": 0.3517789906612013,
+        "SKELETON": 0.3635162058565908,
+        "DIRECTION": 0.3764795081723787,
+        "PATH": 0.3581494436792941,
+        "SKEL_DIRECTION": 0.3819580924000764,
+        "SKEL_PATH": 0.367343346830902,
+        "DIRECTION_PATH": 0.3635411478958346,
+        "ALL": 0.3686821206142887
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.18406615355818332
+    },
+    {
+      "held_out": "S3",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3334476032340966,
+        "SIMPLE": 0.35036732416323957,
+        "SKELETON": 0.3592434014099371,
+        "DIRECTION": 0.3759213509316978,
+        "PATH": 0.35705742750725394,
+        "SKEL_DIRECTION": 0.37905274915858533,
+        "SKEL_PATH": 0.3638368140793386,
+        "DIRECTION_PATH": 0.3620804912548598,
+        "ALL": 0.3660496909867495
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.19541927508476542
+    },
+    {
+      "held_out": "S4",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.33696755266904727,
+        "SIMPLE": 0.35346367632659087,
+        "SKELETON": 0.3624990653680139,
+        "DIRECTION": 0.3778889456665756,
+        "PATH": 0.35892663419354,
+        "SKEL_DIRECTION": 0.3823321839399833,
+        "SKEL_PATH": 0.36614299924799165,
+        "DIRECTION_PATH": 0.36432358544493504,
+        "ALL": 0.3705146154372646
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.10902610637753747
+    },
+    {
+      "held_out": "S5",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.33531055831338324,
+        "SIMPLE": 0.3514469072569646,
+        "SKELETON": 0.36065994432198356,
+        "DIRECTION": 0.37623951714075415,
+        "PATH": 0.35838626632620446,
+        "SKEL_DIRECTION": 0.380683035159843,
+        "SKEL_PATH": 0.3654196411024018,
+        "DIRECTION_PATH": 0.36330048195785786,
+        "ALL": 0.3698285008572076
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.17464523355474126
+    },
+    {
+      "held_out": "S6",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S7",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.3312052664594187,
+        "SIMPLE": 0.3382621570838149,
+        "SKELETON": 0.34454489816701533,
+        "DIRECTION": 0.3647209509934166,
+        "PATH": 0.3443854818776232,
+        "SKEL_DIRECTION": 0.3636520903936371,
+        "SKEL_PATH": 0.3482253214072108,
+        "DIRECTION_PATH": 0.35793667463331197,
+        "ALL": 0.3578701755482166
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.21260963489666115
+    },
+    {
+      "held_out": "S7",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S8"
+      ],
+      "inner_mae": {
+        "BASE": 0.33481263092434005,
+        "SIMPLE": 0.35194483547423594,
+        "SKELETON": 0.36064894061568603,
+        "DIRECTION": 0.37580469316407544,
+        "PATH": 0.35872571950324145,
+        "SKEL_DIRECTION": 0.378946765523524,
+        "SKEL_PATH": 0.3655162849948019,
+        "DIRECTION_PATH": 0.36681336368070244,
+        "ALL": 0.3707654530061312
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.2579320072622521
+    },
+    {
+      "held_out": "S8",
+      "training_structures": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7"
+      ],
+      "inner_mae": {
+        "BASE": 0.32854907598120764,
+        "SIMPLE": 0.34593262876833947,
+        "SKELETON": 0.3562262702351658,
+        "DIRECTION": 0.37526705278997496,
+        "PATH": 0.3556745132268849,
+        "SKEL_DIRECTION": 0.37941641433621043,
+        "SKEL_PATH": 0.3624955754992488,
+        "DIRECTION_PATH": 0.3632873958815539,
+        "ALL": 0.36987114674202853
+      },
+      "selected": "BASE",
+      "selected_test_mae": 0.3325321508049265
+    }
+  ],
+  "structure_scores": [
+    {
+      "structure_id": "C01",
+      "model": "BASE",
+      "mae": 0.12552894250161664,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C01",
+      "model": "SIMPLE",
+      "mae": 0.1444230925109348,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C01",
+      "model": "SKELETON",
+      "mae": 0.1455964193333806,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C01",
+      "model": "DIRECTION",
+      "mae": 0.12355328025775439,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C01",
+      "model": "PATH",
+      "mae": 0.14268888722054482,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C01",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.1225446774053078,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C01",
+      "model": "SKEL_PATH",
+      "mae": 0.14338023464984878,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C01",
+      "model": "DIRECTION_PATH",
+      "mae": 0.12882943879795467,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C01",
+      "model": "ALL",
+      "mae": 0.12344793494708296,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C02",
+      "model": "BASE",
+      "mae": 0.19923589626100965,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C02",
+      "model": "SIMPLE",
+      "mae": 0.2432431076034437,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C02",
+      "model": "SKELETON",
+      "mae": 0.26986232035687024,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C02",
+      "model": "DIRECTION",
+      "mae": 0.18529582297878983,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C02",
+      "model": "PATH",
+      "mae": 0.2395758781210512,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C02",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.19013543805833757,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C02",
+      "model": "SKEL_PATH",
+      "mae": 0.2718547062346532,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C02",
+      "model": "DIRECTION_PATH",
+      "mae": 0.17699830439608077,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C02",
+      "model": "ALL",
+      "mae": 0.19904719693373327,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C03",
+      "model": "BASE",
+      "mae": 0.14323984752959856,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C03",
+      "model": "SIMPLE",
+      "mae": 0.1721492901931862,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C03",
+      "model": "SKELETON",
+      "mae": 0.18269914094902742,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C03",
+      "model": "DIRECTION",
+      "mae": 0.13128988912742995,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C03",
+      "model": "PATH",
+      "mae": 0.1677651514280455,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C03",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.12944383004694676,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C03",
+      "model": "SKEL_PATH",
+      "mae": 0.18101698775652772,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C03",
+      "model": "DIRECTION_PATH",
+      "mae": 0.143644702589936,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C03",
+      "model": "ALL",
+      "mae": 0.14066281928304356,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C04",
+      "model": "BASE",
+      "mae": 0.27120658130009434,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C04",
+      "model": "SIMPLE",
+      "mae": 0.3376260497404563,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C04",
+      "model": "SKELETON",
+      "mae": 0.3554542765861168,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C04",
+      "model": "DIRECTION",
+      "mae": 0.38021935162446613,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C04",
+      "model": "PATH",
+      "mae": 0.3475902708408176,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C04",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.39027223191434784,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C04",
+      "model": "SKEL_PATH",
+      "mae": 0.36059719634897885,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C04",
+      "model": "DIRECTION_PATH",
+      "mae": 0.36617322857133294,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C04",
+      "model": "ALL",
+      "mae": 0.38551615848416426,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C05",
+      "model": "BASE",
+      "mae": 0.3352685884489039,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C05",
+      "model": "SIMPLE",
+      "mae": 0.3303570316139491,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C05",
+      "model": "SKELETON",
+      "mae": 0.31498430700099184,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C05",
+      "model": "DIRECTION",
+      "mae": 0.3311653830062089,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C05",
+      "model": "PATH",
+      "mae": 0.33038809949957565,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C05",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.32472946359728083,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C05",
+      "model": "SKEL_PATH",
+      "mae": 0.3163355549686421,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C05",
+      "model": "DIRECTION_PATH",
+      "mae": 0.3441802352916656,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C05",
+      "model": "ALL",
+      "mae": 0.33354743866576936,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C06",
+      "model": "BASE",
+      "mae": 0.3659276941851871,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C06",
+      "model": "SIMPLE",
+      "mae": 0.3372670711407059,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C06",
+      "model": "SKELETON",
+      "mae": 0.32257818309694003,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C06",
+      "model": "DIRECTION",
+      "mae": 0.31681002336256037,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C06",
+      "model": "PATH",
+      "mae": 0.3368219390560211,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C06",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.31047723772867,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C06",
+      "model": "SKEL_PATH",
+      "mae": 0.32473276185760486,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C06",
+      "model": "DIRECTION_PATH",
+      "mae": 0.2948239776325786,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C06",
+      "model": "ALL",
+      "mae": 0.27820272121919537,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C07",
+      "model": "BASE",
+      "mae": 1.9906460496106442,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C07",
+      "model": "SIMPLE",
+      "mae": 1.9991680722900185,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C07",
+      "model": "SKELETON",
+      "mae": 2.005183736170841,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C07",
+      "model": "DIRECTION",
+      "mae": 1.9987374046664719,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C07",
+      "model": "PATH",
+      "mae": 1.986052659986125,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C07",
+      "model": "SKEL_DIRECTION",
+      "mae": 2.00459466710487,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C07",
+      "model": "SKEL_PATH",
+      "mae": 1.9907042323537587,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C07",
+      "model": "DIRECTION_PATH",
+      "mae": 1.981738500528029,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C07",
+      "model": "ALL",
+      "mae": 1.986290512608067,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C08",
+      "model": "BASE",
+      "mae": 0.2563443514165952,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C08",
+      "model": "SIMPLE",
+      "mae": 0.25465835544287657,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C08",
+      "model": "SKELETON",
+      "mae": 0.2504202135591096,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C08",
+      "model": "DIRECTION",
+      "mae": 0.2952857991942755,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C08",
+      "model": "PATH",
+      "mae": 0.25854421593223603,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C08",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.29144979325533443,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C08",
+      "model": "SKEL_PATH",
+      "mae": 0.25321935810947777,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C08",
+      "model": "DIRECTION_PATH",
+      "mae": 0.27236872490874875,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C08",
+      "model": "ALL",
+      "mae": 0.26520471942957086,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C09",
+      "model": "BASE",
+      "mae": 0.3346994801280224,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C09",
+      "model": "SIMPLE",
+      "mae": 0.34969686600572175,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C09",
+      "model": "SKELETON",
+      "mae": 0.34693549562270104,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C09",
+      "model": "DIRECTION",
+      "mae": 0.3946547274026875,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C09",
+      "model": "PATH",
+      "mae": 0.36247575988631997,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C09",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.3920878542225089,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C09",
+      "model": "SKEL_PATH",
+      "mae": 0.3575665947827871,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C09",
+      "model": "DIRECTION_PATH",
+      "mae": 0.3572707702660426,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C09",
+      "model": "ALL",
+      "mae": 0.35106238777153975,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C10",
+      "model": "BASE",
+      "mae": 0.31651104599147756,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C10",
+      "model": "SIMPLE",
+      "mae": 0.35448144738446974,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C10",
+      "model": "SKELETON",
+      "mae": 0.35962307065356447,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C10",
+      "model": "DIRECTION",
+      "mae": 0.45370828364070037,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C10",
+      "model": "PATH",
+      "mae": 0.3617923099021087,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C10",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.4583025318111706,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C10",
+      "model": "SKEL_PATH",
+      "mae": 0.3651095964126656,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C10",
+      "model": "DIRECTION_PATH",
+      "mae": 0.4814901259562568,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C10",
+      "model": "ALL",
+      "mae": 0.4924055842964545,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C11",
+      "model": "BASE",
+      "mae": 0.19646501624509344,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C11",
+      "model": "SIMPLE",
+      "mae": 0.2299877366154999,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C11",
+      "model": "SKELETON",
+      "mae": 0.22342184716833405,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C11",
+      "model": "DIRECTION",
+      "mae": 0.21885344908276697,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C11",
+      "model": "PATH",
+      "mae": 0.23093308126543488,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C11",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.21217502372715696,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C11",
+      "model": "SKEL_PATH",
+      "mae": 0.22400855792059127,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C11",
+      "model": "DIRECTION_PATH",
+      "mae": 0.22034295209680352,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C11",
+      "model": "ALL",
+      "mae": 0.20085625521148118,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C12",
+      "model": "BASE",
+      "mae": 0.3250710584527375,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "C12",
+      "model": "SIMPLE",
+      "mae": 0.3054673768815983,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C12",
+      "model": "SKELETON",
+      "mae": 0.3043203822555951,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C12",
+      "model": "DIRECTION",
+      "mae": 0.3099122742507114,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C12",
+      "model": "PATH",
+      "mae": 0.3064758079079201,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C12",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.3090303449540936,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C12",
+      "model": "SKEL_PATH",
+      "mae": 0.30491304598596236,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C12",
+      "model": "DIRECTION_PATH",
+      "mae": 0.3162089993815004,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "C12",
+      "model": "ALL",
+      "mae": 0.31611356410736324,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S1",
+      "model": "BASE",
+      "mae": 0.14079112093568427,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "S1",
+      "model": "SIMPLE",
+      "mae": 0.13089044210274972,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S1",
+      "model": "SKELETON",
+      "mae": 0.11747518645617153,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S1",
+      "model": "DIRECTION",
+      "mae": 0.16618678888125618,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S1",
+      "model": "PATH",
+      "mae": 0.1322493306518669,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S1",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.1553869171631647,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S1",
+      "model": "SKEL_PATH",
+      "mae": 0.11756020073739704,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S1",
+      "model": "DIRECTION_PATH",
+      "mae": 0.1624950914375947,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S1",
+      "model": "ALL",
+      "mae": 0.14325822466412105,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S2",
+      "model": "BASE",
+      "mae": 0.18406615355818332,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "S2",
+      "model": "SIMPLE",
+      "mae": 0.20214063074475982,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S2",
+      "model": "SKELETON",
+      "mae": 0.2827117994819692,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S2",
+      "model": "DIRECTION",
+      "mae": 0.2620250412647436,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S2",
+      "model": "PATH",
+      "mae": 0.21174057001567712,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S2",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.3000131370039911,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S2",
+      "model": "SKEL_PATH",
+      "mae": 0.28241525224023406,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S2",
+      "model": "DIRECTION_PATH",
+      "mae": 0.22558994015743888,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S2",
+      "model": "ALL",
+      "mae": 0.29915637452416644,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S3",
+      "model": "BASE",
+      "mae": 0.19541927508476542,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "S3",
+      "model": "SIMPLE",
+      "mae": 0.22763537119211824,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S3",
+      "model": "SKELETON",
+      "mae": 0.23369047449373354,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S3",
+      "model": "DIRECTION",
+      "mae": 0.3601099731867517,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S3",
+      "model": "PATH",
+      "mae": 0.24140671624635215,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S3",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.36430635824881247,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S3",
+      "model": "SKEL_PATH",
+      "mae": 0.24327308893169697,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S3",
+      "model": "DIRECTION_PATH",
+      "mae": 0.381315177274859,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S3",
+      "model": "ALL",
+      "mae": 0.38963843388336916,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S4",
+      "model": "BASE",
+      "mae": 0.10902610637753747,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "S4",
+      "model": "SIMPLE",
+      "mae": 0.1289681894813836,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S4",
+      "model": "SKELETON",
+      "mae": 0.13445661412454193,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S4",
+      "model": "DIRECTION",
+      "mae": 0.14457460485193213,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S4",
+      "model": "PATH",
+      "mae": 0.12798671118029245,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S4",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.14389747569167965,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S4",
+      "model": "SKEL_PATH",
+      "mae": 0.13328443794449876,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S4",
+      "model": "DIRECTION_PATH",
+      "mae": 0.1637663301563449,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S4",
+      "model": "ALL",
+      "mae": 0.16385978333574067,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S5",
+      "model": "BASE",
+      "mae": 0.17464523355474126,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "S5",
+      "model": "SIMPLE",
+      "mae": 0.16886804018084647,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S5",
+      "model": "SKELETON",
+      "mae": 0.1654614389642686,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S5",
+      "model": "DIRECTION",
+      "mae": 0.22785868821478608,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S5",
+      "model": "PATH",
+      "mae": 0.17853826068958986,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S5",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.2246675116241431,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S5",
+      "model": "SKEL_PATH",
+      "mae": 0.17391351774213115,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S5",
+      "model": "DIRECTION_PATH",
+      "mae": 0.23493929394687582,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S5",
+      "model": "ALL",
+      "mae": 0.2277136308442124,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S6",
+      "model": "BASE",
+      "mae": 0.21260963489666115,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "S6",
+      "model": "SIMPLE",
+      "mae": 0.2906040547433236,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S6",
+      "model": "SKELETON",
+      "mae": 0.3229311538895707,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S6",
+      "model": "DIRECTION",
+      "mae": 0.2836209432136282,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S6",
+      "model": "PATH",
+      "mae": 0.29877400993852377,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S6",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.3175276333291559,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S6",
+      "model": "SKEL_PATH",
+      "mae": 0.32543404408703547,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S6",
+      "model": "DIRECTION_PATH",
+      "mae": 0.23101430609745677,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S6",
+      "model": "ALL",
+      "mae": 0.27962604840577776,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S7",
+      "model": "BASE",
+      "mae": 0.2579320072622521,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "S7",
+      "model": "SIMPLE",
+      "mae": 0.2536888524612496,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S7",
+      "model": "SKELETON",
+      "mae": 0.278206224615478,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S7",
+      "model": "DIRECTION",
+      "mae": 0.2723486084562259,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S7",
+      "model": "PATH",
+      "mae": 0.2672887298250805,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S7",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.28937427992058,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S7",
+      "model": "SKEL_PATH",
+      "mae": 0.2862983544110208,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S7",
+      "model": "DIRECTION_PATH",
+      "mae": 0.2039871480739287,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S7",
+      "model": "ALL",
+      "mae": 0.22313379294407795,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S8",
+      "model": "BASE",
+      "mae": 0.3325321508049265,
+      "selected_in_fold": true
+    },
+    {
+      "structure_id": "S8",
+      "model": "SIMPLE",
+      "mae": 0.33026045793131714,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S8",
+      "model": "SKELETON",
+      "mae": 0.3361451489875284,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S8",
+      "model": "DIRECTION",
+      "mae": 0.4047898195325804,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S8",
+      "model": "PATH",
+      "mae": 0.36472589997066346,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S8",
+      "model": "SKEL_DIRECTION",
+      "mae": 0.40978084728808756,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S8",
+      "model": "SKEL_PATH",
+      "mae": 0.36558690050980364,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S8",
+      "model": "DIRECTION_PATH",
+      "mae": 0.3319772391200742,
+      "selected_in_fold": false
+    },
+    {
+      "structure_id": "S8",
+      "model": "ALL",
+      "mae": 0.3317321448080756,
+      "selected_in_fold": false
+    }
+  ],
+  "macro_mae": {
+    "BASE": 0.3233583117272866,
+    "SIMPLE": 0.33957907681303046,
+    "SKELETON": 0.3476078716883367,
+    "DIRECTION": 0.3630500078098364,
+    "PATH": 0.3446907144782123,
+    "SKEL_DIRECTION": 0.367009862704782,
+    "SKEL_PATH": 0.3510602311992658,
+    "DIRECTION_PATH": 0.3509577243340751,
+    "ALL": 0.3565237863183503
+  },
+  "nested_selected_macro_mae": 0.32312864224606064
+}

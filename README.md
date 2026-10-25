@@ -52,3 +52,6 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 
 
 현재 추가 정보 평가: [한국어 보고서](docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md). PR12~14는 검증 후 병합됐으며, 새 feature에서는 기존20구조의 이론 운영 평가/실제 do 검산을 수행했다. 경로 지표의 안정적 추가 정보는 미확인이고 새 독립 확인은 정밀도·자원 Gate로 미실행이다. 제조공정 검증과 구분한다.
+
+
+연구의 실무 방향은 [RESEARCH_COMPASS](docs/research_design/RESEARCH_COMPASS.md), 오류 위치·효과 추정·조작 선택의 실제 대조는 [다음 단계 보고서](docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md)를 참고합니다. 같은 F1에서 악화·개선·동률을 모두 확인했으며, 기존 개발 자료 재분석과 oracle 진단입니다. PR15 위 후속 feature이고 새 독립 제조 검증이 아닙니다.
