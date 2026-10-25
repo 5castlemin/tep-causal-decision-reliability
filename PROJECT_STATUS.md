@@ -27,10 +27,11 @@
 | DESIGN-B | Track B 가설 유지·통계 설계 | BLOCKED | docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md | 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 |
 | MVP-TECH | 공통 추천 dry-run·API 기술 파일럿 | VERIFIED | docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md | 기존3모델 추천 dry-run/정해진 조작 반복·로거 재사용; 가설 검증으로 해석 금지 |
 | ENV-MVP | 구조·추천 평가환경 대응 | PARTIAL | docs/research_design/ENV_MVP_ACCEPTANCE.md | 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 |
-| POLICY-MVP | 실제 추천 정책 연결 | PARTIAL | docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md | 다음 합성 다중과제의 목표·비용·확정 경로 없는 기준대체 정책을 사전 확정; 제조 Fault/안전 계약은 분리 유지 |
-| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | research_runs/first_integrated_pilot/run_v1/summary.csv | 독립 graph-fit seed·표본수·다중 과제의 다음 사전 실험 계획 고정; CPDAG/DAG와 기준대체 정책 혼란 분리 |
+| POLICY-MVP | 실제 추천 정책 연결 | PARTIAL | research_runs/repeated_metric_pilot/run_v1/comparison.csv | 같은 그래프의 확정전용/minimax/보류 paired 차이와 표현·밀도·알고리즘 교란을 통제할 후속 비교 설계 |
+| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | docs/research_design/REPEATED_METRIC_PILOT_REPORT.md | 독립 graph-fit 반복/정밀도·지표 공선성·데이터 단위 holdout 계약을 사전 확정; 현재 조건별3반복으로 우월성 검정 미수행 |
 | ENV-EXAMPLE | 예제 FCM GT·관측·do adapter acceptance | VERIFIED | docs/research_design/ENV_MVP_ACCEPTANCE.md | 고정 source/lock/원시 잡음/배치 검증 재사용. 제조/시간/반사실 검증으로 확대하지 않음 |
 | PILOT-IID | 4변수 합성 통합 학습·추천·do 실행 | VERIFIED | docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md; research_runs/first_integrated_pilot/reproducibility_check.json | 두 잡음군 별도 3학습/1과제 연결 결과를 유지하고 다중 독립 학습 조건 계획에 활용; 제조 채택 아님 |
+| PILOT-REPEAT | 합성 독립 반복·4과제·미확정 정책 비교 | VERIFIED | docs/research_design/REPEATED_METRIC_PILOT_REPORT.md | 42.5초 실행/실패0 근거로 확대 가능성만 기록. 더 큰 반복은 새 seed·평가 자료·과제 변동 조건을 사전 확정 후 수행 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

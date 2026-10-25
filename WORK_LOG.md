@@ -157,3 +157,12 @@
 - research_runs/first_integrated_pilot/ 및 한국어 FIRST_INTEGRATED_PILOT_REPORT.md 추가. 기존 src/decision_mvp.py 평균 전개와 pilot_fit.py fit_ridge 재사용, 기존 적합/7 frozen/Step6/TEP data/진단 log/RESEARCH_DESIGN.md 불변. 제조 채택·Recovery/Safety·가설 입증 없음.
 - 실제 명령·실패 이력은 해당 README/SETUP_AND_EXECUTION.md. canonical 상태에서 PILOT-IID만 합성범위 VERIFIED; POLICY/EVAL-MVP는 PARTIAL로 업데이트하고 다음 독립 반복/과제 계약을 최우선으로 둔다.
 - 최종 검사: 단위31개·신규 raw/통계/native그래프/추천 검증·기존8종 기록검사·39 graph hash·asset/PR 통합·상태/문서 동기화·diff 검사 통과. 하위 subprocess의 다른 Python 선택으로 난 NumPy 미설치 실패는 원시 로그 보존 후 실험 venv 명시 재검사로 해결했다. validation_results.json(첫 실패 요약)/validation_results_final.json(재검사)을 구분한다.
+
+## 2026-10-24 — PR6~11 순차 통합과 반복·다중과제 실제 실행
+- 사용자 명시 승인 범위 #6→#7→#8→#9→#10→#11만 최신 main retarget/차이 대조/CI·로컬검사 후 일반 merge. 원래 commit 계보 보존, 보호 설정·공개 여부 변경/강제 push 없음. merge커밋은 docs/research_design/PR6_11_INTEGRATION_RECORD.md 및 integration/merge_commits.json.
+- 최종 main34b8dbe tree=원래 PR11 head6d37d09. 단위31·기록/해시/JSON-MD 검사와 main CI40093211965 success 후 로컬 main ff-only 동기화, feature/repeated-metric-pilot 생성. 첫 실험/TEP/frozen/Step6/fit/raw/RESEARCH_DESIGN.md 불변. 실제 local dataset·GT도 고정 원본 SHA 일치.
+- 실행 전 PLAN_v1/SHA f04caba2 고정. 2잡음×2표본수(256/512)×3독립데이터×3알고리즘=36학습 실제 완료/실패0. 검증용 seed 별도; 새 API12조건에서 A/R/M do식 대체·hook 통제·정확 반복 확인.
+- 4과제×3미확정 정책×36그래프=432추천 모두 SHA 동결 후 55296개 독립 do 표본 생성. 공통 action의 원시 평가를 재사용. 동치류는 skeleton/고정방향/비차폐 충돌/비순환을 보존, GT 없이 열거. 계산된0·경로부재 대체·모호성 보류를 구분.
+- 새 실행 약42.523초, 학습 기록 합28.590초. 더 큰 반복/36graph 전체 replay NOT_RUN. 탐색적 Spearman은 사전 변동/cluster 조건에 맞는 층만 계산; LODO범위는 CI 아님. 조건별 독립데이터3개로 공식 지표 순위·p-value·Recovery/Safety 없음. 정책 변경 자체가 손실을 바꾸므로 구조 지표의 인과 효과로 주장하지 않음.
+- 실제 명령은 research_runs/repeated_metric_pilot/README.md, 원시 log는 지정 아카이브 2026-10-24/06_순차통합과_반복다중과제에 보존. 신규 PLAN/run_v1/analysis_v1·한국어 보고서·검증코드와 canonical JSON/MD 동기화. 후속 PR은 승인 없이 병합하지 않음.
+- 최종 검증: 단위39개, 새36학습/432추천/원시55296행·동치류/손실/통계/해시 및 기존 전종 기록 validators, graph39파일, 원본data/GT hash, 자산/PR통합, JSON→MD·문서 동기화, diff 검사를 모두 통과했다. 12학습CSV hash 모두 다름. 개인경로 미반입 확인. 추가 약15MB는 재사용 do 원시/noise와 모델/추천/분석 기록이며 평가를 그래프별 중복 생성하지 않았다.

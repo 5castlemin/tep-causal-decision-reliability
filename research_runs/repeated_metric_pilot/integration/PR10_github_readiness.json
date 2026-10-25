@@ -1,0 +1,390 @@
+{
+  "pr": 10,
+  "state": "open",
+  "merged": false,
+  "mergeable": true,
+  "mergeable_state": "clean",
+  "head_sha": "ee5e0bd83b78a753bf78d2b72b835fcce8ca2813",
+  "base": "main",
+  "base_sha": "8578fac2c69d0490d4fd2846aeaf8c62be072876",
+  "main_sha": "8578fac2c69d0490d4fd2846aeaf8c62be072876",
+  "main_protected": false,
+  "pr_workflows": [
+    {
+      "id": 40089086160,
+      "event": "pull_request",
+      "head_sha": "ee5e0bd83b78a753bf78d2b72b835fcce8ca2813",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40089086160"
+    },
+    {
+      "id": 40089062949,
+      "event": "push",
+      "head_sha": "ee5e0bd83b78a753bf78d2b72b835fcce8ca2813",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40089062949"
+    }
+  ],
+  "main_workflows": [
+    {
+      "id": 40093072565,
+      "event": "push",
+      "head_sha": "8578fac2c69d0490d4fd2846aeaf8c62be072876",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40093072565"
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "path": "DECISIONS.md",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 0
+    },
+    {
+      "path": "PRIORITIES.md",
+      "status": "modified",
+      "additions": 7,
+      "deletions": 6
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 3
+    },
+    {
+      "path": "WORK_LOG.md",
+      "status": "modified",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_design/ENV_MVP_ACCEPTANCE.md",
+      "status": "added",
+      "additions": 55,
+      "deletions": 0
+    },
+    {
+      "path": "docs/research_state.json",
+      "status": "modified",
+      "additions": 59,
+      "deletions": 14
+    },
+    {
+      "path": "research_runs/env_acceptance/ACCEPTANCE_STATUS.json",
+      "status": "added",
+      "additions": 33,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/PLAN_v1.json",
+      "status": "added",
+      "additions": 40,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/README.md",
+      "status": "added",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/environment_probe.json",
+      "status": "added",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/negative_no_approval_v1/FAILURE.json",
+      "status": "added",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/SHA256.json",
+      "status": "added",
+      "additions": 42,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/declared_fixture_reference.csv",
+      "status": "added",
+      "additions": 5,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/plan.json",
+      "status": "added",
+      "additions": 81,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__do_A_minus0.1__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__do_A_minus0.1__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__do_A_minus0.1__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__do_A_minus0.1__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__do_A_plus0.1__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__do_A_plus0.1__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__do_A_plus0.1__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__do_A_plus0.1__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__observational__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__observational__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__observational__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7101__observational__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__do_A_minus0.1__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__do_A_minus0.1__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__do_A_minus0.1__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__do_A_minus0.1__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__do_A_plus0.1__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__do_A_plus0.1__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__do_A_plus0.1__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__do_A_plus0.1__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__observational__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__observational__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__observational__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/holdout__seed7102__observational__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__do_A_minus0.1__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__do_A_minus0.1__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__do_A_minus0.1__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__do_A_minus0.1__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__do_A_plus0.1__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__do_A_plus0.1__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__do_A_plus0.1__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__do_A_plus0.1__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__observational__repeat0.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__observational__repeat0__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__observational__repeat1.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/raw/train__seed3101__observational__repeat1__noise.csv",
+      "status": "added",
+      "additions": 65,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/requirements.lock.txt",
+      "status": "added",
+      "additions": 19,
+      "deletions": 0
+    },
+    {
+      "path": "research_runs/env_acceptance/run_20261024_v1/result.json",
+      "status": "added",
+      "additions": 1398,
+      "deletions": 0
+    },
+    {
+      "path": "scripts/run_env_acceptance.py",
+      "status": "added",
+      "additions": 140,
+      "deletions": 0
+    },
+    {
+      "path": "scripts/validate_env_acceptance.py",
+      "status": "added",
+      "additions": 73,
+      "deletions": 0
+    },
+    {
+      "path": "src/fcm_acceptance_adapter.py",
+      "status": "added",
+      "additions": 79,
+      "deletions": 0
+    },
+    {
+      "path": "tests/test_fcm_acceptance_adapter.py",
+      "status": "added",
+      "additions": 33,
+      "deletions": 0
+    }
+  ]
+}

@@ -1,0 +1,2895 @@
+[
+  {
+    "graph_id": "gaussian_n256_r1__pc",
+    "dataset_id": "gaussian_n256_r1",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100001,
+    "validation_seed": 1100002,
+    "algorithm_seed": 1100003,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.8599999999860302,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n256_r1__boss",
+    "dataset_id": "gaussian_n256_r1",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100001,
+    "validation_seed": 1100002,
+    "algorithm_seed": 1100003,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.015000000013969839,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n256_r1__directlingam",
+    "dataset_id": "gaussian_n256_r1",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100001,
+    "validation_seed": 1100002,
+    "algorithm_seed": 1100003,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "R"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "Y",
+        "A"
+      ],
+      [
+        "Y",
+        "M"
+      ],
+      [
+        "Y",
+        "R"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          4.251962583120126,
+          0.0,
+          -3.29186967448412,
+          0.0
+        ],
+        [
+          0.9986634056701088,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.7783022297825355,
+          0.21791926763859054,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "Y",
+        "M",
+        "R",
+        "A"
+      ]
+    },
+    "seconds": 1.625,
+    "assumption_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+  },
+  {
+    "graph_id": "gaussian_n256_r2__pc",
+    "dataset_id": "gaussian_n256_r2",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100101,
+    "validation_seed": 1100102,
+    "algorithm_seed": 1100103,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.01600000006146729,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n256_r2__boss",
+    "dataset_id": "gaussian_n256_r2",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100101,
+    "validation_seed": 1100102,
+    "algorithm_seed": 1100103,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n256_r2__directlingam",
+    "dataset_id": "gaussian_n256_r2",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100101,
+    "validation_seed": 1100102,
+    "algorithm_seed": 1100103,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ],
+      [
+        "A",
+        "Y"
+      ],
+      [
+        "R",
+        "M"
+      ],
+      [
+        "Y",
+        "M"
+      ],
+      [
+        "Y",
+        "R"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9906481779741342
+        ],
+        [
+          0.44262914014124716,
+          0.0,
+          0.0,
+          0.5295944533579713
+        ],
+        [
+          1.0714773463857448,
+          -0.15395585086684482,
+          0.0,
+          0.07686525100152923
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "A",
+        "Y",
+        "R",
+        "M"
+      ]
+    },
+    "seconds": 0.030999999959021807,
+    "assumption_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+  },
+  {
+    "graph_id": "gaussian_n256_r3__pc",
+    "dataset_id": "gaussian_n256_r3",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100201,
+    "validation_seed": 1100202,
+    "algorithm_seed": 1100203,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n256_r3__boss",
+    "dataset_id": "gaussian_n256_r3",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100201,
+    "validation_seed": 1100202,
+    "algorithm_seed": 1100203,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n256_r3__directlingam",
+    "dataset_id": "gaussian_n256_r3",
+    "family": "gaussian",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100201,
+    "validation_seed": 1100202,
+    "algorithm_seed": 1100203,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "R"
+      ],
+      [
+        "M",
+        "R"
+      ],
+      [
+        "Y",
+        "A"
+      ],
+      [
+        "Y",
+        "M"
+      ],
+      [
+        "Y",
+        "R"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          3.437951180132512,
+          0.0,
+          -2.864863221393484,
+          0.4014842090127455
+        ],
+        [
+          0.9989134872014983,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.9897086188219789,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "Y",
+        "M",
+        "A",
+        "R"
+      ]
+    },
+    "seconds": 0.015999999945051968,
+    "assumption_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+  },
+  {
+    "graph_id": "gaussian_n512_r1__pc",
+    "dataset_id": "gaussian_n512_r1",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100301,
+    "validation_seed": 1100302,
+    "algorithm_seed": 1100303,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.015000000013969839,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n512_r1__boss",
+    "dataset_id": "gaussian_n512_r1",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100301,
+    "validation_seed": 1100302,
+    "algorithm_seed": 1100303,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ],
+      [
+        "M",
+        "R"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "Y",
+          "node2": "R",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "Y",
+          "node2": "M",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "R",
+          "node2": "M",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          -1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n512_r1__directlingam",
+    "dataset_id": "gaussian_n512_r1",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100301,
+    "validation_seed": 1100302,
+    "algorithm_seed": 1100303,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ],
+      [
+        "A",
+        "Y"
+      ],
+      [
+        "R",
+        "M"
+      ],
+      [
+        "R",
+        "Y"
+      ],
+      [
+        "Y",
+        "M"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.11502603067701757,
+          0.0,
+          0.8769650992127828
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9703091319129462
+        ],
+        [
+          1.0617928761119977,
+          -0.13154604465623154,
+          0.0,
+          0.06472540478417405
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "A",
+        "R",
+        "Y",
+        "M"
+      ]
+    },
+    "seconds": 0.015999999945051968,
+    "assumption_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+  },
+  {
+    "graph_id": "gaussian_n512_r2__pc",
+    "dataset_id": "gaussian_n512_r2",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100401,
+    "validation_seed": 1100402,
+    "algorithm_seed": 1100403,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.015000000013969839,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n512_r2__boss",
+    "dataset_id": "gaussian_n512_r2",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100401,
+    "validation_seed": 1100402,
+    "algorithm_seed": 1100403,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n512_r2__directlingam",
+    "dataset_id": "gaussian_n512_r2",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100401,
+    "validation_seed": 1100402,
+    "algorithm_seed": 1100403,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "A"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "M"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.12874531187092317,
+          0.8753762431735634,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.957802526192922,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.26033305759102204,
+          0.738992243344075,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "R",
+        "M",
+        "Y",
+        "A"
+      ]
+    },
+    "seconds": 0.015999999945051968,
+    "assumption_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+  },
+  {
+    "graph_id": "gaussian_n512_r3__pc",
+    "dataset_id": "gaussian_n512_r3",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100501,
+    "validation_seed": 1100502,
+    "algorithm_seed": 1100503,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.015000000013969839,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n512_r3__boss",
+    "dataset_id": "gaussian_n512_r3",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100501,
+    "validation_seed": 1100502,
+    "algorithm_seed": 1100503,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ],
+      [
+        "M",
+        "R"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "Y",
+          "node2": "R",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "Y",
+          "node2": "M",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "R",
+          "node2": "M",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          -1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "gaussian_n512_r3__directlingam",
+    "dataset_id": "gaussian_n512_r3",
+    "family": "gaussian",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100501,
+    "validation_seed": 1100502,
+    "algorithm_seed": 1100503,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "A"
+      ],
+      [
+        "M",
+        "R"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.13031414628453414,
+          0.8739418102918918,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.9571608008340183,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.2906249792714397,
+          0.7085311041010147,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "M",
+        "R",
+        "Y",
+        "A"
+      ]
+    },
+    "seconds": 0.03200000000651926,
+    "assumption_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+  },
+  {
+    "graph_id": "uniform_n256_r1__pc",
+    "dataset_id": "uniform_n256_r1",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100601,
+    "validation_seed": 1100602,
+    "algorithm_seed": 1100603,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ],
+      [
+        "A",
+        "Y"
+      ],
+      [
+        "M",
+        "Y"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "Y",
+          "node2": "M",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "Y",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          0,
+          -1,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          -1,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.9370000000344589,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n256_r1__boss",
+    "dataset_id": "uniform_n256_r1",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100601,
+    "validation_seed": 1100602,
+    "algorithm_seed": 1100603,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.01600000006146729,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n256_r1__directlingam",
+    "dataset_id": "uniform_n256_r1",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100601,
+    "validation_seed": 1100602,
+    "algorithm_seed": 1100603,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "M"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.15171119901088242,
+          0.8543191341925541,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.10151117882562571,
+          0.0,
+          1.0849716088073855
+        ],
+        [
+          0.0,
+          0.9672311819467482,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "R",
+        "A",
+        "M",
+        "Y"
+      ]
+    },
+    "seconds": 0.015999999945051968,
+    "assumption_role": "NON_GAUSSIAN_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n256_r2__pc",
+    "dataset_id": "uniform_n256_r2",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100701,
+    "validation_seed": 1100702,
+    "algorithm_seed": 1100703,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ],
+      [
+        "Y",
+        "A"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "Y",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 1.2820000000065193,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n256_r2__boss",
+    "dataset_id": "uniform_n256_r2",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100701,
+    "validation_seed": 1100702,
+    "algorithm_seed": 1100703,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.015000000013969839,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n256_r2__directlingam",
+    "dataset_id": "uniform_n256_r2",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1100701,
+    "validation_seed": 1100702,
+    "algorithm_seed": 1100703,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.12668847927554155,
+          0.8773432082165292,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9870891294425445
+        ],
+        [
+          0.0,
+          0.9707298245083471,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "R",
+        "A",
+        "M",
+        "Y"
+      ]
+    },
+    "seconds": 0.030999999959021807,
+    "assumption_role": "NON_GAUSSIAN_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n256_r3__pc",
+    "dataset_id": "uniform_n256_r3",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100801,
+    "validation_seed": 1100802,
+    "algorithm_seed": 1100803,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ],
+      [
+        "M",
+        "Y"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "Y",
+          "node2": "M",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 1.2959999999729916,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n256_r3__boss",
+    "dataset_id": "uniform_n256_r3",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100801,
+    "validation_seed": 1100802,
+    "algorithm_seed": 1100803,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n256_r3__directlingam",
+    "dataset_id": "uniform_n256_r3",
+    "family": "uniform",
+    "train_n": 256,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1100801,
+    "validation_seed": 1100802,
+    "algorithm_seed": 1100803,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.13848229265111164,
+          0.8671593430262279,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9848128550129285
+        ],
+        [
+          0.0,
+          0.9686281942068404,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "R",
+        "A",
+        "M",
+        "Y"
+      ]
+    },
+    "seconds": 0.015000000013969839,
+    "assumption_role": "NON_GAUSSIAN_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r1__pc",
+    "dataset_id": "uniform_n512_r1",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100901,
+    "validation_seed": 1100902,
+    "algorithm_seed": 1100903,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 6.733999999938533,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r1__boss",
+    "dataset_id": "uniform_n512_r1",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100901,
+    "validation_seed": 1100902,
+    "algorithm_seed": 1100903,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r1__directlingam",
+    "dataset_id": "uniform_n512_r1",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 1,
+    "train_seed": 1100901,
+    "validation_seed": 1100902,
+    "algorithm_seed": 1100903,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.13425106772835368,
+          0.8700175932511742,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9884916457941619
+        ],
+        [
+          0.0,
+          0.9708499147843127,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "R",
+        "A",
+        "M",
+        "Y"
+      ]
+    },
+    "seconds": 0.030999999959021807,
+    "assumption_role": "NON_GAUSSIAN_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r2__pc",
+    "dataset_id": "uniform_n512_r2",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1101001,
+    "validation_seed": 1101002,
+    "algorithm_seed": 1101003,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 7.89000000001397,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r2__boss",
+    "dataset_id": "uniform_n512_r2",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1101001,
+    "validation_seed": 1101002,
+    "algorithm_seed": 1101003,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r2__directlingam",
+    "dataset_id": "uniform_n512_r2",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 2,
+    "train_seed": 1101001,
+    "validation_seed": 1101002,
+    "algorithm_seed": 1101003,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.1376516327874212,
+          0.8672125911450592,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9862289179533288
+        ],
+        [
+          0.0,
+          0.9676678881484378,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "R",
+        "A",
+        "M",
+        "Y"
+      ]
+    },
+    "seconds": 0.030999999959021807,
+    "assumption_role": "NON_GAUSSIAN_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r3__pc",
+    "dataset_id": "uniform_n512_r3",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1101101,
+    "validation_seed": 1101102,
+    "algorithm_seed": 1101103,
+    "algorithm": "pc",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          0
+        ]
+      ]
+    },
+    "seconds": 7.592999999993481,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r3__boss",
+    "dataset_id": "uniform_n512_r3",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1101101,
+    "validation_seed": 1101102,
+    "algorithm_seed": 1101103,
+    "algorithm": "boss",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "A",
+        "R"
+      ]
+    ],
+    "native": {
+      "native_edges": [
+        {
+          "node1": "R",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "M",
+          "node2": "Y",
+          "endpoint1": "TAIL",
+          "endpoint2": "ARROW"
+        },
+        {
+          "node1": "R",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        },
+        {
+          "node1": "M",
+          "node2": "A",
+          "endpoint1": "TAIL",
+          "endpoint2": "TAIL"
+        }
+      ],
+      "native_matrix": [
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1,
+          0
+        ]
+      ]
+    },
+    "seconds": 0.0,
+    "assumption_role": "PRIMARY_COMPARISON"
+  },
+  {
+    "graph_id": "uniform_n512_r3__directlingam",
+    "dataset_id": "uniform_n512_r3",
+    "family": "uniform",
+    "train_n": 512,
+    "validation_n": 256,
+    "replicate": 3,
+    "train_seed": 1101101,
+    "validation_seed": 1101102,
+    "algorithm_seed": 1101103,
+    "algorithm": "directlingam",
+    "status": "LEARNED",
+    "confirmed_edges": [
+      [
+        "A",
+        "M"
+      ],
+      [
+        "M",
+        "Y"
+      ],
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ]
+    ],
+    "unresolved_pairs": [],
+    "native": {
+      "adjacency_child_parent": [
+        [
+          0.0,
+          0.14843317253649643,
+          0.8565095587754654,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9866732918657912
+        ],
+        [
+          0.0,
+          0.9688155341705029,
+          0.0,
+          0.0
+        ]
+      ],
+      "causal_order": [
+        "R",
+        "A",
+        "M",
+        "Y"
+      ]
+    },
+    "seconds": 0.030999999959021807,
+    "assumption_role": "NON_GAUSSIAN_COMPARISON"
+  }
+]

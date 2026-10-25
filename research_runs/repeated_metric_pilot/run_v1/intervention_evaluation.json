@@ -1,0 +1,7634 @@
+{
+  "gaussian__A__0": {
+    "family": "gaussian",
+    "action": "A",
+    "value": -1.0,
+    "batches": [
+      {
+        "seed": 2100000,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100001,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100002,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.012191628037059076,
+        "se": 0.02551418425417586,
+        "ci_low": -0.03781617310112561,
+        "ci_high": 0.06219942917524376
+      },
+      "A": {
+        "n": 1536,
+        "mean": -1.0,
+        "se": 0.0,
+        "ci_low": -1.0,
+        "ci_high": -1.0
+      },
+      "M": {
+        "n": 1536,
+        "mean": -2.9454487654391883,
+        "se": 0.02477360569265257,
+        "ci_low": -2.9940050325967875,
+        "ci_high": -2.896892498281589
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -2.9318066382131227,
+        "se": 0.03685411437587841,
+        "ci_low": -3.0040407023898443,
+        "ci_high": -2.859572574036401
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.012191628037059076
+      },
+      "A": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": -3.0,
+        "mean_difference": 0.05455123456081168
+      },
+      "Y": {
+        "analytic_mean": -3.0,
+        "mean_difference": 0.0681933617868773
+      }
+    }
+  },
+  "gaussian__A__1": {
+    "family": "gaussian",
+    "action": "A",
+    "value": -0.5,
+    "batches": [
+      {
+        "seed": 2100100,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100101,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100102,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.03641291275246439,
+        "se": 0.024962318174954243,
+        "ci_low": -0.0853390563753747,
+        "ci_high": 0.012513230870445924
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.5,
+        "se": 0.0,
+        "ci_low": -0.5,
+        "ci_high": -0.5
+      },
+      "M": {
+        "n": 1536,
+        "mean": -1.4781904743426018,
+        "se": 0.02500901539321175,
+        "ci_low": -1.5272081445132968,
+        "ci_high": -1.4291728041719067
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -1.5184835459025947,
+        "se": 0.036729182292958525,
+        "ci_low": -1.5904727431967933,
+        "ci_high": -1.446494348608396
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.0,
+        "mean_difference": -0.03641291275246439
+      },
+      "A": {
+        "analytic_mean": -0.5,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": -1.5,
+        "mean_difference": 0.021809525657398243
+      },
+      "Y": {
+        "analytic_mean": -1.5,
+        "mean_difference": -0.01848354590259471
+      }
+    }
+  },
+  "gaussian__A__2": {
+    "family": "gaussian",
+    "action": "A",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2100200,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100201,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100202,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.010446183907453796,
+        "se": 0.025976874344645847,
+        "ci_low": -0.061360857622959654,
+        "ci_high": 0.04046848980805206
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "M": {
+        "n": 1536,
+        "mean": -0.03345806114165668,
+        "se": 0.025249002881353615,
+        "ci_low": -0.08294610678910977,
+        "ci_high": 0.01602998450579641
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.05109671348741326,
+        "se": 0.03696358266918864,
+        "ci_low": -0.123545335519023,
+        "ci_high": 0.021351908544196475
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.010446183907453796
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.03345806114165668
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.05109671348741326
+      }
+    }
+  },
+  "gaussian__A__3": {
+    "family": "gaussian",
+    "action": "A",
+    "value": 0.5,
+    "batches": [
+      {
+        "seed": 2100300,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100301,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100302,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.030337640715918216,
+        "se": 0.026239989109296417,
+        "ci_low": -0.02109273793830276,
+        "ci_high": 0.0817680193701392
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.5,
+        "se": 0.0,
+        "ci_low": 0.5,
+        "ci_high": 0.5
+      },
+      "M": {
+        "n": 1536,
+        "mean": 1.5227841120475036,
+        "se": 0.025482203788163044,
+        "ci_low": 1.4728389926227041,
+        "ci_high": 1.5727292314723031
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 1.546742677906145,
+        "se": 0.03661834895832602,
+        "ci_low": 1.474970713947826,
+        "ci_high": 1.618514641864464
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.030337640715918216
+      },
+      "A": {
+        "analytic_mean": 0.5,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": 1.5,
+        "mean_difference": 0.022784112047503635
+      },
+      "Y": {
+        "analytic_mean": 1.5,
+        "mean_difference": 0.04674267790614506
+      }
+    }
+  },
+  "gaussian__A__4": {
+    "family": "gaussian",
+    "action": "A",
+    "value": 1.0,
+    "batches": [
+      {
+        "seed": 2100400,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100401,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100402,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.03272035476434428,
+        "se": 0.02577293486055595,
+        "ci_low": -0.08323530709103394,
+        "ci_high": 0.01779459756234538
+      },
+      "A": {
+        "n": 1536,
+        "mean": 1.0,
+        "se": 0.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "M": {
+        "n": 1536,
+        "mean": 3.0010427359195964,
+        "se": 0.02565656599103839,
+        "ci_low": 2.950755866577161,
+        "ci_high": 3.0513296052620316
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 2.9610765551193436,
+        "se": 0.03676920321959792,
+        "ci_low": 2.889008916808932,
+        "ci_high": 3.0331441934297554
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.03272035476434428
+      },
+      "A": {
+        "analytic_mean": 1.0,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": 3.0,
+        "mean_difference": 0.0010427359195963604
+      },
+      "Y": {
+        "analytic_mean": 3.0,
+        "mean_difference": -0.038923444880656355
+      }
+    }
+  },
+  "gaussian__A__independent_reference": {
+    "family": "gaussian",
+    "action": "A",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2100500,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100501,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2100502,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.012780879984840848,
+        "se": 0.024678363350032824,
+        "ci_low": -0.03558871218122348,
+        "ci_high": 0.06115047215090518
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "M": {
+        "n": 1536,
+        "mean": -0.004872794074504509,
+        "se": 0.026290239479466813,
+        "ci_low": -0.05640166345425946,
+        "ci_high": 0.04665607530525045
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.009640039956127486,
+        "se": 0.03658436038893782,
+        "ci_low": -0.06206530640619065,
+        "ci_high": 0.08134538631844562
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.012780879984840848
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.004872794074504509
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.009640039956127486
+      }
+    }
+  },
+  "gaussian__R__0": {
+    "family": "gaussian",
+    "action": "R",
+    "value": -1.0,
+    "batches": [
+      {
+        "seed": 2110000,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110001,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110002,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -1.0,
+        "se": 0.0,
+        "ci_low": -1.0,
+        "ci_high": -1.0
+      },
+      "A": {
+        "n": 1536,
+        "mean": -1.971336007332771,
+        "se": 0.012970075828735163,
+        "ci_low": -1.996757355957092,
+        "ci_high": -1.9459146587084502
+      },
+      "M": {
+        "n": 1536,
+        "mean": -5.906267439093518,
+        "se": 0.04693260787324349,
+        "ci_low": -5.998255350525075,
+        "ci_high": -5.81427952766196
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -6.8993477597659965,
+        "se": 0.04737905476593975,
+        "ci_low": -6.992210707107239,
+        "ci_high": -6.806484812424754
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": -2.0,
+        "mean_difference": 0.028663992667228966
+      },
+      "M": {
+        "analytic_mean": -6.0,
+        "mean_difference": 0.0937325609064823
+      },
+      "Y": {
+        "analytic_mean": -7.0,
+        "mean_difference": 0.10065224023400354
+      }
+    }
+  },
+  "gaussian__R__1": {
+    "family": "gaussian",
+    "action": "R",
+    "value": -0.5,
+    "batches": [
+      {
+        "seed": 2110100,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110101,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110102,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.5,
+        "se": 0.0,
+        "ci_low": -0.5,
+        "ci_high": -0.5
+      },
+      "A": {
+        "n": 1536,
+        "mean": -1.0037084751907226,
+        "se": 0.012816430046229076,
+        "ci_low": -1.0288286780813316,
+        "ci_high": -0.9785882723001136
+      },
+      "M": {
+        "n": 1536,
+        "mean": -3.002347895114561,
+        "se": 0.045541233338461704,
+        "ci_low": -3.091608712457946,
+        "ci_high": -2.913087077771176
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -3.488168530243095,
+        "se": 0.0464110506296172,
+        "ci_low": -3.579134189477145,
+        "ci_high": -3.3972028710090454
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.5,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": -1.0,
+        "mean_difference": -0.0037084751907225932
+      },
+      "M": {
+        "analytic_mean": -3.0,
+        "mean_difference": -0.002347895114561016
+      },
+      "Y": {
+        "analytic_mean": -3.5,
+        "mean_difference": 0.011831469756904855
+      }
+    }
+  },
+  "gaussian__R__2": {
+    "family": "gaussian",
+    "action": "R",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2110200,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110201,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110202,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.02516337445063513,
+        "se": 0.013096351185525911,
+        "ci_low": -0.05083222277426591,
+        "ci_high": 0.0005054738729956577
+      },
+      "M": {
+        "n": 1536,
+        "mean": -0.0607985901136062,
+        "se": 0.04809945585450382,
+        "ci_low": -0.15507352358843368,
+        "ci_high": 0.03347634336122129
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.05651239595735086,
+        "se": 0.048270257836659315,
+        "ci_low": -0.1511221013172031,
+        "ci_high": 0.0380973094025014
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.02516337445063513
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.0607985901136062
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.05651239595735086
+      }
+    }
+  },
+  "gaussian__R__3": {
+    "family": "gaussian",
+    "action": "R",
+    "value": 0.5,
+    "batches": [
+      {
+        "seed": 2110300,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110301,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110302,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.5,
+        "se": 0.0,
+        "ci_low": 0.5,
+        "ci_high": 0.5
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.9924439995944594,
+        "se": 0.012659366094154806,
+        "ci_low": 0.967631642049916,
+        "ci_high": 1.0172563571390028
+      },
+      "M": {
+        "n": 1536,
+        "mean": 2.9706915527442903,
+        "se": 0.04589835112339691,
+        "ci_low": 2.8807307845424326,
+        "ci_high": 3.060652320946148
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 3.4813527114534937,
+        "se": 0.046166075772862344,
+        "ci_low": 3.3908672029386837,
+        "ci_high": 3.5718382199683036
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.5,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": 1.0,
+        "mean_difference": -0.007556000405540608
+      },
+      "M": {
+        "analytic_mean": 3.0,
+        "mean_difference": -0.02930844725570969
+      },
+      "Y": {
+        "analytic_mean": 3.5,
+        "mean_difference": -0.018647288546506324
+      }
+    }
+  },
+  "gaussian__R__4": {
+    "family": "gaussian",
+    "action": "R",
+    "value": 1.0,
+    "batches": [
+      {
+        "seed": 2110400,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110401,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110402,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 1.0,
+        "se": 0.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "A": {
+        "n": 1536,
+        "mean": 2.00073069048567,
+        "se": 0.01265656997759526,
+        "ci_low": 1.9759238133295831,
+        "ci_high": 2.0255375676417566
+      },
+      "M": {
+        "n": 1536,
+        "mean": 6.020243065877326,
+        "se": 0.04565433444650897,
+        "ci_low": 5.930760570362168,
+        "ci_high": 6.109725561392483
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 7.0238581687089505,
+        "se": 0.04630630039870939,
+        "ci_low": 6.93309781992748,
+        "ci_high": 7.114618517490421
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 1.0,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": 2.0,
+        "mean_difference": 0.0007306904856698715
+      },
+      "M": {
+        "analytic_mean": 6.0,
+        "mean_difference": 0.020243065877325606
+      },
+      "Y": {
+        "analytic_mean": 7.0,
+        "mean_difference": 0.023858168708950522
+      }
+    }
+  },
+  "gaussian__R__independent_reference": {
+    "family": "gaussian",
+    "action": "R",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2110500,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110501,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2110502,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.0214323063671103,
+        "se": 0.01282991653197027,
+        "ci_low": -0.04657894276977203,
+        "ci_high": 0.0037143300355514317
+      },
+      "M": {
+        "n": 1536,
+        "mean": -0.08085808840934312,
+        "se": 0.04529479002544349,
+        "ci_low": -0.16963587685921236,
+        "ci_high": 0.007919700040526112
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.08458640956835546,
+        "se": 0.04570354917249734,
+        "ci_low": -0.17416536594645024,
+        "ci_high": 0.004992546809739318
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.0214323063671103
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.08085808840934312
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.08458640956835546
+      }
+    }
+  },
+  "gaussian__M__0": {
+    "family": "gaussian",
+    "action": "M",
+    "value": -1.0,
+    "batches": [
+      {
+        "seed": 2120000,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120001,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120002,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.015511561467412224,
+        "se": 0.02529019237300957,
+        "ci_low": -0.03405721558368653,
+        "ci_high": 0.06508033851851099
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.03676750346969275,
+        "se": 0.052138448656950456,
+        "ci_low": -0.06542385589793014,
+        "ci_high": 0.13895886283731562
+      },
+      "M": {
+        "n": 1536,
+        "mean": -1.0,
+        "se": 0.0,
+        "ci_low": -1.0,
+        "ci_high": -1.0
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.9894332131151917,
+        "se": 0.02596342606365335,
+        "ci_low": -1.0403215281999523,
+        "ci_high": -0.9385448980304312
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.015511561467412224
+      },
+      "A": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.03676750346969275
+      },
+      "M": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.010566786884808277
+      }
+    }
+  },
+  "gaussian__M__1": {
+    "family": "gaussian",
+    "action": "M",
+    "value": -0.5,
+    "batches": [
+      {
+        "seed": 2120100,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120101,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120102,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.019341470465367987,
+        "se": 0.025325514993073135,
+        "ci_low": -0.030296538921055355,
+        "ci_high": 0.06897947985179133
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.030991937569906505,
+        "se": 0.052381079608669334,
+        "ci_low": -0.07167497846308539,
+        "ci_high": 0.1336588536028984
+      },
+      "M": {
+        "n": 1536,
+        "mean": -0.5,
+        "se": 0.0,
+        "ci_low": -0.5,
+        "ci_high": -0.5
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.4900256246628351,
+        "se": 0.026167785198172474,
+        "ci_low": -0.5413144836512531,
+        "ci_high": -0.43873676567441705
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.019341470465367987
+      },
+      "A": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.030991937569906505
+      },
+      "M": {
+        "analytic_mean": -0.5,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": -0.5,
+        "mean_difference": 0.009974375337164887
+      }
+    }
+  },
+  "gaussian__M__2": {
+    "family": "gaussian",
+    "action": "M",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2120200,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120201,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120202,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.015427768483208799,
+        "se": 0.025493545973304284,
+        "ci_low": -0.034539581624467595,
+        "ci_high": 0.06539511859088519
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.03534686085066286,
+        "se": 0.052932906999721634,
+        "ci_low": -0.06840163686879153,
+        "ci_high": 0.13909535857011726
+      },
+      "M": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.002551272893657752,
+        "se": 0.026530229072354267,
+        "ci_low": -0.04944797608815661,
+        "ci_high": 0.054550521875472116
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.015427768483208799
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.03534686085066286
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.002551272893657752
+      }
+    }
+  },
+  "gaussian__M__3": {
+    "family": "gaussian",
+    "action": "M",
+    "value": 0.5,
+    "batches": [
+      {
+        "seed": 2120300,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120301,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120302,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.0024369445050553312,
+        "se": 0.02493659186523397,
+        "ci_low": -0.046438775550803245,
+        "ci_high": 0.05131266456091391
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.008205126758290411,
+        "se": 0.0514935640377623,
+        "ci_low": -0.10913251227230451,
+        "ci_high": 0.0927222587557237
+      },
+      "M": {
+        "n": 1536,
+        "mean": 0.5,
+        "se": 0.0,
+        "ci_low": 0.5,
+        "ci_high": 0.5
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.5088072994251457,
+        "se": 0.025696508512948225,
+        "ci_low": 0.4584421427397672,
+        "ci_high": 0.5591724561105242
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0024369445050553312
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.008205126758290411
+      },
+      "M": {
+        "analytic_mean": 0.5,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": 0.5,
+        "mean_difference": 0.008807299425145687
+      }
+    }
+  },
+  "gaussian__M__4": {
+    "family": "gaussian",
+    "action": "M",
+    "value": 1.0,
+    "batches": [
+      {
+        "seed": 2120400,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120401,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120402,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.02048922666532587,
+        "se": 0.02551939465325405,
+        "ci_low": -0.07050724018570381,
+        "ci_high": 0.029528786855052065
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.025848918399001466,
+        "se": 0.05211731407605136,
+        "ci_low": -0.12799885398806213,
+        "ci_high": 0.07630101719005919
+      },
+      "M": {
+        "n": 1536,
+        "mean": 1.0,
+        "se": 0.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.9811658355560215,
+        "se": 0.026448836288382425,
+        "ci_low": 0.929326116430792,
+        "ci_high": 1.033005554681251
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.02048922666532587
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.025848918399001466
+      },
+      "M": {
+        "analytic_mean": 1.0,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": 1.0,
+        "mean_difference": -0.01883416444397845
+      }
+    }
+  },
+  "gaussian__M__independent_reference": {
+    "family": "gaussian",
+    "action": "M",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2120500,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120501,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2120502,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.01463330891566968,
+        "se": 0.025442693594976456,
+        "ci_low": -0.06450098836182354,
+        "ci_high": 0.03523437053048417
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.043453402424183135,
+        "se": 0.05249010066984946,
+        "ci_low": -0.14633399973708808,
+        "ci_high": 0.05942719488872181
+      },
+      "M": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.012593991286014915,
+        "se": 0.02625703417951954,
+        "ci_low": -0.0640577782778732,
+        "ci_high": 0.03886979570584338
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.01463330891566968
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.043453402424183135
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.012593991286014915
+      }
+    }
+  },
+  "uniform__A__0": {
+    "family": "uniform",
+    "action": "A",
+    "value": -1.0,
+    "batches": [
+      {
+        "seed": 2200000,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200001,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200002,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.02943132324489404,
+        "se": 0.02557871593955507,
+        "ci_low": -0.07956560648642198,
+        "ci_high": 0.020702959996633897
+      },
+      "A": {
+        "n": 1536,
+        "mean": -1.0,
+        "se": 0.0,
+        "ci_low": -1.0,
+        "ci_high": -1.0
+      },
+      "M": {
+        "n": 1536,
+        "mean": -3.0172634015704145,
+        "se": 0.025582940991669245,
+        "ci_low": -3.0674059659140864,
+        "ci_high": -2.9671208372267426
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -3.030254832871577,
+        "se": 0.03703144986132344,
+        "ci_low": -3.102836474599771,
+        "ci_high": -2.9576731911433827
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.0,
+        "mean_difference": -0.02943132324489404
+      },
+      "A": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": -3.0,
+        "mean_difference": -0.017263401570414505
+      },
+      "Y": {
+        "analytic_mean": -3.0,
+        "mean_difference": -0.03025483287157682
+      }
+    }
+  },
+  "uniform__A__1": {
+    "family": "uniform",
+    "action": "A",
+    "value": -0.5,
+    "batches": [
+      {
+        "seed": 2200100,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200101,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200102,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.03419054212444254,
+        "se": 0.024999916513294976,
+        "ci_low": -0.014809294241615617,
+        "ci_high": 0.08319037849050069
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.5,
+        "se": 0.0,
+        "ci_low": -0.5,
+        "ci_high": -0.5
+      },
+      "M": {
+        "n": 1536,
+        "mean": -1.451070523429841,
+        "se": 0.02565719469033667,
+        "ci_low": -1.501358625022901,
+        "ci_high": -1.4007824218367813
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -1.4128969952630501,
+        "se": 0.03639789311207912,
+        "ci_low": -1.4842368657627252,
+        "ci_high": -1.341557124763375
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.03419054212444254
+      },
+      "A": {
+        "analytic_mean": -0.5,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": -1.5,
+        "mean_difference": 0.04892947657015889
+      },
+      "Y": {
+        "analytic_mean": -1.5,
+        "mean_difference": 0.08710300473694987
+      }
+    }
+  },
+  "uniform__A__2": {
+    "family": "uniform",
+    "action": "A",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2200200,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200201,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200202,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.05007736462541165,
+        "se": 0.025726293359597075,
+        "ci_low": -0.00034617035939861485,
+        "ci_high": 0.10050089961022192
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "M": {
+        "n": 1536,
+        "mean": -0.005091387786346585,
+        "se": 0.025451137449071386,
+        "ci_low": -0.05497561718652651,
+        "ci_high": 0.04479284161383333
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.042517286431975596,
+        "se": 0.03676803571712619,
+        "ci_low": -0.02954806357359173,
+        "ci_high": 0.11458263643754292
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.05007736462541165
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.005091387786346585
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.042517286431975596
+      }
+    }
+  },
+  "uniform__A__3": {
+    "family": "uniform",
+    "action": "A",
+    "value": 0.5,
+    "batches": [
+      {
+        "seed": 2200300,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200301,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200302,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.026535488234132678,
+        "se": 0.025305919505599753,
+        "ci_low": -0.023064113996842838,
+        "ci_high": 0.07613509046510819
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.5,
+        "se": 0.0,
+        "ci_low": 0.5,
+        "ci_high": 0.5
+      },
+      "M": {
+        "n": 1536,
+        "mean": 1.5308598316619975,
+        "se": 0.025596983041269842,
+        "ci_low": 1.4806897449011085,
+        "ci_high": 1.5810299184228864
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 1.5632581237696648,
+        "se": 0.036659565357008705,
+        "ci_low": 1.4914053756699277,
+        "ci_high": 1.6351108718694018
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.026535488234132678
+      },
+      "A": {
+        "analytic_mean": 0.5,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": 1.5,
+        "mean_difference": 0.03085983166199746
+      },
+      "Y": {
+        "analytic_mean": 1.5,
+        "mean_difference": 0.06325812376966478
+      }
+    }
+  },
+  "uniform__A__4": {
+    "family": "uniform",
+    "action": "A",
+    "value": 1.0,
+    "batches": [
+      {
+        "seed": 2200400,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200401,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200402,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.03790323529274151,
+        "se": 0.025623910666984356,
+        "ci_low": -0.012319629614547828,
+        "ci_high": 0.08812610020003085
+      },
+      "A": {
+        "n": 1536,
+        "mean": 1.0,
+        "se": 0.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "M": {
+        "n": 1536,
+        "mean": 2.976576190197717,
+        "se": 0.025400209056922026,
+        "ci_low": 2.9267917804461496,
+        "ci_high": 3.026360599949284
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 3.0107699049259447,
+        "se": 0.03663629927149648,
+        "ci_low": 2.9389627583538114,
+        "ci_high": 3.082577051498078
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.03790323529274151
+      },
+      "A": {
+        "analytic_mean": 1.0,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": 3.0,
+        "mean_difference": -0.023423809802283202
+      },
+      "Y": {
+        "analytic_mean": 3.0,
+        "mean_difference": 0.010769904925944651
+      }
+    }
+  },
+  "uniform__A__independent_reference": {
+    "family": "uniform",
+    "action": "A",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2200500,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200501,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2200502,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "A",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.0013222553644213475,
+        "se": 0.026017453587154384,
+        "ci_low": -0.049671953666401245,
+        "ci_high": 0.05231646439524394
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "M": {
+        "n": 1536,
+        "mean": 0.0004352134158617557,
+        "se": 0.025398258224821273,
+        "ci_low": -0.049345372704787935,
+        "ci_high": 0.05021579953651145
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.001724784873792989,
+        "se": 0.03778692613237544,
+        "ci_low": -0.07233759034566288,
+        "ci_high": 0.07578716009324886
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0013222553644213475
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0004352134158617557
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.001724784873792989
+      }
+    }
+  },
+  "uniform__R__0": {
+    "family": "uniform",
+    "action": "R",
+    "value": -1.0,
+    "batches": [
+      {
+        "seed": 2210000,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210001,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210002,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -1.0,
+        "se": 0.0,
+        "ci_low": -1.0,
+        "ci_high": -1.0
+      },
+      "A": {
+        "n": 1536,
+        "mean": -1.9783503508845321,
+        "se": 0.012714586705266897,
+        "ci_low": -2.003270940826855,
+        "ci_high": -1.953429760942209
+      },
+      "M": {
+        "n": 1536,
+        "mean": -5.939974487094624,
+        "se": 0.045274808634793134,
+        "ci_low": -6.028713112018818,
+        "ci_high": -5.851235862170429
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -6.942160499455962,
+        "se": 0.04583726270876293,
+        "ci_low": -7.032001534365137,
+        "ci_high": -6.852319464546787
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": -2.0,
+        "mean_difference": 0.02164964911546785
+      },
+      "M": {
+        "analytic_mean": -6.0,
+        "mean_difference": 0.06002551290537639
+      },
+      "Y": {
+        "analytic_mean": -7.0,
+        "mean_difference": 0.05783950054403775
+      }
+    }
+  },
+  "uniform__R__1": {
+    "family": "uniform",
+    "action": "R",
+    "value": -0.5,
+    "batches": [
+      {
+        "seed": 2210100,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210101,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210102,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.5,
+        "se": 0.0,
+        "ci_low": -0.5,
+        "ci_high": -0.5
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.9940303874696685,
+        "se": 0.012779947582216676,
+        "ci_low": -1.0190790847308133,
+        "ci_high": -0.9689816902085239
+      },
+      "M": {
+        "n": 1536,
+        "mean": -2.969644619219753,
+        "se": 0.045914085551524854,
+        "ci_low": -3.0596362269007416,
+        "ci_high": -2.8796530115387644
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -3.4735197602433834,
+        "se": 0.04640568585450298,
+        "ci_low": -3.5644749045182094,
+        "ci_high": -3.3825646159685574
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.5,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.0059696125303314584
+      },
+      "M": {
+        "analytic_mean": -3.0,
+        "mean_difference": 0.03035538078024702
+      },
+      "Y": {
+        "analytic_mean": -3.5,
+        "mean_difference": 0.02648023975661662
+      }
+    }
+  },
+  "uniform__R__2": {
+    "family": "uniform",
+    "action": "R",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2210200,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210201,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210202,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.01582778307629382,
+        "se": 0.012891073209471996,
+        "ci_low": -0.009438720414271292,
+        "ci_high": 0.04109428656685893
+      },
+      "M": {
+        "n": 1536,
+        "mean": 0.04167548004790171,
+        "se": 0.04711657070467904,
+        "ci_low": -0.0506729985332692,
+        "ci_high": 0.13402395862907263
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.0423993985317506,
+        "se": 0.04756731722893968,
+        "ci_low": -0.050832543236971166,
+        "ci_high": 0.13563134030047236
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.01582778307629382
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.04167548004790171
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0423993985317506
+      }
+    }
+  },
+  "uniform__R__3": {
+    "family": "uniform",
+    "action": "R",
+    "value": 0.5,
+    "batches": [
+      {
+        "seed": 2210300,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210301,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210302,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.5,
+        "se": 0.0,
+        "ci_low": 0.5,
+        "ci_high": 0.5
+      },
+      "A": {
+        "n": 1536,
+        "mean": 1.013848202800745,
+        "se": 0.013057140214172496,
+        "ci_low": 0.9882562079809668,
+        "ci_high": 1.039440197620523
+      },
+      "M": {
+        "n": 1536,
+        "mean": 3.0195797591485265,
+        "se": 0.04684354532689518,
+        "ci_low": 2.927766410307812,
+        "ci_high": 3.111393107989241
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 3.5156153902595504,
+        "se": 0.04714714815672533,
+        "ci_low": 3.4232069798723685,
+        "ci_high": 3.6080238006467322
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.5,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": 1.0,
+        "mean_difference": 0.013848202800744946
+      },
+      "M": {
+        "analytic_mean": 3.0,
+        "mean_difference": 0.0195797591485265
+      },
+      "Y": {
+        "analytic_mean": 3.5,
+        "mean_difference": 0.015615390259550388
+      }
+    }
+  },
+  "uniform__R__4": {
+    "family": "uniform",
+    "action": "R",
+    "value": 1.0,
+    "batches": [
+      {
+        "seed": 2210400,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210401,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210402,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 1.0,
+        "se": 0.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "A": {
+        "n": 1536,
+        "mean": 1.9895451556373804,
+        "se": 0.012856014343659466,
+        "ci_low": 1.964347367523808,
+        "ci_high": 2.014742943750953
+      },
+      "M": {
+        "n": 1536,
+        "mean": 5.975026073699002,
+        "se": 0.046851850780209585,
+        "ci_low": 5.883196446169792,
+        "ci_high": 6.066855701228213
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 6.975940989488143,
+        "se": 0.04762958757238797,
+        "ci_low": 6.882586997846262,
+        "ci_high": 7.069294981130023
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 1.0,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": 2.0,
+        "mean_difference": -0.010454844362619564
+      },
+      "M": {
+        "analytic_mean": 6.0,
+        "mean_difference": -0.024973926300997817
+      },
+      "Y": {
+        "analytic_mean": 7.0,
+        "mean_difference": -0.024059010511857437
+      }
+    }
+  },
+  "uniform__R__independent_reference": {
+    "family": "uniform",
+    "action": "R",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2210500,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210501,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2210502,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "R",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "A",
+                "M"
+              ],
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.00975848011035086,
+        "se": 0.012456215923178861,
+        "ci_low": -0.03417266331978143,
+        "ci_high": 0.014655703099079705
+      },
+      "M": {
+        "n": 1536,
+        "mean": -0.048994107672191076,
+        "se": 0.0457837578429788,
+        "ci_low": -0.13873027304442953,
+        "ci_high": 0.040742057700047365
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.03720386998593454,
+        "se": 0.04643384329287743,
+        "ci_low": -0.1282142028399743,
+        "ci_high": 0.053806462868105226
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.00975848011035086
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.048994107672191076
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.03720386998593454
+      }
+    }
+  },
+  "uniform__M__0": {
+    "family": "uniform",
+    "action": "M",
+    "value": -1.0,
+    "batches": [
+      {
+        "seed": 2220000,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220001,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220002,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -1.0,
+            "term": "-1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.04771485669266036,
+        "se": 0.025192369597381976,
+        "ci_low": -0.0016621877182083147,
+        "ci_high": 0.09709190110352903
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.10364954141295026,
+        "se": 0.05174223728858309,
+        "ci_low": 0.002234756327327392,
+        "ci_high": 0.20506432649857312
+      },
+      "M": {
+        "n": 1536,
+        "mean": -1.0,
+        "se": 0.0,
+        "ci_low": -1.0,
+        "ci_high": -1.0
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.9583588001514333,
+        "se": 0.026117863470337774,
+        "ci_low": -1.0095498125532953,
+        "ci_high": -0.9071677877495712
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.04771485669266036
+      },
+      "A": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.10364954141295026
+      },
+      "M": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": -1.0,
+        "mean_difference": 0.041641199848566735
+      }
+    }
+  },
+  "uniform__M__1": {
+    "family": "uniform",
+    "action": "M",
+    "value": -0.5,
+    "batches": [
+      {
+        "seed": 2220100,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220101,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220102,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": -0.5,
+            "term": "-0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.009179282080983486,
+        "se": 0.025515604888929608,
+        "ci_low": -0.04083130350131854,
+        "ci_high": 0.05918986766328552
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.037242308383465525,
+        "se": 0.05272944926900905,
+        "ci_low": -0.06610741218379221,
+        "ci_high": 0.14059202895072326
+      },
+      "M": {
+        "n": 1536,
+        "mean": -0.5,
+        "se": 0.0,
+        "ci_low": -0.5,
+        "ci_high": -0.5
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.4858246670688808,
+        "se": 0.026020591432136444,
+        "ci_low": -0.5368250262758683,
+        "ci_high": -0.43482430786189336
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.009179282080983486
+      },
+      "A": {
+        "analytic_mean": -0.0,
+        "mean_difference": 0.037242308383465525
+      },
+      "M": {
+        "analytic_mean": -0.5,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": -0.5,
+        "mean_difference": 0.014175332931119222
+      }
+    }
+  },
+  "uniform__M__2": {
+    "family": "uniform",
+    "action": "M",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2220200,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220201,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220202,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.024793436305676743,
+        "se": 0.025597148403616935,
+        "ci_low": -0.02537697456541245,
+        "ci_high": 0.07496384717676594
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.08254831509295131,
+        "se": 0.05310909858623895,
+        "ci_low": -0.021545518136077024,
+        "ci_high": 0.18664214832197965
+      },
+      "M": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.024035816180371893,
+        "se": 0.026692367672303378,
+        "ci_low": -0.028281224457342727,
+        "ci_high": 0.07635285681808651
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.024793436305676743
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.08254831509295131
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.024035816180371893
+      }
+    }
+  },
+  "uniform__M__3": {
+    "family": "uniform",
+    "action": "M",
+    "value": 0.5,
+    "batches": [
+      {
+        "seed": 2220300,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220301,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220302,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.5,
+            "term": "0.500000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": 0.03640737773634798,
+        "se": 0.02566481491779266,
+        "ci_low": -0.01389565950252563,
+        "ci_high": 0.08671041497522158
+      },
+      "A": {
+        "n": 1536,
+        "mean": 0.05576028164548323,
+        "se": 0.05252387807410694,
+        "ci_low": -0.04718651937976637,
+        "ci_high": 0.15870708267073283
+      },
+      "M": {
+        "n": 1536,
+        "mean": 0.5,
+        "se": 0.0,
+        "ci_low": 0.5,
+        "ci_high": 0.5
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.5363490301751578,
+        "se": 0.026561725678737966,
+        "ci_low": 0.48428804784483137,
+        "ci_high": 0.5884100125054842
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.03640737773634798
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.05576028164548323
+      },
+      "M": {
+        "analytic_mean": 0.5,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": 0.5,
+        "mean_difference": 0.03634903017515778
+      }
+    }
+  },
+  "uniform__M__4": {
+    "family": "uniform",
+    "action": "M",
+    "value": 1.0,
+    "batches": [
+      {
+        "seed": 2220400,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220401,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220402,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 1.0,
+            "term": "1.00000000000000",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.0208629376834298,
+        "se": 0.02570085329988581,
+        "ci_low": -0.07123661015120598,
+        "ci_high": 0.029510734784346387
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.03882756129904033,
+        "se": 0.05289924422685224,
+        "ci_low": -0.1425100799836707,
+        "ci_high": 0.06485495738559006
+      },
+      "M": {
+        "n": 1536,
+        "mean": 1.0,
+        "se": 0.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "Y": {
+        "n": 1536,
+        "mean": 0.9771972241091186,
+        "se": 0.02670822169824089,
+        "ci_low": 0.9248491095805664,
+        "ci_high": 1.0295453386376707
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.0208629376834298
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.03882756129904033
+      },
+      "M": {
+        "analytic_mean": 1.0,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": 1.0,
+        "mean_difference": -0.02280277589088142
+      }
+    }
+  },
+  "uniform__M__independent_reference": {
+    "family": "uniform",
+    "action": "M",
+    "value": 0.0,
+    "batches": [
+      {
+        "seed": 2220500,
+        "batch": 0,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220501,
+        "batch": 1,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      },
+      {
+        "seed": 2220502,
+        "batch": 2,
+        "metadata": {
+          "reference_returned_edges": [
+            [
+              "A",
+              "M"
+            ],
+            [
+              "M",
+              "Y"
+            ],
+            [
+              "R",
+              "A"
+            ],
+            [
+              "R",
+              "Y"
+            ]
+          ],
+          "intervention": {
+            "action": "M",
+            "value": 0.0,
+            "term": "0.0",
+            "parents": [],
+            "edges": [
+              [
+                "M",
+                "Y"
+              ],
+              [
+                "R",
+                "A"
+              ],
+              [
+                "R",
+                "Y"
+              ]
+            ],
+            "other_equations_unchanged": true
+          },
+          "reconstruction_errors": {
+            "R": 0.0,
+            "A": 0.0,
+            "M": 0.0,
+            "Y": 0.0
+          }
+        }
+      }
+    ],
+    "statistics": {
+      "R": {
+        "n": 1536,
+        "mean": -0.0294818448011064,
+        "se": 0.025912711351021404,
+        "ci_low": -0.08027075904910835,
+        "ci_high": 0.02130706944689555
+      },
+      "A": {
+        "n": 1536,
+        "mean": -0.0528028488724466,
+        "se": 0.053619082955855456,
+        "ci_low": -0.1578962514659233,
+        "ci_high": 0.052290553721030086
+      },
+      "M": {
+        "n": 1536,
+        "mean": 0.0,
+        "se": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0
+      },
+      "Y": {
+        "n": 1536,
+        "mean": -0.018031918823330467,
+        "se": 0.02657714578437578,
+        "ci_low": -0.07012312456070699,
+        "ci_high": 0.03405928691404606
+      }
+    },
+    "post_freeze_analytic_check": {
+      "R": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.0294818448011064
+      },
+      "A": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.0528028488724466
+      },
+      "M": {
+        "analytic_mean": 0.0,
+        "mean_difference": 0.0
+      },
+      "Y": {
+        "analytic_mean": 0.0,
+        "mean_difference": -0.018031918823330467
+      }
+    }
+  }
+}

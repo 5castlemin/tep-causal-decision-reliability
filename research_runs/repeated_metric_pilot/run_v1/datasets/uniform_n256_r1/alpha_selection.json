@@ -1,0 +1,47 @@
+{
+  "selected_alpha": 0.001,
+  "selection_algorithms": [
+    "pc",
+    "boss",
+    "directlingam"
+  ],
+  "scores": [
+    {
+      "alpha": 0.0001,
+      "per_graph_validation_mse": {
+        "pc": 1.1234128332528517,
+        "boss": 0.842142499980384,
+        "directlingam": 0.3004571337145092
+      },
+      "mean_validation_mse": 0.7553374889825818
+    },
+    {
+      "alpha": 0.001,
+      "per_graph_validation_mse": {
+        "pc": 1.1234128332528517,
+        "boss": 0.8421442632528243,
+        "directlingam": 0.3004395493137177
+      },
+      "mean_validation_mse": 0.7553322152731311
+    },
+    {
+      "alpha": 0.01,
+      "per_graph_validation_mse": {
+        "pc": 1.1234128332528517,
+        "boss": 0.8422401432761929,
+        "directlingam": 0.3007289644747645
+      },
+      "mean_validation_mse": 0.7554606470012697
+    },
+    {
+      "alpha": 0.1,
+      "per_graph_validation_mse": {
+        "pc": 1.1234128332528517,
+        "boss": 0.8442997365265262,
+        "directlingam": 0.3089029677159484
+      },
+      "mean_validation_mse": 0.7588718458317755
+    }
+  ],
+  "scope": "observational validation only, no effect holdout"
+}

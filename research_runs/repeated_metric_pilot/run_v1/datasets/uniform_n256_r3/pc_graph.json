@@ -1,0 +1,68 @@
+{
+  "graph_id": "uniform_n256_r3__pc",
+  "dataset_id": "uniform_n256_r3",
+  "family": "uniform",
+  "train_n": 256,
+  "validation_n": 256,
+  "replicate": 3,
+  "train_seed": 1100801,
+  "validation_seed": 1100802,
+  "algorithm_seed": 1100803,
+  "algorithm": "pc",
+  "status": "LEARNED",
+  "confirmed_edges": [],
+  "unresolved_pairs": [
+    [
+      "A",
+      "R"
+    ],
+    [
+      "M",
+      "Y"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "Y",
+        "node2": "M",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "R",
+        "node2": "A",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 1.2959999999729916,
+  "assumption_role": "PRIMARY_COMPARISON"
+}

@@ -1,0 +1,392 @@
+{
+  "protocol": "REPEATED-METRIC-PILOT-v1",
+  "scope": "사용자 명시 실행 지시. 새 합성 반복·다중과제만; 제조 채택/Recovery/Safety 아님",
+  "base_main": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
+  "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "source_sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "nodes": [
+    "R",
+    "A",
+    "M",
+    "Y"
+  ],
+  "algorithm_column_order": [
+    "Y",
+    "R",
+    "M",
+    "A"
+  ],
+  "equations": [
+    "R=u_R",
+    "A=2R+u_A",
+    "M=3A+u_M",
+    "Y=M+R+u_Y"
+  ],
+  "reference_edges": [
+    [
+      "R",
+      "A"
+    ],
+    [
+      "A",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "R",
+      "Y"
+    ]
+  ],
+  "noise": {
+    "gaussian_sd": {
+      "u_R": 1.0,
+      "u_A": 0.5,
+      "u_M": 1.0,
+      "u_Y": 0.25
+    },
+    "uniform_half_width": {
+      "u_R": 1.7320508075688772,
+      "u_A": 0.8660254037844386,
+      "u_M": 1.7320508075688772,
+      "u_Y": 0.4330127018922193
+    },
+    "uniform_validation": "실제 원본 sampler의 Uniform 분포 객체·범위·식 재구성·seed exact·hook 없는 대조·do 식 대체를 확인한 경우만 실험2 허용",
+    "uniform_acceptance_seeds": [
+      81011,
+      81012
+    ],
+    "acceptance_n": 64
+  },
+  "families": {
+    "gaussian": {
+      "pc_test": "fisherz",
+      "directlingam_role": "ASSUMPTION_MISMATCH_DIAGNOSTIC"
+    },
+    "uniform": {
+      "pc_test": "kci",
+      "directlingam_role": "NON_GAUSSIAN_COMPARISON"
+    }
+  },
+  "algorithms": {
+    "pc": {
+      "package": "causal-learn==0.1.4.8",
+      "stable": true,
+      "alpha": 0.01,
+      "uc_rule": 0,
+      "uc_priority": 2,
+      "background_knowledge": null,
+      "kci_approx": true
+    },
+    "boss": {
+      "package": "causal-learn==0.1.4.8",
+      "score_func": "local_score_BIC",
+      "lambda_value": 2.0,
+      "scope": "공식 문서에 있는 Python BOSS, 과거 Tetrad Final 재현 아님. Uniform에서는 Gaussian BIC의 quasi-score 가정 차이 명시"
+    },
+    "directlingam": {
+      "package": "lingam==1.13.0",
+      "measure": "pwling",
+      "prior_knowledge": null,
+      "edge_abs_threshold": 0.05
+    }
+  },
+  "scm": {
+    "family": "LINEAR_ADDITIVE_RIDGE",
+    "parents": "CONFIRMED_ONLY",
+    "scaler": "train-only mean/std ddof0",
+    "intercept_penalized": false,
+    "alpha_grid": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "selection": "각 family 공통 alpha: 별도 validation seed의 전체 노드 표준화 MSE를 graph 등가 평균해 최소 선택, 정확동률 더 강한 규제. Gaussian은 PC/BOSS만 선택에 사용하고 진단 Direct에도 같은 alpha 적용",
+    "cycle_policy": "실패 기록; 간선 수정 금지",
+    "no_confirmed_path_policy": "기준 A=0을 사전 fallback으로 실행하고 NO_CONFIRMED_PATH_BASELINE_FALLBACK 기록. 정보 있는 추천과 구분"
+  },
+  "datasets": [
+    {
+      "dataset_id": "gaussian_n256_r1",
+      "family": "gaussian",
+      "train_n": 256,
+      "validation_n": 256,
+      "replicate": 1,
+      "train_seed": 1100001,
+      "validation_seed": 1100002,
+      "algorithm_seed": 1100003
+    },
+    {
+      "dataset_id": "gaussian_n256_r2",
+      "family": "gaussian",
+      "train_n": 256,
+      "validation_n": 256,
+      "replicate": 2,
+      "train_seed": 1100101,
+      "validation_seed": 1100102,
+      "algorithm_seed": 1100103
+    },
+    {
+      "dataset_id": "gaussian_n256_r3",
+      "family": "gaussian",
+      "train_n": 256,
+      "validation_n": 256,
+      "replicate": 3,
+      "train_seed": 1100201,
+      "validation_seed": 1100202,
+      "algorithm_seed": 1100203
+    },
+    {
+      "dataset_id": "gaussian_n512_r1",
+      "family": "gaussian",
+      "train_n": 512,
+      "validation_n": 256,
+      "replicate": 1,
+      "train_seed": 1100301,
+      "validation_seed": 1100302,
+      "algorithm_seed": 1100303
+    },
+    {
+      "dataset_id": "gaussian_n512_r2",
+      "family": "gaussian",
+      "train_n": 512,
+      "validation_n": 256,
+      "replicate": 2,
+      "train_seed": 1100401,
+      "validation_seed": 1100402,
+      "algorithm_seed": 1100403
+    },
+    {
+      "dataset_id": "gaussian_n512_r3",
+      "family": "gaussian",
+      "train_n": 512,
+      "validation_n": 256,
+      "replicate": 3,
+      "train_seed": 1100501,
+      "validation_seed": 1100502,
+      "algorithm_seed": 1100503
+    },
+    {
+      "dataset_id": "uniform_n256_r1",
+      "family": "uniform",
+      "train_n": 256,
+      "validation_n": 256,
+      "replicate": 1,
+      "train_seed": 1100601,
+      "validation_seed": 1100602,
+      "algorithm_seed": 1100603
+    },
+    {
+      "dataset_id": "uniform_n256_r2",
+      "family": "uniform",
+      "train_n": 256,
+      "validation_n": 256,
+      "replicate": 2,
+      "train_seed": 1100701,
+      "validation_seed": 1100702,
+      "algorithm_seed": 1100703
+    },
+    {
+      "dataset_id": "uniform_n256_r3",
+      "family": "uniform",
+      "train_n": 256,
+      "validation_n": 256,
+      "replicate": 3,
+      "train_seed": 1100801,
+      "validation_seed": 1100802,
+      "algorithm_seed": 1100803
+    },
+    {
+      "dataset_id": "uniform_n512_r1",
+      "family": "uniform",
+      "train_n": 512,
+      "validation_n": 256,
+      "replicate": 1,
+      "train_seed": 1100901,
+      "validation_seed": 1100902,
+      "algorithm_seed": 1100903
+    },
+    {
+      "dataset_id": "uniform_n512_r2",
+      "family": "uniform",
+      "train_n": 512,
+      "validation_n": 256,
+      "replicate": 2,
+      "train_seed": 1101001,
+      "validation_seed": 1101002,
+      "algorithm_seed": 1101003
+    },
+    {
+      "dataset_id": "uniform_n512_r3",
+      "family": "uniform",
+      "train_n": 512,
+      "validation_n": 256,
+      "replicate": 3,
+      "train_seed": 1101101,
+      "validation_seed": 1101102,
+      "algorithm_seed": 1101103
+    }
+  ],
+  "attempted_graph_count": 36,
+  "tasks": [
+    {
+      "task_id": "A_Y",
+      "action": "A",
+      "target": "Y",
+      "target_value": 1.5,
+      "key_paths": [
+        [
+          "A",
+          "M",
+          "Y"
+        ]
+      ]
+    },
+    {
+      "task_id": "A_M",
+      "action": "A",
+      "target": "M",
+      "target_value": 1.5,
+      "key_paths": [
+        [
+          "A",
+          "M"
+        ]
+      ]
+    },
+    {
+      "task_id": "R_Y",
+      "action": "R",
+      "target": "Y",
+      "target_value": 3.5,
+      "key_paths": [
+        [
+          "R",
+          "Y"
+        ],
+        [
+          "R",
+          "A",
+          "M",
+          "Y"
+        ]
+      ]
+    },
+    {
+      "task_id": "M_Y",
+      "action": "M",
+      "target": "Y",
+      "target_value": 1.0,
+      "key_paths": [
+        [
+          "M",
+          "Y"
+        ]
+      ]
+    }
+  ],
+  "policy": {
+    "action_values": [
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "reference_action": 0.0,
+    "cost_weight": 0.2,
+    "objective": "(predicted population mean target - goal)^2 + .2*action^2",
+    "tie_break": "smaller |action| then action",
+    "modes": [
+      "confirmed_only",
+      "mec_minimax",
+      "abstain_on_disagreement"
+    ],
+    "primary": "confirmed_only",
+    "freeze_all_before_holdout": true,
+    "no_path": "NO_PATH_BASELINE_FALLBACK distinct from COMPUTED_BASELINE",
+    "mec_constraints": "preserve skeleton, fixed directions, no directed cycle, exactly same unshielded colliders as declared directed PDAG; tail-tail only; unsupported endpoints fail alternatives; no GT access",
+    "mec_max_unresolved": 6,
+    "mec_minimax": "minimize worst candidate objective across consistent DAGs fitted with same alpha; target prediction interval and conservative absolute error over models",
+    "abstention": "if consistent extensions disagree on optimal candidate then baseline0, record AMBIGUITY_ABSTENTION. Otherwise shared computed optimum; lack of path in all DAGs is baseline fallback"
+  },
+  "acceptance": {
+    "seeds": [
+      1300001,
+      1300101
+    ],
+    "actions": [
+      "A",
+      "R",
+      "M"
+    ],
+    "values": [
+      -0.5,
+      0.5
+    ],
+    "n": 48,
+    "required": "actual upstream do removes parents/replaces only selected equation, returned GT, row-noise reconstruction, fresh exact replay, unhooked control"
+  },
+  "evaluation": {
+    "actions": [
+      "A",
+      "R",
+      "M"
+    ],
+    "n_per_batch": 512,
+    "batches": 3,
+    "seed_base": {
+      "gaussian": 2100000,
+      "uniform": 2200000
+    },
+    "seed_formula": "base + action_index*10000 + condition_index*100 + batch, condition_index=0..4 grid;5 independent reference",
+    "reuse_same_action_across_graphs_and_tasks": true,
+    "paired_noise_assumed": false,
+    "mean_ci": "normal approximation 1.96*IID SE",
+    "loss": "square of target population mean discrepancy + action cost, NOT mean individual squared error",
+    "relative_loss": "regret / max(independent reference mean loss,1e-12), per task; also (selected loss - optimum)/(reference loss-optimum) when denominator>1e-8, unclipped",
+    "oracle": "post-freeze analytic mean/total derivative only implementation check; never algorithm/SCM/recommendation input"
+  },
+  "metrics": {
+    "strict_directed_f1": "2*confirmed_correct/(predicted_pairs+reference_edges)",
+    "confirmed_directed_f1": "2*correct/(confirmed directed edges+reference edges), separate denominator",
+    "orientation_rate": "confirmed/predicted pairs,0 for empty",
+    "key_path_recall": "union of declared task reference paths edges",
+    "complete_paths": "fraction complete; all complete separately",
+    "direct_xy": "unresolved=null, directed absence not same as no total effect",
+    "errors": "added/missing pairs, reversed, unresolved count/fraction, edge count, SHD as prior"
+  },
+  "analysis": {
+    "independent_unit": "12 independently generated graph-fit datasets;3 algorithms and4 tasks and3 policies are correlated repeated conditions; 36graphs or432outcome rows not independent N",
+    "per_noise_datasets": 6,
+    "per_noise_size_datasets": 3,
+    "descriptive_spearman": {
+      "min_datasets": 6,
+      "min_metric_unique": 3,
+      "min_outcome_unique": 3,
+      "strata": [
+        "family",
+        "task_id",
+        "policy"
+      ],
+      "outcome": "relative_regret",
+      "leave_one_dataset_out": "drop all algorithms of one dataset together; sensitivity range not CI; no p-value",
+      "covariate_sensitivity": "within algorithm if same minimum and variation; per sample-size stratum only3 datasets -> not estimable under this rule"
+    },
+    "formal_inference": {
+      "min_datasets_per_noise_size": 10,
+      "status_if_below": "INSUFFICIENT_INDEPENDENT_REPETITIONS",
+      "note": "사전 운영상 보수적 최소조건이며 검정력 계산/충분성 보장이 아님; 넘겨도 별도 사전 모형·정밀도 설계 필요"
+    },
+    "no_automatic_metric_winner": true,
+    "gaussian_directlingam": "all algorithms diagnostic table plus exclude-mismatch sensitivity; Uniform BOSS quasi-Gaussian score caveat maintained"
+  },
+  "runtime": {
+    "no_automatic_replication_increase": true,
+    "small_run": "first planned gaussian_n256_r1 is timed then remaining preplanned cells only; failures recorded not retuned",
+    "failure_policy": "record graph/policy failure, no GT repair; failed alternatives do not silently replace primary"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "pr": 7,
+  "head": "8634e5dce66460dc26441fc40e930c34ebc73af7",
+  "prior_head": "5fe3997d79a8244f4b156d5a335013337833b166",
+  "main_before": "cdb959cbe7f4685a53e9e47e89869cd25a2d6660",
+  "changed_files": [
+    ".gitattributes",
+    ".github/workflows/verify.yml",
+    "DECISIONS.md",
+    "PRIORITIES.md",
+    "PROJECT_STATUS.md",
+    "WORK_LOG.md",
+    "docs/research_design/TRACK_B_REFERENCE_VALIDITY_AUDIT.md",
+    "docs/research_design/TRACK_B_SMALL_CHECK_PLAN.md",
+    "docs/research_design/track_b_evidence/PROVENANCE.md",
+    "docs/research_design/track_b_evidence/SHA256.json",
+    "docs/research_design/track_b_evidence/decision.json",
+    "docs/research_design/track_b_evidence/source_inventory.json",
+    "docs/research_design/track_b_evidence/source_probe.json",
+    "docs/research_state.json",
+    "scripts/audit_track_b_source.py",
+    "scripts/validate_track_b_audit.py"
+  ],
+  "protected_preserved": true,
+  "checks": [
+    {
+      "command": "<isolated-venv-python> -X utf8 graphs/final/verify_and_load.py",
+      "exit_code": 0,
+      "output": "OK: 39개 파일 해시 일치, 변수 순서 일치, 시계열 3개 엄격 재변환 일치\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "output": "test_duplicate_workstream_rejected (test_asset_recovery.AssetRecoveryTests.test_duplicate_workstream_rejected) ... ok\ntest_unknown_dependency_rejected (test_asset_recovery.AssetRecoveryTests.test_unknown_dependency_rejected) ... ok\ntest_unverified_zip_bytes_rejected (test_asset_recovery.AssetRecoveryTests.test_unverified_zip_bytes_rejected) ... ok\ntest_ambiguous_input_rejected (test_benchmark_wiring.WiringTests.test_ambiguous_input_rejected) ... ok\ntest_disconnected_constant_rejected (test_benchmark_wiring.WiringTests.test_disconnected_constant_rejected) ... ok\ntest_name_is_not_manipulated_variable_index (test_benchmark_wiring.WiringTests.test_name_is_not_manipulated_variable_index) ... ok\ntest_ridge_penalty_and_intercept (test_pilot_fit.PilotFitTest.test_ridge_penalty_and_intercept) ... ok\ntest_root_and_parent_lag (test_pilot_fit.PilotFitTest.test_root_and_parent_lag) ... ok\ntest_document_only_change_is_exempt (test_research_ops.ResearchOpsTest.test_document_only_change_is_exempt) ... ok\ntest_pinned_inputs (test_research_ops.ResearchOpsTest.test_pinned_inputs) ... ok\ntest_substantive_change_requires_all_three (test_research_ops.ResearchOpsTest.test_substantive_change_requires_all_three) ... ok\ntest_measurements_match_evaluation_clock_not_state_clock (test_simulator_diagnostics.ClockTests.test_measurements_match_evaluation_clock_not_state_clock) ... ok\ntest_no_matching_time_is_failure (test_simulator_diagnostics.ClockTests.test_no_matching_time_is_failure) ... ok\ntest_documented_filename_is_not_acquired_data (test_track_a_gate.GateTests.test_documented_filename_is_not_acquired_data) ... ok\ntest_matching_normal_runs_do_not_establish_effect_interface (test_track_a_gate.GateTests.test_matching_normal_runs_do_not_establish_effect_interface) ... ok\ntest_run_claim_requires_execution_gate (test_track_a_gate.GateTests.test_run_claim_requires_execution_gate) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.060s\n\nOK\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 experiments/simulator/validate_feasibility.py",
+      "exit_code": 0,
+      "output": "[PASS] 실행 CSV hash·반복·시계열·shutdown/reset 한계·mapping 검증\nSIMULATOR FEASIBILITY: PARTIAL — 종료·reset·모델 호환성 관문 미해결\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 experiments/simulator/diagnostics/validate_diagnostics.py",
+      "exit_code": 0,
+      "output": "[PASS] 원시 hash·105열·두 시계·12개 수동 조건·2시간 정상·reset·분석 재계산\nSIM-03 PARTIAL; SIM-04 VERIFIED(새 객체 계약); COMPAT-01 PARTIAL; 직접 효과 정답 NO-GO\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 scripts/validate_benchmark_decision.py",
+      "exit_code": 0,
+      "output": "[PASS] 156개 PR4 파일 원본 hash·회수 코드 정적 근거·주장 수준·설계 보류·상태 동기화·원시 산출물 불변\nBENCHMARK COMPATIBILITY: PARTIAL; HYPOTHESIS GATE: INSUFFICIENT_EVIDENCE; 새 실험 NOT_RUN\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 scripts/validate_track_a_recovery.py",
+      "exit_code": 0,
+      "output": "[PASS] 출처 hash·Gate·A3 미실행·L1~L7·상태·동결 산출물 보존\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 scripts/validate_track_b_audit.py",
+      "exit_code": 0,
+      "output": "[PASS] Q1~Q5·미채택·30초 범위·metadata/원본 구분·hash·동결 자료 보존\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 scripts/check_research_state.py",
+      "exit_code": 0,
+      "output": "[PASS] 현재 상태·의존성·우선순위 ID 유일성·상단 문서 일치\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 scripts/check_asset_manifest.py",
+      "exit_code": 0,
+      "output": "[PASS] Final config·미회수 생성 코드·평가 재현 범위의 기록 정합성\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 scripts/validate_pr_integration.py",
+      "exit_code": 0,
+      "output": "{\n  \"status\": \"PASS\",\n  \"source_base_main\": \"ceb447deb03f5532dc274cb97de2cd7f317349e7\",\n  \"pr2_source\": \"e5a0291e48d5426628c0dde8a122fe8ab6b6e195\",\n  \"pr3_source\": \"b2e455fd37d1e236aa30fe246e4944142bef4bab\",\n  \"preserved_file_counts\": {\n    \"graphs/final\": 46,\n    \"experiments/simulator\": 30\n  },\n  \"required_states\": {\n    \"SIM-01\": \"BLOCKED\",\n    \"SIM-02\": \"PARTIAL\",\n    \"GRAPH-01\": \"VERIFIED\",\n    \"GRAPH-GEN\": \"BLOCKED\",\n    \"SCM-01\": \"PARTIAL\",\n    \"EFFECT-01\": \"NOT_RUN\"\n  }\n}\n"
+    },
+    {
+      "command": "<isolated-venv-python> -X utf8 scripts/check_research_docs.py --base origin/main",
+      "exit_code": 0,
+      "output": "[PASS] 연구 문서 동기화 파일 변경 확인 (내용의 진실성은 별도 검토 필요)\n"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "status": "PASS"
+}
