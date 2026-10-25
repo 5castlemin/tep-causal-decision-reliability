@@ -216,3 +216,5 @@ PR15 OPEN/e769ef5/CI40158875287 success/승인검토0 확인, 병합 안 함. �
 `summarize_decision_reliability_next.py --input .../run_v1 --output .../audit_supplement_v1`: 명칭중복108 표시 후324실제오류쌍,162현재과제핵심–주변/114양쪽경로유지쌍. C07 같은F1에서도 손실14.542543 대.36, C03은 핵심오류 쪽이 개선되는 반례. 기본정책720행 중 악화20/큰악화4. 저차원 중첩선택 기본19/경로1, MAE.323129. 추가정보 부호는 기준모형에 따라 상이, 정밀도 거친 추정132구조/1188학습으로 새독립확인NOT_RUN. 소스/계산/실제저장do 근거 분리. 개별5검사(원시/수식/중첩/6적합 재계산 포함)PASS. 제조 평가환경의 정합성 확보 우선, 새제조실험NO-GO 유지.
 
 최종 로컬 검사: 65개 단위검사 PASS(89.755초),39개 동결파일 hash/변수/시차 변환 PASS,Step6 독립 점수 PASS,상태JSON/MD·자산manifest·기존 통합 검사 PASS. `research_runs/decision_reliability_next/validation/`에 실제 명령/로그/hash 보존.
+
+실행/검증 코드 commit eb7f6bd,브랜치 feature/decision-reliability-next push 완료. PR16 생성(base=미병합PR15 브랜치);두PR 자동병합 없음. CHECKPOINT에 실행commit/의존PR/실제 검사 및 다음행동 기록. 새 문서 정리 commit은 실행/계획/SHA를 바꾸지 않는다.
