@@ -1,0 +1,20 @@
+{
+  "python": "3.11.15",
+  "numpy": "1.26.4",
+  "thread_limits_changed": false,
+  "process_parallelism": 3,
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 8,
+      "prefix": "libopenblas",
+      "filepath": "<venv>/numpy.libs/libopenblas64__v0.3.23-293-gc2f4bdbb-gcc_10_3_0-2bde3a66a51006b2b53eb373ff767a3f.dll",
+      "version": "0.3.23.dev",
+      "threading_layer": "pthreads",
+      "architecture": "Prescott",
+      "library_sha256": "57b87772bf676b5c2d718c79dddc9f039d79ec3319fee1398cc305adff7b69e5"
+    }
+  ],
+  "note": "recorded from same unchanged isolated environment; worker processes use their default numerical backend, no post-start thread tuning"
+}

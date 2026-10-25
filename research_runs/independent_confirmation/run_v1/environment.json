@@ -1,0 +1,30 @@
+{
+  "python": "3.11.15",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "base_commit": "a4ae7694aff24e8a40dce516cf44007d52676907",
+  "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "upstream_source_sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "plan_sha256": "c2efb7563c0c24a069518a90265d488c251e3b897bb824f8291fc30c3b03dbd7",
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "sympy": "1.14.0",
+    "scipy": "1.12.0",
+    "networkx": "3.6.1",
+    "causal-learn": "0.1.4.8",
+    "lingam": "1.13.0",
+    "scikit-learn": "1.9.1"
+  },
+  "code_sha256": {
+    "scripts/run_independent_confirmation.py": "6c6b34f42292580ad7d2b175196f5414096552fcca84da2171a4960d0b64e94e",
+    "scripts/learn_diverse_graph.py": "bc0763ec7e08e6faa4613ad73f2ab968ecf72babfc13206fa345946aedf74260",
+    "src/independent_confirmation.py": "1cacca0bc5c965716ebba830e59167bc45b79977bb3c8abe476aa2c9b0396d8f",
+    "src/diverse_structure_pilot.py": "2a6345c58abf1b44055ed6574eca3f51a722c59d3fd6ebb880d7103ad948f874",
+    "src/repeated_metric_pilot.py": "4a09bd9a82f59e5ae652ab41dd33ea613c5b67d918cc97a24ddd51d8fe213314",
+    "src/integrated_pilot.py": "c2ff4d1bf0cb91f5206c285cf7b107c519aaa5598b2dc03e3d5c08327162d176",
+    "src/decision_mvp.py": "18a6dcc144368895e781272d3f83f731620533333633bce975ebedb27a55225a",
+    "src/pilot_fit.py": "a8889cbda6073d28bd4e9cbe660c6bab35ef07f16852c8f14f616ca13d1ff633",
+    "src/fcm_acceptance_adapter.py": "b310bbdfd22daebbbd15cca232d365f78090151da3e7ab9aa3d926500aced4d7"
+  },
+  "command": "python -X utf8 scripts/run_independent_confirmation.py --module <pinned models_fcm.py> --output research_runs/independent_confirmation/run_v1 --raw-log-dir <task archive>/learner_original_console"
+}

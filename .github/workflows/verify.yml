@@ -26,6 +26,7 @@ jobs:
       - run: python -X utf8 scripts/validate_first_integrated_pilot.py
       - run: python -X utf8 scripts/validate_repeated_metric_pilot.py
       - run: python -X utf8 scripts/validate_diverse_structure_pilot.py
+      - run: python -X utf8 scripts/validate_independent_confirmation.py
       - run: python -X utf8 scripts/check_research_state.py
       - run: python -X utf8 scripts/check_asset_manifest.py
       - run: python -X utf8 scripts/validate_pr_integration.py

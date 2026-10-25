@@ -1,0 +1,147 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [],
+  "unresolved_pairs": [
+    [
+      "P",
+      "Q"
+    ],
+    [
+      "V0",
+      "V1"
+    ],
+    [
+      "V1",
+      "V2"
+    ],
+    [
+      "V2",
+      "V3"
+    ],
+    [
+      "V3",
+      "V4"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "V3",
+        "node2": "V4",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V3",
+        "node2": "V2",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V0",
+        "node2": "V1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "Q",
+        "node2": "P",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V2",
+        "node2": "V1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.7339999999385327,
+  "seed": 10025612,
+  "column_order": [
+    "V3",
+    "V0",
+    "V4",
+    "Q",
+    "P",
+    "V2",
+    "V1"
+  ],
+  "train_sha256": "e85cd4176e4cc13ba4369c3d0c8939ae29a23c20c81a1fb81a6156c4155a3e0c",
+  "graph_id": "C01_n256_r1__boss",
+  "source_type": "discovery",
+  "dataset_id": "C01_n256_r1",
+  "train_n": 256,
+  "replicate": 1,
+  "train_seed": 10025610,
+  "validation_seed": 10025611,
+  "validation_n": 256,
+  "algorithm_seed": 10025612,
+  "algorithm": "boss"
+}

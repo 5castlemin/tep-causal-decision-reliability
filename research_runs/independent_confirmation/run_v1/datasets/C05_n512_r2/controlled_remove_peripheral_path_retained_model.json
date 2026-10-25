@@ -1,0 +1,176 @@
+{
+  "source_type": "controlled_error",
+  "variant": "remove_peripheral_path_retained",
+  "edges": [
+    [
+      "V0",
+      "V1"
+    ],
+    [
+      "V0",
+      "V2"
+    ],
+    [
+      "V0",
+      "V4"
+    ],
+    [
+      "V1",
+      "V2"
+    ],
+    [
+      "V1",
+      "V4"
+    ],
+    [
+      "V1",
+      "V5"
+    ],
+    [
+      "V2",
+      "V3"
+    ],
+    [
+      "V2",
+      "V5"
+    ],
+    [
+      "V3",
+      "V4"
+    ],
+    [
+      "V3",
+      "V5"
+    ],
+    [
+      "V4",
+      "V5"
+    ]
+  ],
+  "model": {
+    "scaler_mean": {
+      "V5": 0.03805580431720028,
+      "V2": 0.01079624003167996,
+      "V4": 0.04564124379488151,
+      "V3": -0.0015770946083231811,
+      "V0": 0.012506211048263088,
+      "Q": 0.09136889749730473,
+      "V1": -0.009350738706043249,
+      "P": 0.023803504470019162
+    },
+    "scaler_std": {
+      "V5": 6.465268288821777,
+      "V2": 1.932906854231687,
+      "V4": 2.8102787952179296,
+      "V3": 1.674231240507696,
+      "V0": 1.0127462670262342,
+      "Q": 1.3867762276745756,
+      "V1": 1.4505314333557426,
+      "P": 0.9790057105724167
+    },
+    "equations": [
+      {
+        "target": "V5",
+        "intercept_standardized": -5.687189867926695e-19,
+        "parents": [
+          {
+            "source": "V1",
+            "lag": 0,
+            "coefficient_standardized": 0.21859659985682459
+          },
+          {
+            "source": "V2",
+            "lag": 0,
+            "coefficient_standardized": 0.31842337381997415
+          },
+          {
+            "source": "V3",
+            "lag": 0,
+            "coefficient_standardized": 0.3100514002941804
+          },
+          {
+            "source": "V4",
+            "lag": 0,
+            "coefficient_standardized": 0.22300608645255576
+          }
+        ]
+      },
+      {
+        "target": "V2",
+        "intercept_standardized": -6.444707396687426e-18,
+        "parents": [
+          {
+            "source": "V0",
+            "lag": 0,
+            "coefficient_standardized": 0.3651032393344604
+          },
+          {
+            "source": "V1",
+            "lag": 0,
+            "coefficient_standardized": 0.5503062936322853
+          }
+        ]
+      },
+      {
+        "target": "V4",
+        "intercept_standardized": -2.8215663313904204e-17,
+        "parents": [
+          {
+            "source": "V0",
+            "lag": 0,
+            "coefficient_standardized": 0.19345833497565876
+          },
+          {
+            "source": "V1",
+            "lag": 0,
+            "coefficient_standardized": 0.4114858847142466
+          },
+          {
+            "source": "V3",
+            "lag": 0,
+            "coefficient_standardized": 0.4484187337964046
+          }
+        ]
+      },
+      {
+        "target": "V3",
+        "intercept_standardized": -3.1998090026577156e-17,
+        "parents": [
+          {
+            "source": "V2",
+            "lag": 0,
+            "coefficient_standardized": 0.8057053811241677
+          }
+        ]
+      },
+      {
+        "target": "V0",
+        "intercept_standardized": 2.42861286636753e-17,
+        "parents": []
+      },
+      {
+        "target": "Q",
+        "intercept_standardized": -1.5612511283791264e-17,
+        "parents": []
+      },
+      {
+        "target": "V1",
+        "intercept_standardized": 3.1780973769951506e-18,
+        "parents": [
+          {
+            "source": "V0",
+            "lag": 0,
+            "coefficient_standardized": 0.7262822567974171
+          }
+        ]
+      },
+      {
+        "target": "P",
+        "intercept_standardized": 3.8163916471489756e-17,
+        "parents": []
+      }
+    ],
+    "alpha": 0.0001,
+    "status": "NEW_SYNTHETIC_MODEL_NOT_TEP_FIT"
+  }
+}

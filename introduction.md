@@ -63,3 +63,6 @@
 ## 다양한 구조의 신규 합성 비교
 
 [8구조 보고서](docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md)에 source 검증된8개 합성DAG·48개 독립데이터·144실학습·17과제·918정책행·do78336개 및8회 구조전체holdout 예측을 기록했다. 기존4변수 반복 결과와 구분한다. 경로단독 모형의 평균예측오차는 작았지만 공변량 조정 후 연결지표와 거의 같아 우월성은 미확정이다.8개는 손설계 구조이고 행/rollout을 독립구조로 세지 않는다. [재현 절차](research_runs/diverse_structure_pilot/README.md)를 따르며 PR12 위 stacked 후속작업은 미병합이다. 제조 Recovery/Safety는 검증하지 않았다.
+
+### 2026-10-25: 재현성과 독립 확인
+기존144회 학습·추천·실제 개입을 별도 출력에서 재실행해 핵심 차이가 없음을 확인했습니다. 새12개 규칙 생성 구조에서는216개 그래프 중2개의 PC 순환 결과로 SCM이 거부되어214개를 평가했습니다. 주 비교는 경로 점수를 포함한 예측모형을 제한적으로 지지하지만, 기본 조건·연결 F1에 더하는 안정적인 추가 정보와 설정 전반의 우월성은 확인되지 않았습니다. 상세 결과·실패·미수행 범위는 `docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md`에 있습니다. 실제 제조공정 Recovery/Safety는 여전히 미검증입니다.

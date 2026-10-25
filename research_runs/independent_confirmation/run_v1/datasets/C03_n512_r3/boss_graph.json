@@ -1,0 +1,195 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [],
+  "unresolved_pairs": [
+    [
+      "P",
+      "Q"
+    ],
+    [
+      "V0",
+      "V1"
+    ],
+    [
+      "V1",
+      "V2"
+    ],
+    [
+      "V1",
+      "V3"
+    ],
+    [
+      "V2",
+      "V3"
+    ],
+    [
+      "V3",
+      "V4"
+    ],
+    [
+      "V3",
+      "V5"
+    ],
+    [
+      "V4",
+      "V5"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "V5",
+        "node2": "V4",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V5",
+        "node2": "V3",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "P",
+        "node2": "Q",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V4",
+        "node2": "V3",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V3",
+        "node2": "V2",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V3",
+        "node2": "V1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V0",
+        "node2": "V1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      },
+      {
+        "node1": "V2",
+        "node2": "V1",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        -1,
+        0
+      ]
+    ]
+  },
+  "seconds": 0.9059999999590218,
+  "seed": 10251232,
+  "column_order": [
+    "V5",
+    "P",
+    "V4",
+    "V3",
+    "Q",
+    "V0",
+    "V2",
+    "V1"
+  ],
+  "train_sha256": "293c7f25ee81cb490a42da02846b4f4def889164c489d98f8928e3ef44062286",
+  "graph_id": "C03_n512_r3__boss",
+  "source_type": "discovery",
+  "dataset_id": "C03_n512_r3",
+  "train_n": 512,
+  "replicate": 3,
+  "train_seed": 10251230,
+  "validation_seed": 10251231,
+  "validation_n": 256,
+  "algorithm_seed": 10251232,
+  "algorithm": "boss"
+}

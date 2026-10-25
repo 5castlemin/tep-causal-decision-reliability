@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-10-24. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
+기준일: 2026-10-25. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
@@ -27,12 +27,13 @@
 | DESIGN-B | Track B 가설 유지·통계 설계 | BLOCKED | docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md | 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 |
 | MVP-TECH | 공통 추천 dry-run·API 기술 파일럿 | VERIFIED | docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md | 기존3모델 추천 dry-run/정해진 조작 반복·로거 재사용; 가설 검증으로 해석 금지 |
 | ENV-MVP | 구조·추천 평가환경 대응 | PARTIAL | docs/research_design/ENV_MVP_ACCEPTANCE.md | 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 |
-| POLICY-MVP | 실제 추천 정책 연결 | PARTIAL | research_runs/diverse_structure_pilot/analysis_v1/policy_paired_changes.json | 경로 지표-기준대체 규칙의 기계적 연결 및 알고리즘/정책 차이를 분리하는 확인 비교 설계 |
-| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md | 8개 구조 LOSO의 경로단독 개선과 공변량 조정 후 거의 같은 오차를 새 확인용 구조/계수/seed에서 검증할 사전 계약 |
+| POLICY-MVP | 실제 추천 정책 연결 | PARTIAL | research_runs/independent_confirmation/EXECUTION_STATUS.json; research_runs/independent_confirmation/FIT_FAILURE_DETAILS.json | 순환 PC출력2개·양립 DAG 없는3개에 대한 사전 실패/보류 정책과 선택 편향 대조를 정의. 현재 간선 수정·손실 임의 대입 금지 |
+| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; research_runs/independent_confirmation/HYPOTHESIS_ASSESSMENT.json | 주 비교 ΔMAE .014264 지지는 유지하되 M0 이후/연결F1 이후 추가 정보와 이론 평균·비용 .4에서의 불확실성을 새 사전 계약으로 분리 |
 | ENV-EXAMPLE | 예제 FCM GT·관측·do adapter acceptance | VERIFIED | docs/research_design/ENV_MVP_ACCEPTANCE.md | 고정 source/lock/원시 잡음/배치 검증 재사용. 제조/시간/반사실 검증으로 확대하지 않음 |
 | PILOT-IID | 4변수 합성 통합 학습·추천·do 실행 | VERIFIED | docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md; research_runs/first_integrated_pilot/reproducibility_check.json | 두 잡음군 별도 3학습/1과제 연결 결과를 유지하고 다중 독립 학습 조건 계획에 활용; 제조 채택 아님 |
 | PILOT-REPEAT | 합성 독립 반복·4과제·미확정 정책 비교 | VERIFIED | docs/research_design/REPEATED_METRIC_PILOT_REPORT.md | 기존12데이터/36학습 결과 보존. 새8구조 결과는 PILOT-DIVERSE로 분리하며 과거 수치와 혼합하지 않음 |
-| PILOT-DIVERSE | 8개 선언 구조의 실제 학습·정책·구조외 예측 | VERIFIED | docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md; research_runs/diverse_structure_pilot/analysis_v1/analysis_summary.json | 구조·계수·격자/손실 예측 민감도는 별도 사전 계획.8개 구조 밖 확인 전 지표 우월성·제조 검증으로 확대하지 않음 |
+| PILOT-DIVERSE | 8개 선언 구조의 실제 학습·정책·구조외 예측 | VERIFIED | docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md; research_runs/independent_confirmation/REPLAY_COMPARISON.json | 기존144회 전체 재실행의672기록 핵심 차이0 확인. 과거8구조 산출물은 보존하고 새12구조 확인은 PILOT-CONFIRM으로 분리 |
+| PILOT-CONFIRM | 12개 규칙 생성 구조의 독립 확인·방법론 대조 | PARTIAL | docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; research_runs/independent_confirmation/analysis_v1/SUMMARY.json | 이론 평균 Δ .006317/고비용 Δ .004874의 불명확성과 유한 표본 최선후보15/96변경을 반영한 정밀도·교정 계약; 현재 결과 사후 변경 없음 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

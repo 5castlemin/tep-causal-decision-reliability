@@ -1,0 +1,166 @@
+{
+  "status": "LEARNED",
+  "confirmed_edges": [
+    [
+      "V2",
+      "V3"
+    ],
+    [
+      "V3",
+      "V5"
+    ],
+    [
+      "V4",
+      "V3"
+    ],
+    [
+      "V4",
+      "V5"
+    ]
+  ],
+  "unresolved_pairs": [
+    [
+      "P",
+      "Q"
+    ]
+  ],
+  "native": {
+    "native_edges": [
+      {
+        "node1": "V2",
+        "node2": "V3",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "V3",
+        "node2": "V5",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "V4",
+        "node2": "V3",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "V4",
+        "node2": "V5",
+        "endpoint1": "TAIL",
+        "endpoint2": "ARROW"
+      },
+      {
+        "node1": "Q",
+        "node2": "P",
+        "endpoint1": "TAIL",
+        "endpoint2": "TAIL"
+      }
+    ],
+    "native_matrix": [
+      [
+        0,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "seconds": 6.625,
+  "seed": 10725612,
+  "column_order": [
+    "V3",
+    "V2",
+    "V5",
+    "V4",
+    "Q",
+    "V1",
+    "V0",
+    "P"
+  ],
+  "train_sha256": "feb1da8e7dc059418a4af95f21518a3f90659c86a2b609dc84bf091fdbcb217e",
+  "graph_id": "C08_n256_r1__pc",
+  "source_type": "discovery",
+  "dataset_id": "C08_n256_r1",
+  "train_n": 256,
+  "replicate": 1,
+  "train_seed": 10725610,
+  "validation_seed": 10725611,
+  "validation_n": 256,
+  "algorithm_seed": 10725612,
+  "algorithm": "pc"
+}
