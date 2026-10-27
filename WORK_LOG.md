@@ -269,3 +269,13 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 최종전체96단위검사(새정적6포함)/계약정적검사/상태JSON-MD/동결39SHA/환경계약/assetmanifest·diff검사PASS. 신규model실행0,src와과거산출물전체불변. 검사통과는판정2를GO로바꾸지않음.
 
 - 검토/정적검사커밋676a462dbf8b7a4621deb7978dee5335d51fa712 push,PR20 생성(base PR19). PROPOSED_FOR_REVIEW/판정2 유지,기존PR미병합·연구변경미채택.
+
+### 2026-10-28 — Python TEP 효과·조작 선택 설계 최종 검토
+
+- PR15~20 OPEN/계보·main e960fa8/clean 확인. PR20 7ad4887 위 feature/tep-effect-decision-feasibility 분기;기존PR미병합.
+- 최대2후보(manual XMV10→Y9,closed-loop reactor setpoint→Y9)만검토하고manual을계약검토대상으로선택. 실제API/기존반응성은있으나허용정책집합·목표/H·비자명성·실패손실을정당화못함.
+- 새정적사실: setter17은배열만쓰고ctrl18은별도120.40초기값으로읽힘;모드배열122.9와동일하지않음. 호출실험/패치없고모든setpointAPI고장으로일반화안함. 공식Ricker자료는전체상태+MV운전구성이고단일command범위를인증하지않음을확인.
+- PROTOCOL/DECISION에서STOP-TEP-EFFECT-TRACK으로종료. GT없음자체가원인아니며,최대2개구현확인만남은조건부계약도아님. 비용없는tracking과경제최적화/기대제곱손실과평균손실/단일경로와평균효과/D,V,R,F분할·empirical최적선택편향/실패를명확히구분.
+- 현재TEP효과경로동결,추가TEP시험·패치·검토문서권고없음. 다음은기존합성독립확인·민감도·오류대조의최종주장정리. 새연구/학습승인없음. 원설계/old자료/src/tests/기대값불변. 새연구코드·단위검사추가없음;기존검사재사용.
+
+- 기존 전체96단위검사 PASS(신규검사0);상태JSON-MD/동결39SHA·변수순서/환경계약/이전B정적계약/asset manifest·diff PASS. PR20 기준 기존보호경로5084개불변,근거11개LF-SHA일치. src/verify_recovery.py main은과거출력을덮어쓰므로실행안함. 신규실험미실행.
