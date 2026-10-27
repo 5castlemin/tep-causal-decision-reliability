@@ -243,3 +243,5 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 한국어 보고서·canonical JSON/상단MD·다음1과제 동기화. 권고D;Python 국소기술만가능,전체구조–효과 NO-GO. 새학습/SCM/Recovery/Safety0. 단위/기존검증 결과는 validation/CHECKS.json과 로그에 기록.
 
 - 전체81검사 첫 실행의3실패는 과거 고정 decision_mvp 파일에 wrapper를 추가한 때문. 원바이트 복원·독립모듈 사용으로 해결하며 과거 기대hash/원시를 바꾸지 않음. 실패로그 보존 후 전체 재실행.
+
+- 최종 전체81단위검사 PASS(초기3실패 보존),10개 새/기존검증 PASS. 실행코드256b656 push 및 미병합 PR18 생성(base PR17). metadata정합성과 제조과학승인 분리·원본보존 재확인.

@@ -8,5 +8,5 @@
 - 재현: README.md와 report의 fresh-output runner 명령. 외부 source 없는 CI는 저장원시/밸브식/시계/RNGhash/계약만 검산. 실제 외부 실행과 혼동금지.
 - 현재 판정: 원래 전체 구조–효과 연구 NO-GO; 권고D. Python 국소 기술가능,공식환경 채택없음. 관측학습변동/센서참조/음성쌍/독립효과 미확정.
 - 다음 한 작업: 좁은 수동 밸브 한step 전이식의 적용조건/미지원조건 거부와 노드·시간 의미 검산. scripts/validate_tep_valve_transition_contract.py는 아직 없음. GT·발견학습·전체F1 생성 금지.
-- 마무리: 전체 재검사·기존검증·동결보존·docsync 로그 확인 후 commit/push/PR. 새 PR 자동병합 금지. archive_manufacturing에 보관.
+- 마무리: 최종81단위검사·10개기존/새검증script·동결보존·docsync PASS. 실행코드 commit256b65635d2b7fc2287323e3e1975914694e6c9a push, PR18 생성(base PR17). 새PR미병합. CI 결과 확인과 archive_manufacturing 보관은 최종 배포기록 참조.
 - 방향이탈 위험: metadata 일치 또는8×6step 성공을 과학적 동등성으로 승격,센서현재값의국소 반례를동적모형전체불가능으로확대,기존F1을Python효과에결합하는것 모두 금지.

@@ -104,3 +104,5 @@ git diff --check
 각 runner는 기존 출력 덮어쓰기를 거부한다. 기술 원시 `technical_v1/`와 고정점 `closure_v1/`에 별도 SHA256 manifest가 있다. CI validator는 외부 source를 실행하지 않고 저장 원시의 시간/반복/밸브 차분/국소식/거부사유/hash를 다시 계산한다. 로컬 실제 실행과 CI 저장검산은 다른 증거다. 전체 테스트·기존 동결/상태 검사의 실제 결과는 `research_runs/tep_environment_bridge/validation/`에 기록한다. 누락 원자료·MATLAB·장기 연구환경 검증을 새로 수행한 것으로 표시하지 않는다.
 
 실제 전체 단위검사 첫 실행은81개 중 과거 hash 고정검사3건 실패했다. 원인은 legacy decision_mvp에 wrapper를 추가한 것이었다. 과거 기대 hash/산출물을 수정하지 않고 해당 파일을 원래 bytes로 복원하고 독립모듈 진입점만 유지했다. 실패로그와 해결은 validation/00_unittest.txt·FAILURE_EXPLANATION.json에 보존했다. 최종 재검사 결과는 FINAL_CHECKS.json을 기준으로 확인한다.
+
+최종 로컬 전체81단위검사와10개 새/기존 검증script는 통과했다. 실행코드는 `256b65635d2b7fc2287323e3e1975914694e6c9a`, 새 PR은 #18(base PR17)이며 미병합이다. 초기 실패3건은 삭제하지 않았다. GitHub Actions는 별도 최신 head 결과를 확인한다.
