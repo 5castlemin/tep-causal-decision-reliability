@@ -8,7 +8,7 @@
 | SRC-01 | Final 생성 코드 회수 | BLOCKED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | FREEZE.code의 algos/run_*.py 및 common/config.py·data_io.py 원본을 해시로 대조하여 회수 |
 | SIM-03 | 공개 후보 수치·shutdown 검증 | PARTIAL | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 압력 한계 종료와 제한적 dt 수렴 확인; 동일 모델·controller 독립 기준 대조 및 폐루프 시간 계약 검증 |
 | SIM-04 | 공개 후보 새 객체 초기화 계약 | VERIFIED | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 동일 source/backend/seed/mode의 새 객체를 반복 단위로 사용; 같은 객체 reset의 비트 일치 미보장 |
-| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md | 원환경/새Python후보 직접 구조–효과 join NO-GO. 원시계보/관측참조 동등성은미해결. ENV-CONTRACT의 실행 가능한 metadata 차단 검사를 먼저 구현 |
+| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md | 원환경 raw/controller/집계 미확정 유지. Python 국소 실행은 가능하나 관측 참조/음성쌍/학습 변동 부족으로 전체 구조–효과 연구 NO-GO |
 | SIM-01 | 기존 8월 시뮬레이터 복구 | BLOCKED | docs/SIMULATOR_SETUP.md | 당시 저장소 URL/ZIP·버전·실행 명령·로그의 구체 소재 확보 |
 | SIM-02 | 공개 Python 후보 관측·쓰기·Fault smoke | PARTIAL | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/run_20261023_v3/summary.json | 기존 2시간 정상 기록 보존; controller/override·수치 기준·호환성 제한 해결 뒤 Gate 재평가 |
 | TASK-01 | 실행 가능한 복구 과제 확정 | BLOCKED | experiments/pilot/TASK_SPEC.md | 모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정 |
@@ -40,7 +40,9 @@
 | ERROR-DIAG | 합성 개발 자료 오류–응답–선택 대조 | VERIFIED | docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md | 324실제 오류쌍/162핵심–주변/114경로유지와 반례·동률 보존. 6개 oracle 적합을 발견 graph와 분리 |
 | ERROR-CONFIRM | 오류 위치의 조건부 의사결정 영향 독립 계약 | PROPOSED | docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md | 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 |
 | MFG-VALIDITY | 제조 연구 타당성·저장 증거 감사 | VERIFIED | docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md | 검산 완료 범위만 유지:39해시/7점수/84과제/21baseline·시간증거. 제조GO가 아니라 과학적 차단/guard한계를 확인한 감사 |
-| ENV-CONTRACT | 구조 점수–개입 결과 metadata 차단 계약 구현 | PROPOSED | research_runs/manufacturing_validity_gate/NEXT_ENVIRONMENT_CONTRACT_SPEC.json | src/environment_contract.py와tests/test_environment_contract.py 구현. 같은이름의controller/시계/참조불일치와누락근거를거부하고 interface-only/research 목적분리 |
+| ENV-CONTRACT | 구조 점수–개입 결과 metadata 차단 계약 구현 | VERIFIED | src/environment_contract.py; tests/test_environment_contract.py; research_runs/tep_environment_bridge/CONTRACT_RESULTS.json | 15개 계약 사례·실제 파일 해시 검사 완료. 새 join은 environment_contract.require_environment_contract 사용. 과학적 동등성 승인은 아님 |
+| TEP-BRIDGE | Python TEP 관측·명령·상태 연결 검산 | PARTIAL | research_runs/tep_environment_bridge/technical_v1/SUMMARY.json; research_runs/tep_environment_bridge/closure_v1/RESULT.json | 8×6step exact 반복과3고정점 관측충분성 반례 확인. 전체 참조/학습·독립 효과 계약 미충족; 공식 환경 채택 아님 |
+| VALVE-TRANSITION | 좁은 수동 밸브 시간전이 계약 검산 | PROPOSED | docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md | scripts/validate_tep_valve_transition_contract.py 작성: u_t/v_t/v_t+1 식 독립 대조·stiction/IDV/클리핑/제어개입 미지원 거부. GT·학습·F1 생성 아님 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

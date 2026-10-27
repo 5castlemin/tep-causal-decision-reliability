@@ -4,16 +4,16 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **ENV-CONTRACT — 구조 점수–개입 결과 metadata 차단 계약 구현**: src/environment_contract.py와tests/test_environment_contract.py 구현. 같은이름의controller/시계/참조불일치와누락근거를거부하고 interface-only/research 목적분리 (PROPOSED)
-2. **COMPAT-01 — 공개 후보와 기존 데이터/GT 대응**: 원환경/새Python후보 직접 구조–효과 join NO-GO. 원시계보/관측참조 동등성은미해결. ENV-CONTRACT의 실행 가능한 metadata 차단 검사를 먼저 구현 (PARTIAL)
+1. **VALVE-TRANSITION — 좁은 수동 밸브 시간전이 계약 검산**: scripts/validate_tep_valve_transition_contract.py 작성: u_t/v_t/v_t+1 식 독립 대조·stiction/IDV/클리핑/제어개입 미지원 거부. GT·학습·F1 생성 아님 (PROPOSED)
+2. **COMPAT-01 — 공개 후보와 기존 데이터/GT 대응**: 원환경 raw/controller/집계 미확정 유지. Python 국소 실행은 가능하나 관측 참조/음성쌍/학습 변동 부족으로 전체 구조–효과 연구 NO-GO (PARTIAL)
 3. **ERROR-CONFIRM — 오류 위치의 조건부 의사결정 영향 독립 계약**: 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 (PROPOSED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| ENV-CONTRACT | PROPOSED | MFG-VALIDITY | src/environment_contract.py와tests/test_environment_contract.py 구현. 같은이름의controller/시계/참조불일치와누락근거를거부하고 interface-only/research 목적분리 / 6개 사전negative/technical fixture 검사·정확한거부이유·현CPCaD/Python join거부 유지. metadata통과를물리/인과승인으로취급하지 않음 |
-| COMPAT-01 | PARTIAL | SIM-03, SIM-04 | 원환경/새Python후보 직접 구조–효과 join NO-GO. 원시계보/관측참조 동등성은미해결. ENV-CONTRACT의 실행 가능한 metadata 차단 검사를 먼저 구현 / 정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지 |
+| VALVE-TRANSITION | PROPOSED | TEP-BRIDGE | scripts/validate_tep_valve_transition_contract.py 작성: u_t/v_t/v_t+1 식 독립 대조·stiction/IDV/클리핑/제어개입 미지원 거부. GT·학습·F1 생성 아님 / 기존 ±.001pp 국소 조건에서 actual evaluate/Euler 식 일치 및 원 센서 평가join 거부. 공식 연구 채택과 분리 |
+| COMPAT-01 | PARTIAL | SIM-03, SIM-04 | 원환경 raw/controller/집계 미확정 유지. Python 국소 실행은 가능하나 관측 참조/음성쌍/학습 변동 부족으로 전체 구조–효과 연구 NO-GO / 정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지 |
 | ERROR-CONFIRM | PROPOSED | ERROR-DIAG | 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 / 대표 성공만 선택하지 않는 독립 대조 계획·독립 평가환경·실행 가능한 정밀도/예산 |
 | PATH-PRECISION | BLOCKED | PATH-MODEL | 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 / 실행 가능한 사전 정밀도·구조 수·예산 계약; 유리한 결과를 위한 기준 완화 금지 |
 | PATH-MODEL | PARTIAL | EVAL-MVP | 고정9후보 중첩 검증은 기본19/경로1 선택. 품질 특징 추가가 이득 아님. 단순 기본모형을 개발 기준선으로 유지하고 MAE 탐색 확장 중단 / 구조 단위 검증·특징 선택 누출 검사·고정 모형 산출물 |
@@ -36,6 +36,8 @@
 | TASK-01 | BLOCKED | COMPAT-01, SIM-02 | 모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정 / 결과 확인 전 버전된 과제 계약 |
 | EFFECT-01 | NOT_RUN | TASK-01 | 확정 과제로 no-action 대비 동일 조건 실험 / 원시 trajectory·실패 포함 독립 평가 |
 | PCMCI-ID | BLOCKED | 없음 | 동시점 순환의 인과계수 식별 근거 검토 / 별도 식별 방법 승인 전 primary fitting 보류 |
+| ENV-CONTRACT | VERIFIED | MFG-VALIDITY | 15개 계약 사례·실제 파일 해시 검사 완료. 새 join은 environment_contract.require_environment_contract 사용. 과학적 동등성 승인은 아님 / 같은 이름의 controller/시계/조작/노드/참조 불일치·미검증 근거 거부. CPCaD/Python 결합 계속 차단 |
+| TEP-BRIDGE | PARTIAL | ENV-CONTRACT, REF-B | 8×6step exact 반복과3고정점 관측충분성 반례 확인. 전체 참조/학습·독립 효과 계약 미충족; 공식 환경 채택 아님 / 명령/밸브/센서 시계·잡음·초기화 분리. 연구join NO-GO 유지 |
 
 ## ID 이력
 
@@ -58,5 +60,6 @@
 - 2026-10-25 PATH-MODEL/PATH-PRECISION/PATH-CONFIRM 추가: 기존 EVAL-MVP를 삭제하지 않고 개발 안정성·정밀도 차단·새 독립 확인 미실행을 분리. PR12~14 실제 병합 반영.
 - 2026-10-25 ERROR-DIAG/ERROR-CONFIRM: 목적을 지표 우세/MAE 최적화와 분리. 오류–응답–선택 대조 완료와 새 독립 계약 미실행을 구분하며 제조 환경 정합성 검토를 우선.
 - 2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현.
+- 2026-10-27 ENV-CONTRACT 구현 VERIFIED는 metadata 소프트웨어만. TEP-BRIDGE PARTIAL: 실제8×6step·3고정점. VALVE-TRANSITION 제안은 별도 다음 작업. 전체 제조 구조–효과 NO-GO 유지.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

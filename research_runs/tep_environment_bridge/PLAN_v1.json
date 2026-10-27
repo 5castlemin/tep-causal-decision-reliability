@@ -1,0 +1,30 @@
+{
+  "protocol": "TEP-ENVIRONMENT-BRIDGE-TECHNICAL-v1",
+  "date": "2026-10-27",
+  "dependency_pr17_head": "a41683bd9a0a0bd568b5e40c4d6374b033eb424e",
+  "source_commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+  "purpose": "Interface, cached sensor/state clocks, command/actuator and fresh-object repeat checks ONLY",
+  "prior_conditions": ["docs/research_design/ref_b_minimal_evidence/local_checks.json", "docs/research_design/track_b_evidence/source_probe.json"],
+  "seed": 465120799,
+  "steps": 6,
+  "dt_seconds": 1,
+  "faults": "none; all IDV zero",
+  "intervention_time_seconds": 0,
+  "intervention": "single external set_mv(10, initial_command + 0.1 pp); observe automatic overwrite without reapplying",
+  "arms": [
+    {"name": "manual_reference", "mode": "MANUAL", "delta_pp": 0, "observe_rng": true},
+    {"name": "manual_action", "mode": "MANUAL", "delta_pp": 0.1, "observe_rng": true},
+    {"name": "manual_reference_repeat", "mode": "MANUAL", "delta_pp": 0, "observe_rng": false},
+    {"name": "manual_action_repeat", "mode": "MANUAL", "delta_pp": 0.1, "observe_rng": false},
+    {"name": "closed_reference", "mode": "CLOSED_LOOP", "delta_pp": 0, "observe_rng": true},
+    {"name": "closed_action", "mode": "CLOSED_LOOP", "delta_pp": 0.1, "observe_rng": true},
+    {"name": "closed_reference_repeat", "mode": "CLOSED_LOOP", "delta_pp": 0, "observe_rng": false},
+    {"name": "closed_action_repeat", "mode": "CLOSED_LOOP", "delta_pp": 0.1, "observe_rng": false}
+  ],
+  "stop": "nonfinite states/derivatives, shutdown or source/plan mismatch; preserve failures, no horizon/amplitude expansion",
+  "acceptance": ["four instrumented/uninstrumented exact core repeats", "fresh initial state/controller/noise fingerprints equal within mode", "command differs from valve state at time zero", "manual command held", "closed-loop overwrite logged", "cached evaluation and integrated state clocks remain distinct", "record RNG call counts and draw hashes; never infer general CRN from matching seed"],
+  "not_acceptance": ["scientific equivalence", "observed-node reference GT", "missing-edge truth", "structure-effect hypothesis", "physical safety", "Fault recovery"],
+  "train_holdout": "No training/selection/effect-evaluation datasets generated. Future namespaces must be disjoint; these known diagnostic samples cannot be called untouched holdout.",
+  "source_modified": false,
+  "environment_adopted": false
+}

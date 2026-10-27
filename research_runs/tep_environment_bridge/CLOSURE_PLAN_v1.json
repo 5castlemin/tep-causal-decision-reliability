@@ -1,0 +1,14 @@
+{
+  "purpose": "Check whether current sensors and commands uniquely fix the coolant derivative at the existing initial condition; no reference graph construction",
+  "source_commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+  "seed": 465120799,
+  "time_seconds": 0,
+  "valve_state_delta_pp": [-0.001, 0, 0.001],
+  "prior_amplitude": "same v perturbation as REF-B fixed-condition check; command is held identical",
+  "mode": "MANUAL",
+  "noise": "clone the same initialized backend; evaluate only t=0; compare RNG before and after",
+  "comparisons": ["all 41 current sensor values", "all 12 commands", "derivative of state36 coolant temperature", "finite/no shutdown", "RNG equality"],
+  "interpretation": "If sensors/commands match yet derivative differs, current-value deterministic sensor closure is contradicted locally. No claim about finite history, stochastic marginalization, direct observed edges or global non-edges.",
+  "rollout_steps": 0,
+  "stop": "source mismatch, nonfinite/shutdown or failed comparison; retain result, no retuning"
+}

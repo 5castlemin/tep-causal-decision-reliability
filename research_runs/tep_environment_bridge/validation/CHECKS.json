@@ -1,0 +1,128 @@
+[
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 1,
+    "seconds": 76.20299999997951,
+    "log": "00_unittest.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "graphs/final/verify_and_load.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.5939999998081475,
+    "log": "01_verify_and_load.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_environment_contract.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.2190000000409782,
+    "log": "02_validate_environment_contract.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_manufacturing_validity.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.5620000001508743,
+    "log": "03_validate_manufacturing_validity.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_ref_b_minimal_records.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.1720000000204891,
+    "log": "04_validate_ref_b_minimal_records.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_decision_mvp.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.21899999980814755,
+    "log": "05_validate_decision_mvp.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "experiments/simulator/diagnostics/validate_diagnostics.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.4690000000409782,
+    "log": "06_validate_diagnostics.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_track_a_recovery.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.1559999999590218,
+    "log": "07_validate_track_a_recovery.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_track_b_audit.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.1880000000819564,
+    "log": "08_validate_track_b_audit.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_research_state.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.125,
+    "log": "09_check_research_state.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_asset_manifest.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.10899999993853271,
+    "log": "10_check_asset_manifest.txt"
+  }
+]

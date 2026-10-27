@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "environment_id": "CPCAD_BENCH_TEP1499x31",
+  "model": {
+    "source_url": "https://github.com/jkitchin/tennessee-eastman-profbraatz",
+    "commit": "UNKNOWN",
+    "source_sha256": {},
+    "configuration": {
+      "raw_run": "UNKNOWN",
+      "controller_revision": "UNKNOWN"
+    },
+    "evidence_refs": [
+      "unresolved_lineage"
+    ]
+  },
+  "controller": {
+    "source_sha256": {
+      "src/tep/controllers.py": "030c49801bd93d719175b26ad5b94834c430729800825d9adc2a499e6be75b39"
+    },
+    "configuration": {
+      "controller": "UNKNOWN"
+    },
+    "mode": "UNKNOWN",
+    "evidence_refs": [
+      "unresolved_lineage"
+    ]
+  },
+  "observation": {
+    "nodes": [
+      {
+        "name": "X1",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X2",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X3",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X4",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X5",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X6",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X7",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X8",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X9",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X10",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X11",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X12",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X13",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X14",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X15",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X16",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X17",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X18",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X19",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X20",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X21",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X22",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X23",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X24",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X25",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X26",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X28",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X29",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X30",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X32",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      },
+      {
+        "name": "X33",
+        "unit": "UNKNOWN",
+        "kind": "benchmark_column"
+      }
+    ],
+    "representation": "median_aggregated_benchmark_columns",
+    "evidence_refs": [
+      "unresolved_lineage"
+    ]
+  },
+  "clock": {
+    "state_clock": "UNKNOWN",
+    "sensor_clock": "UNKNOWN",
+    "integration_seconds": null,
+    "sampling_seconds": null,
+    "aggregation": "reported sliding median",
+    "window_seconds": 180,
+    "stride_seconds": null,
+    "evidence_refs": [
+      "unresolved_lineage"
+    ]
+  },
+  "reference": {
+    "nodes": [
+      "X1",
+      "X2",
+      "X3",
+      "X4",
+      "X5",
+      "X6",
+      "X7",
+      "X8",
+      "X9",
+      "X10",
+      "X11",
+      "X12",
+      "X13",
+      "X14",
+      "X15",
+      "X16",
+      "X17",
+      "X18",
+      "X19",
+      "X20",
+      "X21",
+      "X22",
+      "X23",
+      "X24",
+      "X25",
+      "X26",
+      "X28",
+      "X29",
+      "X30",
+      "X32",
+      "X33"
+    ],
+    "representation": "benchmark_structural_reference_28_edges",
+    "edge_semantics": "UNKNOWN",
+    "lag_definition": "Euler1s;not_sensor_direct_lag_gt",
+    "positive_pairs": [
+      [
+        "u10",
+        "v10"
+      ],
+      [
+        "W",
+        "E"
+      ]
+    ],
+    "negative_pairs": [],
+    "uncertain_pairs": [
+      [
+        "Y9",
+        "u10"
+      ]
+    ],
+    "coverage": "benchmark_not_candidate_equivalence",
+    "evidence_refs": [
+      "unresolved_lineage"
+    ]
+  },
+  "intervention": {
+    "action": "X32",
+    "target": "X9",
+    "kind": "command",
+    "mechanism": "UNKNOWN",
+    "controller_policy": "UNKNOWN",
+    "evidence_refs": [
+      "unresolved_lineage"
+    ]
+  },
+  "execution": {
+    "initialization": "UNKNOWN",
+    "noise": "UNKNOWN",
+    "train_holdout": "original1499 normal-only;no do holdout",
+    "horizon_seconds": null,
+    "evidence_refs": [
+      "unresolved_lineage"
+    ]
+  },
+  "evidence": {
+    "unresolved_lineage": {
+      "path": "docs/research_design/track_a_evidence/gate_evidence.json",
+      "sha256": "e4decd475213af4cef69874206dd479c084dfd0e9fccdd0d71b7c718ab110ce0",
+      "level": "REPORTED"
+    }
+  }
+}

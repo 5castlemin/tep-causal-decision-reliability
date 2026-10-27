@@ -1,0 +1,1080 @@
+[
+  {
+    "case": "software_fixture_metadata_only",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": true,
+      "research_join_eligible_for_review": true,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": []
+    }
+  },
+  {
+    "case": "same_label_controller_mode",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "controller.mode",
+          "side": "both"
+        }
+      ]
+    }
+  },
+  {
+    "case": "same_label_clock_sampling_seconds",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.sampling_seconds",
+          "side": "both"
+        }
+      ]
+    }
+  },
+  {
+    "case": "same_label_clock_aggregation",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.aggregation",
+          "side": "both"
+        }
+      ]
+    }
+  },
+  {
+    "case": "same_label_intervention_kind",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.kind",
+          "side": "both"
+        }
+      ]
+    }
+  },
+  {
+    "case": "same_label_observation_nodes",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "outcome"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "observation.nodes",
+          "side": "both"
+        }
+      ]
+    }
+  },
+  {
+    "case": "REPORTED_not_verified",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        }
+      ]
+    }
+  },
+  {
+    "case": "UNKNOWN_not_verified",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.fixture.level",
+          "side": "outcome"
+        }
+      ]
+    }
+  },
+  {
+    "case": "missing_evidence",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "MISSING_EVIDENCE",
+          "path": "controller",
+          "side": "outcome"
+        }
+      ]
+    }
+  },
+  {
+    "case": "positive_only_cannot_score_full_f1",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.pairs",
+          "side": "structure"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.pairs",
+          "side": "outcome"
+        }
+      ]
+    }
+  },
+  {
+    "case": "internal_reference_not_sensor_direct_gt",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "structure"
+        },
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "outcome"
+        }
+      ]
+    }
+  },
+  {
+    "case": "fixture_interface_not_research",
+    "result": {
+      "schema_version": 1,
+      "purpose": "interface_only",
+      "metadata_consistent": true,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": []
+    }
+  },
+  {
+    "case": "CPCAD_vs_PYTHON_research_join",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "model.commit",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "model.source_sha256",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "model.configuration",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "controller.configuration",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "controller.mode",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "observation.nodes",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.state_clock",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.sensor_clock",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.integration_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.sampling_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.stride_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "reference.edge_semantics",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "intervention.mechanism",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "intervention.controller_policy",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "execution.initialization",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "execution.noise",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "execution.horizon_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_SOURCE_HASH",
+          "path": "model.source_sha256",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_SOURCE_COMMIT",
+          "path": "model.commit",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_TIME",
+          "path": "execution.horizon_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_TIME",
+          "path": "clock.integration_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_TIME",
+          "path": "clock.sampling_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_TIME",
+          "path": "clock.stride_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "structure"
+        },
+        {
+          "code": "UNSUPPORTED_EDGE_SEMANTICS",
+          "path": "reference.edge_semantics",
+          "side": "structure"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.coverage",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.positive_pairs",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.uncertain_pairs",
+          "side": "structure"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.pairs",
+          "side": "structure"
+        },
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "outcome"
+        },
+        {
+          "code": "UNSUPPORTED_EDGE_SEMANTICS",
+          "path": "reference.edge_semantics",
+          "side": "outcome"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.coverage",
+          "side": "outcome"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.positive_pairs",
+          "side": "outcome"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.uncertain_pairs",
+          "side": "outcome"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.pairs",
+          "side": "outcome"
+        },
+        {
+          "code": "ENVIRONMENT_ID_MISMATCH",
+          "path": "environment_id",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "model.commit",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "model.source_sha256",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "model.configuration",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "controller.configuration",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "controller.mode",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "observation.nodes",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "observation.representation",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.state_clock",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.sensor_clock",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.integration_seconds",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.sampling_seconds",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.aggregation",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.window_seconds",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.stride_seconds",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "reference.nodes",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "reference.representation",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "reference.edge_semantics",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "reference.coverage",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.action",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.target",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.mechanism",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.controller_policy",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "execution.initialization",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "execution.noise",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "execution.train_holdout",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "execution.horizon_seconds",
+          "side": "both"
+        }
+      ]
+    }
+  },
+  {
+    "case": "CPCAD_relabelled_PYTHON_still_reject",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "model.commit",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "model.source_sha256",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "model.configuration",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "controller.configuration",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "controller.mode",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "observation.nodes",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.state_clock",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.sensor_clock",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.integration_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.sampling_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "clock.stride_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "reference.edge_semantics",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "intervention.mechanism",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "intervention.controller_policy",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "execution.initialization",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "execution.noise",
+          "side": "structure"
+        },
+        {
+          "code": "MISSING_OR_UNKNOWN_FIELD",
+          "path": "execution.horizon_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "EVIDENCE_NOT_VERIFIED",
+          "path": "evidence.unresolved_lineage.level",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_SOURCE_HASH",
+          "path": "model.source_sha256",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_SOURCE_COMMIT",
+          "path": "model.commit",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_TIME",
+          "path": "execution.horizon_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_TIME",
+          "path": "clock.integration_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_TIME",
+          "path": "clock.sampling_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_TIME",
+          "path": "clock.stride_seconds",
+          "side": "structure"
+        },
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "structure"
+        },
+        {
+          "code": "UNSUPPORTED_EDGE_SEMANTICS",
+          "path": "reference.edge_semantics",
+          "side": "structure"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.coverage",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.positive_pairs",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.uncertain_pairs",
+          "side": "structure"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.pairs",
+          "side": "structure"
+        },
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "outcome"
+        },
+        {
+          "code": "UNSUPPORTED_EDGE_SEMANTICS",
+          "path": "reference.edge_semantics",
+          "side": "outcome"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.coverage",
+          "side": "outcome"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.positive_pairs",
+          "side": "outcome"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.uncertain_pairs",
+          "side": "outcome"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.pairs",
+          "side": "outcome"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "model.commit",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "model.source_sha256",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "model.configuration",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "controller.configuration",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "controller.mode",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "observation.nodes",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "observation.representation",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.state_clock",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.sensor_clock",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.integration_seconds",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.sampling_seconds",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.aggregation",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.window_seconds",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "clock.stride_seconds",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "reference.nodes",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "reference.representation",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "reference.edge_semantics",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "reference.coverage",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.action",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.target",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.mechanism",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "intervention.controller_policy",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "execution.initialization",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "execution.noise",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "execution.train_holdout",
+          "side": "both"
+        },
+        {
+          "code": "METADATA_MISMATCH",
+          "path": "execution.horizon_seconds",
+          "side": "both"
+        }
+      ]
+    }
+  },
+  {
+    "case": "PYTHON_self_partial_reference_reject",
+    "result": {
+      "schema_version": 1,
+      "purpose": "structure_effect_research",
+      "metadata_consistent": false,
+      "research_join_eligible_for_review": false,
+      "scientific_equivalence_proven": false,
+      "manufacturing_adopted": false,
+      "execution_authorized": false,
+      "reasons": [
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "structure"
+        },
+        {
+          "code": "UNSUPPORTED_EDGE_SEMANTICS",
+          "path": "reference.edge_semantics",
+          "side": "structure"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.coverage",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.positive_pairs",
+          "side": "structure"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.uncertain_pairs",
+          "side": "structure"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.pairs",
+          "side": "structure"
+        },
+        {
+          "code": "REFERENCE_OBSERVATION_MISMATCH",
+          "path": "reference",
+          "side": "outcome"
+        },
+        {
+          "code": "UNSUPPORTED_EDGE_SEMANTICS",
+          "path": "reference.edge_semantics",
+          "side": "outcome"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.coverage",
+          "side": "outcome"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.positive_pairs",
+          "side": "outcome"
+        },
+        {
+          "code": "INVALID_REFERENCE_PAIRS",
+          "path": "reference.uncertain_pairs",
+          "side": "outcome"
+        },
+        {
+          "code": "INCOMPLETE_NEGATIVE_COVERAGE",
+          "path": "reference.pairs",
+          "side": "outcome"
+        }
+      ]
+    }
+  }
+]

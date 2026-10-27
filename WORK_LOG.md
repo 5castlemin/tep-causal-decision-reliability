@@ -231,3 +231,15 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 이번 로컬 검사15개 단위검사PASS,동결39파일/변수순서·엄격시차3개PASS,REF-B저장차분·시계/명령·TrackA/B/benchmark 및새histogram감사8개script검사PASS. 외부runtime시뮬레이터는실행하지않음. 개인경로·비밀/대용량검사·git diff --check 및기존동결/실험/원설계불변확인.
 
 감사실행코드 commit a6872ad push 후 PR17 생성(base=미병합PR16 브랜치). PR15/16/17 자동병합 없음. 상태JSON에실제PR17과의존성을기록. 후속문서정리commit은원시검산/실험조건을바꾸지않는다.
+
+### 2026-10-27 — 환경 계약과 Python TEP 국소 실행 (PR17 위 후속)
+
+- fetch/PR15~17 OPEN·main e960fa8·PR17 a41683b·clean tree 확인 후 feature/tep-environment-bridge-feasibility 분기. 기존 PR 병합 없음.
+- environment_contract/독립 모듈 진입점 구현: 12분야 metadata·실제 근거 SHA·등급·양성/음성쌍 완전성·내부/센서 의미 검사. 15사례의 구조화 거부/fixture 정합성; 현 CPCaD/Python 연결·부분참조 전체F1 계속 거부. metadata≠물리승인.
+- 사전 PLAN/hash 이후 고정소스4hash·tracked clean 확인. Python3.11.15/NumPy1.26.4로8fresh arms×6step 실제 실행. manual +.1pp 명령 유지/밸브 분리,폐루프 controller 갱신,센서cache/상태1초차,4조건 uninstrumented 반복 exact. 6초조건 RNG draw/count 일치만 확인.
+- 별도 CLOSURE_PLAN/hash 이후3고정점: 실제밸브 ±.001pp에서 동일41센서/12명령/RNG지만 냉각수 변화율 다름. source 수정/rollout/새GT 없음. 현재값 관측 충분성의 국소 반례, history/latent 불가능성 증명 아님.
+- 실행: scripts/run_tep_environment_bridge.py --source <pinned> --output <fresh>; scripts/check_tep_observation_closure.py --source <pinned> --output <fresh>. 원시/hash/환경은 research_runs/tep_environment_bridge. 고정표·이전결과 변경 없음.
+- 상태 갱신 첫 보조 명령은 잘못된 JSON key git_integration 접근으로 KeyError. 파일 쓰기 전 중단되어 기존파일 변화0; 실제 github_current로 정정. 원자료나 실험 실패를 숨기거나 재분류하지 않음.
+- 한국어 보고서·canonical JSON/상단MD·다음1과제 동기화. 권고D;Python 국소기술만가능,전체구조–효과 NO-GO. 새학습/SCM/Recovery/Safety0. 단위/기존검증 결과는 validation/CHECKS.json과 로그에 기록.
+
+- 전체81검사 첫 실행의3실패는 과거 고정 decision_mvp 파일에 wrapper를 추가한 때문. 원바이트 복원·독립모듈 사용으로 해결하며 과거 기대hash/원시를 바꾸지 않음. 실패로그 보존 후 전체 재실행.
