@@ -143,3 +143,5 @@ git diff --check
 source 모드는 실제 실행/commit/hash를 검사하고 기본 모드는 저장 hash·독립식·시간·분기·옛자료의 cache 누락·모의 거부를 재계산한다. CI는 후자이며 외부 source 실행이 아니다. 기존 외부 source의 Python/NumPy·sourcehash와 새 코드hash·원시SHA는 실행폴더에 기록한다. 원래 `src/verify_recovery.py` main은 과거 로그를 덮어쓰므로 이번에는 실행하지 않고 기존 점수/동결 검증기를 재사용한다. 검사 통과를 연구 가설 완료로 표시하지 않는다.
 
 최종 로컬 전체90단위검사(신규9개 포함),7개 새/기존 검증script·39동결SHA·환경계약·상태일치 검사가 통과했다. 과거 기대값이나 원시결과를 수정해 통과시킨 검사는 없다. 신규 source 실행4step과 저장자료 검산은 위와 같이 분리했다.
+
+실행코드 커밋 `0a1fe052eed76859e6436d5495cbe7b9dc271fed`, 새 PR #19(base PR18). 기존 PR15~18과 새 PR은 미병합이다. 최신 CI는 최종 head에서 별도 확인한다.
