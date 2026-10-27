@@ -33,7 +33,7 @@
       "title": "공개 후보와 기존 데이터/GT 대응",
       "status": "PARTIAL",
       "evidence": "docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md",
-      "next_action": "원환경 계보·정식실행 미확보 유지. 새Python 내부동적 설계안은 별도사용자선택 대상. 기존F1과Python효과 결합금지",
+      "next_action": "원환경 계보 미확보/기존F1-Python효과 결합금지 유지. B축약계약 미정당화; 효과중심 별도설계 검토는 사용자선택 대상",
       "acceptance": "정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지",
       "depends_on": [
         "SIM-03",
@@ -395,18 +395,30 @@
     },
     {
       "id": "DYNAMIC-SCOPE",
-      "title": "내부 상태·시간전개 연구 설계안 선택",
+      "title": "제한 내부 동적 연구계약 초안 검토",
       "status": "PROPOSED",
-      "evidence": "docs/research_design/TEP_DYNAMIC_REFERENCE_DECISION.md; research_runs/tep_valve_transition/SCOPE_PROPOSAL.json",
-      "next_action": "우선권고B: 기존31정적센서와별도 namespace의 제한 내부동적 연구설계 검토 여부를 사용자결정. 새GT/본실험 채택은포함안함",
-      "acceptance": "사용자선택 후 닫힌부모/유한노드·시간·음성/미확정쌍·발견대상·관측변동·독립do·중단기준을 갖춘 하나의 제한 연구계약. 정당화못하면학습/F1중단",
+      "evidence": "docs/research_design/BOUNDED_DYNAMIC_RESEARCH_PROTOCOL.md; research_runs/bounded_dynamic_protocol/DECISION.json",
+      "next_action": "검토 승인 범위에서 초안 작성·판정2: 현재계약 미정당화/실행NO-GO. PROPOSED_FOR_REVIEW 유지; 추가smoke 대신 MFG-EFFECT-SCOPE 결정",
+      "acceptance": "4node/12미채점후보·부모폐쇄/비간선/발견대상/비자명선택/독립평가의 미충족조건 명시. 공식연구설계변경 아님",
       "depends_on": [
         "VALVE-TRANSITION",
         "REF-B"
       ]
+    },
+    {
+      "id": "MFG-EFFECT-SCOPE",
+      "title": "제조 효과·조작 선택 중심 별도 설계 검토 결정",
+      "status": "PROPOSED",
+      "evidence": "research_runs/bounded_dynamic_protocol/DECISION.json",
+      "next_action": "C별도 효과중심 설계검토 여부를 사용자결정. 제조 전체F1 가설은보류/수정한다는한계를명시; 신규실행승인 아님",
+      "acceptance": "선택시 원benchmark·합성결과보존/전체F1주장제외·독립정책효과/P0/출처있는과제/실패처리를갖춘한평가계약. 미선택시제조직접검증중단유지",
+      "depends_on": [
+        "DYNAMIC-SCOPE"
+      ]
     }
   ],
   "priority_order": [
+    "MFG-EFFECT-SCOPE",
     "DYNAMIC-SCOPE",
     "COMPAT-01",
     "ERROR-CONFIRM",
@@ -456,7 +468,8 @@
     "2026-10-25 ERROR-DIAG/ERROR-CONFIRM: 목적을 지표 우세/MAE 최적화와 분리. 오류–응답–선택 대조 완료와 새 독립 계약 미실행을 구분하며 제조 환경 정합성 검토를 우선.",
     "2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현.",
     "2026-10-27 ENV-CONTRACT 구현 VERIFIED는 metadata 소프트웨어만. TEP-BRIDGE PARTIAL: 실제8×6step·3고정점. VALVE-TRANSITION 제안은 별도 다음 작업. 전체 제조 구조–효과 NO-GO 유지.",
-    "2026-10-27 VALVE-TRANSITION VERIFIED는4실제cache-step의정상수치전이만. L2 PARTIAL/L3·L4 BLOCKED. 동일기술반복을종료하고DYNAMIC-SCOPE의사용자설계선택으로이동. 새GT/연구전환미승인."
+    "2026-10-27 VALVE-TRANSITION VERIFIED는4실제cache-step의정상수치전이만. L2 PARTIAL/L3·L4 BLOCKED. 동일기술반복을종료하고DYNAMIC-SCOPE의사용자설계선택으로이동. 새GT/연구전환미승인.",
+    "2026-10-27 사용자승인은B설계검토만. DYNAMIC-SCOPE 초안은PROPOSED_FOR_REVIEW/판정2(미정당화),공식채택없음. MFG-EFFECT-SCOPE는별도효과중심설계검토결정으로분리;실행/GT승인아님."
   ],
   "integration_review": {
     "user_approved": true,
@@ -503,7 +516,7 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "Valve reference gate stacked above OPEN PR18/17/16/15. Main e960fa8. No merges or scope adoption.",
+    "note": "Bounded protocol review stacked above OPEN PR19/18/17/16/15. Main e960fa8. No adoption/merges/execution authorized.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
@@ -540,15 +553,17 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 19,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/19",
-    "current_pr_base": "feature/tep-environment-bridge-feasibility",
+    "current_pr": null,
+    "current_pr_url": null,
+    "current_pr_base": "feature/tep-valve-transition-reference-gate",
     "pr16_status": "OPEN",
     "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab",
     "pr17_status": "OPEN",
     "pr17_head": "a41683bd9a0a0bd568b5e40c4d6374b033eb424e",
     "pr18_status": "OPEN",
-    "pr18_head": "2a03e1de4861ec96f943f4a50351d922d0f46c5b"
+    "pr18_head": "2a03e1de4861ec96f943f4a50351d922d0f46c5b",
+    "pr19_status": "OPEN",
+    "pr19_head": "5d3d62758ddc363d67e4150bf3694a1fa4f879ee"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -1023,5 +1038,27 @@
     "test_failures": 0,
     "pr": 19,
     "execution_commit": "0a1fe052eed76859e6436d5495cbe7b9dc271fed"
+  },
+  "bounded_dynamic_protocol": {
+    "report": "docs/research_design/BOUNDED_DYNAMIC_RESEARCH_PROTOCOL.md",
+    "review_status": "PROPOSED_FOR_REVIEW",
+    "judgment": 2,
+    "execution_gate": "NO-GO",
+    "proposed_nodes": 4,
+    "proposed_pairs": 12,
+    "adjudicated_discovery_pairs": 0,
+    "new_simulator_runs": 0,
+    "new_discovery_fits": 0,
+    "new_scm_fits": 0,
+    "new_do_samples": 0,
+    "official_gt_created": false,
+    "research_design_changed": false,
+    "environment_adopted": false,
+    "next_action": "MFG-EFFECT-SCOPE",
+    "dependency_pr": 19,
+    "dependency_head": "5d3d62758ddc363d67e4150bf3694a1fa4f879ee",
+    "full_unit_tests": 96,
+    "new_static_tests_included": 6,
+    "test_failures": 0
   }
 }

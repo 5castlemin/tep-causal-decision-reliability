@@ -257,3 +257,13 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 최종 전체90단위검사(신규9포함)와7개 새/기존 검증script PASS. 현재자료/동결hash39/상태·환경계약/변경사항 재검산,원자료·old code bytes 불변. 실패0. source실행4step과CI/로컬저장검산을구분.
 
 - 실행코드0a1fe052eed76859e6436d5495cbe7b9dc271fed push,PR19 생성(base PR18). 미병합·연구범위미채택. 실제검사결과와동적설계선택안을같은PR에기록.
+
+### 2026-10-27 — 제한 내부 동적 연구계약 설계 검토
+
+- 사용자승인은PR19권고B의설계검토만. PR15~19 OPEN/계보·main e960fa8·clean 확인,PR19 5d3d627 위 feature/tep-bounded-dynamic-research-protocol 분기. 기존PR병합없음.
+- 단일냉각수–에너지후보 V={u,v,W,E},dt1s 전이후보12쌍을제안으로정의. c/Q/T_R/Y9는중복/대수/시계의진단으로구분. 전부미채점이며공식GT/새F1없음.
+- source구간정적읽기와이전cache·폐쇄반례근거재사용: W/E/T_R에조성/holdup/UA/엔탈피흐름/반응열의내생부모가남고baseline경계고정은다른개입모델이됨. 알고리즘의정적/동적/PAG추정대상불일치와상수입력·결정론성·선택과제미정을명시. 공식문서/원논문만추가참조.
+- 완결된초안/PROTOCOL/DECISION에서판정2:현재계약미정당화·실행NO-GO,PROPOSED_FOR_REVIEW 유지. B본실험확대중단. 다음은C별도효과중심설계검토여부결정이며전체F1가설보류/수정의한계를명시. 원설계공식변경없음.
+- 새코드는최소정적schema/일관성검사와6개문서회귀검사뿐. simulator/source수치평가·발견/SCM학습·새do/GT0. 전체기존검사의저장산술재검산은새실험이아님. 명령과결과는 validation/에기록.
+
+- 최종전체96단위검사(새정적6포함)/계약정적검사/상태JSON-MD/동결39SHA/환경계약/assetmanifest·diff검사PASS. 신규model실행0,src와과거산출물전체불변. 검사통과는판정2를GO로바꾸지않음.

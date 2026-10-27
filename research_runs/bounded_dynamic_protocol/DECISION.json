@@ -1,0 +1,22 @@
+{
+  "status": "PROPOSED_FOR_REVIEW",
+  "protocol_id": "BOUNDED-TEP-COOLING-ENERGY-v1",
+  "requested_judgment": 2,
+  "conclusion": "LIMITED_DYNAMIC_CONTRACT_CURRENTLY_NOT_JUSTIFIED",
+  "execution_gate": "NO-GO",
+  "reason_codes": ["ENDOGENOUS_BOUNDARY_NOT_CLOSED", "DISCOVERY_REFERENCE_ESTIMAND_MISMATCH", "OBSERVATION_EXCITATION_UNJUSTIFIED", "NONTRIVIAL_TEMPERATURE_DECISION_NOT_READY"],
+  "primary_blocker": "W/E/T_R require endogenous inventory, heat/enthalpy-flow and reaction states that cannot be treated as fixed independent boundary inputs under the candidate command intervention",
+  "what_is_decidable_now": ["one narrow valve update is numerically verified", "the selected4-node cooling-energy reduction is not an autonomous intervention-valid model", "there is no approved discovery score universe with justified non-edges", "another valve smoke cannot repair parent closure or task identifiability", "original benchmark and synthetic conclusions remain separate"],
+  "what_is_not_decidable_now": ["best graph-quality metric in real TEP", "valid full31 or reduced4-node structural F1", "sufficient finite observation history", "adequate excitation/sample size/action range/horizon", "nontrivial command optimum or effect accuracy"],
+  "code_alone_resolves_primary_blocker": false,
+  "needed_methodological_choice": "A defensible closed/controlled boundary or a specified latent-projection estimand; neither is established and neither may be invented by metadata/schema",
+  "path_recommendation": "STOP_B_EXPERIMENT_EXPANSION; CONSIDER_C_SEPARATE_EFFECT_FOCUSED_DESIGN_REVIEW",
+  "why_c_is_more_realistic": "The full pinned simulator can evolve endogenous boundary states when measuring a fixed command policy; that needs no claim of a complete direct-structure GT. It still requires an admissible task and independent evaluation contract.",
+  "c_is_not_original_hypothesis_test": true,
+  "next_single_action": "User decide whether to review a separate effect/command-selection research scope that explicitly suspends manufacturing whole-structure-F1 claims; not approve execution or replace the original benchmark",
+  "retained_research": {"CPCaD": "frozen structure benchmark and observational-fit records only, not validated Python intervention effects", "synthetic": "separate structure-error/decision mechanism evidence with previously documented limitations", "Python_TEP": "technical and local-mechanism evidence, not adopted causal reference environment"},
+  "scope_changed": false,
+  "environment_adopted": false,
+  "official_gt_created": false,
+  "research_hypothesis_confirmed": false
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_bounded_dynamic_protocol",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 0.21899999980814755,
+    "log": "00_targeted_unittest.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 85.48400000017136,
+    "log": "01_all_unittest.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_bounded_dynamic_protocol.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.10999999986961484,
+    "log": "02_validate_bounded_dynamic_protocol.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_research_state.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.125,
+    "log": "03_check_research_state.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "graphs/final/verify_and_load.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.5620000001508743,
+    "log": "04_verify_and_load.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_environment_contract.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.23499999986961484,
+    "log": "05_validate_environment_contract.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_asset_manifest.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.09300000010989606,
+    "log": "06_check_asset_manifest.txt"
+  }
+]

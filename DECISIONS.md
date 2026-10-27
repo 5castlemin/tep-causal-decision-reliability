@@ -111,3 +111,9 @@ RESEARCH_COMPASS는 실무 안내이며 RESEARCH_DESIGN을 대체/수정하지 �
 실제 u_req/u_eval/cache c와 v_t/v_next를4step에서분리했다. 과거cache미기록24step은 c를역산해보완하지않고BLOCKED를유지한다. stiction/clip/controller/shutdown은정상계약에서거부하며모의거부를실제Fault검증으로승격하지않는다. L1 VERIFIED는공식GT/관측구조/전체F1이아니며 L2 PARTIAL,L3/L4 BLOCKED다.
 
 다음기술시험을관성적으로추가하지않는다. 우선권고B는기존정적센서/benchmark를보존한채별도내부상태·시간전개설계안을검토할지사용자가선택하는것이다. A원계보자료부족,C효과중심은전체구조가설의수정이필요하므로자동채택안함. SCOPE_PROPOSAL.json은제안일뿐,연구전환/GT/발견학습/본실험/기존PR병합은승인하지않음. RESEARCH_DESIGN 불변.
+
+### 2026-10-27 — B 제한 동적 계약 검토 결과: 판정2
+
+사용자가승인한B설계검토를수행한결과,4node/12후보쌍만으로는W/E/T_R의내생경계부모가닫히지않고발견추정대상/음성참조·관측변동·비자명한온도선택과제도미정이다. source의조건부함수부모를전체공정/관측GT로승격하지않고실행NO-GO로결론냈다. 초안은PROPOSED_FOR_REVIEW이며RESEARCH_DESIGN/기존benchmark/원시는불변.
+
+이전B검토권고를유지하려고검사/가정을완화하지않는다. 추가smoke/대규모state확장/독립잡음삽입을자동수행하지않는다. 다음한결정은C별도효과·조작선택설계검토여부다. 전체직접GT부담은줄지만제조전체F1가설의직접검증은아니라는범위변경을사용자가검토해야한다. 공식전환/새실행/GT/기존PR병합승인은없다. 원benchmark와합성오류연구는독립결과로보존한다.
