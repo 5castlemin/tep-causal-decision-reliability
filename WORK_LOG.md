@@ -279,3 +279,5 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 현재TEP효과경로동결,추가TEP시험·패치·검토문서권고없음. 다음은기존합성독립확인·민감도·오류대조의최종주장정리. 새연구/학습승인없음. 원설계/old자료/src/tests/기대값불변. 새연구코드·단위검사추가없음;기존검사재사용.
 
 - 기존 전체96단위검사 PASS(신규검사0);상태JSON-MD/동결39SHA·변수순서/환경계약/이전B정적계약/asset manifest·diff PASS. PR20 기준 기존보호경로5084개불변,근거11개LF-SHA일치. src/verify_recovery.py main은과거출력을덮어쓰므로실행안함. 신규실험미실행.
+
+- 검토/검사커밋 b6c7aa53980db3c803cfec2ee60be0f03b979e40 push,PR21 생성(base PR20). STOP/FROZEN 유지,PR15~21 미병합·신규실행/연구변경미채택.
