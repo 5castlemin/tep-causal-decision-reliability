@@ -76,3 +76,8 @@ PR12~14 통합 완료. 기존20구조는 이제 개발 자료이며, 이론 개�
 ### 오류가 의사결정에 영향을 주는 과정
 
 연구 목적은 특정 경로 지표를 우수하게 만드는 것이 아닙니다. 이번 개발 대조에서는 같은 전체 F1과 오류 수에서도 위치에 따라 실제 조작/손실이 달랐고, 핵심 오류가 있는 쪽이 더 좋은 조작을 고르는 반례도 있었습니다. 효과 추정·선택·정책의 차이를 분리한 근거와 한계는 `docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md`, 재개 방법은 `research_runs/decision_reliability_next/CHECKPOINT.md`에 있습니다. 제조 관측·참조·do 정합성은 미해결입니다.
+
+
+### 2026-10-27 제조 타당성 점검
+
+낮은 구조F1 자체보다 참조구조와 실제개입환경의 불일치가 우선 차단입니다. 기존7개 graph/84과제/무작위baseline 재검산과 명령·센서·시간 증거검산을 수행했으며 새 제조운전은 하지 않았습니다. 현재환경차단은 이름/승인플래그를 보므로 metadata의 실질비교를 추가하는 작은 구현이 다음작업입니다. 세부근거: `docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md`.

@@ -69,3 +69,10 @@ research_runs/decision_reliability_next/PLAN_v1.json linguist-generated=false
 src/decision_reliability_next.py -text whitespace=cr-at-eol
 scripts/*decision_reliability_next.py -text whitespace=cr-at-eol
 tests/test_decision_reliability_next.py -text whitespace=cr-at-eol
+# Read-only manufacturing validity audit: preserve executed calculation/failure records.
+research_runs/manufacturing_validity_gate/** -text linguist-generated=true whitespace=cr-at-eol
+research_runs/manufacturing_validity_gate/README.md linguist-generated=false
+research_runs/manufacturing_validity_gate/NEXT_ENVIRONMENT_CONTRACT_SPEC.json linguist-generated=false
+scripts/audit_manufacturing_validity.py -text whitespace=cr-at-eol
+scripts/validate_manufacturing_validity.py -text whitespace=cr-at-eol
+tests/test_manufacturing_validity.py -text whitespace=cr-at-eol

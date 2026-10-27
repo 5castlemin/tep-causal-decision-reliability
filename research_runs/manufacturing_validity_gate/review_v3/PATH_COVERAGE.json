@@ -1,0 +1,107 @@
+[
+  {
+    "graph_id": "pc",
+    "tasks": 12,
+    "confirmed_reachable": 1,
+    "no_confirmed_path": 11,
+    "no_path_reference_fraction": 0.9166666666666666,
+    "fraction_scope": "conditional structural implication of confirmed-only policy, NOT actually executed12-task recommendations; excludes cyclic/lag fit constraints",
+    "all198_reference_reachability": {
+      "tp": 1,
+      "fn": 64,
+      "fp": 0,
+      "tn": 133
+    },
+    "negative_pair_scope": "discordance against benchmark structural reference only, not physical negative effects"
+  },
+  {
+    "graph_id": "boss",
+    "tasks": 12,
+    "confirmed_reachable": 1,
+    "no_confirmed_path": 11,
+    "no_path_reference_fraction": 0.9166666666666666,
+    "fraction_scope": "conditional structural implication of confirmed-only policy, NOT actually executed12-task recommendations; excludes cyclic/lag fit constraints",
+    "all198_reference_reachability": {
+      "tp": 5,
+      "fn": 60,
+      "fp": 29,
+      "tn": 104
+    },
+    "negative_pair_scope": "discordance against benchmark structural reference only, not physical negative effects"
+  },
+  {
+    "graph_id": "directlingam",
+    "tasks": 12,
+    "confirmed_reachable": 3,
+    "no_confirmed_path": 9,
+    "no_path_reference_fraction": 0.75,
+    "fraction_scope": "conditional structural implication of confirmed-only policy, NOT actually executed12-task recommendations; excludes cyclic/lag fit constraints",
+    "all198_reference_reachability": {
+      "tp": 21,
+      "fn": 44,
+      "fp": 26,
+      "tn": 107
+    },
+    "negative_pair_scope": "discordance against benchmark structural reference only, not physical negative effects"
+  },
+  {
+    "graph_id": "dagma",
+    "tasks": 12,
+    "confirmed_reachable": 3,
+    "no_confirmed_path": 9,
+    "no_path_reference_fraction": 0.75,
+    "fraction_scope": "conditional structural implication of confirmed-only policy, NOT actually executed12-task recommendations; excludes cyclic/lag fit constraints",
+    "all198_reference_reachability": {
+      "tp": 12,
+      "fn": 53,
+      "fp": 33,
+      "tn": 100
+    },
+    "negative_pair_scope": "discordance against benchmark structural reference only, not physical negative effects"
+  },
+  {
+    "graph_id": "pcmciplus",
+    "tasks": 12,
+    "confirmed_reachable": 4,
+    "no_confirmed_path": 8,
+    "no_path_reference_fraction": 0.6666666666666666,
+    "fraction_scope": "conditional structural implication of confirmed-only policy, NOT actually executed12-task recommendations; excludes cyclic/lag fit constraints",
+    "all198_reference_reachability": {
+      "tp": 20,
+      "fn": 45,
+      "fp": 48,
+      "tn": 85
+    },
+    "negative_pair_scope": "discordance against benchmark structural reference only, not physical negative effects"
+  },
+  {
+    "graph_id": "varlingam",
+    "tasks": 12,
+    "confirmed_reachable": 8,
+    "no_confirmed_path": 4,
+    "no_path_reference_fraction": 0.3333333333333333,
+    "fraction_scope": "conditional structural implication of confirmed-only policy, NOT actually executed12-task recommendations; excludes cyclic/lag fit constraints",
+    "all198_reference_reachability": {
+      "tp": 48,
+      "fn": 17,
+      "fp": 89,
+      "tn": 44
+    },
+    "negative_pair_scope": "discordance against benchmark structural reference only, not physical negative effects"
+  },
+  {
+    "graph_id": "dynotears",
+    "tasks": 12,
+    "confirmed_reachable": 8,
+    "no_confirmed_path": 4,
+    "no_path_reference_fraction": 0.3333333333333333,
+    "fraction_scope": "conditional structural implication of confirmed-only policy, NOT actually executed12-task recommendations; excludes cyclic/lag fit constraints",
+    "all198_reference_reachability": {
+      "tp": 42,
+      "fn": 23,
+      "fp": 58,
+      "tn": 75
+    },
+    "negative_pair_scope": "discordance against benchmark structural reference only, not physical negative effects"
+  }
+]

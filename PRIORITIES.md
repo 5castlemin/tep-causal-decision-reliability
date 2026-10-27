@@ -1,23 +1,24 @@
 # 연구 우선순위
 
-기준일: 2026-10-25. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-10-27. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
-1. **COMPAT-01 — 공개 후보와 기존 데이터/GT 대응**: 새 전수검색 없이 기존 차단 인계자료로 동일 관측·GT·do/제어기·시간 계약의 확보 가능 범위 결정. 확인 전 제조 직접 가설 평가 금지 (PARTIAL)
-2. **ERROR-CONFIRM — 오류 위치의 조건부 의사결정 영향 독립 계약**: 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 (PROPOSED)
-3. **PATH-PRECISION — 추가 예측력 독립 확인 정밀도·예산**: 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 (BLOCKED)
+1. **ENV-CONTRACT — 구조 점수–개입 결과 metadata 차단 계약 구현**: src/environment_contract.py와tests/test_environment_contract.py 구현. 같은이름의controller/시계/참조불일치와누락근거를거부하고 interface-only/research 목적분리 (PROPOSED)
+2. **COMPAT-01 — 공개 후보와 기존 데이터/GT 대응**: 원환경/새Python후보 직접 구조–효과 join NO-GO. 원시계보/관측참조 동등성은미해결. ENV-CONTRACT의 실행 가능한 metadata 차단 검사를 먼저 구현 (PARTIAL)
+3. **ERROR-CONFIRM — 오류 위치의 조건부 의사결정 영향 독립 계약**: 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 (PROPOSED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| COMPAT-01 | PARTIAL | SIM-03, SIM-04 | 새 전수검색 없이 기존 차단 인계자료로 동일 관측·GT·do/제어기·시간 계약의 확보 가능 범위 결정. 확인 전 제조 직접 가설 평가 금지 / 정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지 |
+| ENV-CONTRACT | PROPOSED | MFG-VALIDITY | src/environment_contract.py와tests/test_environment_contract.py 구현. 같은이름의controller/시계/참조불일치와누락근거를거부하고 interface-only/research 목적분리 / 6개 사전negative/technical fixture 검사·정확한거부이유·현CPCaD/Python join거부 유지. metadata통과를물리/인과승인으로취급하지 않음 |
+| COMPAT-01 | PARTIAL | SIM-03, SIM-04 | 원환경/새Python후보 직접 구조–효과 join NO-GO. 원시계보/관측참조 동등성은미해결. ENV-CONTRACT의 실행 가능한 metadata 차단 검사를 먼저 구현 / 정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지 |
 | ERROR-CONFIRM | PROPOSED | ERROR-DIAG | 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 / 대표 성공만 선택하지 않는 독립 대조 계획·독립 평가환경·실행 가능한 정밀도/예산 |
 | PATH-PRECISION | BLOCKED | PATH-MODEL | 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 / 실행 가능한 사전 정밀도·구조 수·예산 계약; 유리한 결과를 위한 기준 완화 금지 |
 | PATH-MODEL | PARTIAL | EVAL-MVP | 고정9후보 중첩 검증은 기본19/경로1 선택. 품질 특징 추가가 이득 아님. 단순 기본모형을 개발 기준선으로 유지하고 MAE 탐색 확장 중단 / 구조 단위 검증·특징 선택 누출 검사·고정 모형 산출물 |
 | PATH-CONFIRM | NOT_RUN | PATH-PRECISION, POLICY-MVP | 정밀도 통과 후에만 새 구조·계수·seed·M0~M6·실패 정책을 고정하고 실제 학습/do 실행 / 기존20구조 미사용의 확인 코호트, 추천 고정 후 이론/실제 do 평가, 구조 단위 구간 |
-| EVAL-MVP | PARTIAL | ENV-MVP, POLICY-MVP | 같은 F1의 오류 위치가 응답·선택·손실을 바꾸는 개발 근거 확보. 단일 지표 우월성 대신 조건부 오류 메커니즘의 독립 대조 / 오류 위치·효과/선택 분리와 제조 동일환경의 참조·관측·do 계약; 합성 개발 결과로 제조 주장 금지 |
+| EVAL-MVP | PARTIAL | ENV-MVP, POLICY-MVP | 낮은F1을 사후튜닝하지 않음. 7graph/84과제·198쌍 검산을 구조 진단으로 유지하고 제조 효과와 결합 금지; 참조·환경계약 선결 / 오류 위치·효과/선택 분리와 제조 동일환경의 참조·관측·do 계약; 합성 개발 결과로 제조 주장 금지 |
 | POLICY-MVP | PARTIAL | ENV-MVP | 실패24행은 기준 조작0의 실제 이론 손실로 운영 평가; 가용2136/2160·조건부·계산추천1326 분리 유지 / 실패/경로부재/계산된 기준/방향보류 구분 및 새 확인 정책 사전 고정 |
 | PILOT-CONFIRM | PARTIAL | PILOT-DIVERSE, POLICY-MVP | 과거12구조 독립 확인 기록 보존. C01~C12는 이후 모형 개발에 사용됐으므로 새 확인용으로 재사용하지 않음 / 144재현PASS/12 FCM검증/216그래프 중214SCM/5088평가/184320 do 수행. 일차 지지와 종합 추가정보 미확인·실패선택편향을 구분 |
 | PILOT-REPEAT | VERIFIED | PILOT-IID | 기존12데이터/36학습 결과 보존. 새8구조 결과는 PILOT-DIVERSE로 분리하며 과거 수치와 혼합하지 않음 / 12데이터/36학습/432정책행/55296 do 원시 식·통계·고정추천·해시 검사. 제조 가설 입증 아님 |
@@ -56,5 +57,6 @@
 - 2026-10-25 PILOT-CONFIRM 추가: 기존8구조144재현과 새12구조216시도/214SCM를 구분. PILOT-DIVERSE 현재 replay만 실제 증거로 갱신하고 과거 보고서·원시는 보존.
 - 2026-10-25 PATH-MODEL/PATH-PRECISION/PATH-CONFIRM 추가: 기존 EVAL-MVP를 삭제하지 않고 개발 안정성·정밀도 차단·새 독립 확인 미실행을 분리. PR12~14 실제 병합 반영.
 - 2026-10-25 ERROR-DIAG/ERROR-CONFIRM: 목적을 지표 우세/MAE 최적화와 분리. 오류–응답–선택 대조 완료와 새 독립 계약 미실행을 구분하며 제조 환경 정합성 검토를 우선.
+- 2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

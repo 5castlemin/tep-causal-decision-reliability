@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-10-25. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
+기준일: 2026-10-27. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
@@ -8,7 +8,7 @@
 | SRC-01 | Final 생성 코드 회수 | BLOCKED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | FREEZE.code의 algos/run_*.py 및 common/config.py·data_io.py 원본을 해시로 대조하여 회수 |
 | SIM-03 | 공개 후보 수치·shutdown 검증 | PARTIAL | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 압력 한계 종료와 제한적 dt 수렴 확인; 동일 모델·controller 독립 기준 대조 및 폐루프 시간 계약 검증 |
 | SIM-04 | 공개 후보 새 객체 초기화 계약 | VERIFIED | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 동일 source/backend/seed/mode의 새 객체를 반복 단위로 사용; 같은 객체 reset의 비트 일치 미보장 |
-| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | docs/research_design/TRACK_A_RECOVERY_GATE.md | 새 전수검색 없이 기존 차단 인계자료로 동일 관측·GT·do/제어기·시간 계약의 확보 가능 범위 결정. 확인 전 제조 직접 가설 평가 금지 |
+| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md | 원환경/새Python후보 직접 구조–효과 join NO-GO. 원시계보/관측참조 동등성은미해결. ENV-CONTRACT의 실행 가능한 metadata 차단 검사를 먼저 구현 |
 | SIM-01 | 기존 8월 시뮬레이터 복구 | BLOCKED | docs/SIMULATOR_SETUP.md | 당시 저장소 URL/ZIP·버전·실행 명령·로그의 구체 소재 확보 |
 | SIM-02 | 공개 Python 후보 관측·쓰기·Fault smoke | PARTIAL | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/run_20261023_v3/summary.json | 기존 2시간 정상 기록 보존; controller/override·수치 기준·호환성 제한 해결 뒤 Gate 재평가 |
 | TASK-01 | 실행 가능한 복구 과제 확정 | BLOCKED | experiments/pilot/TASK_SPEC.md | 모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정 |
@@ -28,7 +28,7 @@
 | MVP-TECH | 공통 추천 dry-run·API 기술 파일럿 | VERIFIED | docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md | 기존3모델 추천 dry-run/정해진 조작 반복·로거 재사용; 가설 검증으로 해석 금지 |
 | ENV-MVP | 구조·추천 평가환경 대응 | PARTIAL | docs/research_design/ENV_MVP_ACCEPTANCE.md | 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 |
 | POLICY-MVP | 실제 추천 정책 연결 | PARTIAL | docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md | 실패24행은 기준 조작0의 실제 이론 손실로 운영 평가; 가용2136/2160·조건부·계산추천1326 분리 유지 |
-| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md | 같은 F1의 오류 위치가 응답·선택·손실을 바꾸는 개발 근거 확보. 단일 지표 우월성 대신 조건부 오류 메커니즘의 독립 대조 |
+| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md | 낮은F1을 사후튜닝하지 않음. 7graph/84과제·198쌍 검산을 구조 진단으로 유지하고 제조 효과와 결합 금지; 참조·환경계약 선결 |
 | ENV-EXAMPLE | 예제 FCM GT·관측·do adapter acceptance | VERIFIED | docs/research_design/ENV_MVP_ACCEPTANCE.md | 고정 source/lock/원시 잡음/배치 검증 재사용. 제조/시간/반사실 검증으로 확대하지 않음 |
 | PILOT-IID | 4변수 합성 통합 학습·추천·do 실행 | VERIFIED | docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md; research_runs/first_integrated_pilot/reproducibility_check.json | 두 잡음군 별도 3학습/1과제 연결 결과를 유지하고 다중 독립 학습 조건 계획에 활용; 제조 채택 아님 |
 | PILOT-REPEAT | 합성 독립 반복·4과제·미확정 정책 비교 | VERIFIED | docs/research_design/REPEATED_METRIC_PILOT_REPORT.md | 기존12데이터/36학습 결과 보존. 새8구조 결과는 PILOT-DIVERSE로 분리하며 과거 수치와 혼합하지 않음 |
@@ -39,6 +39,8 @@
 | PATH-CONFIRM | 경로 지표 추가 정보의 새 독립 확인 | NOT_RUN | docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md | 정밀도 통과 후에만 새 구조·계수·seed·M0~M6·실패 정책을 고정하고 실제 학습/do 실행 |
 | ERROR-DIAG | 합성 개발 자료 오류–응답–선택 대조 | VERIFIED | docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md | 324실제 오류쌍/162핵심–주변/114경로유지와 반례·동률 보존. 6개 oracle 적합을 발견 graph와 분리 |
 | ERROR-CONFIRM | 오류 위치의 조건부 의사결정 영향 독립 계약 | PROPOSED | docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md | 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 |
+| MFG-VALIDITY | 제조 연구 타당성·저장 증거 감사 | VERIFIED | docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md | 검산 완료 범위만 유지:39해시/7점수/84과제/21baseline·시간증거. 제조GO가 아니라 과학적 차단/guard한계를 확인한 감사 |
+| ENV-CONTRACT | 구조 점수–개입 결과 metadata 차단 계약 구현 | PROPOSED | research_runs/manufacturing_validity_gate/NEXT_ENVIRONMENT_CONTRACT_SPEC.json | src/environment_contract.py와tests/test_environment_contract.py 구현. 같은이름의controller/시계/참조불일치와누락근거를거부하고 interface-only/research 목적분리 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

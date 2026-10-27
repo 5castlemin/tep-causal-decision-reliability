@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-25",
+  "checked_at": "2026-10-27",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -32,8 +32,8 @@
       "id": "COMPAT-01",
       "title": "공개 후보와 기존 데이터/GT 대응",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/TRACK_A_RECOVERY_GATE.md",
-      "next_action": "새 전수검색 없이 기존 차단 인계자료로 동일 관측·GT·do/제어기·시간 계약의 확보 가능 범위 결정. 확인 전 제조 직접 가설 평가 금지",
+      "evidence": "docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md",
+      "next_action": "원환경/새Python후보 직접 구조–효과 join NO-GO. 원시계보/관측참조 동등성은미해결. ENV-CONTRACT의 실행 가능한 metadata 차단 검사를 먼저 구현",
       "acceptance": "정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지",
       "depends_on": [
         "SIM-03",
@@ -232,8 +232,8 @@
       "id": "EVAL-MVP",
       "title": "구조 지표–추천 성능 비교",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md",
-      "next_action": "같은 F1의 오류 위치가 응답·선택·손실을 바꾸는 개발 근거 확보. 단일 지표 우월성 대신 조건부 오류 메커니즘의 독립 대조",
+      "evidence": "docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md",
+      "next_action": "낮은F1을 사후튜닝하지 않음. 7graph/84과제·198쌍 검산을 구조 진단으로 유지하고 제조 효과와 결합 금지; 참조·환경계약 선결",
       "acceptance": "오류 위치·효과/선택 분리와 제조 동일환경의 참조·관측·do 계약; 합성 개발 결과로 제조 주장 금지",
       "depends_on": [
         "ENV-MVP",
@@ -349,9 +349,30 @@
       "depends_on": [
         "ERROR-DIAG"
       ]
+    },
+    {
+      "id": "MFG-VALIDITY",
+      "title": "제조 연구 타당성·저장 증거 감사",
+      "status": "VERIFIED",
+      "evidence": "docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md",
+      "next_action": "검산 완료 범위만 유지:39해시/7점수/84과제/21baseline·시간증거. 제조GO가 아니라 과학적 차단/guard한계를 확인한 감사",
+      "acceptance": "원본 보존·실패 기록·원본평가기strict 수치대조·소스4hash·기존시계/명령 검산. 신규운전0",
+      "depends_on": []
+    },
+    {
+      "id": "ENV-CONTRACT",
+      "title": "구조 점수–개입 결과 metadata 차단 계약 구현",
+      "status": "PROPOSED",
+      "evidence": "research_runs/manufacturing_validity_gate/NEXT_ENVIRONMENT_CONTRACT_SPEC.json",
+      "next_action": "src/environment_contract.py와tests/test_environment_contract.py 구현. 같은이름의controller/시계/참조불일치와누락근거를거부하고 interface-only/research 목적분리",
+      "acceptance": "6개 사전negative/technical fixture 검사·정확한거부이유·현CPCaD/Python join거부 유지. metadata통과를물리/인과승인으로취급하지 않음",
+      "depends_on": [
+        "MFG-VALIDITY"
+      ]
     }
   ],
   "priority_order": [
+    "ENV-CONTRACT",
     "COMPAT-01",
     "ERROR-CONFIRM",
     "PATH-PRECISION",
@@ -394,7 +415,8 @@
     "2026-10-24 PILOT-DIVERSE 추가: 미병합 PR12 위에서 사용자 명시 승인된8개 합성 구조의144학습·918평가와8fold LOSO 실행만 VERIFIED. EVAL/POLICY는 지표 우월성/제조 검증 미완료로 PARTIAL, 기존 protocol 수치/상태기록 보존.",
     "2026-10-25 PILOT-CONFIRM 추가: 기존8구조144재현과 새12구조216시도/214SCM를 구분. PILOT-DIVERSE 현재 replay만 실제 증거로 갱신하고 과거 보고서·원시는 보존.",
     "2026-10-25 PATH-MODEL/PATH-PRECISION/PATH-CONFIRM 추가: 기존 EVAL-MVP를 삭제하지 않고 개발 안정성·정밀도 차단·새 독립 확인 미실행을 분리. PR12~14 실제 병합 반영.",
-    "2026-10-25 ERROR-DIAG/ERROR-CONFIRM: 목적을 지표 우세/MAE 최적화와 분리. 오류–응답–선택 대조 완료와 새 독립 계약 미실행을 구분하며 제조 환경 정합성 검토를 우선."
+    "2026-10-25 ERROR-DIAG/ERROR-CONFIRM: 목적을 지표 우세/MAE 최적화와 분리. 오류–응답–선택 대조 완료와 새 독립 계약 미실행을 구분하며 제조 환경 정합성 검토를 우선.",
+    "2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현."
   ],
   "integration_review": {
     "user_approved": true,
@@ -441,11 +463,11 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "This feature is stacked on OPEN PR15. No merge approval for PR15/new PR. Owner one-time review exception covered PR12~14 only; current separate reviews0.",
+    "note": "Manufacturing audit stacked above OPEN PR16 above OPEN PR15. No merge authorized. Main e960fa8. Existing PR reviews/owner exception not bypassed.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
-    "current_work_base": "feature/path-metric-incremental-validation",
+    "current_work_base": "feature/decision-reliability-next",
     "pr7_status": "MERGED",
     "pr7_head": "8634e5dce66460dc26441fc40e930c34ebc73af7",
     "pr8_status": "MERGED",
@@ -463,7 +485,7 @@
     "pr11_head": "6d37d095998bf45bc532606fe8113fedd1b8f913",
     "pr11_merge_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
     "main_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
-    "current_feature": "feature/decision-reliability-next",
+    "current_feature": "feature/manufacturing-validity-gate",
     "pr12_status": "MERGED",
     "pr12_head": "23d19f56cd6510783398cfa95f66f1d1d8194937",
     "pr12_ci": 40097602131,
@@ -478,9 +500,11 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 16,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/16",
-    "current_pr_base": "feature/path-metric-incremental-validation"
+    "current_pr": null,
+    "current_pr_url": null,
+    "current_pr_base": "feature/decision-reliability-next",
+    "pr16_status": "OPEN",
+    "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -874,5 +898,28 @@
     "rough_required_structures": 132,
     "new_independent_confirmation": "NOT_RUN",
     "manufacturing_ready": false
+  },
+  "manufacturing_validity_gate": {
+    "checked_at": "2026-10-27",
+    "report": "docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md",
+    "evidence": "research_runs/manufacturing_validity_gate/review_v4",
+    "graphs_recalculated": 7,
+    "task_rows_recalculated": 84,
+    "action_target_pairs": 198,
+    "reference_valid_pairs": 65,
+    "reference_negative_pairs": 133,
+    "random_draws": "existing10000 draws per condition, not new generation",
+    "baseline_conditions_recomputed": 21,
+    "source_files_hash_verified": 4,
+    "track_a": "NO-GO",
+    "track_b_global_structure_effect": "NO-GO",
+    "track_b_technical_interface": "CONDITIONAL",
+    "recommendation": "D_ADDITIONAL_VERIFICATION",
+    "join_guard": "id and Boolean only; metadata consistency NOT established",
+    "new_discovery": 0,
+    "new_scm_fit": 0,
+    "new_simulator_run": 0,
+    "recovery_safety": "NOT_RUN",
+    "next_spec": "research_runs/manufacturing_validity_gate/NEXT_ENVIRONMENT_CONTRACT_SPEC.json"
   }
 }

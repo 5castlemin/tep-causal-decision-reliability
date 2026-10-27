@@ -1,0 +1,14 @@
+{
+  "status": "PROPOSED_NOT_IMPLEMENTED_OR_ACCEPTED",
+  "purpose": "Next executable task: fail-closed structural-score/outcome join contract; no simulator or new GT needed",
+  "target_files": ["src/environment_contract.py", "tests/test_environment_contract.py", "scripts/validate_environment_contract.py"],
+  "reuse_inputs": ["src/decision_mvp.py:require_research_environment", "docs/research_design/ref_b_minimal_evidence/local_checks.json", "docs/research_design/track_a_evidence/gate_evidence.json", "research_runs/manufacturing_validity_gate/review_v4/ENVIRONMENT_JOIN_PROBE.json"],
+  "contract_fields": ["purpose: interface_only vs structure_effect_research", "model source commit/hash", "controller configuration hash/mode", "observed node names/units/order", "state and sensor evaluation clock", "sampling/aggregation length and stride", "reference edge semantics/direct-lag definition and negative-pair coverage", "command vs actuator vs setpoint intervention mechanism", "reset/noise/evaluation horizon contract", "evidence paths/hashes and VERIFIED/REPORTED/UNKNOWN status"],
+  "tests": ["same label but controller mismatch rejects research join", "same label but clock/aggregation mismatch rejects research join", "internal-state partial positive structure cannot pass observed-node global F1 join", "missing/REPORTED evidence rejects research join", "identical synthetic software fixture may pass technical consistency, never approves manufacturing", "legacy different-id rejection remains"],
+  "completion": "unit-tested metadata comparison with exact rejection reasons; current CPCaD/Python TEP research join stays rejected; interface-only output never contains a structure-effect claim",
+  "not_proof": "Matching metadata/hashes cannot establish physics or causal reference validity. External evidence still required. No automatic TEP adoption.",
+  "physical_action_bounds": null,
+  "target_normal_range": null,
+  "recovery_safety_thresholds": null,
+  "fresh_manufacturing_execution_approved": false
+}
