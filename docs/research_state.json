@@ -33,7 +33,7 @@
       "title": "공개 후보와 기존 데이터/GT 대응",
       "status": "PARTIAL",
       "evidence": "docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md",
-      "next_action": "원환경 raw/controller/집계 미확정 유지. Python 국소 실행은 가능하나 관측 참조/음성쌍/학습 변동 부족으로 전체 구조–효과 연구 NO-GO",
+      "next_action": "원환경 계보·정식실행 미확보 유지. 새Python 내부동적 설계안은 별도사용자선택 대상. 기존F1과Python효과 결합금지",
       "acceptance": "정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지",
       "depends_on": [
         "SIM-03",
@@ -375,7 +375,7 @@
       "title": "Python TEP 관측·명령·상태 연결 검산",
       "status": "PARTIAL",
       "evidence": "research_runs/tep_environment_bridge/technical_v1/SUMMARY.json; research_runs/tep_environment_bridge/closure_v1/RESULT.json",
-      "next_action": "8×6step exact 반복과3고정점 관측충분성 반례 확인. 전체 참조/학습·독립 효과 계약 미충족; 공식 환경 채택 아님",
+      "next_action": "실제cache4step 추가로 좁은전이식 확인. 센서 직접/음성참조 미확정으로 L3/L4 BLOCKED; 연구설계 선택을 우선",
       "acceptance": "명령/밸브/센서 시계·잡음·초기화 분리. 연구join NO-GO 유지",
       "depends_on": [
         "ENV-CONTRACT",
@@ -385,17 +385,29 @@
     {
       "id": "VALVE-TRANSITION",
       "title": "좁은 수동 밸브 시간전이 계약 검산",
-      "status": "PROPOSED",
-      "evidence": "docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md",
-      "next_action": "scripts/validate_tep_valve_transition_contract.py 작성: u_t/v_t/v_t+1 식 독립 대조·stiction/IDV/클리핑/제어개입 미지원 거부. GT·학습·F1 생성 아님",
-      "acceptance": "기존 ±.001pp 국소 조건에서 actual evaluate/Euler 식 일치 및 원 센서 평가join 거부. 공식 연구 채택과 분리",
+      "status": "VERIFIED",
+      "evidence": "research_runs/tep_valve_transition/run_v1/TRANSITIONS.json; research_runs/tep_valve_transition/RECHECKS.json",
+      "next_action": "L1 정상 cache 전이만 검증 완료. 같은기술반복 종료; DYNAMIC-SCOPE에서 내부상태·시간전개 연구설계 검토 여부 결정",
+      "acceptance": "실제2arm/4step cache 전후·미분/Euler 시간단위 일치. 기존24step cache 미기록 차단,3고정점 재검산,12모의 거부. 전체GT/F1 아님",
       "depends_on": [
         "TEP-BRIDGE"
+      ]
+    },
+    {
+      "id": "DYNAMIC-SCOPE",
+      "title": "내부 상태·시간전개 연구 설계안 선택",
+      "status": "PROPOSED",
+      "evidence": "docs/research_design/TEP_DYNAMIC_REFERENCE_DECISION.md; research_runs/tep_valve_transition/SCOPE_PROPOSAL.json",
+      "next_action": "우선권고B: 기존31정적센서와별도 namespace의 제한 내부동적 연구설계 검토 여부를 사용자결정. 새GT/본실험 채택은포함안함",
+      "acceptance": "사용자선택 후 닫힌부모/유한노드·시간·음성/미확정쌍·발견대상·관측변동·독립do·중단기준을 갖춘 하나의 제한 연구계약. 정당화못하면학습/F1중단",
+      "depends_on": [
+        "VALVE-TRANSITION",
+        "REF-B"
       ]
     }
   ],
   "priority_order": [
-    "VALVE-TRANSITION",
+    "DYNAMIC-SCOPE",
     "COMPAT-01",
     "ERROR-CONFIRM",
     "PATH-PRECISION",
@@ -420,7 +432,8 @@
     "EFFECT-01",
     "PCMCI-ID",
     "ENV-CONTRACT",
-    "TEP-BRIDGE"
+    "TEP-BRIDGE",
+    "VALVE-TRANSITION"
   ],
   "id_history": [
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",
@@ -442,7 +455,8 @@
     "2026-10-25 PATH-MODEL/PATH-PRECISION/PATH-CONFIRM 추가: 기존 EVAL-MVP를 삭제하지 않고 개발 안정성·정밀도 차단·새 독립 확인 미실행을 분리. PR12~14 실제 병합 반영.",
     "2026-10-25 ERROR-DIAG/ERROR-CONFIRM: 목적을 지표 우세/MAE 최적화와 분리. 오류–응답–선택 대조 완료와 새 독립 계약 미실행을 구분하며 제조 환경 정합성 검토를 우선.",
     "2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현.",
-    "2026-10-27 ENV-CONTRACT 구현 VERIFIED는 metadata 소프트웨어만. TEP-BRIDGE PARTIAL: 실제8×6step·3고정점. VALVE-TRANSITION 제안은 별도 다음 작업. 전체 제조 구조–효과 NO-GO 유지."
+    "2026-10-27 ENV-CONTRACT 구현 VERIFIED는 metadata 소프트웨어만. TEP-BRIDGE PARTIAL: 실제8×6step·3고정점. VALVE-TRANSITION 제안은 별도 다음 작업. 전체 제조 구조–효과 NO-GO 유지.",
+    "2026-10-27 VALVE-TRANSITION VERIFIED는4실제cache-step의정상수치전이만. L2 PARTIAL/L3·L4 BLOCKED. 동일기술반복을종료하고DYNAMIC-SCOPE의사용자설계선택으로이동. 새GT/연구전환미승인."
   ],
   "integration_review": {
     "user_approved": true,
@@ -489,7 +503,7 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "Environment bridge stacked above OPEN PR17/16/15. Main e960fa8. No merges; owner exception for12-14 does not apply.",
+    "note": "Valve reference gate stacked above OPEN PR18/17/16/15. Main e960fa8. No merges or scope adoption.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
@@ -526,13 +540,15 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 18,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/18",
-    "current_pr_base": "feature/manufacturing-validity-gate",
+    "current_pr": null,
+    "current_pr_url": null,
+    "current_pr_base": "feature/tep-environment-bridge-feasibility",
     "pr16_status": "OPEN",
     "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab",
     "pr17_status": "OPEN",
-    "pr17_head": "a41683bd9a0a0bd568b5e40c4d6374b033eb424e"
+    "pr17_head": "a41683bd9a0a0bd568b5e40c4d6374b033eb424e",
+    "pr18_status": "OPEN",
+    "pr18_head": "2a03e1de4861ec96f943f4a50351d922d0f46c5b"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -976,5 +992,34 @@
     "final_unit_tests": 81,
     "final_unit_failures": 0,
     "first_unit_failures_preserved": 3
+  },
+  "tep_valve_transition": {
+    "report": "docs/research_design/TEP_DYNAMIC_REFERENCE_DECISION.md",
+    "dependency_pr": 18,
+    "dependency_head": "2a03e1de4861ec96f943f4a50351d922d0f46c5b",
+    "real_arms": 2,
+    "real_euler_steps": 4,
+    "old_algebraic_steps": 24,
+    "old_cache_records": "NOT_RECORDED_BLOCKED",
+    "old_fixed_point_checks": 3,
+    "mock_rejection_cases": 12,
+    "levels": {
+      "L1": "VERIFIED",
+      "L2": "PARTIAL",
+      "L3": "BLOCKED",
+      "L4": "BLOCKED"
+    },
+    "proposal": "B_BOUNDED_INTERNAL_DYNAMIC_DESIGN_FOR_USER_REVIEW",
+    "proposal_adopted": false,
+    "research_design_changed": false,
+    "new_gt": false,
+    "global_f1": false,
+    "new_discovery": 0,
+    "new_faults": 0,
+    "recovery_safety": "NOT_RUN",
+    "next_action": "DYNAMIC-SCOPE",
+    "full_unit_tests": 90,
+    "new_tests_included": 9,
+    "test_failures": 0
   }
 }

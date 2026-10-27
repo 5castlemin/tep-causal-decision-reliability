@@ -31,6 +31,7 @@ jobs:
       - run: python -X utf8 scripts/validate_decision_reliability_next.py
       - run: python -X utf8 scripts/validate_manufacturing_validity.py
       - run: python -X utf8 scripts/validate_environment_contract.py
+      - run: python -X utf8 scripts/validate_tep_valve_transition_contract.py
       - run: python -X utf8 scripts/check_research_state.py
       - run: python -X utf8 scripts/check_asset_manifest.py
       - run: python -X utf8 scripts/validate_pr_integration.py

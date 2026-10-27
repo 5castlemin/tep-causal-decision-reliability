@@ -1,0 +1,27 @@
+{
+  "actual_external_command": [
+    "python",
+    "-X",
+    "utf8",
+    "scripts/validate_tep_valve_transition_contract.py",
+    "--source",
+    "<pinned-checkout>",
+    "--output",
+    "research_runs/tep_valve_transition/run_v1"
+  ],
+  "stored_record_command": [
+    "python",
+    "-X",
+    "utf8",
+    "scripts/validate_tep_valve_transition_contract.py",
+    "--record",
+    "research_runs/tep_valve_transition/RECHECKS.json"
+  ],
+  "actual_steps": 4,
+  "actual_faults": 0,
+  "new_gt": false,
+  "raw_records": "run_v1/TRANSITIONS.json",
+  "source_version": "run_v1/SOURCE_IDENTITY.json",
+  "full_unit_test_count": 90,
+  "new_test_count_included": 9
+}

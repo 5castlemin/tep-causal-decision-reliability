@@ -1,0 +1,15 @@
+[PASS_RECORDS] 4 actual cache-aware steps;24 existing algebraic steps;3 existing local differences;12 mock rejection cases. No source execution in this mode.
+test_actual_record_and_hour_second_conversion (tests.test_tep_valve_transition.ValveTransitionTests.test_actual_record_and_hour_second_conversion) ... ok
+test_command_not_applied_cache (tests.test_tep_valve_transition.ValveTransitionTests.test_command_not_applied_cache) ... ok
+test_missing_applied_cache_is_not_inferred (tests.test_tep_valve_transition.ValveTransitionTests.test_missing_applied_cache_is_not_inferred) ... ok
+test_mock_boundaries_and_invalid_time_scales (tests.test_tep_valve_transition.ValveTransitionTests.test_mock_boundaries_and_invalid_time_scales) ... ok
+test_mock_commit_and_actual_file_hash_mismatch (tests.test_tep_valve_transition.ValveTransitionTests.test_mock_commit_and_actual_file_hash_mismatch) ... ok
+test_mock_invalid_contexts_are_rejected (tests.test_tep_valve_transition.ValveTransitionTests.test_mock_invalid_contexts_are_rejected) ... ok
+test_saved_records_and_old_cache_missing_scope (tests.test_tep_valve_transition.ValveTransitionTests.test_saved_records_and_old_cache_missing_scope) ... ok
+test_t0_cache_branch_and_positive_time_change (tests.test_tep_valve_transition.ValveTransitionTests.test_t0_cache_branch_and_positive_time_change) ... ok
+test_wrong_derivative_and_euler_are_not_context_passes (tests.test_tep_valve_transition.ValveTransitionTests.test_wrong_derivative_and_euler_are_not_context_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.025s
+
+OK

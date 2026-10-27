@@ -1,0 +1,109 @@
+[
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "tests.test_tep_valve_transition",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 0.2970000000204891,
+    "log": "00_targeted_unittest.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 94.0460000000894,
+    "log": "01_all_unittest.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_tep_valve_transition_contract.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.15699999989010394,
+    "log": "02_validate_tep_valve_transition_contract.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_environment_contract.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.21800000010989606,
+    "log": "03_validate_environment_contract.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "graphs/final/verify_and_load.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.625,
+    "log": "04_verify_and_load.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_ref_b_minimal_records.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.18799999984912574,
+    "log": "05_validate_ref_b_minimal_records.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/validate_manufacturing_validity.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.6720000000204891,
+    "log": "06_validate_manufacturing_validity.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_research_state.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.125,
+    "log": "07_check_research_state.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_asset_manifest.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.125,
+    "log": "08_check_asset_manifest.txt"
+  }
+]

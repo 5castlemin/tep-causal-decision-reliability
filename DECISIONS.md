@@ -105,3 +105,9 @@ RESEARCH_COMPASS는 실무 안내이며 RESEARCH_DESIGN을 대체/수정하지 �
 8×6step 실제 실행과3고정점 반례는 Python의 실행 가능성과 현재 센서 상태충분성 한계를 함께 보인다. 이를 센서 전체GT·평균효과 정답·안전/복구·원가설 증명으로 승격하지 않는다. 원환경 복원/새Python전체연구 모두 핵심조건 미충족(권고D). 공식 범위 변경 없이 다음은 좁은 밸브 시간전이식과 적용조건 거부를 독립검산하는 한작업으로 제한한다. RESEARCH_DESIGN 불변. 근거: TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md, technical_v1/closure_v1/CONTRACT_RESULTS.json.
 
 과거 실험이 decision_mvp 코드 bytes를 동결 입력으로 검증하므로 해당 파일에 신규 wrapper를 추가하지 않는다. 새 계약은 독립모듈만 사용하며 legacy의 약한 검사를 과학적 승인으로 사용하지 않는다. 실제 hash검사 실패3건이 이 결정을 뒷받침한다.
+
+### 2026-10-27 — 정상 전이 검산 종료와 연구 범위 선택안
+
+실제 u_req/u_eval/cache c와 v_t/v_next를4step에서분리했다. 과거cache미기록24step은 c를역산해보완하지않고BLOCKED를유지한다. stiction/clip/controller/shutdown은정상계약에서거부하며모의거부를실제Fault검증으로승격하지않는다. L1 VERIFIED는공식GT/관측구조/전체F1이아니며 L2 PARTIAL,L3/L4 BLOCKED다.
+
+다음기술시험을관성적으로추가하지않는다. 우선권고B는기존정적센서/benchmark를보존한채별도내부상태·시간전개설계안을검토할지사용자가선택하는것이다. A원계보자료부족,C효과중심은전체구조가설의수정이필요하므로자동채택안함. SCOPE_PROPOSAL.json은제안일뿐,연구전환/GT/발견학습/본실험/기존PR병합은승인하지않음. RESEARCH_DESIGN 불변.

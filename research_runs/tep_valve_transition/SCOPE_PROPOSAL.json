@@ -1,0 +1,16 @@
+{
+  "status": "PROPOSED_FOR_USER_DECISION_NOT_ADOPTED",
+  "recommended_path": "B_BOUNDED_INTERNAL_DYNAMIC_RESEARCH_DESIGN",
+  "decision_requested": "Whether the manufacturing workstream may consider explicitly observed internal state/time-unrolled nodes in a separate namespace, while preserving the original benchmark and broad structural-error/decision question",
+  "not_requested_or_authorized": ["adopt a new GT", "full31 sensor GT", "discovery learning", "Fault/Recovery/Safety", "large simulation", "merge existing PRs"],
+  "evidence_inputs": ["research_runs/tep_valve_transition/run_v1/TRANSITIONS.json", "research_runs/tep_valve_transition/RECHECKS.json", "research_runs/tep_environment_bridge/closure_v1/RESULT.json", "docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md"],
+  "proposed_variable_meanings_not_a_graph": ["requested command u before controller", "evaluated process command after controller", "applied cache c", "actual valve v at t", "next valve v at t+dt", "explicit regime/controller/exogenous boundary conditions"],
+  "hard_condition_before_any_structure_scoring": "Define a finite node/time/edge-pair universe and justify parent closure, excluded/uncertain relations, identification assumptions and matching discovery estimand. A conditional scalar update is not a complete discovery GT.",
+  "before_learning_or_effect_experiment": ["user scope choice", "versioned finite reference/uncertainty and matching method contract", "nondegenerate observation/excitation design", "predeclared policy/reset/noise/horizon and held-out do estimand", "independent evidence review of causal interpretation"],
+  "external_review_topics_not_new_approval_gate": ["dynamic latent projection and finite history sufficiency", "deterministic update vs statistical discovery identifiability", "feedback/stiction/clipping boundary semantics", "independent graph/task units and intervention policy"],
+  "deliverable_after_scope_decision": "One bounded research protocol stating testable and untestable hypotheses, reference semantics and stop conditions; no additional routine smoke or automatic data generation",
+  "if_scope_not_approved": "Preserve TEP benchmark evaluation as descriptive structure evidence and retain synthetic mechanism findings separately; do not imply manufacturing hypothesis verification",
+  "research_design_changed": false,
+  "official_gt_created": false,
+  "global_f1_allowed": false
+}
