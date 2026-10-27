@@ -148,3 +148,5 @@ T_R = inverse_liquid_enthalpy(E/U_liquid, composition)
 `scripts/validate_bounded_dynamic_protocol.py`는 노드/12쌍의 유일성,경계 미폐쇄와 판정2의 연결,미확정값/금지활동/채점·실행 차단,근거 hash/문서 상태의 정합성만 검사한다. 과학적 타당성 인증 도구가 아니다. 전체 단위검사는 저장된 과거 기록의 검산을 포함하며 외부 simulator 새실행이 아니다. 실제 명령·결과는 `research_runs/bounded_dynamic_protocol/validation/`에 남긴다. 이전 원자료/원시/설계·기대 hash는 변경하지 않는다.
 
 최종 로컬 전체96단위검사(신규정적6포함),계약/schema·상태·동결39SHA·환경계약·assetmanifest 검사가 통과했다. 과학적 판단은 판정2/실행NO-GO 그대로다. source 수치 평가나 실험 결과를 추가한 검사가 아니다.
+
+검토 코드·초안 커밋 `676a462dbf8b7a4621deb7978dee5335d51fa712`, PR #20(base PR19). 기존 PR15~19와 새 PR은 미병합이다. 최종 head의 CI는 별도 확인한다.
