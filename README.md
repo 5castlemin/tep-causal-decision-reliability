@@ -64,3 +64,5 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 [제한 동적 연구계약](docs/research_design/BOUNDED_DYNAMIC_RESEARCH_PROTOCOL.md)은 설계검토 초안(PROPOSED_FOR_REVIEW)이며 판정2·실행NO-GO입니다. 내부4node 냉각수–에너지 부분의 내생 경계와 발견 참조/온도선택 계약이 정당화되지 않았습니다. 새시뮬레이션·학습·GT 없음. 다음은 별도 효과·조작 선택 중심 설계 검토 여부 결정이며,원래 제조 전체F1 가설을 검증한 것으로 보지 않습니다.
 
 [Python 효과·선택 최종 검토](docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md)는 **STOP-TEP-EFFECT-TRACK**입니다. runnable manual command와반응성은있지만출처있는정책집합·목표/H·완결손실을정당화하지못했습니다. 현재TEP경로동결,새실험/학습/코드추가없음. 다음은기존합성독립확인·민감도·오류대조를최종주장으로정리하며제조전체F1검증으로혼합하지않습니다.
+
+2026-10-29 최신 합성 결과 통합: [최종 Results·Discussion](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md). 전체 점수 동점의 다른 결정·효과/선택 불일치·정책 영향을 확인했지만,경로의 안정적 추가 정보는 미확립입니다. 기존 자료 재분석이며 새 실험0,TEP 경로 동결 유지.
