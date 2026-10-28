@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-29",
+  "protocol_id": "INDEPENDENT-ERROR-LOCATION-v1",
+  "verdict": "REDESIGN_REQUIRED",
+  "execution_allowed": false,
+  "protocol_design_frozen": true,
+  "experiment_approval_received": false,
+  "core_contract": "Defined:matched artificial errors,one fixed policy,operationalDeltaL,allties/fallbacks retained,new SCM unit and conditional inference",
+  "unresolved": [
+    {
+      "id": "PRECISION_RESOURCE",
+      "issue": "30SCMs give approximately0.446 primary and0.742 retained-subgroup halfwidth under historicalSD proxies;target0.1 needs about598total primary/1650total for equally allocated families including825retained. Heterogeneity stress can require6600total.",
+      "resolution": "User-level resource/scope decision before any new draw:commit larger independentSCM budget consistent with target,or explicitly stop/modulate future question under a new plan. Do not silently reduceN or loosen target to label GO."
+    },
+    {
+      "id": "END_TO_END_COST_EVIDENCE",
+      "issue": "Old whole-run timings include causal discovery/otherwork;no isolated per-graph Ridge+recommendation/topology-novelty timing or measured peakRSS for this future recipe. Arithmetic counts do not certify90min/1GiB.",
+      "resolution": "A larger resource commitment needs defensible run-cost evidence/limits under separate authorization;no new fit/benchmark is run or automatically scheduled here."
+    }
+  ],
+  "why_not_GO": "Scientific contrast is coherent,but meaningful precision and resource readiness are not jointly established.The old favourable mean is not used to promise power.",
+  "why_not_STOP": "No evidence that matched comparisons are impossible;larger resources or an explicitly different precision objective remain possible,but are not authorized or verified.",
+  "next_single_action": "Decide whether to fund the independentSCM/precision requirement or end independent-error expansion and use PR22 Results as scoped evidence. No new technical/doc task is automatically opened.",
+  "old_assets_preserved": true,
+  "TEP_track": "FROZEN",
+  "research_design_changed": false,
+  "PR_auto_merge": false,
+  "new_experiments": 0
+}

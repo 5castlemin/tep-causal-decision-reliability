@@ -87,3 +87,5 @@ PR12~14 통합 완료. 기존20구조는 이제 개발 자료이며, 이론 개�
 2026-10-28 효과·조작 선택 설계도현재근거로성립하지않아STOP-TEP-EFFECT-TRACK으로동결했습니다. API/국소반응을의미있는정책최적화로포장하지않았고,GT부재만을중단이유로삼지도않았습니다. 새실험/학습/정책최적화는없습니다. 현재연구우선순위는기존합성실험의독립확인·강건성·오류위치결과를최종주장으로정리하는것입니다. TEP_EFFECT_DECISION_FEASIBILITY.md를참고하십시오.
 
 2026-10-29 최신 합성 결과 통합: [최종 Results·Discussion](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md). 전체 점수 동점의 다른 결정·효과/선택 불일치·정책 영향을 확인했지만,경로의 안정적 추가 정보는 미확립입니다. 기존 자료 재분석이며 새 실험0,TEP 경로 동결 유지.
+
+2026-10-29 후속 [오류 위치 독립 확인 계약](docs/research_design/ERROR_LOCATION_INDEPENDENT_CONFIRMATION_PROTOCOL.md)은 **REDESIGN_REQUIRED**입니다. 대응 비교 설계는 고정했지만 제안 정밀도와 자원·종단 비용 근거는 미충족입니다. 새 실험0이며 다음은 자원 확대 또는 독립 확인 확대 종료 결정입니다.
