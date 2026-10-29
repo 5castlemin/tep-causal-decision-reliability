@@ -1,0 +1,134 @@
+{
+  "status": "TECHNICAL_DIAGNOSTIC_ONLY",
+  "plan_sha256": "5a742a94fb8eaca217b5af90abbaaf42f8295598c5919ae96258c8697f12a85a",
+  "source_commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+  "source_sha256": {
+    "src/tep/simulator.py": "c65d6e38658851febefe60a372e8a6031d6425d43a78f2c37c2ed34a95c6c3ed",
+    "src/tep/python_backend.py": "93ba3281980b9c47b882b84412c9cd0501f542ba9a9f214a84fcd6901d870598",
+    "src/tep/controllers.py": "030c49801bd93d719175b26ad5b94834c430729800825d9adc2a499e6be75b39",
+    "src/tep/constants.py": "c27d7c5a723c0b59598d35dcc0f028b8966a284b0da48669c89965b6c2e89468"
+  },
+  "input_sha256": "52ae445b4355201db9591822282381c8de861afe49bdbc9452db08b01e7d3711",
+  "benchmark_shape": [
+    1499,
+    31
+  ],
+  "limitations": [
+    "600 seconds transient vs 75-hour, 3-minute median data; no distribution equivalence",
+    "mapping is proposed X1-22 to XMEAS1-22, X23-33 to XMV1-11; provenance and unit alignment remain unverified",
+    "pressure setpoint not implemented as same controller; no claim of three-variable controller match",
+    "same seed not proof of rowwise noise matching",
+    "no candidate action/intervention newly executed",
+    "no causal GT validated"
+  ],
+  "arm_status": {
+    "default": {
+      "seconds": 600,
+      "failure": null,
+      "level_setpoint": 75.0,
+      "temperature_setpoint": 120.4,
+      "wall_seconds": 0.3279999999795109
+    },
+    "documented_setpoints": {
+      "seconds": 600,
+      "failure": null,
+      "level_setpoint": 65.0,
+      "temperature_setpoint": 122.9,
+      "wall_seconds": 0.3279999999795109
+    }
+  },
+  "correlation_frobenius_mean_abs": {
+    "default": 0.13101057443796946,
+    "documented_setpoints": 0.21636219787340885
+  },
+  "key_variables": {
+    "X7": {
+      "variable": "X7",
+      "benchmark_mean": 2800.0021562251504,
+      "benchmark_std": 0.9056104927929114,
+      "mapping": "XMEAS 7",
+      "default_mean": 2704.5253750588513,
+      "default_std": 0.8853956530705627,
+      "default_start": 2705.000000046408,
+      "default_end": 2704.6456336078786,
+      "documented_setpoints_mean": 2633.4291725026724,
+      "documented_setpoints_std": 42.639112685361404,
+      "documented_setpoints_start": 2705.000000046408,
+      "documented_setpoints_end": 2565.9396993477876
+    },
+    "X8": {
+      "variable": "X8",
+      "benchmark_mean": 65.0042620740327,
+      "benchmark_std": 0.14596103923267428,
+      "mapping": "XMEAS 8",
+      "default_mean": 74.98831334969165,
+      "default_std": 0.5322850827993271,
+      "default_start": 74.99999998088552,
+      "default_end": 74.14264505762813,
+      "documented_setpoints_mean": 74.89857069558212,
+      "documented_setpoints_std": 0.6367591249452194,
+      "documented_setpoints_start": 74.99999998088552,
+      "documented_setpoints_end": 73.2656007851942
+    },
+    "X9": {
+      "variable": "X9",
+      "benchmark_mean": 122.90013111310874,
+      "benchmark_std": 0.004298526890623006,
+      "mapping": "XMEAS 9",
+      "default_mean": 120.39759311670043,
+      "default_std": 0.013838476687013167,
+      "default_start": 120.40000000169141,
+      "default_end": 120.3749621506694,
+      "documented_setpoints_mean": 122.12216749783433,
+      "documented_setpoints_std": 0.6918181111276229,
+      "documented_setpoints_start": 120.40000000169141,
+      "documented_setpoints_end": 121.93302867696275
+    },
+    "X32": {
+      "variable": "X32",
+      "benchmark_mean": 35.94690624312875,
+      "benchmark_std": 0.04315231985868774,
+      "mapping": "XMV 10",
+      "default_mean": 41.04257221583787,
+      "default_std": 0.4044811623160937,
+      "default_start": 41.10581288,
+      "default_end": 40.36064206278605,
+      "documented_setpoints_mean": 38.79613740719307,
+      "documented_setpoints_std": 18.810621004228956,
+      "documented_setpoints_start": 41.10581288,
+      "documented_setpoints_end": 23.380235841200587
+    }
+  },
+  "raw_sha256": {
+    "default.json": "0ec57b5c53652a077a76964cb163bd2624c231f48afcddec91d8eebcf439eb80",
+    "documented_setpoints.json": "1e5e660b98ca88ede01aaa5bba26f470f62d02d662b53e3ff81fb6dc9ad2396e"
+  },
+  "sample_clock": "rows.seconds denotes integrated-state time; sensor cache is evaluated at preceding 1-second step for steps >=1.",
+  "runner_sha256": "8db935a1773733edd5413e3bb9b6f4a3ed9058508806f41eb1471e2553e6c746",
+  "comparison_sha256": "cbf0d8730313f969b6ba710cc57e8ff904f293351b1a2cb8427d0b8235173bc4",
+  "correlation_matrix_sha256": {
+    "benchmark": "31d6e7105086009b71a0488f63d20ec2deb2bb5209a8188b628180d0621a5446",
+    "default": "c648fd580708e43317adcfb9eaf6624011f0c3662f5c3604e11a89d176da8a37",
+    "documented_setpoints": "d3233080eab2d25205b079817d03a27dca2e838b61ae3cb2a30ffa5038d8e509"
+  },
+  "studio_official_file_sha256": {
+    "temexd_mod.c": "eff57b75700e7472005785150c21f82b0c3d178ebceebe37e532794f23785aba",
+    "teprob_mod.h": "fa3782a07c11e5c149ad0f44ec332c45ed998edb7ef8241fade9b1d395577363",
+    "Mode1xInitial.mat": "40eaebc92badb04ad026e358cfd28ec9c778fcf2d24a1b8f5d85565854da2747"
+  },
+  "repository_validation": {
+    "unit_tests": 105,
+    "unit_seconds": 86.868,
+    "unit_command": "python -X utf8 -m unittest discover -s tests -v",
+    "frozen_files_hashes": 39,
+    "environment_contract_cases": 15,
+    "status": "PASS",
+    "new_studio_execution": false
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "backend": "python",
+    "integration": "Euler 1 second"
+  }
+}
