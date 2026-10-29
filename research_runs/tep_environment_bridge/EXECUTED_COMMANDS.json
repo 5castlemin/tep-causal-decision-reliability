@@ -1,0 +1,35 @@
+{
+  "commands": [
+    [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/run_tep_environment_bridge.py",
+      "--source",
+      "<pinned-checkout>",
+      "--output",
+      "research_runs/tep_environment_bridge/technical_v1"
+    ],
+    [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_tep_observation_closure.py",
+      "--source",
+      "<pinned-checkout>",
+      "--output",
+      "research_runs/tep_environment_bridge/closure_v1"
+    ]
+  ],
+  "results": {
+    "technical_runs": 8,
+    "steps": 48,
+    "fixed_evaluations": 3,
+    "failed_simulator_runs": 0,
+    "new_training": 0,
+    "new_gt": false
+  },
+  "plans_saved_before_execution": true,
+  "external_preregistration": false,
+  "source_unmodified": true
+}

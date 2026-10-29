@@ -97,3 +97,11 @@ RESEARCH_COMPASS는 실무 안내이며 RESEARCH_DESIGN을 대체/수정하지 �
 기존환경복원/새Python후보는동일관측·참조·do환경이확인되지않아직접제조가설NO-GO. 기존smoke는기술증거만. 권고D추가확인;새환경채택/B전환/C공식범위축소를자동결정하지않음. 다음작업은id/Boolean이아닌model/controller/node/clock/reference/intervention/evidence metadata의fail-closed계약구현. 물리타당성은metadata일치만으로승인불가.
 
 낮은F1은연구대상불완전성일수있지만참조의미가맞아야한다. 저장baselineCSV반올림으로동률비교가어긋나정수TP를유일복원하여동일수학적통계로검산. 이는원표p재정의/유리한튜닝이아니며실패기록보존. 기존측정·원설계·graph·과거결과변경없음. 선형/비선형4셀은조건부미실행설계로분리.
+
+### 2026-10-27 — 환경 계약 통과와 제조 연구 승인 분리
+
+새 metadata/evidence guard의 통과는 연구검토에 제출할 기술 정합성만 뜻한다. 과학적 동등성·실행권한·제조 채택을 자동 승인하지 않는다. legacy guard는 과거 재현용으로 남기고 새 join은 environment_contract.require_environment_contract를 사용한다. 현 CPCaD/Python join과 부분 양성참조의 전체F1 사용은 거부한다. 유한 lag universe 미지정 시 시차참조도 fail-closed로 거부한다.
+
+8×6step 실제 실행과3고정점 반례는 Python의 실행 가능성과 현재 센서 상태충분성 한계를 함께 보인다. 이를 센서 전체GT·평균효과 정답·안전/복구·원가설 증명으로 승격하지 않는다. 원환경 복원/새Python전체연구 모두 핵심조건 미충족(권고D). 공식 범위 변경 없이 다음은 좁은 밸브 시간전이식과 적용조건 거부를 독립검산하는 한작업으로 제한한다. RESEARCH_DESIGN 불변. 근거: TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md, technical_v1/closure_v1/CONTRACT_RESULTS.json.
+
+과거 실험이 decision_mvp 코드 bytes를 동결 입력으로 검증하므로 해당 파일에 신규 wrapper를 추가하지 않는다. 새 계약은 독립모듈만 사용하며 legacy의 약한 검사를 과학적 승인으로 사용하지 않는다. 실제 hash검사 실패3건이 이 결정을 뒷받침한다.

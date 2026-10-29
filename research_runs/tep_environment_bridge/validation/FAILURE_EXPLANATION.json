@@ -1,0 +1,18 @@
+{
+  "first_suite": {
+    "tests": 81,
+    "failures": 3,
+    "cause": "Added wrapper in historically hash-pinned src/decision_mvp.py",
+    "affected": [
+      "first_integrated",
+      "repeated_metric",
+      "diverse_structure"
+    ],
+    "resolution": "Restore original file bytes; use standalone environment_contract.require_environment_contract. No historic hashes/expected results changed",
+    "path_prefix_only_redacted": true
+  },
+  "state_update": {
+    "error": "KeyError git_integration; actual key github_current",
+    "write_occurred": false
+  }
+}

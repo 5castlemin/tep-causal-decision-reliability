@@ -32,8 +32,8 @@
       "id": "COMPAT-01",
       "title": "공개 후보와 기존 데이터/GT 대응",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md",
-      "next_action": "원환경/새Python후보 직접 구조–효과 join NO-GO. 원시계보/관측참조 동등성은미해결. ENV-CONTRACT의 실행 가능한 metadata 차단 검사를 먼저 구현",
+      "evidence": "docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md",
+      "next_action": "원환경 raw/controller/집계 미확정 유지. Python 국소 실행은 가능하나 관측 참조/음성쌍/학습 변동 부족으로 전체 구조–효과 연구 NO-GO",
       "acceptance": "정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지",
       "depends_on": [
         "SIM-03",
@@ -362,17 +362,40 @@
     {
       "id": "ENV-CONTRACT",
       "title": "구조 점수–개입 결과 metadata 차단 계약 구현",
-      "status": "PROPOSED",
-      "evidence": "research_runs/manufacturing_validity_gate/NEXT_ENVIRONMENT_CONTRACT_SPEC.json",
-      "next_action": "src/environment_contract.py와tests/test_environment_contract.py 구현. 같은이름의controller/시계/참조불일치와누락근거를거부하고 interface-only/research 목적분리",
-      "acceptance": "6개 사전negative/technical fixture 검사·정확한거부이유·현CPCaD/Python join거부 유지. metadata통과를물리/인과승인으로취급하지 않음",
+      "status": "VERIFIED",
+      "evidence": "src/environment_contract.py; tests/test_environment_contract.py; research_runs/tep_environment_bridge/CONTRACT_RESULTS.json",
+      "next_action": "15개 계약 사례·실제 파일 해시 검사 완료. 새 join은 environment_contract.require_environment_contract 사용. 과학적 동등성 승인은 아님",
+      "acceptance": "같은 이름의 controller/시계/조작/노드/참조 불일치·미검증 근거 거부. CPCaD/Python 결합 계속 차단",
       "depends_on": [
         "MFG-VALIDITY"
+      ]
+    },
+    {
+      "id": "TEP-BRIDGE",
+      "title": "Python TEP 관측·명령·상태 연결 검산",
+      "status": "PARTIAL",
+      "evidence": "research_runs/tep_environment_bridge/technical_v1/SUMMARY.json; research_runs/tep_environment_bridge/closure_v1/RESULT.json",
+      "next_action": "8×6step exact 반복과3고정점 관측충분성 반례 확인. 전체 참조/학습·독립 효과 계약 미충족; 공식 환경 채택 아님",
+      "acceptance": "명령/밸브/센서 시계·잡음·초기화 분리. 연구join NO-GO 유지",
+      "depends_on": [
+        "ENV-CONTRACT",
+        "REF-B"
+      ]
+    },
+    {
+      "id": "VALVE-TRANSITION",
+      "title": "좁은 수동 밸브 시간전이 계약 검산",
+      "status": "PROPOSED",
+      "evidence": "docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md",
+      "next_action": "scripts/validate_tep_valve_transition_contract.py 작성: u_t/v_t/v_t+1 식 독립 대조·stiction/IDV/클리핑/제어개입 미지원 거부. GT·학습·F1 생성 아님",
+      "acceptance": "기존 ±.001pp 국소 조건에서 actual evaluate/Euler 식 일치 및 원 센서 평가join 거부. 공식 연구 채택과 분리",
+      "depends_on": [
+        "TEP-BRIDGE"
       ]
     }
   ],
   "priority_order": [
-    "ENV-CONTRACT",
+    "VALVE-TRANSITION",
     "COMPAT-01",
     "ERROR-CONFIRM",
     "PATH-PRECISION",
@@ -395,7 +418,9 @@
     "DATA-01",
     "TASK-01",
     "EFFECT-01",
-    "PCMCI-ID"
+    "PCMCI-ID",
+    "ENV-CONTRACT",
+    "TEP-BRIDGE"
   ],
   "id_history": [
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",
@@ -416,7 +441,8 @@
     "2026-10-25 PILOT-CONFIRM 추가: 기존8구조144재현과 새12구조216시도/214SCM를 구분. PILOT-DIVERSE 현재 replay만 실제 증거로 갱신하고 과거 보고서·원시는 보존.",
     "2026-10-25 PATH-MODEL/PATH-PRECISION/PATH-CONFIRM 추가: 기존 EVAL-MVP를 삭제하지 않고 개발 안정성·정밀도 차단·새 독립 확인 미실행을 분리. PR12~14 실제 병합 반영.",
     "2026-10-25 ERROR-DIAG/ERROR-CONFIRM: 목적을 지표 우세/MAE 최적화와 분리. 오류–응답–선택 대조 완료와 새 독립 계약 미실행을 구분하며 제조 환경 정합성 검토를 우선.",
-    "2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현."
+    "2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현.",
+    "2026-10-27 ENV-CONTRACT 구현 VERIFIED는 metadata 소프트웨어만. TEP-BRIDGE PARTIAL: 실제8×6step·3고정점. VALVE-TRANSITION 제안은 별도 다음 작업. 전체 제조 구조–효과 NO-GO 유지."
   ],
   "integration_review": {
     "user_approved": true,
@@ -463,7 +489,7 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "Manufacturing audit stacked above OPEN PR16 above OPEN PR15. No merge authorized. Main e960fa8. Existing PR reviews/owner exception not bypassed.",
+    "note": "Environment bridge stacked above OPEN PR17/16/15. Main e960fa8. No merges; owner exception for12-14 does not apply.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
@@ -500,11 +526,13 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 17,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/17",
-    "current_pr_base": "feature/decision-reliability-next",
+    "current_pr": 18,
+    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/18",
+    "current_pr_base": "feature/manufacturing-validity-gate",
     "pr16_status": "OPEN",
-    "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab"
+    "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab",
+    "pr17_status": "OPEN",
+    "pr17_head": "a41683bd9a0a0bd568b5e40c4d6374b033eb424e"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -921,5 +949,32 @@
     "new_simulator_run": 0,
     "recovery_safety": "NOT_RUN",
     "next_spec": "research_runs/manufacturing_validity_gate/NEXT_ENVIRONMENT_CONTRACT_SPEC.json"
+  },
+  "tep_environment_bridge": {
+    "report": "docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md",
+    "dependency_pr": 17,
+    "dependency_head": "a41683bd9a0a0bd568b5e40c4d6374b033eb424e",
+    "contract_cases": 15,
+    "unit_test_cases": 13,
+    "new_technical_runs": 8,
+    "integration_steps": 48,
+    "fixed_state_evaluations": 3,
+    "new_discovery": 0,
+    "new_scm": 0,
+    "new_gt": false,
+    "training_holdout_generated": false,
+    "recovery_safety": "NOT_RUN",
+    "same_seed_general_crn_proven": false,
+    "track_a": "NO-GO",
+    "python_full_structure_effect": "NO-GO",
+    "python_technical": "PARTIAL",
+    "recommendation": "D_CORE_CONDITIONS_UNMET",
+    "environment_adopted": false,
+    "next_task": "VALVE-TRANSITION",
+    "pr": 18,
+    "execution_commit": "256b65635d2b7fc2287323e3e1975914694e6c9a",
+    "final_unit_tests": 81,
+    "final_unit_failures": 0,
+    "first_unit_failures_preserved": 3
   }
 }

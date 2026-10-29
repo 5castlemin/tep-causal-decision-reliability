@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "manual_reference_uninstrumented_repeat_exact": true,
+    "manual_action_uninstrumented_repeat_exact": true,
+    "closed_reference_uninstrumented_repeat_exact": true,
+    "closed_action_uninstrumented_repeat_exact": true,
+    "manual_fresh_initial_equal": true,
+    "manual_clock_equal": true,
+    "manual_rng_call_counts_equal": true,
+    "manual_rng_draw_sequences_equal": true,
+    "closed_fresh_initial_equal": true,
+    "closed_clock_equal": true,
+    "closed_rng_call_counts_equal": true,
+    "closed_rng_draw_sequences_equal": true,
+    "manual_command_held": true,
+    "manual_command_not_valve_at_t0": true,
+    "closed_external_command_overwritten": true,
+    "sensor_clock_lags_integrated_state": true,
+    "all_arms_finite_no_shutdown": true
+  },
+  "all_checks_pass": true,
+  "runs": 8,
+  "integration_steps": 48,
+  "baseline_manual_xmv10_range": 0.0,
+  "sensor_delta_last_xmeas9": -1.8438156772049297e-05,
+  "numpy": "1.26.4",
+  "same_seed_general_noise_guarantee": false,
+  "noise_alignment_scope": "Observed RNG call sequences of these six-step no-fault pairs only",
+  "training_holdout_generated": false,
+  "new_reference_gt": false,
+  "recovery_safety": "NOT_RUN",
+  "structure_effect_research": "NO-GO_REFERENCE_UNRESOLVED"
+}

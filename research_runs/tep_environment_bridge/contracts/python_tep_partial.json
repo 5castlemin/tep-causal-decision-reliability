@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "environment_id": "PYTHON_TEP_PINNED_MANUAL_TECHNICAL",
+  "model": {
+    "source_url": "https://github.com/jkitchin/tennessee-eastman-profbraatz",
+    "commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+    "source_sha256": {
+      "src/tep/simulator.py": "c65d6e38658851febefe60a372e8a6031d6425d43a78f2c37c2ed34a95c6c3ed",
+      "src/tep/python_backend.py": "93ba3281980b9c47b882b84412c9cd0501f542ba9a9f214a84fcd6901d870598",
+      "src/tep/controllers.py": "030c49801bd93d719175b26ad5b94834c430729800825d9adc2a499e6be75b39",
+      "src/tep/constants.py": "c27d7c5a723c0b59598d35dcc0f028b8966a284b0da48669c89965b6c2e89468"
+    },
+    "configuration": {
+      "backend": "python",
+      "process_initialization": "source-default fresh object, operating equivalence UNKNOWN"
+    },
+    "evidence_refs": [
+      "e0",
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "controller": {
+    "source_sha256": {
+      "src/tep/controllers.py": "030c49801bd93d719175b26ad5b94834c430729800825d9adc2a499e6be75b39"
+    },
+    "configuration": {
+      "factory": "ManualController source defaults"
+    },
+    "mode": "MANUAL",
+    "evidence_refs": [
+      "e0",
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "observation": {
+    "nodes": [
+      {
+        "name": "XMV10",
+        "unit": "percent command",
+        "kind": "external_command"
+      },
+      {
+        "name": "XMEAS9",
+        "unit": "degC",
+        "kind": "sensor_observation"
+      }
+    ],
+    "representation": "sensor_and_external_command",
+    "evidence_refs": [
+      "e0",
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "clock": {
+    "state_clock": "Euler integrated t+dt",
+    "sensor_clock": "cached evaluate(t,state_t)",
+    "integration_seconds": 1,
+    "sampling_seconds": 1,
+    "aggregation": "none",
+    "window_seconds": 0,
+    "stride_seconds": 1,
+    "evidence_refs": [
+      "e0",
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "reference": {
+    "nodes": [
+      "u10",
+      "v10",
+      "W",
+      "E",
+      "TR",
+      "Y9"
+    ],
+    "representation": "partial_internal_state_update_and_sensor",
+    "edge_semantics": "mixed_derivative_algebraic_and_lagged",
+    "lag_definition": "Euler1s;not_sensor_direct_lag_gt",
+    "positive_pairs": [
+      [
+        "u10",
+        "v10"
+      ],
+      [
+        "W",
+        "E"
+      ]
+    ],
+    "negative_pairs": [],
+    "uncertain_pairs": [
+      [
+        "Y9",
+        "u10"
+      ]
+    ],
+    "coverage": "partial_positive_only_not_GT",
+    "evidence_refs": [
+      "e0",
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "intervention": {
+    "action": "XMV10",
+    "target": "XMEAS9",
+    "kind": "command",
+    "mechanism": "set_mv command; actuator evolves; not structural do on sensor",
+    "controller_policy": "manual holds; closed loop overwrites; separate contracts",
+    "evidence_refs": [
+      "e0",
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "execution": {
+    "initialization": "fresh object;seed465120799;fingerprint of listed fields only",
+    "noise": "verified draw sequence for current 6-step no-fault only;general alignment UNKNOWN",
+    "train_holdout": "NOT_GENERATED;future disjoint namespaces required",
+    "horizon_seconds": 6,
+    "evidence_refs": [
+      "e0",
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "evidence": {
+    "e0": {
+      "path": "docs/research_design/track_b_evidence/source_probe.json",
+      "sha256": "007128179ed6471d875455038d78b1042e04cb64595fb937914563186abda084",
+      "level": "VERIFIED"
+    },
+    "e1": {
+      "path": "docs/research_design/ref_b_minimal_evidence/local_checks.json",
+      "sha256": "0562a0d22c89da756c794c2e2a4f7d556de521eeaaa6c5c400d08d6f6d67fd46",
+      "level": "VERIFIED"
+    },
+    "e2": {
+      "path": "research_runs/tep_environment_bridge/technical_v1/EXECUTION_IDENTITY.json",
+      "sha256": "b149099f008597f834f4a5ebd305812dd41a98ef5b00281d47cf04405a3c8b00",
+      "level": "VERIFIED"
+    },
+    "e3": {
+      "path": "research_runs/tep_environment_bridge/technical_v1/SUMMARY.json",
+      "sha256": "93b4dc124c3130bbaefbdd8cfbe403bc3246d4d0a3cbd20a246412877be32d3f",
+      "level": "VERIFIED"
+    }
+  }
+}

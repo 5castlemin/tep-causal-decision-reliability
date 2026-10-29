@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "environment_id": "SYNTHETIC_SCHEMA_FIXTURE_ONLY",
+  "model": {
+    "source_url": "urn:software-test-fixture",
+    "commit": "1111111111111111111111111111111111111111",
+    "source_sha256": {
+      "fixture.txt": "add462a7831f4a5afa83d261258e5df4f8f819fa9806197b53a1a768a739929a"
+    },
+    "configuration": {
+      "equations": "A=epsA;Y=A+epsY"
+    },
+    "evidence_refs": [
+      "fixture"
+    ]
+  },
+  "controller": {
+    "source_sha256": {
+      "fixture.txt": "add462a7831f4a5afa83d261258e5df4f8f819fa9806197b53a1a768a739929a"
+    },
+    "configuration": {
+      "enabled": false
+    },
+    "mode": "none",
+    "evidence_refs": [
+      "fixture"
+    ]
+  },
+  "observation": {
+    "nodes": [
+      {
+        "name": "A",
+        "unit": "arbitrary",
+        "kind": "generated_variable"
+      },
+      {
+        "name": "Y",
+        "unit": "arbitrary",
+        "kind": "generated_variable"
+      }
+    ],
+    "representation": "declared_fcm_variables",
+    "evidence_refs": [
+      "fixture"
+    ]
+  },
+  "clock": {
+    "state_clock": "sample_index",
+    "sensor_clock": "sample_index",
+    "integration_seconds": 1,
+    "sampling_seconds": 1,
+    "aggregation": "none",
+    "window_seconds": 0,
+    "stride_seconds": 1,
+    "evidence_refs": [
+      "fixture"
+    ]
+  },
+  "reference": {
+    "nodes": [
+      "A",
+      "Y"
+    ],
+    "representation": "declared_fcm_variables",
+    "edge_semantics": "direct_same_step",
+    "lag_definition": "zero_lag_only",
+    "positive_pairs": [
+      [
+        "A",
+        "Y"
+      ]
+    ],
+    "negative_pairs": [
+      [
+        "Y",
+        "A"
+      ]
+    ],
+    "uncertain_pairs": [],
+    "coverage": "complete_directed_pair_universe",
+    "evidence_refs": [
+      "fixture"
+    ]
+  },
+  "intervention": {
+    "action": "A",
+    "target": "Y",
+    "kind": "structural_do",
+    "mechanism": "replace_equation",
+    "controller_policy": "none",
+    "evidence_refs": [
+      "fixture"
+    ]
+  },
+  "execution": {
+    "initialization": "new_fcm",
+    "noise": "independent_per_arm_samples",
+    "train_holdout": "disjoint_seed_namespaces",
+    "horizon_seconds": 1,
+    "evidence_refs": [
+      "fixture"
+    ]
+  },
+  "evidence": {
+    "fixture": {
+      "path": "research_runs/tep_environment_bridge/contracts/fixture.txt",
+      "sha256": "add462a7831f4a5afa83d261258e5df4f8f819fa9806197b53a1a768a739929a",
+      "level": "VERIFIED"
+    }
+  }
+}

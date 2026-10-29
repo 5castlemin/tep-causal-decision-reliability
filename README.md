@@ -57,4 +57,4 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 연구의 실무 방향은 [RESEARCH_COMPASS](docs/research_design/RESEARCH_COMPASS.md), 오류 위치·효과 추정·조작 선택의 실제 대조는 [다음 단계 보고서](docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md)를 참고합니다. 같은 F1에서 악화·개선·동률을 모두 확인했으며, 기존 개발 자료 재분석과 oracle 진단입니다. PR15 위 후속 feature이고 새 독립 제조 검증이 아닙니다.
 
 
-제조 환경 직접 검증의 현재 한계와 다음 실행 과제는 [제조 타당성 Gate](docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md)에 정리했습니다. 같은 환경의 참조·관측·개입 대응은 아직 미확인입니다. 7개 구조 점수/84과제 및 저장 무작위 기준선을 재검산했지만 제조 가설 완료로 해석하지 않습니다. 다음은 환경 metadata 차단 계약 구현이며 신규 시뮬레이터 채택이 아닙니다.
+제조 환경 직접 검증의 한계는 [제조 타당성 Gate](docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md)에 있습니다. 후속 [환경 연결 검증](docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md)에서 metadata·실제 근거 hash 차단 계약을 구현하고 고정 Python 후보8×6step 및3고정점 검산을 실행했습니다. 같은 센서/명령에서 숨은 밸브에 따라 상태 변화가 달라지는 국소 반례를 확인했습니다. 관측 참조/음성쌍 미확정으로 전체 구조–효과 연구는 계속 NO-GO이며 신규 연구환경을 채택하지 않았습니다.
