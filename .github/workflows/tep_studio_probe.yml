@@ -1,0 +1,31 @@
+name: TEP Studio isolated technical probe
+on:
+  push:
+    branches: [feature/tep-studio-execution-and-environment-validation]
+jobs:
+  probe:
+    if: contains(github.event.head_commit.message, '[tep-probe-once]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build fixed external source in isolation
+        run: |
+          git clone https://github.com/khalidlabs/tep-studio.git "$RUNNER_TEMP/tep-studio"
+          git -C "$RUNNER_TEMP/tep-studio" checkout 852f0c69ab974540750d61bd1dbfafd56bfd80bb
+          python -m venv "$RUNNER_TEMP/tep-venv"
+          "$RUNNER_TEMP/tep-venv/bin/pip" install "$RUNNER_TEMP/tep-studio"
+          "$RUNNER_TEMP/tep-venv/bin/python" -c "import tep_studio.simulation.native; print('NATIVE_IMPORT_OK')"
+          gcc --version | head -1
+      - name: Run bounded staged probe
+        run: |
+          /usr/bin/time -v "$RUNNER_TEMP/tep-venv/bin/python" scripts/run_tep_studio_execution_probe.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tep-studio-technical-probe
+          path: tep_probe_output/
+          if-no-files-found: warn
