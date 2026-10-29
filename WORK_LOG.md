@@ -218,3 +218,16 @@ PR15 OPEN/e769ef5/CI40158875287 success/승인검토0 확인, 병합 안 함. �
 최종 로컬 검사: 65개 단위검사 PASS(89.755초),39개 동결파일 hash/변수/시차 변환 PASS,Step6 독립 점수 PASS,상태JSON/MD·자산manifest·기존 통합 검사 PASS. `research_runs/decision_reliability_next/validation/`에 실제 명령/로그/hash 보존.
 
 실행/검증 코드 commit eb7f6bd,브랜치 feature/decision-reliability-next push 완료. PR16 생성(base=미병합PR15 브랜치);두PR 자동병합 없음. CHECKPOINT에 실행commit/의존PR/실제 검사 및 다음행동 기록. 새 문서 정리 commit은 실행/계획/SHA를 바꾸지 않는다.
+
+
+## 2026-10-27 — 제조 타당성 Gate 감사
+
+main e960fa8,PR15 OPEN/e769ef5,PR16 OPEN/d12c6be 및 clean 작업트리 재확인. feature/manufacturing-validity-gate를 PR16 head위에분기. 원설계/동결/원시불변.
+
+`audit_manufacturing_validity.py --output research_runs/manufacturing_validity_gate/review_v4 --step6-zip <고정28824bc2 ZIP>` 실제성공:7graph/84과제/198쌍,원본평가기strict·기존10000draw21조건 재집계,자기상관·id/Boolean guard probe. CSV unnamed index포함/손실F1동률/과도한정밀도가정의3실패를review_v1~v3에보존. 정수TP유일복원으로원래baseline평균/p일치;원표변경없음. 회수평가기5d120b84와Finalfreeze c8af472a hash다름을scope명시. Python후보고정ZIP4source hash일치검산,새운전없음.
+
+PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이지12과제추천실행아님. Var의GT상비도달133중89도달로밀도위험확인. 현행guard는이름다르면차단하나동일이름+true이면metadata검사없이통과. 다음정확한작업은ENV-CONTRACT 구현제안. 직접제조가설A/B NO-GO,기술인터페이스만CONDITIONAL,권고D. 새발견/SCM/do/시뮬레이터/비선형 fitting0.
+
+이번 로컬 검사15개 단위검사PASS,동결39파일/변수순서·엄격시차3개PASS,REF-B저장차분·시계/명령·TrackA/B/benchmark 및새histogram감사8개script검사PASS. 외부runtime시뮬레이터는실행하지않음. 개인경로·비밀/대용량검사·git diff --check 및기존동결/실험/원설계불변확인.
+
+감사실행코드 commit a6872ad push 후 PR17 생성(base=미병합PR16 브랜치). PR15/16/17 자동병합 없음. 상태JSON에실제PR17과의존성을기록. 후속문서정리commit은원시검산/실험조건을바꾸지않는다.

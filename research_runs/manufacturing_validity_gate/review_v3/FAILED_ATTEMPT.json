@@ -1,0 +1,5 @@
+{
+  "status": "FAILED_OVERSTRICT_CSV_PRECISION_ASSUMPTION",
+  "reason": "Stored baseline CSV has lossy decimal serialization (maximum .00056 of one TP count), not mere1ulp. Counts uniquely reconstruct far below .5; retry records raw/canonical values and maximum rounding error. Old means/p unchanged.",
+  "exit": 1
+}

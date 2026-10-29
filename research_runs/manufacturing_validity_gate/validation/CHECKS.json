@@ -1,0 +1,47 @@
+[
+  {
+    "command": "unittest targeted manufacturing validity/decision_mvp/simulator diagnostics/track_a_gate",
+    "tests": 15,
+    "success": true
+  },
+  {
+    "command": "python -X utf8 graphs/final/verify_and_load.py",
+    "exit": 0,
+    "log_sha256": "6dac5cada6fe0587487ccd285c409f2862a13e885a5025162c19b01e70d1f91b"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_ref_b_minimal_records.py",
+    "exit": 0,
+    "log_sha256": "5eb6e174f2b518a6376b7f0b463e8d18e9c9c03628789d0b3a3f8668603958c9"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_decision_mvp.py",
+    "exit": 0,
+    "log_sha256": "d2a63ca0b80cf6f4414b773587b868a7824dfcf0f7d4c0bc8dc2f6b78cc85aa3"
+  },
+  {
+    "command": "python -X utf8 experiments/simulator/diagnostics/validate_diagnostics.py",
+    "exit": 0,
+    "log_sha256": "b55a7f98d50516fd704b05788aaed55f5f657de412d980ef984d70691de12f96"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_track_a_recovery.py",
+    "exit": 0,
+    "log_sha256": "4ec2f8032b1b739902487f5273bf742cc56f2db37ab3d915ea1b6ef26782b617"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_track_b_audit.py",
+    "exit": 0,
+    "log_sha256": "f558994eef444879285244516df3075d1918d2bede4d1fc9bbfbb16f73531d81"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_benchmark_decision.py",
+    "exit": 0,
+    "log_sha256": "f279992a48dc275a6a07764e76ae46dd2629f740b436f23b94eab8c2ae1b9cf3"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_manufacturing_validity.py",
+    "exit": 0,
+    "log_sha256": "91b9de00062d5504e2e64da80c220192552a3419d9a9859af47c08cb3a633c54"
+  }
+]

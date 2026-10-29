@@ -1,0 +1,241 @@
+{
+  "status": "STORED10000_DRAWS_RECALCULATED_NOT_NEW_RANDOM_RUN",
+  "source_zip_sha256": "28824bc2a98acb77ce8fc5f56439ea4910f7dc9f22ed45b7d1391f7f703f6b22",
+  "random_code_sha256": "d20a117cb5a3c9140851e6ab2ed949b2b332ee3224103eb93aad6334121ef43f",
+  "draw_csv_sha256": "bda0c64fa674120d84e72bbc1fde605ac261ee3e54e2c01a06febb347a2b70ed",
+  "source_matches_final_random_code": true,
+  "selection_assumption": "same pair/unresolved counts, uniform465 pairs, random confirmed directions; no DAG/controller/lag constraints; seed reported fixed but config seed bytes unavailable",
+  "results": [
+    {
+      "graph_id": "pc",
+      "metric": "skeleton_F1",
+      "observed": 0.36000000000000004,
+      "n": 10000,
+      "mean": 0.05342800000000001,
+      "q025": 0.0,
+      "q975": 0.16,
+      "p": 9.999000099990002e-05,
+      "p_raw_csv_float": 9.999000099990002e-05
+    },
+    {
+      "graph_id": "pc",
+      "metric": "dir_strict_F1",
+      "observed": 0.08,
+      "n": 10000,
+      "mean": 0.010923999999999998,
+      "q025": 0.0,
+      "q975": 0.08,
+      "p": 0.027797220277972202,
+      "p_raw_csv_float": 0.027797220277972202
+    },
+    {
+      "graph_id": "pc",
+      "metric": "shd_strict",
+      "observed": 39.0,
+      "n": 10000,
+      "mean": 48.3912,
+      "q025": 45.0,
+      "q975": 50.0,
+      "p": 9.999000099990002e-05,
+      "p_raw_csv_float": 9.999000099990002e-05
+    },
+    {
+      "graph_id": "boss",
+      "metric": "skeleton_F1",
+      "observed": 0.32835820895522383,
+      "n": 10000,
+      "mean": 0.07049850746268656,
+      "q025": 0.0,
+      "q975": 0.14925373134328357,
+      "p": 9.999000099990002e-05,
+      "p_raw_csv_float": 9.999000099990002e-05
+    },
+    {
+      "graph_id": "boss",
+      "metric": "dir_strict_F1",
+      "observed": 0.11940298507462686,
+      "n": 10000,
+      "mean": 0.03411641791044775,
+      "q025": 0.0,
+      "q975": 0.11940298507462686,
+      "p": 0.025297470252974703,
+      "p_raw_csv_float": 0.0046995300469953
+    },
+    {
+      "graph_id": "boss",
+      "metric": "shd_strict",
+      "observed": 52.0,
+      "n": 10000,
+      "mean": 63.4954,
+      "q025": 59.0,
+      "q975": 67.0,
+      "p": 9.999000099990002e-05,
+      "p_raw_csv_float": 9.999000099990002e-05
+    },
+    {
+      "graph_id": "directlingam",
+      "metric": "skeleton_F1",
+      "observed": 0.21978021978021978,
+      "n": 10000,
+      "mean": 0.0835956043956044,
+      "q025": 0.02197802197802198,
+      "q975": 0.15384615384615385,
+      "p": 0.0023997600239976003,
+      "p_raw_csv_float": 0.0004999500049995
+    },
+    {
+      "graph_id": "directlingam",
+      "metric": "dir_strict_F1",
+      "observed": 0.13186813186813184,
+      "n": 10000,
+      "mean": 0.0416065934065934,
+      "q025": 0.0,
+      "q975": 0.10989010989010989,
+      "p": 0.009499050094990502,
+      "p_raw_csv_float": 0.009499050094990502
+    },
+    {
+      "graph_id": "directlingam",
+      "metric": "shd_strict",
+      "observed": 75.0,
+      "n": 10000,
+      "mean": 85.3033,
+      "q025": 79.0,
+      "q975": 90.0,
+      "p": 0.0014998500149985001,
+      "p_raw_csv_float": 0.0014998500149985001
+    },
+    {
+      "graph_id": "dagma",
+      "metric": "skeleton_F1",
+      "observed": 0.26666666666666666,
+      "n": 10000,
+      "mean": 0.075552,
+      "q025": 0.0,
+      "q975": 0.16,
+      "p": 0.00029997000299970003,
+      "p_raw_csv_float": 0.00029997000299970003
+    },
+    {
+      "graph_id": "dagma",
+      "metric": "dir_strict_F1",
+      "observed": 0.08,
+      "n": 10000,
+      "mean": 0.037855999999999994,
+      "q025": 0.0,
+      "q975": 0.10666666666666667,
+      "p": 0.1658834116588341,
+      "p_raw_csv_float": 0.1658834116588341
+    },
+    {
+      "graph_id": "dagma",
+      "metric": "shd_strict",
+      "observed": 62.0,
+      "n": 10000,
+      "mean": 70.7472,
+      "q025": 65.0,
+      "q975": 75.0,
+      "p": 0.0031996800319968005,
+      "p_raw_csv_float": 0.0031996800319968005
+    },
+    {
+      "graph_id": "pcmciplus",
+      "metric": "skeleton_F1",
+      "observed": 0.32098765432098764,
+      "n": 10000,
+      "mean": 0.07960987654320989,
+      "q025": 0.0,
+      "q975": 0.1728395061728395,
+      "p": 9.999000099990002e-05,
+      "p_raw_csv_float": 9.999000099990002e-05
+    },
+    {
+      "graph_id": "pcmciplus",
+      "metric": "dir_strict_F1",
+      "observed": 0.1234567901234568,
+      "n": 10000,
+      "mean": 0.03206913580246913,
+      "q025": 0.0,
+      "q975": 0.09876543209876543,
+      "p": 0.008099190080991902,
+      "p_raw_csv_float": 0.008099190080991902
+    },
+    {
+      "graph_id": "pcmciplus",
+      "metric": "shd_strict",
+      "observed": 63.0,
+      "n": 10000,
+      "mean": 76.477,
+      "q025": 71.0,
+      "q975": 81.0,
+      "p": 9.999000099990002e-05,
+      "p_raw_csv_float": 9.999000099990002e-05
+    },
+    {
+      "graph_id": "varlingam",
+      "metric": "skeleton_F1",
+      "observed": 0.1754385964912281,
+      "n": 10000,
+      "mean": 0.10574210526315787,
+      "q025": 0.06140350877192982,
+      "q975": 0.14912280701754385,
+      "p": 0.0025997400259974,
+      "p_raw_csv_float": 0.0025997400259974
+    },
+    {
+      "graph_id": "varlingam",
+      "metric": "dir_strict_F1",
+      "observed": 0.04385964912280702,
+      "n": 10000,
+      "mean": 0.0347,
+      "q025": 0.008771929824561403,
+      "q975": 0.07017543859649122,
+      "p": 0.35996400359964004,
+      "p_raw_csv_float": 0.35996400359964004
+    },
+    {
+      "graph_id": "varlingam",
+      "metric": "shd_strict",
+      "observed": 203.0,
+      "n": 10000,
+      "mean": 211.9896,
+      "q025": 204.0,
+      "q975": 219.0,
+      "p": 0.016298370162983702,
+      "p_raw_csv_float": 0.016298370162983702
+    },
+    {
+      "graph_id": "dynotears",
+      "metric": "skeleton_F1",
+      "observed": 0.1616161616161616,
+      "n": 10000,
+      "mean": 0.10351010101010101,
+      "q025": 0.06060606060606061,
+      "q975": 0.15151515151515152,
+      "p": 0.0188981101889811,
+      "p_raw_csv_float": 0.0188981101889811
+    },
+    {
+      "graph_id": "dynotears",
+      "metric": "dir_strict_F1",
+      "observed": 0.050505050505050504,
+      "n": 10000,
+      "mean": 0.04510202020202019,
+      "q025": 0.010101010101010102,
+      "q975": 0.08080808080808081,
+      "p": 0.4734526547345265,
+      "p_raw_csv_float": 0.2822717728227177
+    },
+    {
+      "graph_id": "dynotears",
+      "metric": "shd_strict",
+      "observed": 177.0,
+      "n": 10000,
+      "mean": 183.2874,
+      "q025": 175.0,
+      "q975": 191.0,
+      "p": 0.07429257074292571,
+      "p_raw_csv_float": 0.07429257074292571
+    }
+  ]
+}
