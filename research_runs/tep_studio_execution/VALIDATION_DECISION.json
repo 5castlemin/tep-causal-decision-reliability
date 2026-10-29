@@ -1,0 +1,16 @@
+{
+  "decision": "TEP_RECONSTRUCTION_PROMISING",
+  "build_and_execution": "PASS",
+  "scientific_equivalence": "NOT_ESTABLISHED",
+  "normal_and_independent_intervention_equivalence": "BLOCKED",
+  "causal_reference_completeness": "BLOCKED",
+  "scope": "three source files identical and actual finite 2h trajectory, not original-environment verification",
+  "reasons": [
+    "B pressure/level remain substantially different and change during the 2h run",
+    "original controller memory, noise, data timestamps and transformations not recovered",
+    "28 reference edges are not a verified complete positive/negative causal graph"
+  ],
+  "intervention": "NOT_RUN",
+  "discovery_training": "NOT_RUN",
+  "next": "reconstruct a source-backed common controller initialization and temporal contract, compare official simulator against Studio under identical inputs; requires original MATLAB/Simulink execution or recorded official trace"
+}

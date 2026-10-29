@@ -341,3 +341,6 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 기존 전체 단위검사105개 PASS(86.868초),동결39SHA/변수 순서·상태·asset·환경계약15case·31변수 비교/원시 hash·diff 검사 PASS. Studio 신규 실행이나 원본 MATLAB 실행은 아님.
 
 - 진단 커밋843b665 push, main 기반 PR27 생성. PR26·기존 CausalMan 자료 변경 및 자동병합 없음.
+
+## 2026-10-29 — TEP Studio 격리 실행
+PR #27 기반 후속: Linux GCC 빌드, 고정 소스와 공식 3개 파일 해시 비교, A/B 0.1665·0.5·2시간 정상 운전 및 31변수 잠정 비교. 종료·비유한 출력 없음. 원본 계보·제어·GT 정합성은 미확립. 결과와 명령은 TEP_STUDIO_EXECUTION_VALIDATION.md 참조.

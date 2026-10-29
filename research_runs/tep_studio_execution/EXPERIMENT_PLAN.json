@@ -1,0 +1,11 @@
+{
+  "version": 1, "source_commit": "852f0c69ab974540750d61bd1dbfafd56bfd80bb",
+  "purpose": "Short technical diagnostics, not an equivalence test or intervention experiment",
+  "seed": 465120799, "unit": "hours", "control_interval": 0.0005,
+  "integrator": "RK4", "horizons_hours": [0.1665, 0.5, 2.0],
+  "fresh_process_each_run": true, "disturbances": "default no fault", "overrides": false,
+  "conditions": {"A": "default controller setpoints seeded from initial measurements", "B": "same controller, replace only pressure=2800 kPa, level=65%, temperature=122.9 C"},
+  "stop": "stop all later horizons on shutdown, exception, non-finite values or 20-minute job timeout",
+  "comparisons": "exploratory only, short transient versus preprocessed 75h benchmark; no equivalence claim",
+  "interventions": "NOT_RUN, requires demonstrated normal-operating correspondence"
+}
