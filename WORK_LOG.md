@@ -331,3 +331,11 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 현재MFG-INTEGRATED 대시보드는후속실행결과를가리키도록갱신하고중복실행대기열에서제외;과거PR24정적판정과실험JSON은보존.새우선작업은MFG-MICRO의방법론결정하나.
 
 - 수용검사커밋c6b3e386cc9838e245fd226f50ccd809af479fc7 push,PR25(basePR24) 생성.최종head CI는별도확인하며자체CI가외부acceptance성공을뜻하지않음.원본미수정/CONDITIONAL_NOT_ACCEPTED/후속sampling중단유지.
+
+### 2026-10-29 — TEP 원본 환경 복원 진단
+
+- 공식2015 ZIP과 TEP Studio 고정 소스의 C/헤더/Mode1초기 MAT 3파일 SHA 일치. Studio는 C compiler 부재로 미실행, MATLAB PATH 미확인. 원본 run·seed·export는 미확보.
+- Python 후보 고정 seed/1초/600초 기본 및 액위65·온도122.9 두 정상 조건 실제실행, 모두 종료없음. 31변수 잠정대응 비교와 원시/해시 저장. 압력동일제어 setpoint는 미확인·미변경. 짧은과도값을75시간 동일성으로 주장하지 않음.
+- TEP_RECONSTRUCTION_PROMISING: 공식 동일계열 source는 확보했으나 동일생성환경·28간선·개입효과는 미입증. CausalMan 및 동결 자료 보존.
+
+- 기존 전체 단위검사105개 PASS(86.868초),동결39SHA/변수 순서·상태·asset·환경계약15case·31변수 비교/원시 hash·diff 검사 PASS. Studio 신규 실행이나 원본 MATLAB 실행은 아님.

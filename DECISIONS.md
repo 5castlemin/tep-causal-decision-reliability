@@ -146,3 +146,7 @@ RESEARCH_COMPASS는 실무 안내이며 RESEARCH_DESIGN을 대체/수정하지 �
 
 - 실제import·관측·숫자do성공을연구수용과구분한다.원본mutilated graph의부모삭제결함과조건부참조/관측ADMG식별계약이남아CONDITIONAL_NOT_ACCEPTED.81간선계층차이만으로원시모델버그를선언하지않으며설치실패를과학적기각으로취급하지않음.
 - 다음은관측-only점효과식별을필수로유지할지방법론결정하나.현재micro의학습/추천본연결은보류하며,privileged-state/알려진함수/부분식별대안은새승인계약이다.자동패치·smoke반복·공식채택·TEP재개·기존PR병합없음.
+
+### 2026-10-29 — TEP 원본 복원 가능성
+
+- 공식 C/헤더/초기상태와 Studio 파일3개 바이트일치는 유력 단서다. 제어기·잡음·clock·raw 계보와 구조 참조 타당성은 독립 문제여서 기존 STOP을 유지한다. setpoint 진단을 제조 효과·안전 검증으로 승격하지 않는다.
