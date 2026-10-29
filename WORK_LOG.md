@@ -329,3 +329,5 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 
 - 기존96+신규9소프트웨어fixture=전체105단위검사PASS(104.220초).추가파일탐지순서의ownfixture실패1건은코드검사순서를고쳐원래기대값그대로통과.상태/동결39SHA·순서·환경계약15case/asset/JSON·diff PASS.이전보호5218파일불변.기존suite의옛fit/CV replay는신규연구학습아님.
 - 현재MFG-INTEGRATED 대시보드는후속실행결과를가리키도록갱신하고중복실행대기열에서제외;과거PR24정적판정과실험JSON은보존.새우선작업은MFG-MICRO의방법론결정하나.
+
+- 수용검사커밋c6b3e386cc9838e245fd226f50ccd809af479fc7 push,PR25(basePR24) 생성.최종head CI는별도확인하며자체CI가외부acceptance성공을뜻하지않음.원본미수정/CONDITIONAL_NOT_ACCEPTED/후속sampling중단유지.
