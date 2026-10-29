@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-10-28. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
+기준일: 2026-10-29. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
@@ -45,7 +45,7 @@
 | VALVE-TRANSITION | 좁은 수동 밸브 시간전이 계약 검산 | VERIFIED | research_runs/tep_valve_transition/run_v1/TRANSITIONS.json; research_runs/tep_valve_transition/RECHECKS.json | L1 정상 cache 전이만 검증 완료. 같은기술반복 종료; DYNAMIC-SCOPE에서 내부상태·시간전개 연구설계 검토 여부 결정 |
 | DYNAMIC-SCOPE | 제한 내부 동적 연구계약 초안 검토 | BLOCKED | docs/research_design/BOUNDED_DYNAMIC_RESEARCH_PROTOCOL.md; research_runs/bounded_dynamic_protocol/DECISION.json | B축약계약판정2·미채택초안보존. 이후효과중심검토도STOP이므로추가TEP설계확대중단 |
 | MFG-EFFECT-SCOPE | TEP 효과·조작 선택 설계 검토: STOP | BLOCKED | docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md; research_runs/tep_effect_feasibility/DECISION.json | STOP-TEP-EFFECT-TRACK:현재경로동결. 추가TEP시험·패치·후속검토문서권고없음. SYNTH-FINAL로현재우선순위이동 |
-| SYNTH-FINAL | 합성 독립 확인·민감도의 최종 연구 주장 정리 | PROPOSED | research_runs/tep_effect_feasibility/DECISION.json; docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md | 기존독립확인/이론평균민감도/오류위치대조를원계획·원시로추적가능한최종결과·주장표로확정. 새자료를독립확인으로재포장하지않음 |
+| SYNTH-FINAL | 합성 최종 주장·근거 통합 완료 | VERIFIED | docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md; research_runs/synthetic_final_claims/CLAIM_EVIDENCE_MATRIX.json | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

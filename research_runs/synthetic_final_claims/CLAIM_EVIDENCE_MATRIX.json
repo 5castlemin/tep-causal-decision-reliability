@@ -1,0 +1,1070 @@
+{
+  "date": "2026-10-29",
+  "columns": [
+    "claim_id",
+    "research_claim",
+    "corresponding_hypothesis",
+    "experiments",
+    "data_and_structure_count",
+    "independence_level",
+    "metrics_and_observations",
+    "supporting_evidence",
+    "counterevidence_or_uncertainty",
+    "permitted_interpretation",
+    "prohibited_interpretation",
+    "raw_evidence_locations",
+    "verdict"
+  ],
+  "verdict_definition": "Scope-specific judgment; B1 historic primary support retained, B2 incremental claim not established",
+  "claims": [
+    {
+      "claim_id": "A",
+      "research_claim": "전체 구조 점수 동점은 같은 조작 선택·손실을 보장하지 않는다",
+      "corresponding_hypothesis": "원설계: 전체 구조 정확도만으로 과제 성능을 설명할 수 있는가",
+      "experiments": "기존 통제 오류/발견 결과의 개발 재분석",
+      "data_and_structure_count": "14구조의162유효 위치쌍;전체20개 개발구조의720기본정책행",
+      "independence_level": "재사용 개발 자료;같은 구조/학습/과제의 종속 비교;독립162구조가 아님",
+      "metrics_and_observations": {
+        "matched": {
+          "pairs": 162,
+          "structures": 14,
+          "left_worse": 93,
+          "left_better": 4,
+          "ties": 65
+        },
+        "C07_pair": {
+          "raw_row_index": 215,
+          "source": "research_runs/decision_reliability_next/run_v1/A_matched_pairs.json.gz",
+          "structure_id": "C07",
+          "dataset_id": "C07_n512_r1",
+          "task_id": "path",
+          "left": "remove_key_path_retained",
+          "right": "remove_peripheral_path_retained",
+          "same_skeleton_f1": 0.9696969696969697,
+          "same_direction_f1": 0.9696969696969697,
+          "same_shd": 1,
+          "task_specific_key_vs_peripheral": true,
+          "both_paths_preserved": true,
+          "left_action": 0.5,
+          "right_action": 0,
+          "left_status": "COMPUTED_RECOMMENDATION",
+          "right_status": "COMPUTED_BASELINE",
+          "left_loss": 14.542542785902835,
+          "right_loss": 0.36,
+          "left_improvement": -14.182542785902836,
+          "right_improvement": 0.0,
+          "loss_left_minus_right": 14.182542785902836,
+          "fixed_error_left": 2.95881829047086,
+          "fixed_error_right": 0.16943335746499955,
+          "left_worsened": true,
+          "right_worsened": false,
+          "stored_do_loss_difference": 13.04381623197865
+        }
+      },
+      "supporting_evidence": "F1·strict-directed F1·SHD·오류 수가 일치하는 쌍에서 선택과 손실 차이 존재",
+      "counterevidence_or_uncertainty": "동률65/162;연결만 정확하고 방향이 틀린 경우와 전체 정보의 무가치를 혼동할 수 없음",
+      "permitted_interpretation": "이 유한 후보/공통 적합·정책 계약에서는 전체 점수만으로 동일 결정을 보장하지 못함",
+      "prohibited_interpretation": "모든 환경에서 F1이 무의미함/동점 쌍 수를 독립표본으로 계산",
+      "raw_evidence_locations": [
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/A_matched_pairs.json.gz",
+          "selector": "dataset_id=C07_n512_r1,task_id=path,left=remove_key_path_retained;raw index215"
+        },
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/A_controlled_outcomes.json.gz",
+          "selector": "matching dataset/task and variant;metrics/removed_edges/added_edges"
+        }
+      ],
+      "verdict": "SUPPORTED_WITHIN_SCOPE"
+    },
+    {
+      "claim_id": "B1",
+      "research_claim": "경로 지표로 연결 F1을 대체한 모형은 당시 사전 비교에서 우세했다",
+      "corresponding_hypothesis": "당시 사전 M1-M2 대체 예측력 비교",
+      "experiments": "12새구조 독립 확인 당시 일차 표본평균 결과 및 후속 이론평균 민감도",
+      "data_and_structure_count": "S1..S8로고정한모형→C01..C12;기본정책428가용행",
+      "independence_level": "당시는 독립 확인;현재 C는 개발에 재사용됨.구조단위 조건부 구간",
+      "metrics_and_observations": {
+        "sample": {
+          "left": "M1",
+          "right": "M2",
+          "delta": 0.014264077557634426,
+          "ci_low": 0.0029122371161108985,
+          "ci_high": 0.02527767601584533,
+          "right_better": 9,
+          "left_better": 3,
+          "ties": 0,
+          "by_structure": {
+            "C01": 0.019141896709954198,
+            "C02": -0.0012759025880066666,
+            "C03": 0.003609792995222766,
+            "C04": -0.02324235707290037,
+            "C05": 0.004275738266337925,
+            "C06": 0.048742892175379915,
+            "C07": -0.009251057943405083,
+            "C08": 0.032324179215938,
+            "C09": 0.033504617883986815,
+            "C10": 0.008469151720116586,
+            "C11": 0.032115171210824925,
+            "C12": 0.022754808118164105
+          },
+          "leave_one_structure_out_min": 0.011129639865112109,
+          "leave_one_structure_out_max": 0.01767375343313759,
+          "bootstrap_units": "whole generated reference structures, within selected generator; conditional on exploratory fitted models",
+          "bootstrap_repeats": 10000
+        },
+        "analytic": {
+          "left": "M1",
+          "right": "M2",
+          "delta": 0.0063165420702079094,
+          "ci_low": -0.004227100101350128,
+          "ci_high": 0.017585196513464168,
+          "right_better": 8,
+          "left_better": 4,
+          "ties": 0,
+          "by_structure": {
+            "C01": -0.011856950154412155,
+            "C02": -0.01268358038552303,
+            "C03": -0.010118324492229692,
+            "C04": -0.023327450301658656,
+            "C05": 0.00198177654125431,
+            "C06": 0.048857188791810835,
+            "C07": 0.011559034635128196,
+            "C08": 0.03379333608814494,
+            "C09": 0.01332952972175211,
+            "C10": 0.002659508719153811,
+            "C11": 0.010377645000171382,
+            "C12": 0.011226790678902865
+          },
+          "leave_one_structure_out_min": 0.002449210550062189,
+          "leave_one_structure_out_max": 0.009011450467650325,
+          "bootstrap_units": "whole generated reference structures, within selected generator; conditional on exploratory fitted models",
+          "bootstrap_repeats": 10000
+        }
+      },
+      "supporting_evidence": "ΔMAE .014264>=.01,95%하한>0;9/12구조에서M2우세;당시 고정판정 지지",
+      "counterevidence_or_uncertainty": "이론평균 Δ .006317 구간0포함;3구조는M1우세;하한은.01을넘지않음;기본M0이M1보다좋음",
+      "permitted_interpretation": "당시 표본기반 유한과제의 사전 대체 예측력 기준을 충족;후속 강건성은 불확실",
+      "prohibited_interpretation": "항상경로우수/실질효과.01이구간전체로확인됨/추가정보까지입증",
+      "raw_evidence_locations": [
+        {
+          "file": "research_runs/independent_confirmation/analysis_v1/CONFIRMATION_RESULT.json",
+          "selector": "/paired/0 and /macro_mae;predictions grouped by model,structure"
+        },
+        {
+          "file": "research_runs/independent_confirmation/analysis_v1/ANALYTIC_OUTCOME_SENSITIVITY.json",
+          "selector": "/paired/0"
+        },
+        {
+          "file": "research_runs/independent_confirmation/PLAN_v1.json",
+          "selector": "/confirmation_analysis"
+        }
+      ],
+      "verdict": "PARTIALLY_SUPPORTED"
+    },
+    {
+      "claim_id": "B2",
+      "research_claim": "연결·방향 정확도와 기본 정보를 넘어 경로의 안정적인 추가 예측력은 확립되지 않았다",
+      "corresponding_hypothesis": "M1→M4 및 M5→M6 추가 정보 가설",
+      "experiments": "당시M4보조비교;20구조재분석;단순화개발검증",
+      "data_and_structure_count": "8탐색+12이전확인=20개개발구조,새확인0",
+      "independence_level": "기존12확인M4는보조;그후20구조LOSO는개발검증이며새독립확인아님",
+      "metrics_and_observations": {
+        "confirmation_incremental": {
+          "left": "M1",
+          "right": "M4_incremental",
+          "delta": 0.0009647242998525133,
+          "ci_low": -0.010116672790536012,
+          "ci_high": 0.00951706180658791,
+          "right_better": 8,
+          "left_better": 4,
+          "ties": 0,
+          "by_structure": {
+            "C01": 0.01524264014518592,
+            "C02": 0.009181872668098695,
+            "C03": 0.00606010277088298,
+            "C04": -0.0047283958825139055,
+            "C05": -0.011273244673747018,
+            "C06": -0.009114311727907831,
+            "C07": -0.04822776469835377,
+            "C08": 0.011442636031281234,
+            "C09": 0.0027593711000825083,
+            "C10": 0.005974907701641136,
+            "C11": 0.01447327931199728,
+            "C12": 0.01978559885158293
+          },
+          "leave_one_structure_out_min": -0.0007462642957593428,
+          "leave_one_structure_out_max": 0.005436768754234903,
+          "bootstrap_units": "whole generated reference structures, within selected generator; conditional on exploratory fitted models",
+          "bootstrap_repeats": 10000
+        },
+        "analytic_incremental": {
+          "left": "M1",
+          "right": "M4_incremental",
+          "delta": -0.004193188207442495,
+          "ci_low": -0.010637675427711423,
+          "ci_high": 0.002004150634580402,
+          "right_better": 5,
+          "left_better": 7,
+          "ties": 0,
+          "by_structure": {
+            "C01": 0.002862959553626615,
+            "C02": 0.007899628085071761,
+            "C03": 0.007967020858518623,
+            "C04": -0.007709959227749502,
+            "C05": -0.013567206398830689,
+            "C06": -0.008695500166746917,
+            "C07": -0.02741767211982049,
+            "C08": 0.01291179290348815,
+            "C09": -0.015086416714872625,
+            "C10": -0.005492138170857322,
+            "C11": -0.006970332873684204,
+            "C12": 0.002979565782546656
+          },
+          "leave_one_structure_out_min": -0.0057481864902543724,
+          "leave_one_structure_out_max": -0.002081871488135405,
+          "bootstrap_units": "whole generated reference structures, within selected generator; conditional on exploratory fitted models",
+          "bootstrap_repeats": 10000
+        },
+        "development": [
+          {
+            "left": "M1",
+            "right": "M4",
+            "delta": 0.005199701501582539,
+            "ci_low": -0.0051548854318113685,
+            "ci_high": 0.014421021378933457,
+            "right_better": 13,
+            "structures": 20,
+            "by_structure": {
+              "C01": 0.003377029388973621,
+              "C02": -0.0006480488844936017,
+              "C03": 0.002228061326297062,
+              "C04": -0.009088782594683875,
+              "C05": 0.00382861589573269,
+              "C06": 0.020027195758082872,
+              "C07": 0.010361771278412757,
+              "C08": 0.036291645538387596,
+              "C09": -0.028303963841223245,
+              "C10": 0.01615412338110228,
+              "C11": 0.020766056414771444,
+              "C12": 0.013165780406805966,
+              "S1": -0.018006885726701588,
+              "S2": -0.05823925231175764,
+              "S3": 0.03103656172292818,
+              "S4": 0.008811529568336252,
+              "S5": 0.023499952150096315,
+              "S6": -0.008240754493143543,
+              "S7": -0.00024092308248019334,
+              "S8": 0.03721431813620743
+            },
+            "scope": "development uncertainty only; fixed sequence will apply only to new independent cohort"
+          },
+          {
+            "left": "M5",
+            "right": "M6",
+            "delta": 0.00464202834091718,
+            "ci_low": -0.005119873497308461,
+            "ci_high": 0.013075636192668768,
+            "right_better": 14,
+            "structures": 20,
+            "by_structure": {
+              "C01": 0.004669044419191082,
+              "C02": 0.0026478960520790185,
+              "C03": 0.003240334323331817,
+              "C04": -0.012281279325280975,
+              "C05": 0.002265708492710794,
+              "C06": 0.018444574399881453,
+              "C07": 0.009162080339145562,
+              "C08": 0.0295195018484474,
+              "C09": -0.02209328693168683,
+              "C10": -0.000849033771314095,
+              "C11": 0.025876135558610902,
+              "C12": 0.01750962560395994,
+              "S1": -0.015208899145462806,
+              "S2": -0.05725589028123379,
+              "S3": 0.0176703792901427,
+              "S4": 0.0004735856355198853,
+              "S5": 0.021339222339978398,
+              "S6": -0.004522314987077558,
+              "S7": 0.01764806826418336,
+              "S8": 0.034585114693217345
+            },
+            "scope": "development uncertainty only; fixed sequence will apply only to new independent cohort"
+          }
+        ],
+        "model_overlap": {
+          "left": "strict_directed_f1",
+          "right": "key_path_edge_recall",
+          "rho": 0.908395293442792,
+          "source": "20 development structures only"
+        },
+        "simplified_cv": {
+          "macro_mae": {
+            "BASE": 0.3233583117272866,
+            "SIMPLE": 0.33957907681303046,
+            "SKELETON": 0.3476078716883367,
+            "DIRECTION": 0.3630500078098364,
+            "PATH": 0.3446907144782123,
+            "SKEL_DIRECTION": 0.367009862704782,
+            "SKEL_PATH": 0.3510602311992658,
+            "DIRECTION_PATH": 0.3509577243340751,
+            "ALL": 0.3565237863183503
+          },
+          "nested_selected_macro_mae": 0.32312864224606064,
+          "selected_models": {
+            "BASE": 19,
+            "PATH": 1
+          }
+        }
+      },
+      "supporting_evidence": "연관성은있으나추가비교구간0포함;단순화시연결이후경로Δ음수;기본모형19/20선택",
+      "counterevidence_or_uncertainty": "정보가없다고증명한것은아님;현재모형·변동성·정밀도에조건부;알고리즘/미확정비율함께변함",
+      "permitted_interpretation": "현재안정적인증분예측정보는미확립;대체비교지지와분리",
+      "prohibited_interpretation": "경로는완전히쓸모없음/회귀계수가독립인과기여/개발CV가새확인",
+      "raw_evidence_locations": [
+        {
+          "file": "research_runs/independent_confirmation/analysis_v1/CONFIRMATION_RESULT.json",
+          "selector": "/paired/4"
+        },
+        {
+          "file": "research_runs/independent_confirmation/analysis_v1/ANALYTIC_OUTCOME_SENSITIVITY.json",
+          "selector": "/paired/4"
+        },
+        {
+          "file": "research_runs/path_metric_incremental_validation/development_v1/paired_development.json",
+          "selector": "left=M1,right=M4;left=M5,right=M6"
+        },
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/C_nested_cv.json",
+          "selector": "/macro_mae,/folds"
+        },
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/D_precision.json",
+          "selector": "/comparisons"
+        }
+      ],
+      "verdict": "NOT_ESTABLISHED"
+    },
+    {
+      "claim_id": "C",
+      "research_claim": "같은 오류량이라도 위치·유형에 따라 손실이 달라질 수 있지만 핵심 오류가 항상 해롭지는 않다",
+      "corresponding_hypothesis": "구조 오류 위치/유형의 의사결정 영향",
+      "experiments": "동일관측/적합/과제/정책의인위적graph변형대조",
+      "data_and_structure_count": "1224통제행,432명목/324실제쌍;유효162쌍14구조;양쪽경로유지114쌍10구조",
+      "independence_level": "정답이용인위적통제/개발자료;발견graph와혼합하지않음",
+      "metrics_and_observations": {
+        "overall": {
+          "pairs": 162,
+          "structures": 14,
+          "left_worse": 93,
+          "left_better": 4,
+          "ties": 65
+        },
+        "both_paths": {
+          "pairs": 114,
+          "structures": 10,
+          "left_worse": 48,
+          "left_better": 3,
+          "ties": 63
+        },
+        "per_type": {
+          "remove_key": {
+            "pairs": 84,
+            "structures": 14,
+            "left_worse": 52,
+            "left_better": 2,
+            "ties": 30
+          },
+          "remove_key_path_retained": {
+            "pairs": 6,
+            "structures": 1,
+            "left_worse": 0,
+            "left_better": 1,
+            "ties": 5
+          },
+          "reverse_key": {
+            "pairs": 72,
+            "structures": 12,
+            "left_worse": 41,
+            "left_better": 1,
+            "ties": 30
+          }
+        },
+        "variants": [
+          {
+            "variant": "add_edge",
+            "rows": 144,
+            "worsened": 3,
+            "large": 0,
+            "improved": 112,
+            "unchanged": 29,
+            "max_loss": 0.7052451590018894
+          },
+          {
+            "variant": "add_peripheral_to_target",
+            "rows": 24,
+            "worsened": 1,
+            "large": 0,
+            "improved": 23,
+            "unchanged": 0,
+            "max_loss": 0.210816
+          },
+          {
+            "variant": "oracle_reference",
+            "rows": 168,
+            "worsened": 4,
+            "large": 0,
+            "improved": 135,
+            "unchanged": 29,
+            "max_loss": 0.7052451590018894
+          },
+          {
+            "variant": "remove_key",
+            "rows": 168,
+            "worsened": 21,
+            "large": 10,
+            "improved": 99,
+            "unchanged": 48,
+            "max_loss": 14.542542785902835
+          },
+          {
+            "variant": "remove_key_path_retained",
+            "rows": 120,
+            "worsened": 21,
+            "large": 10,
+            "improved": 81,
+            "unchanged": 18,
+            "max_loss": 14.542542785902835
+          },
+          {
+            "variant": "remove_peripheral",
+            "rows": 168,
+            "worsened": 4,
+            "large": 0,
+            "improved": 135,
+            "unchanged": 29,
+            "max_loss": 0.7052451590018894
+          },
+          {
+            "variant": "remove_peripheral_path_retained",
+            "rows": 120,
+            "worsened": 3,
+            "large": 0,
+            "improved": 88,
+            "unchanged": 29,
+            "max_loss": 0.7052451590018894
+          },
+          {
+            "variant": "reverse_key",
+            "rows": 168,
+            "worsened": 21,
+            "large": 10,
+            "improved": 99,
+            "unchanged": 48,
+            "max_loss": 14.542542785902835
+          },
+          {
+            "variant": "reverse_peripheral",
+            "rows": 144,
+            "worsened": 3,
+            "large": 0,
+            "improved": 112,
+            "unchanged": 29,
+            "max_loss": 0.7052451590018894
+          }
+        ],
+        "counterexamples": [
+          {
+            "raw_row_index": 65,
+            "source": "research_runs/decision_reliability_next/run_v1/A_matched_pairs.json.gz",
+            "structure_id": "C03",
+            "dataset_id": "C03_n256_r3",
+            "task_id": "path",
+            "left": "remove_key_path_retained",
+            "right": "remove_peripheral_path_retained",
+            "same_skeleton_f1": 0.9333333333333333,
+            "same_direction_f1": 0.9333333333333333,
+            "same_shd": 1,
+            "task_specific_key_vs_peripheral": true,
+            "both_paths_preserved": true,
+            "left_action": 0.5,
+            "right_action": 0,
+            "left_status": "COMPUTED_RECOMMENDATION",
+            "right_status": "COMPUTED_BASELINE",
+            "left_loss": 0.050204119424234916,
+            "right_loss": 0.36,
+            "left_improvement": 0.30979588057576507,
+            "right_improvement": 0.0,
+            "loss_left_minus_right": -0.30979588057576507,
+            "fixed_error_left": 0.36737960836969696,
+            "fixed_error_right": 0.07698642601515182,
+            "left_worsened": false,
+            "right_worsened": false,
+            "stored_do_loss_difference": -0.09552100030927849
+          },
+          {
+            "raw_row_index": 269,
+            "source": "research_runs/decision_reliability_next/run_v1/A_matched_pairs.json.gz",
+            "structure_id": "C09",
+            "dataset_id": "C09_n256_r1",
+            "task_id": "path",
+            "left": "remove_key_path_retained",
+            "right": "remove_peripheral_path_retained",
+            "same_skeleton_f1": 0.9696969696969697,
+            "same_direction_f1": 0.9696969696969697,
+            "same_shd": 1,
+            "task_specific_key_vs_peripheral": true,
+            "both_paths_preserved": true,
+            "left_action": -0.5,
+            "right_action": 0,
+            "left_status": "COMPUTED_RECOMMENDATION",
+            "right_status": "COMPUTED_BASELINE",
+            "left_loss": 0.2379224429091376,
+            "right_loss": 0.36,
+            "left_improvement": 0.12207755709086238,
+            "right_improvement": 0.0,
+            "loss_left_minus_right": -0.12207755709086238,
+            "fixed_error_left": 0.5856893265656724,
+            "fixed_error_right": 0.20104562680732743,
+            "left_worsened": false,
+            "right_worsened": false,
+            "stored_do_loss_difference": 0.2557505756026424
+          }
+        ]
+      },
+      "supporting_evidence": "양쪽경로유지48악화/3반대/63동률;C07같은점수다른선택",
+      "counterevidence_or_uncertainty": "전체4반례/65동률;주변누락도4/168행악화;추가3/144행악화;오류유형간상이한F1분모",
+      "permitted_interpretation": "이구조·오류배치·재적합절차·후보에서위치민감성의존재를확인",
+      "prohibited_interpretation": "핵심간선오류의일반적평균인과효과/주변간선항상무관/추가와누락을동일F1쌍으로취급",
+      "raw_evidence_locations": [
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/A_matched_pairs.json.gz",
+          "selector": "all432;dedup by dataset/task/left-right removed+added edge sets"
+        },
+        {
+          "file": "research_runs/decision_reliability_next/audit_supplement_v1/A_unique_pairs.json",
+          "selector": "task_specific_key_vs_peripheral=true;both_paths_preserved flag"
+        },
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/A_controlled_outcomes.json.gz",
+          "selector": "variant and analytic_loss/improvement;all1224"
+        }
+      ],
+      "verdict": "PARTIALLY_SUPPORTED"
+    },
+    {
+      "claim_id": "D",
+      "research_claim": "구조 점수·고정 효과 오차·선택 손실은 같은 순위를 보장하지 않는다",
+      "corresponding_hypothesis": "구조→효과추정→조작손실의중간관계",
+      "experiments": "실제발견720행;C07응답oracle;오류쌍반례",
+      "data_and_structure_count": "20개개발구조;6개C07기존자료oracle적합은과거진단",
+      "independence_level": "현재새적합0;관찰연관+제한된oracle대조,일반매개효과미식별",
+      "metrics_and_observations": {
+        "discovery": {
+          "rows": 720,
+          "structures": 20,
+          "availability": 716,
+          "nonoptimal": 396,
+          "worsened": 20,
+          "large": 4,
+          "cases": {
+            "high_quality_wrong_effect": 147,
+            "low_quality_close_effect": 3,
+            "worse_than_reference": 20,
+            "large_loss": 4,
+            "low_quality_optimal": 25
+          },
+          "true_structure_refits": 6,
+          "new_discovery_learning": 0
+        },
+        "C07": [
+          {
+            "dataset_id": "C07_n512_r3",
+            "task_id": "path",
+            "mode": "original_boss",
+            "recommended_action": 1,
+            "reduced_response_intercept": -0.5431148812210249,
+            "reduced_response_slope": 0.7749825929346515,
+            "analytic_mean": 8.813814493643205,
+            "analytic_loss": 67.66674853598319,
+            "analytic_regret": 67.30674853598319,
+            "oracle_best_action": 0,
+            "oracle_best_loss": 0.36,
+            "oracle_reference_loss": 0.36,
+            "oracle_improvement_gap": 0.0,
+            "normalizer": 1.0,
+            "oracle_total_effect": 8.813814493643205,
+            "improvement": -67.30674853598319,
+            "raw_regret": 67.30674853598319,
+            "worsened": true,
+            "large_deterioration": true,
+            "nonoptimal": true,
+            "loss_ratio": 187.96319037773108,
+            "ratio_status": "DEFINED",
+            "true_slope": 8.813814493643205,
+            "predicted_slope": 0.7749825929346515,
+            "chosen_effect_error": 8.038831900708553,
+            "fixed_effect_error": 4.019415950354277,
+            "direction_flip": false,
+            "effect_missed": false,
+            "predicted_reference": -0.5431148812210249,
+            "chosen_mean_prediction_error": 8.58194678192958
+          },
+          {
+            "dataset_id": "C07_n512_r3",
+            "task_id": "path",
+            "mode": "replace_slope_only_ORACLE",
+            "recommended_action": 0,
+            "reduced_response_intercept": -0.5431148812210249,
+            "reduced_response_slope": 8.813814493643205,
+            "analytic_mean": 0.0,
+            "analytic_loss": 0.36,
+            "analytic_regret": 0.0,
+            "oracle_best_action": 0,
+            "oracle_best_loss": 0.36,
+            "oracle_reference_loss": 0.36,
+            "oracle_improvement_gap": 0.0,
+            "normalizer": 1.0,
+            "oracle_total_effect": 8.813814493643205,
+            "improvement": 0.0,
+            "raw_regret": 0.0,
+            "worsened": false,
+            "large_deterioration": false,
+            "nonoptimal": false,
+            "loss_ratio": 1.0,
+            "ratio_status": "DEFINED",
+            "true_slope": 8.813814493643205,
+            "predicted_slope": 8.813814493643205,
+            "chosen_effect_error": 0.0,
+            "fixed_effect_error": 0.0,
+            "direction_flip": false,
+            "effect_missed": false,
+            "predicted_reference": -0.5431148812210249,
+            "chosen_mean_prediction_error": 0.5431148812210249
+          },
+          {
+            "dataset_id": "C07_n512_r3",
+            "task_id": "path",
+            "mode": "replace_intercept_only_ORACLE",
+            "recommended_action": 0.5,
+            "reduced_response_intercept": 0.0,
+            "reduced_response_slope": 0.7749825929346515,
+            "analytic_mean": 4.406907246821603,
+            "analytic_loss": 14.542542785902835,
+            "analytic_regret": 14.182542785902836,
+            "oracle_best_action": 0,
+            "oracle_best_loss": 0.36,
+            "oracle_reference_loss": 0.36,
+            "oracle_improvement_gap": 0.0,
+            "normalizer": 1.0,
+            "oracle_total_effect": 8.813814493643205,
+            "improvement": -14.182542785902836,
+            "raw_regret": 14.182542785902836,
+            "worsened": true,
+            "large_deterioration": true,
+            "nonoptimal": true,
+            "loss_ratio": 40.395952183063436,
+            "ratio_status": "DEFINED",
+            "true_slope": 8.813814493643205,
+            "predicted_slope": 0.7749825929346515,
+            "chosen_effect_error": 4.019415950354277,
+            "fixed_effect_error": 4.019415950354277,
+            "direction_flip": false,
+            "effect_missed": false,
+            "predicted_reference": 0.0,
+            "chosen_mean_prediction_error": 4.019415950354277
+          },
+          {
+            "dataset_id": "C07_n512_r3",
+            "task_id": "path",
+            "mode": "true_structure_observational_fit_ORACLE",
+            "recommended_action": 0,
+            "reduced_response_intercept": -0.05929712879863769,
+            "reduced_response_slope": 8.494282153306939,
+            "analytic_mean": 0.0,
+            "analytic_loss": 0.36,
+            "analytic_regret": 0.0,
+            "oracle_best_action": 0,
+            "oracle_best_loss": 0.36,
+            "oracle_reference_loss": 0.36,
+            "oracle_improvement_gap": 0.0,
+            "normalizer": 1.0,
+            "oracle_total_effect": 8.813814493643205,
+            "improvement": 0.0,
+            "raw_regret": 0.0,
+            "worsened": false,
+            "large_deterioration": false,
+            "nonoptimal": false,
+            "loss_ratio": 1.0,
+            "ratio_status": "DEFINED",
+            "true_slope": 8.813814493643205,
+            "predicted_slope": 8.494282153306939,
+            "chosen_effect_error": 0.0,
+            "fixed_effect_error": 0.15976617016813321,
+            "direction_flip": false,
+            "effect_missed": false,
+            "predicted_reference": -0.05929712879863769,
+            "chosen_mean_prediction_error": 0.05929712879863769
+          }
+        ],
+        "low_quality_optimal": [
+          {
+            "raw_row_index": 474,
+            "source": "research_runs/decision_reliability_next/run_v1/B_discovery_outcomes.json.gz",
+            "structure_id": "C06",
+            "dataset_id": "C06_n256_r2",
+            "graph_id": "C06_n256_r2__pc",
+            "algorithm": "pc",
+            "task_id": "direct",
+            "pipeline_ready": true,
+            "failure_type": "AVAILABLE",
+            "recommendation_status": "COMPUTED_RECOMMENDATION",
+            "recommended_action": 0.5,
+            "skeleton_f1": 0.6153846153846154,
+            "strict_directed_f1": 0.23076923076923078,
+            "key_path_edge_recall": 1.0,
+            "unresolved_ratio": 0.5,
+            "predicted_path": 1.0,
+            "analytic_mean": 0.28345,
+            "analytic_loss": 0.18435890250000003,
+            "analytic_regret": 0.0,
+            "oracle_best_action": 0.5,
+            "oracle_best_loss": 0.18435890250000003,
+            "oracle_reference_loss": 0.42250000000000004,
+            "oracle_improvement_gap": 0.2381410975,
+            "normalizer": 1.0,
+            "oracle_total_effect": 0.5669,
+            "improvement": 0.2381410975,
+            "raw_regret": 0.0,
+            "worsened": false,
+            "large_deterioration": false,
+            "nonoptimal": false,
+            "loss_ratio": 0.43635243195266277,
+            "ratio_status": "DEFINED",
+            "true_slope": 0.5669,
+            "predicted_slope": 0.6730089768338985,
+            "chosen_effect_error": 0.053054488416949264,
+            "fixed_effect_error": 0.053054488416949264,
+            "direction_flip": false,
+            "effect_missed": false,
+            "predicted_reference": 0.03465488068900491,
+            "chosen_mean_prediction_error": 0.08770936910595417
+          }
+        ],
+        "large_loss_cases": [
+          {
+            "raw_row_index": 453,
+            "source": "research_runs/decision_reliability_next/run_v1/B_discovery_outcomes.json.gz",
+            "structure_id": "C05",
+            "dataset_id": "C05_n512_r1",
+            "graph_id": "C05_n512_r1__boss",
+            "algorithm": "boss",
+            "task_id": "path",
+            "pipeline_ready": true,
+            "failure_type": "AVAILABLE",
+            "recommendation_status": "COMPUTED_RECOMMENDATION",
+            "recommended_action": 0.5,
+            "skeleton_f1": 0.75,
+            "strict_directed_f1": 0.25,
+            "key_path_edge_recall": 0.2727272727272727,
+            "unresolved_ratio": 0.25,
+            "predicted_path": 1.0,
+            "analytic_mean": 2.395477062572186,
+            "analytic_loss": 3.2737378822228456,
+            "analytic_regret": 2.9137378822228457,
+            "oracle_best_action": 0,
+            "oracle_best_loss": 0.36,
+            "oracle_reference_loss": 0.36,
+            "oracle_improvement_gap": 0.0,
+            "normalizer": 1.0,
+            "oracle_total_effect": 4.790954125144372,
+            "improvement": -2.9137378822228457,
+            "raw_regret": 2.9137378822228457,
+            "worsened": true,
+            "large_deterioration": true,
+            "nonoptimal": true,
+            "loss_ratio": 9.093716339507905,
+            "ratio_status": "DEFINED",
+            "true_slope": 4.790954125144372,
+            "predicted_slope": 0.7982454576012707,
+            "chosen_effect_error": 1.9963543337715508,
+            "fixed_effect_error": 1.9963543337715508,
+            "direction_flip": false,
+            "effect_missed": false,
+            "predicted_reference": -0.028828356560054114,
+            "chosen_mean_prediction_error": 2.025182690331605
+          },
+          {
+            "raw_row_index": 465,
+            "source": "research_runs/decision_reliability_next/run_v1/B_discovery_outcomes.json.gz",
+            "structure_id": "C05",
+            "dataset_id": "C05_n512_r3",
+            "graph_id": "C05_n512_r3__boss",
+            "algorithm": "boss",
+            "task_id": "path",
+            "pipeline_ready": true,
+            "failure_type": "AVAILABLE",
+            "recommendation_status": "COMPUTED_RECOMMENDATION",
+            "recommended_action": 0.5,
+            "skeleton_f1": 1.0,
+            "strict_directed_f1": 0.5833333333333334,
+            "key_path_edge_recall": 0.6363636363636364,
+            "unresolved_ratio": 0.4166666666666667,
+            "predicted_path": 1.0,
+            "analytic_mean": 2.395477062572186,
+            "analytic_loss": 3.2737378822228456,
+            "analytic_regret": 2.9137378822228457,
+            "oracle_best_action": 0,
+            "oracle_best_loss": 0.36,
+            "oracle_reference_loss": 0.36,
+            "oracle_improvement_gap": 0.0,
+            "normalizer": 1.0,
+            "oracle_total_effect": 4.790954125144372,
+            "improvement": -2.9137378822228457,
+            "raw_regret": 2.9137378822228457,
+            "worsened": true,
+            "large_deterioration": true,
+            "nonoptimal": true,
+            "loss_ratio": 9.093716339507905,
+            "ratio_status": "DEFINED",
+            "true_slope": 4.790954125144372,
+            "predicted_slope": 0.29698354699172147,
+            "chosen_effect_error": 2.2469852890763256,
+            "fixed_effect_error": 2.2469852890763256,
+            "direction_flip": false,
+            "effect_missed": false,
+            "predicted_reference": 0.3553611276644797,
+            "chosen_mean_prediction_error": 1.8916241614118459
+          },
+          {
+            "raw_row_index": 537,
+            "source": "research_runs/decision_reliability_next/run_v1/B_discovery_outcomes.json.gz",
+            "structure_id": "C07",
+            "dataset_id": "C07_n512_r3",
+            "graph_id": "C07_n512_r3__boss",
+            "algorithm": "boss",
+            "task_id": "path",
+            "pipeline_ready": true,
+            "failure_type": "AVAILABLE",
+            "recommendation_status": "COMPUTED_RECOMMENDATION",
+            "recommended_action": 1,
+            "skeleton_f1": 0.9696969696969697,
+            "strict_directed_f1": 0.6060606060606061,
+            "key_path_edge_recall": 0.625,
+            "unresolved_ratio": 0.375,
+            "predicted_path": 1.0,
+            "analytic_mean": 8.813814493643205,
+            "analytic_loss": 67.66674853598319,
+            "analytic_regret": 67.30674853598319,
+            "oracle_best_action": 0,
+            "oracle_best_loss": 0.36,
+            "oracle_reference_loss": 0.36,
+            "oracle_improvement_gap": 0.0,
+            "normalizer": 1.0,
+            "oracle_total_effect": 8.813814493643205,
+            "improvement": -67.30674853598319,
+            "raw_regret": 67.30674853598319,
+            "worsened": true,
+            "large_deterioration": true,
+            "nonoptimal": true,
+            "loss_ratio": 187.96319037773108,
+            "ratio_status": "DEFINED",
+            "true_slope": 8.813814493643205,
+            "predicted_slope": 0.7749825929346515,
+            "chosen_effect_error": 8.038831900708553,
+            "fixed_effect_error": 4.019415950354277,
+            "direction_flip": false,
+            "effect_missed": false,
+            "predicted_reference": -0.5431148812210248,
+            "chosen_mean_prediction_error": 8.58194678192958
+          },
+          {
+            "raw_row_index": 693,
+            "source": "research_runs/decision_reliability_next/run_v1/B_discovery_outcomes.json.gz",
+            "structure_id": "C12",
+            "dataset_id": "C12_n256_r2",
+            "graph_id": "C12_n256_r2__boss",
+            "algorithm": "boss",
+            "task_id": "path",
+            "pipeline_ready": true,
+            "failure_type": "AVAILABLE",
+            "recommendation_status": "COMPUTED_RECOMMENDATION",
+            "recommended_action": -1,
+            "skeleton_f1": 0.7857142857142857,
+            "strict_directed_f1": 0.42857142857142855,
+            "key_path_edge_recall": 0.4,
+            "unresolved_ratio": 0.25,
+            "predicted_path": 1.0,
+            "analytic_mean": -0.9709613304712995,
+            "analytic_loss": 2.6679195018361557,
+            "analytic_regret": 2.6048048238012864,
+            "oracle_best_action": 0.5,
+            "oracle_best_loss": 0.06311467803486931,
+            "oracle_reference_loss": 0.36,
+            "oracle_improvement_gap": 0.2968853219651307,
+            "normalizer": 1.0,
+            "oracle_total_effect": 0.9709613304712995,
+            "improvement": -2.307919501836156,
+            "raw_regret": 2.6048048238012864,
+            "worsened": true,
+            "large_deterioration": true,
+            "nonoptimal": true,
+            "loss_ratio": 7.410887505100432,
+            "ratio_status": "DEFINED",
+            "true_slope": 0.9709613304712995,
+            "predicted_slope": -0.3222144025775674,
+            "chosen_effect_error": 1.293175733048867,
+            "fixed_effect_error": 0.6465878665244335,
+            "direction_flip": true,
+            "effect_missed": false,
+            "predicted_reference": -0.1672406986143703,
+            "chosen_mean_prediction_error": 1.1259350344344967
+          }
+        ]
+      },
+      "supporting_evidence": "C07과소기울기/오프셋이과대조작과큰손실에연결;고품질-효과오류147행",
+      "counterevidence_or_uncertainty": "C03오류가더큰쪽이최선선택;낮은연결F1에서최선25행;효과오류작아도후보경계로선택나쁠수있음",
+      "permitted_interpretation": "효과추정·오프셋·후보해상도를구조평가와분리해야함",
+      "prohibited_interpretation": "검증된인과적매개효과/정답graph면계수정확/고정효과오차가선택손실그자체",
+      "raw_evidence_locations": [
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/B_discovery_outcomes.json.gz",
+          "selector": "all720;C06_n256_r2__pc/direct;large_deterioration=true"
+        },
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/B_C07_response_controls.json",
+          "selector": "dataset_id=C07_n512_r3,task_id=path;four modes"
+        },
+        {
+          "file": "research_runs/decision_reliability_next/run_v1/A_matched_pairs.json.gz",
+          "selector": "dataset_id=C03_n256_r3,task_id=path,left=remove_key_path_retained;raw index65"
+        }
+      ],
+      "verdict": "SUPPORTED_WITHIN_SCOPE"
+    },
+    {
+      "claim_id": "E",
+      "research_claim": "동일 그래프의 추천 정책 변경만으로 성능이 변하며 최악/보류 정책도 항상 유리하지 않다",
+      "corresponding_hypothesis": "정책규칙과graph품질영향의구분",
+      "experiments": "20구조3정책운영재분석;한구조반복파일럿보조",
+      "data_and_structure_count": "720graph-task셀×3정책=2160운영행;24실패행포함",
+      "independence_level": "같은graph/task에짝지은정책비교;2160독립구조아님",
+      "metrics_and_observations": {
+        "policies": [
+          {
+            "policy": "mec_minimax",
+            "cells": 720,
+            "improved": 98,
+            "worsened": 4,
+            "unchanged": 618,
+            "operational_fallback_included": true
+          },
+          {
+            "policy": "abstain_on_disagreement",
+            "cells": 720,
+            "improved": 25,
+            "worsened": 7,
+            "unchanged": 688,
+            "operational_fallback_included": true
+          }
+        ],
+        "statuses": {
+          "NO_PATH_BASELINE_FALLBACK": 553,
+          "COMPUTED_BASELINE": 340,
+          "AMBIGUITY_ABSTENTION": 257,
+          "COMPUTED_RECOMMENDATION": 986,
+          "OPERATIONAL_REFERENCE_AFTER_FAILURE": 24
+        },
+        "availability": 2136,
+        "repeated": [
+          {
+            "family": "gaussian",
+            "policy": "mec_minimax",
+            "dataset_clusters": 6,
+            "dependent_graph_task_cells": 72,
+            "changed_actions": 23,
+            "improved": 22,
+            "worsened": 1,
+            "unchanged": 49
+          },
+          {
+            "family": "gaussian",
+            "policy": "abstain_on_disagreement",
+            "dataset_clusters": 6,
+            "dependent_graph_task_cells": 72,
+            "changed_actions": 6,
+            "improved": 0,
+            "worsened": 6,
+            "unchanged": 66
+          },
+          {
+            "family": "uniform",
+            "policy": "mec_minimax",
+            "dataset_clusters": 6,
+            "dependent_graph_task_cells": 72,
+            "changed_actions": 15,
+            "improved": 14,
+            "worsened": 1,
+            "unchanged": 57
+          },
+          {
+            "family": "uniform",
+            "policy": "abstain_on_disagreement",
+            "dataset_clusters": 6,
+            "dependent_graph_task_cells": 72,
+            "changed_actions": 11,
+            "improved": 7,
+            "worsened": 4,
+            "unchanged": 61
+          }
+        ]
+      },
+      "supporting_evidence": "minimax98개선/4악화/618동률;보류25개선/7악화/688동률",
+      "counterevidence_or_uncertainty": "완성실패3graph/순환2graph;알고리즘표현차이와가정차이;보류는물리적안전정책이아님",
+      "permitted_interpretation": "graph품질과사용규칙의영향을분리;가용률/가용조건부/실패기준운영성능병기",
+      "prohibited_interpretation": "minimax항상최적/보류안전성입증/경로부재와계산된기준과모형실패를같은상태로합산",
+      "raw_evidence_locations": [
+        {
+          "file": "research_runs/path_metric_incremental_validation/development_v1/development_operational.json.gz",
+          "selector": "graph_id/task_id/policy;recommendation_status/analytic_loss"
+        },
+        {
+          "file": "research_runs/path_metric_incremental_validation/development_v1/paired_policies.json",
+          "selector": "all720cells per policy"
+        },
+        {
+          "file": "research_runs/path_metric_incremental_validation/development_v1/failure_policy_results.json",
+          "selector": "algorithm/policy attempts and ready counts"
+        }
+      ],
+      "verdict": "SUPPORTED_WITHIN_SCOPE"
+    },
+    {
+      "claim_id": "F",
+      "research_claim": "제조공정의 구조 정확도–효과·조작·복구·안전 관계는 검증되지 않았다",
+      "corresponding_hypothesis": "원래제조적용가설",
+      "experiments": "CPCaD구조평가와Python국소기술검증은별개",
+      "data_and_structure_count": "기존7graph/28간선참조;합성자료와결합불가",
+      "independence_level": "동일환경의관측/유효참조/독립do정합성미확립",
+      "metrics_and_observations": {
+        "new_manufacturing_experiments": 0,
+        "TEP_effect_track": "FROZEN"
+      },
+      "supporting_evidence": "현재결합차단과STOP판정이근거범위를보존",
+      "counterevidence_or_uncertainty": "합성기여가제조환경외부검증은아님",
+      "permitted_interpretation": "합성방법론결과와제조미검증상태를독립적으로보고",
+      "prohibited_interpretation": "TEP에서원래가설검증/Recovery·Safety성공",
+      "raw_evidence_locations": [
+        {
+          "file": "research_runs/tep_effect_feasibility/DECISION.json",
+          "selector": "/judgment,/track_state"
+        },
+        {
+          "file": "RESEARCH_DESIGN.md",
+          "selector": "질문과상태/축소조건"
+        }
+      ],
+      "verdict": "NOT_TESTED"
+    }
+  ]
+}
