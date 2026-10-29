@@ -469,9 +469,19 @@
       "next_action": "공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교",
       "acceptance": "공식/Studio 제어기·초기화·시계 비교와 기존 관측 자료 계보 및 구조 참조 계약 확인",
       "depends_on": []
+    },
+    {
+      "id": "TEP-OPERATING",
+      "title": "TEP 원본 운전 조건과 제약 대조",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/TEP_OPERATING_CONDITION_RECONSTRUCTION.md; PR #28 기반 후속 브랜치에서 B 운전 1.519시간 측정 제약 초과와 stop 기록",
+      "next_action": "Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조",
+      "acceptance": "대응 원시 실행과 명령·시계·전처리 검증, 기존 참조 구조와 개입 계약 별도 검증",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "TEP-OPERATING",
     "TEP-STUDIO",
     "TEP-RECON",
     "MFG-MICRO",
@@ -532,7 +542,8 @@
     "2026-10-29 SYNTH-FINAL은기존결과통합분석완료VERIFIED이며원래가설확증완료아님. C01..C12는과거확인/현재개발구분. B1사전지지보존·B2안정추가정보미확립. TEP동결유지/새실험0.",
     "2026-10-29 ERROR-CONFIRM 단일사전계약·예산검토완료/PARTIAL,REDESIGN_REQUIRED. PATH-PRECISION의MAE와별개Δ선택손실0.1폭계획. 신규실험없음;자원범위결정전실행안함.",
     "2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.",
-    "TEP-STUDIO: PR #27 후속 Studio 기술 실행은 실제 성공; 원본 생성환경·구조 및 개입 연결은 미검증."
+    "TEP-STUDIO: PR #27 후속 Studio 기술 실행은 실제 성공; 원본 생성환경·구조 및 개입 연결은 미검증.",
+    "TEP-OPERATING: PR #28 B 원시 실행에서도 측정 제약 초과 확인. 정상상태·원본 동등성 판단은 차단."
   ],
   "integration_review": {
     "user_approved": true,

@@ -344,3 +344,6 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 
 ## 2026-10-29 — TEP Studio 격리 실행
 PR #27 기반 후속: Linux GCC 빌드, 고정 소스와 공식 3개 파일 해시 비교, A/B 0.1665·0.5·2시간 정상 운전 및 31변수 잠정 비교. 종료·비유한 출력 없음. 원본 계보·제어·GT 정합성은 미확립. 결과와 명령은 TEP_STUDIO_EXECUTION_VALIDATION.md 참조.
+
+## 2026-10-29 — TEP 운전 조건 대조
+PR #28 기반 후속: 공식 17개 PI 파라미터 대조, A 2시간 재현 및 B 1.519시간 측정 제약 위반으로 사전 기준에 따라 6/24시간 중단. 선행 원시 B 기록에도 동일 지점 확인. 상세 기록은 TEP_OPERATING_CONDITION_RECONSTRUCTION.md.
