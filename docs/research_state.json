@@ -33,7 +33,7 @@
       "title": "공개 후보와 기존 데이터/GT 대응",
       "status": "PARTIAL",
       "evidence": "docs/research_design/TRACK_A_RECOVERY_GATE.md",
-      "next_action": "합법적 IEEE 계정으로 3_Normal Steady-State.zip 회수 후 목록·SHA·실제 시간축/seed 확인; 기술문서만 회수됨",
+      "next_action": "새 전수검색 없이 기존 차단 인계자료로 동일 관측·GT·do/제어기·시간 계약의 확보 가능 범위 결정. 확인 전 제조 직접 가설 평가 금지",
       "acceptance": "정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지",
       "depends_on": [
         "SIM-03",
@@ -232,9 +232,9 @@
       "id": "EVAL-MVP",
       "title": "구조 지표–추천 성능 비교",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md",
-      "next_action": "기존20구조는 개발 자료. 이론 운영 손실 M1→M4 Δ.005200/M5→M6 Δ.004642 모두 구간0 포함. 과제 특징 모형 안정성·정밀도 해결 뒤 새 확인",
-      "acceptance": "새 구조의 고정 모형 추가 예측력 평가; 개발 LOSO를 독립 확인으로 취급하지 않음",
+      "evidence": "docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md",
+      "next_action": "같은 F1의 오류 위치가 응답·선택·손실을 바꾸는 개발 근거 확보. 단일 지표 우월성 대신 조건부 오류 메커니즘의 독립 대조",
+      "acceptance": "오류 위치·효과/선택 분리와 제조 동일환경의 참조·관측·do 계약; 합성 개발 결과로 제조 주장 금지",
       "depends_on": [
         "ENV-MVP",
         "POLICY-MVP"
@@ -298,8 +298,8 @@
       "id": "PATH-MODEL",
       "title": "과제 특징 예측모형의 개발 안정성",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md",
-      "next_action": "고차원 과제 특징이 MAE를 악화시킨 원인·외삽을 개발 자료에서만 진단하고 저차원 후보를 고정",
+      "evidence": "docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md",
+      "next_action": "고정9후보 중첩 검증은 기본19/경로1 선택. 품질 특징 추가가 이득 아님. 단순 기본모형을 개발 기준선으로 유지하고 MAE 탐색 확장 중단",
       "acceptance": "구조 단위 검증·특징 선택 누출 검사·고정 모형 산출물",
       "depends_on": [
         "EVAL-MVP"
@@ -309,8 +309,8 @@
       "id": "PATH-PRECISION",
       "title": "추가 예측력 독립 확인 정밀도·예산",
       "status": "BLOCKED",
-      "evidence": "research_runs/path_metric_incremental_validation/development_v1/INDEPENDENT_PRECISION_GATE.json",
-      "next_action": "반폭.005에 대략150구조/1350학습으로30구조/288회 범위 초과. 개발 모형 안정화 후 근거 있는 정밀도·자원 계약",
+      "evidence": "research_runs/decision_reliability_next/run_v1/D_precision.json",
+      "next_action": "이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약",
       "acceptance": "실행 가능한 사전 정밀도·구조 수·예산 계약; 유리한 결과를 위한 기준 완화 금지",
       "depends_on": [
         "PATH-MODEL"
@@ -327,11 +327,35 @@
         "PATH-PRECISION",
         "POLICY-MVP"
       ]
+    },
+    {
+      "id": "ERROR-DIAG",
+      "title": "합성 개발 자료 오류–응답–선택 대조",
+      "status": "VERIFIED",
+      "evidence": "docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md",
+      "next_action": "324실제 오류쌍/162핵심–주변/114경로유지와 반례·동률 보존. 6개 oracle 적합을 발견 graph와 분리",
+      "acceptance": "원형 정책 재계산·F1/오류수 매칭·이론 및 저장 do 비교·큰 손실·반례 검사 완료; 일반화 입증 아님",
+      "depends_on": [
+        "EVAL-MVP"
+      ]
+    },
+    {
+      "id": "ERROR-CONFIRM",
+      "title": "오류 위치의 조건부 의사결정 영향 독립 계약",
+      "status": "PROPOSED",
+      "evidence": "docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md",
+      "next_action": "지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음",
+      "acceptance": "대표 성공만 선택하지 않는 독립 대조 계획·독립 평가환경·실행 가능한 정밀도/예산",
+      "depends_on": [
+        "ERROR-DIAG"
+      ]
     }
   ],
   "priority_order": [
-    "PATH-MODEL",
+    "COMPAT-01",
+    "ERROR-CONFIRM",
     "PATH-PRECISION",
+    "PATH-MODEL",
     "PATH-CONFIRM",
     "EVAL-MVP",
     "POLICY-MVP",
@@ -341,7 +365,6 @@
     "REF-B",
     "SIM-B",
     "DESIGN-B",
-    "COMPAT-01",
     "BENCH-ENV",
     "EXPORT-01",
     "SRC-01",
@@ -370,7 +393,8 @@
     "2026-10-24 사용자 승인으로 PR6~11 순차 일반 merge, main34b8dbe에서 PILOT-REPEAT 신규.12독립 데이터·36학습·4과제·3정책 실제 평가만 VERIFIED. 공식 지표 우월성/제조/Recovery/Safety는 미검증이며 POLICY/EVAL-MVP PARTIAL 유지.",
     "2026-10-24 PILOT-DIVERSE 추가: 미병합 PR12 위에서 사용자 명시 승인된8개 합성 구조의144학습·918평가와8fold LOSO 실행만 VERIFIED. EVAL/POLICY는 지표 우월성/제조 검증 미완료로 PARTIAL, 기존 protocol 수치/상태기록 보존.",
     "2026-10-25 PILOT-CONFIRM 추가: 기존8구조144재현과 새12구조216시도/214SCM를 구분. PILOT-DIVERSE 현재 replay만 실제 증거로 갱신하고 과거 보고서·원시는 보존.",
-    "2026-10-25 PATH-MODEL/PATH-PRECISION/PATH-CONFIRM 추가: 기존 EVAL-MVP를 삭제하지 않고 개발 안정성·정밀도 차단·새 독립 확인 미실행을 분리. PR12~14 실제 병합 반영."
+    "2026-10-25 PATH-MODEL/PATH-PRECISION/PATH-CONFIRM 추가: 기존 EVAL-MVP를 삭제하지 않고 개발 안정성·정밀도 차단·새 독립 확인 미실행을 분리. PR12~14 실제 병합 반영.",
+    "2026-10-25 ERROR-DIAG/ERROR-CONFIRM: 목적을 지표 우세/MAE 최적화와 분리. 오류–응답–선택 대조 완료와 새 독립 계약 미실행을 구분하며 제조 환경 정합성 검토를 우선."
   ],
   "integration_review": {
     "user_approved": true,
@@ -417,11 +441,11 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "PR12→13→14 verified and normally merged with explicit one-time owner review exception. No separate APPROVED review was fabricated. New incremental work is feature-only and must not auto-merge.",
+    "note": "This feature is stacked on OPEN PR15. No merge approval for PR15/new PR. Owner one-time review exception covered PR12~14 only; current separate reviews0.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
-    "current_work_base": "main",
+    "current_work_base": "feature/path-metric-incremental-validation",
     "pr7_status": "MERGED",
     "pr7_head": "8634e5dce66460dc26441fc40e930c34ebc73af7",
     "pr8_status": "MERGED",
@@ -439,7 +463,7 @@
     "pr11_head": "6d37d095998bf45bc532606fe8113fedd1b8f913",
     "pr11_merge_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
     "main_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
-    "current_feature": "feature/path-metric-incremental-validation",
+    "current_feature": "feature/decision-reliability-next",
     "pr12_status": "MERGED",
     "pr12_head": "23d19f56cd6510783398cfa95f66f1d1d8194937",
     "pr12_ci": 40097602131,
@@ -450,7 +474,13 @@
     "pr13_merge_commit": "5e78b98ce8feecf7fa86253e9b5f6e98deed5dc6",
     "pr14_status": "MERGED",
     "pr14_merge_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
-    "pr14_head": "4a35891b48ced558d92d990898910d965ada7eb4"
+    "pr14_head": "4a35891b48ced558d92d990898910d965ada7eb4",
+    "pr15_status": "OPEN",
+    "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
+    "pr15_ci": 40158875287,
+    "current_pr": 16,
+    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/16",
+    "current_pr_base": "feature/path-metric-incremental-validation"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -814,5 +844,35 @@
     "independent_confirmation": "NOT_RUN",
     "assessment": "5: insufficient precision/resources for fresh confirmation; developmental incremental evidence uncertain",
     "source_preserved": true
+  },
+  "decision_reliability_next": {
+    "report": "docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md",
+    "compass": "docs/research_design/RESEARCH_COMPASS.md",
+    "checkpoint": "research_runs/decision_reliability_next/CHECKPOINT.md",
+    "scope": "existing synthetic development evidence, no independent new cohort",
+    "controlled_rows": 1224,
+    "nominal_matched_pairs": 432,
+    "unique_matched_pairs": 324,
+    "actual_task_key_peripheral_pairs": 162,
+    "both_paths_pairs": 114,
+    "discovery_primary_rows": 720,
+    "primary_available": 716,
+    "worsened_rows": 20,
+    "large_rows": 4,
+    "large_threshold": "loss-reference > original loss_scale squared",
+    "new_oracle_refits": 6,
+    "new_discovery_calls": 0,
+    "new_do_samples": 0,
+    "new_reference_structures": 0,
+    "new_manufacturing_runs": 0,
+    "nested_models": 9,
+    "nested_choices": {
+      "BASE": 19,
+      "PATH": 1
+    },
+    "nested_mae": 0.32312864224606064,
+    "rough_required_structures": 132,
+    "new_independent_confirmation": "NOT_RUN",
+    "manufacturing_ready": false
   }
 }

@@ -71,3 +71,8 @@
 ### 2026-10-25 추가 정보 검증
 
 PR12~14 통합 완료. 기존20구조는 이제 개발 자료이며, 이론 개입 손실·과제 특징·실패 시 기준 조작을 포함해 재분석했다. 새 실제 do 검산18조건은 실행했지만 신규 독립 구조 학습은 정밀도 Gate 때문에 수행하지 않았다. 경로 지표가 연결·방향 F1 이후 안정적인 추가 정보를 준다는 결론은 아직 없다. 자세한 근거는 `docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md`에 있다.
+
+
+### 오류가 의사결정에 영향을 주는 과정
+
+연구 목적은 특정 경로 지표를 우수하게 만드는 것이 아닙니다. 이번 개발 대조에서는 같은 전체 F1과 오류 수에서도 위치에 따라 실제 조작/손실이 달랐고, 핵심 오류가 있는 쪽이 더 좋은 조작을 고르는 반례도 있었습니다. 효과 추정·선택·정책의 차이를 분리한 근거와 한계는 `docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md`, 재개 방법은 `research_runs/decision_reliability_next/CHECKPOINT.md`에 있습니다. 제조 관측·참조·do 정합성은 미해결입니다.

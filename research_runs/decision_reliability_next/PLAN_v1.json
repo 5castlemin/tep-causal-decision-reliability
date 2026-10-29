@@ -1,0 +1,44 @@
+{
+  "protocol": "DECISION-RELIABILITY-NEXT-v1",
+  "date": "2026-10-25",
+  "base_pr": 15,
+  "base_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
+  "purpose": "error location/type -> effect estimates -> decisions -> analytic and stored independent do outcomes; not favoring a metric",
+  "scope": "existing20 development references, no new reference structures or discovery algorithms, no manufacturing rollout",
+  "A": {
+    "reuse": "all positive primary controlled rows in old S1/S7 and C01..C12; no new graph selection",
+    "pairs": [["remove_key", "remove_peripheral"], ["reverse_key", "reverse_peripheral"], ["remove_key_path_retained", "remove_peripheral_path_retained"]],
+    "matching": "same dataset/task/policy; exact counts and skeleton/strict-directed F1 equality within1e-12; record ineligible pairs",
+    "outcome": "analytic loss and stored do mean loss separately, improvement=reference-loss, regret=loss-best",
+    "large_deterioration": "recommended loss-reference loss > 1.0 * original loss_scale^2, fixed before new diagnostic output; descriptive design threshold not physical safety",
+    "ratio_guard": 1e-8,
+    "sign_zero_tolerance": 1e-8
+  },
+  "B": {
+    "discovery_scope": "all primary confirmed_only720 operational cells, three policies separately for cases",
+    "fixed_effect": "mean do(.5)-mean do(0), independent of optimized action",
+    "case_rules": "predefined all high skeleton>=.9 with fixed effect error>.25; all low skeleton<=.7 with error<=.1; export all qualifying and large-loss cases",
+    "limited_refits": "C07 all6 existing datasets: fit unmodified true-structure model with alpha from corresponding old BOSS primary; existing flawed BOSS models unchanged; artificial oracle diagnostic, not discovered graphs",
+    "coefficient_controls": "C07 BOSS counterfactual predictor: replace only slope with true total slope keeping original intercept, and replace only intercept with true0 keeping slope; diagnostic perfect-knowledge controls, not deployable recommenders"
+  },
+  "C": {
+    "policy": "confirmed_only operational outcome, original task loss_scale^2, analytic regret primary",
+    "base_features": ["algorithm_boss", "algorithm_directlingam", "log_n", "n_nodes"],
+    "minimal_task_additions": ["target_goal", "range_std", "cost_range_squared"],
+    "quality_candidates": ["skeleton_f1", "strict_directed_f1", "key_path_edge_recall"],
+    "models": "BASE; SIMPLE; SIMPLE+each of7 nonempty quality subsets =9 fixed candidates",
+    "alpha": 0.01,
+    "prediction_constraint": "max(0, prediction), inherited prespecified nonnegative outcome constraint",
+    "validation": "whole-structure outer LOSO; all transformation fit train only; nested whole-structure inner CV for candidate selection; simplest candidate within .01 MAE of inner best, fixed order tie-break",
+    "selection_role": "development only; no independent confirmation claim"
+  },
+  "D": {
+    "planning": "paired structure SD, 95% halfwidth .005 and .01 unchanged meaningful increment benchmark; show .01 halfwidth sensitivity separately, no retroactive threshold change",
+    "questions": "small nonzero predictive information != meaningful decision improvement; largerN does not increase mean improvement",
+    "budget": {"max_new_structures": 30, "max_discovery_calls": 288},
+    "gate": "only run fresh independent cohort if model stability, precision, budget all met; otherwise no new cohort",
+    "extremes": "keep C07; report full outcome and separate large-loss stratum, no winsorization/deletion"
+  },
+  "manufacturing": "existing state/evidence only; no repeat Slack/raw search or new simulator runs",
+  "old_artifacts_immutable": true
+}

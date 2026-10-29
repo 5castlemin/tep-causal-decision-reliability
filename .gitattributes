@@ -61,3 +61,11 @@ scripts/*path*incremental*.py -text whitespace=cr-at-eol
 scripts/run_path_mc_calibration.py -text whitespace=cr-at-eol
 scripts/run_path_development_supplement.py -text whitespace=cr-at-eol
 tests/test_path_metric_incremental.py -text whitespace=cr-at-eol
+# Preserve executed error-diagnostic code and plan/evidence bytes.
+research_runs/decision_reliability_next/** -text linguist-generated=true whitespace=cr-at-eol
+research_runs/decision_reliability_next/README.md linguist-generated=false
+research_runs/decision_reliability_next/CHECKPOINT.md linguist-generated=false
+research_runs/decision_reliability_next/PLAN_v1.json linguist-generated=false
+src/decision_reliability_next.py -text whitespace=cr-at-eol
+scripts/*decision_reliability_next.py -text whitespace=cr-at-eol
+tests/test_decision_reliability_next.py -text whitespace=cr-at-eol

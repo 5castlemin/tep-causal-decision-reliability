@@ -207,3 +207,14 @@
 `run_path_incremental_development.py --output research_runs/path_metric_incremental_validation/development_v1` 및 `run_path_development_supplement.py --output .../development_supplement_v1` 실제 실행: 기존20구조/360graph/2160정책행의 이론 운영 손실, M0~M6 구조 LOSO, 과제 대조·정책·알고리즘·C07 분석. 실패24행은 실제 기준 조작 손실로 평가. M1→M4 .005200, M5→M6 .004642 모두 개발 구간0 포함. 새 독립 확인 정밀도150구조/1350학습 필요 추정으로 사전30/288 범위 초과하여 NOT_RUN. 확인 seed/구조를 만들지 않음.
 
 `run_path_mc_calibration.py --source <verified pinned FCM> --output .../mc_calibration_v1` 실제 실행: 기존3구조 새18 do조건/69120유일표본 및69120재실행 exact 검산. C07 6조건은 상한8192에서도 목표 반폭 미달. 원시 표본/잡음 압축·계획/hash 보존. 제조 검증/새 발견학습 없음. 보고서: `docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md`. 정밀도 차단을 성공으로 재분류하지 않음.
+
+
+## 2026-10-25 — 오류 위치·효과 크기·실제 조작 선택
+
+PR15 OPEN/e769ef5/CI40158875287 success/승인검토0 확인, 병합 안 함. 로컬 validate_path_metric_incremental 재실행PASS. 실무 RESEARCH_COMPASS와 CHECKPOINT 작성, 원 설계 보존. PLAN_v1/SHA 고정 후 `run_decision_reliability_next.py --output research_runs/decision_reliability_next/run_v1` 실제 실행: 기존통제1224행 추천 재계산,720발견행 평가,새C07 정답구조 Ridge6개 진단. 중첩 구조CV9후보 실행. 신규발견학습/do/제조운전0.
+
+`summarize_decision_reliability_next.py --input .../run_v1 --output .../audit_supplement_v1`: 명칭중복108 표시 후324실제오류쌍,162현재과제핵심–주변/114양쪽경로유지쌍. C07 같은F1에서도 손실14.542543 대.36, C03은 핵심오류 쪽이 개선되는 반례. 기본정책720행 중 악화20/큰악화4. 저차원 중첩선택 기본19/경로1, MAE.323129. 추가정보 부호는 기준모형에 따라 상이, 정밀도 거친 추정132구조/1188학습으로 새독립확인NOT_RUN. 소스/계산/실제저장do 근거 분리. 개별5검사(원시/수식/중첩/6적합 재계산 포함)PASS. 제조 평가환경의 정합성 확보 우선, 새제조실험NO-GO 유지.
+
+최종 로컬 검사: 65개 단위검사 PASS(89.755초),39개 동결파일 hash/변수/시차 변환 PASS,Step6 독립 점수 PASS,상태JSON/MD·자산manifest·기존 통합 검사 PASS. `research_runs/decision_reliability_next/validation/`에 실제 명령/로그/hash 보존.
+
+실행/검증 코드 commit eb7f6bd,브랜치 feature/decision-reliability-next push 완료. PR16 생성(base=미병합PR15 브랜치);두PR 자동병합 없음. CHECKPOINT에 실행commit/의존PR/실제 검사 및 다음행동 기록. 새 문서 정리 commit은 실행/계획/SHA를 바꾸지 않는다.
