@@ -339,3 +339,5 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - upstream 한 줄 수정안과 독립 그래프 fixture만 작성. 실제 외부 재실행·새 GT/학습/성능 비교·공식 채택 없음.
 
 - 독립 hard-do 그래프 fixture 2개 PASS; 동결39해시/변수·asset·상태 검사 PASS. patch diff SHA-256 b306741449c38e701cb7d96f26dc1bfa77d9d624c96a52450507288e21aed917; upstream 수정·외부 재실행 없음.
+
+- main에서 계약 검토 커밋 c07b74c 및 PR26 생성. 기존105개 단위검사와 신규 fixture2개 통과. 새 PR은 미병합.
