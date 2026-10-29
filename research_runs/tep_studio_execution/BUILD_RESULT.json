@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "execution": "GitHub Actions isolated ubuntu-latest; run 40873474299",
+  "source_commit": "852f0c69ab974540750d61bd1dbfafd56bfd80bb",
+  "source_hashes": {
+    "temexd_mod.c": "eff57b75700e7472005785150c21f82b0c3d178ebceebe37e532794f23785aba",
+    "teprob_mod.h": "fa3782a07c11e5c149ad0f44ec332c45ed998edb7ef8241fade9b1d395577363",
+    "Mode1xInitial.mat": "40eaebc92badb04ad026e358cfd28ec9c778fcf2d24a1b8f5d85565854da2747"
+  },
+  "official_zip_sha256": "e43227aaded739cfeba1ec281c54ac8a549f60753e064305a669b906c4b16b0d",
+  "official_vs_checked_out_three_files": "MATCH",
+  "compiler": "gcc 13.3.0 Ubuntu 24.04",
+  "python": "3.11 (exact patch NOT_RECORDED)",
+  "versions": {
+    "tep-studio": "0.2.0",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pandas": "3.1.0",
+    "cffi": "2.1.1"
+  },
+  "native_import": "PASS",
+  "initialization_and_advance": "PASS",
+  "sample_wall_seconds": 2.26,
+  "peak_rss_kib": 176684,
+  "local_windows_compiler": "NOT_FOUND",
+  "local_wsl_distribution": "NOT_FOUND",
+  "run_url": "https://github.com/5castlemin/tep-causal-decision-reliability/actions/runs/40873474299",
+  "raw_artifact_sha256": "8d9e6091560d27a4c0ccf5abf3a36946b6422371585dee9dbe9ccb5f9eb38899",
+  "note": "peak RSS and wall time are for probe process only, not package install"
+}
