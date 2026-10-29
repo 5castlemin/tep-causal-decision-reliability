@@ -1,0 +1,25 @@
+name: One Rust TEP extension
+on:
+  push:
+    branches: [feature/tep-simulator-comprehensive-search]
+jobs:
+  extension:
+    if: contains(github.event.head_commit.message, '[tep-rust-extension-once]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build pinned source and monitor
+        run: |
+          git clone https://github.com/jkitchin/tep-rust.git "$RUNNER_TEMP/tep-rust"
+          git -C "$RUNNER_TEMP/tep-rust" checkout 0735ad3b5bb7fdd367a8a31da1db8a209dac2a15
+          cd "$RUNNER_TEMP/tep-rust"
+          cargo build --release -p tepsim-cli
+          cd "$GITHUB_WORKSPACE"
+          python scripts/run_tep_rust_bounded_monitor.py "$RUNNER_TEMP/tep-rust/target/release/tep" tep_rust_extension
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tep-rust-extension
+          path: tep_rust_extension/
+          if-no-files-found: warn
