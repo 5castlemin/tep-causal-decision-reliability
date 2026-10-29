@@ -1,17 +1,18 @@
 # 연구 우선순위
 
-기준일: 2026-10-29. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-10-30. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEP-SEARCH — 공개 TEP 실행기 비교와 원본 생성환경 판정**: NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 (PARTIAL)
-2. **TEP-OPERATING — TEP 원본 운전 조건과 제약 대조**: Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 (PARTIAL)
-3. **TEP-STUDIO — TEP Studio 공식 생성환경 대응 검증**: 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 (PARTIAL)
+1. **TEP-MATLAB — 공식 TEP MATLAB 로컬 실행환경**: 학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증 (BLOCKED)
+2. **TEP-SEARCH — 공개 TEP 실행기 비교와 원본 생성환경 판정**: NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 (PARTIAL)
+3. **TEP-OPERATING — TEP 원본 운전 조건과 제약 대조**: Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 (PARTIAL)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| TEP-MATLAB | BLOCKED | 없음 | 학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증 / MATLAB/Simulink 라이선스와 MEX·모델 로드 및 온라인 안전 감시 검증 후 공식 모델 정상 실행 |
 | TEP-SEARCH | PARTIAL | 없음 | NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 / 원본 생성환경 다섯 조건 입증 시 즉시 종료 또는 실행 가능 후보 검증과 미실행 원인 기록 |
 | TEP-OPERATING | PARTIAL | 없음 | Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 / 대응 원시 실행과 명령·시계·전처리 검증, 기존 참조 구조와 개입 계약 별도 검증 |
 | TEP-STUDIO | PARTIAL | 없음 | 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 / 공식/Studio 제어기·초기화·시계 비교와 기존 관측 자료 계보 및 구조 참조 계약 확인 |
@@ -78,5 +79,6 @@
 - TEP-STUDIO: PR #27 후속 Studio 기술 실행은 실제 성공; 원본 생성환경·구조 및 개입 연결은 미검증.
 - TEP-OPERATING: PR #28 B 원시 실행에서도 측정 제약 초과 확인. 정상상태·원본 동등성 판단은 차단.
 - TEP-SEARCH: 21개 항목 검색, Rust 10분 실행; 원본 동일환경 미입증, 일부 후보 미실행으로 최종 탐색 미완.
+- TEP-MATLAB: 로컬 Windows 접근 및 공식 파일 확보, MATLAB·Simulink·C 컴파일러 미발견으로 실행 차단.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.
