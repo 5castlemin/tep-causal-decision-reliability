@@ -165,7 +165,11 @@
       "discovery/SCM/independent do research",
       "src/verify_recovery.py CLI (would overwrite a preserved historical log);existing regressions/frozen checks cover preservation and stored scoring"
     ],
-    "ci": "PENDING_NEW_PR"
+    "ci": {
+      "status": "LIVE_PR_CHECK_SEPARATE_FROM_LOCAL_RESULTS",
+      "url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/24/checks",
+      "note": "Final-head workflow result is verified separately;no recursive self-SHA or external-candidate runtime claim."
+    }
   },
   "inspection_limits": [
     "Sources were read,not executed;reported dataset scales not measured sample outputs",
