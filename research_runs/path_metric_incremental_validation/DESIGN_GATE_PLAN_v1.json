@@ -1,0 +1,61 @@
+{
+  "protocol": "PATH-INCREMENTAL-DESIGN-GATE-v1",
+  "date": "2026-10-25",
+  "scope": "S1..S8/C01..C12 are development-only; no new independent data before precision gate",
+  "main_base": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
+  "primary_outcome": "analytic operational regret / original loss_scale squared",
+  "failure_policy": "execute reference action0, calculate its actual theoretical loss; preserve availability/conditional outcomes separately",
+  "forecast": "structure-weighted Ridge alpha .01 fixed, feature transforms train-fold only, clip predictions to nonnegative0 as a predeclared forecast constraint, not failed-outcome imputation",
+  "models": "M0 task+algorithm+graph observed features, M1 +skeleton, M2 +path, M3 +direction, M4 +skeleton+path, M5 +skeleton+direction, M6 +skeleton+direction+path",
+  "primary_comparisons": [
+    [
+      "M1",
+      "M4"
+    ],
+    [
+      "M5",
+      "M6"
+    ]
+  ],
+  "multiplicity": "fixed sequence A then B; claim stable meaningful increment only if both structure bootstrap lower bounds exceed .01",
+  "planning": {
+    "practical_increment": 0.01,
+    "desired_95_interval_halfwidth": 0.005,
+    "independent_structure_min": 18,
+    "max_structures": 30,
+    "balance_multiple": 3,
+    "learning_n": 256,
+    "replicates": 3,
+    "algorithms": 3,
+    "max_learning_calls": 288,
+    "max_predicted_wall_minutes": 90,
+    "required_N_formula": "ceil((1.96*paired_structure_sd/.005)^2), worst A/B and family-stratified variability; round up to multiple3, min18",
+    "insufficient": "if N or runtime exceeds cap, do not generate confirmatory graphs; report code/reanalysis/precision + limited MC calibration only"
+  },
+  "mc_calibration": {
+    "structures": [
+      "S3",
+      "C07",
+      "C10"
+    ],
+    "actions": "existing primary direct/path tasks",
+    "values": [
+      0,
+      0.5,
+      -0.5
+    ],
+    "seed_base": 61000000,
+    "prefix_n": [
+      128,
+      512,
+      2048,
+      8192
+    ],
+    "max_n": 8192,
+    "absolute_mean_95_halfwidth_target": 0.1,
+    "n_selection": "using known variance in development FCM before new draws; select smallest prefix meeting target else cap with warning",
+    "role": "actual do implementation/MC precision calibration, NOT independent new structures"
+  },
+  "new_independent_execution": "CONDITIONAL_ON_QUANTITATIVE_PRECISION_GATE",
+  "result_selection_prohibited": true
+}

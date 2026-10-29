@@ -221,9 +221,9 @@
       "id": "POLICY-MVP",
       "title": "실제 추천 정책 연결",
       "status": "PARTIAL",
-      "evidence": "research_runs/independent_confirmation/EXECUTION_STATUS.json; research_runs/independent_confirmation/FIT_FAILURE_DETAILS.json",
-      "next_action": "순환 PC출력2개·양립 DAG 없는3개에 대한 사전 실패/보류 정책과 선택 편향 대조를 정의. 현재 간선 수정·손실 임의 대입 금지",
-      "acceptance": "적합 불가와 경로 부재 기준대체를 구분한 공통 운영계약 및 미확정 표현별 비교. 고정조작/경로보존 대조는 수행됐으나 인과적 분리 완료 아님",
+      "evidence": "docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md",
+      "next_action": "실패24행은 기준 조작0의 실제 이론 손실로 운영 평가; 가용2136/2160·조건부·계산추천1326 분리 유지",
+      "acceptance": "실패/경로부재/계산된 기준/방향보류 구분 및 새 확인 정책 사전 고정",
       "depends_on": [
         "ENV-MVP"
       ]
@@ -232,9 +232,9 @@
       "id": "EVAL-MVP",
       "title": "구조 지표–추천 성능 비교",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; research_runs/independent_confirmation/HYPOTHESIS_ASSESSMENT.json",
-      "next_action": "주 비교 ΔMAE .014264 지지는 유지하되 M0 이후/연결F1 이후 추가 정보와 이론 평균·비용 .4에서의 불확실성을 새 사전 계약으로 분리",
-      "acceptance": "새 자료로 조정하지 않은 모형 비교·효과크기/과제·외삽 보정의 독립 검증; 현12구조 결과만으로 지표 우월성 주장 금지",
+      "evidence": "docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md",
+      "next_action": "기존20구조는 개발 자료. 이론 운영 손실 M1→M4 Δ.005200/M5→M6 Δ.004642 모두 구간0 포함. 과제 특징 모형 안정성·정밀도 해결 뒤 새 확인",
+      "acceptance": "새 구조의 고정 모형 추가 예측력 평가; 개발 LOSO를 독립 확인으로 취급하지 않음",
       "depends_on": [
         "ENV-MVP",
         "POLICY-MVP"
@@ -287,15 +287,52 @@
       "title": "12개 규칙 생성 구조의 독립 확인·방법론 대조",
       "status": "PARTIAL",
       "evidence": "docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; research_runs/independent_confirmation/analysis_v1/SUMMARY.json",
-      "next_action": "이론 평균 Δ .006317/고비용 Δ .004874의 불명확성과 유한 표본 최선후보15/96변경을 반영한 정밀도·교정 계약; 현재 결과 사후 변경 없음",
+      "next_action": "과거12구조 독립 확인 기록 보존. C01~C12는 이후 모형 개발에 사용됐으므로 새 확인용으로 재사용하지 않음",
       "acceptance": "144재현PASS/12 FCM검증/216그래프 중214SCM/5088평가/184320 do 수행. 일차 지지와 종합 추가정보 미확인·실패선택편향을 구분",
       "depends_on": [
         "PILOT-DIVERSE",
         "POLICY-MVP"
       ]
+    },
+    {
+      "id": "PATH-MODEL",
+      "title": "과제 특징 예측모형의 개발 안정성",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md",
+      "next_action": "고차원 과제 특징이 MAE를 악화시킨 원인·외삽을 개발 자료에서만 진단하고 저차원 후보를 고정",
+      "acceptance": "구조 단위 검증·특징 선택 누출 검사·고정 모형 산출물",
+      "depends_on": [
+        "EVAL-MVP"
+      ]
+    },
+    {
+      "id": "PATH-PRECISION",
+      "title": "추가 예측력 독립 확인 정밀도·예산",
+      "status": "BLOCKED",
+      "evidence": "research_runs/path_metric_incremental_validation/development_v1/INDEPENDENT_PRECISION_GATE.json",
+      "next_action": "반폭.005에 대략150구조/1350학습으로30구조/288회 범위 초과. 개발 모형 안정화 후 근거 있는 정밀도·자원 계약",
+      "acceptance": "실행 가능한 사전 정밀도·구조 수·예산 계약; 유리한 결과를 위한 기준 완화 금지",
+      "depends_on": [
+        "PATH-MODEL"
+      ]
+    },
+    {
+      "id": "PATH-CONFIRM",
+      "title": "경로 지표 추가 정보의 새 독립 확인",
+      "status": "NOT_RUN",
+      "evidence": "docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md",
+      "next_action": "정밀도 통과 후에만 새 구조·계수·seed·M0~M6·실패 정책을 고정하고 실제 학습/do 실행",
+      "acceptance": "기존20구조 미사용의 확인 코호트, 추천 고정 후 이론/실제 do 평가, 구조 단위 구간",
+      "depends_on": [
+        "PATH-PRECISION",
+        "POLICY-MVP"
+      ]
     }
   ],
   "priority_order": [
+    "PATH-MODEL",
+    "PATH-PRECISION",
+    "PATH-CONFIRM",
     "EVAL-MVP",
     "POLICY-MVP",
     "PILOT-CONFIRM",
@@ -332,7 +369,8 @@
     "2026-10-24 PILOT-IID 신규: 사용자 명시 실행 지시로 두 잡음군 합성 통합만 VERIFIED. POLICY/EVAL-MVP는 해당 진전 PARTIAL이며 제조 가설 입증·Track B 채택 아님. env_acceptance/decision_mvp는 과거 실행 불변 기록이다.",
     "2026-10-24 사용자 승인으로 PR6~11 순차 일반 merge, main34b8dbe에서 PILOT-REPEAT 신규.12독립 데이터·36학습·4과제·3정책 실제 평가만 VERIFIED. 공식 지표 우월성/제조/Recovery/Safety는 미검증이며 POLICY/EVAL-MVP PARTIAL 유지.",
     "2026-10-24 PILOT-DIVERSE 추가: 미병합 PR12 위에서 사용자 명시 승인된8개 합성 구조의144학습·918평가와8fold LOSO 실행만 VERIFIED. EVAL/POLICY는 지표 우월성/제조 검증 미완료로 PARTIAL, 기존 protocol 수치/상태기록 보존.",
-    "2026-10-25 PILOT-CONFIRM 추가: 기존8구조144재현과 새12구조216시도/214SCM를 구분. PILOT-DIVERSE 현재 replay만 실제 증거로 갱신하고 과거 보고서·원시는 보존."
+    "2026-10-25 PILOT-CONFIRM 추가: 기존8구조144재현과 새12구조216시도/214SCM를 구분. PILOT-DIVERSE 현재 replay만 실제 증거로 갱신하고 과거 보고서·원시는 보존.",
+    "2026-10-25 PATH-MODEL/PATH-PRECISION/PATH-CONFIRM 추가: 기존 EVAL-MVP를 삭제하지 않고 개발 안정성·정밀도 차단·새 독립 확인 미실행을 분리. PR12~14 실제 병합 반영."
   ],
   "integration_review": {
     "user_approved": true,
@@ -379,11 +417,11 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "PR6~11 merged history retained. This feature is stacked on unmerged PR13 above unmerged PR12. No automatic merge. Synthetic evidence on feature, not main.",
+    "note": "PR12→13→14 verified and normally merged with explicit one-time owner review exception. No separate APPROVED review was fabricated. New incremental work is feature-only and must not auto-merge.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
-    "current_work_base": "feature/diverse-causal-structures",
+    "current_work_base": "main",
     "pr7_status": "MERGED",
     "pr7_head": "8634e5dce66460dc26441fc40e930c34ebc73af7",
     "pr8_status": "MERGED",
@@ -400,14 +438,19 @@
     "pr11_status": "MERGED",
     "pr11_head": "6d37d095998bf45bc532606fe8113fedd1b8f913",
     "pr11_merge_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
-    "main_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
-    "current_feature": "feature/independent-causal-confirmation",
-    "pr12_status": "OPEN",
+    "main_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
+    "current_feature": "feature/path-metric-incremental-validation",
+    "pr12_status": "MERGED",
     "pr12_head": "23d19f56cd6510783398cfa95f66f1d1d8194937",
     "pr12_ci": 40097602131,
-    "pr13_status": "OPEN",
+    "pr13_status": "MERGED",
     "pr13_head": "a4ae7694aff24e8a40dce516cf44007d52676907",
-    "pr13_ci": 40102696762
+    "pr13_ci": 40102696762,
+    "pr12_merge_commit": "94dab9b07bd0f83895b778a22c03d8ba6554b6d6",
+    "pr13_merge_commit": "5e78b98ce8feecf7fa86253e9b5f6e98deed5dc6",
+    "pr14_status": "MERGED",
+    "pr14_merge_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
+    "pr14_head": "4a35891b48ced558d92d990898910d965ada7eb4"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -739,5 +782,37 @@
     "research_design_changed": false,
     "old_assets_modified": false,
     "evidence": "research_runs/independent_confirmation/analysis_v1/CONFIRMATION_RESULT.json"
+  },
+  "path_metric_incremental_validation": {
+    "scope": "development20 only; no fresh structural confirmation",
+    "report": "docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md",
+    "main_base": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
+    "merges": {
+      "12": "94dab9b07bd0f83895b778a22c03d8ba6554b6d6",
+      "13": "5e78b98ce8feecf7fa86253e9b5f6e98deed5dc6",
+      "14": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e"
+    },
+    "owner_review_exception_only_for": [
+      12,
+      13,
+      14
+    ],
+    "separate_approved_review": false,
+    "development_rows": 2160,
+    "pipeline_ready": 2136,
+    "computed_recommendations": 1326,
+    "new_do_conditions": 18,
+    "new_unique_do_samples": 69120,
+    "repeat_check_samples": 69120,
+    "new_independent_structures": 0,
+    "new_discovery_calls": 0,
+    "precision_gate": "BLOCKED_PRECISION_RESOURCE",
+    "required_structures_rough": 150,
+    "planned_learning_calls": 1350,
+    "max_structures": 30,
+    "max_learning_calls": 288,
+    "independent_confirmation": "NOT_RUN",
+    "assessment": "5: insufficient precision/resources for fresh confirmation; developmental incremental evidence uncertain",
+    "source_preserved": true
   }
 }

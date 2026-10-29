@@ -49,3 +49,6 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 
 ## 2026-10-25 독립 확인 결과
 기존144회 전체 재실행 비교를 통과했습니다. 새12구조에서216개 그래프 기록을 생성했고 순환 PC2개를 보정하지 않고214개 SCM으로5088개 추천 결과와184320개 실제 do 표본을 평가했습니다. 사전 주요 비교는 경로 모형의 제한적 지지를 보였으나 기본 조건·연결 F1 이후의 추가 정보, 이론 평균과 고비용 조건의 안정성은 불명확합니다. [한국어 보고서](docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md)와 [재현 가이드](research_runs/independent_confirmation/README.md)를 참고하십시오. 제조 복구·안전 검증이 아니며 이 feature는 미병합 PR13 위에 있습니다.
+
+
+현재 추가 정보 평가: [한국어 보고서](docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md). PR12~14는 검증 후 병합됐으며, 새 feature에서는 기존20구조의 이론 운영 평가/실제 do 검산을 수행했다. 경로 지표의 안정적 추가 정보는 미확인이고 새 독립 확인은 정밀도·자원 Gate로 미실행이다. 제조공정 검증과 구분한다.

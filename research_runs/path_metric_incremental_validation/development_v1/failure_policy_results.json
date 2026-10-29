@@ -1,0 +1,124 @@
+[
+  {
+    "algorithm": "pc",
+    "policy": "confirmed_only",
+    "attempts": 240,
+    "pipeline_ready": 236,
+    "computed_recommendation": 28,
+    "failure_types": {
+      "AVAILABLE": 236,
+      "CYCLIC_OUTPUT": 4
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.403127945148062,
+    "conditional_mean_loss": 0.4033292662522664
+  },
+  {
+    "algorithm": "pc",
+    "policy": "mec_minimax",
+    "attempts": 240,
+    "pipeline_ready": 230,
+    "computed_recommendation": 163,
+    "failure_types": {
+      "AVAILABLE": 230,
+      "DAG_COMPLETION_OR_POLICY_FAILED": 6,
+      "CYCLIC_OUTPUT": 4
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.354269883147457,
+    "conditional_mean_loss": 0.35266205197995515
+  },
+  {
+    "algorithm": "pc",
+    "policy": "abstain_on_disagreement",
+    "attempts": 240,
+    "pipeline_ready": 230,
+    "computed_recommendation": 37,
+    "failure_types": {
+      "AVAILABLE": 230,
+      "DAG_COMPLETION_OR_POLICY_FAILED": 6,
+      "CYCLIC_OUTPUT": 4
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.40844074347097864,
+    "conditional_mean_loss": 0.40918816710015166
+  },
+  {
+    "algorithm": "boss",
+    "policy": "confirmed_only",
+    "attempts": 240,
+    "pipeline_ready": 240,
+    "computed_recommendation": 81,
+    "failure_types": {
+      "AVAILABLE": 240
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.7450721451802222,
+    "conditional_mean_loss": 0.7450721451802222
+  },
+  {
+    "algorithm": "boss",
+    "policy": "mec_minimax",
+    "attempts": 240,
+    "pipeline_ready": 240,
+    "computed_recommendation": 214,
+    "failure_types": {
+      "AVAILABLE": 240
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.29569701886952837,
+    "conditional_mean_loss": 0.29569701886952837
+  },
+  {
+    "algorithm": "boss",
+    "policy": "abstain_on_disagreement",
+    "attempts": 240,
+    "pipeline_ready": 240,
+    "computed_recommendation": 83,
+    "failure_types": {
+      "AVAILABLE": 240
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.39338569209822377,
+    "conditional_mean_loss": 0.39338569209822377
+  },
+  {
+    "algorithm": "directlingam",
+    "policy": "confirmed_only",
+    "attempts": 240,
+    "pipeline_ready": 240,
+    "computed_recommendation": 240,
+    "failure_types": {
+      "AVAILABLE": 240
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.1606319054027404,
+    "conditional_mean_loss": 0.1606319054027404
+  },
+  {
+    "algorithm": "directlingam",
+    "policy": "mec_minimax",
+    "attempts": 240,
+    "pipeline_ready": 240,
+    "computed_recommendation": 240,
+    "failure_types": {
+      "AVAILABLE": 240
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.1606319054027404,
+    "conditional_mean_loss": 0.1606319054027404
+  },
+  {
+    "algorithm": "directlingam",
+    "policy": "abstain_on_disagreement",
+    "attempts": 240,
+    "pipeline_ready": 240,
+    "computed_recommendation": 240,
+    "failure_types": {
+      "AVAILABLE": 240
+    },
+    "operational_coverage": 240,
+    "operational_mean_loss": 0.1606319054027404,
+    "conditional_mean_loss": 0.1606319054027404
+  }
+]

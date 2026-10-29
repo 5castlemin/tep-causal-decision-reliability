@@ -1,0 +1,2623 @@
+{
+  "protocol": "PATH-MC-CALIBRATION-v1",
+  "utc": "2026-10-25T03:28:10.228967+00:00",
+  "role": "new do samples on OLD development structures; not independent structural confirmation",
+  "design_sha256": "6b53ac2bbd7fef19a979db984c961142e71ef50f5c02b2ce03077ef5ec5be80d",
+  "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+  "source_sha256": "c1f1b7f6b62c8916ebd23cb0002cdad1e9fcfb995b81cfae9558271987c4290e",
+  "code_sha256": {
+    "scripts/run_path_mc_calibration.py": "4cc7a65a361855c19808753dead4de7d55c65c60141318873250991b76ac2b8a",
+    "src/path_metric_incremental.py": "0f237c492097f37b84a0c0ee8a836cb6b76e75d56545d1e5bcea9f95be151d3d",
+    "src/diverse_structure_pilot.py": "2a6345c58abf1b44055ed6574eca3f51a722c59d3fd6ebb880d7103ad948f874"
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "sympy": "1.14.0",
+    "networkx": "3.6.1"
+  },
+  "structures": [
+    {
+      "structure_id": "S3",
+      "label": "긴 매개 사슬과 외부 관측 원인",
+      "nodes": [
+        "A",
+        "L1",
+        "L2",
+        "L3",
+        "Y",
+        "S"
+      ],
+      "algorithm_column_order": [
+        "A",
+        "L3",
+        "S",
+        "L2",
+        "L1",
+        "Y"
+      ],
+      "edges": [
+        {
+          "source": "A",
+          "target": "L1",
+          "coefficient": 0.9
+        },
+        {
+          "source": "L1",
+          "target": "L2",
+          "coefficient": 0.8
+        },
+        {
+          "source": "L2",
+          "target": "L3",
+          "coefficient": 0.9
+        },
+        {
+          "source": "L3",
+          "target": "Y",
+          "coefficient": 1.1
+        },
+        {
+          "source": "S",
+          "target": "L2",
+          "coefficient": 0.4
+        }
+      ],
+      "noise_sd": {
+        "A": 1.0,
+        "L1": 1.0,
+        "L2": 1.0,
+        "L3": 1.0,
+        "Y": 1.0,
+        "S": 1.0
+      },
+      "tags": [
+        "sparse",
+        "long_path"
+      ],
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "L3",
+          "target": "Y",
+          "target_value": 0.8,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        },
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.3,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "datasets": [
+        {
+          "dataset_id": "S3_n256_r1",
+          "structure_id": "S3",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3120001,
+          "validation_seed": 3120002,
+          "algorithm_seed": 3120003
+        },
+        {
+          "dataset_id": "S3_n256_r2",
+          "structure_id": "S3",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3120101,
+          "validation_seed": 3120102,
+          "algorithm_seed": 3120103
+        },
+        {
+          "dataset_id": "S3_n256_r3",
+          "structure_id": "S3",
+          "train_n": 256,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3120201,
+          "validation_seed": 3120202,
+          "algorithm_seed": 3120203
+        },
+        {
+          "dataset_id": "S3_n512_r1",
+          "structure_id": "S3",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 1,
+          "train_seed": 3121001,
+          "validation_seed": 3121002,
+          "algorithm_seed": 3121003
+        },
+        {
+          "dataset_id": "S3_n512_r2",
+          "structure_id": "S3",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 2,
+          "train_seed": 3121101,
+          "validation_seed": 3121102,
+          "algorithm_seed": 3121103
+        },
+        {
+          "dataset_id": "S3_n512_r3",
+          "structure_id": "S3",
+          "train_n": 512,
+          "validation_n": 256,
+          "replicate": 3,
+          "train_seed": 3121201,
+          "validation_seed": 3121202,
+          "algorithm_seed": 3121203
+        }
+      ],
+      "acceptance_seed": 4102000,
+      "evaluation_seed_base": 5120000
+    },
+    {
+      "structure_id": "C07",
+      "label": "Rule-generated family B",
+      "group": "B",
+      "generation_seed": 991204,
+      "nodes": [
+        "V0",
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "P",
+        "Q"
+      ],
+      "algorithm_column_order": [
+        "P",
+        "V1",
+        "V7",
+        "Q",
+        "V0",
+        "V2",
+        "V5",
+        "V3",
+        "V6",
+        "V4"
+      ],
+      "edges": [
+        {
+          "source": "P",
+          "target": "Q",
+          "coefficient": 0.3761
+        },
+        {
+          "source": "V0",
+          "target": "V1",
+          "coefficient": 0.7806
+        },
+        {
+          "source": "V0",
+          "target": "V2",
+          "coefficient": 0.4851
+        },
+        {
+          "source": "V0",
+          "target": "V6",
+          "coefficient": 0.6443
+        },
+        {
+          "source": "V1",
+          "target": "V2",
+          "coefficient": 1.167
+        },
+        {
+          "source": "V1",
+          "target": "V3",
+          "coefficient": 0.5813
+        },
+        {
+          "source": "V2",
+          "target": "V3",
+          "coefficient": 0.4734
+        },
+        {
+          "source": "V2",
+          "target": "V5",
+          "coefficient": 1.1894
+        },
+        {
+          "source": "V2",
+          "target": "V7",
+          "coefficient": 0.7655
+        },
+        {
+          "source": "V3",
+          "target": "V4",
+          "coefficient": 1.0282
+        },
+        {
+          "source": "V3",
+          "target": "V6",
+          "coefficient": 0.7824
+        },
+        {
+          "source": "V4",
+          "target": "V5",
+          "coefficient": 0.5336
+        },
+        {
+          "source": "V4",
+          "target": "V6",
+          "coefficient": 1.1779
+        },
+        {
+          "source": "V4",
+          "target": "V7",
+          "coefficient": 0.6186
+        },
+        {
+          "source": "V5",
+          "target": "V6",
+          "coefficient": 0.939
+        },
+        {
+          "source": "V5",
+          "target": "V7",
+          "coefficient": 0.6641
+        },
+        {
+          "source": "V6",
+          "target": "V7",
+          "coefficient": 1.1055
+        }
+      ],
+      "noise_sd": {
+        "V0": 1.0,
+        "V1": 1.0,
+        "V2": 1.0,
+        "V3": 1.0,
+        "V4": 1.0,
+        "V5": 1.0,
+        "V6": 1.0,
+        "V7": 1.0,
+        "P": 1.0,
+        "Q": 1.0
+      },
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "direct__fine",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "fine",
+          "action_values": [
+            -1,
+            -0.75,
+            -0.5,
+            -0.25,
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "direct__low_cost",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "low_cost",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.1,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "direct__high_cost",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "high_cost",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.4,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "path",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "path__fine",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "fine",
+          "action_values": [
+            -1,
+            -0.75,
+            -0.5,
+            -0.25,
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "path__low_cost",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "low_cost",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.1,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "path__high_cost",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "high_cost",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.4,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "tags": [
+        "B",
+        "all_observed",
+        "independent_uniform",
+        "peripheral_branch"
+      ],
+      "acceptance_seed": 990000,
+      "evaluation_seed_base": 2060000,
+      "datasets": [
+        {
+          "dataset_id": "C07_n256_r1",
+          "train_n": 256,
+          "replicate": 1,
+          "train_seed": 10625610,
+          "validation_seed": 10625611,
+          "validation_n": 256,
+          "algorithm_seed": 10625612
+        },
+        {
+          "dataset_id": "C07_n256_r2",
+          "train_n": 256,
+          "replicate": 2,
+          "train_seed": 10625620,
+          "validation_seed": 10625621,
+          "validation_n": 256,
+          "algorithm_seed": 10625622
+        },
+        {
+          "dataset_id": "C07_n256_r3",
+          "train_n": 256,
+          "replicate": 3,
+          "train_seed": 10625630,
+          "validation_seed": 10625631,
+          "validation_n": 256,
+          "algorithm_seed": 10625632
+        },
+        {
+          "dataset_id": "C07_n512_r1",
+          "train_n": 512,
+          "replicate": 1,
+          "train_seed": 10651210,
+          "validation_seed": 10651211,
+          "validation_n": 256,
+          "algorithm_seed": 10651212
+        },
+        {
+          "dataset_id": "C07_n512_r2",
+          "train_n": 512,
+          "replicate": 2,
+          "train_seed": 10651220,
+          "validation_seed": 10651221,
+          "validation_n": 256,
+          "algorithm_seed": 10651222
+        },
+        {
+          "dataset_id": "C07_n512_r3",
+          "train_n": 512,
+          "replicate": 3,
+          "train_seed": 10651230,
+          "validation_seed": 10651231,
+          "validation_n": 256,
+          "algorithm_seed": 10651232
+        }
+      ],
+      "controlled_variants": {
+        "oracle_reference": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V2"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V3"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V5"
+          ],
+          [
+            "V2",
+            "V7"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V6"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V4",
+            "V6"
+          ],
+          [
+            "V4",
+            "V7"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "remove_key": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V2"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V3"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V5"
+          ],
+          [
+            "V2",
+            "V7"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V6"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V4",
+            "V6"
+          ],
+          [
+            "V4",
+            "V7"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "remove_peripheral": [
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V2"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V3"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V5"
+          ],
+          [
+            "V2",
+            "V7"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V6"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V4",
+            "V6"
+          ],
+          [
+            "V4",
+            "V7"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "reverse_key": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V2"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V1",
+            "V0"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V3"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V5"
+          ],
+          [
+            "V2",
+            "V7"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V6"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V4",
+            "V6"
+          ],
+          [
+            "V4",
+            "V7"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "reverse_peripheral": [
+          [
+            "Q",
+            "P"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V2"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V3"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V5"
+          ],
+          [
+            "V2",
+            "V7"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V6"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V4",
+            "V6"
+          ],
+          [
+            "V4",
+            "V7"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "remove_key_path_retained": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V2"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V3"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V5"
+          ],
+          [
+            "V2",
+            "V7"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V6"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V4",
+            "V6"
+          ],
+          [
+            "V4",
+            "V7"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "remove_peripheral_path_retained": [
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V2"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V3"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V5"
+          ],
+          [
+            "V2",
+            "V7"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V6"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V4",
+            "V6"
+          ],
+          [
+            "V4",
+            "V7"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "add_edge": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "P",
+            "V0"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V2"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V3"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V5"
+          ],
+          [
+            "V2",
+            "V7"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V6"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V4",
+            "V6"
+          ],
+          [
+            "V4",
+            "V7"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ]
+      },
+      "controlled_selection": [
+        {
+          "variant": "remove_key",
+          "edge": [
+            "V0",
+            "V1"
+          ],
+          "path_preserved": true
+        },
+        {
+          "variant": "remove_peripheral",
+          "edge": [
+            "P",
+            "Q"
+          ],
+          "path_preserved": true
+        },
+        {
+          "variant": "reverse_key",
+          "edge": [
+            "V0",
+            "V1"
+          ],
+          "path_preserved": true
+        },
+        {
+          "variant": "reverse_peripheral",
+          "edge": [
+            "P",
+            "Q"
+          ],
+          "path_preserved": true
+        },
+        {
+          "variant": "matched_removal_path_retained",
+          "key": [
+            "V0",
+            "V1"
+          ],
+          "peripheral": [
+            "P",
+            "Q"
+          ],
+          "both_paths_preserved": true
+        },
+        {
+          "variant": "add_edge",
+          "edge": [
+            "P",
+            "V0"
+          ]
+        }
+      ]
+    },
+    {
+      "structure_id": "C10",
+      "label": "Rule-generated family C",
+      "group": "C",
+      "generation_seed": 992203,
+      "nodes": [
+        "V0",
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "P",
+        "Q"
+      ],
+      "algorithm_column_order": [
+        "V1",
+        "V3",
+        "V6",
+        "P",
+        "Q",
+        "V7",
+        "V0",
+        "V5",
+        "V2",
+        "V4"
+      ],
+      "edges": [
+        {
+          "source": "P",
+          "target": "Q",
+          "coefficient": 0.5421
+        },
+        {
+          "source": "V0",
+          "target": "V1",
+          "coefficient": 0.6659
+        },
+        {
+          "source": "V0",
+          "target": "V3",
+          "coefficient": 0.439
+        },
+        {
+          "source": "V0",
+          "target": "V6",
+          "coefficient": 0.8641
+        },
+        {
+          "source": "V0",
+          "target": "V7",
+          "coefficient": -0.752
+        },
+        {
+          "source": "V1",
+          "target": "V2",
+          "coefficient": 1.0318
+        },
+        {
+          "source": "V1",
+          "target": "V5",
+          "coefficient": -1.1503
+        },
+        {
+          "source": "V1",
+          "target": "V6",
+          "coefficient": 0.5369
+        },
+        {
+          "source": "V2",
+          "target": "V3",
+          "coefficient": 0.6302
+        },
+        {
+          "source": "V2",
+          "target": "V6",
+          "coefficient": -0.5329
+        },
+        {
+          "source": "V3",
+          "target": "V4",
+          "coefficient": 1.0619
+        },
+        {
+          "source": "V3",
+          "target": "V5",
+          "coefficient": -0.8784
+        },
+        {
+          "source": "V4",
+          "target": "V5",
+          "coefficient": 1.0034
+        },
+        {
+          "source": "V5",
+          "target": "V6",
+          "coefficient": 1.0916
+        },
+        {
+          "source": "V5",
+          "target": "V7",
+          "coefficient": -0.6516
+        },
+        {
+          "source": "V6",
+          "target": "V7",
+          "coefficient": 0.9542
+        }
+      ],
+      "noise_sd": {
+        "V0": 1.0,
+        "V1": 1.0,
+        "V2": 1.0,
+        "V3": 1.0,
+        "V4": 1.0,
+        "V5": 1.0,
+        "V6": 1.0,
+        "V7": 1.0,
+        "P": 1.0,
+        "Q": 1.0
+      },
+      "tasks": [
+        {
+          "task_id": "direct",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "direct__fine",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "fine",
+          "action_values": [
+            -1,
+            -0.75,
+            -0.5,
+            -0.25,
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "direct__low_cost",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "low_cost",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.1,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "direct__high_cost",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "high_cost",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.4,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "path",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "path__fine",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "fine",
+          "action_values": [
+            -1,
+            -0.75,
+            -0.5,
+            -0.25,
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "path__low_cost",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "low_cost",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.1,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        },
+        {
+          "task_id": "path__high_cost",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "high_cost",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.4,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "tags": [
+        "C",
+        "all_observed",
+        "independent_uniform",
+        "peripheral_branch"
+      ],
+      "acceptance_seed": 1020000,
+      "evaluation_seed_base": 2090000,
+      "datasets": [
+        {
+          "dataset_id": "C10_n256_r1",
+          "train_n": 256,
+          "replicate": 1,
+          "train_seed": 10925610,
+          "validation_seed": 10925611,
+          "validation_n": 256,
+          "algorithm_seed": 10925612
+        },
+        {
+          "dataset_id": "C10_n256_r2",
+          "train_n": 256,
+          "replicate": 2,
+          "train_seed": 10925620,
+          "validation_seed": 10925621,
+          "validation_n": 256,
+          "algorithm_seed": 10925622
+        },
+        {
+          "dataset_id": "C10_n256_r3",
+          "train_n": 256,
+          "replicate": 3,
+          "train_seed": 10925630,
+          "validation_seed": 10925631,
+          "validation_n": 256,
+          "algorithm_seed": 10925632
+        },
+        {
+          "dataset_id": "C10_n512_r1",
+          "train_n": 512,
+          "replicate": 1,
+          "train_seed": 10951210,
+          "validation_seed": 10951211,
+          "validation_n": 256,
+          "algorithm_seed": 10951212
+        },
+        {
+          "dataset_id": "C10_n512_r2",
+          "train_n": 512,
+          "replicate": 2,
+          "train_seed": 10951220,
+          "validation_seed": 10951221,
+          "validation_n": 256,
+          "algorithm_seed": 10951222
+        },
+        {
+          "dataset_id": "C10_n512_r3",
+          "train_n": 512,
+          "replicate": 3,
+          "train_seed": 10951230,
+          "validation_seed": 10951231,
+          "validation_n": 256,
+          "algorithm_seed": 10951232
+        }
+      ],
+      "controlled_variants": {
+        "oracle_reference": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V3"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V0",
+            "V7"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V5"
+          ],
+          [
+            "V1",
+            "V6"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V6"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V5"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "remove_key": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V3"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V0",
+            "V7"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V5"
+          ],
+          [
+            "V1",
+            "V6"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V6"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V5"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "remove_peripheral": [
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V3"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V0",
+            "V7"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V5"
+          ],
+          [
+            "V1",
+            "V6"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V6"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V5"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "reverse_key": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V3"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V0",
+            "V7"
+          ],
+          [
+            "V1",
+            "V0"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V5"
+          ],
+          [
+            "V1",
+            "V6"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V6"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V5"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "reverse_peripheral": [
+          [
+            "Q",
+            "P"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V3"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V0",
+            "V7"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V5"
+          ],
+          [
+            "V1",
+            "V6"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V6"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V5"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "remove_key_path_retained": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "V0",
+            "V3"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V0",
+            "V7"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V5"
+          ],
+          [
+            "V1",
+            "V6"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V6"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V5"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "remove_peripheral_path_retained": [
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V3"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V0",
+            "V7"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V5"
+          ],
+          [
+            "V1",
+            "V6"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V6"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V5"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ],
+        "add_edge": [
+          [
+            "P",
+            "Q"
+          ],
+          [
+            "P",
+            "V0"
+          ],
+          [
+            "V0",
+            "V1"
+          ],
+          [
+            "V0",
+            "V3"
+          ],
+          [
+            "V0",
+            "V6"
+          ],
+          [
+            "V0",
+            "V7"
+          ],
+          [
+            "V1",
+            "V2"
+          ],
+          [
+            "V1",
+            "V5"
+          ],
+          [
+            "V1",
+            "V6"
+          ],
+          [
+            "V2",
+            "V3"
+          ],
+          [
+            "V2",
+            "V6"
+          ],
+          [
+            "V3",
+            "V4"
+          ],
+          [
+            "V3",
+            "V5"
+          ],
+          [
+            "V4",
+            "V5"
+          ],
+          [
+            "V5",
+            "V6"
+          ],
+          [
+            "V5",
+            "V7"
+          ],
+          [
+            "V6",
+            "V7"
+          ]
+        ]
+      },
+      "controlled_selection": [
+        {
+          "variant": "remove_key",
+          "edge": [
+            "V0",
+            "V1"
+          ],
+          "path_preserved": true
+        },
+        {
+          "variant": "remove_peripheral",
+          "edge": [
+            "P",
+            "Q"
+          ],
+          "path_preserved": true
+        },
+        {
+          "variant": "reverse_key",
+          "edge": [
+            "V0",
+            "V1"
+          ],
+          "path_preserved": true
+        },
+        {
+          "variant": "reverse_peripheral",
+          "edge": [
+            "P",
+            "Q"
+          ],
+          "path_preserved": true
+        },
+        {
+          "variant": "matched_removal_path_retained",
+          "key": [
+            "V0",
+            "V1"
+          ],
+          "peripheral": [
+            "P",
+            "Q"
+          ],
+          "both_paths_preserved": true
+        },
+        {
+          "variant": "add_edge",
+          "edge": [
+            "P",
+            "V0"
+          ]
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "S3_0_0",
+      "structure_id": "S3",
+      "action": "L3",
+      "value": 0,
+      "n": 512,
+      "seed": 61000000,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "L3",
+          "target": "Y",
+          "target_value": 0.8,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "expected_worst_halfwidth": 0.08662058069535207,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "S3_0_1",
+      "structure_id": "S3",
+      "action": "L3",
+      "value": 0.5,
+      "n": 512,
+      "seed": 61000010,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "L3",
+          "target": "Y",
+          "target_value": 0.8,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "expected_worst_halfwidth": 0.08662058069535207,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "S3_0_2",
+      "structure_id": "S3",
+      "action": "L3",
+      "value": -0.5,
+      "n": 512,
+      "seed": 61000020,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "L3",
+          "target": "Y",
+          "target_value": 0.8,
+          "task_kind": "direct",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "expected_worst_halfwidth": 0.08662058069535207,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "S3_1_0",
+      "structure_id": "S3",
+      "action": "A",
+      "value": 0,
+      "n": 2048,
+      "seed": 61001000,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.3,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "expected_worst_halfwidth": 0.08634056015642358,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "S3_1_1",
+      "structure_id": "S3",
+      "action": "A",
+      "value": 0.5,
+      "n": 2048,
+      "seed": 61001010,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.3,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "expected_worst_halfwidth": 0.08634056015642358,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "S3_1_2",
+      "structure_id": "S3",
+      "action": "A",
+      "value": -0.5,
+      "n": 2048,
+      "seed": 61001020,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "A",
+          "target": "Y",
+          "target_value": 0.3,
+          "task_kind": "indirect",
+          "action_values": [
+            -1.0,
+            -0.5,
+            0.0,
+            0.5,
+            1.0
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+          "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+        }
+      ],
+      "expected_worst_halfwidth": 0.08634056015642358,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "C07_0_0",
+      "structure_id": "C07",
+      "action": "V6",
+      "value": 0,
+      "n": 8192,
+      "seed": 61100000,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.11253380462400393,
+      "precision_target_met": false
+    },
+    {
+      "case_id": "C07_0_1",
+      "structure_id": "C07",
+      "action": "V6",
+      "value": 0.5,
+      "n": 8192,
+      "seed": 61100010,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.11253380462400393,
+      "precision_target_met": false
+    },
+    {
+      "case_id": "C07_0_2",
+      "structure_id": "C07",
+      "action": "V6",
+      "value": -0.5,
+      "n": 8192,
+      "seed": 61100020,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.11253380462400393,
+      "precision_target_met": false
+    },
+    {
+      "case_id": "C07_1_0",
+      "structure_id": "C07",
+      "action": "V0",
+      "value": 0,
+      "n": 8192,
+      "seed": 61101000,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.22198191089909877,
+      "precision_target_met": false
+    },
+    {
+      "case_id": "C07_1_1",
+      "structure_id": "C07",
+      "action": "V0",
+      "value": 0.5,
+      "n": 8192,
+      "seed": 61101010,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.22198191089909877,
+      "precision_target_met": false
+    },
+    {
+      "case_id": "C07_1_2",
+      "structure_id": "C07",
+      "action": "V0",
+      "value": -0.5,
+      "n": 8192,
+      "seed": 61101020,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.22198191089909877,
+      "precision_target_met": false
+    },
+    {
+      "case_id": "C10_0_0",
+      "structure_id": "C10",
+      "action": "V6",
+      "value": 0,
+      "n": 2048,
+      "seed": 61200000,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.0678064672727535,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "C10_0_1",
+      "structure_id": "C10",
+      "action": "V6",
+      "value": 0.5,
+      "n": 2048,
+      "seed": 61200010,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.0678064672727535,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "C10_0_2",
+      "structure_id": "C10",
+      "action": "V6",
+      "value": -0.5,
+      "n": 2048,
+      "seed": 61200020,
+      "target_tasks": [
+        {
+          "task_id": "direct",
+          "action": "V6",
+          "target": "V7",
+          "target_value": 0.65,
+          "task_kind": "direct",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.0678064672727535,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "C10_1_0",
+      "structure_id": "C10",
+      "action": "V0",
+      "value": 0,
+      "n": 2048,
+      "seed": 61201000,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.0699160115949887,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "C10_1_1",
+      "structure_id": "C10",
+      "action": "V0",
+      "value": 0.5,
+      "n": 2048,
+      "seed": 61201010,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.0699160115949887,
+      "precision_target_met": true
+    },
+    {
+      "case_id": "C10_1_2",
+      "structure_id": "C10",
+      "action": "V0",
+      "value": -0.5,
+      "n": 2048,
+      "seed": 61201020,
+      "target_tasks": [
+        {
+          "task_id": "path",
+          "action": "V0",
+          "target": "V7",
+          "target_value": 0.6,
+          "task_kind": "indirect",
+          "setting": "primary",
+          "action_values": [
+            -1,
+            -0.5,
+            0,
+            0.5,
+            1
+          ],
+          "reference_action": 0.0,
+          "cost_weight": 0.2,
+          "loss_scale": 1.0,
+          "measurement": "independent do target mean; empirical and analytic losses separate"
+        }
+      ],
+      "expected_worst_halfwidth": 0.0699160115949887,
+      "precision_target_met": true
+    }
+  ]
+}

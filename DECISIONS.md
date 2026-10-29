@@ -76,3 +76,10 @@ MVP-TECH VERIFIED는 dry 추천·로거·반복 실행만 뜻한다. 전체 가�
 - Retain cyclic PC outputs and incompatible PDAGs as failed/blocked cases. Do not orient to truth, delete edges, silently drop records, or retrospectively assign baseline losses. Current valid-loss analysis is conditional on usable graphs and remains selection-limited.
 - Report narrow primary endpoint support separately from the unresolved incremental-information and robustness question. M0/M1 augmentation, analytic mean and high-cost results do not establish stable superiority. Correlations and artificial graph-error contrasts are not causal effects of raising a graph score.
 - Exact replay evidence applies to the same host/installed environment; new216 second replay and manufacturing Recovery/Safety are NOT_RUN. Current full144 replay supersedes the old NOT_RUN state only in the live dashboard; historical artifacts stay unchanged.
+
+
+## 2026-10-25 — 일회 검토 예외와 추가 예측력 평가 계약
+
+사용자가 PR12~14에만 직접 승인 예외를 명시하여 검증 후 일반 병합. CONTRIBUTING 영구 검토 규칙 변경·가짜 팀원 승인·보호 우회 없음. 새 PR에는 자동 병합 권한 없음.
+
+기존 S/C20구조는 모두 개발 전용. 이론 평균의 실제 운영 추가 손실을 평가하며 실패 시 사전 기준 조작0의 손실을 산출한다. 과제·graph 특징은 관측/적합 자료만 사용하고 정답 계수/최선 조작은 진단에 분리한다. 추가 정보 A(M1→M4) 다음 B(M5→M6)와 .01 개선·반폭.005를 계획 전에 기록. 새 독립 구조는 정밀도/예산150대30,1350대288 초과로 생성하지 않기로 Gate 규칙을 적용했다. 이 값은 검정력 보장이나 자원 자동 확대 승인이 아니다. 실제 do 검산만 기존3개 개발 구조에서 수행. RESEARCH_DESIGN 변경 및 제조 환경 채택 없음.

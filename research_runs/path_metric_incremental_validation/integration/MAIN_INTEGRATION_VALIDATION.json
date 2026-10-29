@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "main_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
+  "branch": "main",
+  "tree_equals_verified_pr14": true,
+  "checks": [
+    {
+      "command": "python -X utf8 -m unittest discover -s tests -v",
+      "returncode": 0,
+      "output_sha256": "7950b7d557d8597048b84b5cb25fc085b048cac4ec751f6e25eab1651754f2f1"
+    },
+    {
+      "command": "python -X utf8 graphs/final/verify_and_load.py",
+      "returncode": 0,
+      "output_sha256": "6dac5cada6fe0587487ccd285c409f2862a13e885a5025162c19b01e70d1f91b"
+    },
+    {
+      "command": "python -X utf8 src/verify_recovery.py",
+      "returncode": 0,
+      "output_sha256": "a5a50c705f296cb7f87ef859f34f5678123eb6d7393b45d025feaa5ea02885c0"
+    },
+    {
+      "command": "python -X utf8 experiments/simulator/validate_feasibility.py",
+      "returncode": 0,
+      "output_sha256": "4eee8c2756cd9e7b887b77f3cc651dd077bb94450c19b79880505f92aa3dd4e8"
+    },
+    {
+      "command": "python -X utf8 experiments/simulator/diagnostics/validate_diagnostics.py",
+      "returncode": 0,
+      "output_sha256": "b55a7f98d50516fd704b05788aaed55f5f657de412d980ef984d70691de12f96"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_benchmark_decision.py",
+      "returncode": 0,
+      "output_sha256": "f279992a48dc275a6a07764e76ae46dd2629f740b436f23b94eab8c2ae1b9cf3"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_track_a_recovery.py",
+      "returncode": 0,
+      "output_sha256": "4ec2f8032b1b739902487f5273bf742cc56f2db37ab3d915ea1b6ef26782b617"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_track_b_audit.py",
+      "returncode": 0,
+      "output_sha256": "f558994eef444879285244516df3075d1918d2bede4d1fc9bbfbb16f73531d81"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_ref_b_minimal_records.py",
+      "returncode": 0,
+      "output_sha256": "5eb6e174f2b518a6376b7f0b463e8d18e9c9c03628789d0b3a3f8668603958c9"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_decision_mvp.py",
+      "returncode": 0,
+      "output_sha256": "d2a63ca0b80cf6f4414b773587b868a7824dfcf0f7d4c0bc8dc2f6b78cc85aa3"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_env_acceptance.py",
+      "returncode": 0,
+      "output_sha256": "6d4be440bf15c27d35be2593f88b54bc275c0b982e2e908fd90f9046ae7d1349"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_first_integrated_pilot.py",
+      "returncode": 0,
+      "output_sha256": "c78e960bd3093ad145ae80afe10672f51bdc6cc2e5f7cdb00d079a8411eb0202"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_repeated_metric_pilot.py",
+      "returncode": 0,
+      "output_sha256": "4f82ec71caaf8270350c70726d1e1010aba541aab9b5bd5189595e5743b40126"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_diverse_structure_pilot.py",
+      "returncode": 0,
+      "output_sha256": "6bb2842636ba3da2355b2aa4224026560ada7fad837944b8eed3a8afaa66d07f"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_independent_confirmation.py",
+      "returncode": 0,
+      "output_sha256": "e6d65670991f9cbe1cdcf1964b2be36b7ddea248c518aff7269dd16e5020e2b7"
+    },
+    {
+      "command": "python -X utf8 scripts/check_research_state.py",
+      "returncode": 0,
+      "output_sha256": "3543370717f81c444209f3dfa9b9abc0a6c7e3403a384524f28414cbed4da901"
+    },
+    {
+      "command": "python -X utf8 scripts/check_asset_manifest.py",
+      "returncode": 0,
+      "output_sha256": "564a4921b09982b560465189ba505658ae8d9dfd0b57f85111d065705ea042f0"
+    },
+    {
+      "command": "python -X utf8 scripts/validate_pr_integration.py",
+      "returncode": 0,
+      "output_sha256": "18df0f3a6e3b1dde8201c2abab69c7845fdf0ad2e2fbc06473508d2e525148fa"
+    },
+    {
+      "command": "git diff --check",
+      "returncode": 0
+    }
+  ],
+  "external_training_reexecuted": false
+}

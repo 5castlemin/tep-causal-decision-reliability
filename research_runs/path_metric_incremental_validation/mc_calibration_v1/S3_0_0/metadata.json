@@ -1,0 +1,109 @@
+{
+  "case": {
+    "case_id": "S3_0_0",
+    "structure_id": "S3",
+    "action": "L3",
+    "value": 0,
+    "n": 512,
+    "seed": 61000000,
+    "target_tasks": [
+      {
+        "task_id": "direct",
+        "action": "L3",
+        "target": "Y",
+        "target_value": 0.8,
+        "task_kind": "direct",
+        "action_values": [
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "reference_action": 0.0,
+        "cost_weight": 0.2,
+        "loss_scale": 1.0,
+        "measurement": "independent IID do population mean; empirical estimate/SE/CI",
+        "design_warning": "five-point grid can yield ties across graphs; not changed from observed results"
+      }
+    ],
+    "expected_worst_halfwidth": 0.08662058069535207,
+    "precision_target_met": true
+  },
+  "checks": {
+    "returned_gt": true,
+    "equations": true,
+    "exact_repeat": true,
+    "action_constant": true,
+    "removed_parents": true,
+    "other_equations_unchanged": true,
+    "removed_noise": true,
+    "replaced_equation": true,
+    "mutilated_edges": true
+  },
+  "metadata": {
+    "returned_edges": [
+      [
+        "A",
+        "L1"
+      ],
+      [
+        "L1",
+        "L2"
+      ],
+      [
+        "L2",
+        "L3"
+      ],
+      [
+        "L3",
+        "Y"
+      ],
+      [
+        "S",
+        "L2"
+      ]
+    ],
+    "equation_terms": {
+      "A": "u_A",
+      "L1": "0.9*A + u_L1",
+      "L2": "0.8*L1 + 0.4*S + u_L2",
+      "L3": "0.9*L2 + u_L3",
+      "Y": "1.1*L3 + u_Y",
+      "S": "u_S"
+    },
+    "intervention": {
+      "action": "L3",
+      "value": 0,
+      "term": "0.0",
+      "parents": [],
+      "edges": [
+        [
+          "A",
+          "L1"
+        ],
+        [
+          "L1",
+          "L2"
+        ],
+        [
+          "L3",
+          "Y"
+        ],
+        [
+          "S",
+          "L2"
+        ]
+      ],
+      "other_equations_unchanged": true
+    },
+    "reconstruction_errors": {
+      "A": 0.0,
+      "L1": 0.0,
+      "L2": 0.0,
+      "L3": 0.0,
+      "Y": 0.0,
+      "S": 0.0
+    }
+  }
+}

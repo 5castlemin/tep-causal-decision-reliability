@@ -27,13 +27,16 @@
 | DESIGN-B | Track B 가설 유지·통계 설계 | BLOCKED | docs/research_design/REF_B_MINIMAL_SUBSYSTEM_VALIDATION.md | 관측 수준 참조가 불가하면 원가설 보류/국소 도달성으로 범위 축소 대안을 검토; 전환은 사용자 승인 대상 |
 | MVP-TECH | 공통 추천 dry-run·API 기술 파일럿 | VERIFIED | docs/research_design/CAUSAL_METRIC_TO_DECISION_MVP.md | 기존3모델 추천 dry-run/정해진 조작 반복·로거 재사용; 가설 검증으로 해석 금지 |
 | ENV-MVP | 구조·추천 평가환경 대응 | PARTIAL | docs/research_design/ENV_MVP_ACCEPTANCE.md | 검증된 합성 범위를 유지하고 제조 환경의 노드·직접 구조·do 의미가 같은지 입증할 채택 계약을 분리; 제조 채택 미승인 |
-| POLICY-MVP | 실제 추천 정책 연결 | PARTIAL | research_runs/independent_confirmation/EXECUTION_STATUS.json; research_runs/independent_confirmation/FIT_FAILURE_DETAILS.json | 순환 PC출력2개·양립 DAG 없는3개에 대한 사전 실패/보류 정책과 선택 편향 대조를 정의. 현재 간선 수정·손실 임의 대입 금지 |
-| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; research_runs/independent_confirmation/HYPOTHESIS_ASSESSMENT.json | 주 비교 ΔMAE .014264 지지는 유지하되 M0 이후/연결F1 이후 추가 정보와 이론 평균·비용 .4에서의 불확실성을 새 사전 계약으로 분리 |
+| POLICY-MVP | 실제 추천 정책 연결 | PARTIAL | docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md | 실패24행은 기준 조작0의 실제 이론 손실로 운영 평가; 가용2136/2160·조건부·계산추천1326 분리 유지 |
+| EVAL-MVP | 구조 지표–추천 성능 비교 | PARTIAL | docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md | 기존20구조는 개발 자료. 이론 운영 손실 M1→M4 Δ.005200/M5→M6 Δ.004642 모두 구간0 포함. 과제 특징 모형 안정성·정밀도 해결 뒤 새 확인 |
 | ENV-EXAMPLE | 예제 FCM GT·관측·do adapter acceptance | VERIFIED | docs/research_design/ENV_MVP_ACCEPTANCE.md | 고정 source/lock/원시 잡음/배치 검증 재사용. 제조/시간/반사실 검증으로 확대하지 않음 |
 | PILOT-IID | 4변수 합성 통합 학습·추천·do 실행 | VERIFIED | docs/research_design/FIRST_INTEGRATED_PILOT_REPORT.md; research_runs/first_integrated_pilot/reproducibility_check.json | 두 잡음군 별도 3학습/1과제 연결 결과를 유지하고 다중 독립 학습 조건 계획에 활용; 제조 채택 아님 |
 | PILOT-REPEAT | 합성 독립 반복·4과제·미확정 정책 비교 | VERIFIED | docs/research_design/REPEATED_METRIC_PILOT_REPORT.md | 기존12데이터/36학습 결과 보존. 새8구조 결과는 PILOT-DIVERSE로 분리하며 과거 수치와 혼합하지 않음 |
 | PILOT-DIVERSE | 8개 선언 구조의 실제 학습·정책·구조외 예측 | VERIFIED | docs/research_design/DIVERSE_STRUCTURE_PILOT_REPORT.md; research_runs/independent_confirmation/REPLAY_COMPARISON.json | 기존144회 전체 재실행의672기록 핵심 차이0 확인. 과거8구조 산출물은 보존하고 새12구조 확인은 PILOT-CONFIRM으로 분리 |
-| PILOT-CONFIRM | 12개 규칙 생성 구조의 독립 확인·방법론 대조 | PARTIAL | docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; research_runs/independent_confirmation/analysis_v1/SUMMARY.json | 이론 평균 Δ .006317/고비용 Δ .004874의 불명확성과 유한 표본 최선후보15/96변경을 반영한 정밀도·교정 계약; 현재 결과 사후 변경 없음 |
+| PILOT-CONFIRM | 12개 규칙 생성 구조의 독립 확인·방법론 대조 | PARTIAL | docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; research_runs/independent_confirmation/analysis_v1/SUMMARY.json | 과거12구조 독립 확인 기록 보존. C01~C12는 이후 모형 개발에 사용됐으므로 새 확인용으로 재사용하지 않음 |
+| PATH-MODEL | 과제 특징 예측모형의 개발 안정성 | PARTIAL | docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md | 고차원 과제 특징이 MAE를 악화시킨 원인·외삽을 개발 자료에서만 진단하고 저차원 후보를 고정 |
+| PATH-PRECISION | 추가 예측력 독립 확인 정밀도·예산 | BLOCKED | research_runs/path_metric_incremental_validation/development_v1/INDEPENDENT_PRECISION_GATE.json | 반폭.005에 대략150구조/1350학습으로30구조/288회 범위 초과. 개발 모형 안정화 후 근거 있는 정밀도·자원 계약 |
+| PATH-CONFIRM | 경로 지표 추가 정보의 새 독립 확인 | NOT_RUN | docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md | 정밀도 통과 후에만 새 구조·계수·seed·M0~M6·실패 정책을 고정하고 실제 학습/do 실행 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

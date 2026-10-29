@@ -1,0 +1,193 @@
+{
+  "case": {
+    "case_id": "C10_0_1",
+    "structure_id": "C10",
+    "action": "V6",
+    "value": 0.5,
+    "n": 2048,
+    "seed": 61200010,
+    "target_tasks": [
+      {
+        "task_id": "direct",
+        "action": "V6",
+        "target": "V7",
+        "target_value": 0.65,
+        "task_kind": "direct",
+        "setting": "primary",
+        "action_values": [
+          -1,
+          -0.5,
+          0,
+          0.5,
+          1
+        ],
+        "reference_action": 0.0,
+        "cost_weight": 0.2,
+        "loss_scale": 1.0,
+        "measurement": "independent do target mean; empirical and analytic losses separate"
+      }
+    ],
+    "expected_worst_halfwidth": 0.0678064672727535,
+    "precision_target_met": true
+  },
+  "checks": {
+    "returned_gt": true,
+    "equations": true,
+    "exact_repeat": true,
+    "action_constant": true,
+    "removed_parents": true,
+    "other_equations_unchanged": true,
+    "removed_noise": true,
+    "replaced_equation": true,
+    "mutilated_edges": true
+  },
+  "metadata": {
+    "returned_edges": [
+      [
+        "P",
+        "Q"
+      ],
+      [
+        "V0",
+        "V1"
+      ],
+      [
+        "V0",
+        "V3"
+      ],
+      [
+        "V0",
+        "V6"
+      ],
+      [
+        "V0",
+        "V7"
+      ],
+      [
+        "V1",
+        "V2"
+      ],
+      [
+        "V1",
+        "V5"
+      ],
+      [
+        "V1",
+        "V6"
+      ],
+      [
+        "V2",
+        "V3"
+      ],
+      [
+        "V2",
+        "V6"
+      ],
+      [
+        "V3",
+        "V4"
+      ],
+      [
+        "V3",
+        "V5"
+      ],
+      [
+        "V4",
+        "V5"
+      ],
+      [
+        "V5",
+        "V6"
+      ],
+      [
+        "V5",
+        "V7"
+      ],
+      [
+        "V6",
+        "V7"
+      ]
+    ],
+    "equation_terms": {
+      "V0": "u_V0",
+      "V1": "0.6659*V0 + u_V1",
+      "V2": "1.0318*V1 + u_V2",
+      "V3": "0.439*V0 + 0.6302*V2 + u_V3",
+      "V4": "1.0619*V3 + u_V4",
+      "V5": "-1.1503*V1 - 0.8784*V3 + 1.0034*V4 + u_V5",
+      "V6": "0.8641*V0 + 0.5369*V1 - 0.5329*V2 + 1.0916*V5 + u_V6",
+      "V7": "-0.752*V0 - 0.6516*V5 + 0.9542*V6 + u_V7",
+      "P": "u_P",
+      "Q": "0.5421*P + u_Q"
+    },
+    "intervention": {
+      "action": "V6",
+      "value": 0.5,
+      "term": "0.500000000000000",
+      "parents": [],
+      "edges": [
+        [
+          "P",
+          "Q"
+        ],
+        [
+          "V0",
+          "V1"
+        ],
+        [
+          "V0",
+          "V3"
+        ],
+        [
+          "V0",
+          "V7"
+        ],
+        [
+          "V1",
+          "V2"
+        ],
+        [
+          "V1",
+          "V5"
+        ],
+        [
+          "V2",
+          "V3"
+        ],
+        [
+          "V3",
+          "V4"
+        ],
+        [
+          "V3",
+          "V5"
+        ],
+        [
+          "V4",
+          "V5"
+        ],
+        [
+          "V5",
+          "V7"
+        ],
+        [
+          "V6",
+          "V7"
+        ]
+      ],
+      "other_equations_unchanged": true
+    },
+    "reconstruction_errors": {
+      "V0": 0.0,
+      "V1": 0.0,
+      "V2": 0.0,
+      "V3": 0.0,
+      "V4": 0.0,
+      "V5": 0.0,
+      "V6": 0.0,
+      "V7": 0.0,
+      "P": 0.0,
+      "Q": 0.0
+    }
+  }
+}
