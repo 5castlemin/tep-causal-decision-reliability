@@ -1,0 +1,234 @@
+{
+  "protocol_id": "INDEPENDENT-ERROR-LOCATION-v1",
+  "date": "2026-10-29",
+  "status": "DESIGN_FROZEN_BUT_NOT_EXECUTION_READY",
+  "gate": "REDESIGN_REQUIRED",
+  "authorization": {
+    "design_and_budget_only": true,
+    "new_SCM_instantiation": false,
+    "new_data": false,
+    "new_discovery": false,
+    "new_numerical_fits": false,
+    "new_do": false,
+    "final_statistical_test": false,
+    "merge": false
+  },
+  "dependency": {
+    "pr": 22,
+    "head": "e9dae0c5e40d44228d30beb6cbdf6f0d771676cb",
+    "base": "feature/synthetic-final-claims-evidence"
+  },
+  "question": "Conditional pipeline effect of error location under matched error type/count/whole-graph scores,including refitting and action choice;not pure universal causal effect of location",
+  "hypotheses": {
+    "primary": "H1:mu=E_structure[L(G_key)-L(G_peripheral)]>0 with a materially relevant mean >=0.1 on scale1",
+    "negative": "mu<0 and sufficiently negative is legitimate counterevidence",
+    "null_and_ties": "mu near0 and individual pair ties are valid outcomes;no posthoc pair selection",
+    "not_tested": "metric ranking,causal discovery algorithm comparison,TEP recovery/safety"
+  },
+  "reference_generation": {
+    "planned_SCMs": 30,
+    "families": {
+      "S_single_route": 15,
+      "P_parallel_direct_indirect": 15
+    },
+    "population": "New mechanisms/data streams independent conditional on accepted unique topology catalogue;fixed family quotas and exclusion against already accepted topologies constrain exchangeability. Not an unconstrained iid DAG or manufacturing sample.",
+    "nodes": "n uniform integer8..10 for each candidate;roles R,S,P,Q,A,M1,M2,Y plus n-8 extra Z nodes",
+    "time": "static iid acyclic;no lag/hidden variables/feedback",
+    "topological_order": "R,S,Z1..Z(n-8),P,Q,A,M1,M2,Y",
+    "backbone_S": [
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ],
+      [
+        "S",
+        "P"
+      ],
+      [
+        "P",
+        "Q"
+      ],
+      [
+        "Q",
+        "Y"
+      ],
+      [
+        "A",
+        "M1"
+      ],
+      [
+        "M1",
+        "M2"
+      ],
+      [
+        "M2",
+        "Y"
+      ]
+    ],
+    "backbone_P": [
+      [
+        "R",
+        "A"
+      ],
+      [
+        "R",
+        "Y"
+      ],
+      [
+        "S",
+        "P"
+      ],
+      [
+        "P",
+        "Q"
+      ],
+      [
+        "Q",
+        "Y"
+      ],
+      [
+        "A",
+        "Y"
+      ],
+      [
+        "A",
+        "M1"
+      ],
+      [
+        "M1",
+        "Y"
+      ],
+      [
+        "A",
+        "M2"
+      ],
+      [
+        "M2",
+        "Y"
+      ]
+    ],
+    "optional_edges": "For every not-backbone forward pair in canonical topological order,include independently withp=.2 ONLY if source is R,S,P,Q or Z. No optional outgoing edges from A,M1,M2,Y. Reject if totalE>2n or weakly disconnected,never trim based on outcomes.",
+    "density": "E8..20;density E/(n(n-1)/2).S has one indirect route,P has direct+twoindirect routes;optional upstream parents do not add A-descendant routes.",
+    "coefficient": "Independent fair sign times Uniform(0.4,1.0) on each accepted direct edge;zero intercept. Never screen on total effect,sign,cancellation,optimum or trained results.",
+    "noise": "mutually independent Uniform(-1,1),independent of policy assignment and training/validation streams;linear additive fully observed",
+    "action_target": "A and Y by scaffold roles before coefficients;one task per SCM. Random column permutation is encoding only,not a new SCM.",
+    "novelty": "Reject unlabeled directed isomorphism to any S1..S8/C01..C12 or already accepted new graph. Also reject same-node-count candidates isomorphic after <=1 directed-edge insertion/deletion/reversal;acyclic graphs only. Record all candidate IDs/rejection reasons. Different coefficients or relabelling alone do not establish new topology.",
+    "acceptance": "Before observational sampling/fits:full node/edge declarations valid and acyclic;E bound;weak connectivity;novelty;at leastone eligible deletion pair andone eligible reversal pair. No outcome/fit/choice/loss screening.",
+    "pool": "For each family enumerate candidate IDs1..10000;take first15 passing static criteria.No extension of pool or reduced cohort if quota cannot be filled;record generation gate failure.",
+    "seeds": "No draws now.Each future stream seed=uint32(first4bytes SHA256(UTF8(\"ERROR-LOC-v1|20261029|family|candidate_id|stream|repeat\"))).Stream names topology,coefficients,column_order,train,validation;repeat1..3 only for data.Enumerate and reject namespace collision before any draws;collision resolution uses recorded|retry=k suffix,not outcome-driven reseeding.",
+    "prior_data": "S/C are design-only.No existing sample rows,models,do arrays or C12 confirmation outcomes reused as new observations.",
+    "prior_reference_catalogues": [
+      "research_runs/diverse_structure_pilot/PLAN_v1.json",
+      "research_runs/independent_confirmation/PLAN_v1.json"
+    ]
+  },
+  "pair_contract": {
+    "reference_core": "K=union of all true directed A->Y path edges for THIS task",
+    "peripheral": "P=E_truth minus K,including other ancestors of Y or A;outside A-path does NOT mean causally irrelevant to fitting or Y",
+    "error_types": [
+      "delete exactlyone true edge",
+      "reverse exactlyone true edge"
+    ],
+    "enumeration": "For each type enumerate ALL ordered(core-edge,peripheral-edge) combinations with same reference;construct G_key and G_peripheral separately. No mixing types/no result-based cap.",
+    "structural_ineligibility": "If either reversed graph cyclic,self-loop,duplicate opposite edge,or score/count mismatch,reject before data/fitting and record reason.Never break cycles to make pair fit.",
+    "matching": [
+      "same sourceSCM/data/task/policy",
+      "same error type/count1",
+      "same Skeleton F1",
+      "same Strict Directed F1",
+      "same reversal-cost1 SHD",
+      "same edge count",
+      "same missing/extra/reverse/unresolved counts"
+    ],
+    "score_formula": "m true edges:deletion F1s=2(m-1)/(2m-1),SHD1,E=m-1;reversal skeletonF1=1,strictF1=(m-1)/m,SHD1,E=m.All controlled graphs fully directed;no GT orientation of learner outputs.",
+    "universe": "all unordered nodepairs for skeleton;all ordered distinct pairs for direction;reference is the prespecified generating DAG of this synthetic SCM only",
+    "dedup": "Canonical sorted edge lists for BOTH graphs with sourceSCM/task/type;exclude identical G_key/G_peripheral and collapse synonymous labels.Both graphs get stable content hashes.Count nominal,static rejected,distinct,task-valid separately.",
+    "path_subgroups": "Primary includes disconnected and retained pairs.Secondary retained:at leastone original reference A->Y directed path survives in BOTH graphs,not merely a spurious new reachable path.Record original path fraction and any graph reachability separately.Pfamily supports retained subgroup;Sfamily has none for core-edge edits.",
+    "reuse": "Fit each distinct controlled graph once per SCM/data repeat;reuse response/recommendation across its pair appearances.No duplicate fit is a new independent graph sample.",
+    "artificial": "GT is used deliberately to create controlled errors;not actual causal-discovery outputs and never mixed into algorithm performance."
+  },
+  "fitting": {
+    "train_n": 512,
+    "validation_n": 256,
+    "repeats_per_structure": 3,
+    "preprocessing": "train-only centering/scaling;all variables observed;shared train/validation draws in a pair",
+    "model": "existing integrated_pilot.fit_model linear Ridge,alpha0.01 fixed;all nodes receive same rule",
+    "selection": "No hyperparameter/model/policy selection.Validation is observational-MSE diagnostic only,not task rejection or tuning.",
+    "coefficients": "reestimated on the same training rows for each graph;changes in fit are part of the conditional pipeline contrast",
+    "model_failure": "Record precise graph/fit/response/recommendation failure;do not repair using truth.Use reference action0 as explicit operational fallback.In operational primary all eligible pairs remain,including failures;report fit-available conditional analysis separately.",
+    "oracle_diagnostic": "One true-graph Ridge per dataset included in upper budget as diagnostic only;no effect on graph eligibility/alpha/task/recommendation selection and never counted as discovered graph."
+  },
+  "task": {
+    "action": "A",
+    "target": "Y",
+    "candidate_actions": [
+      -1,
+      -0.5,
+      0,
+      0.5,
+      1
+    ],
+    "reference_action": 0,
+    "target_mean": 0.6,
+    "cost": "0.2*a^2",
+    "cost_weight": 0.2,
+    "policy": "confirmed_only,existing no-path baseline fallback;no minimax/abstention comparison in this experiment",
+    "tie_rule": "Candidates within1e-12 of minimum objective considered tied;choose smallestabs(a),then smaller signed a.Record tie set,not a spurious independent best.",
+    "nondegeneracy": "Positive/negative coefficients and direct/indirect routes permit different responses;actual choice variation UNKNOWN before execution.No rejection for nearzero total effect,baseline-optimal tasks,identical actions or identical losses."
+  },
+  "outcomes": {
+    "structural": "paired score/count equality,core/peripheral labels,reference-path survival and estimated reachability",
+    "fixed_effect": "predict mean do(A=.5)-mean do(A=0) for EVERY fit graph without optimization;reference analytic effect;intercept/baseline error separate;sign error excludes |trueeffect|<=1e-8,record zero/missed separately",
+    "loss": "L(G)=(true E[Y|do(A=a_G)]-0.6)^2+0.2*a_G^2.Mean-response squared loss,NOT E[(Y-.6)^2].",
+    "normalization": "divide by fixed loss_scale^2=1.No baseline-loss or improvement-gap denominator,no winsorization/clipping of loss or DeltaL.",
+    "primary": "DeltaL=L(G_key)-L(G_peripheral),using actual pipeline choice including predeclared failure fallback.Oracle-best loss cancels within pair but regret stillreported.",
+    "report": [
+      "recommendedaction and candidateoracle",
+      "loss,regret,referenceimprovement/worsening",
+      "effectsize/sign/baselineerrors",
+      "pairloss sign/tie using1e-10",
+      "actiondisagreement and all-sameaction strata",
+      "loss ties with different actions",
+      "failure/no-path/computedbaseline statuses",
+      "large deterioration overreference >1 original loss_scale²,all extremes retained"
+    ],
+    "model_vs_path": "No-path is not fit failure;predicted total effect0 caused by absent directed path is reported separately from nonzero path coefficient error.Not a general causal mediation decomposition."
+  },
+  "evaluation": {
+    "reference": "After recommendation freeze,compute exact mean of the SAME declared linear SCM for each5candidate action;no model input sees reference coefficients/effects/outcomes.Model fitting/recommendation and reference evaluator have separate inputs.",
+    "independent_check": "Compare topological substitution means to linear-system solution with intervened row.This is implementation check,not a second independent outcome sample.",
+    "actual_do": "0 planned for this exact-mean controlled experiment;does not validate a new stochastic simulator or manufacture Recovery/Safety evidence.No row-wise noise alignment assertion.",
+    "freeze_order": "PLAN+budget/gate resolution -> generator+analysis implementation/source hashes -> eligible structures+coefficients/tasks/metadata hash (no observations yet) -> train/validation -> all model outputs/recommendations+hash -> analytic evaluation -> statistical analysis",
+    "reference_failure": "Nonfinite/malformed true SCM or disagreeing analytic methods stops entire cohort;do not impute loss or discard bad reference after results.",
+    "model_failures": "Operational fallback0 is a real action,not missingloss0.Available-only secondary does not replace operational primary.If no functioning pairs remain,report pipeline non-evaluability,not H1 null evidence.",
+    "evaluation_seed": "NOT_APPLICABLE to exact reference means;no stochastic final do panel planned. This is independent of model fitting inputs,not new random outcome evidence."
+  },
+  "analysis": {
+    "unit": "independent new referenceSCM;data repeats/pairs/graphs and two error types nested",
+    "aggregation": "Within structure:data mean per pair;equal-weight ALL eligible distinct pairs within each error type;then equalweight deletion/reversal.Each structure one S_s.Equalweight two family means,then overall.Identical graph outputs/candidate choices/ties stay in denominator.",
+    "subgroup": "Retained original-path pairs secondary;withinfamily eligible units only,report actualSCM count.No0-imputation for missing subgroups;Sfamily is inapplicable,not no effect.",
+    "uncertainty": "After separate execution approval:10000 percentile bootstrap draws of whole SCMs within each fixed family quota,including all nested rows;seed derived from ERROR-LOC-v1|20261029|analysis_bootstrap.Family-fixed conditional precision,not manufacturing or unconstrained graph population.Independent row bootstrap forbidden.",
+    "H1_support": "Overall mean DeltaL>=0.1 AND stored95%CI lower>0.Stronger claim of material superiority requires lower>0.1 separately.No switching to medians/sign rates after results.",
+    "opposite": "mean<=-0.1 AND upper<0 is counterevidence",
+    "near_null": "If entire CI inside[-.1,.1],describe compatibility with small differences;do not label a formal equivalence test",
+    "otherwise": "inconclusive;ties valid;all structure results and failures reported",
+    "secondary": "Descriptive retained/broken/partial paths,error types,policy action differences,effect errors,failures and extremes.No confirmatory multiple subgroup claims or p-value hunting.",
+    "precision": "BUDGET scenarios are width planning from existing dependent-pair structure aggregates,not new tests/power.Computation and precision gates both must pass before new data.",
+    "uncertainty_limit": "Percentile intervals are approximate family-fixed conditional summaries under unique-topology selection,not a proven-coverage interval for an unrestricted population;independence of data/noise seeds does not make every nested row an independent SCM."
+  },
+  "execution_status": {
+    "new_SCMs": 0,
+    "new_observational_rows": 0,
+    "new_discovery_learning": 0,
+    "new_numeric_SCM_fits": 0,
+    "new_do_rows": 0,
+    "final_hypothesis_tests": 0,
+    "new_generator_or_runner_code": 0
+  },
+  "implementation": "Design only. No runnable execution command or new generator is delivered/claimed. Do not repurpose old run_diverse... to generate this cohort;it does not implement this contract.",
+  "next_decision": "Resolve precision vs independent-SCM resource commitment (or stop expansion),and whether isolated fit/topology time/memory evidence can support the resulting budget.No automatic follow-up smoke/code/document loop."
+}

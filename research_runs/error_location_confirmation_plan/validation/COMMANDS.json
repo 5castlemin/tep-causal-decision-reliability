@@ -1,0 +1,18 @@
+{
+  "environment": "Existing isolated Python3.11.15;no installation",
+  "commands": [
+    "python -X utf8 -m unittest discover -s tests -v",
+    "python -X utf8 scripts/check_research_state.py",
+    "python -X utf8 graphs/final/verify_and_load.py",
+    "python -X utf8 scripts/check_asset_manifest.py",
+    "python -X utf8 scripts/validate_environment_contract.py",
+    "git diff --check"
+  ],
+  "exit_codes": 0,
+  "inline_metadata_checks": [
+    "PLAN/BUDGET/GATE JSON syntax and negative execution authorization",
+    "old structure SD and normal-width arithmetic",
+    "worst-case graph/fit/pair count algebra",
+    "immutable input hashes and protected-path diff"
+  ]
+}

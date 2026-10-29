@@ -66,3 +66,5 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 [Python 효과·선택 최종 검토](docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md)는 **STOP-TEP-EFFECT-TRACK**입니다. runnable manual command와반응성은있지만출처있는정책집합·목표/H·완결손실을정당화하지못했습니다. 현재TEP경로동결,새실험/학습/코드추가없음. 다음은기존합성독립확인·민감도·오류대조를최종주장으로정리하며제조전체F1검증으로혼합하지않습니다.
 
 2026-10-29 최신 합성 결과 통합: [최종 Results·Discussion](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md). 전체 점수 동점의 다른 결정·효과/선택 불일치·정책 영향을 확인했지만,경로의 안정적 추가 정보는 미확립입니다. 기존 자료 재분석이며 새 실험0,TEP 경로 동결 유지.
+
+2026-10-29 후속 [오류 위치 독립 확인 계약](docs/research_design/ERROR_LOCATION_INDEPENDENT_CONFIRMATION_PROTOCOL.md)은 **REDESIGN_REQUIRED**입니다. 대응 비교 설계는 고정했지만 제안 정밀도와 자원·종단 비용 근거는 미충족입니다. 새 실험0이며 다음은 자원 확대 또는 독립 확인 확대 종료 결정입니다.

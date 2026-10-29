@@ -1,0 +1,21 @@
+{
+  "status": "PASS_STATIC_AND_METADATA_ONLY",
+  "date": "2026-10-29",
+  "new_SCMs": 0,
+  "new_experimental_fits": 0,
+  "new_do": 0,
+  "final_tests": 0,
+  "new_generator_or_checker_code": 0,
+  "immutable_input_hashes_checked": 16,
+  "old_protected_files_unchanged": 5159,
+  "existing_unit_tests": 96,
+  "existing_unit_seconds": 60.565,
+  "new_unit_tests": 0,
+  "limits": [
+    "Old unit suite replays historical numerical fits/CV;not new experimental models",
+    "No new reference SCMS or candidate graph instances generated",
+    "No power calculation or final bootstrap/test",
+    "Initial mutable status hashes are historical pointers,not current expected hashes",
+    "verify_recovery.py main not run:protected historical-output overwrite avoided;frozen/asset validators used"
+  ]
+}

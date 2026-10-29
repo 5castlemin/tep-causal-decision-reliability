@@ -341,11 +341,11 @@
     },
     {
       "id": "ERROR-CONFIRM",
-      "title": "오류 위치의 조건부 의사결정 영향 독립 계약",
-      "status": "PROPOSED",
-      "evidence": "docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md",
-      "next_action": "지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음",
-      "acceptance": "대표 성공만 선택하지 않는 독립 대조 계획·독립 평가환경·실행 가능한 정밀도/예산",
+      "title": "오류 위치 독립 계약: 정밀도·자원 결정 필요",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/ERROR_LOCATION_INDEPENDENT_CONFIRMATION_PROTOCOL.md; research_runs/error_location_confirmation_plan/GATE.json",
+      "next_action": "REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음",
+      "acceptance": "대응손실계약고정;미해결2개는정밀도-구조예산및종단실행비용근거.30개반폭0.446/유지15개0.742;구조단위598/유지총1650근사. 신규SCM/적합/do0",
       "depends_on": [
         "ERROR-DIAG"
       ]
@@ -484,7 +484,8 @@
     "2026-10-27 VALVE-TRANSITION VERIFIED는4실제cache-step의정상수치전이만. L2 PARTIAL/L3·L4 BLOCKED. 동일기술반복을종료하고DYNAMIC-SCOPE의사용자설계선택으로이동. 새GT/연구전환미승인.",
     "2026-10-27 사용자승인은B설계검토만. DYNAMIC-SCOPE 초안은PROPOSED_FOR_REVIEW/판정2(미정당화),공식채택없음. MFG-EFFECT-SCOPE는별도효과중심설계검토결정으로분리;실행/GT승인아님.",
     "2026-10-28 MFG-EFFECT-SCOPE 설계검토완료/STOP-TEP-EFFECT-TRACK(BLOCKED/FROZEN). B/C자동채택없음. DYNAMIC-SCOPE도실행차단지속,과거미채택초안불변. 다음은SYNTH-FINAL의기존합성결과최종주장정리;새실험승인아님.",
-    "2026-10-29 SYNTH-FINAL은기존결과통합분석완료VERIFIED이며원래가설확증완료아님. C01..C12는과거확인/현재개발구분. B1사전지지보존·B2안정추가정보미확립. TEP동결유지/새실험0."
+    "2026-10-29 SYNTH-FINAL은기존결과통합분석완료VERIFIED이며원래가설확증완료아님. C01..C12는과거확인/현재개발구분. B1사전지지보존·B2안정추가정보미확립. TEP동결유지/새실험0.",
+    "2026-10-29 ERROR-CONFIRM 단일사전계약·예산검토완료/PARTIAL,REDESIGN_REQUIRED. PATH-PRECISION의MAE와별개Δ선택손실0.1폭계획. 신규실험없음;자원범위결정전실행안함."
   ],
   "integration_review": {
     "user_approved": true,
@@ -531,7 +532,7 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "Final synthetic claim/evidence synthesis stacked on OPEN PR21..15. Main e960fa8; no merges or new research runs. TEP frozen.",
+    "note": "Independent error-location design/budget only stacked on PR22..15;main e960fa8. REDESIGN_REQUIRED,no new experiment/no merges.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
@@ -568,9 +569,9 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 22,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/22",
-    "current_pr_base": "feature/tep-effect-decision-feasibility",
+    "current_pr": 23,
+    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/23",
+    "current_pr_base": "feature/synthetic-final-claims-evidence",
     "pr16_status": "OPEN",
     "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab",
     "pr17_status": "OPEN",
@@ -582,7 +583,9 @@
     "pr20_status": "OPEN",
     "pr20_head": "7ad488733f26029461890a3064b648e3f6664599",
     "pr21_status": "OPEN",
-    "pr21_head": "18e14d8da8ce3cc494eb680c726a0aa1ef5d3c26"
+    "pr21_head": "18e14d8da8ce3cc494eb680c726a0aa1ef5d3c26",
+    "pr22_status": "OPEN",
+    "pr22_head": "e9dae0c5e40d44228d30beb6cbdf6f0d771676cb"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -1142,5 +1145,39 @@
     "protected_files_unchanged": 5142,
     "pr": 22,
     "analysis_commit": "ebe20f9e0d21fb35a05c937e7d3e3bf09d91af30"
+  },
+  "error_location_confirmation_plan": {
+    "report": "docs/research_design/ERROR_LOCATION_INDEPENDENT_CONFIRMATION_PROTOCOL.md",
+    "date": "2026-10-29",
+    "design_review_complete": true,
+    "gate": "REDESIGN_REQUIRED",
+    "execution_allowed": false,
+    "provisional_reference_count": 30,
+    "meaningful_loss_difference": 0.1,
+    "target_halfwidth": 0.1,
+    "required_primary_total_rough": 598,
+    "required_retained_balanced_total_rough": 1650,
+    "unresolved": [
+      "PRECISION_RESOURCE",
+      "END_TO_END_COST_EVIDENCE"
+    ],
+    "new_reference_SCMs": 0,
+    "new_data_rows": 0,
+    "new_discovery_fits": 0,
+    "new_SCM_fits": 0,
+    "new_do_samples": 0,
+    "final_statistical_tests": 0,
+    "new_generator_or_runner_code": 0,
+    "research_design_changed": false,
+    "TEP_reopened": false,
+    "dependency_pr": 22,
+    "dependency_head": "e9dae0c5e40d44228d30beb6cbdf6f0d771676cb",
+    "next_single_action": "Decide increased independent-SCM resources for declared precision or end confirmation expansion",
+    "existing_unit_tests": 96,
+    "new_unit_tests": 0,
+    "test_failures": 0,
+    "old_protected_files_unchanged": 5159,
+    "pr": 23,
+    "design_commit": "7bb887340281ce400ec98791a5aa61c4cf7b172b"
   }
 }

@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-29",
+  "status": "PLANNING_ONLY_NOT_A_RESOURCE_APPROVAL",
+  "provisional_design": {
+    "n_reference_structures": 30,
+    "families": 2,
+    "per_family": 15,
+    "independent_datasets_per_structure": 3,
+    "train_rows": 512,
+    "validation_rows": 256,
+    "max_nodes": 10,
+    "max_edges": 20,
+    "task_count_per_structure": 1,
+    "error_types": 2,
+    "max_unique_graphs_per_dataset": 41,
+    "max_distinct_pairs_per_structure": 200
+  },
+  "counts_at30": {
+    "reference_structures": 30,
+    "observational_datasets": 90,
+    "observational_rows": 69120,
+    "discovery_learning_calls": 0,
+    "unique_SCM_model_fits_max": 3690,
+    "node_Ridge_solves_max": 36900,
+    "oracle_diagnostic_models_included_max": 90,
+    "recommendation_calls_max": 3690,
+    "candidate_response_computations_max": 18450,
+    "corresponding_pair_dataset_cells_max": 18000,
+    "analytic_policy_means_unique": 150,
+    "independent_matrix_checks": 30,
+    "actual_do_rows": 0,
+    "actual_do_runs": 0
+  },
+  "meaningful_difference": {
+    "delta": 0.1,
+    "units": "original mean-response squared-loss scale1",
+    "justification": "0.1 is about28% of baseline target0.6 squared loss0.36;design judgment for a moderate decision harm,not manufacturing utility or prior MAE.01",
+    "target_95_halfwidth": 0.1
+  },
+  "precision_formula": "ceil((1.96 * planning_SD / 0.1)^2),rounded up to even N for equal fixed family quotas;normal-width planning only,not power or a guaranteed CI Retained-path analysis occurs in parallel family only (15 at N30),so retained subgroup N is not total N.",
+  "precision_scenarios": [
+    {
+      "source": "existing_actual_pairs",
+      "old_structures": 14,
+      "old_pairs": 162,
+      "structure_mean_differences": {
+        "C01": 0.2164806115482404,
+        "C02": 0.1316091510151441,
+        "C03": 0.15489794028788254,
+        "C04": 0.0,
+        "C05": 1.4568689411114228,
+        "C06": 0.8256951588703615,
+        "C07": 4.727514261967612,
+        "C08": 0.9090340183536316,
+        "C09": 0.020346259515143728,
+        "C10": 0.13664525794422563,
+        "C11": 0.10661811139400594,
+        "C12": 0.04948088699418845,
+        "S1": 0.4969750000000001,
+        "S7": 0.06494400000000003
+      },
+      "sd_multiplier": 1,
+      "planning_sd": 1.2458620019054425,
+      "halfwidth_at30": 0.44582599169500803,
+      "required_n_normal_approx": 597,
+      "required_independent_SCMs_in_analysis": 597,
+      "planned_analysis_N": 30,
+      "halfwidth_at_planned_analysis_N": 0.44582599169500803,
+      "total_reference_N_at_equal_family_quotas": 598
+    },
+    {
+      "source": "existing_actual_pairs",
+      "old_structures": 14,
+      "old_pairs": 162,
+      "structure_mean_differences": {
+        "C01": 0.2164806115482404,
+        "C02": 0.1316091510151441,
+        "C03": 0.15489794028788254,
+        "C04": 0.0,
+        "C05": 1.4568689411114228,
+        "C06": 0.8256951588703615,
+        "C07": 4.727514261967612,
+        "C08": 0.9090340183536316,
+        "C09": 0.020346259515143728,
+        "C10": 0.13664525794422563,
+        "C11": 0.10661811139400594,
+        "C12": 0.04948088699418845,
+        "S1": 0.4969750000000001,
+        "S7": 0.06494400000000003
+      },
+      "sd_multiplier": 2,
+      "planning_sd": 2.491724003810885,
+      "halfwidth_at30": 0.8916519833900161,
+      "required_n_normal_approx": 2386,
+      "required_independent_SCMs_in_analysis": 2386,
+      "planned_analysis_N": 30,
+      "halfwidth_at_planned_analysis_N": 0.8916519833900161,
+      "total_reference_N_at_equal_family_quotas": 2386
+    },
+    {
+      "source": "existing_retained_pairs",
+      "old_structures": 10,
+      "old_pairs": 114,
+      "structure_mean_differences": {
+        "C03": -0.051632646762627514,
+        "C04": 0.0,
+        "C05": 1.4568689411114228,
+        "C06": 0.8256951588703615,
+        "C07": 4.727514261967612,
+        "C08": 0.9090340183536316,
+        "C09": 0.020346259515143728,
+        "C10": 0.13664525794422563,
+        "C11": 0.10661811139400594,
+        "C12": 0.04948088699418845
+      },
+      "sd_multiplier": 1,
+      "planning_sd": 1.4652784413790827,
+      "halfwidth_at30": 0.5243431561746321,
+      "required_n_normal_approx": 825,
+      "required_independent_SCMs_in_analysis": 825,
+      "planned_analysis_N": 15,
+      "halfwidth_at_planned_analysis_N": 0.7415332027996785,
+      "total_reference_N_at_equal_family_quotas": 1650
+    },
+    {
+      "source": "existing_retained_pairs",
+      "old_structures": 10,
+      "old_pairs": 114,
+      "structure_mean_differences": {
+        "C03": -0.051632646762627514,
+        "C04": 0.0,
+        "C05": 1.4568689411114228,
+        "C06": 0.8256951588703615,
+        "C07": 4.727514261967612,
+        "C08": 0.9090340183536316,
+        "C09": 0.020346259515143728,
+        "C10": 0.13664525794422563,
+        "C11": 0.10661811139400594,
+        "C12": 0.04948088699418845
+      },
+      "sd_multiplier": 2,
+      "planning_sd": 2.9305568827581654,
+      "halfwidth_at30": 1.0486863123492642,
+      "required_n_normal_approx": 3300,
+      "required_independent_SCMs_in_analysis": 3300,
+      "planned_analysis_N": 15,
+      "halfwidth_at_planned_analysis_N": 1.483066405599357,
+      "total_reference_N_at_equal_family_quotas": 6600
+    }
+  ],
+  "ties_and_failures": {
+    "old_ties_in_actual_pairs": 65,
+    "old_actual_pairs": 162,
+    "old_retained_ties": 63,
+    "old_retained_pairs": 114,
+    "handling": "Included in old SD;new ties/failure fallbacks retained,never conditioned away. Additional heterogeneity stress doubles SD,not SD/sqrt(number of pairs).",
+    "unknown": "New family distribution and failure mechanism can differ;no favorable old mean used for power"
+  },
+  "historical_runtime_evidence": [
+    {
+      "source": "research_runs/diverse_structure_pilot/run_v1/execution_ledger.json",
+      "wall_seconds": 1001.555323,
+      "timed_records": 144,
+      "timed_seconds_sum": 807.2139999994542,
+      "timed_seconds_median": 2.820000000006985,
+      "timed_seconds_max": 60.046999999904074,
+      "caveat": "GRAPH_LEARNED labels are not isolated Ridge-fit timings;214 timed records vs216 graphs in confirmation because two fits were refused. No independent peak RSS recorded."
+    },
+    {
+      "source": "research_runs/independent_confirmation/run_v1/execution_ledger.json.gz",
+      "wall_seconds": 2433.61428,
+      "timed_records": 214,
+      "timed_seconds_sum": 2455.141000001342,
+      "timed_seconds_median": 3.5314999999827705,
+      "timed_seconds_max": 110.65599999995902,
+      "caveat": "GRAPH_LEARNED labels are not isolated Ridge-fit timings;214 timed records vs216 graphs in confirmation because two fits were refused. No independent peak RSS recorded."
+    }
+  ],
+  "runtime_scenarios_at30": [
+    {
+      "seconds_per_graph_fit_and_recommendation_block": 0.1,
+      "assumed_fixed_overhead_seconds": 1800,
+      "seconds": 2169.0,
+      "minutes": 36.15,
+      "measured": false
+    },
+    {
+      "seconds_per_graph_fit_and_recommendation_block": 0.5,
+      "assumed_fixed_overhead_seconds": 1800,
+      "seconds": 3645.0,
+      "minutes": 60.75,
+      "measured": false
+    },
+    {
+      "seconds_per_graph_fit_and_recommendation_block": 1.0,
+      "assumed_fixed_overhead_seconds": 1800,
+      "seconds": 5490.0,
+      "minutes": 91.5,
+      "measured": false
+    }
+  ],
+  "comparison_limits": {
+    "old_reference_limit": 30,
+    "old_discovery_call_limit": 288,
+    "old_wall_minutes": 90,
+    "automatically_adopted": false,
+    "comment": "288 discovery calls are not288 cheap Ridge graph fits. New discovery calls0;time/memory envelopes still need justification."
+  },
+  "memory": {
+    "raw_all_observation_arrays_bytes_max_at30": 5529600,
+    "streamed_one_dataset_bytes": 61440,
+    "process_envelope_GiB": 1,
+    "process_peak_measured": false,
+    "comment": "Array arithmetic only;not Python/process peak RSS proof. Stream one dataset and one structure;metadata and graph caches also cost memory."
+  },
+  "large_N_counts": [
+    {
+      "N": 598,
+      "unique_graph_fits_max": 73554,
+      "pair_dataset_cells_max": 358800,
+      "analytic_policy_means": 2990,
+      "time_minutes_assuming_0_1s_block_and_1800s_overhead": 152.59000000000003
+    },
+    {
+      "N": 1650,
+      "unique_graph_fits_max": 202950,
+      "pair_dataset_cells_max": 990000,
+      "analytic_policy_means": 8250,
+      "time_minutes_assuming_0_1s_block_and_1800s_overhead": 368.25
+    },
+    {
+      "N": 6600,
+      "unique_graph_fits_max": 811800,
+      "pair_dataset_cells_max": 3960000,
+      "analytic_policy_means": 33000,
+      "time_minutes_assuming_0_1s_block_and_1800s_overhead": 1383.0
+    }
+  ],
+  "failure_or_timeout": "Stop entire run on90minute/1GiB envelope if subsequently authorized;preserve partial manifest,not a completed confirmatory test. Never report first completed structures as a random confirmatory cohort.",
+  "calculation_scope": "Existing raw aggregate dispersion/runtime metadata and arithmetic only. No new SCM/fit/do/simulation/bootstrap/statistical hypothesis test.",
+  "precision_limit": "Historical pairs aggregate by structure,not the exact future equal-error-type pipeline. These SDs are transparent stress proxies,not validated new-generator variance or power.",
+  "repeat_cost_sensitivity": [
+    {
+      "N": 30,
+      "repeats": 1,
+      "graph_fit_attempts_max": 1230,
+      "pair_dataset_cells_max": 6000,
+      "independent_reference_SCMs": 30
+    },
+    {
+      "N": 30,
+      "repeats": 3,
+      "graph_fit_attempts_max": 3690,
+      "pair_dataset_cells_max": 18000,
+      "independent_reference_SCMs": 30
+    },
+    {
+      "N": 30,
+      "repeats": 6,
+      "graph_fit_attempts_max": 7380,
+      "pair_dataset_cells_max": 36000,
+      "independent_reference_SCMs": 30
+    }
+  ],
+  "failure_workload_sensitivity": [
+    {
+      "illustrative_graph_failure_fraction": 0,
+      "failed_graph_blocks_at_max": 0,
+      "graph_attempts_charged": 3690,
+      "pairs_remain_in_operational_denominator": true
+    },
+    {
+      "illustrative_graph_failure_fraction": 0.05,
+      "failed_graph_blocks_at_max": 185,
+      "graph_attempts_charged": 3690,
+      "pairs_remain_in_operational_denominator": true
+    },
+    {
+      "illustrative_graph_failure_fraction": 0.2,
+      "failed_graph_blocks_at_max": 738,
+      "graph_attempts_charged": 3690,
+      "pairs_remain_in_operational_denominator": true
+    },
+    {
+      "illustrative_graph_failure_fraction": 1.0,
+      "failed_graph_blocks_at_max": 3690,
+      "graph_attempts_charged": 3690,
+      "pairs_remain_in_operational_denominator": true
+    }
+  ],
+  "failure_sensitivity_limit": "Illustrative occupancy,not estimated failure rates or independent Bernoulli power model.One graph can affect many pairs;no runtime savings or variance reduction credited.Asymmetric fallbacks can change Delta sign in either direction;no unmeasured outcomes imputed.",
+  "tie_sensitivity": "If half of new SCMs have all paired losses tied,the effective signal-bearing structures are15 and the population mean of the other half is diluted by1/2 (hypothetical .1 conditional difference becomes .05 overall).No tie SCM is dropped;largerN does not restore a material mean threshold automatically."
+}

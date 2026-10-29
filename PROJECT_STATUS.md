@@ -38,7 +38,7 @@
 | PATH-PRECISION | 추가 예측력 독립 확인 정밀도·예산 | BLOCKED | research_runs/decision_reliability_next/run_v1/D_precision.json | 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 |
 | PATH-CONFIRM | 경로 지표 추가 정보의 새 독립 확인 | NOT_RUN | docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md | 정밀도 통과 후에만 새 구조·계수·seed·M0~M6·실패 정책을 고정하고 실제 학습/do 실행 |
 | ERROR-DIAG | 합성 개발 자료 오류–응답–선택 대조 | VERIFIED | docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md | 324실제 오류쌍/162핵심–주변/114경로유지와 반례·동률 보존. 6개 oracle 적합을 발견 graph와 분리 |
-| ERROR-CONFIRM | 오류 위치의 조건부 의사결정 영향 독립 계약 | PROPOSED | docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md | 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 |
+| ERROR-CONFIRM | 오류 위치 독립 계약: 정밀도·자원 결정 필요 | PARTIAL | docs/research_design/ERROR_LOCATION_INDEPENDENT_CONFIRMATION_PROTOCOL.md; research_runs/error_location_confirmation_plan/GATE.json | REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 |
 | MFG-VALIDITY | 제조 연구 타당성·저장 증거 감사 | VERIFIED | docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md | 검산 완료 범위만 유지:39해시/7점수/84과제/21baseline·시간증거. 제조GO가 아니라 과학적 차단/guard한계를 확인한 감사 |
 | ENV-CONTRACT | 구조 점수–개입 결과 metadata 차단 계약 구현 | VERIFIED | src/environment_contract.py; tests/test_environment_contract.py; research_runs/tep_environment_bridge/CONTRACT_RESULTS.json | 15개 계약 사례·실제 파일 해시 검사 완료. 새 join은 environment_contract.require_environment_contract 사용. 과학적 동등성 승인은 아님 |
 | TEP-BRIDGE | Python TEP 관측·명령·상태 연결 검산 | PARTIAL | research_runs/tep_environment_bridge/technical_v1/SUMMARY.json; research_runs/tep_environment_bridge/closure_v1/RESULT.json | 실제cache4step 추가로 좁은전이식 확인. 센서 직접/음성참조 미확정으로 L3/L4 BLOCKED; 연구설계 선택을 우선 |
