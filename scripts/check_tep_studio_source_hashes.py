@@ -14,4 +14,3 @@ for z in zips:
     res[name]={'official':a,'studio':b,'equal':a==b,'archive_member':matches[0]}
  if len(res)==3: break
 print(json.dumps({'archive':str(z),'archive_sha256':hashlib.sha256(z.read_bytes()).hexdigest(),'files':res},ensure_ascii=False,indent=2))
-
