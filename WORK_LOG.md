@@ -339,3 +339,5 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - TEP_RECONSTRUCTION_PROMISING: 공식 동일계열 source는 확보했으나 동일생성환경·28간선·개입효과는 미입증. CausalMan 및 동결 자료 보존.
 
 - 기존 전체 단위검사105개 PASS(86.868초),동결39SHA/변수 순서·상태·asset·환경계약15case·31변수 비교/원시 hash·diff 검사 PASS. Studio 신규 실행이나 원본 MATLAB 실행은 아님.
+
+- 진단 커밋843b665 push, main 기반 PR27 생성. PR26·기존 CausalMan 자료 변경 및 자동병합 없음.
