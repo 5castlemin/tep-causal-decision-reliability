@@ -1,0 +1,27 @@
+name: One bounded Rust TEP candidate
+on:
+  push:
+    branches: [feature/tep-simulator-comprehensive-search]
+jobs:
+  rust-probe:
+    if: contains(github.event.head_commit.message, '[tep-search-run-once]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download pinned candidate and execute one short normal trajectory
+        run: |
+          git clone https://github.com/jkitchin/tep-rust.git "$RUNNER_TEMP/tep-rust"
+          cd "$RUNNER_TEMP/tep-rust"
+          git checkout 0735ad3b5bb7fdd367a8a31da1db8a209dac2a15
+          mkdir -p "$GITHUB_WORKSPACE/tep_search_output"
+          rustc --version
+          cargo run --release -p tepsim-cli -- run --hours 0.01 --seed 465120799 --every 1 > "$GITHUB_WORKSPACE/tep_search_output/rust.csv" 2> "$GITHUB_WORKSPACE/tep_search_output/stderr.txt"
+          sha256sum "$GITHUB_WORKSPACE/tep_search_output/rust.csv"
+          head -3 "$GITHUB_WORKSPACE/tep_search_output/rust.csv"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tep-rust-search
+          path: tep_search_output/
+          if-no-files-found: warn

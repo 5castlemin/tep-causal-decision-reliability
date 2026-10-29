@@ -1,0 +1,25 @@
+{
+  "status": "EXECUTED_ONE_SAMPLE",
+  "commit": "3098351caed95dfed2168a3ddbd681e9a65f8710",
+  "initial_run": {
+    "id": 40895216700,
+    "status": "FAILED_BEFORE_SIMULATION",
+    "reason": "wrong temain positional arguments; compiled successfully"
+  },
+  "retry": {
+    "id": 40895387262,
+    "status": "ONE_3MIN_SAMPLE_FINITE",
+    "output_time": "I=180 before integration, approximately 179 seconds",
+    "pressure_kPa": 2706.355849778525,
+    "level_percent": 74.63918021063564,
+    "temperature_C": 120.39574265836724,
+    "sample_sha256": "b5e162c467ba61e4bf2f12b4e4f71f7ad9223012cc2208c42410f769fbd32535",
+    "patch_sha256": "19b54f7e54826039f8e097b5e517bd1561d45caddbf6bba94c5fc168ee280c04",
+    "upstream_raw_file_sha256": "9203e03ea619743e06244411a92f07cf08d75af401576bf5a8d475536117cda3",
+    "upstream_normalized_text_sha256": "8080f29e72bafc58d3e63ceeadc07516fba9db76e0472ed1690786c6f7cc1171",
+    "patched_text_sha256": "c6fb7025f590da67860148acd5be03af8614cbfbfde1c3b288b62c377b2daec2",
+    "seed": "source default, exact seed not independently recorded",
+    "caveat": "safety checks sampled selected XMEAS and measurement NaN at each Euler step, not all infinities or states; no extension; instrumented copy is not upstream official result"
+  },
+  "equivalence": "NOT_ESTABLISHED"
+}

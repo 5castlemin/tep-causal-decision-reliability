@@ -4,14 +4,15 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEP-OPERATING — TEP 원본 운전 조건과 제약 대조**: Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 (PARTIAL)
-2. **TEP-STUDIO — TEP Studio 공식 생성환경 대응 검증**: 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 (PARTIAL)
-3. **TEP-RECON — TEP 원본 생성환경 복원 가능성**: 격리 C 빌드 환경에서 고정 TEP Studio 단기 정상 운전과 controller/clock 계약 확인 (PARTIAL)
+1. **TEP-SEARCH — 공개 TEP 실행기 비교와 원본 생성환경 판정**: NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 (PARTIAL)
+2. **TEP-OPERATING — TEP 원본 운전 조건과 제약 대조**: Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 (PARTIAL)
+3. **TEP-STUDIO — TEP Studio 공식 생성환경 대응 검증**: 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 (PARTIAL)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| TEP-SEARCH | PARTIAL | 없음 | NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 / 원본 생성환경 다섯 조건 입증 시 즉시 종료 또는 실행 가능 후보 검증과 미실행 원인 기록 |
 | TEP-OPERATING | PARTIAL | 없음 | Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 / 대응 원시 실행과 명령·시계·전처리 검증, 기존 참조 구조와 개입 계약 별도 검증 |
 | TEP-STUDIO | PARTIAL | 없음 | 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 / 공식/Studio 제어기·초기화·시계 비교와 기존 관측 자료 계보 및 구조 참조 계약 확인 |
 | TEP-RECON | PARTIAL | COMPAT-01 | 격리 C 빌드 환경에서 고정 TEP Studio 단기 정상 운전과 controller/clock 계약 확인 / 원본 관측·참조·개입 동일 생성환경과 재현 검증; 현재 미충족 |
@@ -76,5 +77,6 @@
 - 2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.
 - TEP-STUDIO: PR #27 후속 Studio 기술 실행은 실제 성공; 원본 생성환경·구조 및 개입 연결은 미검증.
 - TEP-OPERATING: PR #28 B 원시 실행에서도 측정 제약 초과 확인. 정상상태·원본 동등성 판단은 차단.
+- TEP-SEARCH: 21개 항목 검색, Rust 10분 실행; 원본 동일환경 미입증, 일부 후보 미실행으로 최종 탐색 미완.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

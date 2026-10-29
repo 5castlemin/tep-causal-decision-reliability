@@ -1,0 +1,33 @@
+name: One tep2py safety-monitored candidate
+on:
+  push:
+    branches: [feature/tep-simulator-comprehensive-search]
+jobs:
+  probe:
+    if: contains(github.event.head_commit.message, '[tep2py-retry-once]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build instrumented copy and run one 3min trajectory
+        run: |
+          git clone https://github.com/camaramm/tep2py.git "$RUNNER_TEMP/tep2py"
+          cd "$RUNNER_TEMP/tep2py"
+          git checkout 3098351caed95dfed2168a3ddbd681e9a65f8710
+          python -m venv "$RUNNER_TEMP/tep2py-env"
+          "$RUNNER_TEMP/tep2py-env/bin/pip" install 'numpy==1.26.4' 'setuptools<70' wheel
+          "$RUNNER_TEMP/tep2py-env/bin/python" "$GITHUB_WORKSPACE/scripts/prepare_tep2py_monitor.py"
+          "$RUNNER_TEMP/tep2py-env/bin/python" -m numpy.f2py -c temain_mod-smart.pyf src/tep/temain_mod.f src/tep/teprob.f > "$RUNNER_TEMP/build.log" 2>&1
+          mkdir -p "$GITHUB_WORKSPACE/tep2py_output"
+          cp research_patch.diff "$GITHUB_WORKSPACE/tep2py_output/"
+          cp "$RUNNER_TEMP/build.log" "$GITHUB_WORKSPACE/tep2py_output/"
+          "$RUNNER_TEMP/tep2py-env/bin/python" -c 'import numpy as n,temain_mod as m; x=m.temain(180,1,n.zeros((1,20),dtype=n.int32),1); n.savetxt("'"$GITHUB_WORKSPACE"'/tep2py_output/sample.csv",x,delimiter=","); print("shape",x.shape,"finite",n.isfinite(x).all(),"pressure_level_temperature",x[0,[6,7,8]])'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tep2py-search
+          path: tep2py_output/
+          if-no-files-found: warn

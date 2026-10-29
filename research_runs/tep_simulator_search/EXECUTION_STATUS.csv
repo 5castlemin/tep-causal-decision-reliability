@@ -1,0 +1,22 @@
+candidate,status,note
+Ricker 2015,BLOCKED MATLAB/Simulink unavailable,highest lineage; report identifies 2015 model; raw file/controller run not available
+Ricker other,BLOCKED MATLAB/Simulink unavailable,"multiple alternate controllers, source-level scope only"
+COSTEP,BLOCKED MATLAB R2024b and Simulink unavailable,independent block model; original lineage unverified
+pyTEP,BLOCKED MATLAB engine and Simulink unavailable,Python API wrapping modified Simulink; not independent Python plant
+TEP Studio,EXECUTED_EXISTING PR28/29,same 3 process files; B 1.519h measurement constraint; no equivalence
+profBraatz Python,EXECUTED_EXISTING PR27,"10min 75%,120.4C default; prior measurement-limit check incomplete"
+tep2py,EXECUTED_NEW,3min one sample in instrumented Linux copy; initial TypeError then corrected; incomplete nonfinite/state monitoring
+tep-rust,EXECUTED_NEW,36s and 10min default; output monitor buffered; no 2015 lineage
+NIST TESIM,BLOCKED,Windows Visual Studio/Boost 1.61 build documented; Linux build not established
+DVCP-TE,BLOCKED MATLAB/Simulink unavailable,security plant with different controller
+TEP Attack,BLOCKED MATLAB/Simulink unavailable,2015 and DVCP derived; altered attack interfaces
+TEP Plus,BLOCKED MATLAB/Simulink unavailable,2015 files mirrored; whole code identity not checked
+TEP-meets-LSTM,NOT_RUN,tep2py reports modified Fortran origin; not independent engine automatically
+Braatz Chiang Fortran,NOT_RUN,Fortran lineage and controller differ from 2015 modified model; standalone safety-monitor build not demonstrated
+Aspen HYSYS,BLOCKED,published implementation; reusable public model/licence not confirmed
+Modelica TEprocess,NOT_RUN,paper reports library; retrievable source and compiler not established
+Modelica TESimplified,NOT_RUN,separate simplified plant not original 50-state; source access unverified
+AgentTwin,REUSED_DUPLICATE,"vendored backend, simulator, controller and constants byte-identical to already executed profBraatz four hashes"
+APMonitor browser,REUSED_DUPLICATE,source describes JS translation of same prior Python backend; separate controller identity unverified
+TE challenge mirror,NOT_RUN,"archive of multiple official sources, not a distinct verified runtime"
+Green Cinnamon tep-plant,NOT_RUN,upstream says flow/heat/measurement subsystems are stubs and current plant state remains frozen
