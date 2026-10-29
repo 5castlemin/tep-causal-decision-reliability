@@ -478,9 +478,19 @@
       "next_action": "Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조",
       "acceptance": "대응 원시 실행과 명령·시계·전처리 검증, 기존 참조 구조와 개입 계약 별도 검증",
       "depends_on": []
+    },
+    {
+      "id": "TEP-SEARCH",
+      "title": "공개 TEP 실행기 비교와 원본 생성환경 판정",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/TEP_SIMULATOR_COMPREHENSIVE_COMPARISON.md; PR #29 기반 후속 Rust 실제 실행과 후보 조사; tep2py 계측 사본 3분 단일 표본 실행",
+      "next_action": "NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증",
+      "acceptance": "원본 생성환경 다섯 조건 입증 시 즉시 종료 또는 실행 가능 후보 검증과 미실행 원인 기록",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "TEP-SEARCH",
     "TEP-OPERATING",
     "TEP-STUDIO",
     "TEP-RECON",
@@ -543,7 +553,8 @@
     "2026-10-29 ERROR-CONFIRM 단일사전계약·예산검토완료/PARTIAL,REDESIGN_REQUIRED. PATH-PRECISION의MAE와별개Δ선택손실0.1폭계획. 신규실험없음;자원범위결정전실행안함.",
     "2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.",
     "TEP-STUDIO: PR #27 후속 Studio 기술 실행은 실제 성공; 원본 생성환경·구조 및 개입 연결은 미검증.",
-    "TEP-OPERATING: PR #28 B 원시 실행에서도 측정 제약 초과 확인. 정상상태·원본 동등성 판단은 차단."
+    "TEP-OPERATING: PR #28 B 원시 실행에서도 측정 제약 초과 확인. 정상상태·원본 동등성 판단은 차단.",
+    "TEP-SEARCH: 21개 항목 검색, Rust 10분 실행; 원본 동일환경 미입증, 일부 후보 미실행으로 최종 탐색 미완."
   ],
   "integration_review": {
     "user_approved": true,

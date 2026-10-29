@@ -156,3 +156,6 @@ TEP_RECONSTRUCTION_PROMISING: 공식 3파일 일치 및 기술 실행은 확인,
 
 ## 2026-10-29 — TEP 운전 조건 중단
 ORIGINAL_OPERATING_CONTRACT_NOT_ESTABLISHED. 제약 위반을 완화하지 않고 후속 장기 실행 중단. 문헌상의 고정 조작은 특정 현재 데이터 파일의 명령·전처리 계보가 확인되지 않아 별도 고정 실험을 실행하지 않음.
+
+## 2026-10-29 — TEP 후보 잠정 판정
+CLOSE_CANDIDATE_BUT_UNVERIFIED를 잠정 기록한다. 공식 2015 모델과 Studio 핵심 파일 계보는 유망하지만 원본 관측·제어·가공 및 전체 참조 정합성은 미검증. 일부 후보 미실행으로 탐색 완료나 일치 후보 발견을 선언하지 않는다.

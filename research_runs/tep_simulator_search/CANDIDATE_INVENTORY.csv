@@ -1,0 +1,22 @@
+candidate,source,lineage_group,type,execution_status,evidence_or_reason
+Ricker 2015,https://depts.washington.edu/control/LARRY/TE/download.html,2015_modified,SIMULINK,BLOCKED MATLAB/Simulink unavailable,highest lineage; report identifies 2015 model; raw file/controller run not available
+Ricker other,https://depts.washington.edu/control/LARRY/TE/download.html,ricker_variants,SIMULINK,BLOCKED MATLAB/Simulink unavailable,"multiple alternate controllers, source-level scope only"
+COSTEP,https://github.com/kennyuren/COSTEP,costep,SIMULINK,BLOCKED MATLAB R2024b and Simulink unavailable,independent block model; original lineage unverified
+pyTEP,https://github.com/ccreinartz11/pytep,2015_modified,INTERFACE,BLOCKED MATLAB engine and Simulink unavailable,Python API wrapping modified Simulink; not independent Python plant
+TEP Studio,https://github.com/khalidlabs/tep-studio,2015_modified,PYTHON_C_CONTROL,EXECUTED_EXISTING PR28/29,same 3 process files; B 1.519h measurement constraint; no equivalence
+profBraatz Python,https://github.com/jkitchin/tennessee-eastman-profbraatz,original_fortran,PYTHON_PORT,EXECUTED_EXISTING PR27,"10min 75%,120.4C default; prior measurement-limit check incomplete"
+tep2py,https://github.com/camaramm/tep2py,original_fortran,FORTRAN_WRAPPER,EXECUTED_NEW,3min one sample in instrumented Linux copy; initial TypeError then corrected; incomplete nonfinite/state monitoring
+tep-rust,https://github.com/jkitchin/tep-rust,original_fortran,RUST_PORT,EXECUTED_NEW,36s and 10min default; output monitor buffered; no 2015 lineage
+NIST TESIM,https://github.com/usnistgov/tesim,tesim,C_PLUS_PLUS,BLOCKED,Windows Visual Studio/Boost 1.61 build documented; Linux build not established
+DVCP-TE,https://github.com/satejnik/DVCP-TE,2015_derived,SIMULINK,BLOCKED MATLAB/Simulink unavailable,security plant with different controller
+TEP Attack,https://github.com/pwwl/tep-attack-simulator,2015_derived,SIMULINK,BLOCKED MATLAB/Simulink unavailable,2015 and DVCP derived; altered attack interfaces
+TEP Plus,https://github.com/gustavoleitao/tennessee-eastman-process-plus,2015_modified,SIMULINK,BLOCKED MATLAB/Simulink unavailable,2015 files mirrored; whole code identity not checked
+TEP-meets-LSTM,https://github.com/gmxavier/TEP-meets-LSTM,original_fortran,PREDICTION_AND_FORTRAN_SOURCE,NOT_RUN,tep2py reports modified Fortran origin; not independent engine automatically
+Braatz Chiang Fortran,https://github.com/camaramm/tennessee-eastman-profBraatz,original_fortran,FORTRAN,NOT_RUN,Fortran lineage and controller differ from 2015 modified model; standalone safety-monitor build not demonstrated
+Aspen HYSYS,https://inprocessgroup.com/wp-content/uploads/2023/09/article_36-04_mepesmfpt_sne_2020_inprocess.pdf,hysys,COMMERCIAL_MODEL,BLOCKED,published implementation; reusable public model/licence not confirmed
+Modelica TEprocess,https://www.nist.gov/publications/implementations-tennessee-eastman-process-modelica,modelica_full,MODELICA,NOT_RUN,paper reports library; retrievable source and compiler not established
+Modelica TESimplified,https://www.nist.gov/publications/implementations-tennessee-eastman-process-modelica,modelica_simplified,MODELICA,NOT_RUN,separate simplified plant not original 50-state; source access unverified
+AgentTwin,https://github.com/alqithami/AgentTwin,original_fortran,PYTHON_INTERFACE,REUSED_DUPLICATE,"vendored backend, simulator, controller and constants byte-identical to already executed profBraatz four hashes"
+APMonitor browser,https://apmonitor.com/apps/tennessee-eastman/,original_fortran,JS_INTERFACE,REUSED_DUPLICATE,source describes JS translation of same prior Python backend; separate controller identity unverified
+TE challenge mirror,https://github.com/camaramm/tennessee-eastman-challenge,2015_modified,ARCHIVE,NOT_RUN,"archive of multiple official sources, not a distinct verified runtime"
+Green Cinnamon tep-plant,https://github.com/Green-Cinnamon-Labs/tep-plant,original_fortran,RUST_EXPERIMENT,NOT_RUN,upstream says flow/heat/measurement subsystems are stubs and current plant state remains frozen
