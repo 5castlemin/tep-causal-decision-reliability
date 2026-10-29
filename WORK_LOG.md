@@ -331,3 +331,13 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 현재MFG-INTEGRATED 대시보드는후속실행결과를가리키도록갱신하고중복실행대기열에서제외;과거PR24정적판정과실험JSON은보존.새우선작업은MFG-MICRO의방법론결정하나.
 
 - 수용검사커밋c6b3e386cc9838e245fd226f50ccd809af479fc7 push,PR25(basePR24) 생성.최종head CI는별도확인하며자체CI가외부acceptance성공을뜻하지않음.원본미수정/CONDITIONAL_NOT_ACCEPTED/후속sampling중단유지.
+
+### 2026-10-29 — PR15~25 통합 및 CausalMan 계약
+
+- 사용자 명시 예외로 별도 팀 승인 기록 없이 일반 병합; main cdb2c7d. 각 선행 트리 및 HEAD CI 확인. 과거 산출물 보존.
+- 관측 식별/privileged state/비식별 실패 연구를 분리. 활성170과 Level2 251 중81 조건부 간선 전체의 생성 근거·비간선 미완결, 관측 hedge와 seed 중복 보존. CONDITIONAL_REDESIGN.
+- upstream 한 줄 수정안과 독립 그래프 fixture만 작성. 실제 외부 재실행·새 GT/학습/성능 비교·공식 채택 없음.
+
+- 독립 hard-do 그래프 fixture 2개 PASS; 동결39해시/변수·asset·상태 검사 PASS. patch diff SHA-256 b306741449c38e701cb7d96f26dc1bfa77d9d624c96a52450507288e21aed917; upstream 수정·외부 재실행 없음.
+
+- main에서 계약 검토 커밋 c07b74c 및 PR26 생성. 기존105개 단위검사와 신규 fixture2개 통과. 새 PR은 미병합.

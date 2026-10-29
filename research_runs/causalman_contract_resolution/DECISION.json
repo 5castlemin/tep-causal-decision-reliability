@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "verdict": "CONDITIONAL_REDESIGN",
+  "main_base": "cdb2c7d6dc499937929ca496ca840b07fb500701",
+  "source_commit": "17529dad5ec8b8c691494c617b9af4533aa44bf8",
+  "approaches": {
+    "A": "Observed-only nonparametric point identification blocked for fixed force-quality query under returned ADMG hedge, conditional on reference validity.",
+    "B": "Privileged state access is a different observational regime; reveal state variables only, not reference edges/equations or effects, to learner. Boundary/conditional parents still need verification.",
+    "C": "Nonidentified observed-only effects can be studied as decision failures, but cannot attribute loss solely to graph errors; use common estimation/abstention and stratify identification assumptions."
+  },
+  "blockers": [
+    "Reference semantics: close all 81 conditional/routing mechanisms and relevant nonedges with a fixed variable/time universe and compatible estimator output.",
+    "Intervention and evaluation: upstream graph fix/version, separate effective random streams and held-out do, plus estimand/identification or explicitly nonidentified policy with predeclared assumptions."
+  ],
+  "patch_proposal": {
+    "path": "causalman/fcm.py",
+    "original": "edges_to_remove = [(old, node) for old in old_incoming]",
+    "replacement": "edges_to_remove = list(old_incoming)",
+    "scope": "Proposed single line only; not applied upstream or used for numerical rerun.",
+    "unified_diff": "--- a/causalman/fcm.py\n+++ b/causalman/fcm.py\n@@\n-            edges_to_remove = [(old, node) for old in old_incoming]\n+            edges_to_remove = list(old_incoming)\n",
+    "diff_sha256": "b306741449c38e701cb7d96f26dc1bfa77d9d624c96a52450507288e21aed917"
+  },
+  "new_external_runs": 0,
+  "discovery_fits": 0,
+  "new_f1_shd": 0,
+  "policy_optimization": 0,
+  "official_adoption": false,
+  "next_single_action": "Resolve the 81 conditional dependencies against original generating parameters and declare verified positive, negative and unknown edge sets before any learning.",
+  "merge_commits": {
+    "15": "24ed41fb91d25dc46891b03ca665b52441884555",
+    "16": "bf721b7a093de518b9fbe7e9f5499fd77d97d9b7",
+    "17": "d20d78380423375c16955d41dfe0e3bea839946d",
+    "18": "b73d9e3b21abbbf73416319472b80dc40428e979",
+    "19": "d16c97f823158310dd2ac438e46f40dfd975b8b7",
+    "20": "2864ba6a0d9fd6df2f77e978d462b1217834603b",
+    "21": "e4139349b12a6651efcd8af6a2ecc122fadc54d6",
+    "22": "e22b08c5be6cb02c419c4e7b6179ac6320fa9030",
+    "23": "dd4a8b878e27e2911cf8b74c43cf280aaffe5273",
+    "24": "9e11df2bd877c341dfb5bfce87bc85af7f99c4eb",
+    "25": "cdb2c7d6dc499937929ca496ca840b07fb500701"
+  }
+}

@@ -48,6 +48,7 @@
 | SYNTH-FINAL | 합성 최종 주장·근거 통합 완료 | VERIFIED | docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md; research_runs/synthetic_final_claims/CLAIM_EVIDENCE_MATRIX.json | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 |
 | MFG-INTEGRATED | 동일환경 제조 벤치마크 후보 검토 | PARTIAL | docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md; research_runs/integrated_benchmark_search/DECISION.json; docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md | PR24 후보 비교 보존;후속 MFG-MICRO 실제 실행은 CONDITIONAL_NOT_ACCEPTED.현재 학습/추천 연결 보류,후속 판단은 MFG-MICRO에서만 관리 |
 | MFG-MICRO | CausalMan micro 실제 수용 검사 | PARTIAL | docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md; research_runs/causalman_micro_acceptance/RESULT.json, GATE.json | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 |
+| CAUSALMAN-CONTRACT | CausalMan 구조·개입 계약 해소 | BLOCKED | docs/research_design/CAUSALMAN_CAUSAL_CONTRACT_RESOLUTION.md | 81개 조건부 관계의 생성 근거와 양성·비간선·미확정 쌍을 검증 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.
