@@ -87,3 +87,10 @@ scripts/run_tep_environment_bridge.py -text whitespace=cr-at-eol
 scripts/check_tep_observation_closure.py -text whitespace=cr-at-eol
 scripts/validate_environment_contract.py -text whitespace=cr-at-eol
 tests/test_environment_contract.py -text whitespace=cr-at-eol
+research_runs/tep_valve_transition/** -text linguist-generated=true whitespace=cr-at-eol
+research_runs/tep_valve_transition/README.md linguist-generated=false
+research_runs/tep_valve_transition/PLAN_v1.json linguist-generated=false
+research_runs/tep_valve_transition/SCOPE_PROPOSAL.json linguist-generated=false
+src/tep_valve_transition_contract.py -text whitespace=cr-at-eol
+scripts/validate_tep_valve_transition_contract.py -text whitespace=cr-at-eol
+tests/test_tep_valve_transition.py -text whitespace=cr-at-eol

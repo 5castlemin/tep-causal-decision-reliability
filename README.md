@@ -58,3 +58,5 @@ git clone https://github.com/giovanniMen/CPCaD-Bench.git ../CPCaD-Bench
 
 
 제조 환경 직접 검증의 한계는 [제조 타당성 Gate](docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md)에 있습니다. 후속 [환경 연결 검증](docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md)에서 metadata·실제 근거 hash 차단 계약을 구현하고 고정 Python 후보8×6step 및3고정점 검산을 실행했습니다. 같은 센서/명령에서 숨은 밸브에 따라 상태 변화가 달라지는 국소 반례를 확인했습니다. 관측 참조/음성쌍 미확정으로 전체 구조–효과 연구는 계속 NO-GO이며 신규 연구환경을 채택하지 않았습니다.
+
+밸브의 실제 적용cache를추가관측한 [동적 참조 결정안](docs/research_design/TEP_DYNAMIC_REFERENCE_DECISION.md)에서는 두조건4step의정상전이를검증했습니다. 과거24step은cache미기록으로완전계약이차단됩니다. L1 VERIFIED/L2 PARTIAL/L3·L4 BLOCKED이며, 다음은기술반복이아니라내부상태·시간전개를포함한제한연구설계안의사용자선택입니다. 새GT/학습/연구전환은없습니다.

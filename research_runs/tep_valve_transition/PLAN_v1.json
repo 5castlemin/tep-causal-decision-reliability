@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-27",
+  "purpose": "Only add missing applied-command/cache evidence; reuse old 1s recurrence and local +/-0.001pp data",
+  "dependency_pr18_head": "2a03e1de4861ec96f943f4a50351d922d0f46c5b",
+  "source_commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+  "seed": 465120799,
+  "mode": "MANUAL",
+  "steps_per_arm": 2,
+  "arms": [{"name": "reference", "delta_pp_at_step1": 0}, {"name": "command_change", "delta_pp_at_step1": 0.001}],
+  "dt_seconds": 1,
+  "expected_tau_seconds": 5,
+  "faults": "none; all20 IDV zero",
+  "observe": ["requested_u", "evaluated_u after controller", "cache before and after evaluate", "actual valve before/after", "actual derivative", "tau/dt in hours", "time/controller memory/IDV/stiction/shutdown/RNG"],
+  "instrumentation": "Wrap evaluate once without modifying inputs, returned derivatives, RNG, source or integration; capture its actual call",
+  "tolerance_absolute": 1e-12,
+  "tolerance_reason": "pp state values about41; double-precision arithmetic with tau conversion. Exact source operands reused only to evaluate independent closed-form update; not a physical accuracy bound",
+  "old_raw_missing_c": "Reject full contract as CACHE_UNKNOWN; separately report algebraic residual without recovering c from v_next",
+  "fixed_point_input": "research_runs/tep_environment_bridge/closure_v1/RESULT.json",
+  "rejected_conditions": "Mock inputs only for stiction/clipping/controller/time mismatch/nonfinite/shutdown/source mismatch; no new fault experiments",
+  "stop": "source/hash/unit mismatch, step failure/nonfinite/shutdown; preserve failures, no amplitude/horizon expansion",
+  "not_performed": ["new discovery", "new GT", "F1", "fault", "recovery", "safety", "long simulation", "automatic research adoption"]
+}

@@ -245,3 +245,15 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 전체81검사 첫 실행의3실패는 과거 고정 decision_mvp 파일에 wrapper를 추가한 때문. 원바이트 복원·독립모듈 사용으로 해결하며 과거 기대hash/원시를 바꾸지 않음. 실패로그 보존 후 전체 재실행.
 
 - 최종 전체81단위검사 PASS(초기3실패 보존),10개 새/기존검증 PASS. 실행코드256b656 push 및 미병합 PR18 생성(base PR17). metadata정합성과 제조과학승인 분리·원본보존 재확인.
+
+### 2026-10-27 — 밸브 cache 전이·동적 참조 범위 결정
+
+- PR15~18 OPEN/head와main e960fa8/clean 확인,PR18 2a03e1d 위 feature/tep-valve-transition-reference-gate 분기. 병합없음.
+- PLAN/hash 사전고정 후 고정source9a6c8e5/4SHA/tracked clean 확인. manual·IDV0 두arm×두step만 새실행,양의시간+.001pp. u_req/u_eval/cache전후/v전후/실제미분·tau/dt h/제어기·종료 상태를 actual evaluate observer로기록. 4행독립Euler/미분오차0. source변경없음.
+- 기존24대수step은cache미기록이므로full contract BLOCKED로보존,3기존고정점미분재계산. stiction/clip/단위/명령덮어쓰기/shutdown/비유한/source 등12거부는모의입력뿐;Fault실행0.
+- 독립kernel·검증기·9개단위검사·한국어 TEP_DYNAMIC_REFERENCE_DECISION/SCOPE_PROPOSAL 작성. L1만VERIFIED,L2 PARTIAL,L3/L4 BLOCKED. 기존자료/기대hash/설계변경없음.
+- 우선권고B는내부상태·시간전개를포함한제한설계안의사용자검토이지GT/환경채택아님. 다음은기술검산반복이아니라DYNAMIC-SCOPE결정. source모드/기본기록검산/전체검사로그는 research_runs/tep_valve_transition에구분보존.
+
+- 최종 전체90단위검사(신규9포함)와7개 새/기존 검증script PASS. 현재자료/동결hash39/상태·환경계약/변경사항 재검산,원자료·old code bytes 불변. 실패0. source실행4step과CI/로컬저장검산을구분.
+
+- 실행코드0a1fe052eed76859e6436d5495cbe7b9dc271fed push,PR19 생성(base PR18). 미병합·연구범위미채택. 실제검사결과와동적설계선택안을같은PR에기록.
