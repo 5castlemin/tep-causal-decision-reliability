@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-10-29. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
+기준일: 2026-10-30. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
@@ -52,6 +52,7 @@
 | TEP-STUDIO | TEP Studio 공식 생성환경 대응 검증 | PARTIAL | docs/research_design/TEP_STUDIO_EXECUTION_VALIDATION.md; PR #27 기반 후속 브랜치의 격리 Linux 실제 2시간 기술 시험 | 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 |
 | TEP-OPERATING | TEP 원본 운전 조건과 제약 대조 | PARTIAL | docs/research_design/TEP_OPERATING_CONDITION_RECONSTRUCTION.md; PR #28 기반 후속 브랜치에서 B 운전 1.519시간 측정 제약 초과와 stop 기록 | Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 |
 | TEP-SEARCH | 공개 TEP 실행기 비교와 원본 생성환경 판정 | PARTIAL | docs/research_design/TEP_SIMULATOR_COMPREHENSIVE_COMPARISON.md; PR #29 기반 후속 Rust 실제 실행과 후보 조사; tep2py 계측 사본 3분 단일 표본 실행 | NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 |
+| TEP-MATLAB | 공식 TEP MATLAB 로컬 실행환경 | BLOCKED | docs/research_design/TEP_MATLAB_SIMULINK_LOCAL_VALIDATION.md; PR #30 기반 후속 브랜치에서 Windows 설치·공식 파일 점검 | 학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

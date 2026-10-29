@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29",
+  "checked_at": "2026-10-30",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -487,9 +487,19 @@
       "next_action": "NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증",
       "acceptance": "원본 생성환경 다섯 조건 입증 시 즉시 종료 또는 실행 가능 후보 검증과 미실행 원인 기록",
       "depends_on": []
+    },
+    {
+      "id": "TEP-MATLAB",
+      "title": "공식 TEP MATLAB 로컬 실행환경",
+      "status": "BLOCKED",
+      "evidence": "docs/research_design/TEP_MATLAB_SIMULINK_LOCAL_VALIDATION.md; PR #30 기반 후속 브랜치에서 Windows 설치·공식 파일 점검",
+      "next_action": "학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증",
+      "acceptance": "MATLAB/Simulink 라이선스와 MEX·모델 로드 및 온라인 안전 감시 검증 후 공식 모델 정상 실행",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "TEP-MATLAB",
     "TEP-SEARCH",
     "TEP-OPERATING",
     "TEP-STUDIO",
@@ -554,7 +564,8 @@
     "2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.",
     "TEP-STUDIO: PR #27 후속 Studio 기술 실행은 실제 성공; 원본 생성환경·구조 및 개입 연결은 미검증.",
     "TEP-OPERATING: PR #28 B 원시 실행에서도 측정 제약 초과 확인. 정상상태·원본 동등성 판단은 차단.",
-    "TEP-SEARCH: 21개 항목 검색, Rust 10분 실행; 원본 동일환경 미입증, 일부 후보 미실행으로 최종 탐색 미완."
+    "TEP-SEARCH: 21개 항목 검색, Rust 10분 실행; 원본 동일환경 미입증, 일부 후보 미실행으로 최종 탐색 미완.",
+    "TEP-MATLAB: 로컬 Windows 접근 및 공식 파일 확보, MATLAB·Simulink·C 컴파일러 미발견으로 실행 차단."
   ],
   "integration_review": {
     "user_approved": true,

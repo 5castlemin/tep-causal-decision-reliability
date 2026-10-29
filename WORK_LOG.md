@@ -352,3 +352,6 @@ PR #28 기반 후속: 공식 17개 PI 파라미터 대조, A 2시간 재현 및 
 PR #29 기반 21개 후보 항목, Rust 고정 커밋 36초·10분 실제 실행. 기존 Python/Studio 기록과 비교했으나 동일환경 미확립. 일부 후보 미실행, 즉시 종료 조건 불충족. 상세 근거 TEP_SIMULATOR_COMPREHENSIVE_COMPARISON.md.
 
 추가: tep2py는 첫 실행 전 인자 오류 후 호출만 수정하여 계측 사본 3분 단일 표본을 생성. 원본 소스 불변, 감시 범위 불완전.
+
+## 2026-10-30 — 공식 TEP MATLAB 로컬 사전 점검
+PR #30 기반 후속: Windows 로컬 설치·메모리·라이선스 접근 검사, 공식 ZIP/핵심 파일 해시 재확인 및 Git 제외 사본 staging. MATLAB·Simulink 및 C 컴파일러 미발견으로 공식 MEX·시뮬레이션·개입 미실행. 안전 감시는 미검증되어 실행 초안 fail closed.
