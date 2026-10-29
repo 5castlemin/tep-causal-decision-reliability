@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-28",
+  "python": "3.11.15",
+  "environment": "Existing isolated first-integrated-pilot environment; no installation or simulator import",
+  "command_prefix": "python -X utf8",
+  "commands": [
+    {
+      "command": "-m unittest discover -s tests -v",
+      "log": "unit_tests.txt",
+      "exit_code": 0,
+      "tests": 96,
+      "duration_seconds": 86.501
+    },
+    {
+      "command": "scripts/check_research_state.py",
+      "log": "check_research_state.txt",
+      "exit_code": 0
+    },
+    {
+      "command": "graphs/final/verify_and_load.py",
+      "log": "verify_and_load.txt",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/validate_environment_contract.py",
+      "log": "validate_environment_contract.txt",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/validate_bounded_dynamic_protocol.py",
+      "log": "validate_bounded_dynamic_protocol.txt",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/check_asset_manifest.py",
+      "log": "check_asset_manifest.txt",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "log": "git_diff_check.txt",
+      "exit_code": 0
+    }
+  ],
+  "inline_checks": [
+    "JSON parsing of current new protocol records",
+    "LF-normalized SHA256 comparison of 11 recorded evidence files",
+    "Git protected-path diff against PR20 head; see PRESERVATION.json"
+  ],
+  "not_run": [
+    "New simulator runs or setter call test",
+    "New intervention data",
+    "Model fitting or policy optimization",
+    "src/verify_recovery.py main: avoided because it overwrites protected historic output; frozen/asset validators used instead"
+  ]
+}

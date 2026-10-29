@@ -1,0 +1,33 @@
+{
+  "status": "STATIC_SOURCE_REVIEW_NOT_CALL_TEST",
+  "commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+  "controller_sha256": "030c49801bd93d719175b26ad5b94834c430729800825d9adc2a499e6be75b39",
+  "findings": [
+    {
+      "id": "F1",
+      "location": "simulator.py:256-266;controllers.py:592-618",
+      "finding": "set_mv writes process command and ManualController stored value; manual calculate holds its own stored MVs",
+      "scope": "manual source route plus existing run evidence"
+    },
+    {
+      "id": "F2",
+      "location": "controllers.py:196,367-370,463-465,551-560",
+      "finding": "array17 assignment/setter and separate ctrl18.setpoint120.40/read path; no reviewed ctrl18.setpoint <- setpoints17 link",
+      "scope": "static mapping, no new setter call"
+    },
+    {
+      "id": "F3",
+      "location": "constants.py:operating modes1..6;controllers.py:171-198,227-254",
+      "finding": "mode1 array has temperature122.9 and MV10=35.992 as part of a full mode; active ctrl18 initialization120.40 differs",
+      "scope": "source values, not independent verification of Ricker table or mode transition"
+    },
+    {
+      "id": "F4",
+      "location": "python_backend.py:1158-1176,1388-1407",
+      "finding": "hard shutdown checks include pressure/temperature and volume bounds; constants.py level labels must not substitute for runtime volume units",
+      "scope": "implementation limits, not certified safe action range"
+    }
+  ],
+  "new_code_patch": false,
+  "new_runtime_check": false
+}

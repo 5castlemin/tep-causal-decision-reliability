@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-28",
+  "hash_mode": "text CRLF normalized to LF; original raw SHA manifests unchanged",
+  "files": [
+    {
+      "path": "RESEARCH_DESIGN.md",
+      "sha256_lf": "2c69450a928e984df970af2721189064a8f3c116a2efcdc5300dbb0bf3d12ec3"
+    },
+    {
+      "path": "research_runs/bounded_dynamic_protocol/DECISION.json",
+      "sha256_lf": "ccd53755da3392ec15f1e08ac6ec1e60d015fd874e90765d33d092ae5987508e"
+    },
+    {
+      "path": "research_runs/tep_environment_bridge/technical_v1/SUMMARY.json",
+      "sha256_lf": "93b4dc124c3130bbaefbdd8cfbe403bc3246d4d0a3cbd20a246412877be32d3f"
+    },
+    {
+      "path": "research_runs/tep_valve_transition/run_v1/SUMMARY.json",
+      "sha256_lf": "7950551b86602494ac99fa35d83cc7ffcbc7f2c415031a7e22fc2f9776291a3e"
+    },
+    {
+      "path": "experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json",
+      "sha256_lf": "47a81e2f1e0c91ed041a831f8c4bf23f2c86f816ae27620005ac03d038406f2a"
+    },
+    {
+      "path": "docs/audit/SIMULATOR_RELIABILITY_REPORT.md",
+      "sha256_lf": "4f64aa469b4ab167a7978f0bfb67bea92b5a168477bcbc30d9529cd2a4958679"
+    },
+    {
+      "path": "research_runs/first_integrated_pilot/run_v1/plan.json",
+      "sha256_lf": "e874e94a5cd1ef37ebe7985ca249b53218fae853388fc6007efd4e4eb3833a7f"
+    },
+    {
+      "path": "src/decision_mvp.py",
+      "sha256_lf": "fb5c8247e9d91f554c2d6fdcb1fc81336d4d939ac2df20ea5c7fc4a666b486ca"
+    },
+    {
+      "path": "src/integrated_pilot.py",
+      "sha256_lf": "c2ff4d1bf0cb91f5206c285cf7b107c519aaa5598b2dc03e3d5c08327162d176"
+    },
+    {
+      "path": "research_runs/independent_confirmation/analysis_v1/CONFIRMATION_RESULT.json",
+      "sha256_lf": "8cec8af9d29e1d3ff303659b8c62c287bf397bfece03603b38bb002ab895ed02"
+    },
+    {
+      "path": "research_runs/independent_confirmation/analysis_v1/ANALYTIC_OUTCOME_SENSITIVITY.json",
+      "sha256_lf": "0459cf601253ae5d3ede00256df4bf02696ae593716e70badcdad72894fb9fd8"
+    }
+  ],
+  "static_source": {
+    "commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+    "source_sha256": {
+      "src/tep/simulator.py": "c65d6e38658851febefe60a372e8a6031d6425d43a78f2c37c2ed34a95c6c3ed",
+      "src/tep/python_backend.py": "93ba3281980b9c47b882b84412c9cd0501f542ba9a9f214a84fcd6901d870598",
+      "src/tep/controllers.py": "030c49801bd93d719175b26ad5b94834c430729800825d9adc2a499e6be75b39",
+      "src/tep/constants.py": "c27d7c5a723c0b59598d35dcc0f028b8966a284b0da48669c89965b6c2e89468"
+    },
+    "tracked_clean": true,
+    "imported_or_executed": false
+  },
+  "official_reference": {
+    "url": "https://depts.washington.edu/control/LARRY/TE/download.html",
+    "consulted_date": "2026-10-28",
+    "scope": "Official steady states are full state and MV configurations; not proof that isolated Python valve commands/setpoints share operating admissibility",
+    "archives_downloaded_this_task": false
+  },
+  "inspection_note": "One rg invocation used Windows literal directory/* arguments and failed with error123; repeated with actual directory arguments. No source or results changed."
+}

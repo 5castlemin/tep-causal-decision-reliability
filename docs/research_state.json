@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-27",
+  "checked_at": "2026-10-28",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -33,7 +33,7 @@
       "title": "공개 후보와 기존 데이터/GT 대응",
       "status": "PARTIAL",
       "evidence": "docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md",
-      "next_action": "원환경 계보 미확보/기존F1-Python효과 결합금지 유지. B축약계약 미정당화; 효과중심 별도설계 검토는 사용자선택 대상",
+      "next_action": "기존benchmark/Python직접결합NO-GO·계보미확보유지. 현TEP효과경로동결;새로운구체증거/지시없으면재검색하지않음",
       "acceptance": "정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지",
       "depends_on": [
         "SIM-03",
@@ -396,9 +396,9 @@
     {
       "id": "DYNAMIC-SCOPE",
       "title": "제한 내부 동적 연구계약 초안 검토",
-      "status": "PROPOSED",
+      "status": "BLOCKED",
       "evidence": "docs/research_design/BOUNDED_DYNAMIC_RESEARCH_PROTOCOL.md; research_runs/bounded_dynamic_protocol/DECISION.json",
-      "next_action": "검토 승인 범위에서 초안 작성·판정2: 현재계약 미정당화/실행NO-GO. PROPOSED_FOR_REVIEW 유지; 추가smoke 대신 MFG-EFFECT-SCOPE 결정",
+      "next_action": "B축약계약판정2·미채택초안보존. 이후효과중심검토도STOP이므로추가TEP설계확대중단",
       "acceptance": "4node/12미채점후보·부모폐쇄/비간선/발견대상/비자명선택/독립평가의 미충족조건 명시. 공식연구설계변경 아님",
       "depends_on": [
         "VALVE-TRANSITION",
@@ -407,22 +407,33 @@
     },
     {
       "id": "MFG-EFFECT-SCOPE",
-      "title": "제조 효과·조작 선택 중심 별도 설계 검토 결정",
-      "status": "PROPOSED",
-      "evidence": "research_runs/bounded_dynamic_protocol/DECISION.json",
-      "next_action": "C별도 효과중심 설계검토 여부를 사용자결정. 제조 전체F1 가설은보류/수정한다는한계를명시; 신규실행승인 아님",
-      "acceptance": "선택시 원benchmark·합성결과보존/전체F1주장제외·독립정책효과/P0/출처있는과제/실패처리를갖춘한평가계약. 미선택시제조직접검증중단유지",
+      "title": "TEP 효과·조작 선택 설계 검토: STOP",
+      "status": "BLOCKED",
+      "evidence": "docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md; research_runs/tep_effect_feasibility/DECISION.json",
+      "next_action": "STOP-TEP-EFFECT-TRACK:현재경로동결. 추가TEP시험·패치·후속검토문서권고없음. SYNTH-FINAL로현재우선순위이동",
+      "acceptance": "최대2후보비교/1선택. 출처있는정책집합·비자명한목표/H·실패포함선택손실을정당화못함; API반응성/GT부재와구분",
       "depends_on": [
         "DYNAMIC-SCOPE"
+      ]
+    },
+    {
+      "id": "SYNTH-FINAL",
+      "title": "합성 독립 확인·민감도의 최종 연구 주장 정리",
+      "status": "PROPOSED",
+      "evidence": "research_runs/tep_effect_feasibility/DECISION.json; docs/research_design/INDEPENDENT_CONFIRMATION_REPORT.md; docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md",
+      "next_action": "기존독립확인/이론평균민감도/오류위치대조를원계획·원시로추적가능한최종결과·주장표로확정. 새자료를독립확인으로재포장하지않음",
+      "acceptance": "사전지지/강건성·추가정보불확실성/반례·동률을함께정리. 안정적경로우월성·제조일반화주장허용범위를명시;추가TEP작업없음",
+      "depends_on": [
+        "ERROR-DIAG",
+        "PILOT-CONFIRM"
       ]
     }
   ],
   "priority_order": [
-    "MFG-EFFECT-SCOPE",
-    "DYNAMIC-SCOPE",
-    "COMPAT-01",
+    "SYNTH-FINAL",
     "ERROR-CONFIRM",
     "PATH-PRECISION",
+    "COMPAT-01",
     "PATH-MODEL",
     "PATH-CONFIRM",
     "EVAL-MVP",
@@ -445,7 +456,9 @@
     "PCMCI-ID",
     "ENV-CONTRACT",
     "TEP-BRIDGE",
-    "VALVE-TRANSITION"
+    "VALVE-TRANSITION",
+    "MFG-EFFECT-SCOPE",
+    "DYNAMIC-SCOPE"
   ],
   "id_history": [
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",
@@ -469,7 +482,8 @@
     "2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현.",
     "2026-10-27 ENV-CONTRACT 구현 VERIFIED는 metadata 소프트웨어만. TEP-BRIDGE PARTIAL: 실제8×6step·3고정점. VALVE-TRANSITION 제안은 별도 다음 작업. 전체 제조 구조–효과 NO-GO 유지.",
     "2026-10-27 VALVE-TRANSITION VERIFIED는4실제cache-step의정상수치전이만. L2 PARTIAL/L3·L4 BLOCKED. 동일기술반복을종료하고DYNAMIC-SCOPE의사용자설계선택으로이동. 새GT/연구전환미승인.",
-    "2026-10-27 사용자승인은B설계검토만. DYNAMIC-SCOPE 초안은PROPOSED_FOR_REVIEW/판정2(미정당화),공식채택없음. MFG-EFFECT-SCOPE는별도효과중심설계검토결정으로분리;실행/GT승인아님."
+    "2026-10-27 사용자승인은B설계검토만. DYNAMIC-SCOPE 초안은PROPOSED_FOR_REVIEW/판정2(미정당화),공식채택없음. MFG-EFFECT-SCOPE는별도효과중심설계검토결정으로분리;실행/GT승인아님.",
+    "2026-10-28 MFG-EFFECT-SCOPE 설계검토완료/STOP-TEP-EFFECT-TRACK(BLOCKED/FROZEN). B/C자동채택없음. DYNAMIC-SCOPE도실행차단지속,과거미채택초안불변. 다음은SYNTH-FINAL의기존합성결과최종주장정리;새실험승인아님."
   ],
   "integration_review": {
     "user_approved": true,
@@ -516,7 +530,7 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "Bounded protocol review stacked above OPEN PR19/18/17/16/15. Main e960fa8. No adoption/merges/execution authorized.",
+    "note": "Effect/decision design review stacked above OPEN PR20..15. Main e960fa8. STOP current TEP effect track; no scope adoption, new experiment or merge.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
@@ -553,9 +567,9 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 20,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/20",
-    "current_pr_base": "feature/tep-valve-transition-reference-gate",
+    "current_pr": 21,
+    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/21",
+    "current_pr_base": "feature/tep-bounded-dynamic-research-protocol",
     "pr16_status": "OPEN",
     "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab",
     "pr17_status": "OPEN",
@@ -563,7 +577,9 @@
     "pr18_status": "OPEN",
     "pr18_head": "2a03e1de4861ec96f943f4a50351d922d0f46c5b",
     "pr19_status": "OPEN",
-    "pr19_head": "5d3d62758ddc363d67e4150bf3694a1fa4f879ee"
+    "pr19_head": "5d3d62758ddc363d67e4150bf3694a1fa4f879ee",
+    "pr20_status": "OPEN",
+    "pr20_head": "7ad488733f26029461890a3064b648e3f6664599"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -1062,5 +1078,32 @@
     "test_failures": 0,
     "pr": 20,
     "review_commit": "676a462dbf8b7a4621deb7978dee5335d51fa712"
+  },
+  "tep_effect_feasibility": {
+    "report": "docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md",
+    "review_date": "2026-10-28",
+    "review_complete": true,
+    "judgment": "STOP-TEP-EFFECT-TRACK",
+    "track_state": "FROZEN",
+    "candidate_count": 2,
+    "selected_candidate": "MANUAL_XMV10_TO_XMEAS9",
+    "source_runtime_checks": 0,
+    "new_simulator_runs": 0,
+    "new_gt": 0,
+    "new_F1": 0,
+    "new_AI_or_SCM_fits": 0,
+    "new_policy_optimization": 0,
+    "new_research_code_or_tests": 0,
+    "research_design_changed": false,
+    "Python_TEP_adopted": false,
+    "structural_GT_absence_alone_is_blocker": false,
+    "dependency_pr": 20,
+    "dependency_head": "7ad488733f26029461890a3064b648e3f6664599",
+    "next_single_action": "SYNTH-FINAL",
+    "full_unit_tests": 96,
+    "new_tests_included": 0,
+    "test_failures": 0,
+    "pr": 21,
+    "review_commit": "b6c7aa53980db3c803cfec2ee60be0f03b979e40"
   }
 }

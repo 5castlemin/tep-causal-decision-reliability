@@ -1,0 +1,187 @@
+{
+  "protocol_id": "PYTHON-TEP-EFFECT-DECISION-REVIEW-v1",
+  "date": "2026-10-28",
+  "status": "REVIEW_COMPLETED_NOT_EXECUTABLE",
+  "design_verdict": "STOP-TEP-EFFECT-TRACK",
+  "authorization": {
+    "design_review_only": true,
+    "new_simulation_allowed": false,
+    "new_fit_allowed": false,
+    "policy_search_allowed": false,
+    "official_adoption": false,
+    "research_design_changed": false,
+    "merge_allowed": false
+  },
+  "dependency": {
+    "pr": 20,
+    "head": "7ad488733f26029461890a3064b648e3f6664599",
+    "base": "feature/tep-bounded-dynamic-research-protocol"
+  },
+  "question": "Within one pinned simulator and declared operating policy, how do effect-prediction errors relate to action-selection loss? This is not a test of structural-F1/decision association in manufacturing.",
+  "source": {
+    "url": "https://github.com/jkitchin/tennessee-eastman-profbraatz",
+    "commit": "9a6c8e5fcef4a2850778704e7793c87b0a187005",
+    "backend": "python",
+    "time_unit": "hour",
+    "default_integration_seconds": 1
+  },
+  "candidate_limit": 2,
+  "candidates": [
+    {
+      "id": "MANUAL_XMV10_TO_XMEAS9",
+      "selected_for_review": true,
+      "api": "TEPSimulator.set_mv(10, value); ManualController holds requested command",
+      "policy": "one constant external XMV10 command from t0, other manual commands unchanged; actuator/cache dynamics retained",
+      "target": "XMEAS9 at its actual evaluate time H, degC; internal T_R is separate diagnostic",
+      "path": "command -> applied cache -> actual valve -> cooling-water temperature/heat transfer -> reactor energy/temperature -> noisy sensor",
+      "mode": "MANUAL for reference and all alternatives",
+      "overwrite": "held by manual controller in archived short traces; CLOSED_LOOP is a different policy",
+      "known_initial_command_pp": 41.10581288,
+      "normal_reference_evidence": "source initialized state and archived runs only; not a certified optimal operating condition",
+      "response_timescale": "UNKNOWN for a meaningful admissible temperature task; 5s valve tau and PI reset times are not temperature settling time",
+      "repeatability": "fresh-object exact short repeats verified historically; no long-horizon/multi-context policy-mean validation",
+      "physical_admissible_command_set": null,
+      "meaningful_two_choices": "UNKNOWN",
+      "status": "BEST_TECHNICAL_CANDIDATE_BUT_TASK_NOT_JUSTIFIED"
+    },
+    {
+      "id": "CLOSED_LOOP_REACTOR_TEMPERATURE_SETPOINT",
+      "selected_for_review": false,
+      "proposed_api": "sim.controller.set_setpoint(17, value)",
+      "target": "XMEAS9 evaluate-clock temperature",
+      "mode": "CLOSED_LOOP; never compare its result to a manual reference as the same intervention",
+      "route_review": "setter writes self.setpoints[17]; ctrl18 is separately initialized with setpoint120.40; calculate reads ctrl18, with no reviewed assignment from array17 to that controller",
+      "source_nominals": {
+        "mode1_array_temperature_degC": 122.9,
+        "ctrl18_initial_setpoint_degC": 120.4
+      },
+      "limitations": "Static call-path finding only, not a newly executed setter test. Direct ctrl18 attribute mutation would be a distinct controller-parameter intervention, not validation of this API.",
+      "response_timescale": "UNKNOWN; fast-loop schedule3s is not plant settling time",
+      "independent_policy_repeatability": "NOT_RUN_FOR_THIS_SETPOINT_POLICY",
+      "meaningful_two_choices": "UNKNOWN",
+      "status": "REJECTED_UNVERIFIED_ACTUATION_ROUTE_AND_TASK"
+    }
+  ],
+  "selected_candidate": "MANUAL_XMV10_TO_XMEAS9",
+  "reference_policy": {
+    "a0": "unchanged source manual XMV10 command with a fresh source initialized state",
+    "command_pp": 41.10581288,
+    "intervention_time_seconds": 0,
+    "initial_state_role": "single fixed computational x0, not an operating-condition population",
+    "other_commands": "hold original manual controller values",
+    "no_fault": true
+  },
+  "alternative_policies": {
+    "a1": "distinct admissible constant command, not yet justified",
+    "a2": "optional second alternative, not yet justified",
+    "numeric_commands_pp": null,
+    "frozen_candidate_set": false,
+    "api_clip_range_is_not_operating_range": true
+  },
+  "outcome_contract": {
+    "Y": "XMEAS9(H), degC, timestamped at evaluate(H,state_H); cached sensor and postintegration state are not simultaneous",
+    "internal_temperature": "T_R diagnostic, excluded from primary predictor; not mixed with noisy Y in risk calculations",
+    "H_seconds": null,
+    "initial_distribution_candidate": "point mass at the reproducible source initialized x0; broader initial populations are not established",
+    "noise_population": "UNFIXED_FOR_EXPERIMENT; independent fresh seed namespaces require a predeclared seed/exogenous distribution; deterministic replay is not an independent sample",
+    "effect": "E_epsilon[Y^a(H)|x0,MANUAL]-E_epsilon[Y^a0(H)|x0,MANUAL], only when H/outcomes/noise law exist",
+    "not_claimed": [
+      "average over untested initial conditions",
+      "causal effect from observational regression alone",
+      "real industrial plant effect",
+      "CPCaD benchmark effect oracle"
+    ],
+    "failure": "record return status, shutdown, nonfinite, last clocks and whether H was reached; if not reached, Y(H) is undefined, not the last temperature carried forward",
+    "failure_scalar_loss_rule": null,
+    "unconditional_ATE_with_truncation": "NOT_DEFINED; survivor-only mean is a selected conditional estimand and must not be substituted"
+  },
+  "loss_contract": {
+    "risk_candidate": "E[(Y^a(H)-y_target)^2] = (E[Y^a(H)]-y_target)^2 + Var(Y^a(H))",
+    "mean_response_diagnostic": "(E[Y^a(H)]-y_target)^2; separate from expected tracking risk",
+    "task_target_degC": null,
+    "source_numbers_not_task_authorization": [
+      "ctrl18 default120.40",
+      "operating-mode1 table122.9",
+      "mode1 coolant command35.992 belongs to a full steady-state configuration, not an admissible isolated command at base x0"
+    ],
+    "cost": "NO_JUSTIFIED_PRICE_OR_WEIGHT; an unpriced finite-action tracking comparison would omit the term, not claim physical cost zero",
+    "lambda": null,
+    "cost_function": null,
+    "optimization_meaning": "only a future prespecified finite-policy computational tracking comparison, not economic plant optimum or global continuous optimum",
+    "nondegeneracy": "UNKNOWN: nominal tracking may always favor reference; no source-supported candidate/horizon establishes meaningful selection variation",
+    "filling_nulls_to_approve_execution": false
+  },
+  "model_roles_for_a_hypothetical_future_study": [
+    {
+      "role": "simple finite-policy response-statistics baseline",
+      "inputs": "training/calibration outcomes only under the same documented policy assignment and context",
+      "risk_information": "policy outcome mean and second moment/variance; no final evaluation labels",
+      "currently_eligible": false
+    },
+    {
+      "role": "linear action-plus-preintervention-history predictor",
+      "inputs": "past XMEAS/XMV and candidate policy known at decision time; train-only preprocessing",
+      "risk_information": "mean-only model is insufficient for expected squared loss unless justified second-moment treatment is shared",
+      "currently_eligible": false
+    }
+  ],
+  "excluded_model_expansion": [
+    "nonlinear/time-series family selection before valid task/data",
+    "SCM causal identification by name alone",
+    "existing CPCaD Ridge coefficients or frozen F1 as Python effects",
+    "privileged future/internal state in the primary predictor"
+  ],
+  "learning_identification": {
+    "same_environment_training_data": "NOT_ACQUIRED_FOR_THIS_TASK",
+    "policy_variation_and_overlap": "UNESTABLISHED",
+    "feedback_confounding": "observational fit is not a policy-effect identifier; calibrated/random assignment or explicit identification is required",
+    "primary_predictor_privileged_state": false,
+    "future_privileged_arm": "not included; would be separately labelled simulator-only experiment"
+  },
+  "independent_evaluation_design": {
+    "status": "FORMAL_ONLY_NOT_EXECUTABLE",
+    "split_D_train": "eligible observation/policy-calibration trajectories only; same source/mode/action support",
+    "split_V_select": "disjoint trajectory/seed groups for model/hyperparameter selection; no GT/F1 or final outcome tuning",
+    "split_R_reference": "separate outcome panel identifies an empirical best prespecified candidate; not a true global optimum",
+    "split_F_final": "fresh independent panel evaluates fixed model choices and fixed R-selected reference; R outcomes are not untouched F outcomes",
+    "freeze_order": "source/task/A/H/loss/failure/P0/noise -> training/selection -> models/recommendations+hash -> R/F outcomes; no favorable post-result task/action changes",
+    "final_panel_minimum": "if the same final panel is minimized over candidates, label the resulting reference as in-panel empirical and selection-biased, not independent oracle truth",
+    "noise_default": "independent arms and fresh seeds; CRN only after exogenous-call invariance evidence; old6s matching-seed diagnostics do not establish this for H",
+    "shared_policy_outcomes": "reuse one evaluation for the same policy/context across models, retaining dependence",
+    "failures": "separate model fit/recommendation/no-path fallback from simulator failure; predeclared a0 operational fallback for model failures only; never impute arbitrary simulator penalty or silently remove shutdown",
+    "recommended_metrics": [
+      "fixed-policy outcome/effect magnitude error",
+      "effect sign error including uncertainty",
+      "reference-policy improvement/worsening",
+      "same-candidate-set selection loss",
+      "availability/model failure",
+      "shutdown/nonfinite/H-reached outcomes"
+    ],
+    "observational_MSE_is_intervention_error": false,
+    "independence_units": "fresh trajectory/context/noise groups, with models and policies paired/grouped; rollout rows or the same graph repeated are not independent graph-quality samples"
+  },
+  "connection_to_original_research": {
+    "synthetic": "structure/path/errors -> effect prediction -> action loss, within validated synthetic assumptions",
+    "Python_TEP_proposal": "effect prediction -> action loss only; no structural-F1 explanatory variable or manufacturing validation of synthetic causal claims",
+    "allowed_claim_if_future_study_succeeds": "predictive and choice performance for fixed policies in this source/mode/task only; association of prediction errors with regret, not their general causal effect",
+    "cross_environment_F1_join_allowed": false
+  },
+  "unresolved_core_elements": [
+    "admissible finite policy set at fixed operating point",
+    "nondegenerate justified target and horizon",
+    "noise/calibration data and independent outcome precision",
+    "loss for shutdown/truncation and economic interpretation",
+    "second candidate actual setpoint actuation route"
+  ],
+  "new_activity": {
+    "source_model_runs": 0,
+    "new_gt_files": 0,
+    "new_F1_scores": 0,
+    "discovery_fits": 0,
+    "scm_or_AI_fits": 0,
+    "policy_optimization": 0,
+    "new_do_samples": 0,
+    "new_research_code_or_tests": 0
+  },
+  "track_disposition": "FROZEN; no additional TEP smoke, repair, sampling or design-document loop recommended"
+}
