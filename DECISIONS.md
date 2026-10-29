@@ -135,3 +135,9 @@ RESEARCH_COMPASS는 실무 안내이며 RESEARCH_DESIGN을 대체/수정하지 �
 - 일차는지표MAE순위가아닌,같은유형/개수/점수의핵심-주변오류graph를같은자료로재적합/추천한운영선택손실차이.반례·동률·실패기준정책을포함;일반순수위치인과효과아님.
 - 새30개설계는고정하되실행준비로승격하지않음. 손실scale1의차이/반폭0.1은중간손실을보기위한설계제안이고,기존0.01MAE기준을소급수정하지않음.기존평균을유리한검정력근거로사용안함.
 - REDESIGN_REQUIRED:정밀도-독립SCM자원과새경로종단시간/메모리근거2개만미해결. 신규실험/runner/후속검사·문서작업을자동생성하지않음. 자원확대여부또는확인확대종료결정전중단.원설계/TEP동결/과거판정보존.
+
+### 2026-10-29 — 통합 제조 벤치마크 후보 판정
+
+- 공식source기반5후보비교결과CausalMan을CONDITIONAL-CANDIDATE로선정.생산SCM과공통do코드·잠재투영을제공하지만source6반환/CLI4계약충돌,활성식/참조/mask정합성및식별가능한선택계약미검증으로READY아님.현재완전YES아님.
+- Chambers실물/GT와부분기구simulator를같은생성모델로합치지않음.PenSimPy/IB의내부ODE/동역학으로센서GT를발명하지않음.causRCA의real/HIL·genericBNsimulator를같은실행플랜트로취급하지않음.
+- 다음한검증은별도승인후고정micro의GT-관측-do acceptance.라이브러리/대형pickle획득·설치·실행은이번승인밖이며진행안함.기존TEP STOP/합성연구/PR23 REDESIGN·예산보존.공식채택/연구변경/병합없음.

@@ -1,0 +1,188 @@
+{
+  "date": "2026-10-29",
+  "verdict": "CONDITIONAL-CANDIDATE",
+  "selected": "causalman",
+  "complete_yes": false,
+  "official_adoption": false,
+  "source_commit": "17529dad5ec8b8c691494c617b9af4533aa44bf8",
+  "base_pr": 23,
+  "base_head": "1728d8595fcbeb283f5f212ef30abcfad935a0a0",
+  "scope": "Primary-source/code/metadata review only;not benchmark acceptance or experiment approval",
+  "reason": "CausalMan uniquely combines production-line SCM code,explicit latent projections and hard-do sampling in the inspected candidates,but current graph/data/API and decision-identification contracts are not yet validated.",
+  "core_blockers": [
+    {
+      "id": "ARTIFACT_VARIABLE_GRAPH_CONTRACT",
+      "status": "BLOCKED_FOR_RESEARCH_USE",
+      "required": "Pinned lawful source/model artifact acquisition and actual6-output API;fixed variable mask;per-path/batch sampled level1 vs returned level2 graph consistency including dag2fcm pruning;correct ADMG/MAG projection/typed scoring;fresh effective seeds and resource measurement. Do not infer equality from the common process name.",
+      "evidence": [
+        "causalman.py228-285",
+        "sample_batch.py144-177,222",
+        "utils/graph.py366-408",
+        "generate_causal_inference_data.py75,113"
+      ]
+    },
+    {
+      "id": "IDENTIFIABLE_ACTION_DECISION_CONTRACT",
+      "status": "UNKNOWN",
+      "required": "Verify force node/outcome presence and variation,force-do vs executable physical-command semantics,identifiability given hidden causes,nondegenerate finite-policy quality choices and a compatible learner/numerical model.Neither a tolerance label change nor an unidentifiable point-SCM recommendation passes.",
+      "evidence": [
+        "generate_causal_inference_data.py29-51",
+        "FCM.intervene_on516-570",
+        "CausalMan paper Task2",
+        "graph_projections.py164-225"
+      ]
+    }
+  ],
+  "pilot_scenario": {
+    "status": "PROPOSED_CONDITIONAL_NOT_AUTHORIZED_NOT_EXECUTABLE_YET",
+    "variant": "fresh causalman_micro at pinned commit,one product;do not mix Zenodo historic small/medium or other variants",
+    "data_version": "package0.1.0+commit17529dad5ec8b8c691494c617b9af4533aa44bf8+future model object hashes",
+    "nodes": "Freeze V* from validated baseline observation schema before fitting;A=PF_M1_T1_Force and Y=Sec_C2_Machine1_ProcessResult must be present and nonconstant in training.If not,stop;do not fabricate/drop target to pass.",
+    "reference": "Validate sampled equation graph against returned DAG per row-producing path/batch;latent-project full verified graph onto the SAME fixed V*.Do not take induced observed DAG.For obs-only use corresponding MAG/PAG adjacency/endpoints and mixed-graph distance,not legacy direct-DAG StrictF1.Projection code presence is not proof of GT validity.",
+    "discovery": "Latent-aware PAG/MAG-compatible discovery with a prespecified valid mixed-data CI test is the appropriate target;no actual algorithm choice/fit here.PC/BOSS/DirectLiNGAM under unmet assumptions would only be diagnostics,not automatically identified causal competitors.",
+    "intervention_api": "sim=CausalMan(name='causalman_micro',seed=s,parallelize=False);sim.intervention_dict={'PF_M1_T1_Force':a};obs,mag,admg,full,dag,int_table=sim.sample(n_samples=N).Source signature only,NOT_RUN.Do not use no-op apply_interventions or broken4-unpack CLI.",
+    "actions": [
+      16000,
+      30000
+    ],
+    "reference_policy": "independent do(force=16000) evaluation,not untreated observational mean",
+    "target": "ProcessResult is1/True for conforming product;actual dtype/schema to verify",
+    "loss": "L(a)=E[1-Y^a] for validated binaryY;failure/nonconformance probability.No invented cost term or lambda;not economic/safety optimization.(1-E[Y])^2 would be a different loss.",
+    "physical_scope": "Ideal hard-do on a force variable in a synthetic production SCM;no evidence it equals a plant's realizable actuator/controller policy or safe force range.Threshold interventions excluded as primary manufacturing-action scenario.",
+    "split": "Disjoint effective-seed namespaces/whole parts,batches and product contexts for Dtrain,Vselect,Rreference,Ffinal.CLI's common seed is not accepted as separation.No row-wise noise pairing from same root seed.",
+    "provisional_returned_rows": {
+      "Dtrain": 512,
+      "Vselect": 256,
+      "Rreference_per_arm": 512,
+      "Ffinal_per_arm": 1024
+    },
+    "sampling_cost_caveat": "These are returned row counts only;sample(N) runs >=1 full batch before downsampling. No runtime/RSS/cost promise or download approval.",
+    "effect": "Independent-arm E[Ydo30000]-E[Ydo16000],with uncertainty at batch/part level as appropriate;fixed-policy effect error separate from chosen-policy loss.",
+    "reference_selection": "Choose empirical best of fixed2arms on R only;freeze model and reference choices then compare on untouchedF.Label finite empirical reference selection error,not global continuous optimum.",
+    "failure": "Record generator nonfinite/schema/graph mismatches and stop acceptance;model/identification failure uses declared a0 abstention with availability reported.No arbitrary loss0/large penalty,no selected-sample-only effect.",
+    "hypothesis_connection": "Within validated candidate,associate graph-quality/error patterns with fixed-effect error and quality-choice loss;algorithm/task/batch dependence retained.No TEP7F1 reuse,no manufacturing generalization from1SCM."
+  },
+  "next_single_verification": {
+    "name": "Pinned CausalMan micro GT–observation–do contract acceptance",
+    "approval_required": true,
+    "run_now": false,
+    "scope": "One isolated source/model artifact/version,without discovery/model fitting or research policy optimization. Assert6returns/fixed schema;compare per-path active equations+nonedges and supplied reference/projection;check hard-force replacement and downstream recomputation with fresh independent objects and replay hashes;binaryY/nonconstantA-Y and declared seed namespaces. Resource/data rights checked before pickle load. A failure is evidence,not a reason to silently patch the physical model. Include a reference-ADMG identifiability/support check for the fixed force/quality query as a task gate,not as a way to orient or tune discovered graphs. Passing numerical do sampling alone is insufficient.",
+    "cost_warning": "Default install bundles~7.65GiB objects;micro objects~144.8MB in Git-tree metadata.Small n_samples is NOT a small-compute guarantee.Choose bounded execution only after separate resource approval.",
+    "stop": "If active equations and graph/observable projection do not align,or action/quality/identification cannot be justified,do not proceed to three-learner pipeline;do not force candidate adoption."
+  },
+  "method_transfer": {
+    "reuse": [
+      "train-only transformations and independent split/freeze discipline",
+      "paired graph/task comparisons and failure availability",
+      "fixed-policy effect vs chosen-policy loss distinction",
+      "source/input hashes and cross-environment guards"
+    ],
+    "modify": [
+      "PAG/MAG/ADMG typed adjacency/endpoint scoring and path semantics",
+      "nonlinear mixed-variable estimators and causal identification",
+      "batch/context independent units and resource plan",
+      "loss as quality failure probability,not copied synthetic .6/.2 settings"
+    ],
+    "not_transfer": [
+      "oldTEP7graphs/28edges/F1",
+      "static Ridge causal validity by label",
+      "unverified direct-DAG projection from latents",
+      "hard-do or API clipping as physical safety certification"
+    ]
+  },
+  "license_limits": {
+    "code": "AGPL-3.0 as source-declared;no external code vendored",
+    "paper": "separate paper CC-BY-NC-SA4.0 notice is not software/data license",
+    "data": "Zenodo rendered license blank and third-party notice generic;actual data/pickle use/redistribution scope UNKNOWN.No claim of commercial prohibition or permission beyond inspected licenses."
+  },
+  "new_activity": {
+    "external_installations": 0,
+    "external_imports": 0,
+    "pickle_loads": 0,
+    "large_data_downloads": 0,
+    "external_simulator_runs": 0,
+    "discovery_fits": 0,
+    "SCM_fits": 0,
+    "do_research_runs": 0,
+    "new_GT_or_F1": 0,
+    "external_source_files_copied_to_repo": 0,
+    "new_research_code_or_tests": 0,
+    "scope": "External candidate software/research activity only;own-repository regression tests are tracked separately."
+  },
+  "preservation": {
+    "TEP_STOP_unchanged": true,
+    "PR23_budget_unchanged": true,
+    "research_A_results_unchanged": true,
+    "research_design_unchanged": true,
+    "existing_PRs_merged": false
+  },
+  "validation": {
+    "status": "PASS_LOCAL_REPOSITORY_CHECKS_ONLY",
+    "scope": "Existing own-repository regressions and stored-record integrity;not external benchmark acceptance.",
+    "commands": [
+      {
+        "command": "python -X utf8 -m unittest discover -s tests -v",
+        "result": "PASS",
+        "tests": 96,
+        "seconds": 66.685,
+        "new_tests": 0,
+        "note": "Historical regression cases replay old fits/CV;no new external-candidate fitting or simulation."
+      },
+      {
+        "command": "python -X utf8 scripts/check_research_state.py",
+        "result": "PASS"
+      },
+      {
+        "command": "python -X utf8 graphs/final/verify_and_load.py",
+        "result": "PASS",
+        "hashes": 39,
+        "note": "Variable order and3 time-series transformations also matched."
+      },
+      {
+        "command": "python -X utf8 scripts/check_asset_manifest.py",
+        "result": "PASS"
+      },
+      {
+        "command": "python -X utf8 scripts/validate_environment_contract.py",
+        "result": "PASS",
+        "cases": 15,
+        "note": "Stored technical records/8x6 steps only;no external simulator execution."
+      },
+      {
+        "command": "inline Python JSON/report/previous-state/git-diff assertions",
+        "result": "PASS",
+        "criteria": 70,
+        "prior_protected_files_unchanged": 5215
+      },
+      {
+        "command": "git diff --check",
+        "result": "PASS"
+      }
+    ],
+    "initial_static_check": "Evidence id fields were missing in the first saved JSON,so the inline schema assertion failed;added stable ids from existing notes and reran successfully.No scientific threshold or source expectation changed.",
+    "not_run": [
+      "external package installation/import/acceptance",
+      "discovery/SCM/independent do research",
+      "src/verify_recovery.py CLI (would overwrite a preserved historical log);existing regressions/frozen checks cover preservation and stored scoring"
+    ],
+    "ci": {
+      "status": "LIVE_PR_CHECK_SEPARATE_FROM_LOCAL_RESULTS",
+      "url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/24/checks",
+      "note": "Final-head workflow result is verified separately;no recursive self-SHA or external-candidate runtime claim."
+    }
+  },
+  "inspection_limits": [
+    "Sources were read,not executed;reported dataset scales not measured sample outputs",
+    "Paper,package,currentGit and historic datasets are separate versions",
+    "One documentation arXivv5 URL404 and some remote/ZenodoAPI pages inaccessible;officialv2/text/code supplied partial alternatives",
+    "No full finite-policy decision loss or ranking was measured"
+  ],
+  "github": {
+    "branch": "feature/integrated-manufacturing-benchmark-search",
+    "base": "feature/independent-error-location-protocol",
+    "review_commit": "d14155dc3133e1522e1b87f76cdd3ab6a7150c65",
+    "pr": 24,
+    "url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/24",
+    "merged": false
+  }
+}
