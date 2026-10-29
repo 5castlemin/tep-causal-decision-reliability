@@ -1,0 +1,12 @@
+{
+ "status":"FROZEN_BEFORE_RUN", "source_commit":"852f0c69ab974540750d61bd1dbfafd56bfd80bb", "seed":465120799, "time_unit":"h", "control_interval":0.0005,"rk4_internal_step":0.0005,
+ "order":["A_2h","B_2h","A_6h","B_6h","A_24h","B_24h"],
+ "conditions":{"A":"PR28 default controller and fresh Mode1 initial state","B":"PR28 default controller plus setpoints pressure=2800 kPa, level=65 percent, temperature=122.9 C","C":"NOT_RUN: specific CSV lineage and fixed valve command semantics unverified","D":"NOT_RUN: C not eligible"},
+ "replay_gate":"2h means within 1e-6 absolute of PR28 means for pressure, level and temperature in both A and B, before 6h and 24h",
+ "termination_gate":"STOP ALL subsequent runs on shutdown, nonfinite state or output, action outside 0..100, native/schema terminal constraint margin <= 0, numerical exception, replay mismatch, or job timeout 20 minutes; retain partial traces",
+ "recording":"all steps examined; store every 6 steps and final, about 10.8 seconds; retain values at 2h, 6h and 24h",
+ "stability_diagnostic":"for each of X7 X8 X9 at last 2h: absolute difference of the two one-hour means <=0.25 times benchmark standard deviation AND absolute fitted last-2h slope per hour <=0.25 times benchmark SD; descriptive stringent stationarity screen only, not operating safety or equivalence",
+ "benchmark_sd":{"X7":0.9056104927929114,"X8":0.14596103923267428,"X9":0.004298526890623006},
+ "integrator_test":"NOT_RUN unless both 24h runs pass safety and time budget; do not change control period or infer same noise stream from seed",
+ "C_data_policy":"do not fix valves using report alone without establishing exact benchmark file provenance and command/controller semantics"
+}

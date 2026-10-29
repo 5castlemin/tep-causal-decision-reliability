@@ -4,14 +4,15 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEP-STUDIO — TEP Studio 공식 생성환경 대응 검증**: 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 (PARTIAL)
-2. **TEP-RECON — TEP 원본 생성환경 복원 가능성**: 격리 C 빌드 환경에서 고정 TEP Studio 단기 정상 운전과 controller/clock 계약 확인 (PARTIAL)
-3. **MFG-MICRO — CausalMan micro 실제 수용 검사**: CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 (PARTIAL)
+1. **TEP-OPERATING — TEP 원본 운전 조건과 제약 대조**: Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 (PARTIAL)
+2. **TEP-STUDIO — TEP Studio 공식 생성환경 대응 검증**: 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 (PARTIAL)
+3. **TEP-RECON — TEP 원본 생성환경 복원 가능성**: 격리 C 빌드 환경에서 고정 TEP Studio 단기 정상 운전과 controller/clock 계약 확인 (PARTIAL)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| TEP-OPERATING | PARTIAL | 없음 | Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 / 대응 원시 실행과 명령·시계·전처리 검증, 기존 참조 구조와 개입 계약 별도 검증 |
 | TEP-STUDIO | PARTIAL | 없음 | 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 / 공식/Studio 제어기·초기화·시계 비교와 기존 관측 자료 계보 및 구조 참조 계약 확인 |
 | TEP-RECON | PARTIAL | COMPAT-01 | 격리 C 빌드 환경에서 고정 TEP Studio 단기 정상 운전과 controller/clock 계약 확인 / 원본 관측·참조·개입 동일 생성환경과 재현 검증; 현재 미충족 |
 | MFG-MICRO | PARTIAL | MFG-INTEGRATED | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 / hard-do 그래프 부모 삭제 결함과 참조/효과 식별 계약이 남음.외부 import·관측1/do16000 1완료,do30000중단·replay미실행;공식채택아님 |
@@ -74,5 +75,6 @@
 - 2026-10-29 ERROR-CONFIRM 단일사전계약·예산검토완료/PARTIAL,REDESIGN_REQUIRED. PATH-PRECISION의MAE와별개Δ선택손실0.1폭계획. 신규실험없음;자원범위결정전실행안함.
 - 2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.
 - TEP-STUDIO: PR #27 후속 Studio 기술 실행은 실제 성공; 원본 생성환경·구조 및 개입 연결은 미검증.
+- TEP-OPERATING: PR #28 B 원시 실행에서도 측정 제약 초과 확인. 정상상태·원본 동등성 판단은 차단.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

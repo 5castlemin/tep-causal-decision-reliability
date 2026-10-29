@@ -50,6 +50,7 @@
 | MFG-MICRO | CausalMan micro 실제 수용 검사 | PARTIAL | docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md; research_runs/causalman_micro_acceptance/RESULT.json, GATE.json | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 |
 | TEP-RECON | TEP 원본 생성환경 복원 가능성 | PARTIAL | docs/research_design/TEP_ORIGINAL_SIMULATOR_RECONSTRUCTION.md; research_runs/tep_original_reconstruction/RESULT.json | 격리 C 빌드 환경에서 고정 TEP Studio 단기 정상 운전과 controller/clock 계약 확인 |
 | TEP-STUDIO | TEP Studio 공식 생성환경 대응 검증 | PARTIAL | docs/research_design/TEP_STUDIO_EXECUTION_VALIDATION.md; PR #27 기반 후속 브랜치의 격리 Linux 실제 2시간 기술 시험 | 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 |
+| TEP-OPERATING | TEP 원본 운전 조건과 제약 대조 | PARTIAL | docs/research_design/TEP_OPERATING_CONDITION_RECONSTRUCTION.md; PR #28 기반 후속 브랜치에서 B 운전 1.519시간 측정 제약 초과와 stop 기록 | Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

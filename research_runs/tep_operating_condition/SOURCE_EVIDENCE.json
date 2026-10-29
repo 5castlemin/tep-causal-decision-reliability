@@ -1,0 +1,51 @@
+{
+  "benchmark_data_sha256": "52ae445b4355201db9591822282381c8de861afe49bdbc9452db08b01e7d3711",
+  "archive_sha256": "e43227aaded739cfeba1ec281c54ac8a549f60753e064305a669b906c4b16b0d",
+  "studio_commit": "852f0c69ab974540750d61bd1dbfafd56bfd80bb",
+  "three_shared_file_hashes": {
+    "temexd_mod.c": "eff57b75700e7472005785150c21f82b0c3d178ebceebe37e532794f23785aba",
+    "teprob_mod.h": "fa3782a07c11e5c149ad0f44ec332c45ed998edb7ef8241fade9b1d395577363",
+    "Mode1xInitial.mat": "40eaebc92badb04ad026e358cfd28ec9c778fcf2d24a1b8f5d85565854da2747"
+  },
+  "sources": [
+    {
+      "url": "https://www.researchgate.net/publication/355917633_Tennessee-Eastman-Process_Alarm_Management_Dataset_-_Technical_Report",
+      "sections": "1.2,1.3,2.1,2.3,3.1",
+      "level": "REPORTED",
+      "facts": "dataset uses adjusted control strategy; MVs 5/9 closed, agitator 12 100%; three 75h normal runs; sampling 0.1 Hz; exact 1499 row provenance and implemented command path UNKNOWN"
+    },
+    {
+      "url": "https://arxiv.org/html/2208.01529",
+      "level": "REPORTED",
+      "facts": "TE dataset uses Manca, moving median; specific raw execution and export transformation NOT VERIFIED"
+    },
+    {
+      "url": "https://depts.washington.edu/control/LARRY/TE/download.html",
+      "level": "ARCHIVE_STATIC_VERIFIED",
+      "facts": "17 PI blocks with Kc, Ti, Ts, limits matched against Studio registry where defined; runtime state and implementation execution NOT VERIFIED"
+    }
+  ],
+  "mv": {
+    "XMV5": {
+      "studio_zero_based_index": 4,
+      "name": "compressor_recycle_valve",
+      "studio_command_percent": 22.21,
+      "reported_adjusted": "closed"
+    },
+    "XMV9": {
+      "studio_zero_based_index": 8,
+      "name": "stripper_steam_valve",
+      "studio_command_percent": 47.446,
+      "reported_adjusted": "closed"
+    },
+    "XMV12": {
+      "studio_zero_based_index": 11,
+      "name": "reactor_agitator_speed",
+      "studio_command_percent": 50,
+      "reported_adjusted": "100 percent"
+    }
+  },
+  "command_is_physical_valve": "NO: first 11 actuators have internal dynamics; agitator semantics require source-specific treatment",
+  "benchmark_X27_X31_absent": "VERIFIED",
+  "zero_variance_removal_explanation": "REPORTED/INFERRED, raw 33-variable source not available"
+}

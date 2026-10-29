@@ -153,3 +153,6 @@ RESEARCH_COMPASS는 실무 안내이며 RESEARCH_DESIGN을 대체/수정하지 �
 
 ## 2026-10-29 — TEP Studio 기술 실행 후 판정
 TEP_RECONSTRUCTION_PROMISING: 공식 3파일 일치 및 기술 실행은 확인, 원본 동일 생성환경과 전체 참조 구조는 미확립. 기존 7개 그래프와 신규 개입의 결합 및 연구환경 공식 채택은 보류.
+
+## 2026-10-29 — TEP 운전 조건 중단
+ORIGINAL_OPERATING_CONTRACT_NOT_ESTABLISHED. 제약 위반을 완화하지 않고 후속 장기 실행 중단. 문헌상의 고정 조작은 특정 현재 데이터 파일의 명령·전처리 계보가 확인되지 않아 별도 고정 실험을 실행하지 않음.

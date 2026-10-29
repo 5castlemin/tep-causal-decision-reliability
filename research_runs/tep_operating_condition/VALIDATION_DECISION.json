@@ -1,0 +1,13 @@
+{
+  "decision": "ORIGINAL_OPERATING_CONTRACT_NOT_ESTABLISHED",
+  "classification": "actual schema measurement constraint violation and key original trace/provenance unavailable",
+  "replay_A_2h": "PASS",
+  "replay_B_2h": "BLOCKED: stopped at 1.519h per frozen constraint gate",
+  "A_B_6h_24h": "NOT_RUN; frozen STOP ALL rule",
+  "fixed_MV_C_D": "NOT_RUN; exact benchmark sample lineage and fixed-command semantics insufficiently established",
+  "integrator_convergence": "NOT_RUN; stopped before eligibility",
+  "hypothesis": "17 PI block numeric settings match, but initialization, control mode, noise and measurement clock not established; no isolated causal explanation",
+  "source_data_and_graphs": "PRESERVED",
+  "join_to_existing_GT_and_interventions": "BLOCKED",
+  "required_next": "obtain original Manca normal raw runs with metadata and compare fixed XMV policy and time preprocessing against CPCaD file, without continuing a safety-violating simulation"
+}
