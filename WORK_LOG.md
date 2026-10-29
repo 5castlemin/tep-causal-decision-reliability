@@ -317,3 +317,17 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 소스/적합성검토커밋d14155dc3133e1522e1b87f76cdd3ab6a7150c65 push,PR24 생성(base PR23).후보실행/공식채택/기존PR병합없음.현재PR메타데이터를canonical상태에연결.
 
 - PR24최종head의Actions는별도확인하며고정JSON에재귀selfSHA를기입하지않음.연구산출물3+필수상태5파일만변경·대형/민감경로검사PASS.
+
+### 2026-10-29 — CausalMan micro 실제 동일환경 수용 검사
+
+- PR24 OPEN/bc46dc9·시작clean·main e960fa8 확인후 feature/causalman-micro-acceptance 분기.고정17529da/tree07d305e의micro+소스1049파일실제취득·blob/SHA256/root tree대조.외부소스/바이너리/raw는Git밖,별도venv·job/audit제한.
+- 최초검증기active-process제한이Windowsvenv위임을막은실패보존후같은2GiBjob내child포함측정으로수정. import/생성자PASS,첫관측은미선언SciPy부족실패.환경만1회보완·원CONTRACT/SHA보존;원본모델/seed/조작변경없음.
+- 관측42와do16000/1042 각각101경로/14813내부행에서32행6반환성공.관측V*24열을do전동결,do는22열이나full에V*모두존재.모든경로L1/활성157노드170간선·L2는251간선.81조건부계층차이를버그로단정안함.
+- do16000은상수치환/후속계산성공하지만101개mutilated graph에Force부모2개잔존.원본in_edges tuple삭제구성결함확인후진행중do30000중단(최소44경로/6149행),replay/distinct미실행.원본patch/추가외부retry없음.
+- 관측ADMG의A→M→Y·A↔M↔Y hedge를typed4edge로확인:반환참조가타당하다는조건에서비모수graph-only점효과비식별;알려진물리식제약까지불가능하다는뜻아님.30000은경험범위밖이며수학적support밖으로단정안함.
+- CONDITIONAL_NOT_ACCEPTED/자원차단아님.미해결2개=고정hard-do graph결함/타당하고식별가능한관측계약.실측payload270118144bytes·disk898101516bytes·최대jobRSS532656128bytes·누적약667.253초,계측한계기록.발견/SCM연구학습/F1SHD/최적화/공식채택/기존PR병합0.
+
+- 기존96+신규9소프트웨어fixture=전체105단위검사PASS(104.220초).추가파일탐지순서의ownfixture실패1건은코드검사순서를고쳐원래기대값그대로통과.상태/동결39SHA·순서·환경계약15case/asset/JSON·diff PASS.이전보호5218파일불변.기존suite의옛fit/CV replay는신규연구학습아님.
+- 현재MFG-INTEGRATED 대시보드는후속실행결과를가리키도록갱신하고중복실행대기열에서제외;과거PR24정적판정과실험JSON은보존.새우선작업은MFG-MICRO의방법론결정하나.
+
+- 수용검사커밋c6b3e386cc9838e245fd226f50ccd809af479fc7 push,PR25(basePR24) 생성.최종head CI는별도확인하며자체CI가외부acceptance성공을뜻하지않음.원본미수정/CONDITIONAL_NOT_ACCEPTED/후속sampling중단유지.

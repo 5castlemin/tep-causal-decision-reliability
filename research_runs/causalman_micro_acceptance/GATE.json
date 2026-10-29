@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-29",
+  "verdict": "CONDITIONAL_NOT_ACCEPTED",
+  "accepted_for_pilot_design": false,
+  "resource_blocked": false,
+  "gates": {
+    "resources": "PASS_WITH_MEASUREMENT_LIMITS",
+    "rights": "PASS_LOCAL_BUNDLED_SOFTWARE_SCOPE_ONLY",
+    "api": "PASS",
+    "active_reference": "PARTIAL_CONDITIONAL_LAYER_UNCLOSED",
+    "observed_reference": "PARTIAL_FIXED_VSTAR_ADAPTER_REQUIRED",
+    "hard_do": "BLOCKED_UPSTREAM_GRAPH_MUTATION",
+    "outcome": "PASS_BINARY_CODING",
+    "seed_replay": "NOT_RUN_AFTER_STOP",
+    "identification_support": "BLOCKED_HEDGE_AND_EXTRAPOLATION",
+    "decision_contract": "BLOCKED_NOT_JUSTIFIED"
+  },
+  "core_blockers": [
+    {
+      "id": "PINNED_HARD_DO_GRAPH_DEFECT",
+      "evidence": "101/101 do16000 mutilated graphs retain both Force parents;original source fcm.py564-566",
+      "required": "Upstream-authoritative correction/version or explicit review of graph-vs-numeric intervention semantics;not a silent local physical-model patch."
+    },
+    {
+      "id": "VALIDATED_IDENTIFIABLE_OBSERVED_CONTRACT",
+      "evidence": "81 conditional links outside each active equation graph are not fully closed;returned V* ADMG has a hedge;30000 exceeds observed force range;seed collisions/replay incomplete.",
+      "required": "A defensible reference+identification/support/independent-unit contract;more samples or repairing one edge-deletion line alone does not establish it."
+    }
+  ],
+  "why_not_scientific_rejection": "Import and numeric generation succeeded;the81-layer difference has a documented conditional meaning,not a proved invalid simulator.Numerical constant do can work despite stale graph edges.No universal impossibility for every CausalMan task or a separately approved privileged/known-physics study is established.",
+  "why_not_accepted": "Every acceptance condition must pass;numeric sample success and own CI do not close reference/identification/graph mutation/replay gates.",
+  "stop": "do30000 interrupted;replay42/distinct43 NOT_RUN;no retries after graph defect;upstream bytes preserved.",
+  "next_single_action": {
+    "kind": "METHODOLOGICAL_DECISION_NOT_AUTOMATIC_EXECUTION",
+    "action": "Decide whether to retain observation-only point-effect identification as a mandatory condition. Recommendation:do not connect current micro to learners;any proposal using additional privileged states/known functions or partial identification must be a separately approved research-contract change,not another smoke test.",
+    "evidence": [
+      "RESULT.json/hard_do",
+      "RESULT.json/active_reference",
+      "RESULT.json/quality_and_identification/identification"
+    ]
+  },
+  "official_adoption": false,
+  "new_experiment_execution_authorized": false,
+  "github": {
+    "branch": "feature/causalman-micro-acceptance",
+    "base": "feature/integrated-manufacturing-benchmark-search",
+    "pr": 25,
+    "url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/25",
+    "acceptance_commit": "c6b3e386cc9838e245fd226f50ccd809af479fc7",
+    "merged": false
+  }
+}
