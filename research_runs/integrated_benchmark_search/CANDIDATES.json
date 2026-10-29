@@ -1,0 +1,1119 @@
+{
+  "review_date": "2026-10-29",
+  "base_pr": 23,
+  "base_head": "1728d8595fcbeb283f5f212ef30abcfad935a0a0",
+  "inspection": "Official primary sources/pinned source text and metadata only;no external source copied into repo,no install/import/pickle load/large-data download or experiment",
+  "status_definition": {
+    "VERIFIED": "Narrow fact/source declaration statically confirmed;not runtime acceptance unless explicitly stated",
+    "PARTIAL": "Specific source evidence exists but required scientific or runtime link remains unverified",
+    "BLOCKED": "Required artifact/semantics/interface unavailable for current claim",
+    "UNKNOWN": "No defensible determination from reviewed evidence"
+  },
+  "criteria_labels": {
+    "1": "공정·실제/합성",
+    "2": "공식 데이터/시뮬레이터 출처",
+    "3": "논문·소스·데이터 버전 계보",
+    "4": "관측·내부·잠재 변수",
+    "5": "GT 관계 정의",
+    "6": "F1/Directed F1/SHD 가능성",
+    "7": "Action/Target·물리적 의미",
+    "8": "동일 조건 복수 조작",
+    "9": "독립 개입 효과 평가",
+    "10": "비자명한 후보/목표/손실",
+    "11": "독립 실행·학습/선택/평가 분리",
+    "12": "용량·실행·메모리·라이선스",
+    "13": "기존 방법론 호환성",
+    "14": "차단 조건·해결 가능성"
+  },
+  "candidates": [
+    {
+      "id": "causalman",
+      "name": "CausalMan",
+      "selected": true,
+      "verdict": "CONDITIONAL-CANDIDATE",
+      "repo": "https://github.com/boschresearch/CausalMan",
+      "commit": "17529dad5ec8b8c691494c617b9af4533aa44bf8",
+      "package_version": "0.1.0",
+      "paper": {
+        "url": "https://arxiv.org/abs/2502.12707v1",
+        "version": "v1,2025-02-18"
+      },
+      "data_records": [
+        {
+          "url": "https://zenodo.org/records/13871097",
+          "version": "v1,2024-10-01",
+          "declared_bytes": "11.2GB",
+          "used": false
+        },
+        {
+          "url": "https://zenodo.org/records/14697668",
+          "version": "v2,2025-01-20",
+          "declared_bytes": "11.3GB",
+          "used": false
+        }
+      ],
+      "source_evidence": [
+        {
+          "path": "causalman/causalman.py",
+          "lines": "43-95",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/causalman.py#L43",
+          "git_blob_sha1": "e5340169b3f58311542dc2bd24ffbf32bd4c3ee3",
+          "note": "M0: constructor/seed;apply_interventions resets dictionary to empty;sample entry",
+          "id": "M0"
+        },
+        {
+          "path": "causalman/causalman.py",
+          "lines": "228-285",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/causalman.py#L228",
+          "git_blob_sha1": "e5340169b3f58311542dc2bd24ffbf32bd4c3ee3",
+          "note": "M1: data-dependent Observable flags;ADMG/MAG;aligned row subsampling;six return values",
+          "id": "M1"
+        },
+        {
+          "path": "causalman/sample_batch.py",
+          "lines": "100-177",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/sample_batch.py#L100",
+          "git_blob_sha1": "80c0c68c05b5baece0f2f2e8ec7a697095b0fec2",
+          "note": "M2: per-path pickles;level1 sampled,level2 returned;conditional parent comments",
+          "id": "M2"
+        },
+        {
+          "path": "causalman/sample_batch.py",
+          "lines": "193-222",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/sample_batch.py#L193",
+          "git_blob_sha1": "80c0c68c05b5baece0f2f2e8ec7a697095b0fec2",
+          "note": "M3: timestamp replacement and return last path level2 graph",
+          "id": "M3"
+        },
+        {
+          "path": "causalman/utils/graph.py",
+          "lines": "366-408",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/utils/graph.py#L366",
+          "git_blob_sha1": "1807d442dfff281a38c05b60e914b0be196653a5",
+          "note": "M4: dag2fcm removes unrepresented edges/nodes before sampling",
+          "id": "M4"
+        },
+        {
+          "path": "causalman/utils/graph.py",
+          "lines": "709-758",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/utils/graph.py#L709",
+          "git_blob_sha1": "1807d442dfff281a38c05b60e914b0be196653a5",
+          "note": "M5: same FCM observational/interventional sampling route",
+          "id": "M5"
+        },
+        {
+          "path": "causalman/fcm.py",
+          "lines": "516-570",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/fcm.py#L516",
+          "git_blob_sha1": "cd93c28a142647134ddd12568310bb50f1b5becf",
+          "note": "M6: hard do removes incoming edges,replaces equation",
+          "id": "M6"
+        },
+        {
+          "path": "causalman/fcm.py",
+          "lines": "351-410",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/fcm.py#L351",
+          "git_blob_sha1": "cd93c28a142647134ddd12568310bb50f1b5becf",
+          "note": "M7: ancestral sampling/re-evaluation under chosen graph",
+          "id": "M7"
+        },
+        {
+          "path": "causalman/graph_projections.py",
+          "lines": "164-225",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/graph_projections.py#L164",
+          "git_blob_sha1": "94441d61ed3536379f07114911bd41addbfc1023",
+          "note": "M8: latent projection with typed directed/bidirected edges",
+          "id": "M8"
+        },
+        {
+          "path": "causalman/graph_projections.py",
+          "lines": "318-371",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/graph_projections.py#L318",
+          "git_blob_sha1": "94441d61ed3536379f07114911bd41addbfc1023",
+          "note": "M9: MAG adds inducing adjacencies/ancestral orientations;not original direct DAG",
+          "id": "M9"
+        },
+        {
+          "path": "causalman/generate_causal_inference_data.py",
+          "lines": "29-121",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/generate_causal_inference_data.py#L29",
+          "git_blob_sha1": "9e5b94403dbeb07f34b7180507730996e7ee39b1",
+          "note": "M10: force/outcome tasks;four-value unpack conflicts with current sample;shared roots are not independent data splits",
+          "id": "M10"
+        },
+        {
+          "path": "pyproject.toml",
+          "lines": "5-45",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/pyproject.toml#L5",
+          "git_blob_sha1": "c2fd4d1976a5d2611d4aa75cf596d501374274c6",
+          "note": "M11: package0.1.0/Python>=3.9/dependencies/include all dataset objects",
+          "id": "M11"
+        },
+        {
+          "path": "README.md",
+          "lines": "126-135",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/README.md#L126",
+          "git_blob_sha1": "0c02c7b9ea0973c588c5c8702ec6931d577bd33e",
+          "note": "M12: declared scales only,not measured variable counts",
+          "id": "M12"
+        },
+        {
+          "path": "3rd-party-licenses.txt",
+          "lines": "13-20",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/3rd-party-licenses.txt#L13",
+          "git_blob_sha1": "288be26777497049660387b2862724a2fe4f0ff0",
+          "note": "M13: generic Awesome Project inventory does not establish actual third-party dataset rights",
+          "id": "M13"
+        },
+        {
+          "path": "LICENSE",
+          "lines": "1-20",
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/LICENSE#L1",
+          "git_blob_sha1": "29ebfa545f5580919a4e884d7014d7a3eb2df762",
+          "note": "M14: AGPL3 source license",
+          "id": "M14"
+        },
+        {
+          "path": "causalman/dataset_objects/causalman_micro/causalman_micro_1_batch_info.csv",
+          "lines": null,
+          "url": "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/causalman/dataset_objects/causalman_micro/causalman_micro_1_batch_info.csv",
+          "git_blob_sha1": "87452df464d01496420b393c19690cc4d4902844",
+          "note": "M15:23410-byte metadata only inspected;no pickle/data payload loaded",
+          "id": "M15"
+        }
+      ],
+      "criteria": [
+        {
+          "item": 1,
+          "status": "VERIFIED",
+          "finding": "Expert-defined,physics-motivated synthetic assembly/press-fitting/quality SCM;not raw industrial plant validation.",
+          "evidence": [
+            "M2",
+            "paper"
+          ]
+        },
+        {
+          "item": 2,
+          "status": "VERIFIED",
+          "finding": "Official Bosch public source,precomputed objects and Zenodo records located;only source text and small metadata read.",
+          "evidence": [
+            "M11",
+            "M15"
+          ]
+        },
+        {
+          "item": 3,
+          "status": "PARTIAL",
+          "finding": "Commit and package0.1.0 pinned;paper/Zenodo v1/v2 are distinct releases,no byte equivalence of historic files to current generator established.",
+          "evidence": [
+            "M11",
+            "data_records"
+          ]
+        },
+        {
+          "item": 4,
+          "status": "PARTIAL",
+          "finding": "Six-output API has obs/full datasets,DAG,ADMG,MAG,int table;obs set depends on constant columns and interventions.Full-latent data is privileged,not ordinary sensor observation.",
+          "evidence": [
+            "M1"
+          ]
+        },
+        {
+          "item": 5,
+          "status": "PARTIAL",
+          "finding": "Level2 conditional causal DAG differs from level1 equations used by sampling;dag2fcm may remove nodes/edges.MAG arrows express ancestry/projection semantics,not original direct physics.",
+          "evidence": [
+            "M2",
+            "M4",
+            "M8",
+            "M9"
+          ]
+        },
+        {
+          "item": 6,
+          "status": "BLOCKED",
+          "finding": "Unmodified static DAG scorer is not valid for obs-only mixed graphs.Need validated fixed-mask ADMG/MAG/PAG scoring or separately approved complete-state exact-sampling-DAG diagnostic;no arbitrary induced subgraph.",
+          "evidence": [
+            "M1",
+            "M8",
+            "M9"
+          ]
+        },
+        {
+          "item": 7,
+          "status": "PARTIAL",
+          "finding": "Source force16000/30000 to binary Sec_C2_Machine1_ProcessResult task exists.Hard-setting force is not established as controller-executable action;Force_LTL changes acceptance threshold,not actuator.Physical units/limits remain to verify.",
+          "evidence": [
+            "M10"
+          ]
+        },
+        {
+          "item": 8,
+          "status": "PARTIAL",
+          "finding": "intervention_dict is passed through same sampling route;FCM replaces incoming equation and downstream ancestors are evaluated.No actual acceptance execution here.apply_interventions() currently clears dict.",
+          "evidence": [
+            "M0",
+            "M5",
+            "M6",
+            "M7"
+          ]
+        },
+        {
+          "item": 9,
+          "status": "PARTIAL",
+          "finding": "Fresh objects/seed entry available;need effective-seed namespace/path/batch invariance and fixed population.No same-seed row-wise counterfactual assertion.",
+          "evidence": [
+            "M0",
+            "M2",
+            "M7"
+          ]
+        },
+        {
+          "item": 10,
+          "status": "UNKNOWN",
+          "finding": "Two published force arms support effect comparison;nonconstant target,identifiable estimand and model-dependent choice variation not demonstrated.No invented cost or safety band.",
+          "evidence": [
+            "M10"
+          ]
+        },
+        {
+          "item": 11,
+          "status": "PARTIAL",
+          "finding": "Can propose disjoint root namespaces and whole batch/part splits;bundled routes/parameters repeat,offset seeds may overlap unless audited.CLI currently reuses roots and does not implement untouched final evaluation.",
+          "evidence": [
+            "M2",
+            "M10"
+          ]
+        },
+        {
+          "item": 12,
+          "status": "PARTIAL",
+          "finding": "AGPL3 source;third-party/data-use scope unresolved.Generic third-party notice and blank rendered Zenodo license do not grant all rights.Default package includes about7.65GiB objects.Core CPU/SymPy stack;time/RSS unmeasured,n_samples only truncates after full sampling.",
+          "evidence": [
+            "M11",
+            "M13",
+            "M14",
+            "M15"
+          ]
+        },
+        {
+          "item": 13,
+          "status": "PARTIAL",
+          "finding": "Preserve split/freeze/loss/availability logic;replace latent-insufficient DAG algorithms,typed graph scores and linear-only SCM before causal claims.Old TEP graphs/scores never transferred.",
+          "evidence": [
+            "M8",
+            "M9",
+            "M10"
+          ]
+        },
+        {
+          "item": 14,
+          "status": "PARTIAL",
+          "finding": "Two core blockers:(1)versioned artifact/variable/graph-generation contract,(2)identifiable and nondegenerate action-to-quality decision contract.No official adoption.",
+          "evidence": [
+            "M0",
+            "M1",
+            "M2",
+            "M4",
+            "M10"
+          ]
+        }
+      ],
+      "install": {
+        "dataset_object_git_metadata_bytes": {
+          "causalman_large": {
+            "files": 6291,
+            "bytes": 7194286371,
+            "max_file_bytes": 5991166
+          },
+          "causalman_medium": {
+            "files": 1542,
+            "bytes": 673007331,
+            "max_file_bytes": 2034166
+          },
+          "causalman_micro": {
+            "files": 1018,
+            "bytes": 144812833,
+            "max_file_bytes": 943057
+          },
+          "causalman_small": {
+            "files": 1320,
+            "bytes": 199156432,
+            "max_file_bytes": 639020
+          }
+        },
+        "total_objects_bytes": 8211262967,
+        "repo_tree_blob_bytes": 8486569298,
+        "scope": "Git-tree sizes only;no binaries fetched,no install/RSS/runtime measurement",
+        "dependencies": [
+          "sympy>=1.12",
+          "numpy>=1.24",
+          "pandas>=1.5",
+          "networkx>=3.0",
+          "pyvis>=0.3",
+          "matplotlib>=3.6",
+          "tqdm>=4.64"
+        ],
+        "optional": [
+          "Graphviz/pygraphviz",
+          "Playwright browser",
+          "R/rpy2/dagitty"
+        ],
+        "no_r_needed_for_pure_python_projection": true
+      },
+      "static_findings": [
+        {
+          "id": "API_ARITY",
+          "status": "VERIFIED_STATIC_ONLY",
+          "detail": "sample returns6 at causalman.py278-285;README114 and CLI75/113 unpack4.Expected failure by source,not an executed exception."
+        },
+        {
+          "id": "NOOP_METHOD",
+          "status": "VERIFIED_STATIC_ONLY",
+          "detail": "apply_interventions87-89 clears dict;documented direct intervention_dict route is separate."
+        },
+        {
+          "id": "GT_ROUTE",
+          "status": "PARTIAL",
+          "detail": "sample_batch samples level1,returns last level2;samplers aggregate many paths/batches.No proof last graph represents all generated rows."
+        },
+        {
+          "id": "MASK_DRIFT",
+          "status": "VERIFIED_STATIC_ONLY",
+          "detail": "constant nonintervened columns hidden,intervention targets kept;freeze mask before comparing environments."
+        },
+        {
+          "id": "SAMPLING_FOOTPRINT",
+          "status": "VERIFIED_STATIC_ONLY",
+          "detail": "n_samples=32 still schedules >=1 full batch then subsamples;micro batch metadata run-size sum about14838,not an observed sampled row count."
+        },
+        {
+          "id": "DATA_RIGHTS",
+          "status": "UNKNOWN",
+          "detail": "Source AGPL is not automatically a license for every third-party dataset/pickle;paper license also separate."
+        }
+      ],
+      "execution": {
+        "installed": false,
+        "source_imported": false,
+        "pickle_loaded": false,
+        "sampling": false,
+        "discovery": false,
+        "fitting": false,
+        "do_study": false
+      }
+    },
+    {
+      "id": "causal_chambers",
+      "name": "Causal Chambers",
+      "selected": false,
+      "repo": "https://github.com/juangamella/causal-chamber-package",
+      "commit": "9fb5d82e391bb91a89a64f2e1c9b6ae8e7aed6d6",
+      "package_version": "0.2.8",
+      "data_repo": "https://github.com/juangamella/causal-chamber",
+      "data_commit": "0c8a77ea14bd4437b1fdd79adc1aa91ac2342569",
+      "data_versions": [
+        "lt_interventions_standard_v1",
+        "wt_walks_v1"
+      ],
+      "paper": "https://arxiv.org/abs/2404.11341v2",
+      "publication": "https://www.nature.com/articles/s42256-024-00964-x",
+      "source_evidence": [
+        {
+          "path": "causalchamber/ground_truth/main.py",
+          "lines": "202-245",
+          "url": "https://github.com/juangamella/causal-chamber-package/blob/9fb5d82e391bb91a89a64f2e1c9b6ae8e7aed6d6/causalchamber/ground_truth/main.py#L202",
+          "git_blob_sha1": "d99ad6032171d74132d97bbf4b3ab0efea2ff14e",
+          "note": "C1: explicit configuration-specific ground-truth edges",
+          "id": "C1"
+        },
+        {
+          "path": "causalchamber/simulators/README.md",
+          "lines": "12-84",
+          "url": "https://github.com/juangamella/causal-chamber-package/blob/9fb5d82e391bb91a89a64f2e1c9b6ae8e7aed6d6/causalchamber/simulators/README.md#L12",
+          "git_blob_sha1": "b8af99d1f2520b5ef1707deef85be072936f6caa",
+          "note": "C2: partial phenomena/deterministic and stochastic approximations,not a whole physical device replica",
+          "id": "C2"
+        },
+        {
+          "path": "causalchamber/lab/chamber.py",
+          "lines": "73-153",
+          "url": "https://github.com/juangamella/causal-chamber-package/blob/9fb5d82e391bb91a89a64f2e1c9b6ae8e7aed6d6/causalchamber/lab/chamber.py#L73",
+          "git_blob_sha1": "69a8453c43f851d69fb577854f841e61ab0b6f41",
+          "note": "C3: credentials/config/code versions and real actuator set API",
+          "id": "C3"
+        },
+        {
+          "path": "causalchamber/simulators/lt/sensors/main.py",
+          "lines": "26-85",
+          "url": "https://github.com/juangamella/causal-chamber-package/blob/9fb5d82e391bb91a89a64f2e1c9b6ae8e7aed6d6/causalchamber/simulators/lt/sensors/main.py#L26",
+          "git_blob_sha1": "7cdeeb9c3f2a48140aa26b6dca3c11a235b4e767",
+          "note": "C4: deterministic virtual sensor simulator inputs/output scope",
+          "id": "C4"
+        },
+        {
+          "path": "LICENSE.txt",
+          "lines": "1-12",
+          "url": "https://github.com/juangamella/causal-chamber-package/blob/9fb5d82e391bb91a89a64f2e1c9b6ae8e7aed6d6/LICENSE.txt#L1",
+          "git_blob_sha1": "91d50497c96811dfed96c5ff159fe6a85231525a",
+          "note": "C5: MIT package",
+          "id": "C5"
+        }
+      ],
+      "criteria": [
+        {
+          "item": 1,
+          "status": "VERIFIED",
+          "finding": "Real light/wind chamber hardware and separate simulated models;physical testbed,not a production-line manufacturing process.",
+          "evidence": [
+            "C2",
+            "paper"
+          ]
+        },
+        {
+          "item": 2,
+          "status": "VERIFIED",
+          "finding": "Official package/data repositories,public experiment generators/checksums and remote lab documented.",
+          "evidence": [
+            "data_repo",
+            "C3"
+          ]
+        },
+        {
+          "item": 3,
+          "status": "PARTIAL",
+          "finding": "Package0.2.8 and both commits fixed;GT loader documents original Mk1,remote/new Mk2 requires correct config version;not interchangeable.",
+          "evidence": [
+            "C1",
+            "C3"
+          ]
+        },
+        {
+          "item": 4,
+          "status": "PARTIAL",
+          "finding": "Actuators/sensor parameters and measurements listed;unmeasured dynamics/ambient pressure remain.Mechanistic simulators cover only subsets.",
+          "evidence": [
+            "C1",
+            "C2",
+            "C4"
+          ]
+        },
+        {
+          "item": 5,
+          "status": "PARTIAL",
+          "finding": "Published physical interventional-effect graph with time/held-other-variable definition;wind pressure-control feedback can cycle.Not automatically a contemporaneous iid DAG.",
+          "evidence": [
+            "paper AppendixV",
+            "C1"
+          ]
+        },
+        {
+          "item": 6,
+          "status": "PARTIAL",
+          "finding": "Some fixed Mk1 standard configurations support supplied graph benchmarking;need correct time/regime and node universe.Simulator subset GT and whole physical graph cannot be equated.",
+          "evidence": [
+            "C1",
+            "C2"
+          ]
+        },
+        {
+          "item": 7,
+          "status": "VERIFIED",
+          "finding": "Real light-color/polarizer/fan-load/hatch controls and intensity/pressure outcomes;physical API exists,not invoked.",
+          "evidence": [
+            "C3",
+            "paper"
+          ]
+        },
+        {
+          "item": 8,
+          "status": "PARTIAL",
+          "finding": "Existing intervention campaigns and set API support alternatives;new experiments require remote access,hardware/config rights/availability;no access assumed.",
+          "evidence": [
+            "C3",
+            "data_versions"
+          ]
+        },
+        {
+          "item": 9,
+          "status": "PARTIAL",
+          "finding": "Independent real experimental campaigns possible;provided datasets have finite policy support.Simulated outcomes are approximations,not independent physical oracle for old data.",
+          "evidence": [
+            "C2",
+            "C3"
+          ]
+        },
+        {
+          "item": 10,
+          "status": "UNKNOWN",
+          "finding": "Optical/pressure tracking tasks possible but target,cost/timing and coverage need their own contract;no production-line quality objective supplied.",
+          "evidence": [
+            "C2",
+            "C3"
+          ]
+        },
+        {
+          "item": 11,
+          "status": "PARTIAL",
+          "finding": "Use entire runs/sessions/interventions as split units;ambient/temporal drift and hardware versions matter.Simulator seed is not physical experiment replay.",
+          "evidence": [
+            "C3",
+            "wt_walks_v1"
+          ]
+        },
+        {
+          "item": 12,
+          "status": "PARTIAL",
+          "finding": "Code MIT,data CC-BY4.0;optional torch/image-model weights vs basic NumPy models;real lab credentials/time/access cost unknown.No downloads/connection/execution.",
+          "evidence": [
+            "C2",
+            "C5",
+            "data_repo"
+          ]
+        },
+        {
+          "item": 13,
+          "status": "PARTIAL",
+          "finding": "Good physical causal sanity-check;configuration-specific static/time-series algorithms required.Cannot substitute approximate simulator for physical observed-data evaluation without calibration evidence.",
+          "evidence": [
+            "C1",
+            "C2"
+          ]
+        },
+        {
+          "item": 14,
+          "status": "BLOCKED",
+          "finding": "For production-line original claim,domain differs and physical-data/simulator equivalence not established.Remote matched-hardware campaign is a distinct option,not currently available evidence.",
+          "evidence": [
+            "C2",
+            "C3"
+          ]
+        }
+      ],
+      "license": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "remote_terms": "not evaluated/access not granted"
+      },
+      "execution": {
+        "installed": false,
+        "downloaded_data": false,
+        "remote_lab_accessed": false,
+        "simulator_run": false
+      }
+    },
+    {
+      "id": "pensimpy",
+      "name": "IndPenSim/PenSimPy",
+      "selected": false,
+      "repo": "https://github.com/Mohan-Zhang-u/PenSimPy",
+      "commit": "e08fc71fef193448f3ee9a304187dc92b88f3acc",
+      "dataset": "https://data.mendeley.com/datasets/pdnjz7zz5x/2",
+      "data_version": "v2,2019-10-08,DOI10.17632/pdnjz7zz5x.2",
+      "source_evidence": [
+        {
+          "path": "pensimpy/peni_env_setup.py",
+          "lines": "19-92",
+          "url": "https://github.com/Mohan-Zhang-u/PenSimPy/blob/e08fc71fef193448f3ee9a304187dc92b88f3acc/pensimpy/peni_env_setup.py#L19",
+          "git_blob_sha1": "adfbc9c99ba4a2e81002ca27f29b0969a708de9c",
+          "note": "P1: seeded initialization/action/control entry",
+          "id": "P1"
+        },
+        {
+          "path": "pensimpy/peni_env_gymwrapper.py",
+          "lines": "108-153",
+          "url": "https://github.com/Mohan-Zhang-u/PenSimPy/blob/e08fc71fef193448f3ee9a304187dc92b88f3acc/pensimpy/peni_env_gymwrapper.py#L108",
+          "git_blob_sha1": "cc9c1d4971dcf6228640063d2cb2ca272f312532",
+          "note": "P2: normalized command spaces and yield reward",
+          "id": "P2"
+        },
+        {
+          "path": "pensimpy/examples/recipe.py",
+          "lines": "7-103",
+          "url": "https://github.com/Mohan-Zhang-u/PenSimPy/blob/e08fc71fef193448f3ee9a304187dc92b88f3acc/pensimpy/examples/recipe.py#L7",
+          "git_blob_sha1": "407330cc709f62c6e43634d563e68460c27e618f",
+          "note": "P3: time-indexed recipe/setpoints",
+          "id": "P3"
+        },
+        {
+          "path": "LICENSE",
+          "lines": "1-12",
+          "url": "https://github.com/Mohan-Zhang-u/PenSimPy/blob/e08fc71fef193448f3ee9a304187dc92b88f3acc/LICENSE#L1",
+          "git_blob_sha1": "c550f1084bf3645af952be6b2e7e273ba509f589",
+          "note": "P4: MIT source",
+          "id": "P4"
+        }
+      ],
+      "criteria": [
+        {
+          "item": 1,
+          "status": "VERIFIED",
+          "finding": "Synthetic industrial-scale100000L penicillin fermentation;dynamic fed-batch process,not real plant measurements.",
+          "evidence": [
+            "dataset",
+            "P1"
+          ]
+        },
+        {
+          "item": 2,
+          "status": "VERIFIED",
+          "finding": "Official author Mendeley archive and Python port found;source API located.",
+          "evidence": [
+            "dataset",
+            "P1"
+          ]
+        },
+        {
+          "item": 3,
+          "status": "UNKNOWN",
+          "finding": "Dataset generated by original IndPenSim;exact Python port/model/controller/noise/export equality has not been established.No matching run/version hashes tying100 old batches to this commit.",
+          "evidence": [
+            "dataset",
+            "P1"
+          ]
+        },
+        {
+          "item": 4,
+          "status": "PARTIAL",
+          "finding": "ODE/internal states,recorded observations,PID/recipe setpoints and commands differ;Raman high-dimensional outputs,hidden dynamics/control memory.",
+          "evidence": [
+            "P1",
+            "P2",
+            "P3"
+          ]
+        },
+        {
+          "item": 5,
+          "status": "BLOCKED",
+          "finding": "No explicit causal-GT graph/export/lag universe found in inspected source/tree.ODE dependencies are not a sensor-level causal reference.",
+          "evidence": [
+            "P1"
+          ]
+        },
+        {
+          "item": 6,
+          "status": "BLOCKED",
+          "finding": "Cannot compute scientifically justified whole observed-variable F1/DirectedF1/SHD without GT.Nonedge labels not supplied.",
+          "evidence": [
+            "P1"
+          ]
+        },
+        {
+          "item": 7,
+          "status": "VERIFIED",
+          "finding": "Feeds,aeration,pressure,discharge/water commands;target penicillin yield/concentration.Operating API ranges are not certified safe ranges.",
+          "evidence": [
+            "P1",
+            "P2",
+            "P3"
+          ]
+        },
+        {
+          "item": 8,
+          "status": "PARTIAL",
+          "finding": "step and recipe interfaces allow alternatives,with PID mediation;runtime not tested.",
+          "evidence": [
+            "P1",
+            "P2"
+          ]
+        },
+        {
+          "item": 9,
+          "status": "PARTIAL",
+          "finding": "Fresh same-port batches with random_seed_ref possible,independence/numerical equivalence not tested.Old archive cannot stand in as untouched action oracle.",
+          "evidence": [
+            "P1"
+          ]
+        },
+        {
+          "item": 10,
+          "status": "PARTIAL",
+          "finding": "Yield reward provides a decision objective;recipe/cost/admissibility must be fixed.No structural-quality linkage absent GT.",
+          "evidence": [
+            "P2"
+          ]
+        },
+        {
+          "item": 11,
+          "status": "PARTIAL",
+          "finding": "Batch-level seed splits possible;100 archive batches use different control regimes and lengths,not pooled iid.",
+          "evidence": [
+            "dataset",
+            "P1"
+          ]
+        },
+        {
+          "item": 12,
+          "status": "PARTIAL",
+          "finding": "Source MIT,data CC-BY4.0,archive~2.5GB;fastodeint C++dependency imported even when considering Python ODE mode;install/runtime/RSS untested.",
+          "evidence": [
+            "P1",
+            "P4",
+            "dataset"
+          ]
+        },
+        {
+          "item": 13,
+          "status": "BLOCKED",
+          "finding": "Action/effect policy methods transferable in a separate dynamic study;static DAG/Ridge and old F1 not automatically valid.",
+          "evidence": [
+            "P1",
+            "P2"
+          ]
+        },
+        {
+          "item": 14,
+          "status": "BLOCKED",
+          "finding": "Missing matching observed-level causal reference and exact archive/port provenance;do not invent GT.",
+          "evidence": [
+            "P1",
+            "dataset"
+          ]
+        }
+      ],
+      "license": {
+        "code": "MIT",
+        "data": "CC-BY-4.0"
+      },
+      "execution": {
+        "installed": false,
+        "data_downloaded": false,
+        "simulator_run": false
+      }
+    },
+    {
+      "id": "industrial_benchmark",
+      "name": "Siemens Industrial Benchmark",
+      "selected": false,
+      "repo": "https://github.com/siemens/industrialbenchmark",
+      "commit": "afeed6933ed1aff760a350f6300ae963bfc7bc04",
+      "paper": "https://arxiv.org/abs/1709.09480",
+      "source_evidence": [
+        {
+          "path": "industrial_benchmark_python/IDS.py",
+          "lines": "40-114",
+          "url": "https://github.com/siemens/industrialbenchmark/blob/afeed6933ed1aff760a350f6300ae963bfc7bc04/industrial_benchmark_python/IDS.py#L40",
+          "git_blob_sha1": "6ab7b424d8e7a4a68b16ee9261faded7867866e6",
+          "note": "I1: hidden/full vs visible state,global seeding,dynamic step",
+          "id": "I1"
+        },
+        {
+          "path": "industrial_benchmark_python/IDS.py",
+          "lines": "135-140",
+          "url": "https://github.com/siemens/industrialbenchmark/blob/afeed6933ed1aff760a350f6300ae963bfc7bc04/industrial_benchmark_python/IDS.py#L135",
+          "git_blob_sha1": "6ab7b424d8e7a4a68b16ee9261faded7867866e6",
+          "note": "I2: clipped steering changes",
+          "id": "I2"
+        },
+        {
+          "path": "industrial_benchmark_python/IBGym.py",
+          "lines": "38-63",
+          "url": "https://github.com/siemens/industrialbenchmark/blob/afeed6933ed1aff760a350f6300ae963bfc7bc04/industrial_benchmark_python/IBGym.py#L38",
+          "git_blob_sha1": "87ad4b4f3c4e37ba3f2b164dd13c017fc3187cf0",
+          "note": "I3: seed/reward/action/reset interface",
+          "id": "I3"
+        },
+        {
+          "path": "LICENCE.txt",
+          "lines": "1-12",
+          "url": "https://github.com/siemens/industrialbenchmark/blob/afeed6933ed1aff760a350f6300ae963bfc7bc04/LICENCE.txt#L1",
+          "git_blob_sha1": "ccea66f92776efa847d9d3ae26691e8620368471",
+          "note": "I4: Apache2 root;Python file headers MIT separately",
+          "id": "I4"
+        }
+      ],
+      "criteria": [
+        {
+          "item": 1,
+          "status": "VERIFIED",
+          "finding": "Synthetic industrial-control-inspired environment,not a specific physical plant twin.",
+          "evidence": [
+            "paper",
+            "I1"
+          ]
+        },
+        {
+          "item": 2,
+          "status": "VERIFIED",
+          "finding": "Official Siemens Python/Java/Gym source found.",
+          "evidence": [
+            "I1",
+            "I3"
+          ]
+        },
+        {
+          "item": 3,
+          "status": "PARTIAL",
+          "finding": "Commit fixed;published simulator is primary dataset generator,but no dataset manifest executed.",
+          "evidence": [
+            "I1"
+          ]
+        },
+        {
+          "item": 4,
+          "status": "VERIFIED",
+          "finding": "visibleState differs from full markovState;latent dynamics/history are explicit.",
+          "evidence": [
+            "I1"
+          ]
+        },
+        {
+          "item": 5,
+          "status": "BLOCKED",
+          "finding": "No benchmark observed-variable direct/lag GT export located;internal equations not same as observed causal graph.",
+          "evidence": [
+            "I1"
+          ]
+        },
+        {
+          "item": 6,
+          "status": "BLOCKED",
+          "finding": "No justified observed GT/nonedges/lag universe for existing full-graph scorer.",
+          "evidence": [
+            "I1"
+          ]
+        },
+        {
+          "item": 7,
+          "status": "VERIFIED",
+          "finding": "Three steering increments velocity/gain/shift;fatigue/consumption cost and reward;virtual process controls.",
+          "evidence": [
+            "I2",
+            "I3"
+          ]
+        },
+        {
+          "item": 8,
+          "status": "PARTIAL",
+          "finding": "step/reset supports alternatives;not executed here.",
+          "evidence": [
+            "I1",
+            "I3"
+          ]
+        },
+        {
+          "item": 9,
+          "status": "PARTIAL",
+          "finding": "Seeded repeated trajectories possible;global NumPy state means isolate objects/processes;latent history conditions matter.",
+          "evidence": [
+            "I1",
+            "I3"
+          ]
+        },
+        {
+          "item": 10,
+          "status": "PARTIAL",
+          "finding": "Conflicting reward components produce meaningful control task by design;reference candidate policies/horizon still need fixation.",
+          "evidence": [
+            "paper",
+            "I3"
+          ]
+        },
+        {
+          "item": 11,
+          "status": "PARTIAL",
+          "finding": "Independent episode/burn-in/seed splits possible;time rows not iid.",
+          "evidence": [
+            "I1",
+            "I3"
+          ]
+        },
+        {
+          "item": 12,
+          "status": "PARTIAL",
+          "finding": "Root Apache2,Python headers MIT;Python/NumPy/Gym dependencies;runtime/memory not measured.",
+          "evidence": [
+            "I4"
+          ]
+        },
+        {
+          "item": 13,
+          "status": "BLOCKED",
+          "finding": "Useful effect/decision dynamic benchmark;no whole-structure-quality evaluation without a new justified reference.",
+          "evidence": [
+            "I1",
+            "I2"
+          ]
+        },
+        {
+          "item": 14,
+          "status": "BLOCKED",
+          "finding": "Missing comparable observed causal GT is central;not solved by RL API or reward availability.",
+          "evidence": [
+            "I1"
+          ]
+        }
+      ],
+      "execution": {
+        "installed": false,
+        "simulator_run": false
+      }
+    },
+    {
+      "id": "causrca",
+      "name": "Fraunhofer causRCA",
+      "selected": false,
+      "repo": "https://github.com/causalgraph/causRCA",
+      "commit": "d932ab7ad91abe889b67e4d87186d0fccec7fbc1",
+      "dataset": "https://doi.org/10.5281/zenodo.15876410",
+      "data_version": "1.0.0 as documented",
+      "source_evidence": [
+        {
+          "path": "data/README_DATASET.md",
+          "lines": "100-111",
+          "url": "https://github.com/causalgraph/causRCA/blob/d932ab7ad91abe889b67e4d87186d0fccec7fbc1/data/README_DATASET.md#L100",
+          "git_blob_sha1": "6845cecee0f4d94a00d7d5c9f3960dd53fb87f75",
+          "note": "R1: real vs hardware-in-loop fault data and timestamp caveat",
+          "id": "R1"
+        },
+        {
+          "path": "data/README_DATASET.md",
+          "lines": "79-92",
+          "url": "https://github.com/causalgraph/causRCA/blob/d932ab7ad91abe889b67e4d87186d0fccec7fbc1/data/README_DATASET.md#L79",
+          "git_blob_sha1": "6845cecee0f4d94a00d7d5c9f3960dd53fb87f75",
+          "note": "R2: expert graph/subgraphs and recorded data",
+          "id": "R2"
+        },
+        {
+          "path": "src/causrca/cd_models/pkgs/simulate.py",
+          "lines": "1-26",
+          "url": "https://github.com/causalgraph/causRCA/blob/d932ab7ad91abe889b67e4d87186d0fccec7fbc1/src/causrca/cd_models/pkgs/simulate.py#L1",
+          "git_blob_sha1": "cd53f8e560a5c1b68018e9e618760f5413e388e0",
+          "note": "R3: generic Bayesian network random-DAG simulator,not lathe digital twin",
+          "id": "R3"
+        },
+        {
+          "path": "LICENSE.md",
+          "lines": "1-10",
+          "url": "https://github.com/causalgraph/causRCA/blob/d932ab7ad91abe889b67e4d87186d0fccec7fbc1/LICENSE.md#L1",
+          "git_blob_sha1": "cb1e262733d34af895bb94329c2598795e13f945",
+          "note": "R4: Apache2 source and reported dataset license",
+          "id": "R4"
+        }
+      ],
+      "criteria": [
+        {
+          "item": 1,
+          "status": "VERIFIED",
+          "finding": "Real vertical-lathe operation plus separate hardware-in-loop simulated faults;manufacturing relevant.",
+          "evidence": [
+            "R1"
+          ]
+        },
+        {
+          "item": 2,
+          "status": "VERIFIED",
+          "finding": "Official Fraunhofer contributors/repository/data provenance documented.",
+          "evidence": [
+            "R1",
+            "R2"
+          ]
+        },
+        {
+          "item": 3,
+          "status": "PARTIAL",
+          "finding": "Source pinned;datasetv1.0.0 documented,real vs twin model equality not demonstrated by naming/OPCUA interface.",
+          "evidence": [
+            "R1"
+          ]
+        },
+        {
+          "item": 4,
+          "status": "PARTIAL",
+          "finding": "CNC observations/actuator/control/fault labels;internal twin states not fully exposed.Timestamp ordering can differ across variables.",
+          "evidence": [
+            "R1"
+          ]
+        },
+        {
+          "item": 5,
+          "status": "PARTIAL",
+          "finding": "Expert reference graph/subgraphs available;expert structural semantics and timescale not exact generated SCM equations.",
+          "evidence": [
+            "R2"
+          ]
+        },
+        {
+          "item": 6,
+          "status": "PARTIAL",
+          "finding": "Can benchmark against explicit expert graph with stated scope;not verified complete physical nonedges or matched static/lag truth.",
+          "evidence": [
+            "R2"
+          ]
+        },
+        {
+          "item": 7,
+          "status": "PARTIAL",
+          "finding": "Coolant/hydraulic/probe fault manipulations recorded,not documented free optimization commands with same-condition outcome support.",
+          "evidence": [
+            "R1"
+          ]
+        },
+        {
+          "item": 8,
+          "status": "BLOCKED",
+          "finding": "No executable lathe twin/action API located in inspected published tree;generic simulate.py is not that plant.",
+          "evidence": [
+            "R3"
+          ]
+        },
+        {
+          "item": 9,
+          "status": "BLOCKED",
+          "finding": "Finite recorded fault campaigns are not arbitrary independent intervention/recovery oracle or freshseed simulator.",
+          "evidence": [
+            "R1",
+            "R3"
+          ]
+        },
+        {
+          "item": 10,
+          "status": "UNKNOWN",
+          "finding": "Fault labels support RCA diagnosis,not automatically a nontrivial action-choice objective or loss/cost.",
+          "evidence": [
+            "R1"
+          ]
+        },
+        {
+          "item": 11,
+          "status": "PARTIAL",
+          "finding": "Split by runs/scenarios possible within recorded support;no new independently controlled twin experiments established.",
+          "evidence": [
+            "R1"
+          ]
+        },
+        {
+          "item": 12,
+          "status": "PARTIAL",
+          "finding": "Apache2 code/data as documented;file sizes can be inventoried without downloading;physical hardware/twin execution resources unavailable.",
+          "evidence": [
+            "R4"
+          ]
+        },
+        {
+          "item": 13,
+          "status": "PARTIAL",
+          "finding": "Structural/RCA diagnostic reuse possible;cannot combine real observational graph errors and twin action loss as a proven unified process.",
+          "evidence": [
+            "R1",
+            "R2"
+          ]
+        },
+        {
+          "item": 14,
+          "status": "BLOCKED",
+          "finding": "Fresh decision intervention environment and matching causal-time contract absent;no claim all digital twins are public.",
+          "evidence": [
+            "R1",
+            "R3"
+          ]
+        }
+      ],
+      "execution": {
+        "data_downloaded": false,
+        "twin_accessed": false,
+        "models_run": false
+      }
+    }
+  ]
+}

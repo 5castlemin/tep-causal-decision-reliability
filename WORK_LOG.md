@@ -303,3 +303,13 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 정적JSON/예산산술/기존근거16hash/보존검사PASS. 기존전체96단위검사PASS(신규0),상태·동결39SHA·변수순서·환경계약·asset검사PASS. 기존보호5159파일불변. 기존suite의과거적합/CV재검산은새실험이아니며이번신규SCM/실험적합/do/최종검정0.
 
 - 설계/산술검토커밋 7bb887340281ce400ec98791a5aa61c4cf7b172b push,PR23 생성(base PR22). REDESIGN_REQUIRED/실행불가유지;기존PR15~23미병합·신규실험없음.
+
+### 2026-10-29 — TEP 대체 통합 제조 벤치마크 소스 검토
+
+- PR23 OPEN/head1728d85/basePR22,main e960fa8·시작clean확인후 feature/integrated-manufacturing-benchmark-search 분기.기존PR병합없음.
+- CausalMan/Chambers/PenSimPy/IndustrialBenchmark/causRCA5후보×14항목을공식논문·고정Git소스/metadata로대조. 외부코드저장소복사/설치/import/pickle/대형데이터/시뮬레이터·발견/적합/do연구실험0.
+- CausalMan17529da의6반환vsREADME/CLI4unpack,no-op apply_interventions,level1sample/level2return·pruning·mask변동을정적확인. GT잠재투영과직접DAG채점의차이명시.전체YES아님.
+- CONDITIONAL-CANDIDATE:CausalMan micro우선.미해결2개=artifact/변수/graph계약과식별가능한조작선택. AGPLcode와paper/data권리분리,defaultobjects약7.65GiB,smallN의fullbatch비용주의.다음은별도승인후한번의micro계약acceptance이며공식채택아님.
+- 연구A결과/TEP STOP/PR23예산·Gate/원설계및과거원시불변.제안force2arm품질task는물리actuator동등성·효과ID/선택변동미검증.허위안전범위/비용/GT없음.
+
+- 기존전체96단위검사PASS(66.685초/신규0),동결39SHA·변수순서/시계변환·환경계약15case·asset·상태검사PASS.5×14항목과보고서일치/기존상태보존검사PASS;5215이전보호파일불변.첫정적검사는evidence id 누락으로실패후기존note의식별자를추가하여PASS.외부후보실행PASS아님.

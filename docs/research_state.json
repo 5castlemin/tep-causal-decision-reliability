@@ -427,9 +427,21 @@
         "ERROR-DIAG",
         "PILOT-CONFIRM"
       ]
+    },
+    {
+      "id": "MFG-INTEGRATED",
+      "title": "동일환경 제조 벤치마크 후보 검토",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md; research_runs/integrated_benchmark_search/DECISION.json",
+      "next_action": "CONDITIONAL-CANDIDATE:CausalMan micro의고정artifact-GT/관측/do acceptance를별도실행승인후한번판정.현재설치/데이터생성/학습없음",
+      "acceptance": "5후보×14항목정적검토완료.두핵심조건은artifact/변수/graph정합성과식별가능한조작선택계약.전체YES/공식채택아님",
+      "depends_on": [
+        "SYNTH-FINAL"
+      ]
     }
   ],
   "priority_order": [
+    "MFG-INTEGRATED",
     "ERROR-CONFIRM",
     "PATH-PRECISION",
     "COMPAT-01",
@@ -485,7 +497,8 @@
     "2026-10-27 사용자승인은B설계검토만. DYNAMIC-SCOPE 초안은PROPOSED_FOR_REVIEW/판정2(미정당화),공식채택없음. MFG-EFFECT-SCOPE는별도효과중심설계검토결정으로분리;실행/GT승인아님.",
     "2026-10-28 MFG-EFFECT-SCOPE 설계검토완료/STOP-TEP-EFFECT-TRACK(BLOCKED/FROZEN). B/C자동채택없음. DYNAMIC-SCOPE도실행차단지속,과거미채택초안불변. 다음은SYNTH-FINAL의기존합성결과최종주장정리;새실험승인아님.",
     "2026-10-29 SYNTH-FINAL은기존결과통합분석완료VERIFIED이며원래가설확증완료아님. C01..C12는과거확인/현재개발구분. B1사전지지보존·B2안정추가정보미확립. TEP동결유지/새실험0.",
-    "2026-10-29 ERROR-CONFIRM 단일사전계약·예산검토완료/PARTIAL,REDESIGN_REQUIRED. PATH-PRECISION의MAE와별개Δ선택손실0.1폭계획. 신규실험없음;자원범위결정전실행안함."
+    "2026-10-29 ERROR-CONFIRM 단일사전계약·예산검토완료/PARTIAL,REDESIGN_REQUIRED. PATH-PRECISION의MAE와별개Δ선택손실0.1폭계획. 신규실험없음;자원범위결정전실행안함.",
+    "2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님."
   ],
   "integration_review": {
     "user_approved": true,
@@ -532,11 +545,11 @@
     "pr5_status": "MERGED",
     "pr5_base": "main",
     "merge_approval_received": true,
-    "note": "Independent error-location design/budget only stacked on PR22..15;main e960fa8. REDESIGN_REQUIRED,no new experiment/no merges.",
+    "note": "Integrated manufacturing candidate source review stacked on OPEN PR23..15;main e960fa8. No merges/adoption/external runs. TEP STOP and PR23 budget unchanged.",
     "pr5_merge_commit": "7b166383d4a5d86cdf73dbbec3b060b0ee0e3a24",
     "pr6_status": "MERGED",
     "pr6_head": "5fe3997d79a8244f4b156d5a335013337833b166",
-    "current_work_base": "feature/decision-reliability-next",
+    "current_work_base": "feature/independent-error-location-protocol",
     "pr7_status": "MERGED",
     "pr7_head": "8634e5dce66460dc26441fc40e930c34ebc73af7",
     "pr8_status": "MERGED",
@@ -554,7 +567,7 @@
     "pr11_head": "6d37d095998bf45bc532606fe8113fedd1b8f913",
     "pr11_merge_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
     "main_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
-    "current_feature": "feature/manufacturing-validity-gate",
+    "current_feature": "feature/integrated-manufacturing-benchmark-search",
     "pr12_status": "MERGED",
     "pr12_head": "23d19f56cd6510783398cfa95f66f1d1d8194937",
     "pr12_ci": 40097602131,
@@ -569,9 +582,9 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 23,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/23",
-    "current_pr_base": "feature/synthetic-final-claims-evidence",
+    "current_pr": null,
+    "current_pr_url": null,
+    "current_pr_base": "feature/independent-error-location-protocol",
     "pr16_status": "OPEN",
     "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab",
     "pr17_status": "OPEN",
@@ -585,7 +598,9 @@
     "pr21_status": "OPEN",
     "pr21_head": "18e14d8da8ce3cc494eb680c726a0aa1ef5d3c26",
     "pr22_status": "OPEN",
-    "pr22_head": "e9dae0c5e40d44228d30beb6cbdf6f0d771676cb"
+    "pr22_head": "e9dae0c5e40d44228d30beb6cbdf6f0d771676cb",
+    "pr23_status": "OPEN",
+    "pr23_head": "1728d8595fcbeb283f5f212ef30abcfad935a0a0"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -1179,5 +1194,36 @@
     "old_protected_files_unchanged": 5159,
     "pr": 23,
     "design_commit": "7bb887340281ce400ec98791a5aa61c4cf7b172b"
+  },
+  "integrated_benchmark_search": {
+    "report": "docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md",
+    "date": "2026-10-29",
+    "candidates": 5,
+    "criteria_per_candidate": 14,
+    "selected": "CausalMan",
+    "source_commit": "17529dad5ec8b8c691494c617b9af4533aa44bf8",
+    "verdict": "CONDITIONAL-CANDIDATE",
+    "complete_yes": false,
+    "officially_adopted": false,
+    "external_installations": 0,
+    "external_candidate_imports": 0,
+    "pickle_loads": 0,
+    "large_data_downloads": 0,
+    "external_runs": 0,
+    "new_discovery_fits": 0,
+    "new_SCM_fits": 0,
+    "new_do_research_runs": 0,
+    "old_TEP_F1_transferred": false,
+    "research_design_changed": false,
+    "dependency_pr": 23,
+    "dependency_head": "1728d8595fcbeb283f5f212ef30abcfad935a0a0",
+    "core_blockers": [
+      "ARTIFACT_VARIABLE_GRAPH_CONTRACT",
+      "IDENTIFIABLE_ACTION_DECISION_CONTRACT"
+    ],
+    "existing_unit_tests": 96,
+    "test_failures": 0,
+    "new_unit_tests": 0,
+    "old_protected_files_unchanged": 5215
   }
 }

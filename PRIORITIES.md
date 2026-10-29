@@ -4,14 +4,15 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **ERROR-CONFIRM — 오류 위치 독립 계약: 정밀도·자원 결정 필요**: REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 (PARTIAL)
-2. **PATH-PRECISION — 추가 예측력 독립 확인 정밀도·예산**: 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 (BLOCKED)
-3. **COMPAT-01 — 공개 후보와 기존 데이터/GT 대응**: 기존benchmark/Python직접결합NO-GO·계보미확보유지. 현TEP효과경로동결;새로운구체증거/지시없으면재검색하지않음 (PARTIAL)
+1. **MFG-INTEGRATED — 동일환경 제조 벤치마크 후보 검토**: CONDITIONAL-CANDIDATE:CausalMan micro의고정artifact-GT/관측/do acceptance를별도실행승인후한번판정.현재설치/데이터생성/학습없음 (PARTIAL)
+2. **ERROR-CONFIRM — 오류 위치 독립 계약: 정밀도·자원 결정 필요**: REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 (PARTIAL)
+3. **PATH-PRECISION — 추가 예측력 독립 확인 정밀도·예산**: 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 (BLOCKED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| MFG-INTEGRATED | PARTIAL | SYNTH-FINAL | CONDITIONAL-CANDIDATE:CausalMan micro의고정artifact-GT/관측/do acceptance를별도실행승인후한번판정.현재설치/데이터생성/학습없음 / 5후보×14항목정적검토완료.두핵심조건은artifact/변수/graph정합성과식별가능한조작선택계약.전체YES/공식채택아님 |
 | ERROR-CONFIRM | PARTIAL | ERROR-DIAG | REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 / 대응손실계약고정;미해결2개는정밀도-구조예산및종단실행비용근거.30개반폭0.446/유지15개0.742;구조단위598/유지총1650근사. 신규SCM/적합/do0 |
 | PATH-PRECISION | BLOCKED | PATH-MODEL | 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 / 실행 가능한 사전 정밀도·구조 수·예산 계약; 유리한 결과를 위한 기준 완화 금지 |
 | COMPAT-01 | PARTIAL | SIM-03, SIM-04 | 기존benchmark/Python직접결합NO-GO·계보미확보유지. 현TEP효과경로동결;새로운구체증거/지시없으면재검색하지않음 / 정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지 |
@@ -69,5 +70,6 @@
 - 2026-10-28 MFG-EFFECT-SCOPE 설계검토완료/STOP-TEP-EFFECT-TRACK(BLOCKED/FROZEN). B/C자동채택없음. DYNAMIC-SCOPE도실행차단지속,과거미채택초안불변. 다음은SYNTH-FINAL의기존합성결과최종주장정리;새실험승인아님.
 - 2026-10-29 SYNTH-FINAL은기존결과통합분석완료VERIFIED이며원래가설확증완료아님. C01..C12는과거확인/현재개발구분. B1사전지지보존·B2안정추가정보미확립. TEP동결유지/새실험0.
 - 2026-10-29 ERROR-CONFIRM 단일사전계약·예산검토완료/PARTIAL,REDESIGN_REQUIRED. PATH-PRECISION의MAE와별개Δ선택손실0.1폭계획. 신규실험없음;자원범위결정전실행안함.
+- 2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.
