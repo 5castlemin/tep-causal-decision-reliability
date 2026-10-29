@@ -8,7 +8,7 @@
 | SRC-01 | Final 생성 코드 회수 | BLOCKED | docs/reproducibility/GRAPH_REPRODUCIBILITY.json | FREEZE.code의 algos/run_*.py 및 common/config.py·data_io.py 원본을 해시로 대조하여 회수 |
 | SIM-03 | 공개 후보 수치·shutdown 검증 | PARTIAL | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 압력 한계 종료와 제한적 dt 수렴 확인; 동일 모델·controller 독립 기준 대조 및 폐루프 시간 계약 검증 |
 | SIM-04 | 공개 후보 새 객체 초기화 계약 | VERIFIED | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/diagnostics/analysis_20261023_v3/analysis.json | 동일 source/backend/seed/mode의 새 객체를 반복 단위로 사용; 같은 객체 reset의 비트 일치 미보장 |
-| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md | 원환경 계보·정식실행 미확보 유지. 새Python 내부동적 설계안은 별도사용자선택 대상. 기존F1과Python효과 결합금지 |
+| COMPAT-01 | 공개 후보와 기존 데이터/GT 대응 | PARTIAL | docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md | 원환경 계보 미확보/기존F1-Python효과 결합금지 유지. B축약계약 미정당화; 효과중심 별도설계 검토는 사용자선택 대상 |
 | SIM-01 | 기존 8월 시뮬레이터 복구 | BLOCKED | docs/SIMULATOR_SETUP.md | 당시 저장소 URL/ZIP·버전·실행 명령·로그의 구체 소재 확보 |
 | SIM-02 | 공개 Python 후보 관측·쓰기·Fault smoke | PARTIAL | PR #4 병합(1e4fcc7): docs/audit/SIMULATOR_RELIABILITY_REPORT.md; experiments/simulator/run_20261023_v3/summary.json | 기존 2시간 정상 기록 보존; controller/override·수치 기준·호환성 제한 해결 뒤 Gate 재평가 |
 | TASK-01 | 실행 가능한 복구 과제 확정 | BLOCKED | experiments/pilot/TASK_SPEC.md | 모델 호환 후 Fault/Action/Target·복구·안전 기준 사전 확정 |
@@ -43,7 +43,8 @@
 | ENV-CONTRACT | 구조 점수–개입 결과 metadata 차단 계약 구현 | VERIFIED | src/environment_contract.py; tests/test_environment_contract.py; research_runs/tep_environment_bridge/CONTRACT_RESULTS.json | 15개 계약 사례·실제 파일 해시 검사 완료. 새 join은 environment_contract.require_environment_contract 사용. 과학적 동등성 승인은 아님 |
 | TEP-BRIDGE | Python TEP 관측·명령·상태 연결 검산 | PARTIAL | research_runs/tep_environment_bridge/technical_v1/SUMMARY.json; research_runs/tep_environment_bridge/closure_v1/RESULT.json | 실제cache4step 추가로 좁은전이식 확인. 센서 직접/음성참조 미확정으로 L3/L4 BLOCKED; 연구설계 선택을 우선 |
 | VALVE-TRANSITION | 좁은 수동 밸브 시간전이 계약 검산 | VERIFIED | research_runs/tep_valve_transition/run_v1/TRANSITIONS.json; research_runs/tep_valve_transition/RECHECKS.json | L1 정상 cache 전이만 검증 완료. 같은기술반복 종료; DYNAMIC-SCOPE에서 내부상태·시간전개 연구설계 검토 여부 결정 |
-| DYNAMIC-SCOPE | 내부 상태·시간전개 연구 설계안 선택 | PROPOSED | docs/research_design/TEP_DYNAMIC_REFERENCE_DECISION.md; research_runs/tep_valve_transition/SCOPE_PROPOSAL.json | 우선권고B: 기존31정적센서와별도 namespace의 제한 내부동적 연구설계 검토 여부를 사용자결정. 새GT/본실험 채택은포함안함 |
+| DYNAMIC-SCOPE | 제한 내부 동적 연구계약 초안 검토 | PROPOSED | docs/research_design/BOUNDED_DYNAMIC_RESEARCH_PROTOCOL.md; research_runs/bounded_dynamic_protocol/DECISION.json | 검토 승인 범위에서 초안 작성·판정2: 현재계약 미정당화/실행NO-GO. PROPOSED_FOR_REVIEW 유지; 추가smoke 대신 MFG-EFFECT-SCOPE 결정 |
+| MFG-EFFECT-SCOPE | 제조 효과·조작 선택 중심 별도 설계 검토 결정 | PROPOSED | research_runs/bounded_dynamic_protocol/DECISION.json | C별도 효과중심 설계검토 여부를 사용자결정. 제조 전체F1 가설은보류/수정한다는한계를명시; 신규실행승인 아님 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

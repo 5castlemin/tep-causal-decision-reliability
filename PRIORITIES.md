@@ -4,16 +4,17 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **DYNAMIC-SCOPE — 내부 상태·시간전개 연구 설계안 선택**: 우선권고B: 기존31정적센서와별도 namespace의 제한 내부동적 연구설계 검토 여부를 사용자결정. 새GT/본실험 채택은포함안함 (PROPOSED)
-2. **COMPAT-01 — 공개 후보와 기존 데이터/GT 대응**: 원환경 계보·정식실행 미확보 유지. 새Python 내부동적 설계안은 별도사용자선택 대상. 기존F1과Python효과 결합금지 (PARTIAL)
-3. **ERROR-CONFIRM — 오류 위치의 조건부 의사결정 영향 독립 계약**: 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 (PROPOSED)
+1. **MFG-EFFECT-SCOPE — 제조 효과·조작 선택 중심 별도 설계 검토 결정**: C별도 효과중심 설계검토 여부를 사용자결정. 제조 전체F1 가설은보류/수정한다는한계를명시; 신규실행승인 아님 (PROPOSED)
+2. **DYNAMIC-SCOPE — 제한 내부 동적 연구계약 초안 검토**: 검토 승인 범위에서 초안 작성·판정2: 현재계약 미정당화/실행NO-GO. PROPOSED_FOR_REVIEW 유지; 추가smoke 대신 MFG-EFFECT-SCOPE 결정 (PROPOSED)
+3. **COMPAT-01 — 공개 후보와 기존 데이터/GT 대응**: 원환경 계보 미확보/기존F1-Python효과 결합금지 유지. B축약계약 미정당화; 효과중심 별도설계 검토는 사용자선택 대상 (PARTIAL)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| DYNAMIC-SCOPE | PROPOSED | VALVE-TRANSITION, REF-B | 우선권고B: 기존31정적센서와별도 namespace의 제한 내부동적 연구설계 검토 여부를 사용자결정. 새GT/본실험 채택은포함안함 / 사용자선택 후 닫힌부모/유한노드·시간·음성/미확정쌍·발견대상·관측변동·독립do·중단기준을 갖춘 하나의 제한 연구계약. 정당화못하면학습/F1중단 |
-| COMPAT-01 | PARTIAL | SIM-03, SIM-04 | 원환경 계보·정식실행 미확보 유지. 새Python 내부동적 설계안은 별도사용자선택 대상. 기존F1과Python효과 결합금지 / 정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지 |
+| MFG-EFFECT-SCOPE | PROPOSED | DYNAMIC-SCOPE | C별도 효과중심 설계검토 여부를 사용자결정. 제조 전체F1 가설은보류/수정한다는한계를명시; 신규실행승인 아님 / 선택시 원benchmark·합성결과보존/전체F1주장제외·독립정책효과/P0/출처있는과제/실패처리를갖춘한평가계약. 미선택시제조직접검증중단유지 |
+| DYNAMIC-SCOPE | PROPOSED | VALVE-TRANSITION, REF-B | 검토 승인 범위에서 초안 작성·판정2: 현재계약 미정당화/실행NO-GO. PROPOSED_FOR_REVIEW 유지; 추가smoke 대신 MFG-EFFECT-SCOPE 결정 / 4node/12미채점후보·부모폐쇄/비간선/발견대상/비자명선택/독립평가의 미충족조건 명시. 공식연구설계변경 아님 |
+| COMPAT-01 | PARTIAL | SIM-03, SIM-04 | 원환경 계보 미확보/기존F1-Python효과 결합금지 유지. B축약계약 미정당화; 효과중심 별도설계 검토는 사용자선택 대상 / 정상 ZIP 원본·권리·선택 run 및 timestamp/seed 실재 확인; 직접 효과 정답 NO-GO 유지 |
 | ERROR-CONFIRM | PROPOSED | ERROR-DIAG | 지표 우세를 목표로 하지 않는 새 오류쌍·효과/오프셋·후보 경계 계약과 예산을 먼저 고정. 기존20구조를 독립 확인으로 재사용하지 않음 / 대표 성공만 선택하지 않는 독립 대조 계획·독립 평가환경·실행 가능한 정밀도/예산 |
 | PATH-PRECISION | BLOCKED | PATH-MODEL | 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 / 실행 가능한 사전 정밀도·구조 수·예산 계약; 유리한 결과를 위한 기준 완화 금지 |
 | PATH-MODEL | PARTIAL | EVAL-MVP | 고정9후보 중첩 검증은 기본19/경로1 선택. 품질 특징 추가가 이득 아님. 단순 기본모형을 개발 기준선으로 유지하고 MAE 탐색 확장 중단 / 구조 단위 검증·특징 선택 누출 검사·고정 모형 산출물 |
@@ -63,5 +64,6 @@
 - 2026-10-27 MFG-VALIDITY 감사완료와 ENV-CONTRACT 제안분리. 제조GO/학습재실행으로승격안함. 다음한작업은외부환경없이가능한 metadata fail-closed검사구현.
 - 2026-10-27 ENV-CONTRACT 구현 VERIFIED는 metadata 소프트웨어만. TEP-BRIDGE PARTIAL: 실제8×6step·3고정점. VALVE-TRANSITION 제안은 별도 다음 작업. 전체 제조 구조–효과 NO-GO 유지.
 - 2026-10-27 VALVE-TRANSITION VERIFIED는4실제cache-step의정상수치전이만. L2 PARTIAL/L3·L4 BLOCKED. 동일기술반복을종료하고DYNAMIC-SCOPE의사용자설계선택으로이동. 새GT/연구전환미승인.
+- 2026-10-27 사용자승인은B설계검토만. DYNAMIC-SCOPE 초안은PROPOSED_FOR_REVIEW/판정2(미정당화),공식채택없음. MFG-EFFECT-SCOPE는별도효과중심설계검토결정으로분리;실행/GT승인아님.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

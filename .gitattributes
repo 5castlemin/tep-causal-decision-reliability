@@ -94,3 +94,9 @@ research_runs/tep_valve_transition/SCOPE_PROPOSAL.json linguist-generated=false
 src/tep_valve_transition_contract.py -text whitespace=cr-at-eol
 scripts/validate_tep_valve_transition_contract.py -text whitespace=cr-at-eol
 tests/test_tep_valve_transition.py -text whitespace=cr-at-eol
+research_runs/bounded_dynamic_protocol/** -text linguist-generated=true whitespace=cr-at-eol
+research_runs/bounded_dynamic_protocol/README.md linguist-generated=false
+research_runs/bounded_dynamic_protocol/PROTOCOL.json linguist-generated=false
+research_runs/bounded_dynamic_protocol/DECISION.json linguist-generated=false
+scripts/validate_bounded_dynamic_protocol.py -text whitespace=cr-at-eol
+tests/test_bounded_dynamic_protocol.py -text whitespace=cr-at-eol
