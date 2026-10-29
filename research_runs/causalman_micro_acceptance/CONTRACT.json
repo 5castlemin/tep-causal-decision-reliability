@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "status": "FROZEN_BEFORE_EXTERNAL_IMPORT_AND_SAMPLING",
+  "source": {
+    "repo": "https://github.com/boschresearch/CausalMan",
+    "commit": "17529dad5ec8b8c691494c617b9af4533aa44bf8",
+    "tree": "07d305edf35d07b3caa9b1ebabeb3f244cdc5dc9",
+    "variant": "causalman_micro",
+    "upstream_modification_allowed": false
+  },
+  "base": {
+    "pr": 24,
+    "head": "bc46dc924f2cf5171144c6e73e7a48373d83dc34"
+  },
+  "limits": {
+    "new_download_bytes": 1073741824,
+    "working_disk_bytes": 2147483648,
+    "peak_RSS_bytes": 2147483648,
+    "external_wall_seconds": 1800
+  },
+  "rights": {
+    "gate": "PASS_LOCAL_BUNDLED_SOFTWARE_EXECUTION_ONLY",
+    "basis": "Pinned README explicitly packages precomputed dataset_objects as CausalMan software;root AGPL3 declaration applies to that delivered package with no separate micro notice found. Keep all upstream notices. This is the limited local execution basis,not a blanket grant for third-party/Zenodo data or binary redistribution.",
+    "sources": [
+      "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/README.md",
+      "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/LICENSE",
+      "https://github.com/boschresearch/CausalMan/blob/17529dad5ec8b8c691494c617b9af4533aa44bf8/pyproject.toml"
+    ],
+    "Zenodo_acquisition": false,
+    "binary_redistribution": false,
+    "stop_if_other_rights_notice": true
+  },
+  "safety": {
+    "official_hash_verification_before_loading": true,
+    "source_and_data_outside_repo": true,
+    "separate_venv": true,
+    "network_and_subprocess_denied_in_sampling_worker": true,
+    "windows_job_memory_cap": true,
+    "arbitrary_pickle_safety_claim": false
+  },
+  "sampling_schedule": [
+    {
+      "id": "obs42",
+      "seed": 42,
+      "force": null
+    },
+    {
+      "id": "do16000",
+      "seed": 1042,
+      "force": 16000
+    },
+    {
+      "id": "do30000",
+      "seed": 2042,
+      "force": 30000
+    },
+    {
+      "id": "replay42",
+      "seed": 42,
+      "force": null
+    },
+    {
+      "id": "distinct43",
+      "seed": 43,
+      "force": null
+    }
+  ],
+  "n_samples_returned": 32,
+  "schedule_rule": "Sequential admission after measured previous cost;stop on first external runtime/model/resource error. Remaining runs are NOT_RUN,not retries. Same-seed replay is not independent evaluation.",
+  "action": "PF_M1_T1_Force",
+  "target": "Sec_C2_Machine1_ProcessResult",
+  "observed_universe": "Freeze baseline observable order before any do results;do constants alone are not failure.",
+  "api": "Use six returns and direct intervention_dict,never apply_interventions or four-unpack CLI.",
+  "instrumentation": "Pass-through runtime observers may record graph/equation/file/seed/data alignment without changing upstream bytes or return values.",
+  "scientific_gates": [
+    "active level1 equations vs level2 conditional causal semantics/all row-producing paths",
+    "same fixed observed mask and typed latent projection",
+    "hard force replacement/removal of incoming parents/downstream recomputation",
+    "valid binary quality and coding",
+    "replay and actual effective seed dependence",
+    "ADMG query identifiability and observation support,not numerical do alone"
+  ],
+  "no_research_fits_or_scores": true,
+  "failure": "Infrastructure/rights/resources do not imply scientific rejection. Model/reference mismatch or impossible original contract can reject;unknowns never count PASS.",
+  "environment_only_amendment": {
+    "reason": "First sampling attempt failed before returning rows because SymPy default stats backend requires SciPy,not declared by CausalMan core dependencies. No model/equation/GT/outcome result was changed.",
+    "before_contract_sha256": "51a245250ee928ceb1fa15511c9b67da67602ca90cbf6442172057f3ee189f5f",
+    "one_bounded_dependency_correction": "Install scipy1.14.1 then start a fresh observational object in a NEW run directory;preserve failed obs42 and all old logs. No model-error retries.",
+    "sampling_schedule_and_candidate_values_changed": false
+  }
+}

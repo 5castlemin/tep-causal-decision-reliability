@@ -46,7 +46,8 @@
 | DYNAMIC-SCOPE | 제한 내부 동적 연구계약 초안 검토 | BLOCKED | docs/research_design/BOUNDED_DYNAMIC_RESEARCH_PROTOCOL.md; research_runs/bounded_dynamic_protocol/DECISION.json | B축약계약판정2·미채택초안보존. 이후효과중심검토도STOP이므로추가TEP설계확대중단 |
 | MFG-EFFECT-SCOPE | TEP 효과·조작 선택 설계 검토: STOP | BLOCKED | docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md; research_runs/tep_effect_feasibility/DECISION.json | STOP-TEP-EFFECT-TRACK:현재경로동결. 추가TEP시험·패치·후속검토문서권고없음. SYNTH-FINAL로현재우선순위이동 |
 | SYNTH-FINAL | 합성 최종 주장·근거 통합 완료 | VERIFIED | docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md; research_runs/synthetic_final_claims/CLAIM_EVIDENCE_MATRIX.json | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 |
-| MFG-INTEGRATED | 동일환경 제조 벤치마크 후보 검토 | PARTIAL | docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md; research_runs/integrated_benchmark_search/DECISION.json | CONDITIONAL-CANDIDATE:CausalMan micro의고정artifact-GT/관측/do acceptance를별도실행승인후한번판정.현재설치/데이터생성/학습없음 |
+| MFG-INTEGRATED | 동일환경 제조 벤치마크 후보 검토 | PARTIAL | docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md; research_runs/integrated_benchmark_search/DECISION.json; docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md | PR24 후보 비교 보존;후속 MFG-MICRO 실제 실행은 CONDITIONAL_NOT_ACCEPTED.현재 학습/추천 연결 보류,후속 판단은 MFG-MICRO에서만 관리 |
+| MFG-MICRO | CausalMan micro 실제 수용 검사 | PARTIAL | docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md; research_runs/causalman_micro_acceptance/RESULT.json, GATE.json | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

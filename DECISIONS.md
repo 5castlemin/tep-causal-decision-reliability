@@ -141,3 +141,8 @@ RESEARCH_COMPASS는 실무 안내이며 RESEARCH_DESIGN을 대체/수정하지 �
 - 공식source기반5후보비교결과CausalMan을CONDITIONAL-CANDIDATE로선정.생산SCM과공통do코드·잠재투영을제공하지만source6반환/CLI4계약충돌,활성식/참조/mask정합성및식별가능한선택계약미검증으로READY아님.현재완전YES아님.
 - Chambers실물/GT와부분기구simulator를같은생성모델로합치지않음.PenSimPy/IB의내부ODE/동역학으로센서GT를발명하지않음.causRCA의real/HIL·genericBNsimulator를같은실행플랜트로취급하지않음.
 - 다음한검증은별도승인후고정micro의GT-관측-do acceptance.라이브러리/대형pickle획득·설치·실행은이번승인밖이며진행안함.기존TEP STOP/합성연구/PR23 REDESIGN·예산보존.공식채택/연구변경/병합없음.
+
+### 2026-10-29 — CausalMan micro 미수용
+
+- 실제import·관측·숫자do성공을연구수용과구분한다.원본mutilated graph의부모삭제결함과조건부참조/관측ADMG식별계약이남아CONDITIONAL_NOT_ACCEPTED.81간선계층차이만으로원시모델버그를선언하지않으며설치실패를과학적기각으로취급하지않음.
+- 다음은관측-only점효과식별을필수로유지할지방법론결정하나.현재micro의학습/추천본연결은보류하며,privileged-state/알려진함수/부분식별대안은새승인계약이다.자동패치·smoke반복·공식채택·TEP재개·기존PR병합없음.
