@@ -5,6 +5,9 @@ import json
 import math
 from pathlib import Path
 import subprocess
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
+from asset_preservation import assert_protected_preserved
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -69,8 +72,7 @@ def main():
     protected=['graphs/final','experiments','data','docs/audit/step6_main_table.csv','RESEARCH_DESIGN.md',
                'docs/research_design/evidence','docs/research_design/track_a_evidence',
                'docs/research_design/track_b_evidence','docs/research_design/ref_b_minimal_evidence']
-    changes=subprocess.check_output(['git','-C',str(ROOT),'diff','--name-only',provenance['base_commit'],'--',*protected],text=True)
-    assert not changes.strip(),changes
+    assert_protected_preserved(ROOT,provenance['base_commit'],protected)
     print('[PASS] 기존 자산 재사용·84행·8회×2버전 raw/hash·Gate 거부·성능 null·상태 동기화·원본 보존')
 
 

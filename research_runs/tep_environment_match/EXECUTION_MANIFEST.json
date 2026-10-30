@@ -1,0 +1,52 @@
+{
+  "manifest_reference": "research_runs/tep_official_validation/EXECUTION_MANIFEST.json",
+  "matlab": "R2026b Update 1",
+  "solver": "ode45 model default",
+  "command_template": "matlab -batch \"addpath('research_runs/tep_environment_match');run_original_seeds('<isolated official model run directory>')\"",
+  "command_note": "replace paths with absolute paths; reuse compiled PR32 monitored MEX, never overwrite official archive",
+  "runner_sha256": "7fbf72cd389ec5bbd5528724b9773e1a742667eb8b05be059b07763b406791b6",
+  "runs": [
+    {
+      "seed": 24121989,
+      "hours": 6,
+      "guard": 0
+    },
+    {
+      "seed": 12101992,
+      "hours": 6,
+      "guard": 0
+    }
+  ],
+  "wall_seconds": "NOT_RECORDED_SEPARATELY",
+  "warnings": [
+    "legacy TElib Simulink5 format may not behave correctly on current release",
+    "Classic initialization deprecation"
+  ],
+  "raw_artifacts": [
+    {
+      "path": "data/local/tep_official_validation/run_v1/seed_24121989.csv",
+      "bytes": 37168238,
+      "sha256": "ee595ab90cc8d409abe87f2791771d9f99151bbb435b1266f06fca46ece02a8a"
+    },
+    {
+      "path": "data/local/tep_official_validation/run_v1/seed_24121989.mat",
+      "bytes": 158733,
+      "sha256": "417bb498b6b801e7b045a2a4d61703fd660c5782d36221eab3d79c1e3077f390"
+    },
+    {
+      "path": "data/local/tep_official_validation/run_v1/seed_12101992.csv",
+      "bytes": 37084951,
+      "sha256": "f6e82a20772c0b857ff80c621e36e8c653bcae945ca866dd3e81683d8bcd6f36"
+    },
+    {
+      "path": "data/local/tep_official_validation/run_v1/seed_12101992.mat",
+      "bytes": 157860,
+      "sha256": "88e96bdeeabf4aecf10bde138430f810728f1e97c7471f21f7032ac89436c8e3"
+    },
+    {
+      "path": "data/local/tep_official_validation/run_v1/seed_diagnostic.log",
+      "bytes": 1869,
+      "sha256": "9e83876ca3665cf4060b11d4169cbca4650bc8b7020fc84dc2cd62b33d0480b1"
+    }
+  ]
+}
