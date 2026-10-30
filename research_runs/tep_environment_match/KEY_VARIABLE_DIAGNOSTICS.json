@@ -1,0 +1,49 @@
+{
+  "evidence": "existing PR32 6h major-output log, linear interpolation to10s, no new run",
+  "statistics": {
+    "X7": {
+      "benchmark_mean": 2800.0021562251504,
+      "benchmark_sd": 0.9056104927929114,
+      "official_first": 2798.9757990229973,
+      "official_last": 2806.408735502618,
+      "hourly_means": [
+        2800.046231237883,
+        2797.9483039996594,
+        2802.314198714542,
+        2800.3498844615324,
+        2805.693540951957,
+        2792.4103908911907
+      ]
+    },
+    "X20": {
+      "benchmark_mean": 273.0576682946297,
+      "benchmark_sd": 0.27876930287459173,
+      "official_first": 272.78217720412334,
+      "official_last": 265.3876880289822,
+      "hourly_means": [
+        273.3823621318239,
+        275.4768364111829,
+        277.8277605289234,
+        272.938465406486,
+        263.9006811587465,
+        265.11225676589527
+      ]
+    },
+    "X21": {
+      "benchmark_mean": 102.4670200616411,
+      "benchmark_sd": 0.014580035466718768,
+      "official_first": 102.4800282325948,
+      "official_last": 102.56640507322227,
+      "hourly_means": [
+        102.46010514997133,
+        102.40226312143463,
+        102.40220679585946,
+        102.51066416030446,
+        102.72364587043371,
+        102.57621510717084
+      ]
+    }
+  },
+  "interpretation": "initial X20/X21 values are close to benchmark then drift; unit mismatch not established; controller/noise/process contribution not identified",
+  "restriction": "raw6h vs processed75h comparison descriptive; do not exclude these variables"
+}

@@ -505,9 +505,19 @@
       "next_action": "Manca 원시 정상자료·시계·noise/model flags·전처리 확보 후 비교 계약 고정",
       "acceptance": "동일 관측/제어/생성 계약 및 비교 검증 이후에만 Phase B",
       "depends_on": []
+    },
+    {
+      "id": "TEP-DATA-RECOVERY",
+      "title": "Manca 원본자료와 공식환경 연결",
+      "status": "BLOCKED",
+      "evidence": "docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 페이지 로그인 제한 및 upstream CSV 바이트 일치 확인",
+      "next_action": "공식 IEEE 로그인 후 정상 원본 ZIP 다운로드 경로 확보, 파일·시간·전처리 계보 확인",
+      "acceptance": "원본 측정자료와 가공 코드/시계 확인 후 동일환경 기준 고정 및 검증",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "TEP-DATA-RECOVERY",
     "TEP-OFFICIAL",
     "TEP-MATLAB",
     "TEP-SEARCH",

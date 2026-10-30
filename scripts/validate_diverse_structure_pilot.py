@@ -9,6 +9,7 @@ import subprocess
 import sys
 
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
+from asset_preservation import assert_protected_preserved
 from diverse_structure_pilot import reference_edges,score_graph,analytic_response
 from diverse_metric_analysis import loso,primary_rows
 from repeated_metric_pilot import recommend_policy,acyclic,colliders
@@ -45,7 +46,7 @@ def validate():
     protected=['graphs/final','experiments','data','RESEARCH_DESIGN.md','docs/audit/step6_main_table.csv',
         'research_runs/first_integrated_pilot','research_runs/repeated_metric_pilot','research_runs/env_acceptance','research_runs/decision_mvp',
         'src/integrated_pilot.py','src/repeated_metric_pilot.py','src/decision_mvp.py','src/fcm_acceptance_adapter.py','src/pilot_fit.py']
-    assert not subprocess.check_output(['git','diff',plan['base_commit'],'--name-only','--',*protected],cwd=ROOT,text=True).strip()
+    assert_protected_preserved(ROOT, plan['base_commit'], protected)
     ledger=read(RUN/'execution_ledger.json');first=next(e for e in ledger if e['stage']=='FIRST_TWO_GENERATORS_PASSED')
     all_eight=next(e for e in ledger if e['stage']=='ALL_EIGHT_GENERATORS_PASSED')
     assert first['sequence']<all_eight['sequence']<min(e['sequence'] for e in ledger if e['stage']=='GRAPH_ATTEMPT_STARTED')
