@@ -1,0 +1,164 @@
+{
+  "type": "SINGLE_PAIR_ASSUMPTION_BASED_TECHNICAL_PROBE",
+  "original_effect_gate": "NOT_PASSED",
+  "same_seed_common_noise": "NOT_VERIFIED, action can change adaptive solver/RNG call ordering",
+  "end_hours": [
+    0.16666666666666666,
+    0.16666666666666666
+  ],
+  "max_guard": [
+    0.0,
+    0.0
+  ],
+  "max_pulse_cache_error_percent": 0.0,
+  "max_actual_valve_difference_percent": 0.8245266042386135,
+  "valve_comparison_clock": "baseline last major output held at intervention major times; may differ in solver grids",
+  "max_controller_command_difference_percent": 0.9440579284171022,
+  "pre_pulse_sensor_max_abs": 0.0,
+  "temperature_difference_intervention_minus_baseline_degC": {
+    "pulse": {
+      "mean": -0.038022818376944656,
+      "min": -0.09527416942599132,
+      "max": 0.009839493443990932
+    },
+    "post": {
+      "mean": -0.00026829679220156775,
+      "min": -0.10946745087900922,
+      "max": 0.06990556835599193
+    },
+    "all": {
+      "mean": -0.011329805747377754,
+      "min": -0.10946745087900922,
+      "max": 0.06990556835599193
+    }
+  },
+  "numerical_effect_vs_noise": "one pair cannot separate policy mean effect from measurement/process noise differences; no CI or ATE",
+  "SCM_prediction": "NOT_RUN: observational identification and same-environment contract remain unverified",
+  "graph_metric_comparison": "NOT_RUN: no modeled predictions/selection losses; no metric superiority inference",
+  "safety_scope": "same native shutdown, sensor bounds, command0..100 and all50 states finite; not certified industrial safety",
+  "runs": [
+    "0 END=0.166667 GUARD=0 WALL=33.5066 VALUE=36.0587322048939",
+    "1 END=0.166667 GUARD=0 WALL=30.3867 VALUE=36.0587322048939"
+  ],
+  "raw_artifacts": [
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/Mode1xInitial.mat",
+      "bytes": 13592,
+      "sha256": "40eaebc92badb04ad026e358cfd28ec9c778fcf2d24a1b8f5d85565854da2747"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/Mode_1_Init.m",
+      "bytes": 1240,
+      "sha256": "ab1f9eb39de8c45186861e5decd7e1e68158fe2b218cd84c81c622c9157fe29d"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/MultiLoop_mode1.mdl",
+      "bytes": 129416,
+      "sha256": "555d4b468c56750b33b1aa13b8e3b00df88f10aae1d96979e0b8be0bcbec6999"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/MultiLoop_mode1.slxc",
+      "bytes": 5286,
+      "sha256": "e64799d89a6937cd326c32b7ebcd6ac4f1f48e790df829ace8863518d9e4fd1a"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe.log",
+      "bytes": 2395,
+      "sha256": "696431ae2c97d947f0227ee8ab48a4ce054897528f420a009f83880a066fdf77"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_0.mat",
+      "bytes": 23559,
+      "sha256": "b14800f5ed50f4682ccd099918acc444d644164c35b529640a8a9442876c0cd2"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_0_guard.csv",
+      "bytes": 1090049,
+      "sha256": "15cce904a77a61338da55cea46a38e7e4e5cd3c5b46d4571e2fff8001abb771b"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_0_observer.csv",
+      "bytes": 6025331,
+      "sha256": "c7f232a3c96e9946544efc07e5ea6c7947331016fccd9c512a87328513d78253"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_0_simout.csv",
+      "bytes": 67508,
+      "sha256": "60c9c1896d152bce2cd8bdadea0a88bd435ac5510fb485ea9be04c25cc38bf50"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_0_tout.csv",
+      "bytes": 1102,
+      "sha256": "8a408c2030f0883d9bfbcd3ee6a4a8d4f4ada654b19c7fe9e53be337be3c08f0"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_0_xmv.csv",
+      "bytes": 9831,
+      "sha256": "e8197b5f0e48bc42e151ab2f856668c65446ad053d077a6b1a09701fe92e13d1"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_1.mat",
+      "bytes": 23616,
+      "sha256": "12b00c728be38dda7b97e06e723b1b8464072f7fe384375d3a62664382c0db8e"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_1_guard.csv",
+      "bytes": 1121071,
+      "sha256": "784e02f2243dfb22a9e8b9acba81679d57b8ce0e24e40c51d67e9c91a4f9f1f7"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_1_observer.csv",
+      "bytes": 6150862,
+      "sha256": "9c710a6bcb2e9e9bfc3fdd5e946ae417bafa7ca1ab2d1e5331841382c4b1c80d"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_1_simout.csv",
+      "bytes": 67671,
+      "sha256": "797dd59cb9e795be72780462de06a8384924e93e72d41c12f38bb949fd3e30f5"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_1_tout.csv",
+      "bytes": 1102,
+      "sha256": "8a408c2030f0883d9bfbcd3ee6a4a8d4f4ada654b19c7fe9e53be337be3c08f0"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/probe_1_xmv.csv",
+      "bytes": 9824,
+      "sha256": "68fedc96bda0e7c037e5ecf0188487ec867265f8e01677fec27fcff963a8873d"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/TElib.mdl",
+      "bytes": 13202,
+      "sha256": "8dbca8aaa0b7f0e078b0fed6d2b9893dcbfd21b79ff20decbaddfe80ed678fe6"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/temexd_mod.c",
+      "bytes": 200438,
+      "sha256": "16f0fea120781a0e22fc6c113ccca3db017fdafe599b5a20866df50acc30b45e"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/temexd_mod.mexw64",
+      "bytes": 72192,
+      "sha256": "1aa48d0d73c5db355cdc919e3248af1d4281787875c734233a3e8792f1b399e8"
+    },
+    {
+      "path": "data/local/tep_intervention_probe/run_v1/teprob_mod.h",
+      "bytes": 7160,
+      "sha256": "fa3782a07c11e5c149ad0f44ec332c45ed998edb7ef8241fade9b1d395577363"
+    }
+  ],
+  "reproduction_scripts": [
+    {
+      "path": "research_runs/tep_intervention_probe/run_probe.m",
+      "sha256": "c4848f7b8123d0503cf014fa3b5fe43066b7525f0233b5a53c2763ed2fe8aa3e"
+    },
+    {
+      "path": "research_runs/tep_intervention_probe/tep_terminal_override.m",
+      "sha256": "db221ecba83ebbbf9c486ac833fb181dbe351b08e199acdab9c39e94c3e97ae4"
+    }
+  ],
+  "runner_version_note": "Current reproduction scripts include post-run refusal to overwrite existing trajectories; process/controller equations unchanged. Failed dimension attempts retained in raw logs; exact earlier runner hashes were not separately captured.",
+  "commands": [
+    "matlab -batch \"addpath(<absolute dynamics runner path>);addpath(<absolute probe runner path>);run_probe(<fresh isolated model directory>,<absolute TASK_CONTRACT.json>)\""
+  ]
+}

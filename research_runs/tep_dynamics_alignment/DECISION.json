@@ -1,0 +1,23 @@
+{
+  "environment": "SAME_ENVIRONMENT_PLAUSIBLE_BUT_UNVERIFIED",
+  "scope": "corrected flags225 and recording10s candidate; previous flags0/36s demonstrably differed",
+  "confirmed_causes": [
+    "structure mask0 vs225 changes measurement extension and RNG streams/disturbance scheduling",
+    "native record36s vs original10s; active output scheduling changes trajectories",
+    "initial command cache is not controller command; initial mismatch was recording phase"
+  ],
+  "residual": [
+    "30min maximum gaps pressure1.957481kPa,X20 2.097440kW,X21 0.058588C; small post6min residual grows",
+    "6min composition-controller/analyzer update plus solver-call ordering is a timed candidate, not confirmed cause",
+    "original-to1499 preprocessing remains unresolved"
+  ],
+  "original_causal_effect_gate": "NOT_PASSED",
+  "permitted_probe": "USER_AUTHORIZED_ASSUMPTION_BASED_TECHNICAL_ONLY",
+  "not_claimed": [
+    "original generation trace fully reproduced",
+    "SCM identified",
+    "metric superiority",
+    "Recovery/Safety performance"
+  ],
+  "technical_probe": "COMPLETED_SINGLE_PAIR_NOT_RESEARCH_EFFECT"
+}

@@ -1,0 +1,10 @@
+item,Manca,previous_run,corrected_diagnostic,evidence_status
+process code,2015 model1.3.3 reported,2015 code hash verified,same fixed official C,PARTIAL: original executed binary unavailable
+solver,not explicitly specified in inspected report,ode45 RelTol1e-6 AbsTol auto MaxStep auto,unchanged,UNKNOWN original solver tolerances
+initial states,original file not bundled; initial73/12 observed,Mode1xInitial loaded,same saved initial states,"PARTIAL: outputs match, full original hidden state unavailable"
+structure flags,225 per Table1.1,0 default,225 per source,VERIFIED prior setting difference
+noise generator,separate measurement/disturbance states,shared state,separate states per bit5,VERIFIED configured logic; same seed not enough alone
+controller clock,"Ricker17+2 loops reported, exact period not stated",0.0005h (1.8s),unchanged,PARTIAL
+recording,10s actual TOUT,"Ts_save36s, guard major1.8s plus minor",Ts_save10s native ToWorkspace,VERIFIED recording difference
+XMV5/9/12,0/0/100 raw,0/0/100 controller after init; t0 cache22.21/47.45/50,native command0/0/100,VERIFIED phase distinction
+analyzers,source model gas6min/product15min,source delays preserved,source delays preserved,raw records are not fresh analyzer measurements each10s

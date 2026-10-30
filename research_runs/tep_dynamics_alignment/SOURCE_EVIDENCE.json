@@ -1,0 +1,28 @@
+{
+  "report_file": "Technical_Report_V1_2.pdf",
+  "report_sha256": "657307d7119538a0c21bdc49933c4ff31de929038a0213f9f4a8dfc3fde9faf0",
+  "report_page": "PDF12 / printed10 Table1.1 visually inspected embedded table",
+  "table_image_sha256": "723caf8a0ba7d1da37ebbc5418aefb53ecbfb5f7d38c115f7df6211486675b67",
+  "report_url": "https://ieee-dataport.org/open-access/tennessee-eastman-process-alarm-management-dataset",
+  "official_url": "https://depts.washington.edu/control/LARRY/TE/download.html",
+  "official_C_sha256": "eff57b75700e7472005785150c21f82b0c3d178ebceebe37e532794f23785aba",
+  "code_locations": {
+    "parameters": "temexd_mod.c:135-178,1149-1153,1282-1300",
+    "commands": "getcurr:1529-1556, called at outputs with1 (no new input copy), derivatives with2 (input copy)",
+    "noise": "tefunc:3171-3186,3258-3279;tesub7:3870-3896",
+    "analyzer_delays": "tefunc:3253-3293 gas0.1h/product0.25h",
+    "model_clock": "Mode_1_Init.m:Ts_base0.0005h,Ts_save0.01h; Manca report0.1Hz and TOUT75h/27001"
+  },
+  "seed_default": 1431655765,
+  "parameter1": "initial physical state vector, [] uses C defaults; saved Simulink xInitial independently loads physical/controller states. Source prose says52, implemented NX=50; do not infer state count from legacy comment",
+  "parameter2": "LCG seed initializes g/measnoise/procdist; not MATLAB rng()",
+  "parameter3": "structure flags; absent defaults0; report225=1+32+64+128",
+  "original_unknown": [
+    "exact MATLAB release",
+    "actual solver/RelTol/AbsTol/MaxStep and inherited initialization options",
+    "original model/init file bytes and any unreported edits",
+    "CPCaD raw selection and exact median/stride/boundary conversion"
+  ],
+  "CPCaD_history": "reuse previous11 reachable commit audit; not searched again",
+  "no_external_contact": true
+}

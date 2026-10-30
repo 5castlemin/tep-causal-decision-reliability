@@ -1,0 +1,329 @@
+{
+  "monitor": {
+    "shape_reference": [
+      470,
+      83
+    ],
+    "shape_monitored": [
+      470,
+      83
+    ],
+    "max_abs": 0.0,
+    "scope": "60s native outputs41 and input40 at same PostOutputs callback; internal states not observed in reference",
+    "injected_stop": 99.0
+  },
+  "runs": [
+    "inject FLAG=0 SAVE_SEC=36 END=0.0005 REASON=99 WALL=5.69936",
+    "reference FLAG=0 SAVE_SEC=36 END=0.0166667 REASON=0 WALL=2.88199",
+    "monitored FLAG=0 SAVE_SEC=36 END=0.0166667 REASON=0 WALL=2.88032",
+    "f0_s36 FLAG=0 SAVE_SEC=36 END=0.166667 REASON=0 WALL=26.0775",
+    "f225_s36 FLAG=225 SAVE_SEC=36 END=0.166667 REASON=0 WALL=32.9632",
+    "f0_s10 FLAG=0 SAVE_SEC=10 END=0.166667 REASON=0 WALL=27.92",
+    "f225_s10 FLAG=225 SAVE_SEC=10 END=0.166667 REASON=0 WALL=28.7073",
+    "f225_s10_30min FLAG=225 SAVE_SEC=10 END=0.5 REASON=0 WALL=193.523"
+  ],
+  "compile_failures": 2,
+  "artifacts": [
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/alignment.log",
+      "bytes": 12228,
+      "sha256": "05dd8946ab9582b9d6c37f654680065c1a22c3ccb952097940e74c83025a9878"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s10.mat",
+      "bytes": 20034,
+      "sha256": "fb2ff52e38d9e7848e1be8a0543647deb0c25a485265b06272b9262a20d093ca"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s10_guard.csv",
+      "bytes": 1087412,
+      "sha256": "6aa2b11ec42d3bd636a4c985cd1f72533be5f96d89b72460bcb96a568bad6695"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s10_observer.csv",
+      "bytes": 4228096,
+      "sha256": "8691afbd1857fcdaa98a6343893142acab400b7a3f097c0d98b677bde9d34677"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s10_simout.csv",
+      "bytes": 42867,
+      "sha256": "02ebd261eadb4015e7294b7754ca1ea6b6cc2217c73903c1b63c1db25651a98e"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s10_tout.csv",
+      "bytes": 1102,
+      "sha256": "8a408c2030f0883d9bfbcd3ee6a4a8d4f4ada654b19c7fe9e53be337be3c08f0"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s10_xmv.csv",
+      "bytes": 9841,
+      "sha256": "336076cc4e540808b090f6f8a2247ad31d7b190fa4c85f1b41b017525506aaa6"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s36.mat",
+      "bytes": 9481,
+      "sha256": "8a9420ce64a3e5d6125fe034298d5cb4e806a5bf579c75dc22d9995f77af6629"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s36_guard.csv",
+      "bytes": 1034681,
+      "sha256": "3426c4d3d41040e6c3cbbdd6048ab4f86e2a95c3eb4878b8a5d58bfdc539f35c"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s36_observer.csv",
+      "bytes": 3959551,
+      "sha256": "60d0862ea9e85812622b7fed25850783b5179e53b327e9f3b9afea1f4e0275e4"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s36_simout.csv",
+      "bytes": 11922,
+      "sha256": "50ad681f4d3df79e0c013b5ea935eb2ec60d936e6a9788a23ca269202a732946"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s36_tout.csv",
+      "bytes": 98,
+      "sha256": "7496285df708217f055572732e9e3beec2bfc9f4c1d285b7a137cd4764a50b9a"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f0_s36_xmv.csv",
+      "bytes": 2732,
+      "sha256": "b9362d8ead64c5549b34ffdc8c4b8764eb6502f6d446a08788e57f6a69944963"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10.mat",
+      "bytes": 23331,
+      "sha256": "4a4698744446a5b086b2eb983e1d0d0b25ab433dab5cf386eb211eedee74531a"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_30min.mat",
+      "bytes": 58568,
+      "sha256": "17bd680d280f5cb9fa547ba66b6006f361293f31f96261076e3762319bc7e541"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_30min_guard.csv",
+      "bytes": 3214728,
+      "sha256": "fb8d1afd653e888d431e70c0692ed73335ed96f48ac9cb30a2f624d36b7b648a"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_30min_observer.csv",
+      "bytes": 19286098,
+      "sha256": "99ba1108317573df49f369caff187f3a266f3c450f617d1ea9006aee16652708"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_30min_simout.csv",
+      "bytes": 222503,
+      "sha256": "89dc5b772f23f6a813146fd8903effee92361dda7defb0967506bb4b2d6de373"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_30min_tout.csv",
+      "bytes": 3203,
+      "sha256": "8fb5e23a52237962d635f6fff455b4cb346fdd8645ce4d62f282c97912f49138"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_30min_xmv.csv",
+      "bytes": 29118,
+      "sha256": "f1d2c0ca3f255a3ad52382dac0183ece496b5bcbbb93d00105635ecabbe402b9"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_guard.csv",
+      "bytes": 1078273,
+      "sha256": "162add3b0338a943e5c86195f79502e8e19ca9b989d6f9c85f6b2b706f47c3bf"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_observer.csv",
+      "bytes": 5969869,
+      "sha256": "eb710454cafe570bd36bc2a3c75e5fe9e1ac49afde061e8d004ce31f58781ab3"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_simout.csv",
+      "bytes": 67554,
+      "sha256": "5e6a2e390017bca5568c84514f0d8b1e945a6da43579f9833ed54086a8ff86a8"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_tout.csv",
+      "bytes": 1102,
+      "sha256": "8a408c2030f0883d9bfbcd3ee6a4a8d4f4ada654b19c7fe9e53be337be3c08f0"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s10_xmv.csv",
+      "bytes": 9823,
+      "sha256": "df26e438dcc01a50b90475c98e21aca360bd227f0ff51bbd3d2c84829e005790"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s36.mat",
+      "bytes": 10548,
+      "sha256": "70ee704274d876fefa3f33ee51dcfd334966da040d2c8859d7e01eef134b1e12"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s36_guard.csv",
+      "bytes": 1028412,
+      "sha256": "8ffa5fc3de4f24bf561a00d80c5db29568a83aefc2ae2e2bf79f649bea08f01b"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s36_observer.csv",
+      "bytes": 5691312,
+      "sha256": "bfdb2c50fa4ea4f0b9ad915995c5ee4bae4ba5815780fc13be95b09614767e15"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s36_simout.csv",
+      "bytes": 18573,
+      "sha256": "028b55f0af2b3ff6807bd9e43d411f2d7640888d98d5aca040dc98202368b355"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s36_tout.csv",
+      "bytes": 98,
+      "sha256": "7496285df708217f055572732e9e3beec2bfc9f4c1d285b7a137cd4764a50b9a"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/f225_s36_xmv.csv",
+      "bytes": 2733,
+      "sha256": "93b3526c5f69e4de720100eaf503c351e8d2255a95b0e32e3bed25e441868036"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/inject.mat",
+      "bytes": 5014,
+      "sha256": "2dd579561c0b85d414991481e6660688f2af501ce7f05a981f72eddaa5831e82"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/inject_observer.csv",
+      "bytes": 95567,
+      "sha256": "ec128e58eaff5799397df063ef59deab890d6ab1bcc5fc3e79b8a81f96e573ce"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/inject_simout.csv",
+      "bytes": 688,
+      "sha256": "d445f662bd712a062f8acedaaede24e4b23742467c5164e924c87963df3afa12"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/inject_tout.csv",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/inject_xmv.csv",
+      "bytes": 161,
+      "sha256": "2c1a97943964098c6d9f89371556c38637c4bb430df73bd8e9712845ef7b006a"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/Mode1xInitial.mat",
+      "bytes": 13592,
+      "sha256": "40eaebc92badb04ad026e358cfd28ec9c778fcf2d24a1b8f5d85565854da2747"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/Mode_1_Init.m",
+      "bytes": 1240,
+      "sha256": "ab1f9eb39de8c45186861e5decd7e1e68158fe2b218cd84c81c622c9157fe29d"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/monitored.mat",
+      "bytes": 5298,
+      "sha256": "385a098211ac9aa95cf2ab4646e65813572dbd4c202ce8030c9cd1c7529219ca"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/monitored_guard.csv",
+      "bytes": 132661,
+      "sha256": "888ea068a256d8bf8d5c59598ad9694294f0f5a8a0852a9585518da1ac4b73b2"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/monitored_observer.csv",
+      "bytes": 488048,
+      "sha256": "78f7efbe13d5ddc34f87b513e3f9e1257fb5d9cc24ae0c7ec79c41c6252c09bc"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/monitored_simout.csv",
+      "bytes": 1392,
+      "sha256": "a1cf1e185fe98364b9275d5643ffb6cd289446a56953957dea3a3a3e51af8d86"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/monitored_tout.csv",
+      "bytes": 9,
+      "sha256": "8d4fd0fb0cf0cc882b5664092efed7b38ac99df7e7e55c8a3cd468e9dc7e9efc"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/monitored_xmv.csv",
+      "bytes": 321,
+      "sha256": "fc3c72fe0eef25feb70984a481a6918ef03c83770d22be646613ff821e20f0ce"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/MultiLoop_mode1.mdl",
+      "bytes": 129416,
+      "sha256": "555d4b468c56750b33b1aa13b8e3b00df88f10aae1d96979e0b8be0bcbec6999"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/MultiLoop_mode1.slxc",
+      "bytes": 5282,
+      "sha256": "5444cc3866ffcdd11c39f57bff2c6fcd1a1a5ddb5ad089c39b14b9ec690a9abf"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/reference.mat",
+      "bytes": 5301,
+      "sha256": "5ad3310b7bdd749518ea1ae896a2d6380507c73f9792084e9f21d956f12a153f"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/reference_observer.csv",
+      "bytes": 488048,
+      "sha256": "78f7efbe13d5ddc34f87b513e3f9e1257fb5d9cc24ae0c7ec79c41c6252c09bc"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/reference_simout.csv",
+      "bytes": 1392,
+      "sha256": "a1cf1e185fe98364b9275d5643ffb6cd289446a56953957dea3a3a3e51af8d86"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/reference_tout.csv",
+      "bytes": 9,
+      "sha256": "8d4fd0fb0cf0cc882b5664092efed7b38ac99df7e7e55c8a3cd468e9dc7e9efc"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/reference_xmv.csv",
+      "bytes": 321,
+      "sha256": "fc3c72fe0eef25feb70984a481a6918ef03c83770d22be646613ff821e20f0ce"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/TElib.mdl",
+      "bytes": 13202,
+      "sha256": "8dbca8aaa0b7f0e078b0fed6d2b9893dcbfd21b79ff20decbaddfe80ed678fe6"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/temexd_mod.c",
+      "bytes": 200438,
+      "sha256": "16f0fea120781a0e22fc6c113ccca3db017fdafe599b5a20866df50acc30b45e"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/temexd_mod.mexw64",
+      "bytes": 72192,
+      "sha256": "1aa48d0d73c5db355cdc919e3248af1d4281787875c734233a3e8792f1b399e8"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/temexd_ref.c",
+      "bytes": 199091,
+      "sha256": "b69fff60851d13781904c4241291796d5b691dd4381d2b9c39a7f2bc2671ddf5"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/temexd_ref.mexw64",
+      "bytes": 71168,
+      "sha256": "b5cc167bef69fc089d7bbe042987b7a2e900f931339c1d2b175062ce3ae30253"
+    },
+    {
+      "path": "data/local/tep_dynamics_alignment/run_v1/teprob_mod.h",
+      "bytes": 7160,
+      "sha256": "fa3782a07c11e5c149ad0f44ec332c45ed998edb7ef8241fade9b1d395577363"
+    }
+  ],
+  "historical_initial_command_check": "Manca t0 XMV matches previous model cache at1.8s to floating tolerance, not initial cache at0s",
+  "independence": "factorial runs share one topology and initial seed, not independent process samples",
+  "reproduction_scripts": [
+    {
+      "path": "research_runs/tep_dynamics_alignment/run_alignment.m",
+      "sha256": "54f94dd6eb5c42ba2cd47a023e478293f012013dbc5f8ed8feeb11fc3c93cf35"
+    },
+    {
+      "path": "research_runs/tep_dynamics_alignment/tep_observe.m",
+      "sha256": "aace0c7083b63b9d960419d46a308c4534603cc95624a6f350701e93ae17e105"
+    }
+  ],
+  "runner_version_note": "Current reproduction scripts include post-run refusal to overwrite existing trajectories; process/controller equations unchanged. Failed dimension attempts retained in raw logs; exact earlier runner hashes were not separately captured.",
+  "commands": [
+    "matlab -batch \"addpath(<absolute research_runs/tep_dynamics_alignment>);run_alignment(<fresh isolated model directory>)\""
+  ]
+}

@@ -52,9 +52,11 @@
 | TEP-STUDIO | TEP Studio 공식 생성환경 대응 검증 | PARTIAL | docs/research_design/TEP_STUDIO_EXECUTION_VALIDATION.md; PR #27 기반 후속 브랜치의 격리 Linux 실제 2시간 기술 시험 | 공식 Simulink 실행환경 또는 동일 조건 trajectory를 확보하여 동일 입력·초기화·시계의 제어기 trace 비교 |
 | TEP-OPERATING | TEP 원본 운전 조건과 제약 대조 | PARTIAL | docs/research_design/TEP_OPERATING_CONDITION_RECONSTRUCTION.md; PR #28 기반 후속 브랜치에서 B 운전 1.519시간 측정 제약 초과와 stop 기록 | Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 |
 | TEP-SEARCH | 공개 TEP 실행기 비교와 원본 생성환경 판정 | PARTIAL | docs/research_design/TEP_SIMULATOR_COMPREHENSIVE_COMPARISON.md; PR #29 기반 후속 Rust 실제 실행과 후보 조사; tep2py 계측 사본 3분 단일 표본 실행 | NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 |
-| TEP-MATLAB | 공식 TEP MATLAB 로컬 실행환경 | BLOCKED | docs/research_design/TEP_MATLAB_SIMULINK_LOCAL_VALIDATION.md; PR #30 기반 후속 브랜치에서 Windows 설치·공식 파일 점검 | 학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증 |
-| TEP-OFFICIAL | 공식 Simulink 정상 운전과 동일환경 검증 | PARTIAL | docs/research_design/TEP_OFFICIAL_ENVIRONMENT_VALIDATION.md; PR31 후속 공식 guard/10분/2시간/6시간 실제 실행 | Manca 원시 정상자료·시계·noise/model flags·전처리 확보 후 비교 계약 고정 |
-| TEP-DATA-RECOVERY | Manca 원본자료와 공식환경 연결 | PARTIAL | docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 ZIP 확보,3개 원시 정상운전과 seed 확인 | CPCaD 실제 전처리 코드/명세와 Manca model flags·시계 대조; 원본 재생성 및 동일환경 검증 |
+| TEP-MATLAB | 공식 TEP MATLAB 로컬 실행환경 | VERIFIED | PR32/33 이후 공식 MATLAB 실행 및 이번 원본 C 별도 MEX 컴파일·60초 대조 성공; TEP_DYNAMICS_ALIGNMENT_REPORT.md | 환경 재설치 없이 기존 MATLAB/Simulink·MinGW와 격리 사본 재사용; 생성환경 검증은 별도 |
+| TEP-OFFICIAL | 공식 Simulink 정상 운전과 동일환경 검증 | PARTIAL | TEP_DYNAMICS_ALIGNMENT_REPORT.md; Manca Table1.1 플래그225 및10초 복원, 짧은 대조·감시 검증 | 잔여 solver/초기화·원본→1499행 규칙 확인; 연구용 효과 Gate 미통과 유지 |
+| TEP-DATA-RECOVERY | Manca 원본자료와 공식환경 연결 | PARTIAL | docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 ZIP 확보,3개 원시 정상운전과 seed 확인 | CPCaD 정확한 원본 선택·전처리 명세 회수; Manca 실제 solver/초기화 메타데이터 대조 |
+| TEP-DYNAMICS | 공식 TEP 설정·동작 정렬 | PARTIAL | docs/research_design/TEP_DYNAMICS_ALIGNMENT_REPORT.md; research_runs/tep_dynamics_alignment/ | Manca 실행 solver·초기화 메타데이터와 CPCaD 변환 명세 확보; 잔차를 기록·난수·수치오차로 구분 |
+| TEP-PROBE | 가정 기반 단일 기술 개입 | VERIFIED | docs/research_design/TEP_INTERVENTION_PROBE_REPORT.md; 두10분 실제 실행 guard0, 최종명령 유지·실제밸브 변화 확인 | 기술 연결 완료로 보존; 본 연구 효과 식별·추천 평가는 환경/개입 모델 계약 통과 후 별도 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

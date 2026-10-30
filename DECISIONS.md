@@ -170,3 +170,6 @@ OFFICIAL_SIMULATOR_RUN_VERIFIED_ENVIRONMENT_UNVERIFIED. 평균·고정명령 근
 원본 ZIP 인증 전에는 동일환경·개입 연구를 진행하지 않음. 보존검사는 두 pilot 상태문서의 원문 prefix를 보존한 추가만 허용하고 다른 보호자산 변경은 계속 거부함.
 
 원본ZIP 인증 문제 해소 후 원본 자료를 실제 분석함. 초기조건은 가깝지만 X20/X21 시간변화 차이와 가공 미복원으로 ENVIRONMENT_STILL_UNVERIFIED 유지,75h 및 개입 확대를 하지 않음.
+
+## 2026-10-30 — 원본 설정 복원과 기술 개입의 분리
+Manca Table1.1 근거로 후보 실행 설정225와10초 저장을 복원한다. 과거0·36초 자료·판정은 보존한다. SAME_ENVIRONMENT_PLAUSIBLE_BUT_UNVERIFIED 상태에서 사용자가 명시 승인한 단일 기술 조작만 별도 수행했으며, 기존1499행 기반 인과효과 검증·SCM 식별·추천 성능으로 승격하지 않는다. 근거: TEP_DYNAMICS_ALIGNMENT_REPORT.md, TEP_INTERVENTION_PROBE_REPORT.md.

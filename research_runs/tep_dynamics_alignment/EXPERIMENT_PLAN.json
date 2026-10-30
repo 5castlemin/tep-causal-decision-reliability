@@ -1,0 +1,51 @@
+{
+  "fixed_before_new_simulations": true,
+  "source_evidence": {
+    "report": "Technical_Report_V1_2.pdf printed p10 Table1.1 / PDF p12, image visually read",
+    "flag_bits": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "15": 0
+    },
+    "flag_integer": 225,
+    "sampling_seconds": 10,
+    "previous_flag": 0,
+    "previous_Ts_save_seconds": 36
+  },
+  "monitor_check": {
+    "original_vs_monitored": "60 seconds same seed/flags/solver with shared read-only execution listener; first validate injected stop on original at1.8s",
+    "acceptance": "identical timestamps and sensors/state numerics to1e-10 native units; no listener or safety failure"
+  },
+  "factorial_diagnostic": {
+    "seed": 1431655765,
+    "flags": [
+      0,
+      225
+    ],
+    "save_seconds": [
+      36,
+      10
+    ],
+    "horizon_minutes": 10,
+    "prediction": "flag225 activates additional sensor noise and separated RNG states; logging10s introduces distinct output scheduling; inspect original first10min at exact output times where possible",
+    "acceptance": "describe differences, no equivalence pass solely from means; no parameter optimization"
+  },
+  "resource_cap": "7 short normal runs including injected check, <=15min external wall time, <250MB raw; stop later runs on guard/nonfinite/error",
+  "no_long_runs": true,
+  "intervention": "only after diagnostic gate; separate prospective task plan",
+  "compatibility_amendment_before_retry": "flag225 first attempt failed at model compile: Selector InputPortWidth41 vs S-function73. One retry allowed for cases5..7 with InputPortWidth73 only, original indices and all process/controller equations unchanged; original failure preserved in alignment.log",
+  "second_width_amendment": "First width retry found HourlyCost41 diagnostic. Insert read-only first41 selector before HourlyCost; keep full73 logger, original feedback indices unchanged. One final dimension-only retry; stop on further errors.",
+  "prospective_extension_after_short_diagnostic": {
+    "basis": "Source-backed225+10s completed10min with max73sensor discrepancy0.016735 and no guard; test whether remaining late dynamics difference accumulates",
+    "condition": "one30min run, flags225,10s,default seed, all other parameters unchanged",
+    "no_tuning": true,
+    "resource": "same15min cumulative execution wall cap, one extension only",
+    "interpretation": "exploratory duration extension, not independent confirmation or environment equivalence test"
+  }
+}
