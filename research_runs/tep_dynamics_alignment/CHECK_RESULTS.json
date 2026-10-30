@@ -1,0 +1,122 @@
+[
+  {
+    "command": "python -X utf8 graphs/final/verify_and_load.py",
+    "returncode": 0,
+    "tail": "OK: 39개 파일 해시 일치, 변수 순서 일치, 시계열 3개 엄격 재변환 일치\n"
+  },
+  {
+    "command": "python -X utf8 -m unittest discover -s tests -v",
+    "returncode": 0,
+    "tail": " operational rows, whole-structure CV replay, precision stop, actual do raw/noise equations and hashes; no external sampler rerun claimed\n[PASS] ordered merge lineage; original assets; 12 independent datasets/36 learned graphs; 432 policies; 55296 raw do samples; no GT orientation; policy freeze; losses/SE/cluster-aware descriptive records\n[PASS_RECORDS] 4 actual cache-aware steps;24 existing algebraic steps;3 existing local differences;12 mock rejection cases. No source execution in this mode.\nst_documented_filename_is_not_acquired_data (test_track_a_gate.GateTests.test_documented_filename_is_not_acquired_data) ... ok\ntest_matching_normal_runs_do_not_establish_effect_interface (test_track_a_gate.GateTests.test_matching_normal_runs_do_not_establish_effect_interface) ... ok\ntest_run_claim_requires_execution_gate (test_track_a_gate.GateTests.test_run_claim_requires_execution_gate) ... ok\n\n----------------------------------------------------------------------\nRan 110 tests in 80.480s\n\nOK\n"
+  },
+  {
+    "command": "python -X utf8 experiments/simulator/validate_feasibility.py",
+    "returncode": 0,
+    "tail": "[PASS] 실행 CSV hash·반복·시계열·shutdown/reset 한계·mapping 검증\nSIMULATOR FEASIBILITY: PARTIAL — 종료·reset·모델 호환성 관문 미해결\n"
+  },
+  {
+    "command": "python -X utf8 experiments/simulator/diagnostics/validate_diagnostics.py",
+    "returncode": 0,
+    "tail": "[PASS] 원시 hash·105열·두 시계·12개 수동 조건·2시간 정상·reset·분석 재계산\nSIM-03 PARTIAL; SIM-04 VERIFIED(새 객체 계약); COMPAT-01 PARTIAL; 직접 효과 정답 NO-GO\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_benchmark_decision.py",
+    "returncode": 0,
+    "tail": "[PASS] 156개 PR4 파일 원본 hash·회수 코드 정적 근거·주장 수준·설계 보류·상태 동기화·원시 산출물 불변\nBENCHMARK COMPATIBILITY: PARTIAL; HYPOTHESIS GATE: INSUFFICIENT_EVIDENCE; 새 실험 NOT_RUN\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_track_a_recovery.py",
+    "returncode": 0,
+    "tail": "[PASS] 출처 hash·Gate·A3 미실행·L1~L7·상태·동결 산출물 보존\nwarning: in the working copy of 'experiments/pilot/PILOT_RESULT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/pilot/TASK_SPEC.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_track_b_audit.py",
+    "returncode": 0,
+    "tail": "[PASS] Q1~Q5·미채택·30초 범위·metadata/원본 구분·hash·동결 자료 보존\nwarning: in the working copy of 'experiments/pilot/PILOT_RESULT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/pilot/TASK_SPEC.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_ref_b_minimal_records.py",
+    "returncode": 0,
+    "tail": "[PASS] 국소 차분·독립 역산·제어 순서·시간 기록·CANDIDATE·중단·동결 자료 보존\nwarning: in the working copy of 'experiments/pilot/PILOT_RESULT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/pilot/TASK_SPEC.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_decision_mvp.py",
+    "returncode": 0,
+    "tail": "[PASS] 기존 자산 재사용·84행·8회×2버전 raw/hash·Gate 거부·성능 null·상태 동기화·원본 보존\nwarning: in the working copy of 'experiments/pilot/PILOT_RESULT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/pilot/TASK_SPEC.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_env_acceptance.py",
+    "returncode": 0,
+    "tail": "[PASS] 예제 direct GT·행별 관측/do·seed/배치·음성 guard·범위·원본 보존. 제조 검증 아님\nwarning: in the working copy of 'experiments/pilot/PILOT_RESULT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/pilot/TASK_SPEC.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_first_integrated_pilot.py",
+    "returncode": 0,
+    "tail": "[PASS] 6 learned graphs; raw do/noise reconstruction; seed separation; freeze-before-holdout; metrics/loss/SE; code/data hashes\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_repeated_metric_pilot.py",
+    "returncode": 0,
+    "tail": "[PASS] ordered merge lineage; original assets; 12 independent datasets/36 learned graphs; 432 policies; 55296 raw do samples; no GT orientation; policy freeze; losses/SE/cluster-aware descriptive records\nwarning: in the working copy of 'experiments/pilot/PILOT_RESULT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/pilot/TASK_SPEC.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_diverse_structure_pilot.py",
+    "returncode": 0,
+    "tail": "[PASS] 8 FCM source/observed/do contracts;144 attempts;48 datasets;native graph/MEC/policy freeze;78336 raw do;denominator guards;controlled graphs separated;8 whole-structure folds;old assets unchanged\nwarning: in the working copy of 'experiments/pilot/PILOT_RESULT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/pilot/TASK_SPEC.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_independent_confirmation.py",
+    "returncode": 0,
+    "tail": "[PASS] full144 replay; frozen rules/models/code before216 attempts;12 source/do contracts;raw equations/statistics;metrics/freeze/loss;cluster bootstrap;old assets unchanged\nwarning: in the working copy of 'experiments/pilot/PILOT_RESULT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/pilot/TASK_SPEC.md', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_path_metric_incremental.py",
+    "returncode": 0,
+    "tail": "[PASS] 2160 analytical operational rows, whole-structure CV replay, precision stop, actual do raw/noise equations and hashes; no external sampler rerun claimed\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_decision_reliability_next.py",
+    "returncode": 0,
+    "tail": "[PASS] 1224 reused controls;432 matched/324 unique pairs;analytic loss and counterexamples;six oracle fits;nested whole-structure selection replay;no new discovery/do/manufacturing claim\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_manufacturing_validity.py",
+    "returncode": 0,
+    "tail": "[PASS] 7 frozen scores;84 stored task metrics;198-pair coverage;21 saved10000-draw histogram recomputations;legacy guard limitation retained. No new simulator/SCM/discovery.\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_environment_contract.py",
+    "returncode": 0,
+    "tail": "[PASS] 15 contract cases; current CPCaD/Python and partial-reference joins rejected; stored 8x6 technical steps/hash/clock/repeats/valve recurrence. No external simulation in this validation.\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_tep_valve_transition_contract.py",
+    "returncode": 0,
+    "tail": "[PASS_RECORDS] 4 actual cache-aware steps;24 existing algebraic steps;3 existing local differences;12 mock rejection cases. No source execution in this mode.\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_bounded_dynamic_protocol.py",
+    "returncode": 0,
+    "tail": "[PASS_STATIC_ONLY] proposed4nodes/12unadjudicated pairs; endogenous boundaries retained; judgment2/NO-GO; evidence/document/state consistency. No model execution or new GT.\n"
+  },
+  {
+    "command": "python -X utf8 scripts/summarize_synthetic_final_claims.py --check",
+    "returncode": 0,
+    "tail": "[PASS] source counts/deduplication/equal-structure MAEs/action-policy losses/features/input hashes match; no fits or new samples\n"
+  },
+  {
+    "command": "python -X utf8 scripts/check_research_state.py",
+    "returncode": 0,
+    "tail": "[PASS] 현재 상태·의존성·우선순위 ID 유일성·상단 문서 일치\n"
+  },
+  {
+    "command": "python -X utf8 scripts/check_asset_manifest.py",
+    "returncode": 0,
+    "tail": "[PASS] Final config·미회수 생성 코드·평가 재현 범위의 기록 정합성\n"
+  },
+  {
+    "command": "python -X utf8 scripts/validate_pr_integration.py",
+    "returncode": 0,
+    "tail": "{\n  \"status\": \"PASS\",\n  \"source_base_main\": \"ceb447deb03f5532dc274cb97de2cd7f317349e7\",\n  \"pr2_source\": \"e5a0291e48d5426628c0dde8a122fe8ab6b6e195\",\n  \"pr3_source\": \"b2e455fd37d1e236aa30fe246e4944142bef4bab\",\n  \"preserved_file_counts\": {\n    \"graphs/final\": 46,\n    \"experiments/simulator\": 30\n  },\n  \"required_states\": {\n    \"SIM-01\": \"BLOCKED\",\n    \"SIM-02\": \"PARTIAL\",\n    \"GRAPH-01\": \"VERIFIED\",\n    \"GRAPH-GEN\": \"BLOCKED\",\n    \"SCM-01\": \"PARTIAL\",\n    \"EFFECT-01\": \"NOT_RUN\"\n  }\n}\n"
+  }
+]

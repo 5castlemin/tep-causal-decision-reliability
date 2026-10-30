@@ -491,9 +491,9 @@
     {
       "id": "TEP-MATLAB",
       "title": "공식 TEP MATLAB 로컬 실행환경",
-      "status": "BLOCKED",
-      "evidence": "docs/research_design/TEP_MATLAB_SIMULINK_LOCAL_VALIDATION.md; PR #30 기반 후속 브랜치에서 Windows 설치·공식 파일 점검",
-      "next_action": "학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증",
+      "status": "VERIFIED",
+      "evidence": "PR32/33 이후 공식 MATLAB 실행 및 이번 원본 C 별도 MEX 컴파일·60초 대조 성공; TEP_DYNAMICS_ALIGNMENT_REPORT.md",
+      "next_action": "환경 재설치 없이 기존 MATLAB/Simulink·MinGW와 격리 사본 재사용; 생성환경 검증은 별도",
       "acceptance": "MATLAB/Simulink 라이선스와 MEX·모델 로드 및 온라인 안전 감시 검증 후 공식 모델 정상 실행",
       "depends_on": []
     },
@@ -501,8 +501,8 @@
       "id": "TEP-OFFICIAL",
       "title": "공식 Simulink 정상 운전과 동일환경 검증",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/TEP_OFFICIAL_ENVIRONMENT_VALIDATION.md; PR31 후속 공식 guard/10분/2시간/6시간 실제 실행",
-      "next_action": "Manca 원시 정상자료·시계·noise/model flags·전처리 확보 후 비교 계약 고정",
+      "evidence": "TEP_DYNAMICS_ALIGNMENT_REPORT.md; Manca Table1.1 플래그225 및10초 복원, 짧은 대조·감시 검증",
+      "next_action": "잔여 solver/초기화·원본→1499행 규칙 확인; 연구용 효과 Gate 미통과 유지",
       "acceptance": "동일 관측/제어/생성 계약 및 비교 검증 이후에만 Phase B",
       "depends_on": []
     },
@@ -511,12 +511,35 @@
       "title": "Manca 원본자료와 공식환경 연결",
       "status": "PARTIAL",
       "evidence": "docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 ZIP 확보,3개 원시 정상운전과 seed 확인",
-      "next_action": "CPCaD 실제 전처리 코드/명세와 Manca model flags·시계 대조; 원본 재생성 및 동일환경 검증",
-      "acceptance": "원본→1499행 가공 재현과 동일환경31변수 검증 후에만 개입",
+      "next_action": "CPCaD 정확한 원본 선택·전처리 명세 회수; Manca 실제 solver/초기화 메타데이터 대조",
+      "acceptance": "원본→1499행 가공 및 동일환경 검증 후 연구용 효과 평가; 별도 승인된 기술 개입과 구분",
       "depends_on": []
+    },
+    {
+      "id": "TEP-DYNAMICS",
+      "title": "공식 TEP 설정·동작 정렬",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/TEP_DYNAMICS_ALIGNMENT_REPORT.md; research_runs/tep_dynamics_alignment/",
+      "next_action": "Manca 실행 solver·초기화 메타데이터와 CPCaD 변환 명세 확보; 잔차를 기록·난수·수치오차로 구분",
+      "acceptance": "SAME_ENVIRONMENT_SUPPORTED 근거 및 관측31변수 가공 연결; 현재 SAME_ENVIRONMENT_PLAUSIBLE_BUT_UNVERIFIED",
+      "depends_on": [
+        "TEP-OFFICIAL"
+      ]
+    },
+    {
+      "id": "TEP-PROBE",
+      "title": "가정 기반 단일 기술 개입",
+      "status": "VERIFIED",
+      "evidence": "docs/research_design/TEP_INTERVENTION_PROBE_REPORT.md; 두10분 실제 실행 guard0, 최종명령 유지·실제밸브 변화 확인",
+      "next_action": "기술 연결 완료로 보존; 본 연구 효과 식별·추천 평가는 환경/개입 모델 계약 통과 후 별도",
+      "acceptance": "단일 기술 조작 검증만 완료. 원래 인과효과 Gate·평균효과·구조지표 우월성 미검증",
+      "depends_on": [
+        "TEP-DYNAMICS"
+      ]
     }
   ],
   "priority_order": [
+    "TEP-DYNAMICS",
     "TEP-DATA-RECOVERY",
     "TEP-OFFICIAL",
     "TEP-MATLAB",
@@ -553,7 +576,8 @@
     "VALVE-TRANSITION",
     "MFG-EFFECT-SCOPE",
     "DYNAMIC-SCOPE",
-    "SYNTH-FINAL"
+    "SYNTH-FINAL",
+    "TEP-PROBE"
   ],
   "id_history": [
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",

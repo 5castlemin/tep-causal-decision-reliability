@@ -1,0 +1,26 @@
+{
+  "status": "PROSPECTIVE_TECHNICAL_PROBE_ONLY",
+  "task": "X32 (XMV10) -> X9 (XMEAS9), existing structural candidate",
+  "action": "terminal reactor cooling-water valve command override, not setpoint or physical-state do",
+  "value_percent": 36.0587322048939,
+  "basis": "pre-existing original three normal runs XMV10 90th percentile, within observed normal command support and code0..100; no industrial safety guarantee",
+  "observed_range": [
+    35.5648269264859,
+    36.3343796118143
+  ],
+  "start_hours": 0.05,
+  "end_hours": 0.1,
+  "horizon_hours": 0.16666666666666666,
+  "baseline": "same identity adapter, controller intact",
+  "controller": "all controller calculations continue, only final command10 overridden during pulse; restore raw controller after pulse",
+  "seed": 20261030,
+  "flags": 225,
+  "save_seconds": 10,
+  "repetitions": 1,
+  "estimand": "single initialized trajectory diagnostic difference, not population ATE",
+  "interpretation": "same-environment assumption unverified; no original causal-effect gate pass; same seed not guaranteed common noise",
+  "safety": "reuse native and PR32 guard, observer sensor/command limits; physical state finite only; abort remaining run on any guard/error/nonfinite",
+  "failure": "retain all files; no retries beyond trivial interface wiring; no action optimization",
+  "analysis": "verify actual command vs controller, valve state index47 and temperature; no SCM fitting or metric superiority",
+  "resource": "2x10min simulated,15min wall cap,250MB raw"
+}
