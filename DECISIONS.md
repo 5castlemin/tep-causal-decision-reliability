@@ -162,3 +162,6 @@ CLOSE_CANDIDATE_BUT_UNVERIFIED를 잠정 기록한다. 공식 2015 모델과 Stu
 
 ## 2026-10-30 — 공식 MATLAB 실행 차단
 BLOCKED_NO_MATLAB. 공식 계정·라이선스 및 컴파일러 확보 후 모델 사전 점검이 필요하다. 실시간 측정·상태·명령 제약 감시 검증 전 공식 시뮬레이션을 실행하지 않는다. 기존 시뮬레이터 비교와 연구 자산은 보존.
+
+## 2026-10-30 — 공식 실행 검증과 연구 재개 보류
+OFFICIAL_SIMULATOR_RUN_VERIFIED_ENVIRONMENT_UNVERIFIED. 평균·고정명령 근접과 공식 실행은 확인됐으나 동일환경 계약 전체 미확립으로 Phase B를 실행하지 않음.

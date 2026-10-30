@@ -4,14 +4,15 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEP-MATLAB — 공식 TEP MATLAB 로컬 실행환경**: 학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증 (BLOCKED)
-2. **TEP-SEARCH — 공개 TEP 실행기 비교와 원본 생성환경 판정**: NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 (PARTIAL)
-3. **TEP-OPERATING — TEP 원본 운전 조건과 제약 대조**: Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 (PARTIAL)
+1. **TEP-OFFICIAL — 공식 Simulink 정상 운전과 동일환경 검증**: Manca 원시 정상자료·시계·noise/model flags·전처리 확보 후 비교 계약 고정 (PARTIAL)
+2. **TEP-MATLAB — 공식 TEP MATLAB 로컬 실행환경**: 학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증 (BLOCKED)
+3. **TEP-SEARCH — 공개 TEP 실행기 비교와 원본 생성환경 판정**: NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 (PARTIAL)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| TEP-OFFICIAL | PARTIAL | 없음 | Manca 원시 정상자료·시계·noise/model flags·전처리 확보 후 비교 계약 고정 / 동일 관측/제어/생성 계약 및 비교 검증 이후에만 Phase B |
 | TEP-MATLAB | BLOCKED | 없음 | 학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증 / MATLAB/Simulink 라이선스와 MEX·모델 로드 및 온라인 안전 감시 검증 후 공식 모델 정상 실행 |
 | TEP-SEARCH | PARTIAL | 없음 | NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 / 원본 생성환경 다섯 조건 입증 시 즉시 종료 또는 실행 가능 후보 검증과 미실행 원인 기록 |
 | TEP-OPERATING | PARTIAL | 없음 | Manca 정상 원시 실행과 시간·명령·seed·전처리 근거를 확보해 현재 1499행의 정확한 계보 대조 / 대응 원시 실행과 명령·시계·전처리 검증, 기존 참조 구조와 개입 계약 별도 검증 |

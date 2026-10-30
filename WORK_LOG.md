@@ -355,3 +355,6 @@ PR #29 기반 21개 후보 항목, Rust 고정 커밋 36초·10분 실제 실행
 
 ## 2026-10-30 — 공식 TEP MATLAB 로컬 사전 점검
 PR #30 기반 후속: Windows 로컬 설치·메모리·라이선스 접근 검사, 공식 ZIP/핵심 파일 해시 재확인 및 Git 제외 사본 staging. MATLAB·Simulink 및 C 컴파일러 미발견으로 공식 MEX·시뮬레이션·개입 미실행. 안전 감시는 미검증되어 실행 초안 fail closed.
+
+## 2026-10-30 — 공식 Simulink 실제 실행
+감시 사본의 계산 중 중단 주입과 정상10분/2h/6h 실행 완료. 기본 XMV5/9/12=0/0/100 확인. 원본 전처리·noise·계보 미확인으로 Phase B 미실행. 상세 TEP_OFFICIAL_ENVIRONMENT_VALIDATION.md.
