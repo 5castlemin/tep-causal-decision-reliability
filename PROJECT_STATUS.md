@@ -54,7 +54,7 @@
 | TEP-SEARCH | 공개 TEP 실행기 비교와 원본 생성환경 판정 | PARTIAL | docs/research_design/TEP_SIMULATOR_COMPREHENSIVE_COMPARISON.md; PR #29 기반 후속 Rust 실제 실행과 후보 조사; tep2py 계측 사본 3분 단일 표본 실행 | NIST TESIM을 격리 Windows에서 빌드하고 단계별 제약 감시 가능한 짧은 정상 실행을 검증 |
 | TEP-MATLAB | 공식 TEP MATLAB 로컬 실행환경 | BLOCKED | docs/research_design/TEP_MATLAB_SIMULINK_LOCAL_VALIDATION.md; PR #30 기반 후속 브랜치에서 Windows 설치·공식 파일 점검 | 학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증 |
 | TEP-OFFICIAL | 공식 Simulink 정상 운전과 동일환경 검증 | PARTIAL | docs/research_design/TEP_OFFICIAL_ENVIRONMENT_VALIDATION.md; PR31 후속 공식 guard/10분/2시간/6시간 실제 실행 | Manca 원시 정상자료·시계·noise/model flags·전처리 확보 후 비교 계약 고정 |
-| TEP-DATA-RECOVERY | Manca 원본자료와 공식환경 연결 | BLOCKED | docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 페이지 로그인 제한 및 upstream CSV 바이트 일치 확인 | 공식 IEEE 로그인 후 정상 원본 ZIP 다운로드 경로 확보, 파일·시간·전처리 계보 확인 |
+| TEP-DATA-RECOVERY | Manca 원본자료와 공식환경 연결 | PARTIAL | docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 ZIP 확보,3개 원시 정상운전과 seed 확인 | CPCaD 실제 전처리 코드/명세와 Manca model flags·시계 대조; 원본 재생성 및 동일환경 검증 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

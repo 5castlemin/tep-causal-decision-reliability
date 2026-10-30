@@ -1,9 +1,9 @@
 {
-  "stage1": "ORIGINAL_DATA_ACCESS_BLOCKED",
-  "stage2": "SIMULATOR_VALIDATION_BLOCKED",
-  "overall": "RESEARCH_EXECUTION_BLOCKED",
-  "existing_official_execution": "verified PR32; no rerun claimed",
+  "stage1": "ORIGINAL_DATA_PROVENANCE_PARTIAL",
+  "stage2": "CLOSE_CANDIDATE_BUT_UNVERIFIED",
+  "overall": "ENVIRONMENT_STILL_UNVERIFIED",
+  "existing_official_execution": "PR32 default6h reused; two new recorded-seed6h runs completed guard0",
   "stage3": "NOT_RUN",
-  "reason": "official raw ZIP requires IEEE login; authenticated download not available in command-line request; exact transformation and comparison margins not established",
-  "user_action": "download 3_Normal Steady-State ZIP from official page and provide local path"
+  "reason": "raw ZIP obtained; exact preprocessing unestablished; full31 time/distribution matching not established, especially X20/X21 dynamics",
+  "next": "recover exact original-to-CPCaD transformation and original MATLAB configuration/solver/controller trace; do not tune means"
 }

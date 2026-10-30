@@ -2,6 +2,9 @@
 import hashlib
 import json
 from pathlib import Path
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
+from asset_preservation import assert_protected_preserved
 import subprocess
 
 from track_a_gate import evaluate
@@ -29,9 +32,7 @@ def main():
     assert e['source_hashes']['tecode.zip'] == prior['original_fortran_archive']['sha256']
     protected = ['graphs/final', 'results', 'experiments', 'RESEARCH_DESIGN.md',
                  'docs/research_design/evidence']
-    changed = subprocess.check_output(['git', '-C', str(ROOT), 'diff', '--name-only',
-                                      e['base_main'], '--', *protected], text=True)
-    assert not changed.strip(), changed
+    assert_protected_preserved(ROOT, e['base_main'], protected)
     for path in folder.glob('*.json'):
         text = path.read_text(encoding='utf-8')
         assert 'X-Amz-' not in text and 'C:\\Users\\' not in text

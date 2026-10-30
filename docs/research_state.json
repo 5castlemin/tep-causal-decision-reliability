@@ -509,10 +509,10 @@
     {
       "id": "TEP-DATA-RECOVERY",
       "title": "Manca 원본자료와 공식환경 연결",
-      "status": "BLOCKED",
-      "evidence": "docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 페이지 로그인 제한 및 upstream CSV 바이트 일치 확인",
-      "next_action": "공식 IEEE 로그인 후 정상 원본 ZIP 다운로드 경로 확보, 파일·시간·전처리 계보 확인",
-      "acceptance": "원본 측정자료와 가공 코드/시계 확인 후 동일환경 기준 고정 및 검증",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 ZIP 확보,3개 원시 정상운전과 seed 확인",
+      "next_action": "CPCaD 실제 전처리 코드/명세와 Manca model flags·시계 대조; 원본 재생성 및 동일환경 검증",
+      "acceptance": "원본→1499행 가공 재현과 동일환경31변수 검증 후에만 개입",
       "depends_on": []
     }
   ],
