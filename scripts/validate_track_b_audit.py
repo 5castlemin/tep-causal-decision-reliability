@@ -2,6 +2,9 @@
 import hashlib
 import json
 from pathlib import Path
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
+from asset_preservation import assert_protected_preserved
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,9 +51,7 @@ def main():
     protected = ['graphs/final','experiments','data','docs/audit/step6_main_table.csv',
                  'RESEARCH_DESIGN.md','docs/research_design/track_a_evidence',
                  'docs/research_design/evidence','docs/reproducibility/GRAPH_REPRODUCIBILITY.json']
-    changes = subprocess.check_output(['git','-C',str(ROOT),'diff','--name-only',
-                                      decision['dependency']['head'],'--',*protected],text=True)
-    assert not changes.strip(), changes
+    assert_protected_preserved(ROOT, decision['dependency']['head'], protected)
     for p in folder.glob('*.json'):
         content = p.read_text(encoding='utf-8')
         assert 'X-Amz-' not in content and 'C:\\Users\\' not in content

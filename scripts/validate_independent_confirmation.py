@@ -2,6 +2,7 @@
 import csv,gzip,hashlib,io,json,math,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'));sys.path.insert(0,str(ROOT/'scripts'))
+from asset_preservation import assert_protected_preserved
 from independent_confirmation import freeze_models,predict_frozen,clustered_comparison,select_controls
 from diverse_structure_pilot import reference_edges,score_graph
 from repeated_metric_pilot import recommend_policy,consistent_extensions
@@ -123,6 +124,6 @@ def validate():
     assert result['judgment']==(check['judgment'] if all(result['evaluability_checks'].values()) else 'NOT_EVALUABLE')
     summary=read(ANALYSIS/'SUMMARY.json');assert summary['do_samples']==samples and not summary['models_updated_on_confirmation']
     protected=['graphs/final','data','experiments','RESEARCH_DESIGN.md','research_runs/diverse_structure_pilot','research_runs/repeated_metric_pilot','research_runs/first_integrated_pilot']
-    assert not subprocess.check_output(['git','diff',plan['base_commit'],'--name-only','--',*protected],cwd=ROOT,text=True).strip()
+    assert_protected_preserved(ROOT, plan['base_commit'], protected)
     print('[PASS] full144 replay; frozen rules/models/code before216 attempts;12 source/do contracts;raw equations/statistics;metrics/freeze/loss;cluster bootstrap;old assets unchanged')
 if __name__=='__main__':validate()

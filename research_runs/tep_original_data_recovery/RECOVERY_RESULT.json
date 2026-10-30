@@ -1,0 +1,34 @@
+{
+  "original_data": "ORIGINAL_DATA_PROVENANCE_PARTIAL",
+  "official_url": "https://ieee-dataport.org/open-access/tennessee-eastman-process-alarm-management-dataset",
+  "doi": "10.21227/326k-qr90",
+  "http_status": 200,
+  "page_sha256": "93fa4a8dcb8b7d632eed7ef0655a14b1b8338ff4da9e0786f203d96e671201b4",
+  "file_list": [
+    "1_Tests_zip",
+    "2nd_Alarm_Dataset_5Classes_zip",
+    "2_Extracted Abnormal Situations_zip",
+    "3_Normal Steady-State_zip"
+  ],
+  "login_required": true,
+  "normal_raw_download": "USER_PROVIDED_OFFICIAL_ZIP_VERIFIED_CONTENTS",
+  "CPCaD_commit": "72b0f5e3d14192478186ee0dc4338b7448087789",
+  "local_csv_sha256": "52ae445b4355201db9591822282381c8de861afe49bdbc9452db08b01e7d3711",
+  "upstream_csv_sha256": "52ae445b4355201db9591822282381c8de861afe49bdbc9452db08b01e7d3711",
+  "upstream_csv_equal_bytes": true,
+  "csv_values_equal": true,
+  "numpy_shape": [
+    1499,
+    31
+  ],
+  "csv_vs_numpy_max_abs": 9.094947017729282e-13,
+  "preprocessing_code_found": false,
+  "preprocessing": "3min median reported, exact window/stride/edges and1499 transformation UNKNOWN",
+  "notes": "CPCaD file identity verified, not reproduction from Manca measurements",
+  "initial_access_attempt": "HTTP200 but unauthenticated download blocked; subsequently user downloaded official ZIP",
+  "raw_manifest": "RAW_MANIFEST.json",
+  "reconstruction": "NOT_EXACT:12 explicitly exploratory median variants failed; no raw-to-CSV code recovered",
+  "CPCaD_history_checked": "11 reachable commits; no .py/.m/.ipynb preprocessing source found in filename history",
+  "raw_metadata": "RAW_MANIFEST.json confirms all3 time0..75h,10s,XMV5=0,XMV9=0,XMV12=100",
+  "initial_local_search": "archive_manufacturing and Downloads; no normal ZIP/SIMOUT/XMV/TOUT found in checked scope"
+}

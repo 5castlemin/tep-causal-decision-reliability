@@ -358,3 +358,12 @@ PR #30 기반 후속: Windows 로컬 설치·메모리·라이선스 접근 검�
 
 ## 2026-10-30 — 공식 Simulink 실제 실행
 감시 사본의 계산 중 중단 주입과 정상10분/2h/6h 실행 완료. 기본 XMV5/9/12=0/0/100 확인. 원본 전처리·noise·계보 미확인으로 Phase B 미실행. 상세 TEP_OFFICIAL_ENVIRONMENT_VALIDATION.md.
+
+## 2026-10-30 — Manca 원본 접근 및 CI 보존 검사 수정
+공식 HTTP 페이지와 정상ZIP 목록은 확인했으나 로그인 필요로 다운로드 차단. upstream 가공CSV 바이트 일치 확인, 원본 재생성 미수행. 과거 원시자산 불변 검사를 유지하며 두 pilot 문서의 append-only 기록만 허용하도록 세 보존 검사 수정. 기존6h X20/X21/압력 재분석; 새실험과 개입 미실행.
+
+추가 완료: 사용자가 제공한 공식 정상ZIP을 읽어3개27001시점 원본/seed 확보. 기록된 두seed로 공식6h 실행,guard0. 원본과31변수 공통6h 비교 및 제한적3분중앙값 탐색에도 정확한1499행 재현 미달. 동일환경 미확정으로 개입 미실행.
+
+자동검사 후속: TrackA/TrackB/REF-B 및 Decision MVP/환경수용 standalone 보존 검사도 같은 prefix 보존 규칙으로 통일. 원시자산 수정 거부 유지, 전체 workflow 명령 재실행으로 확인. 새 MATLAB 로그·trajectory 해시 및 구형 TElib 호환성 경고 기록.
+
+최종 로컬 검증: verify.yml의24개 Python 명령 모두 성공(전체108단위검사91.807초 포함), check_research_state/asset_manifest/pr_integration 및 git diff --check 통과. 과거 기록 재검산과 새 MATLAB 두 실행을 구분해 보존.

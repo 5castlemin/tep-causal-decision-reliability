@@ -165,3 +165,8 @@ BLOCKED_NO_MATLAB. 공식 계정·라이선스 및 컴파일러 확보 후 모�
 
 ## 2026-10-30 — 공식 실행 검증과 연구 재개 보류
 OFFICIAL_SIMULATOR_RUN_VERIFIED_ENVIRONMENT_UNVERIFIED. 평균·고정명령 근접과 공식 실행은 확인됐으나 동일환경 계약 전체 미확립으로 Phase B를 실행하지 않음.
+
+## 2026-10-30 — 원본자료 접근 Gate
+원본 ZIP 인증 전에는 동일환경·개입 연구를 진행하지 않음. 보존검사는 두 pilot 상태문서의 원문 prefix를 보존한 추가만 허용하고 다른 보호자산 변경은 계속 거부함.
+
+원본ZIP 인증 문제 해소 후 원본 자료를 실제 분석함. 초기조건은 가깝지만 X20/X21 시간변화 차이와 가공 미복원으로 ENVIRONMENT_STILL_UNVERIFIED 유지,75h 및 개입 확대를 하지 않음.

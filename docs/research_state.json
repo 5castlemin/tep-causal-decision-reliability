@@ -505,9 +505,19 @@
       "next_action": "Manca 원시 정상자료·시계·noise/model flags·전처리 확보 후 비교 계약 고정",
       "acceptance": "동일 관측/제어/생성 계약 및 비교 검증 이후에만 Phase B",
       "depends_on": []
+    },
+    {
+      "id": "TEP-DATA-RECOVERY",
+      "title": "Manca 원본자료와 공식환경 연결",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/TEP_ORIGINAL_DATA_RECONSTRUCTION.md; 공식 ZIP 확보,3개 원시 정상운전과 seed 확인",
+      "next_action": "CPCaD 실제 전처리 코드/명세와 Manca model flags·시계 대조; 원본 재생성 및 동일환경 검증",
+      "acceptance": "원본→1499행 가공 재현과 동일환경31변수 검증 후에만 개입",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "TEP-DATA-RECOVERY",
     "TEP-OFFICIAL",
     "TEP-MATLAB",
     "TEP-SEARCH",

@@ -1,0 +1,90 @@
+{
+  "status": "EXPLORATORY_NOT_CONFIRMED_ORIGINAL_CODE",
+  "rules": "18 observations per nonoverlapping3min block; start0/1 and drop0/1 block; each of three originals. No parameter tuning beyond this named finite check",
+  "results": [
+    {
+      "run": 1,
+      "block_start_row": 0,
+      "skip_first_block": 0,
+      "max_abs": 20.526466152719877,
+      "mae": 0.1636546562223041
+    },
+    {
+      "run": 1,
+      "block_start_row": 0,
+      "skip_first_block": 1,
+      "max_abs": 30.10081697287478,
+      "mae": 0.5339038508916504
+    },
+    {
+      "run": 1,
+      "block_start_row": 1,
+      "skip_first_block": 0,
+      "max_abs": 11.902571178610742,
+      "mae": 0.10821208686378718
+    },
+    {
+      "run": 1,
+      "block_start_row": 1,
+      "skip_first_block": 1,
+      "max_abs": 30.10081697287478,
+      "mae": 0.5499694147676726
+    },
+    {
+      "run": 2,
+      "block_start_row": 0,
+      "skip_first_block": 0,
+      "max_abs": 59.260787962341055,
+      "mae": 0.9600890358057678
+    },
+    {
+      "run": 2,
+      "block_start_row": 0,
+      "skip_first_block": 1,
+      "max_abs": 52.53605881334079,
+      "mae": 0.9603966841673032
+    },
+    {
+      "run": 2,
+      "block_start_row": 1,
+      "skip_first_block": 0,
+      "max_abs": 60.45295720284594,
+      "mae": 0.9605930159036336
+    },
+    {
+      "run": 2,
+      "block_start_row": 1,
+      "skip_first_block": 1,
+      "max_abs": 51.86026316346579,
+      "mae": 0.9614653687707667
+    },
+    {
+      "run": 3,
+      "block_start_row": 0,
+      "skip_first_block": 0,
+      "max_abs": 50.54701380920051,
+      "mae": 0.9532832055499486
+    },
+    {
+      "run": 3,
+      "block_start_row": 0,
+      "skip_first_block": 1,
+      "max_abs": 59.32255218035971,
+      "mae": 0.9550154516617569
+    },
+    {
+      "run": 3,
+      "block_start_row": 1,
+      "skip_first_block": 0,
+      "max_abs": 50.54701380920051,
+      "mae": 0.9511355165088605
+    },
+    {
+      "run": 3,
+      "block_start_row": 1,
+      "skip_first_block": 1,
+      "max_abs": 56.981416661345065,
+      "mae": 0.9523898794186402
+    }
+  ]
+}

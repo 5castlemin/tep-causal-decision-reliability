@@ -10,6 +10,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
+from asset_preservation import assert_protected_preserved
 from repeated_metric_pilot import (acyclic,colliders,recommend_policy,quality,exploratory_associations)
 
 RUN=ROOT/'research_runs/repeated_metric_pilot/run_v1'
@@ -52,7 +53,7 @@ def validate():
     assert read(integration/'main_validation.json')['protected_assets_preserved']
     protected=['graphs/final','experiments','data','RESEARCH_DESIGN.md','docs/audit/step6_main_table.csv',
         'research_runs/first_integrated_pilot','research_runs/env_acceptance','research_runs/decision_mvp']
-    assert not subprocess.check_output(['git','diff',plan['base_main'],'--name-only','--',*protected],cwd=ROOT,text=True).strip()
+    assert_protected_preserved(ROOT, plan['base_main'], protected)
     acceptance=read(RUN/'api_acceptance/api_acceptance.json');assert acceptance['status']=='PASS'
     assert len(acceptance['records'])==12 and all(all(r['checks'].values()) for r in acceptance['records'])
     ledger=read(RUN/'execution_ledger.json');assert ledger[0]['stage']=='PLAN_FROZEN'

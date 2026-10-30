@@ -4,6 +4,9 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
+from asset_preservation import assert_protected_preserved
 
 ROOT=Path(__file__).resolve().parents[1]
 def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
@@ -65,8 +68,7 @@ def main():
     protected=['graphs/final','experiments','data','docs/audit/step6_main_table.csv','RESEARCH_DESIGN.md',
         'docs/research_design/evidence','docs/research_design/track_a_evidence','docs/research_design/track_b_evidence',
         'docs/research_design/ref_b_minimal_evidence','research_runs/decision_mvp']
-    changes=subprocess.check_output(['git','-C',str(ROOT),'diff','--name-only',status['base_commit'],'--',*protected],text=True)
-    assert not changes.strip(),changes
+    assert_protected_preserved(ROOT,status['base_commit'],protected)
     print('[PASS] 예제 direct GT·행별 관측/do·seed/배치·음성 guard·범위·원본 보존. 제조 검증 아님')
 
 
