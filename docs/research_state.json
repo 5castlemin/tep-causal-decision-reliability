@@ -496,9 +496,19 @@
       "next_action": "학교 라이선스로 MATLAB·Simulink와 호환 C 컴파일러 설치 및 활성화 후 preflight 실행, 실제 신호 안전 감시 검증",
       "acceptance": "MATLAB/Simulink 라이선스와 MEX·모델 로드 및 온라인 안전 감시 검증 후 공식 모델 정상 실행",
       "depends_on": []
+    },
+    {
+      "id": "TEP-OFFICIAL",
+      "title": "공식 Simulink 정상 운전과 동일환경 검증",
+      "status": "PARTIAL",
+      "evidence": "docs/research_design/TEP_OFFICIAL_ENVIRONMENT_VALIDATION.md; PR31 후속 공식 guard/10분/2시간/6시간 실제 실행",
+      "next_action": "Manca 원시 정상자료·시계·noise/model flags·전처리 확보 후 비교 계약 고정",
+      "acceptance": "동일 관측/제어/생성 계약 및 비교 검증 이후에만 Phase B",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "TEP-OFFICIAL",
     "TEP-MATLAB",
     "TEP-SEARCH",
     "TEP-OPERATING",

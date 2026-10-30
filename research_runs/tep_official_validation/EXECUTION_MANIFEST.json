@@ -1,0 +1,20 @@
+{
+  "upstream_c_sha256": "eff57b75700e7472005785150c21f82b0c3d178ebceebe37e532794f23785aba",
+  "patched_c_sha256": "16f0fea120781a0e22fc6c113ccca3db017fdafe599b5a20866df50acc30b45e",
+  "patch": "extra logging and stop checks only",
+  "checks": "all 50 states finite;41 sensors finite and selected measured limits;12 cached commands 0..100;native shutdown",
+  "limitations": "no physical-state bounds beyond finiteness; sample-and-hold sensors distinct from physical state; checks at mdlOutputs not every derivative",
+  "phase_B": "only if matched environment",
+  "order": [
+    "injected stop A0",
+    "normal short A0",
+    "10min A1",
+    "2h A2 if prior succeeds"
+  ],
+  "match_gate": "requires source/controller/provenance/time/preprocessing and independent comparable data; no similarity-only pass",
+  "matlab": "R2026b Update1 26.2.0.3433840",
+  "compiler": "MinGW14.2",
+  "solver": "ode45 model default",
+  "initialization": "official PreLoadFcn Mode_1_Init / Mode1xInitial",
+  "noise_seed": "source/model-defined; exact scalar and flags not independently extracted; independent RNG replay NOT VERIFIED"
+}
