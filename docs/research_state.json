@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30",
+  "checked_at": "2026-10-31",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -519,8 +519,8 @@
       "id": "TEP-DYNAMICS",
       "title": "공식 TEP 설정·동작 정렬",
       "status": "PARTIAL",
-      "evidence": "docs/research_design/TEP_DYNAMICS_ALIGNMENT_REPORT.md; research_runs/tep_dynamics_alignment/",
-      "next_action": "Manca 실행 solver·초기화 메타데이터와 CPCaD 변환 명세 확보; 잔차를 기록·난수·수치오차로 구분",
+      "evidence": "docs/research_design/TEP_FINAL_ALIGNMENT_HANDOFF.md; 330~420초 기존 자료 재분석, 원인 B",
+      "next_action": "팀별 데이터 계보 및 효과 평가 계약 독립 검토; 개인 복원 작업 종료",
       "acceptance": "SAME_ENVIRONMENT_SUPPORTED 근거 및 관측31변수 가공 연결; 현재 SAME_ENVIRONMENT_PLAUSIBLE_BUT_UNVERIFIED",
       "depends_on": [
         "TEP-OFFICIAL"
@@ -531,7 +531,7 @@
       "title": "가정 기반 단일 기술 개입",
       "status": "VERIFIED",
       "evidence": "docs/research_design/TEP_INTERVENTION_PROBE_REPORT.md; 두10분 실제 실행 guard0, 최종명령 유지·실제밸브 변화 확인",
-      "next_action": "기술 연결 완료로 보존; 본 연구 효과 식별·추천 평가는 환경/개입 모델 계약 통과 후 별도",
+      "next_action": "기술 개입 결과와 제한을 팀에 인계; 원래 인과효과 Gate 미통과 유지",
       "acceptance": "단일 기술 조작 검증만 완료. 원래 인과효과 Gate·평균효과·구조지표 우월성 미검증",
       "depends_on": [
         "TEP-DYNAMICS"

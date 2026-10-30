@@ -1,10 +1,10 @@
 # 연구 우선순위
 
-기준일: 2026-10-30. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-10-31. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEP-DYNAMICS — 공식 TEP 설정·동작 정렬**: Manca 실행 solver·초기화 메타데이터와 CPCaD 변환 명세 확보; 잔차를 기록·난수·수치오차로 구분 (PARTIAL)
+1. **TEP-DYNAMICS — 공식 TEP 설정·동작 정렬**: 팀별 데이터 계보 및 효과 평가 계약 독립 검토; 개인 복원 작업 종료 (PARTIAL)
 2. **TEP-DATA-RECOVERY — Manca 원본자료와 공식환경 연결**: CPCaD 정확한 원본 선택·전처리 명세 회수; Manca 실제 solver/초기화 메타데이터 대조 (PARTIAL)
 3. **TEP-OFFICIAL — 공식 Simulink 정상 운전과 동일환경 검증**: 잔여 solver/초기화·원본→1499행 규칙 확인; 연구용 효과 Gate 미통과 유지 (PARTIAL)
 
@@ -12,7 +12,7 @@
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| TEP-DYNAMICS | PARTIAL | TEP-OFFICIAL | Manca 실행 solver·초기화 메타데이터와 CPCaD 변환 명세 확보; 잔차를 기록·난수·수치오차로 구분 / SAME_ENVIRONMENT_SUPPORTED 근거 및 관측31변수 가공 연결; 현재 SAME_ENVIRONMENT_PLAUSIBLE_BUT_UNVERIFIED |
+| TEP-DYNAMICS | PARTIAL | TEP-OFFICIAL | 팀별 데이터 계보 및 효과 평가 계약 독립 검토; 개인 복원 작업 종료 / SAME_ENVIRONMENT_SUPPORTED 근거 및 관측31변수 가공 연결; 현재 SAME_ENVIRONMENT_PLAUSIBLE_BUT_UNVERIFIED |
 | TEP-DATA-RECOVERY | PARTIAL | 없음 | CPCaD 정확한 원본 선택·전처리 명세 회수; Manca 실제 solver/초기화 메타데이터 대조 / 원본→1499행 가공 및 동일환경 검증 후 연구용 효과 평가; 별도 승인된 기술 개입과 구분 |
 | TEP-OFFICIAL | PARTIAL | 없음 | 잔여 solver/초기화·원본→1499행 규칙 확인; 연구용 효과 Gate 미통과 유지 / 동일 관측/제어/생성 계약 및 비교 검증 이후에만 Phase B |
 | TEP-MATLAB | VERIFIED | 없음 | 환경 재설치 없이 기존 MATLAB/Simulink·MinGW와 격리 사본 재사용; 생성환경 검증은 별도 / MATLAB/Simulink 라이선스와 MEX·모델 로드 및 온라인 안전 감시 검증 후 공식 모델 정상 실행 |
@@ -50,7 +50,7 @@
 | MFG-EFFECT-SCOPE | BLOCKED | DYNAMIC-SCOPE | STOP-TEP-EFFECT-TRACK:현재경로동결. 추가TEP시험·패치·후속검토문서권고없음. SYNTH-FINAL로현재우선순위이동 / 최대2후보비교/1선택. 출처있는정책집합·비자명한목표/H·실패포함선택손실을정당화못함; API반응성/GT부재와구분 |
 | DYNAMIC-SCOPE | BLOCKED | VALVE-TRANSITION, REF-B | B축약계약판정2·미채택초안보존. 이후효과중심검토도STOP이므로추가TEP설계확대중단 / 4node/12미채점후보·부모폐쇄/비간선/발견대상/비자명선택/독립평가의 미충족조건 명시. 공식연구설계변경 아님 |
 | SYNTH-FINAL | VERIFIED | ERROR-DIAG, PILOT-CONFIRM | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 / A/D/E범위내지지,C/B1부분지지,B2추가정보미확립,F제조미검증.162쌍93/4/65·114경로유지48/3/63;새학습/do0 |
-| TEP-PROBE | VERIFIED | TEP-DYNAMICS | 기술 연결 완료로 보존; 본 연구 효과 식별·추천 평가는 환경/개입 모델 계약 통과 후 별도 / 단일 기술 조작 검증만 완료. 원래 인과효과 Gate·평균효과·구조지표 우월성 미검증 |
+| TEP-PROBE | VERIFIED | TEP-DYNAMICS | 기술 개입 결과와 제한을 팀에 인계; 원래 인과효과 Gate 미통과 유지 / 단일 기술 조작 검증만 완료. 원래 인과효과 Gate·평균효과·구조지표 우월성 미검증 |
 
 ## ID 이력
 
