@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-10-29. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
+기준일: 2026-11-05. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
@@ -48,6 +48,7 @@
 | SYNTH-FINAL | 합성 최종 주장·근거 통합 완료 | VERIFIED | docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md; research_runs/synthetic_final_claims/CLAIM_EVIDENCE_MATRIX.json | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 |
 | MFG-INTEGRATED | 동일환경 제조 벤치마크 후보 검토 | PARTIAL | docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md; research_runs/integrated_benchmark_search/DECISION.json; docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md | PR24 후보 비교 보존;후속 MFG-MICRO 실제 실행은 CONDITIONAL_NOT_ACCEPTED.현재 학습/추천 연결 보류,후속 판단은 MFG-MICRO에서만 관리 |
 | MFG-MICRO | CausalMan micro 실제 수용 검사 | PARTIAL | docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md; research_runs/causalman_micro_acceptance/RESULT.json, GATE.json | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 |
+| BUDGET-REFINEMENT | 예산 제약 인과구조 개선 연구 설계 후보 | PROPOSED | research/budget_aware_refinement/RESEARCH_PROTOCOL.md; main cdb2c7d 기준 초안 | Phase 1의 지표·예산·표본·정밀도·손실 및 oracle 정보 계약을 검토하고 승인 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

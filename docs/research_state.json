@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29",
+  "checked_at": "2026-11-05",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -449,9 +449,19 @@
       "depends_on": [
         "MFG-INTEGRATED"
       ]
+    },
+    {
+      "id": "BUDGET-REFINEMENT",
+      "title": "예산 제약 인과구조 개선 연구 설계 후보",
+      "status": "PROPOSED",
+      "evidence": "research/budget_aware_refinement/RESEARCH_PROTOCOL.md; main cdb2c7d 기준 초안",
+      "next_action": "Phase 1의 지표·예산·표본·정밀도·손실 및 oracle 정보 계약을 검토하고 승인",
+      "acceptance": "사전 등록된 실행 계약 및 독립 검증; 현재 실험 미실행",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "BUDGET-REFINEMENT",
     "MFG-MICRO",
     "ERROR-CONFIRM",
     "PATH-PRECISION",
