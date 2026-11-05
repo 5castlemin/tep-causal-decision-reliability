@@ -331,3 +331,6 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 현재MFG-INTEGRATED 대시보드는후속실행결과를가리키도록갱신하고중복실행대기열에서제외;과거PR24정적판정과실험JSON은보존.새우선작업은MFG-MICRO의방법론결정하나.
 
 - 수용검사커밋c6b3e386cc9838e245fd226f50ccd809af479fc7 push,PR25(basePR24) 생성.최종head CI는별도확인하며자체CI가외부acceptance성공을뜻하지않음.원본미수정/CONDITIONAL_NOT_ACCEPTED/후속sampling중단유지.
+
+## 2026-11-05 — 예산 제약 구조 개선 연구 설계 후보
+main cdb2c7d 기반 별도 브랜치에 Phase1~5 프로토콜·지표·16개 정책·oracle/비용·독립평가 및 미결정 항목 초안 작성. 새 학습·SCM·개입·시뮬레이션 미실행. 기존 공식 설계와 미병합 PR은 보존.
