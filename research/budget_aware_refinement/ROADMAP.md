@@ -6,7 +6,7 @@
 - [x] ~~Step 1: 정책 정의·정보 경계·소형 DAG 열거/구별 가능성~~ — DONE; STEP1_POLICY_SPEC.md 및 소형 fixture 17개 검사 통과, 2026-11-10. Step2 엔진 미구현.
 - [x] ~~Step 2: 엔진·자동 테스트~~ — DONE; STEP2_ENGINE.md, 관련36개 검사 및 엔진 커밋 f1494e7의 GitHub Actions 42777224302 성공, 2026-11-10. 모의 경계와 실제 SCM 연동은 별개.
 - [x] ~~Step 3: 개발 SCM 파일럿~~ — DONE; 사전계획된 보완 456회, 149개 검사 및 구현 커밋 531486a CI 42780815082 통과 (STEP3_SUPPLEMENT_REPORT.md).
-- [ ] Step 4: 본실험 사전등록 — NOT_STARTED; 표본수·정밀도·비용·순서·실패·분석 동결 후.
+- [ ] Step 4: 본실험 사전등록 — IN_PROGRESS; 경로-후회 교차표 및 계약 초안 작성, 생성 가능성·실패 규칙·실행 비용 검증 및 동결 대기 (STEP4_READINESS_AUDIT.md).
 - [ ] Step 5: 합성 본실험 — NOT_STARTED; 사전등록·별도 승인, 모든 실패/반례 보존 후.
 - [ ] Step 6: 독립 SCM·발견 검증 — NOT_STARTED; 정책 동결·구조 단위 독립성 및 출력 가정 검증 후.
 - [ ] Step 7: 가중 비용·비선형 — NOT_STARTED; 별도 요인 설계·추정 가정 검증 후.

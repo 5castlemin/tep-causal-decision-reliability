@@ -4,7 +4,7 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **BUDGET-REFINEMENT — 예산 제약 인과구조 개선 연구 설계 후보**: Step4에서 독립 SCM 수·최소 의미 차이·예산·실패·통계 분석 사전등록 (PARTIAL)
+1. **BUDGET-REFINEMENT — 예산 제약 인과구조 개선 연구 설계 후보**: Step4 구조·오류 생성기 실현 가능성, 계산 예산 및 실패 규칙 검증 후 사전등록 동결 (PARTIAL)
 2. **MFG-MICRO — CausalMan micro 실제 수용 검사**: CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 (PARTIAL)
 3. **ERROR-CONFIRM — 오류 위치 독립 계약: 정밀도·자원 결정 필요**: REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 (PARTIAL)
 
@@ -12,7 +12,7 @@
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| BUDGET-REFINEMENT | PARTIAL | 없음 | Step4에서 독립 SCM 수·최소 의미 차이·예산·실패·통계 분석 사전등록 / Step1~9 각 Gate 및 독립 실험·재현·사용자 병합 승인; Step1 fixture는 가설 검증 아님 |
+| BUDGET-REFINEMENT | PARTIAL | 없음 | Step4 구조·오류 생성기 실현 가능성, 계산 예산 및 실패 규칙 검증 후 사전등록 동결 / Step1~9 각 Gate 및 독립 실험·재현·사용자 병합 승인; Step1 fixture는 가설 검증 아님 |
 | MFG-MICRO | PARTIAL | MFG-INTEGRATED | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 / hard-do 그래프 부모 삭제 결함과 참조/효과 식별 계약이 남음.외부 import·관측1/do16000 1완료,do30000중단·replay미실행;공식채택아님 |
 | ERROR-CONFIRM | PARTIAL | ERROR-DIAG | REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 / 대응손실계약고정;미해결2개는정밀도-구조예산및종단실행비용근거.30개반폭0.446/유지15개0.742;구조단위598/유지총1650근사. 신규SCM/적합/do0 |
 | PATH-PRECISION | BLOCKED | PATH-MODEL | 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 / 실행 가능한 사전 정밀도·구조 수·예산 계약; 유리한 결과를 위한 기준 완화 금지 |

@@ -12,6 +12,4 @@ BAR-01의 제한 개발 파일럿만 실행됐다. 나머지는 계획이다. �
 
 통계적 독립 단위는 SCM이다. S1~S8/C01~C12를 새 확인 SCM으로 쓰지 않는다. 확정 정책 순서를 평가 결과로 바꾸지 않는다.
 
-Step2 구현·모의 테스트는 실험 실행이 아니다. BAR-01~04/EXT 상태는 변하지 않는다. STEP2_ENGINE.md 참조.
-
-Step2 DONE: 엔진 f1494e7 Actions 42777224302 성공; BAR 연구 실험은 계속 PLANNED/BLOCKED.
+Step2 구현·모의 테스트는 실험이 아니지만 이후 BAR-01 개발 파일럿은 실제 실행되어 COMPLETED다. BAR-02~04는 미실행이며 BAR-EXT는 BLOCKED다. Step4 초안은 IN_PROGRESS이며 본 실험 승인이 아니다. STEP4_READINESS_AUDIT.md 참조.
