@@ -1,12 +1,13 @@
 # 실험 등록부
 
-모든 행은 PLANNED이며 실행 승인·고정된 프로토콜이나 생성된 데이터가 아니다. 코드 및 결과는 승인 후 기존 공통 코드를 재사용하여 `research/budget_aware_refinement/experiments/<ID>/`와 `results/<ID>/`에 기록한다. 각 manifest에 SCM·구조·seed·데이터 split/hash·그래프 표현·수정 비용과 장부·모델/정책 버전·실패·원시 결과 및 재현 명령을 보존한다.
+아래는 설계이며 데이터·실험 결과는 없다. 실행 단위의 DAG/SCM·seed·훈련/검증·초기 오류·후보/거부/수정 장부·정책 및 비용·실패·원시 do·코드/데이터 hash를 별도 기록한다. 예산은 Step4 전 고정하지 않는다.
 
-| ID | 환경·그래프 | 정책/예산 | 상태 | 증거 |
-|---|---|---|---|---|
-| BAR-01 | 독립 선형 SCM·통제 오류 | 16조건, B 0/1/2/4 제안 | PLANNED | RESEARCH_PROTOCOL.md |
-| BAR-02 | 동일 SCM의 실제 PC/BOSS/DirectLiNGAM | 동일 oracle 계약과 사전 고정 비교 | PLANNED | src/integrated_pilot.py |
-| BAR-03 | 선형/비선형 DGP × 선형/비선형 추정기 | 동일 구조·예산의 별도 강건성 | PLANNED | 정의·구현 미완료 |
-| BAR-EXT | TEP 또는 CausalMan | 환경별 Gate 통과 후만 | BLOCKED | TEP 조건부; CausalMan CONDITIONAL_NOT_ACCEPTED / PR26 CONDITIONAL_REDESIGN |
+| ID | 조건 | 상태 | 선행 조건 |
+|---|---|---|---|
+| BAR-01 | 개발 SCM 및 14개 오류유형×위치 정책과 세 baseline | PLANNED | Step1~2 및 별도 파일럿 승인 |
+| BAR-02 | gamma1, B4 독립 SCM 확인 | PLANNED | 개발 선택 동결·Step4 등록 |
+| BAR-03 | 실제 PC/BOSS/DirectLiNGAM 출력 | PLANNED | 추정 대상·부분 방향 계약 |
+| BAR-04 | gamma2/3 및 비선형 | PLANNED | 요인 설계·계산 예산 |
+| BAR-EXT | TEP, CausalMan | BLOCKED | 환경·GT·개입·식별 Gate |
 
-반복 do 행은 독립 SCM이 아니다. 신규 확인에 S1~S8/C01~C12를 재사용하지 않는다.
+통계적 독립 단위는 SCM이다. S1~S8/C01~C12를 새 확인 SCM으로 쓰지 않는다. 확정 정책 순서를 평가 결과로 바꾸지 않는다.

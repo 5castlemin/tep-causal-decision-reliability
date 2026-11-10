@@ -1,20 +1,16 @@
-"""Static completeness check only; never executes research or establishes validity."""
+"""Check document contract declarations, not experiment results."""
 from pathlib import Path
-
-ROOT = Path(__file__).resolve().parent
-REQUIRED = ('README.md','RESEARCH_PROTOCOL.md','ROADMAP.md','RESEARCH_STATUS.md',
-            'DECISION_LOG.md','EXPERIMENT_REGISTRY.md','RISKS_AND_LIMITATIONS.md','MERGE_CHECKLIST.md')
-
+import re
+ROOT=Path(__file__).resolve().parent
+FILES=("README.md","RESEARCH_PROTOCOL.md","ROADMAP.md","RESEARCH_STATUS.md","DECISION_LOG.md","EXPERIMENT_REGISTRY.md","RISKS_AND_LIMITATIONS.md","MERGE_CHECKLIST.md","LITERATURE_NOVELTY_MATRIX.md","ARCHIVED_METRIC_COMBINATION_DESIGN.md")
 def main():
-    docs = {name:(ROOT/name).read_text(encoding='utf-8') for name in REQUIRED}
-    assert all(docs.values())
-    assert all(f'RQ{i}' in docs['README.md'] for i in range(1,5))
-    assert all(f'Phase {i}' in docs['README.md'] for i in range(1,6))
-    assert all(f'BAR-0{i}' in docs['EXPERIMENT_REGISTRY.md'] for i in range(1,4))
-    assert 'PLANNED' in docs['EXPERIMENT_REGISTRY.md'] and 'BLOCKED' in docs['EXPERIMENT_REGISTRY.md']
-    assert 'NOT_RUN' in docs['RESEARCH_STATUS.md'] and 'PROPOSED_FOR_REVIEW' in docs['RESEARCH_PROTOCOL.md']
-    assert '15개' in docs['RESEARCH_PROTOCOL.md'] and '16개' in docs['RESEARCH_PROTOCOL.md']
-    print('PASS: document presence and declared scope; not a scientific validation')
-
-if __name__ == '__main__':
-    main()
+ d={name:(ROOT/name).read_text(encoding="utf8") for name in FILES}
+ assert all(d.values())
+ assert all(x in d["RESEARCH_PROTOCOL.md"] for x in ("FN","FP","REV","14개","gamma=1","ddof=1","Holm","Step4"))
+ assert all(re.search(r"Step ?"+str(i)+r"\b",d["ROADMAP.md"]) for i in range(10))
+ assert "Step0 DONE" in d["RESEARCH_STATUS.md"] and "Step1 NOT_STARTED" in d["RESEARCH_STATUS.md"]
+ assert "[x] ~~Step 0" in d["ROADMAP.md"] and "Step 8" in d["ROADMAP.md"] and "BLOCKED" in d["ROADMAP.md"]
+ assert "archived design" in d["ARCHIVED_METRIC_COMBINATION_DESIGN.md"]
+ assert all(x in d["LITERATURE_NOVELTY_MATRIX.md"] for x in ("ABCD", "Causal Bandits", "Predict, then Optimize"))
+ print("PASS: Step0 declaration and document consistency; no scientific result validated")
+if __name__=="__main__":main()

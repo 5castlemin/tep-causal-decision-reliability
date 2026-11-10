@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-05",
+  "checked_at": "2026-11-10",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -453,10 +453,10 @@
     {
       "id": "BUDGET-REFINEMENT",
       "title": "예산 제약 인과구조 개선 연구 설계 후보",
-      "status": "PROPOSED",
-      "evidence": "research/budget_aware_refinement/RESEARCH_PROTOCOL.md; main cdb2c7d 기준 초안",
-      "next_action": "Phase 1의 지표·예산·표본·정밀도·손실 및 oracle 정보 계약을 검토하고 승인",
-      "acceptance": "사전 등록된 실행 계약 및 독립 검증; 현재 실험 미실행",
+      "status": "PARTIAL",
+      "evidence": "research/budget_aware_refinement/RESEARCH_STATUS.md; Step0 연구계약·문헌 검토 완료, 연구 실험 미실행",
+      "next_action": "Step1 오류 수정 정책 정보 경계 및 유효 DAG·후보 중복 검증",
+      "acceptance": "Step1~9 각 Gate 및 독립 실험·재현·사용자 병합 승인; Step0 문서 완료는 가설 검증 아님",
       "depends_on": []
     }
   ],
