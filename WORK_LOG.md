@@ -331,3 +331,33 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 현재MFG-INTEGRATED 대시보드는후속실행결과를가리키도록갱신하고중복실행대기열에서제외;과거PR24정적판정과실험JSON은보존.새우선작업은MFG-MICRO의방법론결정하나.
 
 - 수용검사커밋c6b3e386cc9838e245fd226f50ccd809af479fc7 push,PR25(basePR24) 생성.최종head CI는별도확인하며자체CI가외부acceptance성공을뜻하지않음.원본미수정/CONDITIONAL_NOT_ACCEPTED/후속sampling중단유지.
+
+## 2026-11-05 — 예산 제약 구조 개선 연구 설계 후보
+main cdb2c7d 기반 별도 브랜치에 Phase1~5 프로토콜·지표·16개 정책·oracle/비용·독립평가 및 미결정 항목 초안 작성. 새 학습·SCM·개입·시뮬레이션 미실행. 기존 공식 설계와 미병합 PR은 보존.
+
+## 2026-11-10 — Step0 연구 계약 전환
+15개 지표 조합을 archived design으로 보존하고 FN/FP/REV 7조합 × Global/T, baseline·후회·oracle·독립 평가 및 문헌 검토를 문서화. 신규 실험·확인 데이터 열람 없음. Step1 이후 미실행.
+
+## 2026-11-10 — Step1 소형 DAG 정책 검증
+공통 seed 회전 균형 유형 일정으로 Global/T의 유형 교란을 완화. FN/FP/REV, cycle, 순서, 비용, 불변 ID, 점수·14정책 및 정보 경계를 소형 fixture 17건으로 확인. 장래 엔진/기준선과 실제 실험 미실행. STEP1_POLICY_SPEC.md 참고.
+
+## 2026-11-10 — Step2 정책 엔진 구현
+14개 개선 정책·세 baseline·예산 장부 및 graph-only adapter 구현. 소형 엔진/Step1 관련 34개 검사와 동결39개 hash 확인; 전체 기존 단위검사 및 원격 CI 확인 중. 신규 SCM·실험은 실행하지 않음.
+
+전체 기존 단위검사139개 통과(82.070초); 이후 입력 검증·import 및 양의 Path F1 개선 경계를 보강한 최종 코드에 대해 관련34개를 재통과했다. 외부 CI는 최종 커밋에서 별도 확인한다.
+
+첫 엔진 커밋9b83d51의 GitHub Actions 전체 성공(42776999729). 이후 공개 Path F1 입력 DAG 검증 및 모의 평가 경계·120 임의 DAG 대조 테스트를 추가; 새 HEAD의 CI는 별도 확인 필요. 관련36개 테스트 통과.
+
+Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단위검사 및 관련36개 검사 확인. Step2 DONE, Step3 본 파일럿 미실행. mock 정보경계는 실제 SCM 연동 검사와 구분한다.
+
+- 2026-11-10: 예산 연구 Step3 실제 Ridge 연결 및 S1/S7 개발 파일럿 114회(실패 0, 전부 후회 0); 단일 FN 조건으로 구별력 제한, 확인 실험 아님. `research/budget_aware_refinement/STEP3_PILOT_REPORT.md`. Step3 IN_PROGRESS.
+
+- 2026-11-10: Step3 직접 과제의 상류 누락 간선과 무변경 예측을 확인; 사전계획된 S1/S7 단일·복합 오류 및 직접·경로 과제 456회 개발 진단, 실패 0. 원본 114회 보존. 상세 `research/budget_aware_refinement/STEP3_SUPPLEMENT_REPORT.md`; 확인 연구 아님.
+
+- 2026-11-10: Step3 구현 531486a GitHub Actions 42780815082 성공 및 로컬 전체 149개 검사 통과; Step3 DONE, Step4 사전등록 미시작.
+
+- 2026-11-10: Step4 기존 456행 교차 분석: 경로 부재 248회가 양의 후회 248회와 동일. 신규 확인 결과 생성 없이 표본·통계·실패 계약 초안 작성; 생성기 적격성 및 자원·실패 규칙 미동결로 IN_PROGRESS.
+
+- 2026-11-10: 저장소 통합 준비. 원격 38개 기존 브랜치의 SHA별 주석 태그와 병합 전 main 기반 attic 인덱스를 보존했다. PR #26–35와 미확인 작업은 검토 필요로 유지. PR #36 개발 통합은 최소 1명 리뷰 및 최종 검사 후에만 수행; 연구 완료로 간주하지 않는다.
+
+- 2026-11-11: 통합 문서 작성 중 보호된 RESEARCH_DESIGN.md의 변경으로 기존 검증 3개가 실패해 즉시 문서를 원복했다. 이후 전체 151개 검사와 동결 39개 hash·상태 검사가 통과했다. 보관 인덱스에 브랜치별 고유 commit 목록과 main 대비 경로 및 merge base를 추가했다.

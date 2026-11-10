@@ -1,0 +1,100 @@
+[
+  {
+    "scm": "S1",
+    "condition": "single_fn",
+    "data_hash": "09047339b89b213679209face90c923f4d3c9b3afaec8439b7189617cb0dd510",
+    "counts": {
+      "FN": 1,
+      "FP": 0,
+      "REV": 0
+    },
+    "candidates": [
+      [
+        "FN",
+        "A",
+        "M"
+      ]
+    ]
+  },
+  {
+    "scm": "S1",
+    "condition": "mixed",
+    "data_hash": "09047339b89b213679209face90c923f4d3c9b3afaec8439b7189617cb0dd510",
+    "counts": {
+      "FN": 2,
+      "FP": 1,
+      "REV": 1
+    },
+    "candidates": [
+      [
+        "FN",
+        "A",
+        "M"
+      ],
+      [
+        "FP",
+        "Y",
+        "A"
+      ],
+      [
+        "FN",
+        "M",
+        "Y"
+      ],
+      [
+        "REV",
+        "T",
+        "S"
+      ]
+    ]
+  },
+  {
+    "scm": "S7",
+    "condition": "single_fn",
+    "data_hash": "2080bc3c8bb9beef1514642e8e30481770b150464e7537986858eb921a8b61d7",
+    "counts": {
+      "FN": 1,
+      "FP": 0,
+      "REV": 0
+    },
+    "candidates": [
+      [
+        "FN",
+        "A",
+        "M1"
+      ]
+    ]
+  },
+  {
+    "scm": "S7",
+    "condition": "mixed",
+    "data_hash": "2080bc3c8bb9beef1514642e8e30481770b150464e7537986858eb921a8b61d7",
+    "counts": {
+      "FN": 2,
+      "FP": 1,
+      "REV": 1
+    },
+    "candidates": [
+      [
+        "FN",
+        "A",
+        "M1"
+      ],
+      [
+        "FP",
+        "Y",
+        "A"
+      ],
+      [
+        "FN",
+        "M3",
+        "Y"
+      ],
+      [
+        "REV",
+        "T",
+        "S"
+      ]
+    ]
+  }
+]

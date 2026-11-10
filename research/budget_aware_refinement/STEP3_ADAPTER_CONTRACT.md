@@ -1,0 +1,5 @@
+# Step 3 adapter contract
+
+`step3_adapter.prepare` validates exact dataset column order against the declared immutable SCM schema and rejects duplicate, missing and nonfinite data, zero standard deviations and invalid tasks. It runs the graph-only adapter, then passes only training values, declared names and final graph edges to the existing Ridge learner; oracle candidate logs and reference hash do not reach it. It evaluates all five candidate actions using the existing mean-response function without the old no-path fallback. Task statistics use ddof=1; Ridge retains ddof=0. Ties use `(loss, abs(k), k)`. `evaluate` takes the frozen recommendation and isolated truth spec afterward. These are ordinary Python module boundaries, not a security sandbox. The runner owns both objects and must not use evaluation outputs for selection. The actual-flow tests perturb truth coefficients while retaining the graph and data, and instrument learner inputs.
+
+This bridge currently supports the existing linear, zero-intercept development SCM and direct observed DAGs. No identification or portability claim is implied. Independent confirmation data are not accessed.
