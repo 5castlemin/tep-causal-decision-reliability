@@ -1,5 +1,3 @@
 # 연구 상태
 
-2026-11-10: Step0 DONE(문서 계약 및 정적 검사), Step1 DONE(소형 fixture 검증); Step2 DONE(엔진·검사 완료); Step3 NOT_STARTED. 연구 실험과 확인 분석은 미실행; 정책 엔진과 세 기준선은 구현 및 검증됐다. Step8 BLOCKED(TEP 동일환경·참조·효과 식별 미확정). 나머지 단계 상태와 각 Gate는 ROADMAP.md가 단일 상세 기록이다.
-
-다음: Step3 승인 이후 실제 SCM 어댑터의 정보 경계·스키마와 실행 계약을 사전 점검한다. Step3 이후 실제 실행과 확정 예산은 별도 승인·사전등록을 따른다. 기존 합성 결과는 개발 근거이며 새 독립 확인 표본이 아니다.
+2026-11-10: Step0~2 DONE; Step3 IN_PROGRESS. 실제 개발 SCM 어댑터 및 사전 계획된 S1/S7 파일럿 114회 완료, 전부 후회 0. 단일 FN 조건이라 정책 구별력과 추가 검증이 제한된다. 전체 검사와 원격 CI 결과를 확인해야 한다. 상세: STEP3_PILOT_REPORT.md. Step8 BLOCKED. 확인 SCM 및 TEP/CausalMan 신규 실험 미실행.

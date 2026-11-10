@@ -349,3 +349,5 @@ main cdb2c7d 기반 별도 브랜치에 Phase1~5 프로토콜·지표·16개 정
 첫 엔진 커밋9b83d51의 GitHub Actions 전체 성공(42776999729). 이후 공개 Path F1 입력 DAG 검증 및 모의 평가 경계·120 임의 DAG 대조 테스트를 추가; 새 HEAD의 CI는 별도 확인 필요. 관련36개 테스트 통과.
 
 Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단위검사 및 관련36개 검사 확인. Step2 DONE, Step3 본 파일럿 미실행. mock 정보경계는 실제 SCM 연동 검사와 구분한다.
+
+- 2026-11-10: 예산 연구 Step3 실제 Ridge 연결 및 S1/S7 개발 파일럿 114회(실패 0, 전부 후회 0); 단일 FN 조건으로 구별력 제한, 확인 실험 아님. `research/budget_aware_refinement/STEP3_PILOT_REPORT.md`. Step3 IN_PROGRESS.

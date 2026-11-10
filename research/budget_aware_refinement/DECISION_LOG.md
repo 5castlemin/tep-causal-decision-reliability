@@ -16,3 +16,5 @@ Global 유형순 대 T 전체 위치순은 혼재이므로 공통 seed 회전 �
 Step1 계약을 policy_engine 및 graph_adapter로 구현. 명시적 스키마와 oracle graph-only 필드 경계를 채택하고 모델 및 평가기와 분리한다. 추가 참조 경로를 읽는 Path F1 기준선을 같은 정보량 정책으로 표시하지 않는다. 기존 계획·실험 결과 변경 없음; CI 확인 전 Step2 미완료.
 
 2026-11-10: 엔진 커밋 f1494e7의 GitHub Actions 42777224302 및 관련36개 소형 검사를 확인해 Step2 DONE. mock 경계와 실제 Step3 SCM 연동의 검증은 분리한다. 연구 파일럿 미실행.
+
+2026-11-10: 승인된 Step3 개발 파일럿은 S1/S7 첫 직접 과제와 기존 remove_key 조건을 결과 확인 전 고정했다. 전부 후회 0이며 단일 FN이어서 정책 우열을 주장하지 않는다. 실제 SCM 어댑터에서 추천 뒤 정답을 평가한다. Step3 IN_PROGRESS: 재현 및 CI 미완료.
