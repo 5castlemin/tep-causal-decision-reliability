@@ -353,3 +353,5 @@ Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단�
 - 2026-11-10: 예산 연구 Step3 실제 Ridge 연결 및 S1/S7 개발 파일럿 114회(실패 0, 전부 후회 0); 단일 FN 조건으로 구별력 제한, 확인 실험 아님. `research/budget_aware_refinement/STEP3_PILOT_REPORT.md`. Step3 IN_PROGRESS.
 
 - 2026-11-10: Step3 직접 과제의 상류 누락 간선과 무변경 예측을 확인; 사전계획된 S1/S7 단일·복합 오류 및 직접·경로 과제 456회 개발 진단, 실패 0. 원본 114회 보존. 상세 `research/budget_aware_refinement/STEP3_SUPPLEMENT_REPORT.md`; 확인 연구 아님.
+
+- 2026-11-10: Step3 구현 531486a GitHub Actions 42780815082 성공 및 로컬 전체 149개 검사 통과; Step3 DONE, Step4 사전등록 미시작.
