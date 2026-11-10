@@ -9,3 +9,5 @@
 기존 연동 후보: `src/integrated_pilot.py::fit_model/recommend/structure_metrics`, `src/diverse_structure_pilot.py::score_graph/analytic_response`, `src/decision_reliability_next.py::evaluate`의 입력 의미와 스케일을 Step3 연결 전에 대조한다. 기존 F1의 REV·unresolved 규칙과 편집 원자비용은 다르다. 최종 평가 정보가 정책 구성으로 역류하지 않도록 향후 실제 어댑터 통합 테스트를 선행한다. 데이터 생성이나 후회 평가는 이번에 수행하지 않았다.
 
 추가 검사: 모의 그래프→학습→추천→평가 흐름에서 평가 계수만 바꿔도 수정 선택이 같고 평가 결과는 달라진다. evaluator·학습/평가 데이터를 graph-only 요청에 주입하면 거부한다. 120개 임의 소형 DAG에서 Step1 참조 구현과 순서/비용을 비교했다. 양쪽 무경로와 Path F1 개선량 0, 동률을 별도 검사했다. 이들은 모의·fixture이며 신규 SCM 실험이 아니다.
+
+검증: 관련36개 단위검사(기존 Step1 17개 포함) 통과. 엔진 commit f1494e7 GitHub Actions 42777224302 성공, 전체141개 단위검사 통과. CI는 mock 테스트와 기존 저장 기록 재검산이며 새 연구 실험이 아니다.
