@@ -337,3 +337,6 @@ main cdb2c7d 기반 별도 브랜치에 Phase1~5 프로토콜·지표·16개 정
 
 ## 2026-11-10 — Step0 연구 계약 전환
 15개 지표 조합을 archived design으로 보존하고 FN/FP/REV 7조합 × Global/T, baseline·후회·oracle·독립 평가 및 문헌 검토를 문서화. 신규 실험·확인 데이터 열람 없음. Step1 이후 미실행.
+
+## 2026-11-10 — Step1 소형 DAG 정책 검증
+공통 seed 회전 균형 유형 일정으로 Global/T의 유형 교란을 완화. FN/FP/REV, cycle, 순서, 비용, 불변 ID, 점수·14정책 및 정보 경계를 소형 fixture 17건으로 확인. 장래 엔진/기준선과 실제 실험 미실행. STEP1_POLICY_SPEC.md 참고.
