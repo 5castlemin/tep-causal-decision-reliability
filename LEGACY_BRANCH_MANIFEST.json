@@ -1,0 +1,865 @@
+{
+  "origin_main": "cdb2c7d6dc499937929ca496ca840b07fb500701",
+  "feature_head": "ba35db68c573fd35a21edb42b1bbde354bedf0d8",
+  "branches": [
+    {
+      "branch": "feature/benchmark-compatibility-decision",
+      "sha": "a2dc2b236b8733663c920d3ea06980c187e00728",
+      "commit_date": "2026-10-23T22:18:35+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 54,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 5,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/benchmark-compatibility-decision",
+          "updated_at": "2026-10-23T13:19:35Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/benchmark-compatibility-decision"
+    },
+    {
+      "branch": "feature/budget-aware-causal-refinement",
+      "sha": "ba35db68c573fd35a21edb42b1bbde354bedf0d8",
+      "commit_date": "2026-11-10T17:44:12+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 10,
+      "behind": 0,
+      "unique_commits": 10,
+      "unique_diff_files": 51,
+      "category": "ACTIVE",
+      "prs": [
+        {
+          "number": 36,
+          "state": "open",
+          "merged": false,
+          "base": "main",
+          "head": "feature/budget-aware-causal-refinement",
+          "updated_at": "2026-11-10T08:46:57Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/budget-aware-causal-refinement"
+    },
+    {
+      "branch": "feature/causal-metric-decision-mvp",
+      "sha": "baf03e900a021d3d646779da219fd6bbd0de14ad",
+      "commit_date": "2026-10-24T18:02:21+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 48,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 9,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/causal-metric-decision-mvp",
+          "updated_at": "2026-10-24T12:13:50Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/causal-metric-decision-mvp"
+    },
+    {
+      "branch": "feature/causalman-causal-contract-resolution",
+      "sha": "43722777a0d65b57f0c41491a0deb3d321ebe4a1",
+      "commit_date": "2026-10-29T19:14:56+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 2,
+      "behind": 0,
+      "unique_commits": 2,
+      "unique_diff_files": 9,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 26,
+          "state": "open",
+          "merged": false,
+          "base": "main",
+          "head": "feature/causalman-causal-contract-resolution",
+          "updated_at": "2026-10-29T10:14:58Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/causalman-causal-contract-resolution"
+    },
+    {
+      "branch": "feature/causalman-micro-acceptance",
+      "sha": "fec47aed55e6646638fa72bc9c8d6466eadfef85",
+      "commit_date": "2026-10-29T17:43:19+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 11,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 25,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/causalman-micro-acceptance",
+          "updated_at": "2026-10-29T10:12:33Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/causalman-micro-acceptance"
+    },
+    {
+      "branch": "feature/decision-reliability-next",
+      "sha": "d12c6be1bb4956e87392276509950065dc9295ab",
+      "commit_date": "2026-10-25T13:49:49+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 30,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 16,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/decision-reliability-next",
+          "updated_at": "2026-10-29T10:10:35Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/decision-reliability-next"
+    },
+    {
+      "branch": "feature/diverse-causal-structures",
+      "sha": "a4ae7694aff24e8a40dce516cf44007d52676907",
+      "commit_date": "2026-10-24T23:29:01+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 37,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 13,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/diverse-causal-structures",
+          "updated_at": "2026-10-25T03:10:06Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/diverse-causal-structures"
+    },
+    {
+      "branch": "feature/env-mvp-acceptance",
+      "sha": "ee5e0bd83b78a753bf78d2b72b835fcce8ca2813",
+      "commit_date": "2026-10-24T20:13:51+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 47,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 10,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/env-mvp-acceptance",
+          "updated_at": "2026-10-24T12:14:51Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/env-mvp-acceptance"
+    },
+    {
+      "branch": "feature/first-integrated-pilot",
+      "sha": "6d37d095998bf45bc532606fe8113fedd1b8f913",
+      "commit_date": "2026-10-24T20:48:19+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 46,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 11,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/first-integrated-pilot",
+          "updated_at": "2026-10-24T12:15:49Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/first-integrated-pilot"
+    },
+    {
+      "branch": "feature/independent-causal-confirmation",
+      "sha": "4a35891b48ced558d92d990898910d965ada7eb4",
+      "commit_date": "2026-10-25T02:17:52+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 36,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 14,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/independent-causal-confirmation",
+          "updated_at": "2026-10-25T03:13:26Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/independent-causal-confirmation"
+    },
+    {
+      "branch": "feature/independent-error-location-protocol",
+      "sha": "1728d8595fcbeb283f5f212ef30abcfad935a0a0",
+      "commit_date": "2026-10-29T01:22:41+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 16,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 23,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/independent-error-location-protocol",
+          "updated_at": "2026-10-29T10:12:12Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/independent-error-location-protocol"
+    },
+    {
+      "branch": "feature/integrated-manufacturing-benchmark-search",
+      "sha": "bc46dc924f2cf5171144c6e73e7a48373d83dc34",
+      "commit_date": "2026-10-29T16:41:33+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 13,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 24,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/integrated-manufacturing-benchmark-search",
+          "updated_at": "2026-10-29T10:12:22Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/integrated-manufacturing-benchmark-search"
+    },
+    {
+      "branch": "feature/manufacturing-validity-gate",
+      "sha": "a41683bd9a0a0bd568b5e40c4d6374b033eb424e",
+      "commit_date": "2026-10-27T17:37:18+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 28,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 17,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/manufacturing-validity-gate",
+          "updated_at": "2026-10-29T10:11:01Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/manufacturing-validity-gate"
+    },
+    {
+      "branch": "feature/path-metric-incremental-validation",
+      "sha": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
+      "commit_date": "2026-10-25T12:36:38+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 32,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 15,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/path-metric-incremental-validation",
+          "updated_at": "2026-10-29T10:10:10Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/path-metric-incremental-validation"
+    },
+    {
+      "branch": "feature/pr2-pr3-integration",
+      "sha": "0f6ab936959595b7be6c58ab6db0f91e49d73e2f",
+      "commit_date": "2026-10-23T20:09:32+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 1,
+      "behind": 60,
+      "unique_commits": 1,
+      "unique_diff_files": 41,
+      "category": "REVIEW_REQUIRED",
+      "prs": [],
+      "preservation_tag": "attic/2026-11-10/feature/pr2-pr3-integration"
+    },
+    {
+      "branch": "feature/ref-b-minimal-subsystem",
+      "sha": "d508ab071f8e153698552ce69225a6eaf17a7150",
+      "commit_date": "2026-10-24T17:19:33+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 49,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 8,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/ref-b-minimal-subsystem",
+          "updated_at": "2026-10-24T12:12:23Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/ref-b-minimal-subsystem"
+    },
+    {
+      "branch": "feature/repeated-metric-pilot",
+      "sha": "23d19f56cd6510783398cfa95f66f1d1d8194937",
+      "commit_date": "2026-10-24T21:39:12+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 39,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 12,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/repeated-metric-pilot",
+          "updated_at": "2026-10-25T03:07:13Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/repeated-metric-pilot"
+    },
+    {
+      "branch": "feature/research-asset-recovery",
+      "sha": "9be394a48b20484072360edd8df8e5a09097d4d6",
+      "commit_date": "2026-10-23T20:12:43+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 58,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 3,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/research-asset-recovery",
+          "updated_at": "2026-10-23T11:13:19Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/research-asset-recovery"
+    },
+    {
+      "branch": "feature/simulator-feasibility",
+      "sha": "e5a0291e48d5426628c0dde8a122fe8ab6b6e195",
+      "commit_date": "2026-10-23T17:22:10+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 62,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 2,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/simulator-feasibility",
+          "updated_at": "2026-10-23T11:10:58Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/simulator-feasibility"
+    },
+    {
+      "branch": "feature/simulator-numerical-validation",
+      "sha": "71c5448ed9a82548d86f40f60be842020f69538d",
+      "commit_date": "2026-10-23T20:38:45+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 56,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 4,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/simulator-numerical-validation",
+          "updated_at": "2026-10-23T13:17:44Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/simulator-numerical-validation"
+    },
+    {
+      "branch": "feature/slack-assets-research-ops",
+      "sha": "55e724e3932ba912a40f30844d0b69ecde9ec22f",
+      "commit_date": "2026-10-23T17:01:32+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 65,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 1,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/slack-assets-research-ops",
+          "updated_at": "2026-10-23T08:12:38Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/slack-assets-research-ops"
+    },
+    {
+      "branch": "feature/synthetic-final-claims-evidence",
+      "sha": "e9dae0c5e40d44228d30beb6cbdf6f0d771676cb",
+      "commit_date": "2026-10-29T00:49:06+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 18,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 22,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/synthetic-final-claims-evidence",
+          "updated_at": "2026-10-29T10:12:00Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/synthetic-final-claims-evidence"
+    },
+    {
+      "branch": "feature/tep-bounded-dynamic-research-protocol",
+      "sha": "7ad488733f26029461890a3064b648e3f6664599",
+      "commit_date": "2026-10-27T23:38:53+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 22,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 20,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/tep-bounded-dynamic-research-protocol",
+          "updated_at": "2026-10-29T10:11:37Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-bounded-dynamic-research-protocol"
+    },
+    {
+      "branch": "feature/tep-dynamics-alignment-and-intervention-probe",
+      "sha": "1a8bae9d330d54a9c107fc5de09bfd98bcbf653f",
+      "commit_date": "2026-10-30T21:51:22+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 19,
+      "behind": 0,
+      "unique_commits": 19,
+      "unique_diff_files": 144,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 34,
+          "state": "open",
+          "merged": false,
+          "base": "feature/tep-original-data-to-causal-intervention",
+          "head": "feature/tep-dynamics-alignment-and-intervention-probe",
+          "updated_at": "2026-10-30T12:54:38Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-dynamics-alignment-and-intervention-probe"
+    },
+    {
+      "branch": "feature/tep-effect-decision-feasibility",
+      "sha": "18e14d8da8ce3cc494eb680c726a0aa1ef5d3c26",
+      "commit_date": "2026-10-28T00:57:49+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 20,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 21,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/tep-effect-decision-feasibility",
+          "updated_at": "2026-10-29T10:11:49Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-effect-decision-feasibility"
+    },
+    {
+      "branch": "feature/tep-environment-bridge-feasibility",
+      "sha": "2a03e1de4861ec96f943f4a50351d922d0f46c5b",
+      "commit_date": "2026-10-27T20:04:53+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 26,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 18,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/tep-environment-bridge-feasibility",
+          "updated_at": "2026-10-29T10:11:14Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-environment-bridge-feasibility"
+    },
+    {
+      "branch": "feature/tep-final-alignment-handoff",
+      "sha": "8a278fe15627361f86988050a8950e14a7d722b6",
+      "commit_date": "2026-10-31T00:09:23+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 20,
+      "behind": 0,
+      "unique_commits": 20,
+      "unique_diff_files": 148,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 35,
+          "state": "open",
+          "merged": false,
+          "base": "feature/tep-dynamics-alignment-and-intervention-probe",
+          "head": "feature/tep-final-alignment-handoff",
+          "updated_at": "2026-10-30T15:09:31Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-final-alignment-handoff"
+    },
+    {
+      "branch": "feature/tep-matlab-simulink-local-validation",
+      "sha": "c01e2c3bfc0dde192ed0ab73acff7d260f9e86c7",
+      "commit_date": "2026-10-30T00:02:52+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 14,
+      "behind": 0,
+      "unique_commits": 14,
+      "unique_diff_files": 74,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 31,
+          "state": "open",
+          "merged": false,
+          "base": "feature/tep-simulator-comprehensive-search",
+          "head": "feature/tep-matlab-simulink-local-validation",
+          "updated_at": "2026-10-29T15:03:00Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-matlab-simulink-local-validation"
+    },
+    {
+      "branch": "feature/tep-official-simulator-research-pilot",
+      "sha": "ef4e60f09a20e0e7141b8062ab39d5ab1e4bfea4",
+      "commit_date": "2026-10-30T20:16:11+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 15,
+      "behind": 0,
+      "unique_commits": 15,
+      "unique_diff_files": 89,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 32,
+          "state": "open",
+          "merged": false,
+          "base": "feature/tep-matlab-simulink-local-validation",
+          "head": "feature/tep-official-simulator-research-pilot",
+          "updated_at": "2026-10-30T11:16:29Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-official-simulator-research-pilot"
+    },
+    {
+      "branch": "feature/tep-operating-condition-reconstruction",
+      "sha": "0e26cc851c485e9a24f379ebfbef979adc4fc18f",
+      "commit_date": "2026-10-29T22:17:44+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 8,
+      "behind": 0,
+      "unique_commits": 8,
+      "unique_diff_files": 40,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 29,
+          "state": "open",
+          "merged": false,
+          "base": "feature/tep-studio-execution-and-environment-validation",
+          "head": "feature/tep-operating-condition-reconstruction",
+          "updated_at": "2026-10-29T13:17:52Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-operating-condition-reconstruction"
+    },
+    {
+      "branch": "feature/tep-original-data-to-causal-intervention",
+      "sha": "51c2c76a55750fb772337f79b51f5fc8ab686ecd",
+      "commit_date": "2026-10-30T21:08:36+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 18,
+      "behind": 0,
+      "unique_commits": 18,
+      "unique_diff_files": 120,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 33,
+          "state": "open",
+          "merged": false,
+          "base": "feature/tep-official-simulator-research-pilot",
+          "head": "feature/tep-original-data-to-causal-intervention",
+          "updated_at": "2026-10-30T12:11:43Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-original-data-to-causal-intervention"
+    },
+    {
+      "branch": "feature/tep-original-simulator-reconstruction",
+      "sha": "597d6554613a685354ba40dcb9ae896413145fa7",
+      "commit_date": "2026-10-29T21:15:25+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 3,
+      "behind": 0,
+      "unique_commits": 3,
+      "unique_diff_files": 15,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 27,
+          "state": "open",
+          "merged": false,
+          "base": "main",
+          "head": "feature/tep-original-simulator-reconstruction",
+          "updated_at": "2026-10-29T12:15:27Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-original-simulator-reconstruction"
+    },
+    {
+      "branch": "feature/tep-simulator-comprehensive-search",
+      "sha": "4098306b05a5e09dc362d4d0571908d427fd9350",
+      "commit_date": "2026-10-29T23:51:13+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 13,
+      "behind": 0,
+      "unique_commits": 13,
+      "unique_diff_files": 60,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 30,
+          "state": "open",
+          "merged": false,
+          "base": "feature/tep-operating-condition-reconstruction",
+          "head": "feature/tep-simulator-comprehensive-search",
+          "updated_at": "2026-10-29T14:51:34Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-simulator-comprehensive-search"
+    },
+    {
+      "branch": "feature/tep-studio-execution-and-environment-validation",
+      "sha": "e86b4917a957cfbd3cdeb6ed6a3610c5b33b4203",
+      "commit_date": "2026-10-29T21:32:16+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 6,
+      "behind": 0,
+      "unique_commits": 6,
+      "unique_diff_files": 27,
+      "category": "REVIEW_REQUIRED",
+      "prs": [
+        {
+          "number": 28,
+          "state": "open",
+          "merged": false,
+          "base": "feature/tep-original-simulator-reconstruction",
+          "head": "feature/tep-studio-execution-and-environment-validation",
+          "updated_at": "2026-10-29T12:32:25Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-studio-execution-and-environment-validation"
+    },
+    {
+      "branch": "feature/tep-valve-transition-reference-gate",
+      "sha": "5d3d62758ddc363d67e4150bf3694a1fa4f879ee",
+      "commit_date": "2026-10-27T22:31:05+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 24,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 19,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/tep-valve-transition-reference-gate",
+          "updated_at": "2026-10-29T10:11:26Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/tep-valve-transition-reference-gate"
+    },
+    {
+      "branch": "feature/track-a-recovery-gate",
+      "sha": "5fe3997d79a8244f4b156d5a335013337833b166",
+      "commit_date": "2026-10-23T22:40:00+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 51,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 6,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/track-a-recovery-gate",
+          "updated_at": "2026-10-24T12:10:27Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/track-a-recovery-gate"
+    },
+    {
+      "branch": "feature/track-b-reference-validity",
+      "sha": "8634e5dce66460dc26441fc40e930c34ebc73af7",
+      "commit_date": "2026-10-24T17:01:58+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 50,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "MERGED_LEGACY",
+      "prs": [
+        {
+          "number": 7,
+          "state": "closed",
+          "merged": true,
+          "base": "main",
+          "head": "feature/track-b-reference-validity",
+          "updated_at": "2026-10-24T12:11:22Z",
+          "author": "5castlemin"
+        }
+      ],
+      "preservation_tag": "attic/2026-11-10/feature/track-b-reference-validity"
+    },
+    {
+      "branch": "main",
+      "sha": "cdb2c7d6dc499937929ca496ca840b07fb500701",
+      "commit_date": "2026-10-29T19:12:33+09:00",
+      "author": "Seongmin Oh",
+      "ahead": 0,
+      "behind": 0,
+      "unique_commits": 0,
+      "unique_diff_files": 0,
+      "category": "ACTIVE",
+      "prs": [],
+      "preservation_tag": "attic/2026-11-10/main"
+    }
+  ],
+  "open_prs": 11,
+  "merged_prs": 25,
+  "method": "unique_commits counts commits not reachable from main; diff_files is merge-base diff, not proof of novelty",
+  "review_note": "open PRs and ambiguous branch retain until activity/ownership established",
+  "categories_note": "REVIEW_REQUIRED includes all open PR heads and PR-less integration: inactivity or teammate ownership not established. Nothing is authorized for deletion by this classification."
+}
