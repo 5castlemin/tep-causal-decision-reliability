@@ -351,3 +351,5 @@ main cdb2c7d 기반 별도 브랜치에 Phase1~5 프로토콜·지표·16개 정
 Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단위검사 및 관련36개 검사 확인. Step2 DONE, Step3 본 파일럿 미실행. mock 정보경계는 실제 SCM 연동 검사와 구분한다.
 
 - 2026-11-10: 예산 연구 Step3 실제 Ridge 연결 및 S1/S7 개발 파일럿 114회(실패 0, 전부 후회 0); 단일 FN 조건으로 구별력 제한, 확인 실험 아님. `research/budget_aware_refinement/STEP3_PILOT_REPORT.md`. Step3 IN_PROGRESS.
+
+- 2026-11-10: Step3 직접 과제의 상류 누락 간선과 무변경 예측을 확인; 사전계획된 S1/S7 단일·복합 오류 및 직접·경로 과제 456회 개발 진단, 실패 0. 원본 114회 보존. 상세 `research/budget_aware_refinement/STEP3_SUPPLEMENT_REPORT.md`; 확인 연구 아님.

@@ -48,7 +48,7 @@
 | SYNTH-FINAL | 합성 최종 주장·근거 통합 완료 | VERIFIED | docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md; research_runs/synthetic_final_claims/CLAIM_EVIDENCE_MATRIX.json | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 |
 | MFG-INTEGRATED | 동일환경 제조 벤치마크 후보 검토 | PARTIAL | docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md; research_runs/integrated_benchmark_search/DECISION.json; docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md | PR24 후보 비교 보존;후속 MFG-MICRO 실제 실행은 CONDITIONAL_NOT_ACCEPTED.현재 학습/추천 연결 보류,후속 판단은 MFG-MICRO에서만 관리 |
 | MFG-MICRO | CausalMan micro 실제 수용 검사 | PARTIAL | docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md; research_runs/causalman_micro_acceptance/RESULT.json, GATE.json | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 |
-| BUDGET-REFINEMENT | 예산 제약 인과구조 개선 연구 설계 후보 | PARTIAL | research/budget_aware_refinement/STEP3_PILOT_REPORT.md; S1/S7 개발 파일럿 114회, Step3 IN_PROGRESS | Step3 재현·전체 검사·원격 CI 확인 및 단일 FN 파일럿의 정책 구별력 제한 검토 |
+| BUDGET-REFINEMENT | 예산 제약 인과구조 개선 연구 설계 후보 | PARTIAL | research/budget_aware_refinement/STEP3_SUPPLEMENT_REPORT.md; 개발 보완 파일럿 456회 완료, Step3 CI 확인 대기 | 전체 검사와 원격 CI 확인 후 Step3 Gate 판정; Step4 표본·예산·분석 사전등록 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.
