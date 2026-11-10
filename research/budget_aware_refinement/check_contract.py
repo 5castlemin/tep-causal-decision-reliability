@@ -10,7 +10,7 @@ def main():
  assert all(re.search(r"Step ?"+str(i)+r"\b",d["ROADMAP.md"]) for i in range(10))
  assert "Step0 DONE" in d["RESEARCH_STATUS.md"] and "Step1 DONE" in d["RESEARCH_STATUS.md"]
  assert "[x] ~~Step 0" in d["ROADMAP.md"] and "Step 8" in d["ROADMAP.md"] and "BLOCKED" in d["ROADMAP.md"]
- assert "[x] ~~Step 1" in d["ROADMAP.md"] and "Step2 NOT_STARTED" in d["RESEARCH_STATUS.md"]
+ assert "[x] ~~Step 1" in d["ROADMAP.md"] and ("Step2 IN_PROGRESS" in d["RESEARCH_STATUS.md"] or "Step2 DONE" in d["RESEARCH_STATUS.md"])
  assert all(x in d["STEP1_POLICY_SPEC.md"] for x in ("G-FN", "T-FN", "type_opportunities", "17개"))
  assert "archived design" in d["ARCHIVED_METRIC_COMBINATION_DESIGN.md"]
  assert all(x in d["LITERATURE_NOVELTY_MATRIX.md"] for x in ("ABCD", "Causal Bandits", "Predict, then Optimize"))

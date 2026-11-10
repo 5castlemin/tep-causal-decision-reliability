@@ -11,3 +11,5 @@
 | BAR-EXT | TEP, CausalMan | BLOCKED | 환경·GT·개입·식별 Gate |
 
 통계적 독립 단위는 SCM이다. S1~S8/C01~C12를 새 확인 SCM으로 쓰지 않는다. 확정 정책 순서를 평가 결과로 바꾸지 않는다.
+
+Step2 구현·모의 테스트는 실험 실행이 아니다. BAR-01~04/EXT 상태는 변하지 않는다. STEP2_ENGINE.md 참조.

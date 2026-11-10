@@ -4,7 +4,7 @@
 
 - [x] ~~Step 0: 연구 질문·정보 경계·비용·후회·문헌 검토와 정적 계약 검증~~ — DONE; RESEARCH_PROTOCOL.md, LITERATURE_NOVELTY_MATRIX.md, check_contract.py; 2026-11-10. 실험 증거 아님.
 - [x] ~~Step 1: 정책 정의·정보 경계·소형 DAG 열거/구별 가능성~~ — DONE; STEP1_POLICY_SPEC.md 및 소형 fixture 17개 검사 통과, 2026-11-10. Step2 엔진 미구현.
-- [ ] Step 2: 엔진·자동 테스트 — NOT_STARTED; Step1 계약 및 oracle 격리, 중복 비용/순환/동률/실패 검증 후.
+- [ ] Step 2: 엔진·자동 테스트 — IN_PROGRESS; STEP2_ENGINE.md와 국소 테스트, 외부 CI 확인 대기.
 - [ ] Step 3: 개발 SCM 파일럿 — NOT_STARTED; 승인된 경량 실행·중복률·비용/시간 기록 후.
 - [ ] Step 4: 본실험 사전등록 — NOT_STARTED; 표본수·정밀도·비용·순서·실패·분석 동결 후.
 - [ ] Step 5: 합성 본실험 — NOT_STARTED; 사전등록·별도 승인, 모든 실패/반례 보존 후.
