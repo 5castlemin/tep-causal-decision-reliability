@@ -83,6 +83,8 @@ def _path_edges(nodes,edges,source,target):
     visit(source,[source]);return result
 
 def path_f1(nodes,truth,graph,action,target):
+    nodes=_node_ids(nodes);truth=_graph(nodes,truth);graph=_graph(nodes,graph)
+    if type(action) is not str or type(target) is not str or action not in nodes or target not in nodes or action==target:raise ValueError("invalid task")
     r=_path_edges(nodes,truth,action,target);p=_path_edges(nodes,graph,action,target)
     if not r and not p:return None
     return 2*len(r&p)/(len(r)+len(p))
@@ -103,7 +105,7 @@ def refine(*,node_ids,initial_edges,reference_edges,allowed_types,policy_id,budg
     if type(allowed_types) not in (list,tuple,set,frozenset) or type(prior_edges) not in (list,tuple,set,frozenset):raise ValueError("invalid collection")
     if type(policy_id) is not str or (graph_id is not None and (type(graph_id) is not str or not graph_id)):raise ValueError("invalid policy or graph ID")
     raw=list(allowed_types)
-    if len(raw)!=len(set(raw)) or not raw or any(x not in KINDS for x in raw):raise ValueError("invalid allowed types")
+    if not raw or any(type(x) is not str or x not in KINDS for x in raw) or len(raw)!=len(set(raw)):raise ValueError("invalid allowed types")
     allowed=tuple(k for k in KINDS if k in raw);mode=policy_id.split("-")[0]
     expected=mode+"-"+"-".join(allowed)
     if policy_id not in (expected,"NO-EDIT","RANDOM","PATH-F1") or mode not in ("G","T","NO","RANDOM","PATH"):raise ValueError("invalid policy ID")

@@ -52,6 +52,7 @@ class EngineTests(unittest.TestCase):
  def test_path_f1_false_extra_and_empty(self):
   n=['a','b','c','d'];truth={('a','b'),('b','d')};extra=truth|{('a','c'),('c','d')}
   self.assertEqual(path_f1(n,truth,truth,'a','d'),1);self.assertLess(path_f1(n,truth,extra,'a','d'),1);self.assertIsNone(path_f1(n,set(),set(),'a','d'))
+  with self.assertRaises(ValueError):path_f1(n,truth,[('a','b'),('b','a')],'a','d')
  def test_path_baseline_skip_and_improve(self):
   r=self.call(node_ids=['a','b','c'],reference_edges=[('a','b'),('b','c')],initial_edges=[],allowed_types=['FN'],policy_id='PATH-F1',budget=3,action='a',target='c');self.assertEqual(r['spent_budget'],0);self.assertEqual(r['termination_reason'],'path_no_positive_gain')
   r=self.call(node_ids=['a','b','c'],reference_edges=[('a','b'),('b','c')],initial_edges=[('a','b')],allowed_types=['FN'],policy_id='PATH-F1',budget=3,action='a',target='c');self.assertEqual(r['edit_sequence'],[('FN','b','c')])
@@ -72,9 +73,33 @@ class EngineTests(unittest.TestCase):
     def evaluate():return effect
     result=run_graph_stage(dict(self.base));return result,evaluate
    result,evaluate=adapter(coefficient)
+   self.assertEqual(evaluate(),coefficient)
    if coefficient==1:first=result['edit_sequence']
    else:self.assertEqual(first,result['edit_sequence'])
   tree=ast.parse((Path(__file__).resolve().parents[1]/'research/budget_aware_refinement/policy_engine.py').read_text());imports=[n.module for n in ast.walk(tree) if isinstance(n,ast.ImportFrom)];self.assertFalse(any(x and ('evaluation' in x or 'scm' in x) for x in imports))
+ def test_mock_graph_train_recommend_evaluate_boundary(self):
+  class Evaluator:
+   def __init__(self,coefficient):self.coefficient=coefficient
+   def assess(self,chosen):return self.coefficient*chosen
+  def pipeline(evaluator):
+   request=dict(self.base);selection=run_graph_stage(request)
+   # Mock model receives training values and final graph only, never the evaluator.
+   def mock_fit(training,edges):return (sum(training),len(edges))
+   model=mock_fit([1,2],selection['final_graph']);choice=1 if model[0]>0 else -1
+   return selection,evaluator.assess(choice)
+  left,lval=pipeline(Evaluator(1));right,rval=pipeline(Evaluator(-7))
+  self.assertEqual(left['edit_sequence'],right['edit_sequence']);self.assertNotEqual(lval,rval)
+  with self.assertRaises(ValueError):run_graph_stage(dict(self.base,evaluator=Evaluator(1)))
+ def test_random_dag_fixture_parity(self):
+  rng=random.Random(163);nodes=('a','b','c','d');pairs=list(itertools.combinations(nodes,2))
+  for _ in range(120):
+   order=list(nodes);rng.shuffle(order);rank={v:i for i,v in enumerate(order)}
+   truth=[(a,b) for a,b in pairs if rng.random()<.4]
+   initial=[(a,b) if rank[a]<rank[b] else (b,a) for a,b in pairs if rng.random()<.4]
+   seed=rng.randrange(3);focus=bool(rng.randrange(2));policy=('T' if focus else 'G')+'-FN-FP-REV'
+   r=self.call(node_ids=list(reversed(nodes)),reference_edges=truth,initial_edges=initial,policy_id=policy,budget=3,seed=seed)
+   f=fixture(nodes,set(truth),set(initial),('FN','FP','REV'),3,'a','c',focus,seed=seed)
+   self.assertEqual(r['edit_sequence'],f['edit_sequence']);self.assertEqual(r['spent_budget'],f['spent_budget'])
  def test_small_random_graphs(self):
   rng=random.Random(7)
   for _ in range(100):
