@@ -24,3 +24,5 @@ Step1 계약을 policy_engine 및 graph_adapter로 구현. 명시적 스키마�
 2026-11-10: Step3 완료 — 구현 531486a의 전체 149개 로컬 검사와 GitHub Actions 42780815082 성공, 사전계획된 보완 결과 보존. 두 개발 SCM 결과는 확인적 주장이 아니며 Step4 등록에서 표본·비용·실패·분석 규칙을 결정한다.
 
 2026-11-10: Step4에서는 선택 정책과 동일한 오류 유형·일정의 matched Random 및 matched Path-F1 기준선을 제안한다. 기존 Step3 full-pool 결과는 유지한다. 64/200과 0.10은 후보이며 생성 적격성·자원·실패 규칙 미검증으로 동결하지 않는다. STEP4_READINESS_AUDIT.md.
+
+2026-11-10: 사용자는 검증된 진행 중 개발물을 main의 공식 기준으로 통합하도록 지시했다. Development Integration은 Step4–9 완료나 연구 가설 검증이 아니다. 최소 1명 검토와 CI·동결 자산 확인을 유지한다. 기존 인과 결과와 미병합 연구는 보관한다.

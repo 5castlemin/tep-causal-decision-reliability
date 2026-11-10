@@ -1,10 +1,10 @@
 # Codex repository instructions — TEP Causal Decision Reliability
 
 ## Project objective
-Investigate which causal-graph structural accuracy measures, if any, explain *independently measured* intervention effects and fault recovery/safety in a manufacturing process. Preserve the difference between graph structure, observational prediction, intervention-effect identification, and simulator outcomes.
+Current development research: cost-constrained, decision-aware causal graph refinement; see `research/budget_aware_refinement/RESEARCH_PROTOCOL.md`. Preserve the original manufacturing question and its evidence in `RESEARCH_EVOLUTION.md` and the archived research history. Distinguish graph structure, observational prediction, intervention identification and simulator outcomes. Development integration into main is not research completion.
 
 ## Source of truth, by purpose
-- `RESEARCH_DESIGN.md`: active research question, hypotheses, estimands, definitions, experimental scope.
+- `research/budget_aware_refinement/RESEARCH_PROTOCOL.md`: active refinement research contract. `RESEARCH_DESIGN.md`: original manufacturing research and historical context.
 - `PROJECT_STATUS.md`: **latest verified state** of each research workstream, its evidence and blocker.
 - `PRIORITIES.md`: ordered actionable tasks, owner when assigned, dependency, completion criterion, status and evidence. Do not invent owners or deadlines.
 - `DECISIONS.md`: append-only substantive decisions, including rejected alternatives, date and evidence; do not rewrite history.
@@ -54,3 +54,7 @@ Investigate which causal-graph structural accuracy measures, if any, explain *in
 - Prefer reproducible code and small documentation changes over duplicating generated ZIPs. Include test coverage for any new import/retrieval or gate checks.
 - Do not automatically message Slack members, invite colleagues, publish a repository or open external permissions. This project repository remains private.
 - `AGENTS.md` runs *during Codex tasks*; it does not establish a background daemon. Documentation changes require a task to run or a separate user-approved automation.
+
+## Branch workflow
+
+Use a short-lived feature branch from current main for each next step; submit a PR with evidence and retain the minimum reviewer requirement in CONTRIBUTING.md. Keep the attic branch and annotated tags for legacy history. Merge of validated development work does not mean research completion, and Step4 remains in progress until its gates are met. Do not remove a branch that is in active use or backs an open PR.
