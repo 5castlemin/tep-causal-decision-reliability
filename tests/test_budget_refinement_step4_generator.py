@@ -1,4 +1,7 @@
 import unittest
+import json
+from pathlib import Path
+from collections import Counter
 
 from research.budget_aware_refinement.step4_topology_generator import (
     TEMPLATES, classify_tasks, directed_paths, generate_topology, is_dag,
@@ -96,6 +99,16 @@ class Step4ErrorInjectionTests(unittest.TestCase):
         r = inject_condition(g.nodes, {("V00", "V01")}, x, y, "B_path_survives")
         self.assertFalse(r.accepted)
         self.assertEqual(r.reason, "truth_has_no_task_path")
+
+    def test_matrix_report_counts_match_json_and_report_text(self):
+        root = Path(__file__).resolve().parents[1] / "research" / "budget_aware_refinement"
+        matrix = json.loads((root / "step4a_feasibility_matrix.json").read_text(encoding="utf-8"))
+        report = (root / "STEP4A_GENERATOR_FEASIBILITY_REPORT.md").read_text(encoding="utf-8")
+        b = Counter(next(k for k in ("FN", "FP", "REV") if row[k])
+                    for row in matrix["rows"] if row["condition"] == "B_path_survives")
+        self.assertEqual(dict(b), {"FN": 30, "FP": 39, "REV": 31})
+        self.assertIn("B: FN 30, FP 39, REV 31", report)
+        self.assertEqual(matrix["attempts"], 300)
 
 
 if __name__ == "__main__":
