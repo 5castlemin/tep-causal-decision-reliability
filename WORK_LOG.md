@@ -361,3 +361,5 @@ Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단�
 - 2026-11-10: 저장소 통합 준비. 원격 38개 기존 브랜치의 SHA별 주석 태그와 병합 전 main 기반 attic 인덱스를 보존했다. PR #26–35와 미확인 작업은 검토 필요로 유지. PR #36 개발 통합은 최소 1명 리뷰 및 최종 검사 후에만 수행; 연구 완료로 간주하지 않는다.
 
 - 2026-11-11: 통합 문서 작성 중 보호된 RESEARCH_DESIGN.md의 변경으로 기존 검증 3개가 실패해 즉시 문서를 원복했다. 이후 전체 151개 검사와 동결 39개 hash·상태 검사가 통과했다. 보관 인덱스에 브랜치별 고유 commit 목록과 main 대비 경로 및 merge base를 추가했다.
+
+- 2026-11-15: 저장소 운영자의 명시적 요청으로 Solo Research Self-Review 정책을 채택했다. PR #36의 개발 통합과 Research Completion을 분리하고, 공식 자기 APPROVE 없이 검사 결과를 PR Conversation에 남기는 절차로 전환했다. 이번 문서 변경은 연구 상태를 바꾸지 않으며 Step 4는 IN_PROGRESS/NOT FROZEN이다. Windows Python 3.14 로컬 전체 151개 중 1개가 저장된 실험의 부동소수점 정확 일치 검사에서 실패했다. 관련 46개 검사는 통과했다. 비추적 `data/local/datasetTE.csv`가 없어 로컬 복구 검사는 완료하지 못했다. 최종 HEAD의 Python 3.11 CI, 병합 및 main CI 결과를 별도로 확인한다.
