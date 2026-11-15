@@ -51,3 +51,11 @@ Step1 계약을 policy_engine 및 graph_adapter로 구현. 명시적 스키마�
 - Step 4 전체는 IN_PROGRESS / NOT FROZEN. 표본·정밀도/검정력·추론/CI·실패·resource cap 동결은 수행하지 않았다.
 
 - Step 4B-3 gate is DONE for the primary-estimand recommendation, P+B4 distinguishability audit, context-keyed structural feasibility, raw/report consistency, tests, frozen assets, exact-head CI, and Self-Review. This does not mark Step 4B-1/2 or Step 4 overall complete; Step 4B-4 inferential/sample/failure/resource contracts remain required.
+
+
+## 2026-11-15 — Step 4B-4 추론·표본·실패 계약 부분 검증
+
+- 주 설계 후보 Q-common/B=1/H2는 유지하되 아직 추론 계약으로 동결하지 않는다. P 생성분포에 20개 층 균등 확률로 제안하고 구조적 Q 적격만 rejection하는 방식을 권고한다. 2,000개 topology-only 후보 중 637개 적격(31.85%, exact 95% CI 29.81–33.94%); 층별 0–100% 수율 및 작은 층 표본 때문에 64/200 목표의 운영 cap은 확정하지 않는다. 원시 결과와 설정 hash는 STEP4B4 sampling contract에 기록.
+- SCM 단위 `D_i=(D_FN+D_FP+D_REV)/3`와 type 1/3 가중은 계획 추정량으로 구체화. 모든 세 유형 값이 필요하며 누락 시 평균 분모를 바꾸지 않는다. Ridge/recommend failure의 k=0 fallback은 학습·truth 입력 유효 및 common grid 조건에만 허용하며 원 실패를 보존한다.
+- Outcome-free calibration에서 n=200 paired t의 zero-heavy skew type-I 0.136, CI coverage 0.864; percentile bootstrap coverage 0.8545였다. 두 방법 모두 주 분석으로 선택하지 않는다. 대칭성을 요구하는 sign-flip도 mean 검정으로 대체 채택하지 않는다.
+- 이 단계는 계획 기반 표본·자원 초안의 부분 증거이며 Step 4B-4/Step4를 완료하지 않는다. 새 SCM/관측/효과/Regret/confirmation은 생성하지 않았다.

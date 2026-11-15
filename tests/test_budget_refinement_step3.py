@@ -45,3 +45,25 @@ class Step3(unittest.TestCase):
             self.assertTrue(all(isinstance(e,tuple) and len(e)==2 for e in edges))
             return fit_model(data,names,edges,alpha)
         prepare(self.req,self.data,['A','B','Y'],['A','B','Y'],1,spy,static_mean_response)
+
+    def test_identical_final_graph_has_identical_recommendation_and_truth_result(self):
+        # Fixed unit fixture only: no new SCM/data generation. The learner sees
+        # final edges + the same matrix, never policy ID, edit history or seed.
+        requests = [
+            dict(self.req, policy_id='G-FN'),
+            dict(self.req, policy_id='T-FN'),
+            dict(self.req, policy_id='RANDOM', seed=99),
+        ]
+        prepared = [prepare(req, self.data, ['A','B','Y'], ['A','B','Y'],
+                            1, fit_model, static_mean_response)
+                    for req in requests]
+        graphs = [graph['final_graph'] for graph, _ in prepared]
+        self.assertEqual(graphs[0], graphs[1])
+        self.assertEqual(graphs[0], graphs[2])
+        selections = [selection for _, selection in prepared]
+        self.assertEqual(selections[0], selections[1])
+        self.assertEqual(selections[0], selections[2])
+        outcomes = [evaluate(selection, self.spec, analytic_response)
+                    for selection in selections]
+        self.assertEqual(outcomes[0], outcomes[1])
+        self.assertEqual(outcomes[0], outcomes[2])
