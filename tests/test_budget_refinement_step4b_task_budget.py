@@ -1,5 +1,6 @@
 import unittest
 import json
+import gzip
 from pathlib import Path
 from collections import Counter
 
@@ -15,7 +16,7 @@ from research.budget_aware_refinement.step4b_task_budget import (
 class Step4BTaskBudgetTests(unittest.TestCase):
     def test_feasibility_raw_json_matches_report_and_preserves_denominator(self):
         root = Path(__file__).resolve().parents[1] / "research" / "budget_aware_refinement"
-        data = json.loads((root / "step4b_task_budget_feasibility.json").read_text(encoding="utf-8"))
+        data = json.loads(gzip.decompress((root / "step4b_task_budget_feasibility.json.gz").read_bytes()))
         report = (root / "STEP4B_TASK_BUDGET_FEASIBILITY_REPORT.md").read_text(encoding="utf-8")
         self.assertEqual(data["planned_task_condition_attempts"], 600)
         self.assertEqual(len(data["rows"]), 600)

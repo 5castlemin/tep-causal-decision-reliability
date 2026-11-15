@@ -4,7 +4,7 @@
 
 ## Base and fixed design
 
-The code base is main merge `86b47c0da54cee98a337a1ff4c8f2cae001019c6`. The fixed design uses five seeds (11–15), node counts 6–10, four templates, conditions A/B/C, two task slots per structure, budgets {0,1,2,4,6}, gamma=1, and 14 Global/Task-Focused policy/type combinations. No replacement retries are used. All task-condition attempts remain in the denominator. Settings SHA-256: `70699de103caa28390755ed143c85a864246142bccf44e3eebceedd49f730580`. Raw JSON SHA-256: `c5deb6ab c8b60573 cc14b597 0fe23663 0aeded52 93aa0efb 04d828ea 0cbf6dcb` (spaces for readability; compare as the concatenated 64-hex digest). A second full run reproduced the byte-identical JSON.
+The code base is main merge `86b47c0da54cee98a337a1ff4c8f2cae001019c6`. The fixed design uses five seeds (11–15), node counts 6–10, four templates, conditions A/B/C, two task slots per structure, budgets {0,1,2,4,6}, gamma=1, and 14 Global/Task-Focused policy/type combinations. No replacement retries are used. All task-condition attempts remain in the denominator. Settings SHA-256: `70699de103caa28390755ed143c85a864246142bccf44e3eebceedd49f730580`. The complete raw record is in gzip-compressed `step4b_task_budget_feasibility.json.gz`; decompressed JSON SHA-256: `c5deb6ab c8b60573 cc14b597 0fe23663 0aeded52 93aa0efb 04d828ea 0cbf6dcb` (spaces for readability; compare as the concatenated 64-hex digest). A second full run reproduced byte-identical decompressed JSON.
 
 ## Task contract and role mapping
 

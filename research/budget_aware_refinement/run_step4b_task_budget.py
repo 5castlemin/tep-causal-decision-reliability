@@ -1,6 +1,7 @@
 """Run the bounded Step 4B-1 topology/task/budget diagnostic matrix only."""
 from collections import Counter
 from hashlib import sha256
+import gzip
 import itertools
 import json
 from pathlib import Path
@@ -18,7 +19,7 @@ GAMMA = 1
 TYPES = ("FN", "FP", "REV")
 POLICIES = tuple((mode, subset) for mode in ("G", "T")
                  for size in range(1, 4) for subset in itertools.combinations(TYPES, size))
-OUTPUT = Path(__file__).with_name("step4b_task_budget_feasibility.json")
+OUTPUT = Path(__file__).with_name("step4b_task_budget_feasibility.json.gz")
 
 SETTINGS = {"seeds": SEEDS, "node_counts": NODE_COUNTS, "templates": TEMPLATES,
             "conditions": CONDITIONS, "budgets": BUDGETS, "gamma": GAMMA,
@@ -139,7 +140,8 @@ def run_matrix():
 
 def main():
     result = run_matrix()
-    OUTPUT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    raw = (json.dumps(result, indent=2) + "\n").encode("utf-8")
+    OUTPUT.write_bytes(gzip.compress(raw, compresslevel=9, mtime=0))
     print(json.dumps({k: result[k] for k in ("planned_task_condition_attempts",
                                              "accepted_task_conditions", "failed_task_conditions",
                                              "condition_failures", "unique_initial_graphs",
