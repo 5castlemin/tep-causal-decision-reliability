@@ -55,7 +55,7 @@ def run_matrix():
                                          "task_kind": kind, "condition": condition, "accepted": False,
                                          "reason": selected["failures"][kind], "role_map": roles,
                                          "task_counts": selected["candidate_counts"],
-                                         "truth_dag": is_dag(nodes, truth), "initial_dag": None,
+                                         "id_mapping": mapping, "truth_dag": is_dag(nodes, truth), "initial_dag": None,
                                          "path_survives": None, "errors": {},
                                          "related_errors": 0, "peripheral_errors": 0,
                                          "truth_hash": graph_hash(nodes, truth), "initial_hash": None})
@@ -70,7 +70,7 @@ def run_matrix():
                                "task_kind": kind, "action": action, "target": target,
                                "task_relation": relation,
                                "same_pair": selected["same_pair"], "task_counts": selected["candidate_counts"],
-                               "role_map": roles, "condition": condition,
+                               "role_map": roles, "id_mapping": mapping, "condition": condition,
                                "accepted": result.accepted, "reason": result.reason,
                                "truth_dag": is_dag(nodes, truth),
                                "initial_dag": is_dag(nodes, result.initial_edges),

@@ -66,7 +66,7 @@ class Step4BTaskBudgetTests(unittest.TestCase):
             self.assertEqual(first, second)
             if first["selected"]:
                 self.assertEqual({x[0] for x in first["selected"]}, {"direct", "indirect"})
-                self.assertFalse(set(pair for pair in (x[1] for x in first["selected"])) & set())
+                self.assertNotEqual(first["selected"][0][1], first["selected"][1][1])
                 classes = classify_task_pairs(nodes, edges)
                 self.assertIn(first["selected"][0][1], classes.direct_only)
                 self.assertIn(first["selected"][1][1], classes.indirect_only)
