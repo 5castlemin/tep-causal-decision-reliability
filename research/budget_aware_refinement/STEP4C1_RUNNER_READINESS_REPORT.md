@@ -32,4 +32,4 @@ Historical P/B4 protocol and preregistration text are superseded proposals, reta
 
 ## Verification
 
-Local Python 3.14 targeted runner suite: 17 tests passed after remediation. Python 3.11 GitHub Actions for the new commit is still required. Frozen 39-asset integrity, full regression, repository state checks, Self-Review, and remote CI must be confirmed before PR readiness. This report does not claim those checks passed unless run and recorded for the final HEAD.
+Local Python 3.14 targeted runner suite: 19 tests passed after remediation. Full local discovery: 225 tests, 224 passed; one existing exact-float failure in `test_diverse_structure_pilot.test_actual_saved_experiment`. `scripts/check_research_state.py`, `scripts/check_research_docs.py --base origin/main`, and `git diff --check` pass. Windows `scripts/check_asset_manifest.py` fails on its config hash under this checkout; it is not reported as a pass. No frozen graph asset paths changed. The previous HEAD's Python 3.11 Actions passed; a new HEAD requires its own CI run before that result applies.

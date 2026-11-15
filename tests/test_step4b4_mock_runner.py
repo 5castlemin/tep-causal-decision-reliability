@@ -167,6 +167,22 @@ run_pipeline('integrated-restart',Path(sys.argv[1]),stages,rng_key=MOCK_RNG_KEY,
             with self.assertRaises(ValueError):
                 run_pipeline("bound", ledger, ok_stages(), config={"x": 1}, input_sha256="c" * 64)
 
+    def test_checkpoint_stage_order_and_terminal_completeness_are_enforced(self):
+        with tempfile.TemporaryDirectory() as td:
+            ledger = Path(td) / "ordered.jsonl"
+            run_pipeline("ordered", ledger, ok_stages())
+            rows = recover_jsonl(ledger)
+            # Recompute a valid digest so this specifically exercises semantic validation.
+            rows[1]["event"] = "stage:recommend"
+            rows[1].pop("event_sha256")
+            from research.budget_aware_refinement.step4b4_mock_runner import _event, _canonical
+            rows[1] = _event(rows[1]["run_id"], rows[1]["event"], **{
+                k: v for k, v in rows[1].items() if k not in ("run_id", "event", "event_sha256")
+            })
+            ledger.write_bytes(b"\n".join(_canonical(row) for row in rows) + b"\n")
+            with self.assertRaises(ValueError):
+                run_pipeline("ordered", ledger, ok_stages())
+
     def test_isolated_stages_terminate_timeout_memory_exit_and_exception(self):
         cases = (
             ("TIMEOUT", _spin_forever, {"max_unit_seconds": .2}),

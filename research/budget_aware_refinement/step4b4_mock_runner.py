@@ -169,6 +169,10 @@ def run_pipeline(
             if row.get("run_id") == run_id and row.get("event", "").startswith("stage:")}
     terminal = next((r for r in prior if r.get("run_id") == run_id and r.get("event") == "terminal"), None)
     if terminal:
+        if terminal.get("status") == "OK" and stage_names != list(expected):
+            raise LedgerConflict("successful terminal exists without every ordered stage")
+        if terminal.get("completed_stages") != stage_names:
+            raise LedgerConflict("terminal completed-stage list does not match ledger")
         return {"status": terminal["status"], "resumed": True, "completed_stages": list(done)}
     start = clock()
     for stage in expected:
