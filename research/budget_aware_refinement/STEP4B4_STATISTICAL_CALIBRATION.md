@@ -1,3 +1,5 @@
+> **Historical v1 note:** `alt_ci_coverage_at_mean_0_10` in the v1 JSON incorrectly measures whether zero is inside the alternative CI. It is not coverage of the true mean 0.10. v1 raw is preserved; corrected coverage and numerical handling are in [v2](STEP4B4_STATISTICAL_CALIBRATION_V2.md).
+
 # Step 4B-4 statistical calibration
 
 Status: **IN_PROGRESS; no primary test/CI selected**. The runner generates abstract paired-difference distributions only; these are not SCMs, outcomes or regret. Settings SHA-256: `8b3d40f8274624926777b2e5060230ed9a113cd994382bcec7723d10d6dab662`. 20,000 Monte Carlo repetitions per scenario and n in {34,64,100,200}; two-sided alpha=.05; mean shift=.10.

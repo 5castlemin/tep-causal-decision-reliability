@@ -1,0 +1,92 @@
+{
+  "environment": {
+    "numpy": "2.4.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.3"
+  },
+  "fixture": {
+    "edge_count": 14,
+    "formula": "sin(.013*r*(c+1))+cos(.017*r*(c+2))+.07*c+.0003*r",
+    "nodes": 10,
+    "path_task": [
+      "V00",
+      "V09"
+    ],
+    "seed": 1904,
+    "shape": [
+      512,
+      10
+    ],
+    "topology_template": "multiple_directed_paths",
+    "type": "deterministic numeric dummy matrix, not SCM/data"
+  },
+  "limits": [
+    "timings describe this machine and dummy matrix only",
+    "matrix is not SCM-generated and does not test research inference",
+    "RSS peak is process-level and may include prior process memory",
+    "no final execution ledger exists; the logger is an isolated mock",
+    "Q recipe timing uses only 10 fixed-seed 10-node topology-only attempts",
+    "no repeated production workload or hard cap chosen"
+  ],
+  "measurements": {
+    "failure_row_bytes": 141,
+    "five_candidate_predictions": {
+      "max_s": 0.0024633000139147043,
+      "median_s": 0.001552900008391589,
+      "n": 200,
+      "p95_s": 0.0016235000221058726
+    },
+    "graph_policy": {
+      "max_s": 0.0014889000449329615,
+      "median_s": 0.0006130000110715628,
+      "n": 200,
+      "p95_s": 0.0008033000049181283
+    },
+    "integrated_prepare_fit_recommend": {
+      "max_s": 0.008786899968981743,
+      "median_s": 0.003693200007546693,
+      "n": 100,
+      "p95_s": 0.006839199981186539
+    },
+    "jsonl_row_sizes_bytes": {
+      "1": 313,
+      "10": 916,
+      "100": 6946
+    },
+    "path_f1": {
+      "max_s": 0.00019920000340789557,
+      "median_s": 0.00011719996109604836,
+      "n": 200,
+      "p95_s": 0.00012480001896619797
+    },
+    "process_peak_rss_after": 97255424,
+    "process_rss_after": {
+      "peak_rss": 97255424,
+      "rss": 84115456
+    },
+    "process_rss_before": {
+      "peak_rss": 75141120,
+      "rss": 75141120
+    },
+    "python_tracemalloc_peak_bytes": 8355856,
+    "resume_idempotence_mock": {
+      "first_append": true,
+      "reopened_duplicate_blocked": true,
+      "rows_after_restart": 1,
+      "same_process_duplicate_blocked": true
+    },
+    "ridge_fit_512x10": {
+      "max_s": 0.002432500012218952,
+      "median_s": 0.0011030000168830156,
+      "n": 200,
+      "p95_s": 0.0020259000011719763
+    },
+    "topology_plus_q_recipe_eligibility_10node": {
+      "max_s": 0.3027973999851383,
+      "median_s": 0.24323429999640211,
+      "n": 10,
+      "p95_s": 0.3026331999571994
+    }
+  },
+  "protocol": "STEP4B4_MOCK_RESOURCE_BENCHMARK_V2"
+}

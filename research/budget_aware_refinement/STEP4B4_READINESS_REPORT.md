@@ -26,3 +26,13 @@ The proposed primary H2 contrast remains Global minus Task-Focused, B=1, gamma=1
 7. Reconcile older Step 0/Step 4 draft language and run final Python 3.11 CI, frozen assets, state consistency and Self-Review on the final HEAD.
 
 Accordingly, this work does not meet Step 4B-4 DONE conditions and does not authorize Step 5 or confirmation generation.
+
+
+## Remediation update (v2)
+
+The original v1 alt-CI coverage field was incorrect and is superseded. v2 separately verifies alternative true-mean coverage, zero-variance behavior, the stratified yield interval and cap, missingness completion risk, 512×10 mock resources, and provisional ceilings. Paired t and bootstrap remain uncalibrated for the skew stress case; Step 4B-4 remains IN_PROGRESS. See `STEP4B4_FINAL_GATE_REVIEW.md`.
+
+
+## Remediation v2 evidence
+
+See `STEP4B4_FINAL_GATE_REVIEW.md` and the four Step4B4 v2 review documents. The v1 alternative coverage bug is corrected in v2; v1 raw is unchanged. The independent 13.4% skew Type I persists; thus Step4B4 remains open despite added stratified and 512×10 mock measurements.

@@ -18,3 +18,6 @@ Each SCM primary row needs FN, FP and REV paired differences. If any type is mis
 Candidate retry policy: structural topology/task/error generation gets no unbounded retries; every attempt, including rejection, is stored. A transient infrastructure retry is limited to one identical-input/identical-key replay. Deterministic invalidity, nonfinite values, GT failure and timeout are not retried. Do not replace an eligible SCM that later fails evaluation after seeing its outcome.
 
 The executable mock categorizes normal, pre-SCM structural rejection and analysis failures, verifies fallback preconditions and preserves original failures. Operational retry counts and confirmation stop thresholds still require Step 4C code-path validation.
+
+
+> **Feasibility update:** Strict all-type completeness is operationally fragile under even small independent MCAR rates; see [failure feasibility review](STEP4B4_FAILURE_FEASIBILITY_REVIEW.md). Same-key retry remains limited to transient infrastructure failure; no missing value is imputed as zero.

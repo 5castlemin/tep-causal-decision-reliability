@@ -76,3 +76,13 @@ def confirmation_action(*, q_eligible_target: int, q_eligible_observed: int,
         return {"inferential_start": False, "state": "inconclusive",
                 "reason": "primary_scm_vector_incomplete"}
     return {"inferential_start": True, "state": "ready", "reason": None}
+
+
+def probability_complete(n_scm: int, per_event_missing_rate: float,
+                        events_per_scm: int = 1) -> float:
+    """MCAR illustration only; assumes independent event-level missingness."""
+    if type(n_scm) is not int or n_scm < 1 or type(events_per_scm) is not int or events_per_scm < 1:
+        raise ValueError("sample size and events_per_scm must be positive integers")
+    if not 0 <= per_event_missing_rate <= 1:
+        raise ValueError("missing rate must be in [0,1]")
+    return (1.0 - per_event_missing_rate) ** (n_scm * events_per_scm)

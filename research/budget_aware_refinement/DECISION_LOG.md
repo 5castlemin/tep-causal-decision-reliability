@@ -59,3 +59,12 @@ Step1 계약을 policy_engine 및 graph_adapter로 구현. 명시적 스키마�
 - SCM 단위 `D_i=(D_FN+D_FP+D_REV)/3`와 type 1/3 가중은 계획 추정량으로 구체화. 모든 세 유형 값이 필요하며 누락 시 평균 분모를 바꾸지 않는다. Ridge/recommend failure의 k=0 fallback은 학습·truth 입력 유효 및 common grid 조건에만 허용하며 원 실패를 보존한다.
 - Outcome-free calibration에서 n=200 paired t의 zero-heavy skew type-I 0.136, CI coverage 0.864; percentile bootstrap coverage 0.8545였다. 두 방법 모두 주 분석으로 선택하지 않는다. 대칭성을 요구하는 sign-flip도 mean 검정으로 대체 채택하지 않는다.
 - 이 단계는 계획 기반 표본·자원 초안의 부분 증거이며 Step 4B-4/Step4를 완료하지 않는다. 새 SCM/관측/효과/Regret/confirmation은 생성하지 않았다.
+
+
+## 2026-11-15 — Step 4B-4 remediation v2: calibration and resource decisions
+
+- The v1 alternative CI coverage field is wrong (checked zero, not true .10); v1 raw retained. Corrected v2 tracks null and alternative true means separately and detects exact constant rows before NumPy variance.
+- Independent-seed zero-heavy-skew Type I .13635/.13415, CI coverage .86365/.86585 at n=200. This is finite-sample t/bootstrap calibration failure, not the v1 coverage-reference bug. No mean-inference method is selected; Q-common/B1/H2 estimand remains unchanged.
+- Replace pooled CP interpretation with fixed-stratum point estimate and Bonferroni simultaneous exact CP endpoint interval [.2232,.4375]. Future uniform-random strata plus Q rejection is the prospective target sampler. Caps 362/1,036 are planning only.
+- Missingness scenarios show 0.1% independent type-cell MCAR -> 54.865% probability all 600 cells observed; infrastructure retry remains one same-key replay. No complete-case confirmatory fallback or zero imputation.
+- A 512x10 numeric dummy matrix (not SCM observations) measured Ridge/prediction path; provisional caps 30min total, 2sec per unit, 512MiB RSS and 100MiB disk are proposals only pending actual runner enforcement. Step4B4 remains IN_PROGRESS.

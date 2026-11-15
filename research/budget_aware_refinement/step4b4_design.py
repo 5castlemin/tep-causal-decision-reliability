@@ -127,6 +127,74 @@ def minimum_attempt_cap(target_eligible: int, probability: float,
     return hi, binomial_probability_at_least(target_eligible, hi, probability)
 
 
+def stratified_yield_variance(successes: list[int], trials: list[int],
+                              weights: list[float] | None = None) -> float:
+    """Plug-in variance for a fixed stratified estimate of weighted Bernoulli yield."""
+    if len(successes) != len(trials) or not successes:
+        raise ValueError("successes/trials must be nonempty and equal length")
+    if weights is None:
+        weights = [1.0 / len(successes)] * len(successes)
+    if len(weights) != len(successes) or any(w < 0 for w in weights):
+        raise ValueError("invalid stratum weights")
+    if abs(sum(weights) - 1.0) > 1e-12:
+        raise ValueError("stratum weights must sum to one")
+    variance = 0.0
+    for k, n, weight in zip(successes, trials, weights):
+        if type(k) is not int or type(n) is not int or n < 1 or not 0 <= k <= n:
+            raise ValueError("invalid stratum counts")
+        p = k / n
+        variance += weight * weight * p * (1.0 - p) / n
+    return variance
+
+
+def stratified_yield_interval(successes: list[int], trials: list[int], *,
+                              alpha: float = 0.05,
+                              weights: list[float] | None = None) -> tuple[float, float]:
+    """Conservative simultaneous exact interval for weighted stratified yield.
+
+    Bonferroni-adjusted Clopper-Pearson intervals give at least 1-alpha
+    simultaneous coverage for all strata; their weighted endpoints therefore
+    cover the weighted mean. This is conservative, not an exact interval for
+    the weighted mean itself.
+    """
+    if len(successes) != len(trials) or not successes:
+        raise ValueError("successes/trials must be nonempty and equal length")
+    if not 0 < alpha < 1:
+        raise ValueError("alpha must be in (0,1)")
+    if weights is None:
+        weights = [1.0 / len(successes)] * len(successes)
+    if len(weights) != len(successes) or any(w < 0 for w in weights):
+        raise ValueError("invalid stratum weights")
+    if abs(sum(weights) - 1.0) > 1e-12:
+        raise ValueError("stratum weights must sum to one")
+    per_stratum_alpha = alpha / len(successes)
+    bounds = [clopper_pearson(k, n, per_stratum_alpha)
+              for k, n in zip(successes, trials)]
+    return (sum(w * pair[0] for w, pair in zip(weights, bounds)),
+            sum(w * pair[1] for w, pair in zip(weights, bounds)))
+
+
+def stratified_yield_variance_upper(successes: list[int], trials: list[int], *,
+                                    alpha: float = 0.05,
+                                    weights: list[float] | None = None) -> float:
+    """Upper variance bound using simultaneous CP sets, including 0/1 strata."""
+    if len(successes) != len(trials) or not successes:
+        raise ValueError("successes/trials must be nonempty and equal length")
+    if weights is None:
+        weights = [1.0 / len(successes)] * len(successes)
+    if len(weights) != len(successes) or any(w < 0 for w in weights):
+        raise ValueError("invalid stratum weights")
+    if abs(sum(weights) - 1.0) > 1e-12:
+        raise ValueError("stratum weights must sum to one")
+    per_alpha = alpha / len(successes)
+    upper = 0.0
+    for k, n, weight in zip(successes, trials, weights):
+        lo, hi = clopper_pearson(k, n, per_alpha)
+        p = 0.5 if lo <= 0.5 <= hi else (hi if hi < 0.5 else lo)
+        upper += weight * weight * p * (1.0 - p) / n
+    return upper
+
+
 def student_t_critical(two_sided_alpha: float, degrees_freedom: int) -> float:
     """Two-sided Student t critical value using the regularized beta identity."""
     if not 0 < two_sided_alpha < 1 or degrees_freedom < 1:
@@ -152,11 +220,54 @@ def paired_t_interval(values, alpha: float = 0.05) -> tuple[float, float]:
     x = [float(value) for value in values]
     if len(x) < 2 or any(not __import__("math").isfinite(value) for value in x):
         raise ValueError("paired differences must be a finite 1-D vector with n>=2")
-    mean = sum(x) / len(x)
+    exact_constant = all(value == x[0] for value in x)
+    mean = x[0] if exact_constant else sum(x) / len(x)
     variance = sum((value - mean) ** 2 for value in x) / (len(x) - 1)
     se = sqrt(variance / len(x))
     crit = student_t_critical(alpha, len(x) - 1)
     return mean - crit * se, mean + crit * se
+
+
+def paired_t_summary(values, *, true_mean: float, alpha: float = 0.05,
+                     near_zero_sd: float = 1e-12) -> dict:
+    """Summarize mean CI coverage and null rejection with explicit truth value.
+
+    A constant sample has a degenerate interval. It covers only if its constant
+    equals true_mean exactly; a nonzero constant under H0 rejects via an
+    infinite studentized statistic. Near-constant but nonconstant samples use
+    their actual finite standard error and are separately flagged.
+    """
+    x = [float(value) for value in values]
+    if len(x) < 2 or any(not __import__("math").isfinite(v) for v in x):
+        raise ValueError("paired differences must be finite with n>=2")
+    exact_constant = all(value == x[0] for value in x)
+    mean = x[0] if exact_constant else sum(x) / len(x)
+    variance = sum((v - mean) ** 2 for v in x) / (len(x) - 1)
+    sd = sqrt(variance)
+    se = sd / sqrt(len(x))
+    critical = student_t_critical(alpha, len(x) - 1)
+    low, high = mean - critical * se, mean + critical * se
+    numeric_failure = False
+    if se == 0.0:
+        reject_zero = mean != 0.0
+        coverage = low <= true_mean <= high
+    elif not __import__("math").isfinite(se):
+        reject_zero = False
+        coverage = False
+        numeric_failure = True
+    else:
+        statistic = mean / se
+        reject_zero = abs(statistic) > critical
+        coverage = low <= true_mean <= high
+        numeric_failure = not all(__import__("math").isfinite(v)
+                                  for v in (statistic, low, high))
+    return {"mean": mean, "sample_sd": sd, "standard_error": se,
+            "ci_low": low, "ci_high": high, "ci_width": high - low,
+            "true_mean": true_mean, "ci_covers_true_mean": bool(coverage),
+            "rejects_zero": bool(reject_zero), "exact_constant_sample": exact_constant,
+            "inference_status": "degenerate_zero_variance" if sd == 0.0 else "studentized_finite_sample",
+            "near_zero_sd": bool(0.0 < sd <= near_zero_sd),
+            "zero_sample_sd": bool(sd == 0.0), "numeric_failure": numeric_failure}
 
 
 def paired_t_reject(values, alpha: float = 0.05) -> bool:

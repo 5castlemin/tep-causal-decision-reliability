@@ -1,0 +1,268 @@
+{
+  "all_success_strata": 1,
+  "cap_interpretation": "Bonferroni 97.5% simultaneous lower confidence bound plus 97.5% conditional binomial attainment; union-bound planning confidence is at least approximately 95% under the independent future candidate model. Not a resource-approved operational cap.",
+  "future_sampling_contract": "For each candidate attempt, select stratum uniformly using the predeclared RNG stream, then accept by Q eligibility; under fixed stratum yields the unconditional acceptance indicators are iid Bernoulli with p equal to the 1/20 weighted yield. This differs from the fixed-quota audit design.",
+  "no_outcome_selection": true,
+  "plug_in_design_standard_error": 0.0085809381771459,
+  "settings": {
+    "cap_conditional_attainment": 0.975,
+    "cap_confidence_alpha": 0.025,
+    "interval_alpha": 0.05,
+    "point_estimator": "weighted mean of per-stratum acceptance proportions",
+    "protocol": "STEP4B4_STRATIFIED_Q_YIELD_REVIEW_V2",
+    "simultaneous_interval": "Bonferroni-adjusted exact Clopper-Pearson per stratum, weighted endpoints",
+    "source": "step4b4_q_yield_v1.json.gz",
+    "stratum_weights": "1/20 each; future stratum independently drawn uniformly per candidate",
+    "targets": [
+      64,
+      200
+    ]
+  },
+  "settings_sha256": "6cbfa721bc0107f19b2b8957fc44a9e2679a467fd2096bcd4ac9dfc466e232fe",
+  "source_sha256": "c0ce611bf7aeca025407d884111fa919175c5bd091f9d55537de022948aa406e",
+  "strata": [
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 6,
+      "rate": 0.0,
+      "successes": 0,
+      "template": "chain_mediation"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 7,
+      "rate": 0.0,
+      "successes": 0,
+      "template": "chain_mediation"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.10226491003552832,
+        0.25817541063215954
+      ],
+      "node_count": 8,
+      "rate": 0.17,
+      "successes": 17,
+      "template": "chain_mediation"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.24822350154484407,
+        0.4415332677509587
+      ],
+      "node_count": 9,
+      "rate": 0.34,
+      "successes": 34,
+      "template": "chain_mediation"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.4571874970633182,
+        0.6591639762765409
+      ],
+      "node_count": 10,
+      "rate": 0.56,
+      "successes": 56,
+      "template": "chain_mediation"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 6,
+      "rate": 0.0,
+      "successes": 0,
+      "template": "fork_branch"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 7,
+      "rate": 0.0,
+      "successes": 0,
+      "template": "fork_branch"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 8,
+      "rate": 0.0,
+      "successes": 0,
+      "template": "fork_branch"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.2572937785314513,
+        0.4518493618239684
+      ],
+      "node_count": 9,
+      "rate": 0.35,
+      "successes": 35,
+      "template": "fork_branch"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.24822350154484407,
+        0.4415332677509587
+      ],
+      "node_count": 10,
+      "rate": 0.34,
+      "successes": 34,
+      "template": "fork_branch"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.05620702028548767,
+        0.1883011321964418
+      ],
+      "node_count": 6,
+      "rate": 0.11,
+      "successes": 11,
+      "template": "observed_common_cause"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.10226491003552832,
+        0.25817541063215954
+      ],
+      "node_count": 7,
+      "rate": 0.17,
+      "successes": 17,
+      "template": "observed_common_cause"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.15173161130104823,
+        0.3248587327751019
+      ],
+      "node_count": 8,
+      "rate": 0.23,
+      "successes": 23,
+      "template": "observed_common_cause"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.4571874970633182,
+        0.6591639762765409
+      ],
+      "node_count": 9,
+      "rate": 0.56,
+      "successes": 56,
+      "template": "observed_common_cause"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.46713373832484706,
+        0.668608983368616
+      ],
+      "node_count": 10,
+      "rate": 0.57,
+      "successes": 57,
+      "template": "observed_common_cause"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.9637833073548239,
+        1.0
+      ],
+      "node_count": 6,
+      "rate": 1.0,
+      "successes": 100,
+      "template": "multiple_directed_paths"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.5174606942491935,
+        0.7152325238585204
+      ],
+      "node_count": 7,
+      "rate": 0.62,
+      "successes": 62,
+      "template": "multiple_directed_paths"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.3983211295033019,
+        0.601678870496698
+      ],
+      "node_count": 8,
+      "rate": 0.5,
+      "successes": 50,
+      "template": "multiple_directed_paths"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.3408360237234592,
+        0.5428125029366822
+      ],
+      "node_count": 9,
+      "rate": 0.44,
+      "successes": 44,
+      "template": "multiple_directed_paths"
+    },
+    {
+      "attempts": 100,
+      "individual_cp95": [
+        0.31261997656757035,
+        0.5128557962332292
+      ],
+      "node_count": 10,
+      "rate": 0.41,
+      "successes": 41,
+      "template": "multiple_directed_paths"
+    }
+  ],
+  "strata_count": 20,
+  "total_attempts": 2000,
+  "total_successes": 637,
+  "two_layer_caps": {
+    "200": {
+      "candidate_cap": 1036,
+      "conditional_probability_at_least_target": 0.97516368270489,
+      "yield_lower_assumption": 0.21745378351026132
+    },
+    "64": {
+      "candidate_cap": 362,
+      "conditional_probability_at_least_target": 0.9759277018541556,
+      "yield_lower_assumption": 0.21745378351026132
+    }
+  },
+  "unstratified_pooled_rate_descriptive": 0.3185,
+  "weighted_simultaneous_cp95_conservative_interval": [
+    0.22315903261514977,
+    0.43749212192871806
+  ],
+  "weighted_stratified_point_estimate": 0.3185,
+  "yield_lower_for_two_layer_cap": 0.21745378351026132,
+  "zero_success_strata": 5
+}
