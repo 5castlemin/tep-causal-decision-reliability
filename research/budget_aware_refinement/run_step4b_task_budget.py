@@ -20,7 +20,7 @@ TYPES = ("FN", "FP", "REV")
 B_TYPE_SCHEDULE = ("FN", "FP", "REV")
 POLICIES = tuple((mode, subset) for mode in ("G", "T")
                  for size in range(1, 4) for subset in itertools.combinations(TYPES, size))
-OUTPUT = Path(__file__).with_name("step4b_task_budget_feasibility_v3.json.gz")
+OUTPUT = Path(__file__).with_name("step4b_task_budget_feasibility_v4.json.gz")
 
 SETTINGS = {"seeds": SEEDS, "node_counts": NODE_COUNTS, "templates": TEMPLATES,
             "conditions": CONDITIONS, "budgets": BUDGETS, "gamma": GAMMA,
@@ -30,7 +30,7 @@ SETTINGS = {"seeds": SEEDS, "node_counts": NODE_COUNTS, "templates": TEMPLATES,
                             "task=SHA256 domain derived", "error_injection=SHA256 domain derived",
                             "policy_schedule=SHA256 domain derived"),
             "B_type_strata": "preassigned cyclic schedule (seed index + node-count index + template index + task-slot index) mod 3; no cross-type replacement",
-            "C_recipe_search": "all disjoint one-each FN/FP/REV recipes; retain if any of six atomic orders keeps every intermediate graph a DAG; no path survival requirement",
+            "C_recipe_search": "complete recipe enumeration independent of prefix order; retain all disjoint one-each FN/FP/REV recipes with at least one of six atomic orders keeping every intermediate graph a DAG; no path survival requirement",
             "retries": 0, "replacement": False, "policies": len(POLICIES)}
 SETTINGS_SHA256 = sha256(json.dumps(SETTINGS, sort_keys=True, separators=(",", ":"),
                                default=list).encode()).hexdigest()
@@ -138,7 +138,7 @@ def run_matrix():
                                                    "termination_reason": log["termination_reason"]})
     hashes = [r["initial_hash"] for r in rows if r["accepted"]]
     execution_hashes = [r["final_hash"] for r in executions]
-    return {"protocol": "STEP4B1_STRUCTURE_ONLY_TASK_BUDGET_V3_ANY_DAG_VALID_ORDER",
+    return {"protocol": "STEP4B1_STRUCTURE_ONLY_TASK_BUDGET_V4_COMPLETE_ORDER_INDEPENDENT_RECIPE_ENUMERATION",
             "settings": SETTINGS, "settings_sha256": SETTINGS_SHA256,
             "planned_task_condition_attempts": len(rows),
             "accepted_task_conditions": sum(r["accepted"] for r in rows),

@@ -76,6 +76,49 @@ def _has_dag_valid_order(nodes, truth, operations):
     return False
 
 
+def enumerate_c_recipes(nodes, truth_edges, action, target):
+    """Return mixed C recipes that have at least one DAG-valid operation order."""
+    nodes = tuple(nodes)
+    truth = frozenset(map(tuple, truth_edges))
+    pairs = list(combinations(nodes, 2))
+    truth_dyads = {frozenset(edge) for edge in truth}
+    route_dyads = set()
+    for path in directed_paths(nodes, truth, action, target):
+        route_dyads.update(frozenset(edge) for edge in zip(path, path[1:]))
+    related_dyads = set(route_dyads)
+    related_dyads.update(frozenset((a, b)) for a, b in pairs
+                         if action in (a, b) or target in (a, b))
+    recipes = []
+    cycles = []
+    for fn in sorted(truth):
+        for a, b in pairs:
+            fp_dyad = frozenset((a, b))
+            if fp_dyad in truth_dyads or fp_dyad == frozenset(fn):
+                continue
+            for fp in ((a, b), (b, a)):
+                for rev in sorted(truth - {fn}):
+                    if frozenset(rev) in (frozenset(fn), fp_dyad):
+                        continue
+                    initial = (set(truth) - {fn, rev}) | {fp, (rev[1], rev[0])}
+                    if not is_dag(nodes, initial):
+                        cycles.append(("REV", *rev))
+                        continue
+                    operations = (("FN", *fn), ("FP", *fp), ("REV", rev[1], rev[0]))
+                    if not _has_dag_valid_order(nodes, truth, operations):
+                        continue
+                    errors = classify_errors(nodes, truth, initial)
+                    if {e[0] for e in errors} != set(KINDS):
+                        continue
+                    related = [e for e in errors if frozenset(e[1:]) in related_dyads]
+                    peripheral = [e for e in errors if frozenset(e[1:]) not in related_dyads]
+                    if related and peripheral:
+                        recipes.append({"operations": operations,
+                                        "initial_edges": frozenset(initial),
+                                        "related_errors": tuple(related),
+                                        "peripheral_errors": tuple(peripheral)})
+    return recipes, tuple(sorted(set(cycles)))
+
+
 def _result(condition, reason, nodes, truth, initial, action, target, cycles=()):
     errors = classify_errors(nodes, truth, initial)
     routes = set()
@@ -161,38 +204,13 @@ def inject_condition(nodes, truth_edges, action, target, condition, seed=0, requ
     # accept any recipe with at least one DAG-valid atomic operation order.
     # Select uniformly from structurally eligible recipes using the separate
     # error-injection stream; no effects, regret, or policy output is read.
-    pairs = list(combinations(nodes, 2))
-    recipes = []
-    for fn in sorted(truth):
-        g1 = truth - {fn}
-        for a, b in pairs:
-            if (a, b) in truth or (b, a) in truth or frozenset((a, b)) == frozenset(fn):
-                continue
-            for fp in ((a, b), (b, a)):
-                g2 = g1 | {fp}
-                if not is_dag(nodes, g2):
-                    continue
-                for rev in sorted(truth - {fn}):
-                    if frozenset(rev) == frozenset((a, b)):
-                        continue
-                    g3 = (g2 - {rev}) | {(rev[1], rev[0])}
-                    operations = (("FN", *fn), ("FP", *fp), ("REV", rev[1], rev[0]))
-                    if not is_dag(nodes, g3):
-                        cycles.append(("REV", *rev))
-                        continue
-                    if not _has_dag_valid_order(nodes, truth, operations):
-                        continue
-                    result = _result(condition, "accepted", nodes, truth, g3,
-                                     action, target, cycles)
-                    if ({e[0] for e in result.errors} == set(KINDS)
-                            and result.relevant_errors and result.peripheral_errors):
-                        recipes.append(g3)
+    recipes, cycles = enumerate_c_recipes(nodes, truth, action, target)
     if recipes:
         rng = random.Random(seed)
         return _result(condition, "accepted", nodes, truth,
-                       recipes[rng.randrange(len(recipes))], action, target,
-                       tuple(sorted(set(cycles))))
-    return _result(condition, "no_dag_mixed_related_and_peripheral_recipe", nodes, truth, truth, action, target, tuple(sorted(set(cycles))))
+                       recipes[rng.randrange(len(recipes))]["initial_edges"], action, target,
+                       cycles)
+    return _result(condition, "no_dag_mixed_related_and_peripheral_recipe", nodes, truth, truth, action, target, cycles)
 
 
 def policy_opportunities(nodes, truth, initial):

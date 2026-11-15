@@ -12,7 +12,9 @@ from research.budget_aware_refinement.step4b_task_budget import (
     role_nodes, select_task_pair, graph_hash,
 )
 from research.budget_aware_refinement.step4b_c_audit import enumerate_mixed_recipes
-from research.budget_aware_refinement.step4_error_injection import inject_condition, _has_dag_valid_order
+from research.budget_aware_refinement.step4_error_injection import (
+    inject_condition, _has_dag_valid_order, enumerate_c_recipes,
+)
 from research.budget_aware_refinement.policy_engine import refine
 
 
@@ -157,6 +159,26 @@ class Step4BTaskBudgetTests(unittest.TestCase):
                 break
         else:
             self.fail("fixture must reject the fixed FN→FP→REV order")
+
+    def test_c_recipe_skips_no_valid_recipe_due_to_fixed_fn_fp_rev_prefix(self):
+        nodes = ("A", "B", "C", "D", "E")
+        truth = {("A", "B"), ("B", "C"), ("D", "E")}
+        operations = (("FN", "D", "E"), ("FP", "C", "A"), ("REV", "B", "A"))
+        fixed_prefix = (truth - {("D", "E")}) | {("C", "A")}
+        final_graph = (truth - {("D", "E"), ("A", "B")}) | {("B", "A"), ("C", "A")}
+        self.assertFalse(is_dag(nodes, fixed_prefix))
+        self.assertTrue(is_dag(nodes, final_graph))
+        self.assertTrue(_has_dag_valid_order(nodes, truth, operations))
+
+        independent = enumerate_mixed_recipes(nodes, truth, "A", "C")
+        self.assertTrue(any(tuple(tuple(op) for op in (item["fn"], item["fp"], item["rev"])) == operations
+                            and item["fixed_order_valid"] is False
+                            and any(tuple(tuple(op) for op in order) ==
+                                    (operations[0], operations[2], operations[1])
+                                    for order in item["valid_orders"])
+                            for item in independent["recipes"]))
+        production, _ = enumerate_c_recipes(nodes, truth, "A", "C")
+        self.assertTrue(any(tuple(item["operations"]) == operations for item in production))
 
     def test_legacy_failed_direct_c_case_becomes_feasible_when_fn_may_be_peripheral(self):
         g = generate_topology(6, "chain_mediation", 11)
