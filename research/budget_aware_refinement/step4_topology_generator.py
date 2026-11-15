@@ -6,6 +6,7 @@ actions, or calculate regret. Template edges have priority over target density.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from collections import deque
 import random
 
 TEMPLATES = ("chain_mediation", "fork_branch", "observed_common_cause", "multiple_directed_paths")
@@ -36,8 +37,25 @@ class Topology:
 
 
 def is_dag(nodes, edges) -> bool:
-    order = {node: i for i, node in enumerate(nodes)}
-    return all(a in order and b in order and order[a] < order[b] and a != b for a, b in edges)
+    nodes = tuple(nodes); edges = tuple(map(tuple, edges))
+    if len(set(nodes)) != len(nodes) or any(a not in nodes or b not in nodes or a == b for a, b in edges):
+        return False
+    indegree = dict.fromkeys(nodes, 0); children = {n: [] for n in nodes}
+    for a, b in edges:
+        indegree[b] += 1; children[a].append(b)
+    ready = deque(n for n in nodes if indegree[n] == 0); visited = 0
+    while ready:
+        node = ready.popleft(); visited += 1
+        for child in children[node]:
+            indegree[child] -= 1
+            if indegree[child] == 0: ready.append(child)
+    return visited == len(nodes)
+
+
+def follows_topological_order(order, edges) -> bool:
+    """Generation constraint, deliberately separate from general DAG validity."""
+    rank = {node: i for i, node in enumerate(order)}
+    return len(rank) == len(tuple(order)) and all(a in rank and b in rank and rank[a] < rank[b] for a, b in edges)
 
 
 def _parents_ok(nodes, edges, maximum=MAX_PARENTS):
@@ -130,7 +148,7 @@ def generate_topology(n_nodes: int, template: str, seed: int, density=(0.2, 0.4)
         if sum(v == edge[1] for _, v in edges) >= MAX_PARENTS:
             continue
         edges.add(edge)
-    if not is_dag(topo, edges) or not _parents_ok(topo, edges):
+    if not is_dag(topo, edges) or not follows_topological_order(topo, edges) or not _parents_ok(topo, edges):
         raise TopologyError("internal scaffold/augmentation constraint failure")
     tasks = classify_tasks(topo, edges)
     direct, indirect = tasks

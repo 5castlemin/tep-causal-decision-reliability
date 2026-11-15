@@ -1,23 +1,19 @@
-# Step 4A topology and error injection — partial feasibility result
+# Step 4A topology and error injection — feasibility result
 
-Status: **IN_PROGRESS**. This implementation is a topology-only prototype. It does not generate coefficients or observations, fit models, recommend interventions, or calculate regret. No Step 5 or confirmation SCM was run.
+**Step 4A structural implementation and fixed matrix: DONE. Step 4 remains IN_PROGRESS / NOT FROZEN.** No SCM coefficients, observations, learning, recommendations, regret, Step 5, or confirmation SCMs were generated.
 
-## Implemented contracts
+`step4_topology_generator.is_dag` now uses Kahn's algorithm and is invariant to node/edge input order. `_follows_topological_order` is used only for forward-edge topology generation. This fixes the prior bug where every legal edge reversal against the original order was rejected as cyclic.
 
-- `step4_topology_generator.py` builds 6–10 node DAGs for chain/mediation, fork/branch, observed common cause, and multiple directed paths. Immutable IDs are `V00`…; canonical ID order is the topological order. Required motif edges take precedence over the requested density: the edge target is `round(midpoint(density) * n(n-1)/2)`, raised to the motif edge count when needed. Augmentation respects a maximum indegree of three.
-- Direct task pairs have a direct edge. Indirect task pairs have a directed path of length at least two. The default allows a pair with both direct and indirect paths. Task enumeration uses graph topology only.
-- `step4_error_injection.py` classifies pairwise differences as atomic FN, FP, or REV. A uses a finite minimum FN path-edge cut. B enumerates one FN, one REV and one FP, retaining only acyclic initial graphs with an X→Y path. C currently requires a B recipe and a peripheral truth edge; infeasibility is returned explicitly.
+The topology generator supports 6–10 nodes and four motifs. Motif edges take precedence over the rounded midpoint density target; added edges respect indegree ≤3. Direct and indirect tasks are enumerated from structure, and may overlap.
 
-## Checks run
+Condition A finds a finite minimum FN cut and disconnects all action→target paths. Condition B retains a path and injects at least one related FN, FP, or REV; seed rotation tests the error classes separately. Condition C requires an FN, FP and REV together, with at least one task-related error and one peripheral error. GT topology is used to construct and classify the error strata; this is distinct from the Task-Focused policy, which scores only G0/H.
 
-`py -3.14 -X utf8 -m unittest tests.test_budget_refinement_step4_generator -q`: **8 tests passed**. Coverage includes deterministic output, all template/node-count DAG and parent constraints, task classification, motif density precedence, atomic REV classification, A disconnection, explicit B infeasibility, and invalid input. `git diff --check` passed.
+## Fixed matrix
 
-The B probe used `multiple_directed_paths`, 8 nodes, seed 19. The selected scaffold had two X→Y routes, but added density edges made every enumerated path-preserving FN/FP/REV recipe cyclic or unavailable; the generator returned `no_dag_path_preserving_fn_fp_rev_recipe` with cycle rejection evidence. This is a single diagnostic case, not an estimate of population feasibility. The chain B case also returns explicit infeasibility because a single directed route cannot survive removal of a path FN.
+Seeds `(11,12,13,14,15)` × node counts 6–10 × four templates × conditions A/B/C produced **300 planned attempts; 300 accepted; 0 failed; 0 replacements**. Per condition: A 100/100, B 100/100, C 100/100. B selected FN in 30, FP in 48, and REV in 22 cases. C had exactly one of each error type and both related and peripheral errors in all 100 cases. The JSON matrix retains per-cell inputs, outcomes, type/location counts, path and DAG validity, hashes, failures, retry count, and duplicate summaries.
 
-## Not established
+## Verification
 
-No full fixed-seed matrix was run, so there are no defensible template-by-condition success rates, retry distributions, or duplicate rates. C, relevant/peripheral error quotas, order-dependent repair opportunities, and policy-engine candidate counts have not been validated across the design. The prototype does not yet retain a full per-attempt JSONL report. The current four-template proposal therefore cannot be frozen from this result.
+Eleven new Step 4A tests pass. Fifty-seven combined focused/regression tests pass across the new generator, saved Step 4 audit, and Step 1–3 engine/pilot tests. `git diff --check` passes. Tests cover legal reversal, actual directed cycle rejection, order invariance, atomic REV, GT and initial DAG validation, A disconnection, B path-preserving REV and single-type cases, and C mixed related/peripheral errors.
 
-## Next Step 4A work
-
-Implement a bounded run driver that records every template × node-count × condition × seed denominator, including failed topology and injection reasons, error counts, relevance counts, graph hashes and cycle rejections. Then assess the full matrix before changing template weights or admitting only feasible strata. Any population-weight change must be documented before independent SCM generation. Keep Step 4 IN_PROGRESS until that audit and the separate Step 4B contracts pass.
+These are structural feasibility results for the declared finite design matrix. They do not establish population representativeness, causal/effect behavior, regret, performance, order-dependent repair frequency, or validity of proposed Step 4B statistical/resource contracts. No replacement retry was allowed; every planned cell remains in the denominator.

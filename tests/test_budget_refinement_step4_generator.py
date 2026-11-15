@@ -40,6 +40,16 @@ class Step4TopologyGeneratorTests(unittest.TestCase):
             with self.subTest(args=args), self.assertRaisesRegex(ValueError, match):
                 generate_topology(*args)
 
+    def test_general_dag_check_is_order_independent_and_allows_reversal(self):
+        nodes = ("a", "b", "c", "d")
+        truth = {("a", "b"), ("b", "c"), ("a", "d")}
+        reversed_edge = {("b", "a"), ("b", "c"), ("a", "d")}
+        cycle = reversed_edge | {("d", "a")}
+        self.assertTrue(is_dag(nodes, truth))
+        self.assertTrue(is_dag(nodes, reversed_edge))
+        self.assertTrue(is_dag(tuple(reversed(nodes)), tuple(reversed(tuple(reversed_edge)))))
+        self.assertFalse(is_dag(nodes, cycle))
+
 
 class Step4ErrorInjectionTests(unittest.TestCase):
     def setUp(self):
@@ -51,25 +61,41 @@ class Step4ErrorInjectionTests(unittest.TestCase):
         self.assertTrue(r.accepted, r.reason)
         self.assertFalse(r.remaining_paths)
         self.assertTrue(is_dag(self.g.nodes, r.initial_edges))
-        self.assertTrue(r.errors)
-        self.assertEqual({x[0] for x in r.errors}, {"FN"})
 
-    def test_B_reports_path_preserving_recipe_infeasible_for_this_seed(self):
+    def test_B_can_create_path_preserving_REV(self):
+        r = inject_condition(self.g.nodes, self.g.edges, self.x, self.y, "B_path_survives", seed=11)
+        self.assertTrue(r.accepted, r.reason)
+        self.assertTrue(r.remaining_paths)
+        self.assertEqual({e[0] for e in r.errors}, {"REV"})
+        self.assertTrue(is_dag(self.g.nodes, r.initial_edges))
+
+    def test_B_requires_path_and_at_least_one_related_error_not_all_types(self):
         r = inject_condition(self.g.nodes, self.g.edges, self.x, self.y, "B_path_survives")
-        self.assertFalse(r.accepted)
-        self.assertEqual(r.reason, "no_dag_path_preserving_fn_fp_rev_recipe")
-        self.assertTrue(r.cycle_rejections)
+        self.assertTrue(r.accepted, r.reason)
+        self.assertTrue(r.remaining_paths)
+        self.assertTrue(r.relevant_errors)
+        self.assertEqual(len(r.errors), 1)
+        self.assertIn(r.errors[0][0], {"FN", "FP", "REV"})
+        self.assertTrue(is_dag(self.g.nodes, r.initial_edges))
+
+    def test_C_requires_all_types_and_related_plus_peripheral_errors(self):
+        r = inject_condition(self.g.nodes, self.g.edges, self.x, self.y, "C_mixed")
+        self.assertTrue(r.accepted, r.reason)
+        self.assertEqual({e[0] for e in r.errors}, {"FN", "FP", "REV"})
+        self.assertTrue(r.relevant_errors)
+        self.assertTrue(r.peripheral_errors)
+        self.assertTrue(is_dag(self.g.nodes, r.initial_edges))
 
     def test_classifier_does_not_double_count_reverse(self):
         truth = {("a", "b")}; initial = {("b", "a")}
         self.assertEqual(classify_errors(("a", "b"), truth, initial), (("REV", "b", "a"),))
 
-    def test_impossible_path_preserving_case_is_explicit(self):
+    def test_impossible_task_is_explicit(self):
         g = generate_topology(6, "chain_mediation", 5)
         x, y = g.topological_order[0], g.topological_order[-1]
-        r = inject_condition(g.nodes, g.edges, x, y, "B_path_survives")
+        r = inject_condition(g.nodes, {("V00", "V01")}, x, y, "B_path_survives")
         self.assertFalse(r.accepted)
-        self.assertIn("no_dag_path_preserving", r.reason)
+        self.assertEqual(r.reason, "truth_has_no_task_path")
 
 
 if __name__ == "__main__":

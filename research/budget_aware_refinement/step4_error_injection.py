@@ -41,12 +41,11 @@ def classify_errors(nodes, truth_edges, initial_edges):
 
 
 def _task_relevant(edges, nodes, action, target):
-    """Structural relevance: edge touches the X-Y ancestral route skeleton."""
+    """GT-based error-generation stratum, separate from G0/H policy scoring."""
     p = directed_paths(nodes, edges, action, target)
     relevant = set()
     for path in p:
         relevant.update(zip(path, path[1:]))
-    # Include one-hop task-adjacent candidate pairs for false additions.
     return relevant
 
 
@@ -79,7 +78,7 @@ def _result(condition, reason, nodes, truth, initial, action, target, cycles=())
                           errors, initial_path, tuple(rel), tuple(per), tuple(cycles))
 
 
-def inject_condition(nodes, truth_edges, action, target, condition):
+def inject_condition(nodes, truth_edges, action, target, condition, seed=0):
     """Deterministic bounded recipe search; no outcome or policy result access.
 
     Search enumerates finite edge-operation combinations in immutable node-ID
@@ -107,47 +106,54 @@ def inject_condition(nodes, truth_edges, action, target, condition):
         return _result(condition, "no_fn_path_cut", nodes, truth, truth, action, target)
 
     if condition == "B_path_survives":
-        # Enumerate one FN and one atomic REV, then a false edge. Keep only
-        # acyclic graphs with a surviving path and all three relevant classes.
-        for fn in sorted(set().union(*(set(zip(p, p[1:])) for p in paths))):
-            after_fn = truth - {fn}
-            for rev in sorted(after_fn):
-                reversed_graph = (after_fn - {rev}) | {(rev[1], rev[0])}
-                if not is_dag(nodes, reversed_graph):
-                    cycles.append(("REV", *rev)); continue
-                if not directed_paths(nodes, reversed_graph, action, target):
-                    continue
-                for a, b in combinations(nodes, 2):
-                    if any(e in reversed_graph or e[::-1] in reversed_graph for e in ((a, b),)):
-                        continue
-                    for fp in ((a, b), (b, a)):
-                        candidate = reversed_graph | {fp}
-                        if not is_dag(nodes, candidate) or not directed_paths(nodes, candidate, action, target):
-                            continue
-                        errors = classify_errors(nodes, truth, candidate)
-                        kinds = {e[0] for e in errors}
-                        relevant = _task_relevant(truth, nodes, action, target)
-                        relevant_errors = [e for e in errors if (e[1], e[2]) in relevant or
-                                           (e[2], e[1]) in relevant or action in e[1:] or target in e[1:]]
-                        if {"FN", "FP", "REV"} <= kinds and all(any(e[0] == k for e in relevant_errors) for k in KINDS):
-                            return _result(condition, "accepted", nodes, truth, candidate, action, target, cycles)
-        return _result(condition, "no_dag_path_preserving_fn_fp_rev_recipe", nodes, truth, truth, action, target, cycles)
+        relevant = _task_relevant(truth, nodes, action, target)
+        ops = [("FN", *e) for e in sorted(relevant)]
+        ops += [("REV", *e) for e in sorted(truth & relevant)]
+        # A false edge is task-related when it touches an endpoint of an
+        # existing truth route. This is a GT generation stratum only.
+        for a, b in combinations(nodes, 2):
+            if (a, b) in truth or (b, a) in truth: continue
+            if action in (a, b) or target in (a, b):
+                ops.extend([("FP", a, b), ("FP", b, a)])
+        # Rotate the candidate class order with the declared seed so the B
+        # feasibility audit does not silently test FN only.
+        order = KINDS[seed % len(KINDS):] + KINDS[:seed % len(KINDS)]
+        ops.sort(key=lambda op: (order.index(op[0]), op[1], op[2]))
+        for kind, a, b in ops:
+            if kind == "FN": candidate = truth - {(a, b)}
+            elif kind == "FP": candidate = truth | {(a, b)}
+            else: candidate = (truth - {(a, b)}) | {(b, a)}
+            if not is_dag(nodes, candidate):
+                if kind == "REV": cycles.append((kind, a, b))
+                continue
+            if directed_paths(nodes, candidate, action, target):
+                return _result(condition, "accepted", nodes, truth, candidate, action, target, cycles)
+        return _result(condition, "no_path_preserving_task_related_single_error", nodes, truth, truth, action, target, cycles)
 
-    # Mixed: require at least one FN, FP, REV; add a peripheral error when the
-    # topology admits one, otherwise preserve this exact infeasible outcome.
-    base = inject_condition(nodes, truth, action, target, "B_path_survives")
-    if not base.accepted:
-        return _result(condition, "mixed_requires_path_surviving_fn_fp_rev:" + base.reason,
-                       nodes, truth, truth, action, target, base.cycle_rejections)
-    errors = base.errors
-    task_edges = _task_relevant(truth, nodes, action, target)
-    peripheral_truth = sorted(e for e in truth if e not in task_edges and e[::-1] not in task_edges)
-    if not peripheral_truth:
-        return _result(condition, "no_peripheral_truth_edge_for_control", nodes, truth,
-                       base.initial_edges, action, target)
-    # Label peripheral vs related; B recipe already preserves all three kinds.
-    return _result(condition, "accepted", nodes, truth, base.initial_edges, action, target,
-                   base.cycle_rejections)
+    # C requires all three error types, at least one task-related error, and
+    # at least one error on a structurally peripheral pair. Every intermediate
+    # graph is checked; failed recipes remain bounded by the finite edge set.
+    route = _task_relevant(truth, nodes, action, target)
+    pairs = list(combinations(nodes, 2))
+    for fn in sorted(route):
+        g1 = truth - {fn}
+        if not is_dag(nodes, g1): continue
+        for a, b in pairs:
+            if (a, b) in g1 or (b, a) in g1: continue
+            for fp in ((a, b), (b, a)):
+                g2 = g1 | {fp}
+                if not is_dag(nodes, g2): continue
+                for rev in sorted(truth - {fn}):
+                    g3 = (g2 - {rev}) | {(rev[1], rev[0])}
+                    if not is_dag(nodes, g3):
+                        cycles.append(("REV", *rev)); continue
+                    if not directed_paths(nodes, g3, action, target): continue
+                    errors = classify_errors(nodes, truth, g3)
+                    kinds = {e[0] for e in errors}
+                    result = _result(condition, "accepted", nodes, truth, g3, action, target, cycles)
+                    if set(KINDS) <= kinds and result.relevant_errors and result.peripheral_errors:
+                        return result
+    return _result(condition, "no_dag_mixed_related_and_peripheral_recipe", nodes, truth, truth, action, target, cycles)
 
 
 def policy_opportunities(nodes, truth, initial):
