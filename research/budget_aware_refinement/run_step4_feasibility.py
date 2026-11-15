@@ -10,11 +10,12 @@ from .step4_topology_generator import TEMPLATES, generate_topology, is_dag
 
 SEEDS = (11, 12, 13, 14, 15)  # covers each B error class via seed rotation
 NODE_COUNTS = tuple(range(6, 11))
-REPORT = Path(__file__).with_name("step4a_feasibility_matrix.json")
+REPORT = Path(__file__).with_name("step4a_feasibility_matrix_v2.json")
 
 
-def digest(edges):
-    payload = json.dumps(sorted(map(list, edges)), separators=(",", ":"), ensure_ascii=True).encode()
+def digest(nodes, edges):
+    payload = json.dumps({"nodes": sorted(nodes), "edges": sorted(map(list, edges))},
+                         separators=(",", ":"), ensure_ascii=True).encode()
     return hashlib.sha256(payload).hexdigest()
 
 
@@ -59,8 +60,8 @@ def run_matrix():
                                  "FN": counts["FN"], "FP": counts["FP"], "REV": counts["REV"],
                                  "related_errors": len(result.relevant_errors) if result else 0,
                                  "peripheral_errors": len(result.peripheral_errors) if result else 0,
-                                 "truth_hash": digest(topology.edges),
-                                 "initial_hash": digest(result.initial_edges) if result else None,
+                                 "truth_hash": digest(topology.nodes, topology.edges),
+                                 "initial_hash": digest(topology.nodes, result.initial_edges) if result else None,
                                  "cycle_rejections": len(result.cycle_rejections) if result else 0})
     grouped = defaultdict(list)
     for row in rows:
@@ -74,7 +75,7 @@ def run_matrix():
                         "failures": dict(Counter(r["reason"] for r in group if not r["accepted"])),
                         "unique_initial_graphs": unique,
                         "duplicate_rate": (len(accepted_hashes) - unique) / len(accepted_hashes) if accepted_hashes else None})
-    return {"protocol": "STEP4A_FIXED_TOPOLOGY_MATRIX_V1", "seeds": SEEDS,
+    return {"protocol": "STEP4A_FIXED_TOPOLOGY_MATRIX_V2_NODE_AND_EDGE_HASH", "seeds": SEEDS,
             "node_counts": NODE_COUNTS, "templates": TEMPLATES, "conditions": CONDITIONS,
             "attempts": len(rows), "retry_policy": "zero replacement; every planned cell retained",
             "rows": rows, "summary": summary}

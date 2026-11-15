@@ -9,6 +9,7 @@ from research.budget_aware_refinement.step4_topology_generator import (
 from research.budget_aware_refinement.step4_error_injection import (
     classify_errors, inject_condition, policy_opportunities,
 )
+from research.budget_aware_refinement.run_step4_feasibility import digest
 
 
 class Step4TopologyGeneratorTests(unittest.TestCase):
@@ -35,6 +36,11 @@ class Step4TopologyGeneratorTests(unittest.TestCase):
         g = generate_topology(6, "chain_mediation", 0, density=(.2, .2))
         self.assertGreaterEqual(len(g.edges), g.target_edge_count)
         self.assertEqual(g.target_edge_count, 5)  # scaffold has priority over rounded density 3
+
+    def test_graph_hash_includes_nodes_and_is_order_invariant(self):
+        edges = (("a", "b"),)
+        self.assertNotEqual(digest(("a", "b"), edges), digest(("a", "b", "isolated"), edges))
+        self.assertEqual(digest(("b", "a"), edges), digest(("a", "b"), reversed(edges)))
 
     def test_invalid_inputs_report_specific_error(self):
         for args, match in [((5, "chain_mediation", 1), "n_nodes"),
@@ -102,13 +108,15 @@ class Step4ErrorInjectionTests(unittest.TestCase):
 
     def test_matrix_report_counts_match_json_and_report_text(self):
         root = Path(__file__).resolve().parents[1] / "research" / "budget_aware_refinement"
-        matrix = json.loads((root / "step4a_feasibility_matrix.json").read_text(encoding="utf-8"))
+        matrix = json.loads((root / "step4a_feasibility_matrix_v2.json").read_text(encoding="utf-8"))
         report = (root / "STEP4A_GENERATOR_FEASIBILITY_REPORT.md").read_text(encoding="utf-8")
         b = Counter(next(k for k in ("FN", "FP", "REV") if row[k])
                     for row in matrix["rows"] if row["condition"] == "B_path_survives")
         self.assertEqual(dict(b), {"FN": 30, "FP": 39, "REV": 31})
         self.assertIn("B: FN 30, FP 39, REV 31", report)
         self.assertEqual(matrix["attempts"], 300)
+        self.assertIn("v2", report)
+        self.assertIn("235 unique", report)
 
 
 if __name__ == "__main__":
