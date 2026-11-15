@@ -1,5 +1,7 @@
 # Step 4B-4 readiness report
 
+Historical readiness diagnosis; current disposition is superseded by `STEP4B4_FINAL_DECISION.md` (Option B, Step 4B-4 design decision DONE; Step 4 remains IN_PROGRESS / NOT FROZEN).
+
 Overall: **IN_PROGRESS**. Step 4 remains **IN_PROGRESS / NOT FROZEN**. No confirmation SCMs, new SCM coefficients, observations, intervention effects or Decision Regret were generated.
 
 ## Verified evidence

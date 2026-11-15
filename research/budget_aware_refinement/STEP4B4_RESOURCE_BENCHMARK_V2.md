@@ -1,5 +1,11 @@
 # Step 4B-4 resource benchmark v2
 
+## Final decision addendum (2026-11-15)
+
+The new `step4b4_mock_runner.py` and `run_step4b4_mock_pipeline.py` provide a mock integrated ledger path and are exercised by `tests/test_step4b4_mock_runner.py`. They add durable per-stage checkpoints, same-key resume, torn-tail recovery, duplicate suppression, wall/unit boundary checks and disk-cap enforcement. They use a deterministic 512×10 dummy matrix, existing graph policy and Ridge/recommendation code, and a truth stub that returns no effect/regret. They are not the final study runner.
+
+Adopt 30 min cohort wall budget, 2 sec/unit observed-time ceiling, 512 MiB RSS monitoring threshold and 100 MiB ledger ceiling for the mock contract. The ledger ceiling is enforced before appends; wall/unit limits are observed at stage boundaries and cannot preempt a stage in-process; RSS is best-effort stage-boundary monitoring, not hard containment. A timeout/RSS hard kill requires a process-isolated Step 4C runner. Thus the ceilings are explicit operational stop rules for this contract, not evidence of worst-case runtime or memory safety on the eventual execution environment.
+
 **판정: 고정 512×10 dummy matrix 전체 학습·추천 path까지 측정. 실제 SCM/관측 자료, GT effect, regret는 생성·계산하지 않았다. 최종 실행 runner는 아직 없으므로 운영 한계는 제안값이다.** Dummy matrix는 deterministic arithmetic fixture이며 인과 SCM에서 나온 자료가 아니다. 10-node DAG Q recipe 진단도 topology-only다.
 
 환경: Python 3.14.3, NumPy 2.4.3, `Windows-11-10.0.26200-SP0`. 컴포넌트별 wall time median/p95/max:

@@ -1,5 +1,7 @@
 # Step 4B-4 final gate review
 
+Historical remediation review, superseded by `STEP4B4_FINAL_DECISION.md` (Option B adopted; Step 4B-4 design decision DONE, Step 4 remains IN_PROGRESS / NOT FROZEN).
+
 **Gate: IN_PROGRESS; not READY FOR Step 4C freeze.** No Step 5 or confirmation SCM generation.
 
 ## What is evidenced

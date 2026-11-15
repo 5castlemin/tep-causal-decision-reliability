@@ -1,5 +1,11 @@
 # Step 4B-4 failure and stop rules
 
+## Final operational decision
+
+See [STEP4B4_FINAL_DECISION.md](STEP4B4_FINAL_DECISION.md). The primary SCM vector is complete only with FN, FP and REV paired values. Any absent value leaves `D_i` missing; confirmation inferential/superiority claims are suspended. Descriptive enrolled-row results may be shown only with the observed denominator and explicit target-selection limits; they do not replace the Q-common target mean.
+
+The mock runner uses append-only fsynced stage records. A process interruption resumes at the first unrecorded stage; a partial last JSONL line is truncated to the last complete newline, while a malformed complete line is an error. Run/event key replay is idempotent only for byte-equivalent canonical payloads; conflicting replay fails. Disk cap is enforced before writes with stop-record space reserved. Wall and unit timeouts are checked at stage boundaries and cannot preempt a currently executing in-process callback; observed overruns are retained as failures. RSS is best-effort monitoring at stage boundaries, not a hard memory limit.
+
 Status: **IN_PROGRESS / proposed mock-validated rules; not frozen**.
 
 | Status | Interpretation | Handling |

@@ -1,5 +1,11 @@
 # Step 4B-4 sampling and estimand contract
 
+## Final decision addendum (2026-11-15)
+
+The operative decisions are in [STEP4B4_FINAL_DECISION.md](STEP4B4_FINAL_DECISION.md). N=64 development and N=200 confirmation are fixed operational targets for descriptive estimation only; they do not guarantee power. The candidate ceilings 362 and 1,036 are adopted as finite planning stop limits, not as yield guarantees. P strata remain uniformly proposed at 1/20 and the target remains P conditioned on Q-common; all structural rejections remain in the attempt denominator. The fixed audit's template proportions (107/637, 69/637, 164/637, 297/637) are diagnostics, not frozen future proportions. There is no quota reweighting.
+
+The SCM-level equal-type mean remains the target, but Option B suspends confirmatory superiority claims. A missing type cell makes the SCM composite missing; no zero fill, type-denominator change, or complete-case replacement of the target is allowed. At a candidate cap shortfall, report yield and observed eligible-row descriptions, without a target-population or superiority claim.
+
 Status: **IN_PROGRESS / proposed contract; not frozen**. No confirmation SCMs, coefficients, observational samples, fitted SCM outcomes, effects or regret were generated.
 
 ## Target and estimand

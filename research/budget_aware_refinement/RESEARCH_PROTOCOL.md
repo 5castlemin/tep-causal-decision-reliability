@@ -1,5 +1,15 @@
 # Step 0 연구 계약 — 2026-11-10
 
+## Current Step 4B-4 inferential disposition (2026-11-15)
+
+The primary estimand remains Q-common, indirect-only, B=1, gamma=1, Global versus Task-Focused, with `D_i=(D_FN+D_FP+D_REV)/3` and SCM as the independent unit. The v2 stress calibration found paired-t Type I error around 13.4% for an extreme zero-heavy skew distribution; the distribution is a stress diagnostic, not evidence about future Q-common outcomes. No variance or finite range for the paired regret difference follows from the current protocol, and no tail assumption is justified by structural or numeric fixtures. Therefore **confirmatory superiority inference is suspended**. Keep the SCM-level arithmetic mean as the target and report it with its observed SCM distribution. Normal-theory t intervals may appear only as explicitly assumption-dependent reference summaries; do not claim calibrated 5% superiority, equivalence, or industrial benefit from them. No alternative robust test is being searched for in this phase.
+
+Candidate allocation remains 64 development eligible SCMs and 200 independent Q-common eligible SCMs. These are fixed operational targets for descriptive estimation, not power guarantees. Development may validate code and summarize nuisance dispersion; it does not adapt confirmation N. Use uniform 1/20 proposal probability over the original 20 template×node-count strata and accept every Q-common candidate (rejection sampling), without reweighting the resulting conditional-Q target. The fixed topology audit recorded template counts Chain 107, Fork 69, Observed Common Cause 164, Multiple Directed Paths 297 (46.6%); these are pilot composition diagnostics, not exact future proportions. Report template-specific estimates as secondary descriptions.
+
+Finite attempt ceilings for the current plan are 362 development and 1,036 confirmation topology candidates, based on the v2 simultaneous lower-yield planning calculation; they are not guarantees. Retain every rejection. Stop at target N or cap, whichever occurs first. A confirmation shortfall, incomplete three-type SCM vector, or unresolved GT-evaluation failure suspends any inferential claim; do not replace after viewing outcomes, lower N, or average over available types. Infrastructure replay is allowed once only with identical input and RNG key. Eligible Ridge/recommendation failures may use common-grid k=0 only when training and truth inputs are valid; preserve original failure and report fallback separately.
+
+These decisions prospectively supersede the older P/B4 selected-policy-versus-Random confirmatory proposal and earlier use of 64/200 as power-backed sizes. Historical text and results remain unchanged. Development integration and structural feasibility are not research outcomes. Step 4 remains IN_PROGRESS / NOT FROZEN pending Step 4C reconciliation and freeze.
+
 ## 목표와 가설
 
 Cost-Constrained, Decision-Aware Causal Graph Refinement. 동일 예산에서 H1 오류 유형·위치별 후회 개선은 다를 수 있다. H2 Task-Focused 이점은 구역 품질·초기 오류·예산에 의존할 수 있다. H3 상대 성능은 방향 수정 비용과 SCM 구조에 의존할 수 있다. H4 개발 결과가 독립 SCM과 실제 발견 그래프에서 재현되지 않을 수 있다. 모두 확인 전 가설이다.
