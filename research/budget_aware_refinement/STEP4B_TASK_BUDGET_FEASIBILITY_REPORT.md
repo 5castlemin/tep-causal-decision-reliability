@@ -4,7 +4,7 @@
 
 ## Base and fixed design
 
-The code base is main merge `86b47c0da54cee98a337a1ff4c8f2cae001019c6`. The fixed design uses five seeds (11–15), node counts 6–10, four templates, conditions A/B/C, two task slots per structure, budgets {0,1,2,4,6}, gamma=1, and 14 Global/Task-Focused policy/type combinations. No replacement retries are used. All task-condition attempts remain in the denominator. Settings SHA-256: `70699de103caa28390755ed143c85a864246142bccf44e3eebceedd49f730580`. The complete raw record is in gzip-compressed `step4b_task_budget_feasibility.json.gz`; decompressed JSON SHA-256: `c5deb6ab c8b60573 cc14b597 0fe23663 0aeded52 93aa0efb 04d828ea 0cbf6dcb` (spaces for readability; compare as the concatenated 64-hex digest). A second full run reproduced byte-identical decompressed JSON.
+The code base is main merge `86b47c0da54cee98a337a1ff4c8f2cae001019c6`. The fixed design uses five seeds (11–15), node counts 6–10, four templates, conditions A/B/C, two task slots per structure, budgets {0,1,2,4,6}, gamma=1, and 14 Global/Task-Focused policy/type combinations. No replacement retries are used. All task-condition attempts remain in the denominator. Settings SHA-256: `70699de103caa28390755ed143c85a864246142bccf44e3eebceedd49f730580`. The complete raw record is in gzip-compressed `step4b_task_budget_feasibility.json.gz`; decompressed JSON SHA-256: `ca2c44c6 94aa16ac b0900ab2 2a9ef45f 776ad3a6 615a6d1c 31c712dd 83ba6a91` (spaces for readability; compare as the concatenated 64-hex digest). A second full run reproduced byte-identical decompressed JSON.
 
 ## Task contract and role mapping
 
@@ -44,4 +44,4 @@ Step 4B-1 has verified task classification, outcome-blind selection, role relabe
 
 ## Implementation checks
 
-Six new Step 4B-1 tests and 60 focused Step 4A plus Step 1–3 regression tests pass locally on Python 3.14 (66 total). Research-state validation passes and all 39 frozen Git blobs match their manifest hashes. Local Python 3.11 is present but lacks NumPy, so the Step 3 regression imports cannot run in that interpreter; the Python 3.11 CI result for this branch remains a separate required check. The local asset-manifest script fails its config hash check on this Windows checkout and is not counted as passed.
+Seven new Step 4B-1 tests and 59 focused Step 4A plus Step 1–3 regression tests pass locally on Python 3.14 (66 total). Research-state validation passes and all 39 frozen Git blobs match their manifest hashes. Local Python 3.11 is present but lacks NumPy, so the Step 3 regression imports cannot run in that interpreter; the Python 3.11 CI result for this branch remains a separate required check. The local asset-manifest script fails its config hash check on this Windows checkout and is not counted as passed.
