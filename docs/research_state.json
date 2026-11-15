@@ -454,9 +454,9 @@
       "id": "BUDGET-REFINEMENT",
       "title": "예산 제약 인과구조 개선 연구 설계 후보",
       "status": "PARTIAL",
-      "evidence": "PR #38 unmerged; Step 4B-3 reports; Python 3.11 GitHub Actions run #199 passed on 3d0bd230962c49ec24c77de5b385ad2c393b0865; Step4 IN_PROGRESS / NOT FROZEN",
+      "evidence": "PR #38 unmerged; Step 4B-3 structural/design gate DONE; Step4 IN_PROGRESS / NOT FROZEN",
       "next_action": "Step 4B-4에서 Q-common 표본·가중치, 통계·실패·계산 자원 계약 검증; PR #38 별도 병합 결정",
-      "acceptance": "Step4A DONE; Step4B-1..3 remain IN_PROGRESS until sample, inferential, failure, resource and freeze gates are evidenced; Step4 NOT FROZEN",
+      "acceptance": "Step4A and Step4B-3 structural/design gate DONE; Step4B-1/2 history retained and Step4B-4 sample/inferential/failure/resource gates remain; Step4 NOT FROZEN",
       "depends_on": []
     }
   ],

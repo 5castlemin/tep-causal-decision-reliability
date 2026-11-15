@@ -1,6 +1,6 @@
 # Step 4B-3 context-keyed RNG structural feasibility report
 
-Status: new RNG contract implemented and structurally exercised; no random SCM coefficients or observations were drawn. Step 4 remains `IN_PROGRESS / NOT FROZEN`.
+Status: new RNG contract implemented and structurally exercised; no random SCM coefficients or observations were drawn. Step 4B-3 structural/RNG gate is DONE; Step 4 remains `IN_PROGRESS / NOT FROZEN`.
 
 ## RNG contract
 

@@ -1,6 +1,6 @@
 # Step 4B-3 primary estimand decision
 
-Status: Option B is selected as the **planned primary confirmatory question**, with inferential feasibility still gated by Step 4B-4. This decision changes the proposed Step 4 design prospectively; it does not alter prior hypotheses or results. Step 4 remains `IN_PROGRESS / NOT FROZEN`.
+Status: Step 4B-3 structural/design gate is **DONE**. Option B is selected as the **planned primary confirmatory question**, with inferential feasibility still gated by Step 4B-4. This decision changes the proposed Step 4 design prospectively; it does not alter prior hypotheses or results. Step 4 remains `IN_PROGRESS / NOT FROZEN`.
 
 No coefficients, observational data, fitted models, effects, regret, or policy-performance results were calculated.
 

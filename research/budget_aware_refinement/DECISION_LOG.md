@@ -49,3 +49,5 @@ Step1 계약을 policy_engine 및 graph_adapter로 구현. 명시적 스키마�
 - RNG는 protocol/cohort/master seed/SCM ID/template/node count/attempt/stream/replicate 키의 canonical JSON SHA-256 domain separation으로 파생한다. 이는 재현 가능한 명명 스트림 분리이지 수학적 독립성 증명은 아니다. Global/Task-Focused는 같은 type schedule seed를 공유하고 Random draw seed만 분리 가능하도록 Step 2 엔진에 선택적 인자를 추가했다.
 - 새 context-keyed feasibility 결과는 v1 별도 파일로 보존한다. v1-v4 및 B2 원시는 변경하지 않았다. RNG 키 체계 변경과 B 행렬이 세 오류유형을 모두 시도하는 설계 변경이 함께 적용되어 과거 수치와 단순 RNG-only 비교는 하지 않는다.
 - Step 4 전체는 IN_PROGRESS / NOT FROZEN. 표본·정밀도/검정력·추론/CI·실패·resource cap 동결은 수행하지 않았다.
+
+- Step 4B-3 gate is DONE for the primary-estimand recommendation, P+B4 distinguishability audit, context-keyed structural feasibility, raw/report consistency, tests, frozen assets, exact-head CI, and Self-Review. This does not mark Step 4B-1/2 or Step 4 overall complete; Step 4B-4 inferential/sample/failure/resource contracts remain required.
