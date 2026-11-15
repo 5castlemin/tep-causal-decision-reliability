@@ -1,10 +1,10 @@
 # Codex repository instructions — TEP Causal Decision Reliability
 
 ## Project objective
-Investigate which causal-graph structural accuracy measures, if any, explain *independently measured* intervention effects and fault recovery/safety in a manufacturing process. Preserve the difference between graph structure, observational prediction, intervention-effect identification, and simulator outcomes.
+Current development research: cost-constrained, decision-aware causal graph refinement; see `research/budget_aware_refinement/RESEARCH_PROTOCOL.md`. Preserve the original manufacturing question and its evidence in `RESEARCH_EVOLUTION.md` and the archived research history. Distinguish graph structure, observational prediction, intervention identification and simulator outcomes. Development integration into main is not research completion.
 
 ## Source of truth, by purpose
-- `RESEARCH_DESIGN.md`: active research question, hypotheses, estimands, definitions, experimental scope.
+- `research/budget_aware_refinement/RESEARCH_PROTOCOL.md`: active refinement research contract. `RESEARCH_DESIGN.md`: original manufacturing research and historical context.
 - `PROJECT_STATUS.md`: **latest verified state** of each research workstream, its evidence and blocker.
 - `PRIORITIES.md`: ordered actionable tasks, owner when assigned, dependency, completion criterion, status and evidence. Do not invent owners or deadlines.
 - `DECISIONS.md`: append-only substantive decisions, including rejected alternatives, date and evidence; do not rewrite history.
@@ -26,7 +26,7 @@ Investigate which causal-graph structural accuracy measures, if any, explain *in
    - Update `RESEARCH_DESIGN.md`, `PILOT_PLAN.md`, `TASK_SPEC.md`, `PILOT_RESULT.md`, `INTRODUCTION.md` / `introduction.md`, inventories, tests, README **only if affected**. Preserve existing lowercase `introduction.md` filename.
    - If the task failed or is blocked, record the blocker and evidence; do not manufacture a success entry.
    - For a trivial formatting-only task, explicitly note why research status did not change; do not fabricate status churn.
-5. Review `git diff --check`, check changed paths and sensitive/large assets, run applicable tests. For the task the user authorizes, commit and push only to its feature branch when credentials and permissions permit, and create/update a PR. Never auto-merge to `main`; avoid overwriting concurrent teammate changes. If remote Git operations fail, preserve local commit and report exact blocker.
+5. Review `git diff --check`, check changed paths and sensitive/large assets, run applicable tests. For the task the user authorizes, commit and push only to its feature branch when credentials and permissions permit, and create/update a PR. Merge to `main` only after the required Self-Review evidence and the maintainer's explicit decision for that PR; avoid overwriting concurrent work. If remote Git operations fail, preserve local commit and report exact blocker.
 6. End every result with: branch/commit/PR, files changed, tests actually executed, current gate state, updated docs, next highest-priority actionable item, unresolved blockers.
 
 ## Evidence and epistemic safeguards
@@ -50,7 +50,11 @@ Investigate which causal-graph structural accuracy measures, if any, explain *in
 - If reading Slack binary/file contents is blocked, keep the file as `LINK_ONLY / NOT_VERIFIED`, and locate an authorized local copy. Do not treat attachment filenames or Slack metadata as verified contents.
 
 ## Collaboration and GitHub hygiene
-- Work under `feature/<topic>`; use PRs and reviewer approval per `CONTRIBUTING.md`. Protect uncommitted changes and preserve source files.
+- Work under `feature/<topic>`; use PRs and evidence-backed Self-Review per `CONTRIBUTING.md`. Never submit a fictitious formal approval or bypass platform protection. Protect uncommitted changes and preserve source files.
 - Prefer reproducible code and small documentation changes over duplicating generated ZIPs. Include test coverage for any new import/retrieval or gate checks.
 - Do not automatically message Slack members, invite colleagues, publish a repository or open external permissions. This project repository remains private.
 - `AGENTS.md` runs *during Codex tasks*; it does not establish a background daemon. Documentation changes require a task to run or a separate user-approved automation.
+
+## Branch workflow
+
+Use a short-lived feature branch from current main for each next step; submit a PR with Self-Review evidence and an explicit merge decision under CONTRIBUTING.md. Keep the attic branch and annotated tags for legacy history. Merge of validated development work does not mean research completion, and Step4 remains in progress until its gates are met. Do not remove a branch that is in active use or backs an open PR.
