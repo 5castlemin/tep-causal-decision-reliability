@@ -2,7 +2,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from itertools import combinations
+from itertools import combinations, permutations
+import random
 
 from .step4_topology_generator import directed_paths, is_dag
 
@@ -60,6 +61,21 @@ def _candidate_ops(nodes, truth, current, allowed):
     return tuple(ops)
 
 
+def _has_dag_valid_order(nodes, truth, operations):
+    """Whether any order of atomic corrections keeps every intermediate DAG valid."""
+    for order in permutations(operations):
+        current = set(truth)
+        for kind, x, y in order:
+            if kind == "FN": current.remove((x, y))
+            elif kind == "FP": current.add((x, y))
+            else: current.remove((y, x)); current.add((x, y))
+            if not is_dag(nodes, current):
+                break
+        else:
+            return True
+    return False
+
+
 def _result(condition, reason, nodes, truth, initial, action, target, cycles=()):
     errors = classify_errors(nodes, truth, initial)
     routes = set()
@@ -78,7 +94,7 @@ def _result(condition, reason, nodes, truth, initial, action, target, cycles=())
                           errors, initial_path, tuple(rel), tuple(per), tuple(cycles))
 
 
-def inject_condition(nodes, truth_edges, action, target, condition, seed=0):
+def inject_condition(nodes, truth_edges, action, target, condition, seed=0, requested_b_type=None):
     """Deterministic bounded recipe search; no outcome or policy result access.
 
     Search enumerates finite edge-operation combinations in immutable node-ID
@@ -106,6 +122,8 @@ def inject_condition(nodes, truth_edges, action, target, condition, seed=0):
         return _result(condition, "no_fn_path_cut", nodes, truth, truth, action, target)
 
     if condition == "B_path_survives":
+        if requested_b_type is not None and requested_b_type not in KINDS:
+            return _result(condition, "unknown_requested_b_type", nodes, truth, truth, action, target)
         relevant = _task_relevant(truth, nodes, action, target)
         ops = [("FN", *e) for e in sorted(relevant)]
         ops += [("REV", *e) for e in sorted(truth & relevant)]
@@ -117,8 +135,13 @@ def inject_condition(nodes, truth_edges, action, target, condition, seed=0):
                 ops.extend([("FP", a, b), ("FP", b, a)])
         # Rotate the candidate class order with the declared seed so the B
         # feasibility audit does not silently test FN only.
-        order = KINDS[seed % len(KINDS):] + KINDS[:seed % len(KINDS)]
-        ops.sort(key=lambda op: (order.index(op[0]), op[1], op[2]))
+        if requested_b_type is not None:
+            ops = [op for op in ops if op[0] == requested_b_type]
+            random.Random(seed).shuffle(ops)
+        else:
+            # Legacy v1 behavior retained for exact historical reconstruction.
+            order = KINDS[seed % len(KINDS):] + KINDS[:seed % len(KINDS)]
+            ops.sort(key=lambda op: (order.index(op[0]), op[1], op[2]))
         for kind, a, b in ops:
             if kind == "FN": candidate = truth - {(a, b)}
             elif kind == "FP": candidate = truth | {(a, b)}
@@ -128,32 +151,48 @@ def inject_condition(nodes, truth_edges, action, target, condition, seed=0):
                 continue
             if directed_paths(nodes, candidate, action, target):
                 return _result(condition, "accepted", nodes, truth, candidate, action, target, cycles)
-        return _result(condition, "no_path_preserving_task_related_single_error", nodes, truth, truth, action, target, cycles)
+        reason = (f"no_path_preserving_task_related_{requested_b_type}"
+                  if requested_b_type is not None else "no_path_preserving_task_related_single_error")
+        return _result(condition, reason, nodes, truth, truth, action, target, cycles)
 
-    # C requires all three error types, at least one task-related error, and
-    # at least one error on a structurally peripheral pair. Every intermediate
-    # graph is checked; failed recipes remain bounded by the finite edge set.
-    route = _task_relevant(truth, nodes, action, target)
+    # C's written eligibility is mixed FN/FP/REV with both task-related and
+    # peripheral errors. It does not require path survival or require the FN
+    # itself to be on a task path. Enumerate all disjoint one-each recipes and
+    # accept any recipe with at least one DAG-valid atomic operation order.
+    # Select uniformly from structurally eligible recipes using the separate
+    # error-injection stream; no effects, regret, or policy output is read.
     pairs = list(combinations(nodes, 2))
-    for fn in sorted(route):
+    recipes = []
+    for fn in sorted(truth):
         g1 = truth - {fn}
-        if not is_dag(nodes, g1): continue
         for a, b in pairs:
-            if (a, b) in g1 or (b, a) in g1: continue
+            if (a, b) in truth or (b, a) in truth or frozenset((a, b)) == frozenset(fn):
+                continue
             for fp in ((a, b), (b, a)):
                 g2 = g1 | {fp}
-                if not is_dag(nodes, g2): continue
+                if not is_dag(nodes, g2):
+                    continue
                 for rev in sorted(truth - {fn}):
+                    if frozenset(rev) == frozenset((a, b)):
+                        continue
                     g3 = (g2 - {rev}) | {(rev[1], rev[0])}
+                    operations = (("FN", *fn), ("FP", *fp), ("REV", rev[1], rev[0]))
                     if not is_dag(nodes, g3):
-                        cycles.append(("REV", *rev)); continue
-                    if not directed_paths(nodes, g3, action, target): continue
-                    errors = classify_errors(nodes, truth, g3)
-                    kinds = {e[0] for e in errors}
-                    result = _result(condition, "accepted", nodes, truth, g3, action, target, cycles)
-                    if set(KINDS) <= kinds and result.relevant_errors and result.peripheral_errors:
-                        return result
-    return _result(condition, "no_dag_mixed_related_and_peripheral_recipe", nodes, truth, truth, action, target, cycles)
+                        cycles.append(("REV", *rev))
+                        continue
+                    if not _has_dag_valid_order(nodes, truth, operations):
+                        continue
+                    result = _result(condition, "accepted", nodes, truth, g3,
+                                     action, target, cycles)
+                    if ({e[0] for e in result.errors} == set(KINDS)
+                            and result.relevant_errors and result.peripheral_errors):
+                        recipes.append(g3)
+    if recipes:
+        rng = random.Random(seed)
+        return _result(condition, "accepted", nodes, truth,
+                       recipes[rng.randrange(len(recipes))], action, target,
+                       tuple(sorted(set(cycles))))
+    return _result(condition, "no_dag_mixed_related_and_peripheral_recipe", nodes, truth, truth, action, target, tuple(sorted(set(cycles))))
 
 
 def policy_opportunities(nodes, truth, initial):

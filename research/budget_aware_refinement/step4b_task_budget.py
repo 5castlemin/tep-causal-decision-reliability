@@ -6,6 +6,7 @@ sample SCM parameters/data or evaluate interventions or regret.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from hashlib import sha256
 from itertools import combinations
 import random
 
@@ -17,6 +18,18 @@ class TaskPairClasses:
     direct_only: tuple[tuple[str, str], ...]
     indirect_only: tuple[tuple[str, str], ...]
     direct_and_indirect: tuple[tuple[str, str], ...]
+
+
+def derive_stream_seeds(master_seed):
+    """Derive stable domain-separated RNG seeds from one fixed master seed."""
+    if type(master_seed) is not int or master_seed < 0:
+        raise ValueError("master_seed must be a nonnegative integer")
+    streams = ("topology", "relabel", "task", "error_injection", "policy_schedule")
+    result = {"topology": master_seed}
+    for stream in streams[1:]:
+        material = f"tep-causal-decision-reliability:step4b1:{master_seed}:{stream}".encode()
+        result[stream] = int.from_bytes(sha256(material).digest()[:8], "big")
+    return result
 
 
 def classify_task_pairs(nodes, edges) -> TaskPairClasses:
@@ -77,16 +90,23 @@ def select_task_pair(nodes, edges, seed, preferred_indirect=None):
     failures = {}
     direct_candidates = list(classes.direct_only)
     indirect_candidates = list(classes.indirect_only)
-    if preferred_indirect in classes.direct_and_indirect:
-        indirect_candidates.insert(0, preferred_indirect)
-    for kind, candidates in (("direct", direct_candidates),
-                             ("indirect", indirect_candidates)):
+    preferred_is_indirect = (preferred_indirect in classes.indirect_only or
+                             preferred_indirect in classes.direct_and_indirect)
+    for kind, candidates in (("direct", direct_candidates),):
         if not candidates:
             failures[kind] = f"no_{kind}_only_task"
             continue
         rng = random.Random(f"{seed}:{kind}")
         ranked = sorted(set(candidates))
         chosen.append((kind, ranked[rng.randrange(len(ranked))]))
+    if preferred_is_indirect:
+        chosen.append(("indirect", preferred_indirect))
+    elif indirect_candidates:
+        rng = random.Random(f"{seed}:indirect")
+        ranked = sorted(set(indirect_candidates))
+        chosen.append(("indirect", ranked[rng.randrange(len(ranked))]))
+    else:
+        failures["indirect"] = "no_indirect_only_task"
     if len(chosen) == 2 and chosen[0][1] == chosen[1][1]:
         alternatives = [pair for pair in indirect_candidates if pair != chosen[0][1]]
         if alternatives:
@@ -100,6 +120,13 @@ def select_task_pair(nodes, edges, seed, preferred_indirect=None):
             "candidate_counts": {"direct_only": len(classes.direct_only),
                                  "indirect_only": len(classes.indirect_only),
                                  "direct_and_indirect": len(classes.direct_and_indirect)}}
+
+
+def graph_hash(nodes, edges):
+    """Hash a directed graph including every immutable node ID."""
+    import json
+    return sha256(json.dumps({"nodes": sorted(nodes), "edges": sorted(map(list, edges))},
+                             sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
 def operation_opportunities(nodes, truth_edges, initial_edges):

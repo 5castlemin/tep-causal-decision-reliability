@@ -9,30 +9,31 @@ from pathlib import Path
 from .policy_engine import refine
 from .step4_error_injection import CONDITIONS, inject_condition
 from .step4_topology_generator import TEMPLATES, generate_topology, is_dag
-from .step4b_task_budget import (classify_task_pairs, operation_opportunities,
-                                 relabel_roles, select_task_pair)
+from .step4b_task_budget import (classify_task_pairs, graph_hash, operation_opportunities,
+                                 derive_stream_seeds, relabel_roles, select_task_pair)
 
 SEEDS = (11, 12, 13, 14, 15)
 NODE_COUNTS = tuple(range(6, 11))
 BUDGETS = (0, 1, 2, 4, 6)
 GAMMA = 1
 TYPES = ("FN", "FP", "REV")
+B_TYPE_SCHEDULE = ("FN", "FP", "REV")
 POLICIES = tuple((mode, subset) for mode in ("G", "T")
                  for size in range(1, 4) for subset in itertools.combinations(TYPES, size))
-OUTPUT = Path(__file__).with_name("step4b_task_budget_feasibility.json.gz")
+OUTPUT = Path(__file__).with_name("step4b_task_budget_feasibility_v3.json.gz")
 
 SETTINGS = {"seeds": SEEDS, "node_counts": NODE_COUNTS, "templates": TEMPLATES,
             "conditions": CONDITIONS, "budgets": BUDGETS, "gamma": GAMMA,
-            "task_selection": "seeded direct-only pair plus distinct indirect-only pair; common-cause X-to-Y scaffold pair is preferred when present",
-            "role_relabel": "seeded bijection of immutable IDs before task selection",
+            "task_selection": "independent task stream; distinct direct-only and indirect pair; common-cause scaffold X-to-Y selected whenever indirect",
+            "role_relabel": "independent domain-separated stream; seeded bijection of immutable IDs",
+            "rng_streams": ("topology=master seed", "relabel=SHA256 domain derived",
+                            "task=SHA256 domain derived", "error_injection=SHA256 domain derived",
+                            "policy_schedule=SHA256 domain derived"),
+            "B_type_strata": "preassigned cyclic schedule (seed index + node-count index + template index + task-slot index) mod 3; no cross-type replacement",
+            "C_recipe_search": "all disjoint one-each FN/FP/REV recipes; retain if any of six atomic orders keeps every intermediate graph a DAG; no path survival requirement",
             "retries": 0, "replacement": False, "policies": len(POLICIES)}
 SETTINGS_SHA256 = sha256(json.dumps(SETTINGS, sort_keys=True, separators=(",", ":"),
                                default=list).encode()).hexdigest()
-
-
-def graph_hash(nodes, edges):
-    return sha256(json.dumps({"nodes": sorted(nodes), "edges": sorted(map(list, edges))},
-                             sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
 def run_matrix():
@@ -40,11 +41,12 @@ def run_matrix():
     for n in NODE_COUNTS:
         for template in TEMPLATES:
             for seed in SEEDS:
-                base = generate_topology(n, template, seed)
-                nodes, truth, roles, mapping = relabel_roles(template, base.nodes, base.edges, seed)
+                streams = derive_stream_seeds(seed)
+                base = generate_topology(n, template, streams["topology"])
+                nodes, truth, roles, mapping = relabel_roles(template, base.nodes, base.edges, streams["relabel"])
                 preferred_indirect = ((roles["action"], roles["target"])
                                       if template == "observed_common_cause" else None)
-                selected = select_task_pair(nodes, truth, seed, preferred_indirect)
+                selected = select_task_pair(nodes, truth, streams["task"], preferred_indirect)
                 tasks = dict(selected["selected"])
                 task_classes = classify_task_pairs(nodes, truth)
                 for kind in ("direct", "indirect"):
@@ -55,22 +57,31 @@ def run_matrix():
                                          "task_kind": kind, "condition": condition, "accepted": False,
                                          "reason": selected["failures"][kind], "role_map": roles,
                                          "task_counts": selected["candidate_counts"],
-                                         "id_mapping": mapping, "truth_dag": is_dag(nodes, truth), "initial_dag": None,
+                                         "id_mapping": mapping, "rng_seeds": streams,
+                                         "truth_dag": is_dag(nodes, truth), "initial_dag": None,
                                          "path_survives": None, "errors": {},
                                          "related_errors": 0, "peripheral_errors": 0,
                                          "truth_hash": graph_hash(nodes, truth), "initial_hash": None})
                             continue
                         action, target = task
+                        b_type = None
+                        if condition == "B_path_survives":
+                            b_type = B_TYPE_SCHEDULE[(SEEDS.index(seed) + NODE_COUNTS.index(n) +
+                                                     TEMPLATES.index(template) + (kind == "indirect")) % 3]
                         relation = ("direct_only" if task in task_classes.direct_only else
                                     "indirect_only" if task in task_classes.indirect_only else
                                     "direct_and_indirect")
-                        result = inject_condition(nodes, truth, action, target, condition, seed=seed)
+                        result = inject_condition(nodes, truth, action, target, condition,
+                                                  seed=streams["error_injection"],
+                                                  requested_b_type=b_type)
                         errors = Counter(error[0] for error in result.errors)
                         row = {"n": n, "template": template, "seed": seed,
                                "task_kind": kind, "action": action, "target": target,
                                "task_relation": relation,
                                "same_pair": selected["same_pair"], "task_counts": selected["candidate_counts"],
                                "role_map": roles, "id_mapping": mapping, "condition": condition,
+                               "requested_error_type": b_type,
+                               "rng_seeds": streams,
                                "accepted": result.accepted, "reason": result.reason,
                                "truth_dag": is_dag(nodes, truth),
                                "initial_dag": is_dag(nodes, result.initial_edges),
@@ -93,7 +104,7 @@ def run_matrix():
                                 log = refine(node_ids=nodes, initial_edges=result.initial_edges,
                                              reference_edges=truth, allowed_types=allowed,
                                              policy_id=policy_id, budget=budget, gamma=GAMMA,
-                                             action=action, target=target, seed=seed,
+                                             action=action, target=target, seed=streams["policy_schedule"],
                                              graph_id=row["initial_hash"])
                                 original_ops = {tuple(item["operation"])
                                                 for values in opportunities.values()
@@ -111,6 +122,7 @@ def run_matrix():
                                 executions.append({"n": n, "template": template, "seed": seed,
                                                    "task_kind": kind, "condition": condition,
                                                    "policy": policy_id, "budget": budget,
+                                                   "rng_seeds": streams,
                                                    "initial_hash": row["initial_hash"],
                                                    "final_hash": log["final_hash"],
                                                    "candidate_counts": {k: v["candidate_count"] for k, v in opportunities.items()},
@@ -126,7 +138,7 @@ def run_matrix():
                                                    "termination_reason": log["termination_reason"]})
     hashes = [r["initial_hash"] for r in rows if r["accepted"]]
     execution_hashes = [r["final_hash"] for r in executions]
-    return {"protocol": "STEP4B1_STRUCTURE_ONLY_TASK_BUDGET_V1",
+    return {"protocol": "STEP4B1_STRUCTURE_ONLY_TASK_BUDGET_V3_ANY_DAG_VALID_ORDER",
             "settings": SETTINGS, "settings_sha256": SETTINGS_SHA256,
             "planned_task_condition_attempts": len(rows),
             "accepted_task_conditions": sum(r["accepted"] for r in rows),

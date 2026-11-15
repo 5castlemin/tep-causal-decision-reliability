@@ -26,3 +26,10 @@ Step1 계약을 policy_engine 및 graph_adapter로 구현. 명시적 스키마�
 2026-11-10: Step4에서는 선택 정책과 동일한 오류 유형·일정의 matched Random 및 matched Path-F1 기준선을 제안한다. 기존 Step3 full-pool 결과는 유지한다. 64/200과 0.10은 후보이며 생성 적격성·자원·실패 규칙 미검증으로 동결하지 않는다. STEP4_READINESS_AUDIT.md.
 
 2026-11-10: 사용자는 검증된 진행 중 개발물을 main의 공식 기준으로 통합하도록 지시했다. Development Integration은 Step4–9 완료나 연구 가설 검증이 아니다. 최소 1명 검토와 CI·동결 자산 확인을 유지한다. 기존 인과 결과와 미병합 연구는 보관한다.
+
+## 2026-11-15 Step 4B-1 critical design audit (additional review, not frozen)
+
+- Preserve historical v1/v2 outputs. Create a separate v3 feasibility matrix that checks all six atomic orders for disjoint one-each FN/FP/REV recipes. C requires mixed types and related plus peripheral errors, but does not require path survival or an on-route FN. Failed cells are never replaced with another error type.
+- The outcome-blind B type schedule yielded FN 13/66, FP 67/67, REV 11/67. Under the current path-preserving recipe, direct-only FN/REV are infeasible. Do not interpret a pooled B mean as a fair type comparison.
+- Across 17,185 graph-only matched Global/Task-Focused pairs, 97.2% lack two DAG-valid same-type candidates; final graphs differed in 12 (0.07%). The present topology matrix cannot identify H2 as a primary confirmatory effect. Any H2 challenge cohort must be preregistered with separate target-population weights.
+- Fixed positive-control fixtures test policy distinguishability for all three error types; they are not policy performance evidence. Matched Random/Path-F1 comparisons do not substitute for an H2 Global-versus-Task-Focused contrast. Resolve H1/H2 status, estimands, and weights in Step 4B-2. Step 4B-1 and Step 4 remain IN_PROGRESS / NOT FROZEN.
