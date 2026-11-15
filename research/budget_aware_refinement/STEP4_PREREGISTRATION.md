@@ -1,3 +1,7 @@
+# HISTORICAL PROPOSAL — SUPERSEDED
+
+This document preserves earlier preregistration drafts. The active contract is `STEP4_CURRENT_ACTIVE_CONTRACT.md`; this file is not the current execution authority. Step 4 remains NOT FROZEN.
+
 # Step 4 provisional registration — NOT FROZEN
 
 ## Current design disposition (2026-11-15; prospective, still NOT FROZEN)

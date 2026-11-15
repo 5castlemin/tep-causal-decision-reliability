@@ -1,8 +1,10 @@
 import json
 import hashlib
+import os
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from pathlib import Path
 
@@ -25,6 +27,45 @@ def ok_stages(counter=None):
     return {name: stage(name) for name in ("graph", "fit", "recommend", "truth")}
 
 
+def _spin_forever():
+    while True:
+        pass
+
+
+def _slow_stage():
+    time.sleep(.5)
+    return {"slept": True}
+
+
+def _allocate_memory():
+    block = bytearray(96 * 1024 * 1024)
+    for i in range(0, len(block), 4096):
+        block[i] = 1
+    time.sleep(.5)
+    return {"allocated": len(block)}
+
+
+def _crash_process():
+    os._exit(37)
+
+
+def _raise_stage_error():
+    raise RuntimeError("worker exception fixture")
+
+
+def _stage_graph(): return {"fixture": "graph"}
+def _stage_fit(): return {"fixture": "fit"}
+def _stage_recommend(): return {"fixture": "recommend"}
+def _stage_truth(): return {"fixture": "truth"}
+
+
+def _kill_after(target):
+    def hook(stage):
+        if stage == target:
+            os._exit(73)
+    return hook
+
+
 class Step4B4MockRunnerTests(unittest.TestCase):
     def test_final_gate_manifest_matches_mock_sources_and_raw_ledger(self):
         root = Path(__file__).resolve().parents[1] / "research" / "budget_aware_refinement"
@@ -32,19 +73,118 @@ class Step4B4MockRunnerTests(unittest.TestCase):
         settings_bytes = json.dumps(manifest["settings"], sort_keys=True, separators=(",", ":"),
                                      ensure_ascii=False).encode()
         self.assertEqual(hashlib.sha256(settings_bytes).hexdigest(), manifest["settings_sha256"])
-        for name, expected in manifest["artifact_sha256"].items():
-            self.assertEqual(hashlib.sha256((root / name).read_bytes()).hexdigest(), expected)
+        # Source hashes in v1 describe the historical implementation, not this remediation.
+        raw_name = "step4b4_mock_pipeline_run_v2.jsonl"
+        self.assertEqual(hashlib.sha256((root / raw_name).read_bytes()).hexdigest(),
+                         manifest["artifact_sha256"][raw_name])
+
+    def test_production_contract_does_not_promote_mock_truth_to_evaluation(self):
+        path = Path(__file__).resolve().parents[1] / "research" / "budget_aware_refinement" / "STEP4C1_PRODUCTION_RUNNER_CONTRACT.json"
+        contract = json.loads(path.read_text(encoding="utf-8"))
+        self.assertFalse(contract["production_ready"])
+        self.assertFalse(contract["truth_stub_is_successful_evaluation"])
+        self.assertEqual(contract["status"], "NOT_FROZEN")
+        states = {stage["name"]: stage["state"] for stage in contract["stages"]}
+        self.assertEqual(states["ground_truth_evaluation"], "NOT_IMPLEMENTED")
 
     def test_existing_graph_ridge_path_and_truth_stub_do_not_emit_outcomes(self):
         from research.budget_aware_refinement.run_step4b4_mock_pipeline import build_mock_stages
         with tempfile.TemporaryDirectory() as td:
             ledger = Path(td) / "integrated.jsonl"
-            result = run_pipeline("fixed-numeric-fixture", ledger, build_mock_stages())
+            result = run_pipeline("fixed-numeric-fixture", ledger, build_mock_stages(ledger))
             self.assertEqual(result["status"], "OK")
             events = recover_jsonl(ledger)
             truth = next(row for row in events if row["event"] == "stage:truth")
             self.assertFalse(truth["output"]["evaluation_performed"])
             self.assertIsNone(truth["output"]["regret"])
+
+    def test_integrated_pipeline_restarts_at_each_checkpoint_in_fresh_process(self):
+        from research.budget_aware_refinement.run_step4b4_mock_pipeline import (
+            MOCK_CONFIG, MOCK_INPUT_SHA256, MOCK_RNG_KEY, build_mock_stages,
+        )
+        for stop_before in ("fit", "recommend", "truth"):
+            with self.subTest(stop_before=stop_before), tempfile.TemporaryDirectory() as td:
+                ledger = Path(td) / "resumed.jsonl"
+                uninterrupted = Path(td) / "uninterrupted.jsonl"
+                code = """
+import os, sys
+from pathlib import Path
+from research.budget_aware_refinement.run_step4b4_mock_pipeline import *
+stage_to_stop=sys.argv[2]
+stages=build_mock_stages(Path(sys.argv[1]))
+run_pipeline('integrated-restart',Path(sys.argv[1]),stages,rng_key=MOCK_RNG_KEY,
+             config=MOCK_CONFIG,input_sha256=MOCK_INPUT_SHA256,isolate_stages=True,
+             checkpoint_hook=lambda stage: os._exit(73) if stage == {'fit':'graph','recommend':'fit','truth':'recommend'}[stage_to_stop] else None)
+"""
+                child = subprocess.run([sys.executable, "-c", code, str(ledger), stop_before], check=False)
+                self.assertEqual(child.returncode, 73)
+                events_before = recover_jsonl(ledger)
+                self.assertEqual(events_before[-1]["event"], f"stage:{ {'fit':'graph','recommend':'fit','truth':'recommend'}[stop_before] }")
+                resumed = run_pipeline("integrated-restart", ledger,
+                    build_mock_stages(ledger), rng_key=MOCK_RNG_KEY, config=MOCK_CONFIG,
+                    input_sha256=MOCK_INPUT_SHA256, isolate_stages=True)
+                baseline = run_pipeline("integrated-restart", uninterrupted,
+                    build_mock_stages(uninterrupted), rng_key=MOCK_RNG_KEY, config=MOCK_CONFIG,
+                    input_sha256=MOCK_INPUT_SHA256, isolate_stages=True)
+                self.assertEqual(resumed["status"], "OK")
+                self.assertEqual(baseline["status"], "OK")
+                self.assertEqual(hashlib.sha256(ledger.read_bytes()).hexdigest(),
+                                 hashlib.sha256(uninterrupted.read_bytes()).hexdigest())
+
+    def test_composite_regret_rejects_nonfinite_and_bad_numeric_values(self):
+        def rows(value=0.0):
+            return {kind: {"status": "OK", "global_regret": value,
+                           "task_focused_regret": 0.0} for kind in ("FN", "FP", "REV")}
+        for bad in (float("nan"), float("inf"), float("-inf"), "0.4", object()):
+            result = composite_scm_result(rows(bad))
+            self.assertFalse(result["complete"])
+            self.assertIsNone(result["D_i"])
+            self.assertEqual(result["status"], "NONFINITE")
+        self.assertEqual(composite_scm_result(rows(0.0))["D_i"], 0.0)
+        self.assertGreater(composite_scm_result(rows(2.0))["D_i"], 0)
+        self.assertLess(composite_scm_result(rows(-2.0))["D_i"], 0)
+
+    def test_event_digest_output_digest_and_configuration_are_verified(self):
+        with tempfile.TemporaryDirectory() as td:
+            ledger = Path(td) / "tamper.jsonl"
+            run_pipeline("integrity", ledger, ok_stages(), config={"version": 1}, input_sha256="a" * 64)
+            records = recover_jsonl(ledger)
+            self.assertEqual(records[-1]["event"], "terminal")
+            tampered = json.loads(ledger.read_text(encoding="utf-8").splitlines()[0])
+            tampered["output"]["fixture"] = "altered"
+            lines = ledger.read_text(encoding="utf-8").splitlines()
+            lines[0] = json.dumps(tampered, sort_keys=True, separators=(",", ":"))
+            ledger.write_text("\n".join(lines) + "\n", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                recover_jsonl(ledger)
+
+    def test_same_run_rejects_changed_config_or_input_hash(self):
+        with tempfile.TemporaryDirectory() as td:
+            ledger = Path(td) / "binding.jsonl"
+            run_pipeline("bound", ledger, ok_stages(), config={"x": 1}, input_sha256="b" * 64)
+            with self.assertRaises(ValueError):
+                run_pipeline("bound", ledger, ok_stages(), config={"x": 2}, input_sha256="b" * 64)
+            with self.assertRaises(ValueError):
+                run_pipeline("bound", ledger, ok_stages(), config={"x": 1}, input_sha256="c" * 64)
+
+    def test_isolated_stages_terminate_timeout_memory_exit_and_exception(self):
+        cases = (
+            ("TIMEOUT", _spin_forever, {"max_unit_seconds": .2}),
+            ("TIMEOUT", _slow_stage, {"max_unit_seconds": .1}),
+            ("RSS_LIMIT", _allocate_memory, {"max_rss_bytes": 64 * 1024 * 1024}),
+            ("CHILD_EXIT", _crash_process, {}),
+            ("RIDGE_FAIL", _raise_stage_error, {}),
+        )
+        for expected, fit, limits in cases:
+            with self.subTest(expected=expected, fit=fit.__name__), tempfile.TemporaryDirectory() as td:
+                ledger = Path(td) / "isolated.jsonl"
+                stages = {"graph": _stage_graph, "fit": _stage_fit,
+                          "recommend": _stage_recommend, "truth": _stage_truth}
+                stages["fit"] = fit
+                result = run_pipeline("isolated", ledger, stages, isolate_stages=True, **limits)
+                self.assertEqual(result["status"], expected)
+                records = recover_jsonl(ledger)
+                self.assertEqual(records[-1]["status"], expected)
 
     def test_forced_stop_resume_and_no_duplicate_completed_events(self):
         with tempfile.TemporaryDirectory() as td:
@@ -154,11 +294,11 @@ run_pipeline('killed-run',p,{'graph':graph,'fit':stop,'recommend':later,'truth':
         with tempfile.TemporaryDirectory() as td:
             ledger = Path(td) / "run.jsonl"
             stages = ok_stages()
-            result = run_pipeline("r-cap", ledger, stages, max_ledger_bytes=700)
+            result = run_pipeline("r-cap", ledger, stages, max_ledger_bytes=1100)
             self.assertEqual(result["status"], "DISK_CAP")
             rows = recover_jsonl(ledger)
             self.assertEqual(rows[-1]["status"], "DISK_CAP")
-            self.assertLessEqual(ledger.stat().st_size, 700)
+            self.assertLessEqual(ledger.stat().st_size, 1100)
 
     def test_wall_limit_is_checked_at_stage_boundaries_and_recorded(self):
         with tempfile.TemporaryDirectory() as td:

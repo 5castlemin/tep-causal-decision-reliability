@@ -1,0 +1,19 @@
+{
+  "contract_version": "step4c1-runner-interface-v1",
+  "status": "NOT_FROZEN",
+  "active_estimand": "Q-common|indirect-only|B=1|gamma=1|Task-Focused-vs-ID-ordered-Global|equal-FN-FP-REV|SCM-mean-paired-regret-difference",
+  "stages": [
+    {"name": "proposal", "state": "NOT_IMPLEMENTED", "inputs": ["proposal_id", "stratum_id"]},
+    {"name": "topology", "state": "NOT_IMPLEMENTED", "outputs": ["gt_topology", "topology_hash"]},
+    {"name": "q_common_eligibility", "state": "NOT_IMPLEMENTED", "inputs": ["gt_topology", "task", "initial_error_graphs", "dag_valid_candidates"]},
+    {"name": "scm_and_shared_data", "state": "NOT_IMPLEMENTED", "condition": "only_after_eligibility", "streams": ["coefficient", "exogenous_noise", "observational_sample"]},
+    {"name": "paired_policy_runs", "state": "MOCK_VALIDATED_ONLY", "shared_within_scm": ["observations", "task", "initial_graph", "candidate_set", "cost", "budget", "error_type"]},
+    {"name": "ground_truth_evaluation", "state": "NOT_IMPLEMENTED", "access": "separate evaluator only"},
+    {"name": "scm_composite", "state": "IMPLEMENTED", "requires": ["finite FN difference", "finite FP difference", "finite REV difference"], "weights": {"FN": 0.3333333333333333, "FP": 0.3333333333333333, "REV": 0.3333333333333333}},
+    {"name": "checkpoint_ledger", "state": "MOCK_VALIDATED_ONLY", "integrity": ["event_sha256", "output_sha256", "config_sha256", "input_sha256", "rng_key"]}
+  ],
+  "information_boundary": {"policy_inputs_exclude": ["gt_effect", "regret", "ground_truth_evaluation"], "eligibility_excludes": ["policy_performance", "regret", "gt_effect"]},
+  "cohort_namespace": {"development": "dev-*", "confirmation": "rep-*", "must_be_disjoint": true},
+  "truth_stub_is_successful_evaluation": false,
+  "production_ready": false
+}

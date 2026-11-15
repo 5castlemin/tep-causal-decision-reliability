@@ -1,3 +1,7 @@
+# HISTORICAL ANALYSIS PROPOSAL — SUPERSEDED
+
+The P/B=4 comparisons and earlier inferential proposals below are historical. Current active estimand and Option B status are in `STEP4_CURRENT_ACTIVE_CONTRACT.md`. No confirmatory superiority inference is currently authorized; Step 4 is NOT FROZEN.
+
 # Proposed paired analysis — NOT FROZEN
 
 2026-11-10; base `42b7c2a0e9d6c11ed72aae4205c0bb7114221a2a`; source hash in readiness audit. For each SCM average equally across the two tasks and three prespecified structural error conditions; for random first average five matched-seed regrets in each cell. Form one paired difference per SCM: D=random minus selected, and separately D=matched Path F1 minus selected. Positive D favors selected. The Path F1 comparison has extra oracle path information and may use less budget. Evaluate B=4, gamma=1 only as confirmation. Report the chosen policy, all denominators, mean paired difference, 95% CI and both baseline information/cost differences.

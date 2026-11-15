@@ -1,3 +1,7 @@
+# CURRENT CONTRACT POINTER (2026-11-16)
+
+The active Step 4 contract is `STEP4_CURRENT_ACTIVE_CONTRACT.md`; the production interface and implementation status are in `STEP4C1_PRODUCTION_RUNNER_CONTRACT.json`. Older P/B=4 confirmatory clauses below are historical superseded proposals, retained for audit history. Current inference is Option B and does not support a confirmatory superiority claim. Step 4 is NOT FROZEN.
+
 # Step 0 연구 계약 — 2026-11-10
 
 ## Current Step 4B-4 inferential disposition (2026-11-15)
