@@ -4,7 +4,7 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **BUDGET-REFINEMENT — 예산 제약 인과구조 개선 연구 설계 후보**: Step 4B-4에서 Q-common 표본·가중치, 통계·실패·계산 자원 계약을 검증하고 PR #38 CI/Self-Review 진행; main 병합하지 않음 (PARTIAL)
+1. **BUDGET-REFINEMENT — 예산 제약 인과구조 개선 연구 설계 후보**: Step 4B-4에서 Q-common 표본·가중치, 통계·실패·계산 자원 계약 검증; PR #38 별도 병합 결정 (PARTIAL)
 2. **MFG-MICRO — CausalMan micro 실제 수용 검사**: CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 (PARTIAL)
 3. **ERROR-CONFIRM — 오류 위치 독립 계약: 정밀도·자원 결정 필요**: REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 (PARTIAL)
 
@@ -12,7 +12,7 @@
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| BUDGET-REFINEMENT | PARTIAL | 없음 | Step 4B-4에서 Q-common 표본·가중치, 통계·실패·계산 자원 계약을 검증하고 PR #38 CI/Self-Review 진행; main 병합하지 않음 / Step4A DONE; Step4B-1..3 remain IN_PROGRESS until sample, inferential, failure, resource and freeze gates are evidenced; Step4 NOT FROZEN |
+| BUDGET-REFINEMENT | PARTIAL | 없음 | Step 4B-4에서 Q-common 표본·가중치, 통계·실패·계산 자원 계약 검증; PR #38 별도 병합 결정 / Step4A DONE; Step4B-1..3 remain IN_PROGRESS until sample, inferential, failure, resource and freeze gates are evidenced; Step4 NOT FROZEN |
 | MFG-MICRO | PARTIAL | MFG-INTEGRATED | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 / hard-do 그래프 부모 삭제 결함과 참조/효과 식별 계약이 남음.외부 import·관측1/do16000 1완료,do30000중단·replay미실행;공식채택아님 |
 | ERROR-CONFIRM | PARTIAL | ERROR-DIAG | REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 / 대응손실계약고정;미해결2개는정밀도-구조예산및종단실행비용근거.30개반폭0.446/유지15개0.742;구조단위598/유지총1650근사. 신규SCM/적합/do0 |
 | PATH-PRECISION | BLOCKED | PATH-MODEL | 이번 저차원 모형 정밀도 거친 추정132구조/1188학습으로30/288 초과. 과거150추정 보존; 작은 정보와 실제 의사결정 이득을 분리한 후속 계약 / 실행 가능한 사전 정밀도·구조 수·예산 계약; 유리한 결과를 위한 기준 완화 금지 |
