@@ -8,6 +8,10 @@ from research.budget_aware_refinement.step4b2_population import (
     classify_error_location, competition_recipes, policy_candidate_orders, select_q_recipe,
 )
 from research.budget_aware_refinement.step4_topology_generator import directed_paths, is_dag
+from research.budget_aware_refinement.step4_rng import (
+    RNGKey, RNG_PROTOCOL_VERSION, derive_seed, derive_streams,
+)
+from research.budget_aware_refinement.policy_engine import refine
 
 
 ROOT = Path(__file__).resolve().parents[1] / "research" / "budget_aware_refinement"
@@ -67,6 +71,45 @@ class Step4B2DesignTests(unittest.TestCase):
             task_first.add(tuple(inverse[x] for x in order["task_focused"][0][1:]))
         self.assertEqual(global_first, {("X", "M"), ("P", "Q")})
         self.assertEqual(task_first, {("X", "M")})
+
+    def test_rng_keys_are_stable_contextual_and_execution_order_independent(self):
+        base = RNGKey(RNG_PROTOCOL_VERSION, "development", 23, "scm-a",
+                      "chain_mediation", 8, 0, "node_relabeling")
+        self.assertEqual(derive_seed(base), derive_seed(base))
+        variants = (
+            RNGKey(RNG_PROTOCOL_VERSION, "confirmation", 23, "scm-a", "chain_mediation", 8, 0, "node_relabeling"),
+            RNGKey(RNG_PROTOCOL_VERSION, "development", 23, "scm-b", "chain_mediation", 8, 0, "node_relabeling"),
+            RNGKey(RNG_PROTOCOL_VERSION, "development", 23, "scm-a", "fork_branch", 8, 0, "node_relabeling"),
+            RNGKey(RNG_PROTOCOL_VERSION, "development", 23, "scm-a", "chain_mediation", 9, 0, "node_relabeling"),
+            RNGKey(RNG_PROTOCOL_VERSION, "development", 23, "scm-a", "chain_mediation", 8, 1, "node_relabeling"),
+            RNGKey(RNG_PROTOCOL_VERSION, "development", 23, "scm-a", "chain_mediation", 8, 0, "task_selection"),
+        )
+        seeds = [derive_seed(base), *(derive_seed(key) for key in variants)]
+        self.assertEqual(len(set(seeds)), len(seeds))
+        fields = {"cohort": "development", "master_seed": 23, "scm_id": "scm-a",
+                  "topology_template": "chain_mediation", "node_count": 8,
+                  "topology_attempt": 0}
+        forward = [derive_streams(**fields)[name] for name in
+                   ("topology", "node_relabeling", "task_selection", "error_injection")]
+        reverse_names = ("error_injection", "task_selection", "node_relabeling", "topology")
+        reverse = {name: derive_streams(**fields)[name] for name in reverse_names}
+        self.assertEqual(forward, [reverse[name] for name in
+                                   ("topology", "node_relabeling", "task_selection", "error_injection")])
+
+    def test_matched_random_replicates_share_type_schedule_not_random_draw_seed(self):
+        nodes = ("a", "b", "c", "d")
+        truth = {("a", "b"), ("b", "c"), ("c", "d")}
+        initial = {("a", "b"), ("c", "d")}
+        common = dict(node_ids=nodes, initial_edges=initial, reference_edges=truth,
+                      allowed_types=("FN", "FP"), budget=2, gamma=1,
+                      action="a", target="d", schedule_seed=0)
+        global_log = refine(**common, policy_id="G-FN-FP", seed=0)
+        task_log = refine(**common, policy_id="T-FN-FP", seed=0)
+        random_logs = [refine(**common, policy_id="RANDOM", seed=s) for s in (0, 6, 12, 18, 24)]
+        self.assertEqual(global_log["type_schedule"], task_log["type_schedule"])
+        self.assertTrue(all(log["type_schedule"] == global_log["type_schedule"] for log in random_logs))
+        self.assertEqual([log["seed"] for log in random_logs], [0, 6, 12, 18, 24])
+        self.assertEqual([log["schedule_seed"] for log in random_logs], [0] * 5)
 
     def test_b2_raw_json_counts_match_report_and_keep_planned_denominators(self):
         raw = json.loads(gzip.decompress((ROOT / "step4b2_population_diagnostics_v1.json.gz").read_bytes()))

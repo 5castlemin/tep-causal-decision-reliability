@@ -454,9 +454,9 @@
       "id": "BUDGET-REFINEMENT",
       "title": "예산 제약 인과구조 개선 연구 설계 후보",
       "status": "PARTIAL",
-      "evidence": "research/budget_aware_refinement/STEP4_READINESS_AUDIT.md; Step4 IN_PROGRESS; 개발 통합 준비 및 attic 태그 보존",
-      "next_action": "PR #36 검토·CI 후 개발 통합; Step4 생성기 가능성·실패·자원 사전등록 동결",
-      "acceptance": "Step1~9 각 Gate 및 독립 실험·재현·사용자 병합 승인; Step1 fixture는 가설 검증 아님",
+      "evidence": "PR #38 (unmerged, head pending): STEP4B3_PRIMARY_ESTIMAND_DECISION.md; STEP4B3_RNG_FEASIBILITY_REPORT.md; Step4 IN_PROGRESS / NOT FROZEN",
+      "next_action": "Step 4B-4에서 Q-common 표본·가중치, 통계·실패·계산 자원 계약을 검증하고 PR #38 CI/Self-Review 진행; main 병합하지 않음",
+      "acceptance": "Step4A DONE; Step4B-1..3 remain IN_PROGRESS until sample, inferential, failure, resource and freeze gates are evidenced; Step4 NOT FROZEN",
       "depends_on": []
     }
   ],

@@ -41,3 +41,11 @@ Step1 계약을 policy_engine 및 graph_adapter로 구현. 명시적 스키마�
 - Define the primary selected-policy-vs-matched-Random estimand separately from H1 error type/location and H2 Global-vs-Task-Focused ordering. H1 has no current clean type-only support because direct FN/REV are absent and FP must occupy a non-truth dyad. H1 is proposed as conditional/type-location exploratory reporting. H2 in P is a population-average paired contrast; H2 in Q is a distinct conditional contrast, structurally exposed at budget 1 but not yet powered or confirmed.
 - Retain C path-survival strata (v4 133/200 survive, 67/200 disconnect), and overlapping location tags. Upstream-of-Action labels do not imply harmlessness under hard-do(X).
 - The 64/200 SCM sizes, inferential tests, missingness/failure rules, compute caps, and target weights remain candidates for later Step 4B work; no final sample or analysis contract is frozen.
+
+## 2026-11-15 — Step 4B-3 주 추정량 및 RNG 설계안 (미동결)
+
+- 보존된 v4 P 구조 행렬에서 P/B=4의 14개 정책 각각과 Matched Random 5개 seed를 대응 실행한 34,370쌍 모두 최종 그래프가 같았다. 이 결과는 regret 비교가 아니므로 P/B4를 보조·탐색적 벤치마크로 낮추고, Q-common/B=1의 Global 대 Task-Focused 대응 H2 질문을 계획상 주 확인 질문으로 제안한다.
+- Q-common은 동일 SCM/task가 FN·FP·REV 세 구조 적격성을 모두 통과하는 outcome-blind subset이다. 유형별 1/3 동일 가중으로 SCM당 1개 대응값을 구성하며, 현재 진단에서는 34/100 topology ID만 공통 지지에 포함됐다. 64/200 eligible SCM은 현재 수율만으로 보장할 수 없고 목표 모집단 가중치·attempt cap·shortfall은 Step 4B-4에 남긴다.
+- RNG는 protocol/cohort/master seed/SCM ID/template/node count/attempt/stream/replicate 키의 canonical JSON SHA-256 domain separation으로 파생한다. 이는 재현 가능한 명명 스트림 분리이지 수학적 독립성 증명은 아니다. Global/Task-Focused는 같은 type schedule seed를 공유하고 Random draw seed만 분리 가능하도록 Step 2 엔진에 선택적 인자를 추가했다.
+- 새 context-keyed feasibility 결과는 v1 별도 파일로 보존한다. v1-v4 및 B2 원시는 변경하지 않았다. RNG 키 체계 변경과 B 행렬이 세 오류유형을 모두 시도하는 설계 변경이 함께 적용되어 과거 수치와 단순 RNG-only 비교는 하지 않는다.
+- Step 4 전체는 IN_PROGRESS / NOT FROZEN. 표본·정밀도/검정력·추론/CI·실패·resource cap 동결은 수행하지 않았다.
