@@ -1,6 +1,6 @@
 # Step 4C-1 Cohort Orchestration Readiness
 
-Status: **IN_PROGRESS pending corrected Linux concurrency CI; Step 4 remains IN_PROGRESS / NOT FROZEN**. Validation uses deterministic proposal records, a SQLite registry, explicit fixed SCM equations/noise, and mock ledger events. No 64/200 SCM cohort, study observations, or Decision Regret experiment was generated.
+Status: **DONE for fixed-fixture implementation/readiness; Step 4 remains IN_PROGRESS / NOT FROZEN**. Validation uses deterministic proposal records, a SQLite registry, explicit fixed SCM equations/noise, and mock ledger events. No 64/200 SCM cohort, study observations, or Decision Regret experiment was generated.
 
 ## Active contract reconciliation
 
@@ -20,7 +20,7 @@ An OS process lock serializes one cohort orchestrator; SQLite serializes admissi
 
 The new tests cover balanced delta and replay, duplicate equation rejection, same-DAG/different-equation admission, immutable binding conflict, two-process same-proposal registration, rejected proposal denominators, target/cap shortfall, post-admission interruption/restart, post-terminal/pre-registry interruption recovery, and preservation of a failed eligible SCM without silent replacement. Existing pipeline tests continue to exercise explicit fixed-equation/noise evaluation and child-process restart; these tests do not constitute study data.
 
-Local Python 3.11.15 verification: cohort registry tests **9 passed**; production integration tests **11 passed**; full `unittest discover` **249 passed** on implementation commit `137c021e31d19168a11758eeeeb826cfc7077a84`. GitHub Actions run #229 passed on `66b4459dc545a3c61ca4d6ca4e07f64b52989dfb`. The later run #231 exposed a real fresh-registry race: concurrent `executescript`/WAL schema initialization could raise SQLite `database is locked` on Linux. The schema bootstrap is now serialized in one explicit `BEGIN IMMEDIATE` transaction; the same two-process admission test and all 11 production integration tests pass locally after this fix. Step 4C-1 remains IN_PROGRESS until the corrected HEAD passes GitHub Actions. The Windows `scripts/check_asset_manifest.py` raw-byte check reports seven frozen JSON configs due to CRLF checkout; LF-normalized hashes and Git blobs match recorded digests. No frozen graph/config path was modified. No study cohort was generated.
+Local Python 3.11.15 verification: cohort registry tests **9 passed**; production integration tests **11 passed**; full `unittest discover` **249 passed** on implementation commit `137c021e31d19168a11758eeeeb826cfc7077a84`. GitHub Actions run #229 passed on `66b4459dc545a3c61ca4d6ca4e07f64b52989dfb`. The later run #231 exposed a real fresh-registry race: concurrent `executescript`/WAL schema initialization could raise SQLite `database is locked` on Linux. The schema bootstrap is now serialized in one explicit `BEGIN IMMEDIATE` transaction; the same two-process admission test and all 11 production integration tests pass locally after this fix. The corrected HEAD `5ee97abdd3541edb9e80face8ab3607be69dfae4` passed GitHub Actions run #233 in full, including Linux concurrent registry test, frozen-asset validation, PR integration, and document sync. The exact-head Self-Review is posted in PR #38. The Windows `scripts/check_asset_manifest.py` raw-byte check reports seven frozen JSON configs due to CRLF checkout; LF-normalized hashes and Git blobs match recorded digests. No frozen graph/config path was modified. No study cohort was generated.
 
 ## Generator and evaluation contract
 
@@ -33,4 +33,4 @@ The production configuration retains the existing signed linear DAG equations: e
 - Qualify study-scale wall time/storage with realistic production load; current resource evidence is fixed-fixture only and RSS remains sampled kill-on-detection.
 - Do not generate development or replication cohorts until the Step 4C-2 freeze.
 
-Step 4C-1 will be **DONE for fixed-fixture implementation/readiness** only after corrected Linux CI passes. Step 4 remains **IN_PROGRESS / NOT FROZEN**; Step 4C-2 must complete study-scale resource qualification and final code/settings freeze before any cohort generation.
+Step 4C-1 is **DONE for fixed-fixture implementation/readiness**. Step 4 remains **IN_PROGRESS / NOT FROZEN**; Step 4C-2 must complete study-scale resource qualification and final code/settings freeze before any cohort generation. Step 4 remains **IN_PROGRESS / NOT FROZEN**; Step 4C-2 must complete study-scale resource qualification and final code/settings freeze before any cohort generation.
