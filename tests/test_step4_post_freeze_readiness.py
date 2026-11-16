@@ -44,13 +44,17 @@ class PostFreezeReadinessTests(unittest.TestCase):
 
     def test_wrong_commit_is_rejected(self):
         _, tree = self._revision()
-        with self.assertRaisesRegex(freeze.FreezeBindingError, "Git commit mismatch"):
-            freeze.assert_production_ready(expected_commit="0" * 40, expected_tree=tree)
+        pinned_runtime = json.loads(freeze.OPERATIONAL_SETTINGS.read_text(encoding="utf-8"))["runtime"]
+        with patch.object(freeze, "current_runtime", return_value=pinned_runtime):
+            with self.assertRaisesRegex(freeze.FreezeBindingError, "Git commit mismatch"):
+                freeze.assert_production_ready(expected_commit="0" * 40, expected_tree=tree)
 
     def test_wrong_tree_is_rejected(self):
         commit, _ = self._revision()
-        with self.assertRaisesRegex(freeze.FreezeBindingError, "Git tree mismatch"):
-            freeze.assert_production_ready(expected_commit=commit, expected_tree="0" * 40)
+        pinned_runtime = json.loads(freeze.OPERATIONAL_SETTINGS.read_text(encoding="utf-8"))["runtime"]
+        with patch.object(freeze, "current_runtime", return_value=pinned_runtime):
+            with self.assertRaisesRegex(freeze.FreezeBindingError, "Git tree mismatch"):
+                freeze.assert_production_ready(expected_commit=commit, expected_tree="0" * 40)
 
     def test_changed_manifested_source_hash_is_rejected(self):
         manifest = json.loads(freeze.FREEZE_MANIFEST.read_text(encoding="utf-8"))
