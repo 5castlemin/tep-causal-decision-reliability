@@ -9,6 +9,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
 import json
+import os
+import shutil
 import sqlite3
 import time
 from contextlib import closing
@@ -36,6 +38,15 @@ COHORT_SETTINGS = {"contract":"step4c1-cohort-v1","population":"P|strict-Q-commo
     "noise_sd":[0.8,1.2],"disturbance":"independent centered Gaussian",
     "delta":"alternating +/-1 after eligible admission, per cohort"}
 COHORT_SETTINGS_SHA256 = sha256(COHORT_SETTINGS)
+EXPECTED_TASK_GENERATION_REJECTIONS = frozenset({
+    "no_indirect_only_task", "no_distinct_indirect_task",
+})
+EXPECTED_STRUCTURAL_REJECTIONS = frozenset({
+    "task_not_indirect_only", "task_has_direct_edge",
+    "missing_same_type_two_candidate_support",
+})
+EXPECTED_PROPOSAL_REJECTIONS = (EXPECTED_TASK_GENERATION_REJECTIONS
+                                | EXPECTED_STRUCTURAL_REJECTIONS)
 
 
 @contextmanager
@@ -80,11 +91,64 @@ class RegistryConflict(ValueError):
     """An immutable admission binding or registry transition conflicts."""
 
 
+class ProposalGenerationError(RuntimeError):
+    """Unexpected proposal software failure, durably recorded and fail-closed."""
+
+
+class CohortStorageLimit(OSError):
+    """Managed cohort output or available disk space reached its configured cap."""
+
+
+class CohortStorageMonitor:
+    """Measure all files under one dedicated run root before each write."""
+    SQLITE_WRITE_RESERVE_BYTES = 16 * 1024
+
+    def __init__(self, root: Path, *, max_bytes: int | None,
+                 failure_reserve_bytes: int = 0, minimum_free_bytes: int = 0):
+        self.root = Path(root).resolve()
+        self.root.mkdir(parents=True, exist_ok=True)
+        if max_bytes is not None and max_bytes <= 0:
+            raise ValueError("cohort storage cap must be positive")
+        if failure_reserve_bytes < 0 or minimum_free_bytes < 0:
+            raise ValueError("storage reserves cannot be negative")
+        if max_bytes is not None and failure_reserve_bytes >= max_bytes:
+            raise ValueError("failure reserve must be smaller than the cohort cap")
+        self.max_bytes = max_bytes
+        self.failure_reserve_bytes = failure_reserve_bytes
+        self.minimum_free_bytes = minimum_free_bytes
+
+    def usage_bytes(self) -> int:
+        return sum(p.stat().st_size for p in self.root.rglob("*")
+                   if p.is_file() and not p.is_symlink())
+
+    def check_write(self, additional_bytes: int, *, emergency: bool = False) -> None:
+        if additional_bytes < 0:
+            raise ValueError("additional storage bytes cannot be negative")
+        used = self.usage_bytes()
+        reserve = 0 if emergency else self.failure_reserve_bytes
+        if self.max_bytes is not None and used + additional_bytes + reserve > self.max_bytes:
+            raise CohortStorageLimit(
+                f"cohort storage cap: used={used}, next={additional_bytes}, "
+                f"failure_reserve={reserve}, cap={self.max_bytes}"
+            )
+        free = shutil.disk_usage(self.root).free
+        required = additional_bytes + (0 if emergency else self.minimum_free_bytes)
+        if free < required:
+            raise CohortStorageLimit(
+                f"filesystem free space insufficient: free={free}, required={required}"
+            )
+
+    def before_ledger_event(self, _path: Path, event: dict, line_bytes: int) -> None:
+        emergency = event.get("event") == "terminal" and event.get("status") != "OK"
+        self.check_write(line_bytes, emergency=emergency)
+
+
 class CohortRegistry:
     """SQLite-backed, transactionally serialized proposal/SCM registry."""
 
     def __init__(self, path: Path):
         self.path = Path(path)
+        self.storage_monitor: CohortStorageMonitor | None = None
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with closing(self._connect()) as db:
             # Serialize first-time schema creation with SQLite's writer lock.
@@ -123,10 +187,41 @@ class CohortRegistry:
         db.execute("PRAGMA busy_timeout=30000")
         return db
 
+    def set_storage_monitor(self, monitor: CohortStorageMonitor | None) -> None:
+        if monitor is not None:
+            for path in (self.path.resolve(),):
+                if not path.is_relative_to(monitor.root):
+                    raise ValueError("registry path must be inside the managed cohort storage root")
+        self.storage_monitor = monitor
+
+    def _before_registry_write(self, *, emergency: bool = False) -> None:
+        if self.storage_monitor is not None:
+            self.storage_monitor.check_write(
+                CohortStorageMonitor.SQLITE_WRITE_RESERVE_BYTES, emergency=emergency
+            )
+
     def record_rejection(self, proposal: Mapping, config_sha256: str) -> dict:
         if proposal.get("accepted"):
             raise ValueError("accepted proposal cannot be recorded as rejected")
         return self._admit(proposal, config_sha256, None, None)
+
+    def record_generator_error(self, *, cohort: str, master_seed: int,
+                               proposal_id: str, attempt: int,
+                               config_sha256: str, exception_type: str,
+                               message: str) -> dict:
+        """Persist a fatal proposal-builder error without calling it Q rejection."""
+        proposal = {
+            "cohort": cohort, "master_seed": master_seed,
+            "proposal_id": proposal_id, "attempt": attempt,
+            "accepted": False, "scm_id": None,
+            "topology_hash": sha256({"proposal_id": proposal_id,
+                                      "master_seed": master_seed,
+                                      "attempt": attempt,
+                                      "generator_error": exception_type}),
+            "reason": f"GENERATOR_ERROR:{exception_type}:{message[:500]}",
+        }
+        return self._admit(proposal, config_sha256, None, None,
+                           forced_status="generator_error")
 
     def admit(self, proposal: Mapping, config_sha256: str, ledger_path: Path) -> dict:
         if not proposal.get("accepted") or not proposal.get("scm_id"):
@@ -134,7 +229,7 @@ class CohortRegistry:
         return self._admit(proposal, config_sha256, str(Path(ledger_path).resolve()),
                            str(proposal["scm_id"]))
 
-    def _admit(self, proposal, config_sha256, ledger_path, scm_id):
+    def _admit(self, proposal, config_sha256, ledger_path, scm_id, forced_status=None):
         cohort, pid, attempt = proposal["cohort"], proposal["proposal_id"], proposal["attempt"]
         if cohort not in {"development", "confirmation"}:
             raise ValueError("invalid cohort")
@@ -147,6 +242,7 @@ class CohortRegistry:
         input_sha = sha256({"proposal": proposal})
         now = time.time()
         with closing(self._connect()) as db:
+            self._before_registry_write(emergency=forced_status == "generator_error")
             db.execute("BEGIN IMMEDIATE")
             old = db.execute("SELECT * FROM proposals WHERE cohort=? AND proposal_id=? AND attempt=?",
                              (cohort, pid, attempt)).fetchone()
@@ -161,8 +257,13 @@ class CohortRegistry:
                 return dict(old) | {"replayed": True}
             ordinal = None
             delta = None
-            status = ("proposal_failed" if str(proposal.get("reason", "")).startswith(("TOPOLOGY_FAIL:","TASK_FAIL:"))
-                      else "structural_rejected")
+            reason = str(proposal.get("reason", ""))
+            if forced_status:
+                status = forced_status
+            elif reason.startswith(("TOPOLOGY_FAIL:", "TASK_FAIL:")) or reason in EXPECTED_TASK_GENERATION_REJECTIONS:
+                status = "proposal_failed"
+            else:
+                status = "structural_rejected"
             if scm_id is not None:
                 if db.execute("SELECT 1 FROM proposals WHERE scm_id=?", (scm_id,)).fetchone():
                     raise RegistryConflict("SCM ID already belongs to another proposal")
@@ -185,6 +286,7 @@ class CohortRegistry:
     def bind_equation_signature(self, cohort: str, proposal_id: str, attempt: int,
                                  signature: str) -> None:
         with closing(self._connect()) as db:
+            self._before_registry_write()
             db.execute("BEGIN IMMEDIATE")
             row = db.execute("SELECT * FROM proposals WHERE cohort=? AND proposal_id=? AND attempt=?",
                              (cohort, proposal_id, attempt)).fetchone()
@@ -206,6 +308,7 @@ class CohortRegistry:
                        initial_input_sha256: str | None = None) -> None:
         """Bind the final delta-specific runner config before any stage runs."""
         with closing(self._connect()) as db:
+            self._before_registry_write()
             db.execute("BEGIN IMMEDIATE")
             row = db.execute("SELECT config_sha256,input_sha256,status FROM proposals WHERE cohort=? AND proposal_id=? AND attempt=?",
                              (cohort,proposal_id,attempt)).fetchone()
@@ -231,6 +334,7 @@ class CohortRegistry:
         allowed = {"accepted": {"running", "failed"}, "running": {"running", "completed", "failed"},
                    "failed": {"failed"}, "completed": {"completed"}}
         with closing(self._connect()) as db:
+            self._before_registry_write(emergency=status == "failed")
             db.execute("BEGIN IMMEDIATE")
             row = db.execute("SELECT status FROM proposals WHERE cohort=? AND proposal_id=? AND attempt=?",
                              (cohort,proposal_id,attempt)).fetchone()
@@ -250,6 +354,7 @@ class CohortRegistry:
         if cohort not in {"development","confirmation"} or type(master_seed) is not int or master_seed < 0:
             raise ValueError("invalid cohort binding")
         with closing(self._connect()) as db:
+            self._before_registry_write()
             db.execute("BEGIN IMMEDIATE")
             old=db.execute("SELECT * FROM cohorts WHERE cohort=?",(cohort,)).fetchone()
             binding=(master_seed,target,proposal_cap,settings_sha256)
@@ -329,6 +434,10 @@ class CohortRegistry:
         return {
             "topology_proposals": len(rows),
             "topology_or_task_generation_failures": sum(row["status"] == "proposal_failed" for row in rows),
+            "unexpected_generator_errors": sum(
+                row["status"] == "generator_error"
+                or str(row.get("reason") or "").startswith("GENERATOR_ERROR:")
+                for row in rows),
             "q_common_structural_rejections": sum(row["status"] == "structural_rejected" for row in rows),
             "q_common_structurally_eligible": sum(row["scm_id"] is not None for row in rows),
             "registry_accepted": admitted,
@@ -375,7 +484,8 @@ def _run_cohort_locked(*, cohort: str, master_seed: int, registry: CohortRegistr
                proposal_runner: Callable[[Mapping, Path, int], Mapping] | None = None,
                execution_binding_fn: Callable[[Mapping, int], tuple] | None = None,
                target_eligible: int | None = None, proposal_cap: int | None = None,
-               resource_cap_seconds: float | None = None) -> dict:
+               resource_cap_seconds: float | None = None,
+               storage_monitor: CohortStorageMonitor | None = None) -> dict:
     """Run a deterministic candidate sequence; fixture tests pass a small cap.
 
     Eligible SCMs are counted at atomic registry admission after strict
@@ -387,6 +497,19 @@ def _run_cohort_locked(*, cohort: str, master_seed: int, registry: CohortRegistr
     cap = limits.proposal_cap if proposal_cap is None else proposal_cap
     if not (0 < target <= limits.target_eligible and 0 < cap <= limits.proposal_cap):
         raise ValueError("fixture/production run cannot exceed active target or proposal cap")
+    ledger_dir = Path(ledger_dir).resolve()
+    if storage_monitor is not None:
+        if not ledger_dir.is_relative_to(storage_monitor.root):
+            raise ValueError("ledger directory must be inside the managed cohort storage root")
+        registry.set_storage_monitor(storage_monitor)
+        storage_monitor.check_write(CohortStorageMonitor.SQLITE_WRITE_RESERVE_BYTES)
+        config_sha256 = sha256({"base_cohort_config_sha256": config_sha256,
+            "cohort_storage_contract": {
+                "max_cohort_storage_bytes": storage_monitor.max_bytes,
+                "failure_reserve_bytes": storage_monitor.failure_reserve_bytes,
+                "minimum_free_disk_bytes": storage_monitor.minimum_free_bytes,
+                "per_ledger_default_bytes": 100 * 1024 * 1024,
+            }})
     registry.bind_cohort(cohort,master_seed,target,cap,config_sha256)
     start = time.monotonic()
     ledger_dir = Path(ledger_dir)
@@ -398,18 +521,59 @@ def _run_cohort_locked(*, cohort: str, master_seed: int, registry: CohortRegistr
     if proposal_runner is None:
         from .step4c1_pipeline import run_eligible_proposal
         proposal_runner = lambda proposal, ledger, delta: run_eligible_proposal(
-            proposal, ledger, delta=delta)
+            proposal, ledger, delta=delta,
+            pre_write_guard=(storage_monitor.before_ledger_event if storage_monitor else None))
     if execution_binding_fn is None:
         from .step4c1_pipeline import execution_binding
         execution_binding_fn = execution_binding
     registry.reconcile(cohort)
     rows = registry.rows(cohort)
+    fatal = next((row for row in rows
+                  if row["status"] == "generator_error"
+                  or str(row.get("reason") or "").startswith("GENERATOR_ERROR:")), None)
+    if fatal:
+        raise ProposalGenerationError(
+            f"cohort stopped at persisted generator error {fatal['proposal_id']} "
+            f"attempt={fatal['attempt']}: {fatal['reason']}"
+        )
     seen = {row["proposal_id"] for row in rows}
+
+    def valid_proposal_record(proposal, proposal_id):
+        try:
+            if not isinstance(proposal, Mapping):
+                return False
+            common = (proposal.get("cohort") == cohort
+                      and proposal.get("master_seed") == master_seed
+                      and proposal.get("proposal_id") == proposal_id
+                      and type(proposal.get("attempt")) is int
+                      and proposal.get("attempt") == 0
+                      and type(proposal.get("accepted")) is bool
+                      and isinstance(proposal.get("topology_hash"), str)
+                      and bool(proposal.get("topology_hash")))
+            if not common:
+                return False
+            if proposal["accepted"]:
+                return isinstance(proposal.get("scm_id"), str) and bool(proposal.get("scm_id"))
+            return (proposal.get("scm_id") is None
+                    and proposal.get("reason") in EXPECTED_PROPOSAL_REJECTIONS)
+        except Exception:
+            return False
+
     def execute_admitted(row):
-        proposal = proposal_builder(cohort=cohort, master_seed=master_seed,
-                                    proposal_id=row["proposal_id"], attempt=row["attempt"])
-        if not proposal.get("accepted") or proposal.get("scm_id") != row["scm_id"]:
-            raise RegistryConflict("admitted proposal no longer reproduces its registered SCM ID")
+        try:
+            proposal = proposal_builder(cohort=cohort, master_seed=master_seed,
+                                        proposal_id=row["proposal_id"], attempt=row["attempt"])
+        except Exception as exc:
+            reason = f"GENERATOR_ERROR:{type(exc).__name__}:{str(exc)[:500]}"
+            registry.transition(cohort,row["proposal_id"],row["attempt"],"failed",reason)
+            raise ProposalGenerationError(
+                f"admitted proposal regeneration failed at {row['proposal_id']}: {reason}"
+            ) from exc
+        if (not valid_proposal_record(proposal, row["proposal_id"])
+                or not proposal.get("accepted") or proposal.get("scm_id") != row["scm_id"]):
+            reason = "GENERATOR_ERROR:ProposalReplayMismatch:admitted proposal no longer reproduces its registered binding"
+            registry.transition(cohort,row["proposal_id"],row["attempt"],"failed",reason)
+            raise ProposalGenerationError(reason)
         config, cfg_sha, input_sha = execution_binding_fn(proposal, row["delta"])
         registry.bind_execution(cohort,row["proposal_id"],row["attempt"],cfg_sha,input_sha,
                                 sha256({"proposal":proposal}))
@@ -446,23 +610,37 @@ def _run_cohort_locked(*, cohort: str, master_seed: int, registry: CohortRegistr
                 break
             execute_admitted(existing)
     next_index = 0
+    storage_cap_reached = False
     while f"{cohort}-proposal-{next_index:06d}" in seen:
         next_index += 1
     while registry.counts(cohort)["registry_accepted"] < target and len(registry.rows(cohort)) < cap:
         if resource_cap_seconds is not None and cumulative_seconds() >= resource_cap_seconds:
             break
+        if storage_monitor is not None:
+            try:
+                # Leave room for a registry transaction and emergency terminal record.
+                storage_monitor.check_write(CohortStorageMonitor.SQLITE_WRITE_RESERVE_BYTES)
+            except CohortStorageLimit:
+                storage_cap_reached = True
+                break
         proposal_id = f"{cohort}-proposal-{next_index:06d}"
         try:
             proposal = proposal_builder(cohort=cohort, master_seed=master_seed,
                                         proposal_id=proposal_id, attempt=0)
         except Exception as exc:
-            # A failed topology/task draw is still one candidate in the cap denominator.
-            proposal = {"cohort":cohort,"master_seed":master_seed,"proposal_id":proposal_id,
-                        "attempt":0,"accepted":False,"scm_id":None,
-                        "topology_hash":sha256({"proposal_id":proposal_id,"generation_failure":type(exc).__name__}),
-                        "reason":f"TOPOLOGY_FAIL:{type(exc).__name__}:{str(exc)[:200]}"}
-        if proposal.get("cohort") != cohort or proposal.get("master_seed") != master_seed:
-            raise RegistryConflict("proposal builder returned a different cohort or master seed")
+            registry.record_generator_error(cohort=cohort,master_seed=master_seed,
+                proposal_id=proposal_id,attempt=0,config_sha256=config_sha256,
+                exception_type=type(exc).__name__,message=str(exc))
+            raise ProposalGenerationError(
+                f"proposal builder failed at {proposal_id} attempt=0: "
+                f"{type(exc).__name__}: {str(exc)[:500]}"
+            ) from exc
+        if not valid_proposal_record(proposal,proposal_id):
+            detail = "builder returned malformed or misbound proposal record"
+            registry.record_generator_error(cohort=cohort,master_seed=master_seed,
+                proposal_id=proposal_id,attempt=0,config_sha256=config_sha256,
+                exception_type="InvalidProposalRecord",message=detail)
+            raise ProposalGenerationError(f"{proposal_id}: {detail}")
         if proposal.get("accepted"):
             scm_id = proposal.get("scm_id")
             ledger = ledger_dir / f"{scm_id}.jsonl"
@@ -479,8 +657,10 @@ def _run_cohort_locked(*, cohort: str, master_seed: int, registry: CohortRegistr
             "shortfall_eligible": max(0,target-counts["registry_accepted"]),
             "cap_reached": len(rows) >= cap,
             "resource_cap_reached": resource_cap_seconds is not None and cumulative_seconds() >= resource_cap_seconds,
+            "storage_cap_reached": storage_cap_reached,
             "cumulative_active_stage_seconds": registry.active_stage_seconds(cohort),
             "current_invocation_elapsed_seconds": time.monotonic()-start,
+            "cohort_storage_bytes": storage_monitor.usage_bytes() if storage_monitor else None,
             "counts": counts, "accepted_scm_ids": [row["scm_id"] for row in rows if row["scm_id"]],
             "proposal_ids": [row["proposal_id"] for row in rows]}
 
@@ -491,12 +671,24 @@ def run_cohort(*, cohort: str, master_seed: int, registry: CohortRegistry,
                proposal_runner: Callable[[Mapping, Path, int], Mapping] | None = None,
                execution_binding_fn: Callable[[Mapping, int], tuple] | None = None,
                target_eligible: int | None = None, proposal_cap: int | None = None,
-               resource_cap_seconds: float | None = None) -> dict:
+               resource_cap_seconds: float | None = None,
+               cohort_storage_root: Path | None = None,
+               max_cohort_storage_bytes: int | None = None,
+               failure_reserve_bytes: int = 0,
+               minimum_free_disk_bytes: int = 0) -> dict:
     """Serialize cohort scheduling while allowing crash-safe OS lock release."""
+    storage_monitor = None
+    if max_cohort_storage_bytes is not None:
+        if cohort_storage_root is None:
+            raise ValueError("a dedicated cohort_storage_root is required with a cohort-wide cap")
+        storage_monitor = CohortStorageMonitor(cohort_storage_root,
+            max_bytes=max_cohort_storage_bytes,
+            failure_reserve_bytes=failure_reserve_bytes,
+            minimum_free_bytes=minimum_free_disk_bytes)
     lock = registry.path.with_suffix(registry.path.suffix + f".{cohort}.lock")
     with _cohort_process_lock(lock):
         return _run_cohort_locked(cohort=cohort,master_seed=master_seed,registry=registry,
             ledger_dir=ledger_dir,config_sha256=config_sha256,proposal_builder=proposal_builder,
             proposal_runner=proposal_runner,execution_binding_fn=execution_binding_fn,
             target_eligible=target_eligible,proposal_cap=proposal_cap,
-            resource_cap_seconds=resource_cap_seconds)
+            resource_cap_seconds=resource_cap_seconds,storage_monitor=storage_monitor)

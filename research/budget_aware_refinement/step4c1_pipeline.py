@@ -296,6 +296,7 @@ def run_eligible_proposal(proposal: Mapping[str, object], ledger: Path, *, delta
                           isolate_stages: bool = True, max_wall_seconds: float = 1800,
                           max_unit_seconds: float = 2, max_rss_bytes: int | None = 512 * 1024 * 1024,
                           max_ledger_bytes: int = 100 * 1024 * 1024,
+                          pre_write_guard=None,
                           checkpoint_hook=None, _fixture_payload: dict | None = None) -> dict:
     """Run one already-Q-common-eligible candidate through all production stages.
 
@@ -322,7 +323,8 @@ def run_eligible_proposal(proposal: Mapping[str, object], ledger: Path, *, delta
         config=config, input_sha256=input_sha, scm_id=scm_id, cohort=cohort,
         max_wall_seconds=max_wall_seconds, max_unit_seconds=max_unit_seconds,
         max_rss_bytes=max_rss_bytes, max_ledger_bytes=max_ledger_bytes,
-        isolate_stages=isolate_stages, checkpoint_hook=checkpoint_hook)
+        isolate_stages=isolate_stages, checkpoint_hook=checkpoint_hook,
+        pre_write_guard=pre_write_guard)
 
 
 def execution_binding(proposal: Mapping[str, object], delta: int,

@@ -8,9 +8,12 @@ import unittest
 import numpy as np
 
 from research.budget_aware_refinement.step4c1_cohort import (
-    CohortRegistry, RegistryConflict, run_cohort, sha256,
+    CohortRegistry, CohortStorageLimit, CohortStorageMonitor,
+    ProposalGenerationError, RegistryConflict, run_cohort, sha256,
 )
-from research.budget_aware_refinement.step4b4_mock_runner import _event, append_event, SimulatedProcessStop
+from research.budget_aware_refinement.step4b4_mock_runner import (
+    _event, append_event, run_pipeline, SimulatedProcessStop,
+)
 from research.budget_aware_refinement.step4c1_pipeline import execution_binding, PIPELINE_STAGES
 
 
@@ -89,6 +92,135 @@ class Step4C1CohortTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 run_eligible_proposal(proposal,Path(td)/"ledger.jsonl")
 
+    def test_expected_structural_rejection_is_counted_but_builder_exceptions_fail_closed(self):
+        for exc_type in (IndexError, KeyError, RuntimeError):
+            with self.subTest(exc_type=exc_type.__name__), tempfile.TemporaryDirectory() as td:
+                root=Path(td); registry=CohortRegistry(root/"r.sqlite"); calls=[]
+                def builder(**kwargs):
+                    calls.append(kwargs["proposal_id"])
+                    if kwargs["proposal_id"].endswith("000000"):
+                        return {"cohort":kwargs["cohort"],"master_seed":kwargs["master_seed"],
+                            "proposal_id":kwargs["proposal_id"],"attempt":kwargs["attempt"],
+                            "accepted":False,"scm_id":None,"topology_hash":"rejected-topology",
+                            "reason":"missing_same_type_two_candidate_support"}
+                    raise exc_type("fixture builder bug")
+                args=dict(cohort="development",master_seed=31,registry=registry,
+                    ledger_dir=root/"ledgers",proposal_builder=builder,
+                    target_eligible=1,proposal_cap=4)
+                with self.assertRaises(ProposalGenerationError):
+                    run_cohort(**args)
+                row=registry.rows("development")[-1]
+                self.assertEqual(row["proposal_id"],"development-proposal-000001")
+                self.assertEqual(row["status"],"generator_error")
+                self.assertIn(exc_type.__name__,row["reason"])
+                counts=registry.counts("development")
+                self.assertEqual(counts["topology_proposals"],2)
+                self.assertEqual(counts["q_common_structural_rejections"],1)
+                self.assertEqual(counts["unexpected_generator_errors"],1)
+                before=list(calls)
+                with self.assertRaises(ProposalGenerationError):
+                    run_cohort(**args)
+                self.assertEqual(calls,before,"resume must not skip fatal candidate and sample a new one")
+
+    def test_malformed_builder_record_is_durable_generator_error(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); registry=CohortRegistry(root/"r.sqlite")
+            with self.assertRaises(ProposalGenerationError):
+                run_cohort(cohort="development",master_seed=8,registry=registry,
+                    ledger_dir=root/"ledgers",proposal_builder=lambda **_: ["not", "a", "mapping"],
+                    target_eligible=1,proposal_cap=2)
+            counts=registry.counts("development")
+            self.assertEqual(counts["unexpected_generator_errors"],1)
+            self.assertEqual(counts["q_common_structural_rejections"],0)
+            self.assertEqual(registry.rows("development")[0]["attempt"],0)
+
+    def test_unknown_rejection_reason_is_generator_error_not_q_rejection(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); registry=CohortRegistry(root/"r.sqlite")
+            def builder(**kwargs):
+                return {"cohort":kwargs["cohort"],"master_seed":kwargs["master_seed"],
+                    "proposal_id":kwargs["proposal_id"],"attempt":kwargs["attempt"],
+                    "accepted":False,"scm_id":None,"topology_hash":"top",
+                    "reason":"buggy-new-reason"}
+            with self.assertRaises(ProposalGenerationError):
+                run_cohort(cohort="development",master_seed=8,registry=registry,
+                    ledger_dir=root/"ledgers",proposal_builder=builder,
+                    target_eligible=1,proposal_cap=2)
+            counts=registry.counts("development")
+            self.assertEqual(counts["unexpected_generator_errors"],1)
+            self.assertEqual(counts["q_common_structural_rejections"],0)
+
+    def test_admitted_proposal_regeneration_mismatch_fails_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); registry=CohortRegistry(root/"r.sqlite"); first={"value":True}
+            def builder(**kwargs):
+                if not first["value"]:
+                    return ["invalid replay"]
+                return {"cohort":kwargs["cohort"],"master_seed":kwargs["master_seed"],
+                    "proposal_id":kwargs["proposal_id"],"attempt":kwargs["attempt"],
+                    "accepted":True,"scm_id":"dev-scm-resume","topology_hash":"top"}
+            def stop(*_):
+                first["value"]=False
+                raise SimulatedProcessStop()
+            args=dict(cohort="development",master_seed=5,registry=registry,
+                ledger_dir=root/"ledgers",proposal_builder=builder,proposal_runner=stop,
+                target_eligible=1,proposal_cap=2)
+            with self.assertRaises(SimulatedProcessStop):
+                run_cohort(**args)
+            with self.assertRaises(ProposalGenerationError):
+                run_cohort(**args)
+            row=registry.rows("development")[0]
+            self.assertEqual(row["status"],"failed")
+            self.assertTrue(row["reason"].startswith("GENERATOR_ERROR:"))
+
+    def test_cohort_storage_counts_registry_ledger_and_other_run_artifacts(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); (root/"registry.sqlite").write_bytes(b"db")
+            (root/"ledgers").mkdir(); (root/"ledgers"/"one.jsonl").write_bytes(b"ledger")
+            (root/"checkpoint.bin").write_bytes(b"artifact")
+            monitor=CohortStorageMonitor(root,max_bytes=100,failure_reserve_bytes=10)
+            self.assertEqual(monitor.usage_bytes(),16)
+            monitor.check_write(74)
+            with self.assertRaises(CohortStorageLimit):
+                monitor.check_write(75)
+            monitor.check_write(84,emergency=True)
+
+    def test_pipeline_storage_cap_stops_before_write_and_preserves_terminal_failure(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); ledger=root/"ledger.jsonl"
+            monitor=CohortStorageMonitor(root,max_bytes=1800,failure_reserve_bytes=700)
+            stages={"large":lambda:{"payload":"x"*5000},"later":lambda:{"should":"not run"}}
+            outcome=run_pipeline("storage-run",ledger,stages,
+                rng_key="storage-fixture",config={"fixture":True},input_sha256="input",
+                scm_id="dev-storage-scm",cohort="development",max_wall_seconds=5,
+                max_unit_seconds=2,max_ledger_bytes=10000,max_rss_bytes=None,
+                pre_write_guard=monitor.before_ledger_event)
+            self.assertEqual(outcome["status"],"DISK_CAP")
+            rows=__import__("research.budget_aware_refinement.step4b4_mock_runner",
+                fromlist=["recover_jsonl"]).recover_jsonl(ledger)
+            self.assertEqual(rows[-1]["event"],"terminal")
+            self.assertEqual(rows[-1]["status"],"DISK_CAP")
+            self.assertLessEqual(monitor.usage_bytes(),1800)
+
+    def test_step4c2_resource_report_matches_fixture_json(self):
+        import json
+        root=Path(__file__).resolve().parents[1]/"research"/"budget_aware_refinement"
+        raw=json.loads((root/"step4c2_resource_qualification_v1.json").read_text(encoding="utf-8"))
+        report=(root/"STEP4C2_FINAL_FREEZE_AUDIT.md").read_text(encoding="utf-8")
+        self.assertEqual([row["node_count"] for row in raw["results"]],[6,7,8,9,10])
+        self.assertFalse(raw["study_cohort_generated"])
+        self.assertFalse(raw["decision_regret_analysis"])
+        for row in raw["results"]:
+            self.assertTrue(row["complete"])
+            self.assertIn(f"{row['node_count']} | {row['median_seconds']:.4f}",report)
+            self.assertIn(f"{row['ledger_bytes_median']:,}",report)
+
+    def test_per_ledger_limit_is_distinct_from_cohort_storage_limit(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); registry=CohortRegistry(root/"registry.sqlite")
+            self.assertFalse(hasattr(registry,"max_ledger_bytes"))
+            self.assertIsNone(registry.storage_monitor)
+
     def test_same_topology_different_equations_are_allowed(self):
         with tempfile.TemporaryDirectory() as td:
             reg = CohortRegistry(Path(td)/"r.sqlite")
@@ -121,7 +253,7 @@ class Step4C1CohortTests(unittest.TestCase):
                         "scm_id":f"dev-scm-{number}" if accepted else None,
                         "topology_hash":f"top-{number}","template":"chain_mediation","node_count":6,
                         "post_eligibility_rng_seeds":{"coefficient":number},
-                        "reason":None if accepted else "fixture_structure_ineligible"}
+                        "reason":None if accepted else "missing_same_type_two_candidate_support"}
             def runner(proposal, ledger, delta):
                 calls["runner"] += 1
                 if calls["runner"] == 1:
@@ -157,7 +289,7 @@ class Step4C1CohortTests(unittest.TestCase):
                     "attempt":attempt,"accepted":accepted,"scm_id":"dev-scm-0" if accepted else None,
                     "topology_hash":f"top-{number}","template":"chain_mediation","node_count":6,
                     "post_eligibility_rng_seeds":{"coefficient":number},
-                    "reason":None if accepted else "fixture_structure_ineligible"}
+                    "reason":None if accepted else "missing_same_type_two_candidate_support"}
             def runner(proposal,ledger,delta):
                 seen.append(proposal["proposal_id"])
                 return {"status":"GT_EVAL_FAIL"}
@@ -177,7 +309,7 @@ class Step4C1CohortTests(unittest.TestCase):
                 number=int(proposal_id.rsplit("-",1)[-1])
                 return {"cohort":cohort,"master_seed":master_seed,"proposal_id":proposal_id,
                     "attempt":attempt,"accepted":False,"scm_id":None,
-                    "topology_hash":f"top-{number}","reason":"fixed_ineligible"}
+                    "topology_hash":f"top-{number}","reason":"missing_same_type_two_candidate_support"}
             result=run_cohort(cohort="development",master_seed=1,registry=registry,
                 ledger_dir=root/"ledgers",proposal_builder=builder,
                 target_eligible=1,proposal_cap=2)

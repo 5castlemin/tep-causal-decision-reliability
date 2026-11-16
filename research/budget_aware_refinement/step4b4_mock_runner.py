@@ -97,7 +97,8 @@ def recover_jsonl(path: Path) -> list[dict]:
     return rows
 
 
-def append_event(path: Path, event: dict, *, max_bytes: int) -> bool:
+def append_event(path: Path, event: dict, *, max_bytes: int,
+                 pre_write_guard: Callable[[Path, dict, int], None] | None = None) -> bool:
     """Append one fsynced event; duplicate identical keys are idempotent."""
     rows = recover_jsonl(path)
     key = (event["run_id"], event["event"])
@@ -111,6 +112,8 @@ def append_event(path: Path, event: dict, *, max_bytes: int) -> bool:
     existing = path.stat().st_size if path.exists() else 0
     if existing + len(line) > max_bytes:
         raise OSError("ledger disk cap would be exceeded")
+    if pre_write_guard is not None:
+        pre_write_guard(path, event, len(line))
     with path.open("ab") as handle:
         handle.write(line)
         handle.flush()
@@ -142,6 +145,7 @@ def run_pipeline(
     max_rss_bytes: int | None = 512 * 1024 * 1024,
     isolate_stages: bool = False,
     checkpoint_hook: Callable[[str], None] | None = None,
+    pre_write_guard: Callable[[Path, dict, int], None] | None = None,
     clock: Callable[[], float] = time.monotonic,
 ) -> dict:
     """Run an ordered durable stage pipeline and resume completed stages.
@@ -168,6 +172,9 @@ def run_pipeline(
         raise LedgerConflict(f"run_id {run_id!r} was already used with another RNG key")
     def event(name: str, **fields: object) -> dict:
         return _event(run_id, name, **bindings, **fields)
+    def write_event(row: dict, *, max_bytes: int) -> bool:
+        return append_event(ledger, row, max_bytes=max_bytes,
+                           pre_write_guard=pre_write_guard)
     run_rows = [row for row in prior if row.get("run_id") == run_id]
     if any(row.get("scm_id") == scm_id and row.get("cohort") == cohort
            and row.get("run_id") != run_id for row in prior):
@@ -204,7 +211,7 @@ def run_pipeline(
     failed = next((row for row in reversed(stage_rows) if row.get("status") != "OK"), None)
     if failed:
         status = failed["status"]
-        append_event(ledger, event("terminal", status=status, completed_stages=list(done),
+        write_event(event("terminal", status=status, completed_stages=list(done),
                                     cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
         return {"status": status, "resumed": True, "completed_stages": list(done)}
     for stage in expected:
@@ -214,13 +221,13 @@ def run_pipeline(
         # Reserve enough room for a compact stop event before starting a unit.
         if current_bytes + 512 > max_ledger_bytes:
             status = "DISK_CAP"
-            append_event(ledger, event("terminal", status=status,
+            write_event(event("terminal", status=status,
                                         completed_stages=sorted(done)), max_bytes=max_ledger_bytes)
             return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
         remaining = max_wall_seconds - elapsed_used
         if remaining <= 0:
             status = "WALL_CAP"
-            append_event(ledger, event("terminal", status=status,
+            write_event(event("terminal", status=status,
                                         completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
             return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
         unit_start = clock()
@@ -234,9 +241,9 @@ def run_pipeline(
                 if child_status:
                     status = child_status.split("|", 1)[0].removeprefix("STAGE_FAILURE:") if child_status.startswith("STAGE_FAILURE:") else child_status
                     elapsed_used += unit_seconds
-                    append_event(ledger, event(f"stage:{stage}", status=status,
+                    write_event(event(f"stage:{stage}", status=status,
                                                 elapsed_seconds=unit_seconds, elapsed_total_seconds=elapsed_used), max_bytes=max_ledger_bytes - 512)
-                    append_event(ledger, event("terminal", status=status,
+                    write_event(event("terminal", status=status,
                                                 completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
                     return {"status": status, "resumed": bool(done), "completed_stages": list(done)}
             else:
@@ -253,20 +260,20 @@ def run_pipeline(
             elif not isolate_stages and max_rss_bytes is not None and rss is not None and rss > max_rss_bytes:
                 cap_status = "RSS_CAP_MONITOR"
             if cap_status:
-                append_event(ledger, event(f"stage:{stage}", status=cap_status,
+                write_event(event(f"stage:{stage}", status=cap_status,
                                             elapsed_seconds=unit_seconds, elapsed_total_seconds=elapsed_total,
                                             observed_rss_bytes=rss, output=output),
                              max_bytes=max_ledger_bytes - 512)
-                append_event(ledger, event("terminal", status=cap_status,
+                write_event(event("terminal", status=cap_status,
                                             completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
                 return {"status": cap_status, "resumed": bool(done), "completed_stages": sorted(done)}
             row = event(f"stage:{stage}", status="OK", output=output,
                         elapsed_seconds=max(0.0, unit_seconds), elapsed_total_seconds=elapsed_total)
             try:
-                append_event(ledger, row, max_bytes=max_ledger_bytes - 512)
+                write_event(row, max_bytes=max_ledger_bytes - 512)
             except OSError:
                 status = "DISK_CAP"
-                append_event(ledger, event("terminal", status=status,
+                write_event(event("terminal", status=status,
                                             completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
                 return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
             done[stage] = row
@@ -284,11 +291,11 @@ def run_pipeline(
             elapsed_used += unit_seconds
             detail = {"status": status, "failure_type": type(exc).__name__, "reason": str(exc)[:300],
                       "elapsed_seconds": unit_seconds, "elapsed_total_seconds": elapsed_used}
-            append_event(ledger, event(f"stage:{stage}", **detail), max_bytes=max_ledger_bytes)
-            append_event(ledger, event("terminal", status=status,
+            write_event(event(f"stage:{stage}", **detail), max_bytes=max_ledger_bytes)
+            write_event(event("terminal", status=status,
                                         completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
             return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
-    append_event(ledger, event("terminal", status="OK", completed_stages=list(expected),
+    write_event(event("terminal", status="OK", completed_stages=list(expected),
                                 cumulative_elapsed_seconds=elapsed_used,
                                 result_sha256=_result_digest(done, expected)),
                  max_bytes=max_ledger_bytes)

@@ -113,7 +113,7 @@ def build_structural_proposal(*, cohort: str, master_seed: int,
             "task_failures": tasks["failures"], "outcomes_used": False,
             "coefficient_or_data_drawn": False}
     if task is None:
-        return {**base, "accepted": False, "reason": tasks["failures"].get("indirect", "no_indirect_task"),
+        return {**base, "accepted": False, "reason": tasks["failures"].get("indirect", "no_indirect_only_task"),
                 "scm_id": None}
     action, target = task
     support = q_common_eligibility(nodes, truth_edges, action, target)

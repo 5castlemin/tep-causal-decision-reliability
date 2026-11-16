@@ -1,0 +1,83 @@
+{
+  "decision_regret_analysis": false,
+  "extrapolation": {
+    "development_64_seconds_at_measured_median": 12.595295999199152,
+    "replication_200_seconds_at_measured_median": 39.36029999749735,
+    "warning": "linear fixture extrapolation only; excludes generation, coordination overhead and tail risk"
+  },
+  "independent_scm_n": 0,
+  "purpose": "fixed_fixture_resource_qualification_only",
+  "repetitions_per_node_count": 3,
+  "results": [
+    {
+      "complete": true,
+      "fixture_topology_sha256": "6721a908b8ce3569654721d6c7bdf2627008f8f9cdee46dcf3578447a27bd5ac",
+      "ledger_bytes_max": 91442,
+      "ledger_bytes_median": 91422,
+      "max_seconds": 0.15282309998292476,
+      "median_seconds": 0.14382639998802915,
+      "node_count": 6,
+      "p95_seconds_nearest_rank": 0.15282309998292476,
+      "registry_admit_and_signature_seconds_median": 0.009357300004921854,
+      "repetitions_same_fixture": 3,
+      "resume_median_seconds": 0.00412190001225099
+    },
+    {
+      "complete": true,
+      "fixture_topology_sha256": "a8849b26f269c9744c00f267497dc27b600e898bfb4ce836dcb5ecad1131041f",
+      "ledger_bytes_max": 102237,
+      "ledger_bytes_median": 102233,
+      "max_seconds": 0.17715790000511333,
+      "median_seconds": 0.16954650002298877,
+      "node_count": 7,
+      "p95_seconds_nearest_rank": 0.17715790000511333,
+      "registry_admit_and_signature_seconds_median": 0.008032199984882027,
+      "repetitions_same_fixture": 3,
+      "resume_median_seconds": 0.004978800017852336
+    },
+    {
+      "complete": true,
+      "fixture_topology_sha256": "4d19b45cf224748bac90889d840803b55216d28afbb3f833035803b2d5fc6755",
+      "ledger_bytes_max": 113243,
+      "ledger_bytes_median": 113237,
+      "max_seconds": 0.2010708999587223,
+      "median_seconds": 0.19680149998748675,
+      "node_count": 8,
+      "p95_seconds_nearest_rank": 0.2010708999587223,
+      "registry_admit_and_signature_seconds_median": 0.007795100042130798,
+      "repetitions_same_fixture": 3,
+      "resume_median_seconds": 0.0050338999717496336
+    },
+    {
+      "complete": true,
+      "fixture_topology_sha256": "22df08ec06603d6932746ed889c88d0d748207245df64b75723ac7527b8ca3de",
+      "ledger_bytes_max": 124780,
+      "ledger_bytes_median": 124777,
+      "max_seconds": 0.2370200000004843,
+      "median_seconds": 0.2337349000154063,
+      "node_count": 9,
+      "p95_seconds_nearest_rank": 0.2370200000004843,
+      "registry_admit_and_signature_seconds_median": 0.008576599997468293,
+      "repetitions_same_fixture": 3,
+      "resume_median_seconds": 0.0055315999779850245
+    },
+    {
+      "complete": true,
+      "fixture_topology_sha256": "6e709b03f51e55304a406af9c25d5ebec31789441092908d8f0debb514e33106",
+      "ledger_bytes_max": 136394,
+      "ledger_bytes_median": 136392,
+      "max_seconds": 0.3145272000110708,
+      "median_seconds": 0.2776014000410214,
+      "node_count": 10,
+      "p95_seconds_nearest_rank": 0.3145272000110708,
+      "registry_admit_and_signature_seconds_median": 0.00845389999449253,
+      "repetitions_same_fixture": 3,
+      "resume_median_seconds": 0.0061989999958314
+    }
+  ],
+  "rss_after_bytes": 74510336,
+  "rss_before_and_after_are_process_snapshots_not_stage_peak": true,
+  "rss_initial_bytes": 66478080,
+  "schema_version": 1,
+  "study_cohort_generated": false
+}
