@@ -25,6 +25,8 @@ Compressed raw v2 SHA-256: `959078f02df14f54af5915327115bab6d78e1b19f010c285cea2
 
 Artifact: `step4c1_indirect_only_yield_v2.json.gz`; summary: `step4c1_indirect_only_yield_v2_summary.json`. The reported caps are planning estimates from the fixed stratified pilot, not a prospective yield guarantee.
 
+The production manifest hashes text artifacts after CRLF→LF normalization so its digest is stable across Windows and Linux; the compressed raw artifact is hashed byte-for-byte.
+
 ## SCM generation and numerical contract implemented
 
 `step4c1_scm.py` implements an acyclic linear structural equation family using sorted directed edge IDs for coefficient assignment. Each edge magnitude is Uniform[0.25, 0.8] and its sign is a separate fair Bernoulli draw. Node exogenous SDs are Uniform[0.8, 1.2]; exogenous disturbances are independent Gaussian with mean zero. Parameter and observational sample streams are separate. Observations are generated in topological order, with exactly 512 rows, and the same resulting matrix is used for all three error types and both policies.

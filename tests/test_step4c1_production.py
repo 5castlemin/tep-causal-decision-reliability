@@ -88,7 +88,11 @@ class Step4C1ProductionIntegrationTests(unittest.TestCase):
         manifest = json.loads((root / "research/budget_aware_refinement/step4c1_production_manifest.json").read_text(encoding="utf-8-sig"))
         self.assertEqual(manifest["status"], "NOT_FROZEN")
         for relative, expected in manifest["artifacts"].items():
-            self.assertEqual(hashlib.sha256((root / relative).read_bytes()).hexdigest(), expected, relative)
+            path = root / relative
+            payload = path.read_bytes()
+            if path.suffix in {".py", ".md", ".json"}:
+                payload = payload.replace(b"\r\n", b"\n")
+            self.assertEqual(hashlib.sha256(payload).hexdigest(), expected, relative)
 
     def test_scm_parameter_and_observation_streams_are_reproducible(self):
         proposal = {"accepted": True, "cohort": "development", "master_seed": 12,
