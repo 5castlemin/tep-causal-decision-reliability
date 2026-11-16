@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import csv
 import html
+import statistics
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,8 +51,9 @@ def distribution(s5: list[dict[str, str]], s6: list[dict[str, str]]) -> None:
         out.append(f'<text x="{left-12}" y="{y+4:.1f}" text-anchor="end" class="small">{tick:.1f}</text>')
     out += [f'<line x1="{left}" y1="{top}" x2="{left}" y2="{bottom}" class="axis"/>', f'<line x1="{left}" y1="{bottom}" x2="{right}" y2="{bottom}" class="axis"/>']
     out.append(f'<text x="25" y="{(top+bottom)//2}" transform="rotate(-90 25 {(top+bottom)//2})" class="label">Dᵢ (standardized loss scale)</text>')
-    for x, rows, name, color, mean in [(330, s5, "Step 5 development (n=64)", "#64748b", 0.014660484921723964), (675, s6, "Step 6 held-out cohort (n=200)", "#0f766e", 0.020072511261796423)]:
+    for x, rows, name, color in [(330, s5, "Step 5 development (n=64)", "#64748b"), (675, s6, "Step 6 held-out cohort (n=200)", "#0f766e")]:
         n = len(rows)
+        mean = statistics.fmean(float(r["D_i"]) for r in rows)
         for i, row in enumerate(rows):
             value = float(row["D_i"])
             jitter = (((i * 37) % 101) / 100 - 0.5) * (118 if value == 0 else 84)
@@ -77,8 +79,7 @@ def type_means(s5: list[dict[str, str]], s6: list[dict[str, str]]) -> None:
         x=left+tick*scale
         out.append(f'<line x1="{x:.1f}" y1="{top}" x2="{x:.1f}" y2="{bottom}" class="{"axis" if tick==0 else "grid"}"/>')
         out.append(f'<text x="{x:.1f}" y="{bottom+22}" text-anchor="middle" class="small">{tick:.2f}</text>')
-    means={typ:(sum(float(row[f"{typ}_D"]) for row in rows)/len(rows) for rows in (s5,s6)) for typ in ("FN","FP","REV")}
-    means={typ:tuple(vals) for typ,vals in means.items()}
+    means={typ:tuple(statistics.fmean(float(row[f"{typ}_D"]) for row in cohort) for cohort in (s5,s6)) for typ in ("FN","FP","REV")}
     ys={"FN":160,"FP":250,"REV":340}
     for typ,(a,b) in means.items():
         y=ys[typ]
@@ -114,25 +115,31 @@ def transitions() -> None:
     save("step8_graph_k_regret_transition.svg",out)
 
 
-def sensitivity() -> None:
+def sensitivity(s5: list[dict[str, str]], s6: list[dict[str, str]]) -> None:
     w,h=900,430
     out=svg_start(w,h,"극단값 민감도: SCM 평균 D","Pre-specified descriptive summaries; full-cohort mean remains primary; all bars start at zero")
-    left,right,top,bottom=105,850,115,340
-    ymax=.022; scale=(bottom-top)/ymax
+    left,right,top,bottom=105,850,120,340
+    ymax=.024; scale=(bottom-top)/ymax
     for tick in [0,.005,.010,.015,.020]:
         y=bottom-tick*scale
         out.append(f'<line x1="{left}" y1="{y:.1f}" x2="{right}" y2="{y:.1f}" class="{"axis" if tick==0 else "grid"}"/>')
         out.append(f'<text x="{left-10}" y="{y+4:.1f}" text-anchor="end" class="small">{tick:.3f}</text>')
-    data=[("Step 5",[.0146604849,.0082335,.0046345],"#64748b"),("Step 6",[.0200725113,.0171093,.0143115],"#0f766e")]
-    xs=[260,485,710]
+    def sensitivity_values(rows: list[dict[str, str]]) -> list[float]:
+        values=sorted((float(row["D_i"]) for row in rows), reverse=True)
+        return [statistics.fmean(values), statistics.fmean(values[1:]), statistics.fmean(values[2:])]
+    data=[("Step 5",sensitivity_values(s5),"#64748b"),("Step 6",sensitivity_values(s6),"#0f766e")]
+    xs=[255,485,715]
     captions=["Full sample","Remove top 1","Remove top 2"]
-    for name,vals,color in data:
+    bar_width=46
+    for name,vals,color,offset in [("Step 5",data[0][1],data[0][2],-27),("Step 6",data[1][1],data[1][2],27)]:
         for x,val,cap in zip(xs,vals,captions):
+            bar_x=x+offset-bar_width/2
             y=bottom-val*scale
-            out.append(f'<rect x="{x-31}" y="{y:.1f}" width="62" height="{bottom-y:.1f}" fill="{color}"/>')
-            out.append(f'<text x="{x}" y="{y-8:.1f}" text-anchor="middle" class="small">{val:.4f}</text>')
-            out.append(f'<text x="{x}" y="{bottom+20}" text-anchor="middle" class="small">{cap}</text>')
-    out.append('<rect x="610" y="68" width="12" height="12" fill="#64748b"/><text x="628" y="79" class="small">Step 5</text><rect x="710" y="68" width="12" height="12" fill="#0f766e"/><text x="728" y="79" class="small">Step 6</text>')
+            out.append(f'<rect x="{bar_x:.1f}" y="{y:.1f}" width="{bar_width}" height="{bottom-y:.1f}" fill="{color}"/>')
+            out.append(f'<text x="{x+offset}" y="{y-8:.1f}" text-anchor="middle" class="small">{val:.4f}</text>')
+    out.append('<rect x="625" y="82" width="12" height="12" fill="#64748b"/><text x="643" y="93" class="small">Step 5 development</text><rect x="775" y="82" width="12" height="12" fill="#0f766e"/><text x="793" y="93" class="small">Step 6 replication</text>')
+    for x,cap in zip(xs,captions):
+        out.append(f'<text x="{x}" y="{bottom+20}" text-anchor="middle" class="small">{cap}</text>')
     out.append('<text x="40" y="405" class="small muted">Removing cases is a sensitivity display only; no cases are removed from the reported cohort mean. D is on the frozen standardized-loss scale.</text>')
     save("step8_extreme_sensitivity.svg",out)
 
@@ -170,7 +177,7 @@ def main() -> None:
     s6=read_csv(BASE/"step6_confirmation_v1"/"STEP6_CONFIRMATION_SCM_SUMMARY.csv")
     if len(s5)!=64 or len(s6)!=200:
         raise SystemExit(f"Unexpected frozen summary sizes: step5={len(s5)}, step6={len(s6)}")
-    distribution(s5,s6); type_means(s5,s6); transitions(); sensitivity(); cases()
+    distribution(s5,s6); type_means(s5,s6); transitions(); sensitivity(s5,s6); cases()
     print(f"Wrote 5 static SVGs to {FIG}")
 
 
