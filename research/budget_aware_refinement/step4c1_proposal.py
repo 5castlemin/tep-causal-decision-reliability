@@ -12,12 +12,13 @@ import random
 
 from .step4_rng import RNGKey, RNG_PROTOCOL_VERSION, STREAMS, derive_seed
 from .step4_topology_generator import TEMPLATES, generate_topology, is_dag, directed_paths
-from .step4b_task_budget import graph_hash, relabel_roles, role_nodes, select_task_pair
+from .step4b_task_budget import (classify_task_pairs, graph_hash, relabel_roles,
+                                role_nodes, select_task_pair)
 from .step4b2_population import competition_recipes, select_q_recipe
 
 NODE_COUNTS = tuple(range(6, 11))
 STRATA = tuple((template, n) for template in TEMPLATES for n in NODE_COUNTS)
-ATTEMPT_CAPS = {"development": 362, "confirmation": 1036}
+ATTEMPT_CAPS = {"development": 386, "confirmation": 1104}
 ELIGIBLE_TARGETS = {"development": 64, "confirmation": 200}
 
 
@@ -46,13 +47,16 @@ def _seed(cohort, master_seed, proposal_id, template, node_count, attempt, strea
 
 
 def q_common_eligibility(nodes, truth_edges, action: str, target: str) -> dict:
-    """Assess Q-common only from topology/task and two-correction structure."""
+    """Assess strict indirect-only Q-common support from structure only."""
     nodes, truth_edges = tuple(nodes), frozenset(map(tuple, truth_edges))
     paths = directed_paths(nodes, truth_edges, action, target)
     if not is_dag(nodes, truth_edges):
         return {"eligible": False, "reason": "invalid_gt_dag", "recipe_counts": {}}
     if not any(len(path) >= 3 for path in paths):
         return {"eligible": False, "reason": "task_not_indirect_only", "recipe_counts": {}}
+    if (action, target) in truth_edges:
+        return {"eligible": False, "reason": "task_has_direct_edge", "recipe_counts": {},
+                "task_paths": [list(path) for path in paths]}
     recipes = {kind: competition_recipes(nodes, truth_edges, action, target, kind)
                for kind in ("FN", "FP", "REV")}
     counts = {kind: len(rows) for kind, rows in recipes.items()}
@@ -94,9 +98,14 @@ def build_structural_proposal(*, cohort: str, master_seed: int,
     scaffold_roles = role_nodes(template, topology.nodes)
     preferred = ((mapping[scaffold_roles["action"]], mapping[scaffold_roles["target"]])
                  if template == "observed_common_cause" else None)
+    if preferred is not None and preferred not in classify_task_pairs(nodes, truth_edges).indirect_only:
+        # A common-cause scaffold pair is preferred only when it is truly
+        # indirect-only; a density edge must not turn it into a both-path task.
+        preferred = None
     tasks = select_task_pair(nodes, truth_edges, task_seed, preferred)
     task = next((pair for kind, pair in tasks["selected"] if kind == "indirect"), None)
-    base = {"proposal_id": proposal_id, "cohort": cohort, "attempt": attempt,
+    base = {"proposal_id": proposal_id, "cohort": cohort, "master_seed": master_seed,
+            "attempt": attempt, "nodes": list(nodes),
             "template": template, "node_count": node_count,
             "topology_hash": graph_hash(nodes, truth_edges),
             "topology_edges": [list(edge) for edge in sorted(truth_edges)],
@@ -113,7 +122,7 @@ def build_structural_proposal(*, cohort: str, master_seed: int,
                 "action": action, "target": target, "scm_id": None,
                 "q_recipe_counts": support["recipe_counts"]}
     scm_prefix = "dev-scm-" if cohort == "development" else "rep-scm-"
-    scm_id = f"{scm_prefix}{proposal_id}"
+    scm_id = f"{scm_prefix}{proposal_id}-a{attempt:04d}"
     error_recipes = {}
     for kind in ("FN", "FP", "REV"):
         seed = _seed(cohort, master_seed, proposal_id, template, node_count,
@@ -124,7 +133,7 @@ def build_structural_proposal(*, cohort: str, master_seed: int,
                                "recipe_count": support["recipe_counts"][kind]}
     scm_streams = {
         stream: _seed(cohort, master_seed, scm_id, template, node_count, attempt, stream)
-        for stream in ("coefficient", "exogenous_noise", "observational_sample")
+        for stream in ("coefficient", "exogenous_noise", "observational_sample", "policy_schedule")
     }
     return {**base, "accepted": True, "reason": None, "scm_id": scm_id,
             "action": action, "target": target, "q_recipe_counts": support["recipe_counts"],

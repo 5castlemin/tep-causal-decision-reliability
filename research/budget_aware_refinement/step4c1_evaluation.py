@@ -86,22 +86,45 @@ def evaluate_policy_pair(*, request: Mapping[str, object], global_policy_id: str
     focused_request = dict(request, policy_id=task_focused_policy_id)
     if _canonical(_request_without_policy(global_request)) != _canonical(_request_without_policy(focused_request)):
         raise ValueError("paired policy requests differ outside policy ID")
+    prepared = prepare_policy_pair(request=request, global_policy_id=global_policy_id,
+        task_focused_policy_id=task_focused_policy_id, data=data, columns=columns,
+        schema=schema, delta=delta, fit_model=fit_model, response=response)
+    truth_pair = evaluate_prepared_pair(prepared, truth_spec=truth_spec,
+                                        analytic_response=analytic_response)
+    return {**prepared, "global": truth_pair["global"],
+            "task_focused": truth_pair["task_focused"],
+            "paired_status": truth_pair["paired_status"], "difference": truth_pair["difference"]}
+
+
+def prepare_policy_pair(*, request: Mapping[str, object], global_policy_id: str,
+                        task_focused_policy_id: str, data, columns: list[str],
+                        schema: list[str], delta: int, fit_model, response) -> dict:
+    """Fit and freeze both recommendations without accepting any GT input."""
+    if not global_policy_id.startswith("G-") or not task_focused_policy_id.startswith("T-"):
+        raise ValueError("policy IDs must identify Global and Task-Focused explicitly")
+    if global_policy_id[2:] != task_focused_policy_id[2:]:
+        raise ValueError("paired policies must use the same allowed error-type schedule")
+    global_request = dict(request, policy_id=global_policy_id)
+    focused_request = dict(request, policy_id=task_focused_policy_id)
+    if _canonical(_request_without_policy(global_request)) != _canonical(_request_without_policy(focused_request)):
+        raise ValueError("paired policy requests differ outside policy ID")
     schema_hash = hashlib.sha256(_canonical(schema)).hexdigest()
     data_hash = hashlib.sha256(data.tobytes() if hasattr(data, "tobytes") else _canonical(data)).hexdigest()
     global_graph, global_selection = step3_prepare(global_request, data, columns, schema, delta, fit_model, response)
     focused_graph, focused_selection = step3_prepare(focused_request, data, columns, schema, delta, fit_model, response)
-    # Freeze both recommendations before either GT evaluation is invoked.
-    truth_pair = evaluate_frozen_pair(global_selection=global_selection,
-                                      task_focused_selection=focused_selection,
-                                      truth_spec=truth_spec, analytic_response=analytic_response)
-    common = {"schema_sha256": schema_hash, "training_data_sha256": data_hash,
-              "request_sha256": hashlib.sha256(_canonical(_request_without_policy(request))).hexdigest(),
-              "global_final_graph": global_graph["final_graph"],
-              "task_focused_final_graph": focused_graph["final_graph"],
-              "global_selection": global_selection, "task_focused_selection": focused_selection,
-              "global": truth_pair["global"], "task_focused": truth_pair["task_focused"],
-              "paired_status": truth_pair["paired_status"], "difference": truth_pair["difference"]}
-    return common
+    return {"schema_sha256": schema_hash, "training_data_sha256": data_hash,
+            "request_sha256": hashlib.sha256(_canonical(_request_without_policy(request))).hexdigest(),
+            "global_final_graph": global_graph["final_graph"],
+            "task_focused_final_graph": focused_graph["final_graph"],
+            "global_selection": global_selection, "task_focused_selection": focused_selection}
+
+
+def evaluate_prepared_pair(prepared: Mapping[str, object], *, truth_spec,
+                           analytic_response) -> dict:
+    """Evaluate frozen recommendations only after both learner calls finish."""
+    return evaluate_frozen_pair(global_selection=prepared["global_selection"],
+        task_focused_selection=prepared["task_focused_selection"],
+        truth_spec=truth_spec, analytic_response=analytic_response)
 
 
 def aggregate_scm_type_results(type_rows: Mapping[str, Mapping[str, object]]) -> dict:

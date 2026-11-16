@@ -4,21 +4,21 @@
 
 Status: **NOT FROZEN**. This page is the current authority for Step 4 planning; historical proposals below remain preserved but are not active.
 
-- Population: P conditioned on Q-common structural eligibility; task is indirect-only.
+- Population: P conditioned on strict Q-common structural eligibility; selected task has a directed path of length ≥2 and no direct Action→Target edge.
 - Budget/cost: B=1, gamma=1.
 - Paired policies: Task-Focused vs ID-ordered Global, same graph, candidate set, data, and task.
 - Error versions: FN, FP, REV; equal within-SCM weight 1/3.
 - Independent unit: independently generated SCM; three error versions are repeated measures.
-- Targets: 64 eligible development SCM and 200 eligible held-out replication SCM; proposal caps 362/1,036. These are design targets, not executed samples or yield guarantees.
+- Targets: 64 eligible development SCM and 200 eligible held-out replication SCM; strict-indirect structural diagnostic candidate caps 386/1,104. These are planning values, not executed samples or yield guarantees.
 - Outcome: SCM-level arithmetic mean of the three paired Decision Regret differences.
 - Inference: Option B. Report estimates, distributions, and sensitivity analyses; do not claim confirmatory 5% superiority.
 - Resource candidates: 1,800 seconds total, 2 seconds/unit, RSS 512 MiB, ledger 100 MiB. Current mock runner can kill isolated timed-out units and monitor sampled RSS; RSS overshoot remains possible. These are not frozen production limits.
 
 ## IMPLEMENTED / MOCK-VALIDATED / NOT IMPLEMENTED
 
-Implemented and fixture-validated: deterministic mock Graph→Ridge→recommendation→truth-stub flow; durable event/output hashes; run/config/input/RNG/SCM/cohort binding; failed-stage terminal requery; cumulative active stage wall-time accounting per SCM (downtime excluded); finite-value composite checks; isolated unit timeout; and deterministic resume from durable stage outputs. A structure-only proposal interface now implements uniform stratum assignment, topology/task construction, Q-common eligibility and error recipes. A Step 3 paired recommendation/GT-evaluation adapter is validated on fixed fixtures only.
+Implemented and fixed-fixture-validated: deterministic Graph→Ridge→recommendation→analytic-GT evaluation→SCM composite pipeline; durable event/output hashes; run/config/input/RNG/SCM/cohort binding; failed-stage terminal requery; cumulative active stage wall-time accounting per SCM (downtime excluded); finite-value composite checks; isolated unit timeout; and deterministic resume from durable stage outputs. A structure-only proposal interface implements uniform stratum assignment, topology/task construction, strict Q-common eligibility and error recipes. SCM coefficient/noise/512-row observation generation is implemented and deterministic-fixture validated, but was not used to generate a study cohort. The analytic GT evaluator takes truth equations separately from the learner and has hand-calculation tests.
 
-Not implemented: coefficient/noise/observation generation; production SCM construction and duplicate admission; end-to-end study orchestration; production execution against newly generated SCMs; and study-scale cohort runtime accounting. The existing generation spec leaves sign assignment, duplicate definition/admission and numeric eligibility thresholds unresolved. The GT adapter reuses Step 3 code but has only fixed-fixture validation; no real Step 4 SCM evaluation was performed. The truth stub returns `evaluation_performed=false` and null outcomes; it is not a successful evaluation.
+Not implemented or not run: cohort-level 64/200 orchestration, execution against newly sampled study SCMs, study-scale runtime accounting, and a durable cross-ledger duplicate/admission registry. Numeric rejection is limited to nonfinite values and zero sample variance; no condition-number, effect-size or outcome-based threshold is applied. No study-cohort SCM or Decision Regret experiment was generated. The integrated software test uses explicit fixed equations and noise; it is not research data. The separate truth stub still returns null outcomes and is not a successful evaluation.
 
 Resource enforcement: spawned child unit timeout is enforced by termination; RSS uses sampled kill-on-detection and can overshoot; JSONL storage is capped before append. The 1,800-second cap accumulates active per-SCM stage wall time across restarts and excludes downtime. No cohort-wide elapsed-time cap is configured. These are mock-runner behaviors, not frozen production resource limits.
 
@@ -32,7 +32,7 @@ Earlier P/B=4 selected-policy vs matched-random and Path-F1 confirmatory proposa
 
 Step 4A and Step 4B feasibility matrices and mock ledgers are structural/software pilots only. They are not independent SCMs, confirmation data, or policy-performance evidence.
 
-## Production sequence contract (planned)
+## Production sequence contract (one-proposal path implemented; cohort generation not run)
 
 Proposal/stratum → topology → Q-common eligibility → assign cohort-scoped SCM ID and independent streams → generate one shared SCM/data input → construct FN/FP/REV versions → paired Global/Task-Focused runs → separate GT evaluator → validate all three paired differences → equal-weight SCM composite → append validated checkpoint/ledger.
 

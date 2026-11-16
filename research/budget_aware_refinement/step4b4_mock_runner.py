@@ -25,6 +25,13 @@ class LedgerConflict(ValueError):
     pass
 
 
+class StageFailure(RuntimeError):
+    """A stage failure with a research-contract status code."""
+    def __init__(self, status: str, reason: str):
+        super().__init__(reason)
+        self.status = status
+
+
 def process_rss_bytes() -> int | None:
     """Best-effort process RSS including native allocations; monitoring only."""
     if sys.platform == "win32":
@@ -137,15 +144,15 @@ def run_pipeline(
     checkpoint_hook: Callable[[str], None] | None = None,
     clock: Callable[[], float] = time.monotonic,
 ) -> dict:
-    """Run graph→fit→recommend→truth-stub and resume at completed stages.
+    """Run an ordered durable stage pipeline and resume completed stages.
 
     Wall/unit time and RSS are checked at stage boundaries, not preemptively.
     The ledger cap is enforced before writes. RSS is monitoring only in this
     in-process mock; it cannot prevent a transient peak inside a stage.
     """
-    expected = ("graph", "fit", "recommend", "truth")
-    if tuple(stages) != expected:
-        raise ValueError(f"stages must be ordered exactly as {expected}")
+    expected = tuple(stages)
+    if not expected or any(not isinstance(name, str) or not name for name in expected) or len(set(expected)) != len(expected):
+        raise ValueError("stages must be a nonempty ordered mapping with unique names")
     if not run_id or not rng_key or not scm_id or cohort not in {"development", "confirmation"}:
         raise ValueError("run_id, RNG key, SCM ID and valid cohort are required")
     required_prefix = "dev-" if cohort == "development" else "rep-"
@@ -225,12 +232,13 @@ def run_pipeline(
                 if child_status == "STAGE_EXCEPTION":
                     raise RuntimeError("isolated stage raised an exception")
                 if child_status:
+                    status = child_status.split("|", 1)[0].removeprefix("STAGE_FAILURE:") if child_status.startswith("STAGE_FAILURE:") else child_status
                     elapsed_used += unit_seconds
-                    append_event(ledger, event(f"stage:{stage}", status=child_status,
+                    append_event(ledger, event(f"stage:{stage}", status=status,
                                                 elapsed_seconds=unit_seconds, elapsed_total_seconds=elapsed_used), max_bytes=max_ledger_bytes - 512)
-                    append_event(ledger, event("terminal", status=child_status,
+                    append_event(ledger, event("terminal", status=status,
                                                 completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
-                    return {"status": child_status, "resumed": bool(done), "completed_stages": list(done)}
+                    return {"status": status, "resumed": bool(done), "completed_stages": list(done)}
             else:
                 output = stages[stage]()
             unit_seconds = clock() - unit_start
@@ -267,7 +275,11 @@ def run_pipeline(
         except SimulatedProcessStop:
             raise
         except Exception as exc:
-            status = {"fit": "RIDGE_FAIL", "recommend": "RECOMMEND_FAIL", "truth": "GT_EVAL_FAIL"}.get(stage, "STAGE_FAIL")
+            status = getattr(exc, "status", None) or {"fit": "RIDGE_FAIL", "recommend": "RECOMMEND_FAIL",
+                      "recommendations": "RECOMMEND_FAIL", "truth": "GT_EVAL_FAIL",
+                      "gt_evaluation": "GT_EVAL_FAIL", "scm": "SCM_GEN_FAIL",
+                      "observations": "DATA_FAIL", "error_graphs": "ERROR_INJECTION_FAIL",
+                      "policy_graphs": "POLICY_GRAPH_FAIL", "proposal": "TOPOLOGY_FAIL"}.get(stage, "STAGE_FAIL")
             unit_seconds = max(0.0, clock() - unit_start)
             elapsed_used += unit_seconds
             detail = {"status": status, "failure_type": type(exc).__name__, "reason": str(exc)[:300],
@@ -314,6 +326,8 @@ def _result_digest(done: Mapping[str, Mapping[str, object]], expected) -> str:
 def _worker(conn, stage):
     try:
         conn.send(("OK", stage()))
+    except StageFailure as exc:
+        conn.send(("STAGE_FAILURE", exc.status, str(exc)[:300]))
     except BaseException as exc:
         conn.send(("EXCEPTION", type(exc).__name__, str(exc)[:300]))
     finally:
@@ -399,4 +413,6 @@ def _run_isolated(stage, timeout: float, rss_cap: int | None):
         return None, "CHILD_EXIT", max(0.0, time.monotonic() - started)
     if message[0] == "EXCEPTION":
         return None, "STAGE_EXCEPTION", max(0.0, time.monotonic() - started)
+    if message[0] == "STAGE_FAILURE":
+        return None, f"STAGE_FAILURE:{message[1]}|{message[2]}", max(0.0, time.monotonic() - started)
     return message[1], None, max(0.0, time.monotonic() - started)

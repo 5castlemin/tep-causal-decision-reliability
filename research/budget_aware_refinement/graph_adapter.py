@@ -6,7 +6,7 @@ except ImportError:
 
 REQUIRED=frozenset(('node_ids','initial_edges','reference_edges','allowed_types',
                     'policy_id','budget','gamma','action','target','seed'))
-OPTIONAL=frozenset(('prior_edges','display_names','graph_id'))
+OPTIONAL=frozenset(('prior_edges','display_names','graph_id','schedule_seed'))
 
 def run_graph_stage(request):
     if type(request) is not dict or not REQUIRED.issubset(request) or set(request)-REQUIRED-OPTIONAL:

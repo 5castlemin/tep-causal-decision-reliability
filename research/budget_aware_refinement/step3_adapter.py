@@ -5,7 +5,7 @@ from .graph_adapter import run_graph_stage
 
 K = (-1.0, -0.5, 0.0, 0.5, 1.0)
 
-def prepare(request, data, columns, schema, delta, fit_model, response):
+def prepare(request, data, columns, schema, delta, fit_model, response, graph_result=None):
     """Graph-only oracle -> learner (data and final DAG only) -> recommendation."""
     if type(columns) is not list or columns != schema or len(set(columns)) != len(columns):
         raise ValueError('schema order mismatch or duplicate')
@@ -18,7 +18,7 @@ def prepare(request, data, columns, schema, delta, fit_model, response):
     mean = data.mean(axis=0); sd = data.std(axis=0, ddof=1)
     if not np.isfinite(sd).all() or (sd <= 0).any(): raise ValueError('invalid scale')
     target = float(mean[y] + delta*sd[y])
-    graph = run_graph_stage(request)
+    graph = run_graph_stage(request) if graph_result is None else graph_result
     edges = {tuple(e) for e in graph['final_graph']}
     # Do not pass oracle hashes, candidate histories, truth or evaluator to learner.
     model = fit_model(data, list(schema), edges, 1.0)
