@@ -1,6 +1,6 @@
 # Step 4C-1 Cohort Orchestration Readiness
 
-Status: **IN_PROGRESS / NOT FROZEN**. Validation uses deterministic proposal records, a SQLite registry, and mock ledger events. No 64/200 SCM cohort, study observations, or Decision Regret experiment was generated.
+Status: **DONE (fixed-fixture implementation/readiness); Step 4 remains IN_PROGRESS / NOT FROZEN**. Validation uses deterministic proposal records, a SQLite registry, explicit fixed SCM equations/noise, and mock ledger events. No 64/200 SCM cohort, study observations, or Decision Regret experiment was generated.
 
 ## Active contract reconciliation
 
@@ -20,7 +20,7 @@ An OS process lock serializes one cohort orchestrator; SQLite serializes admissi
 
 The new tests cover balanced delta and replay, duplicate equation rejection, same-DAG/different-equation admission, immutable binding conflict, two-process same-proposal registration, rejected proposal denominators, target/cap shortfall, post-admission interruption/restart, post-terminal/pre-registry interruption recovery, and preservation of a failed eligible SCM without silent replacement. Existing pipeline tests continue to exercise explicit fixed-equation/noise evaluation and child-process restart; these tests do not constitute study data.
 
-Local verification on Python 3.11.15: cohort registry tests **9 passed**; full `unittest discover` **249 passed**; `scripts/check_research_state.py` passed; and `git diff --check` passed. The Windows `scripts/check_asset_manifest.py` check fails because its seven frozen JSON configs are checked out with CRLF while the recorded hashes match LF-normalized bytes and Git blobs; no frozen graph/config path was modified. Linux CI must still confirm the manifest check for the pushed HEAD, and current-HEAD Self-Review remains required.
+Local verification on Python 3.11.15: cohort registry tests **9 passed**; full `unittest discover` **249 passed**; `scripts/check_research_state.py`, `scripts/check_research_docs.py --base origin/main`, and `git diff --check` passed. GitHub Actions run #227 passed all steps on HEAD `137c021e31d19168a11758eeeeb826cfc7077a84`, including the Linux frozen-asset check and document sync. The Windows `scripts/check_asset_manifest.py` check fails because its seven frozen JSON configs are checked out with CRLF while the recorded hashes match LF-normalized bytes and Git blobs; no frozen graph/config path was modified. A documentation/status update is now being validated on the next HEAD; Self-Review will be posted against that exact HEAD after its CI completes.
 
 ## Generator and evaluation contract
 
