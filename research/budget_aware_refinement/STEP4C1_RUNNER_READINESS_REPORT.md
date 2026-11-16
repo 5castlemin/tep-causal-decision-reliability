@@ -1,35 +1,43 @@
-# Step 4C-1 Runner Readiness Report
+# Step 4C-1 Production Integration & Final Runner Audit
 
 ## Decision
 
-**IN_PROGRESS; not production-ready.** The integration mock is restart-safe and process-isolated. Production SCM generation and GT evaluation are absent, so this is not a production study runner and cannot satisfy Step 4C-1 DONE or Step 4 freeze.
+**IN_PROGRESS; not production-ready.** The mock runner's failure recovery, execution binding, cumulative per-SCM active wall time, and process isolation are hardened. Structural proposal and paired Step 3 evaluation interfaces are implemented and fixed-fixture validated. The complete SCM generation and study runner remain unimplemented because `STEP4_SCM_GENERATION_SPEC.md` still leaves coefficient sign assignment, duplicate admission, and numerical eligibility thresholds unresolved. No new SCM, observation, GT effect, Decision Regret, or confirmation sample was generated.
 
-## Restart defect and repair
+## Failure ledger and restart behavior
 
-The former integration pipeline retained graph edges and the fitted model only in closure memory, while the ledger skipped completed stages. A fresh process therefore resumed at Fit without graph state or at Recommend without a model. The replacement stages restore verified JSON outputs from the ledger. The fitted model is JSON-compatible; recommendation uses that persisted model and fixed fixture input. Tests terminate a real runner process after Graph, Fit, and Recommend checkpoints, resume in a fresh process, and compare the final ledger SHA-256 with uninterrupted execution. All three comparisons pass.
+Stage outcomes and terminal state are now distinct: only `OK` stages enter `completed_stages`; a failed stage is retained with its failure status. Requery after Ridge failure, GT evaluation failure, graph timeout, sampled RSS termination, disk cap, and wall cap returns the same terminal failure without converting it to success or replaying the failed stage. Complete event/output hashes, stage order, terminal placement, and run bindings are verified. Only an incomplete final JSONL tail is truncated; a complete damaged event is rejected.
 
-This is deterministic mock recomputation/restoration, not a new SCM draw.
+The integrated Graph→Fit→Recommend→Truth-stub fixture is interrupted in a child process after checkpoints and resumed in a fresh process. Resumed and uninterrupted final ledgers match. The fitted model and other prerequisite outputs are restored from validated JSON outputs, not hidden process memory.
 
-## Integrity and result validation
+## Runtime and isolation contract
 
-Each event is canonicalized and hashed; output payloads have their own digest. Recovery rejects a complete tampered event and removes only an incomplete final line. A run ID is bound to RNG key, config SHA-256, and input SHA-256. Stage order, duplicate stages, and terminal placement are checked. Regret aggregation accepts finite signed values including zero; NaN, infinities, strings, overflowed differences, failed policies, or any missing FN/FP/REV value produce an incomplete result, never zero imputation.
+The mock runner sums active per-stage wall time for one SCM across restarts; process downtime is excluded. Unit timeout applies to a spawned child process. Disk size is checked before writes. RSS is sampled (including native process memory) and the child is terminated after an observed overage, so peak overshoot is possible. The cumulative wall cap is enforced at stage boundaries, not preemptively. There is no cohort-wide cumulative runtime cap. These controls have not been established as production study caps.
 
-## Isolation and resource behavior
+Every event binds run ID, SCM ID, cohort, config SHA-256, input SHA-256, and RNG key. Stage restoration is scoped to that complete binding. Reusing an SCM ID across run IDs in a cohort or restarting with changed inputs/config/RNG is rejected. Legacy events without digest/binding fields are not resumable under this contract; no historical ledger is rewritten.
 
-Stages can run in a spawned child process. Unit timeout terminates then kills the child if needed; abnormal exit and stage exceptions are separately recorded. RSS sampling includes process working set on Windows and resident pages on Linux, including native allocations. RSS enforcement is sampled, kill-on-observation with possible overshoot, not a strict OS memory limit. Total wall time is checked at stage boundaries, not preemptively. Ledger writes are fsynced and bounded before append; a terminal record is reserved where possible. These implementation differences and limitations remain a freeze gate for production operation.
+## Structural proposal interface
 
-## Implemented scope
+`step4c1_proposal.py` implements a stable SHA-256 1/20 proposal stratum, topology and role relabeling, indirect-task selection, outcome-blind Q-common eligibility, and type-specific structural error recipes. Rejections retain their proposal denominator and receive no SCM ID. Accepted proposals receive cohort-namespaced IDs and post-eligibility stream keys. The interface deliberately stops before drawing coefficients, noise, or observations. It does not resolve the still-open generation-spec items or constitute the production SCM generator.
 
-Mock-validated: Graph→existing Ridge fit→recommendation→truth test double; deterministic restart; event/output integrity; resource failure fixtures; composite result validation.
+## Step 3 policy and truth evaluation interface
 
-Not implemented: production proposal/stratum and Q-common runner, cohort ID allocator, SCM coefficient/noise/observation generation, production GT evaluation, study-scale checkpoint scheduling, or end-to-end resource enforcement. The truth test double explicitly returns `evaluation_performed=false`, `effect=null`, and `regret=null`.
+`step4c1_evaluation.py` prepares Global and Task-Focused recommendations on the same supplied training data and request, freezes both selections before invoking the separate Step 3 truth evaluator, and validates finite nonnegative regret with explicit roundoff handling. Paired requests must share task, candidate grid, scale, and type schedule. The SCM composite uses the common FN/FP/REV validator and remains missing if any type is incomplete. Tests use a fixed existing fixture/deterministic truth contract only. This is adapter validation, not a new Step 4 SCM evaluation. Truth-stub output is never treated as successful GT evaluation.
 
-## Research contract
+## Information and failure boundaries
 
-Active terms are recorded in `STEP4_CURRENT_ACTIVE_CONTRACT.md`: P|Q-common, indirect-only, B=1, gamma=1, Global vs Task-Focused, FN/FP/REV equal weights, SCM-level mean paired difference, dev target 64, replication target 200, attempt caps 362/1,036, Option B (estimate and sensitivity reporting; no confirmatory superiority claim). Step 4 remains IN_PROGRESS / NOT FROZEN.
+GT outputs are not passed into policy preparation, task selection, topology eligibility, or error ranking. The three type versions use a shared input identity. Failed/incomplete GT evaluation is not zero-imputed; incomplete FN/FP/REV vectors have no composite. Existing fallback rules remain restricted to eligible Ridge/recommendation failure with valid shared training/truth inputs and common `k=0`; original failure status is preserved. Normal candidate exhaustion and unused budget remain valid outcomes.
 
-Historical P/B4 protocol and preregistration text are superseded proposals, retained as history. No Step 5 or confirmation SCM work was performed.
+## Active contract and superseded proposals
 
-## Verification
+The active contract remains P conditioned on Q-common, indirect-only, B=1, gamma=1, paired Task-Focused vs ID-ordered Global, equal 1/3 type weights, SCM as independent unit, descriptive Option B, development target 64, held-out replication target 200, and candidate caps 362/1,036. Earlier P/B4 confirmatory language remains historical/superseded. Step 4 is IN_PROGRESS / NOT FROZEN.
 
-Local Python 3.14 targeted runner suite: 19 tests passed after remediation. Full local discovery: 225 tests, 224 passed; one existing exact-float failure in `test_diverse_structure_pilot.test_actual_saved_experiment`. `scripts/check_research_state.py`, `scripts/check_research_docs.py --base origin/main`, and `git diff --check` pass. Windows `scripts/check_asset_manifest.py` fails on its config hash under this checkout; it is not reported as a pass. No frozen graph asset paths changed. The previous HEAD's Python 3.11 Actions passed; a new HEAD requires its own CI run before that result applies.
+## Step 4C-2 freeze-input proposal
+
+For a later code/config hash manifest, include at minimum: `step4_topology_generator.py`, `step4_error_injection.py`, `step4b_task_budget.py`, `step4b2_population.py`, `step4_rng.py`, `step4c1_proposal.py`, `step4c1_evaluation.py`, `step4b4_failure_rules.py`, `step4b4_mock_runner.py`, `run_step4b4_mock_pipeline.py`, `policy_engine.py`, `step3_adapter.py`, the relevant Step 3 evaluator modules, `STEP4C1_PRODUCTION_RUNNER_CONTRACT.json`, and `STEP4_CURRENT_ACTIVE_CONTRACT.md`. This is a proposed scope only, not a freeze or hash lock.
+
+## Verification status
+
+Verification must be reported for the exact current HEAD after the final full suite and Python 3.11 Actions complete. Local Python 3.14 results and Windows asset-manifest behavior are not substitutes for those checks. No frozen research asset is intentionally modified; final manifest and diff checks remain required.
+
+The repository dependency list is now pinned to NumPy 2.4.3, pandas 3.0.1 and NetworkX 3.6.1; CI targets Python 3.11. The local Python 3.11 installation is managed and has no project packages, and its isolated venv creation was blocked by the host application-control policy. Exact-head Actions is therefore required to validate the pins on Python 3.11.

@@ -85,13 +85,20 @@ class Step4B4MockRunnerTests(unittest.TestCase):
         self.assertFalse(contract["truth_stub_is_successful_evaluation"])
         self.assertEqual(contract["status"], "NOT_FROZEN")
         states = {stage["name"]: stage["state"] for stage in contract["stages"]}
-        self.assertEqual(states["ground_truth_evaluation"], "NOT_IMPLEMENTED")
+        self.assertEqual(states["ground_truth_evaluation"],
+                         "STEP3_FIXED_FIXTURE_ADAPTER_VALIDATED_PRODUCTION_INPUT_REQUIRED")
+        self.assertEqual(states["scm_and_shared_data"], "NOT_IMPLEMENTED")
+        self.assertFalse(contract["production_ready"])
 
     def test_existing_graph_ridge_path_and_truth_stub_do_not_emit_outcomes(self):
-        from research.budget_aware_refinement.run_step4b4_mock_pipeline import build_mock_stages
+        from research.budget_aware_refinement.run_step4b4_mock_pipeline import (
+            MOCK_CONFIG, MOCK_INPUT_SHA256, build_mock_stages,
+        )
         with tempfile.TemporaryDirectory() as td:
             ledger = Path(td) / "integrated.jsonl"
-            result = run_pipeline("fixed-numeric-fixture", ledger, build_mock_stages(ledger))
+            result = run_pipeline("fixed-numeric-fixture", ledger,
+                build_mock_stages(ledger, "fixed-numeric-fixture"),
+                config=MOCK_CONFIG, input_sha256=MOCK_INPUT_SHA256)
             self.assertEqual(result["status"], "OK")
             events = recover_jsonl(ledger)
             truth = next(row for row in events if row["event"] == "stage:truth")
@@ -111,7 +118,7 @@ import os, sys
 from pathlib import Path
 from research.budget_aware_refinement.run_step4b4_mock_pipeline import *
 stage_to_stop=sys.argv[2]
-stages=build_mock_stages(Path(sys.argv[1]))
+stages=build_mock_stages(Path(sys.argv[1]),'integrated-restart')
 run_pipeline('integrated-restart',Path(sys.argv[1]),stages,rng_key=MOCK_RNG_KEY,
              config=MOCK_CONFIG,input_sha256=MOCK_INPUT_SHA256,isolate_stages=True,
              checkpoint_hook=lambda stage: os._exit(73) if stage == {'fit':'graph','recommend':'fit','truth':'recommend'}[stage_to_stop] else None)
@@ -121,15 +128,16 @@ run_pipeline('integrated-restart',Path(sys.argv[1]),stages,rng_key=MOCK_RNG_KEY,
                 events_before = recover_jsonl(ledger)
                 self.assertEqual(events_before[-1]["event"], f"stage:{ {'fit':'graph','recommend':'fit','truth':'recommend'}[stop_before] }")
                 resumed = run_pipeline("integrated-restart", ledger,
-                    build_mock_stages(ledger), rng_key=MOCK_RNG_KEY, config=MOCK_CONFIG,
+                    build_mock_stages(ledger, "integrated-restart"), rng_key=MOCK_RNG_KEY, config=MOCK_CONFIG,
                     input_sha256=MOCK_INPUT_SHA256, isolate_stages=True)
                 baseline = run_pipeline("integrated-restart", uninterrupted,
-                    build_mock_stages(uninterrupted), rng_key=MOCK_RNG_KEY, config=MOCK_CONFIG,
+                    build_mock_stages(uninterrupted, "integrated-restart"), rng_key=MOCK_RNG_KEY, config=MOCK_CONFIG,
                     input_sha256=MOCK_INPUT_SHA256, isolate_stages=True)
                 self.assertEqual(resumed["status"], "OK")
                 self.assertEqual(baseline["status"], "OK")
-                self.assertEqual(hashlib.sha256(ledger.read_bytes()).hexdigest(),
-                                 hashlib.sha256(uninterrupted.read_bytes()).hexdigest())
+                resumed_result = next(r["result_sha256"] for r in recover_jsonl(ledger) if r["event"] == "terminal")
+                baseline_result = next(r["result_sha256"] for r in recover_jsonl(uninterrupted) if r["event"] == "terminal")
+                self.assertEqual(resumed_result, baseline_result)
 
     def test_composite_regret_rejects_nonfinite_and_bad_numeric_values(self):
         def rows(value=0.0):
@@ -166,6 +174,9 @@ run_pipeline('integrated-restart',Path(sys.argv[1]),stages,rng_key=MOCK_RNG_KEY,
                 run_pipeline("bound", ledger, ok_stages(), config={"x": 2}, input_sha256="b" * 64)
             with self.assertRaises(ValueError):
                 run_pipeline("bound", ledger, ok_stages(), config={"x": 1}, input_sha256="c" * 64)
+            with self.assertRaises(ValueError):
+                run_pipeline("bound", ledger, ok_stages(), config={"x": 1}, input_sha256="b" * 64,
+                             rng_key="different-rng")
 
     def test_checkpoint_stage_order_and_terminal_completeness_are_enforced(self):
         with tempfile.TemporaryDirectory() as td:
@@ -182,6 +193,69 @@ run_pipeline('integrated-restart',Path(sys.argv[1]),stages,rng_key=MOCK_RNG_KEY,
             ledger.write_bytes(b"\n".join(_canonical(row) for row in rows) + b"\n")
             with self.assertRaises(ValueError):
                 run_pipeline("ordered", ledger, ok_stages())
+
+    def test_failed_stage_terminal_is_idempotently_recovered_without_promotion(self):
+        cases = (("fit", RuntimeError("ridge"), "RIDGE_FAIL", False),
+                 ("truth", RuntimeError("truth"), "GT_EVAL_FAIL", False),
+                 ("graph", _spin_forever, "TIMEOUT", True),
+                 ("graph", _allocate_memory, "RSS_LIMIT", True))
+        for stage_name, failure, expected, isolated in cases:
+            with self.subTest(stage=stage_name, expected=expected), tempfile.TemporaryDirectory() as td:
+                ledger = Path(td) / "failed.jsonl"
+                stages = {"graph": _stage_graph, "fit": _stage_fit,
+                          "recommend": _stage_recommend, "truth": _stage_truth}
+                if stage_name in ("fit", "truth"):
+                    def fail(value=failure): raise value
+                    stages[stage_name] = fail
+                else:
+                    stages[stage_name] = failure
+                result = run_pipeline("failed-run", ledger, stages, isolate_stages=isolated,
+                                      max_unit_seconds=.15,
+                                      max_rss_bytes=64 * 1024 * 1024 if expected == "RSS_LIMIT" else None)
+                self.assertEqual(result["status"], expected)
+                rows = recover_jsonl(ledger)
+                self.assertEqual(rows[-1]["status"], expected)
+                self.assertEqual(rows[-1]["completed_stages"], [r["event"].split(":",1)[1]
+                                 for r in rows if r["event"].startswith("stage:") and r["status"] == "OK"])
+                again = run_pipeline("failed-run", ledger, stages, isolate_stages=isolated,
+                                     max_unit_seconds=.15,
+                                     max_rss_bytes=64 * 1024 * 1024 if expected == "RSS_LIMIT" else None)
+                self.assertEqual(again["status"], expected)
+                self.assertEqual(len(recover_jsonl(ledger)), len(rows))
+
+    def test_cumulative_active_stage_time_survives_restart(self):
+        with tempfile.TemporaryDirectory() as td:
+            ledger = Path(td) / "timed.jsonl"
+            now = {"t": 0.0}
+            def clock(): return now["t"]
+            def stage(seconds, name):
+                def call():
+                    now["t"] += seconds
+                    return {"name": name}
+                return call
+            first = {"graph": stage(1200, "graph"), "fit": _stage_fit,
+                     "recommend": _stage_recommend, "truth": _stage_truth}
+            with self.assertRaises(SimulatedProcessStop):
+                run_pipeline("timed-run", ledger, first, max_wall_seconds=1800, max_unit_seconds=1800, clock=clock,
+                             checkpoint_hook=lambda name: (_ for _ in ()).throw(SimulatedProcessStop())
+                             if name == "graph" else None)
+            self.assertEqual(recover_jsonl(ledger)[0]["elapsed_seconds"], 1200)
+            second = {"graph": stage(1200, "graph"), "fit": stage(400, "fit"),
+                      "recommend": stage(20, "recommend"), "truth": _stage_truth}
+            with self.assertRaises(SimulatedProcessStop):
+                run_pipeline("timed-run", ledger, second, max_wall_seconds=1800,
+                             max_unit_seconds=1800, clock=clock,
+                             checkpoint_hook=lambda name: (_ for _ in ()).throw(SimulatedProcessStop())
+                             if name == "fit" else None)
+            self.assertEqual(recover_jsonl(ledger)[-1]["elapsed_total_seconds"], 1600)
+            third = {"graph": stage(1200, "graph"), "fit": stage(400, "fit"),
+                     "recommend": stage(20, "recommend"), "truth": stage(200, "truth")}
+            result = run_pipeline("timed-run", ledger, third, max_wall_seconds=1800,
+                                  max_unit_seconds=1800, clock=clock)
+            self.assertEqual(result["status"], "WALL_CAP")
+            events = recover_jsonl(ledger)
+            self.assertEqual(events[-1]["status"], "WALL_CAP")
+            self.assertGreaterEqual(events[-1]["cumulative_elapsed_seconds"], 1800)
 
     def test_isolated_stages_terminate_timeout_memory_exit_and_exception(self):
         cases = (
@@ -315,6 +389,7 @@ run_pipeline('killed-run',p,{'graph':graph,'fit':stop,'recommend':later,'truth':
             rows = recover_jsonl(ledger)
             self.assertEqual(rows[-1]["status"], "DISK_CAP")
             self.assertLessEqual(ledger.stat().st_size, 1100)
+            self.assertEqual(run_pipeline("r-cap", ledger, stages, max_ledger_bytes=1100)["status"], "DISK_CAP")
 
     def test_wall_limit_is_checked_at_stage_boundaries_and_recorded(self):
         with tempfile.TemporaryDirectory() as td:
@@ -331,6 +406,7 @@ run_pipeline('killed-run',p,{'graph':graph,'fit':stop,'recommend':later,'truth':
             self.assertEqual(result["status"], "WALL_CAP")
             rows = recover_jsonl(ledger)
             self.assertEqual(rows[-1]["status"], "WALL_CAP")
+            self.assertEqual(run_pipeline("r-time", ledger, stages, max_wall_seconds=1.0, clock=clock)["status"], "WALL_CAP")
 
     def test_unit_timeout_is_recorded_after_nonpreemptive_stage(self):
         with tempfile.TemporaryDirectory() as td:

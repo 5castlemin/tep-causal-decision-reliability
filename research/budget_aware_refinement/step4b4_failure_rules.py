@@ -47,17 +47,29 @@ def infra_retry_rule(status: str, prior_attempts: int) -> dict:
 
 
 def scm_composite(type_differences: dict[str, float | None]) -> dict:
-    """Build the equal-type SCM row only when all three paired values exist."""
+    """Shared production/mock equal-type SCM validator; never imputes missing values."""
     required = ("FN", "FP", "REV")
     if set(type_differences) != set(required):
         raise ValueError("expected exactly FN, FP, REV")
     if any(type_differences[k] is None for k in required):
-        return {"complete": False, "D_i": None,
+        return {"complete": False, "status": "INCOMPLETE", "D_i": None,
                 "reason": "incomplete_type_vector_no_complete_case_average"}
-    values = [float(type_differences[k]) for k in required]
-    if any(not __import__("math").isfinite(x) for x in values):
-        return {"complete": False, "D_i": None, "reason": "nonfinite_type_difference"}
-    return {"complete": True, "D_i": sum(values) / 3.0, "reason": None}
+    import math
+    import numbers
+    raw = [type_differences[k] for k in required]
+    if any(not isinstance(value, numbers.Real) or isinstance(value, bool) for value in raw):
+        return {"complete": False, "status": "NONFINITE", "D_i": None,
+                "reason": "invalid_type_difference"}
+    values = [float(value) for value in raw]
+    if any(not math.isfinite(x) for x in values):
+        return {"complete": False, "status": "NONFINITE", "D_i": None,
+                "reason": "nonfinite_type_difference"}
+    mean = math.fsum(values) / 3.0
+    if not math.isfinite(mean):
+        return {"complete": False, "status": "NONFINITE", "D_i": None,
+                "reason": "nonfinite_composite"}
+    return {"complete": True, "status": "OK", "D_i": mean,
+            "type_differences": values, "reason": None}
 
 
 def confirmation_action(*, q_eligible_target: int, q_eligible_observed: int,

@@ -127,6 +127,8 @@ def run_pipeline(
     rng_key: str = "mock-fixture-v1",
     config: object = None,
     input_sha256: str = "unbound-mock-input",
+    scm_id: str = "dev-mock-scm",
+    cohort: str = "development",
     max_wall_seconds: float = 1800.0,
     max_unit_seconds: float = 2.0,
     max_ledger_bytes: int = 100 * 1024 * 1024,
@@ -144,37 +146,60 @@ def run_pipeline(
     expected = ("graph", "fit", "recommend", "truth")
     if tuple(stages) != expected:
         raise ValueError(f"stages must be ordered exactly as {expected}")
-    if not run_id or not rng_key:
-        raise ValueError("run_id and rng_key must be non-empty")
+    if not run_id or not rng_key or not scm_id or cohort not in {"development", "confirmation"}:
+        raise ValueError("run_id, RNG key, SCM ID and valid cohort are required")
+    required_prefix = "dev-" if cohort == "development" else "rep-"
+    if not scm_id.startswith(required_prefix):
+        raise ValueError(f"SCM ID must use cohort namespace {required_prefix!r}")
     if max_wall_seconds <= 0 or max_unit_seconds <= 0 or max_ledger_bytes < 512:
         raise ValueError("time caps must be positive and ledger cap must reserve at least 512 bytes")
     prior = recover_jsonl(ledger)
     config_sha256 = hashlib.sha256(_canonical(config)).hexdigest()
-    bindings = {"rng_key": rng_key, "config_sha256": config_sha256, "input_sha256": input_sha256}
+    bindings = {"rng_key": rng_key, "config_sha256": config_sha256,
+                "input_sha256": input_sha256, "scm_id": scm_id, "cohort": cohort}
     if any(row.get("run_id") == run_id and row.get("rng_key") != rng_key for row in prior):
         raise LedgerConflict(f"run_id {run_id!r} was already used with another RNG key")
     def event(name: str, **fields: object) -> dict:
         return _event(run_id, name, **bindings, **fields)
     run_rows = [row for row in prior if row.get("run_id") == run_id]
+    if any(row.get("scm_id") == scm_id and row.get("cohort") == cohort
+           and row.get("run_id") != run_id for row in prior):
+        raise LedgerConflict("an independent SCM ID is already bound to another run ID")
     for row in run_rows:
+        if not row.get("event_sha256"):
+            raise LedgerConflict("legacy unversioned events cannot resume under the production contract")
         if any(row.get(k) != v for k, v in bindings.items()):
             raise LedgerConflict(f"run_id {run_id!r} has a different or unbound execution contract")
     names = [row.get("event") for row in run_rows]
-    stage_names = [name.split(":", 1)[1] for name in names if isinstance(name, str) and name.startswith("stage:")]
+    stage_rows = [row for row in run_rows if isinstance(row.get("event"), str) and row["event"].startswith("stage:")]
+    stage_names = [row["event"].split(":", 1)[1] for row in stage_rows]
     if stage_names != list(dict.fromkeys(stage_names)) or stage_names != list(expected[:len(stage_names)]):
         raise LedgerConflict("checkpoint stages are duplicated or out of order")
     if names.count("terminal") > 1 or ("terminal" in names and names[-1] != "terminal"):
         raise LedgerConflict("invalid terminal event placement")
-    done = {row["event"].split(":", 1)[1]: row for row in prior
-            if row.get("run_id") == run_id and row.get("event", "").startswith("stage:")}
+    stage_events = {row["event"].split(":", 1)[1]: row for row in stage_rows}
+    done = {stage: row for stage, row in stage_events.items() if row.get("status") == "OK"}
+    elapsed_used = math.fsum(float(row.get("elapsed_seconds", 0.0)) for row in stage_rows)
+    if not math.isfinite(elapsed_used) or elapsed_used < 0:
+        raise LedgerConflict("invalid cumulative stage elapsed time")
     terminal = next((r for r in prior if r.get("run_id") == run_id and r.get("event") == "terminal"), None)
     if terminal:
-        if terminal.get("status") == "OK" and stage_names != list(expected):
+        if terminal.get("status") == "OK" and list(done) != list(expected):
             raise LedgerConflict("successful terminal exists without every ordered stage")
-        if terminal.get("completed_stages") != stage_names:
-            raise LedgerConflict("terminal completed-stage list does not match ledger")
+        if terminal.get("completed_stages") != list(done):
+            raise LedgerConflict("terminal completed stages do not match successful checkpoints")
+        failed = next((row for row in reversed(stage_rows) if row.get("status") != "OK"), None)
+        if failed and terminal.get("status") != failed.get("status"):
+            raise LedgerConflict("terminal does not preserve the failed-stage status")
+        if terminal.get("status") == "OK" and terminal.get("result_sha256") != _result_digest(done, expected):
+            raise LedgerConflict("terminal result digest does not match successful stage outputs")
         return {"status": terminal["status"], "resumed": True, "completed_stages": list(done)}
-    start = clock()
+    failed = next((row for row in reversed(stage_rows) if row.get("status") != "OK"), None)
+    if failed:
+        status = failed["status"]
+        append_event(ledger, event("terminal", status=status, completed_stages=list(done),
+                                    cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
+        return {"status": status, "resumed": True, "completed_stages": list(done)}
     for stage in expected:
         if stage in done:
             continue
@@ -185,26 +210,32 @@ def run_pipeline(
             append_event(ledger, event("terminal", status=status,
                                         completed_stages=sorted(done)), max_bytes=max_ledger_bytes)
             return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
-        if clock() - start >= max_wall_seconds:
+        remaining = max_wall_seconds - elapsed_used
+        if remaining <= 0:
             status = "WALL_CAP"
             append_event(ledger, event("terminal", status=status,
-                                        completed_stages=sorted(done)), max_bytes=max_ledger_bytes)
+                                        completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
             return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
         unit_start = clock()
         try:
             if isolate_stages:
-                output, child_status = _run_isolated(stages[stage], max_unit_seconds, max_rss_bytes)
+                output, child_status, unit_seconds = _run_isolated(
+                    stages[stage], min(max_unit_seconds, remaining), max_rss_bytes
+                )
                 if child_status == "STAGE_EXCEPTION":
                     raise RuntimeError("isolated stage raised an exception")
                 if child_status:
-                    append_event(ledger, event(f"stage:{stage}", status=child_status), max_bytes=max_ledger_bytes - 256)
+                    elapsed_used += unit_seconds
+                    append_event(ledger, event(f"stage:{stage}", status=child_status,
+                                                elapsed_seconds=unit_seconds, elapsed_total_seconds=elapsed_used), max_bytes=max_ledger_bytes - 512)
                     append_event(ledger, event("terminal", status=child_status,
-                                                completed_stages=list(done)), max_bytes=max_ledger_bytes)
+                                                completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
                     return {"status": child_status, "resumed": bool(done), "completed_stages": list(done)}
             else:
                 output = stages[stage]()
             unit_seconds = clock() - unit_start
-            elapsed_total = clock() - start
+            elapsed_used += max(0.0, unit_seconds)
+            elapsed_total = elapsed_used
             rss = process_rss_bytes()
             cap_status = None
             if not isolate_stages and unit_seconds > max_unit_seconds:
@@ -217,17 +248,18 @@ def run_pipeline(
                 append_event(ledger, event(f"stage:{stage}", status=cap_status,
                                             elapsed_seconds=unit_seconds, elapsed_total_seconds=elapsed_total,
                                             observed_rss_bytes=rss, output=output),
-                             max_bytes=max_ledger_bytes - 256)
+                             max_bytes=max_ledger_bytes - 512)
                 append_event(ledger, event("terminal", status=cap_status,
-                                            completed_stages=sorted(done)), max_bytes=max_ledger_bytes)
+                                            completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
                 return {"status": cap_status, "resumed": bool(done), "completed_stages": sorted(done)}
-            row = event(f"stage:{stage}", status="OK", output=output)
+            row = event(f"stage:{stage}", status="OK", output=output,
+                        elapsed_seconds=max(0.0, unit_seconds), elapsed_total_seconds=elapsed_total)
             try:
                 append_event(ledger, row, max_bytes=max_ledger_bytes - 512)
             except OSError:
                 status = "DISK_CAP"
                 append_event(ledger, event("terminal", status=status,
-                                            completed_stages=sorted(done)), max_bytes=max_ledger_bytes)
+                                            completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
                 return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
             done[stage] = row
             if checkpoint_hook is not None:
@@ -236,12 +268,17 @@ def run_pipeline(
             raise
         except Exception as exc:
             status = {"fit": "RIDGE_FAIL", "recommend": "RECOMMEND_FAIL", "truth": "GT_EVAL_FAIL"}.get(stage, "STAGE_FAIL")
-            detail = {"status": status, "failure_type": type(exc).__name__, "reason": str(exc)[:300]}
+            unit_seconds = max(0.0, clock() - unit_start)
+            elapsed_used += unit_seconds
+            detail = {"status": status, "failure_type": type(exc).__name__, "reason": str(exc)[:300],
+                      "elapsed_seconds": unit_seconds, "elapsed_total_seconds": elapsed_used}
             append_event(ledger, event(f"stage:{stage}", **detail), max_bytes=max_ledger_bytes)
             append_event(ledger, event("terminal", status=status,
-                                        completed_stages=sorted(done)), max_bytes=max_ledger_bytes)
+                                        completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
             return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
-    append_event(ledger, event("terminal", status="OK", completed_stages=list(expected)),
+    append_event(ledger, event("terminal", status="OK", completed_stages=list(expected),
+                                cumulative_elapsed_seconds=elapsed_used,
+                                result_sha256=_result_digest(done, expected)),
                  max_bytes=max_ledger_bytes)
     return {"status": "OK", "resumed": any(row.get("run_id") == run_id for row in prior),
             "completed_stages": list(expected)}
@@ -249,10 +286,11 @@ def run_pipeline(
 
 def composite_scm_result(type_rows: Mapping[str, Mapping[str, object]]) -> dict:
     """Keep a paired SCM vector incomplete if any type or policy value is absent."""
+    from .step4b4_failure_rules import scm_composite
     required = ("FN", "FP", "REV")
     if set(type_rows) != set(required):
         return {"complete": False, "D_i": None, "reason": "missing_or_extra_type"}
-    diffs = []
+    differences = {}
     for kind in required:
         row = type_rows[kind]
         if row.get("status") != "OK":
@@ -263,11 +301,14 @@ def composite_scm_result(type_rows: Mapping[str, Mapping[str, object]]) -> dict:
         diff = float(vals[0]) - float(vals[1])
         if not math.isfinite(diff):
             return {"complete": False, "D_i": None, "status": "NONFINITE", "reason": f"invalid_difference_{kind}"}
-        diffs.append(diff)
-    mean = math.fsum(diffs) / 3.0
-    if not math.isfinite(mean):
-        return {"complete": False, "D_i": None, "status": "NONFINITE", "reason": "invalid_composite"}
-    return {"complete": True, "status": "OK", "D_i": mean, "type_differences": diffs}
+        differences[kind] = diff
+    return scm_composite(differences)
+
+
+def _result_digest(done: Mapping[str, Mapping[str, object]], expected) -> str:
+    payload = [{"stage": name, "output_sha256": done[name].get("output_sha256")}
+               for name in expected]
+    return hashlib.sha256(_canonical(payload)).hexdigest()
 
 
 def _worker(conn, stage):
@@ -345,7 +386,7 @@ def _run_isolated(stage, timeout: float, rss_cap: int | None):
         if proc.is_alive() and hasattr(proc, "kill"):
             proc.kill()
             proc.join()
-        return None, failure
+        return None, failure, max(0.0, time.monotonic() - started)
     proc.join()
     if message is None:
         try:
@@ -355,7 +396,7 @@ def _run_isolated(stage, timeout: float, rss_cap: int | None):
             message = None
     parent.close()
     if message is None:
-        return None, "CHILD_EXIT"
+        return None, "CHILD_EXIT", max(0.0, time.monotonic() - started)
     if message[0] == "EXCEPTION":
-        return None, "STAGE_EXCEPTION"
-    return message[1], None
+        return None, "STAGE_EXCEPTION", max(0.0, time.monotonic() - started)
+    return message[1], None, max(0.0, time.monotonic() - started)

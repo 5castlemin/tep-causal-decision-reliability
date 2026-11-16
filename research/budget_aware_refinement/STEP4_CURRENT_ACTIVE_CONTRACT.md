@@ -16,9 +16,13 @@ Status: **NOT FROZEN**. This page is the current authority for Step 4 planning; 
 
 ## IMPLEMENTED / MOCK-VALIDATED / NOT IMPLEMENTED
 
-Implemented and fixture-validated: deterministic mock Graph→Ridge→recommendation→truth-stub flow, recoverable event ledger, event/output hashes, run/config/input/RNG binding, finite-value composite checks, process-isolated stage timeout, and deterministic resume from durable stage outputs.
+Implemented and fixture-validated: deterministic mock Graph→Ridge→recommendation→truth-stub flow; durable event/output hashes; run/config/input/RNG/SCM/cohort binding; failed-stage terminal requery; cumulative active stage wall-time accounting per SCM (downtime excluded); finite-value composite checks; isolated unit timeout; and deterministic resume from durable stage outputs. A structure-only proposal interface now implements uniform stratum assignment, topology/task construction, Q-common eligibility and error recipes. A Step 3 paired recommendation/GT-evaluation adapter is validated on fixed fixtures only.
 
-Not implemented: production topology/Q-common proposal runner; independent SCM coefficient/noise/data generation; production GT evaluator; production result analysis and study-scale orchestration. The truth stub returns `evaluation_performed=false` and null outcomes; it is not a successful evaluation.
+Not implemented: coefficient/noise/observation generation; production SCM construction and duplicate admission; end-to-end study orchestration; production execution against newly generated SCMs; and study-scale cohort runtime accounting. The existing generation spec leaves sign assignment, duplicate definition/admission and numeric eligibility thresholds unresolved. The GT adapter reuses Step 3 code but has only fixed-fixture validation; no real Step 4 SCM evaluation was performed. The truth stub returns `evaluation_performed=false` and null outcomes; it is not a successful evaluation.
+
+Resource enforcement: spawned child unit timeout is enforced by termination; RSS uses sampled kill-on-detection and can overshoot; JSONL storage is capped before append. The 1,800-second cap accumulates active per-SCM stage wall time across restarts and excludes downtime. No cohort-wide elapsed-time cap is configured. These are mock-runner behaviors, not frozen production resource limits.
+
+Reproducibility runtime proposal: Python 3.11 in CI and exact dependency pins `numpy==2.4.3`, `pandas==3.0.1`, `networkx==3.6.1`. The current local fixture runs used these dependency versions under Python 3.14; compatibility and full-suite result on the pinned Python 3.11 runtime remain gated on the new HEAD GitHub Actions run. BLAS/native numerical differences can still affect exact floating-point reproduction.
 
 ## SUPERSEDED PROPOSALS
 
