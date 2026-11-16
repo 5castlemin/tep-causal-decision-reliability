@@ -20,7 +20,7 @@ An OS process lock serializes one cohort orchestrator; SQLite serializes admissi
 
 The new tests cover balanced delta and replay, duplicate equation rejection, same-DAG/different-equation admission, immutable binding conflict, two-process same-proposal registration, rejected proposal denominators, target/cap shortfall, post-admission interruption/restart, post-terminal/pre-registry interruption recovery, and preservation of a failed eligible SCM without silent replacement. Existing pipeline tests continue to exercise explicit fixed-equation/noise evaluation and child-process restart; these tests do not constitute study data.
 
-Local verification on Python 3.11.15: cohort registry tests **9 passed**; full `unittest discover` **249 passed**; `scripts/check_research_state.py`, `scripts/check_research_docs.py --base origin/main`, and `git diff --check` passed. GitHub Actions run #227 passed all steps on HEAD `137c021e31d19168a11758eeeeb826cfc7077a84`, including the Linux frozen-asset check and document sync. The Windows `scripts/check_asset_manifest.py` check fails because its seven frozen JSON configs are checked out with CRLF while the recorded hashes match LF-normalized bytes and Git blobs; no frozen graph/config path was modified. A documentation/status update is now being validated on the next HEAD; Self-Review will be posted against that exact HEAD after its CI completes.
+Local Python 3.11.15 verification: cohort registry tests **9 passed**; production integration tests **11 passed**; full `unittest discover` **249 passed** on implementation commit `137c021e31d19168a11758eeeeb826cfc7077a84`. On final HEAD `66b4459dc545a3c61ca4d6ca4e07f64b52989dfb`, the research-state validator, production-manifest hash test, and `git diff --check` passed, and GitHub Actions run #229 passed the full workflow including Linux frozen-asset validation and document synchronization. The Windows `scripts/check_asset_manifest.py` raw-byte check reports seven frozen JSON configs due to CRLF checkout; LF-normalized hashes and Git blobs match recorded digests. No frozen graph/config path was modified. Self-Review for HEAD `66b4459dc545a3c61ca4d6ca4e07f64b52989dfb` is posted in PR #38. No study cohort was generated.
 
 ## Generator and evaluation contract
 
@@ -28,9 +28,9 @@ The production configuration retains the existing signed linear DAG equations: e
 
 ## Remaining Step 4C-2 gates
 
-- Run and review the final Python 3.11 GitHub Actions workflow and manifest validation on the resulting HEAD.
+- Step 4C-1 implementation tests and CI are complete on fixed fixtures; this does not freeze the Step 4 research protocol.
 - Freeze the precise generator/runner settings and hash scope only after code/document reconciliation in Step 4C-2.
 - Qualify study-scale wall time/storage with realistic production load; current resource evidence is fixed-fixture only and RSS remains sampled kill-on-detection.
 - Do not generate development or replication cohorts until the Step 4C-2 freeze.
 
-Step 4C-1 implementation can be considered complete after the above repository checks pass; Step 4 remains **IN_PROGRESS / NOT FROZEN**.
+Step 4C-1 is **DONE for fixed-fixture implementation/readiness**. Step 4 remains **IN_PROGRESS / NOT FROZEN**; Step 4C-2 must complete study-scale resource qualification and final code/settings freeze before any cohort generation.
