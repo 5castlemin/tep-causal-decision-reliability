@@ -90,7 +90,7 @@ class Step4C1ProductionIntegrationTests(unittest.TestCase):
         for relative, expected in manifest["artifacts"].items():
             path = root / relative
             payload = path.read_bytes()
-            if path.suffix in {".py", ".md", ".json"}:
+            if path.suffix in {".py", ".md", ".json", ".txt", ".toml", ".yml", ".yaml"}:
                 payload = payload.replace(b"\r\n", b"\n")
             self.assertEqual(hashlib.sha256(payload).hexdigest(), expected, relative)
 
