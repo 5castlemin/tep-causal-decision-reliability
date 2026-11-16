@@ -24,6 +24,10 @@ This operational handoff does not amend the frozen Step 4 contract. It is outsid
 5. Use a dedicated output root outside the repository, for example `C:\DAT_STEP5_RUNS\step5-development-v1`. Confirm available space is at least the configured 1 GiB floor and the root is not shared with any other cohort.
 6. Record the approved commit/tree, manifest/settings hashes, environment fingerprint, seed, cohort name, and output path in the execution ticket before launch.
 
+### Post-merge revision binding
+
+After authorized integration, record the main commit and tree separately from the content manifest, then re-verify the manifest, settings hash, pinned runtime, and clean worktree at that exact main revision. A merge commit may have a different commit SHA while preserving the frozen source tree; if the tree is unchanged, record the new commit/tree binding and rerun readiness. If a merge changes only files outside the frozen content manifest, review and record that integration diff before binding the resulting tree. If any manifested source, setting, RNG protocol, evaluator, dependency pin, or active contract content changed, stop: the old freeze cannot be reused and a new versioned freeze review is required. Do not infer content equivalence from a merge label or commit message.
+
 ## Launch and resume
 
 Only after the preflight and separate authorization, run:
