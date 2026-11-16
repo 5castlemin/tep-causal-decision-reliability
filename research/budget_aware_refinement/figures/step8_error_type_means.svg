@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#17212b}.small{font-size:12px}.axis{stroke:#637381;stroke-width:1}.grid{stroke:#dbe2e8;stroke-width:1}.muted{fill:#52616b}.title{font-size:22px;font-weight:700}.subtitle{font-size:13px}.label{font-size:14px;font-weight:600}</style>
+<text x="40" y="38" class="title">오류 유형별 SCM 내 평균 차이</text>
+<text x="40" y="62" class="subtitle muted">Each SCM contributes one paired difference per type; types are repeated within SCM, not independent samples</text>
+<line x1="100.0" y1="105" x2="100.0" y2="375" class="axis"/>
+<text x="100.0" y="397" text-anchor="middle" class="small">0.00</text>
+<line x1="287.5" y1="105" x2="287.5" y2="375" class="grid"/>
+<text x="287.5" y="397" text-anchor="middle" class="small">0.01</text>
+<line x1="475.0" y1="105" x2="475.0" y2="375" class="grid"/>
+<text x="475.0" y="397" text-anchor="middle" class="small">0.02</text>
+<line x1="662.5" y1="105" x2="662.5" y2="375" class="grid"/>
+<text x="662.5" y="397" text-anchor="middle" class="small">0.03</text>
+<line x1="850.0" y1="105" x2="850.0" y2="375" class="grid"/>
+<text x="850.0" y="397" text-anchor="middle" class="small">0.04</text>
+<text x="55" y="167" class="label">FN</text>
+<rect x="100" y="138" width="715.4" height="14" fill="#64748b"/>
+<text x="823.4" y="149" class="small">0.0382</text>
+<rect x="100" y="168" width="511.2" height="14" fill="#0f766e"/>
+<text x="619.2" y="179" class="small">0.0273</text>
+<text x="55" y="257" class="label">FP</text>
+<rect x="100" y="228" width="715.4" height="14" fill="#64748b"/>
+<text x="823.4" y="239" class="small">0.0382</text>
+<rect x="100" y="258" width="511.2" height="14" fill="#0f766e"/>
+<text x="619.2" y="269" class="small">0.0273</text>
+<text x="55" y="347" class="label">REV</text>
+<rect x="100" y="318" width="715.4" height="14" fill="#64748b"/>
+<text x="823.4" y="329" class="small">0.0382</text>
+<rect x="100" y="348" width="511.2" height="14" fill="#0f766e"/>
+<text x="619.2" y="359" class="small">0.0273</text>
+<rect x="560" y="420" width="12" height="12" fill="#64748b"/><text x="578" y="431" class="small">Step 5 development</text><rect x="730" y="420" width="12" height="12" fill="#0f766e"/><text x="748" y="431" class="small">Step 6 replication</text>
+<text x="100" y="455" class="small muted">Mean Dtype = Global regret − Task-Focused regret. No inferential type ranking is made.</text>
+</svg>

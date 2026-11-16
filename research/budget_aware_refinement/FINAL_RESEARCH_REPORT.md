@@ -32,6 +32,8 @@ Step 6에서는 두 정책의 최종 그래프가 달라도 선택한 조작 수
 
 초기 지표 연구의 저장 결과는 이후 정책 연구의 결과로 소급해서 해석하지 않는다. 초기 경로 지표 분석에서 당시 확인 v1의 경로 추가 비교는 방향성 지지를 얻었으나, 후속 이론평가·개발 모형 비교에서 안정적인 증분 정보는 확인되지 않았다. 원래 질문의 지표 간 우열은 미확립이다.
 
+이 문제 설정은 결정론적 지표 비교와 정책 손실을 연결하는 선행 흐름과 맞닿아 있다. Causal discovery 평가에는 downstream causal risk를 다루는 접근이 있고 ([Eigenmann et al., 2020](https://proceedings.mlr.press/v124/eigenmann20a.html)), Bayesian graph discovery를 treatment-effect estimation에서 벤치마크한 연구도 있다 ([Emezue et al., 2023](https://arxiv.org/abs/2307.04988)). Predict-then-optimize 연구는 예측 손실과 결정 손실의 차이를 명시한다 ([Elmachtoub & Grigas, 2022](https://doi.org/10.1287/mnsc.2020.3922)). DAG 학습의 탐색·동치류 구조에 대한 배경은 [Squires & Uhler (2023)](https://doi.org/10.1007/s10208-022-09581-9)를 참조한다. 본 연구는 이 흐름을 대체하거나 새 이론으로 확장하지 않고, 알려진 오류 후보의 제한 예산 ordering이라는 좁은 실험 구성에 초점을 둔다. 자세한 비교와 서지 정보는 [관련 연구 검토](RELATED_WORK_AND_NOVELTY.md)를 참조한다.
+
 ## 3. 연구 질문과 추정 대상
 
 ### 원래 구조 지표 질문
@@ -43,6 +45,8 @@ Step 6에서는 두 정책의 최종 그래프가 달라도 선택한 조작 수
 동일한 SCM, 간접 전용 과제, 동일 오류 후보 유형, 동일 학습 자료·조작 후보·목표·비용·DAG 제약, 예산 B=1 조건에서 Task-Focused 수정 순서가 ID-ordered Global 순서와 비교해 정답 SCM 기준 regret 차이를 어떻게 보이는가?
 
 유형별 차이는 `D_i,type = Regret_Global,type − Regret_TaskFocused,type`, SCM 단위 요약은 `D_i=(D_i,FN+D_i,FP+D_i,REV)/3`다. 양수는 이 설계에서 Task-Focused의 regret이 낮음을 뜻하고, 음수는 Global 쪽 regret이 낮음을 뜻한다. SCM이 독립 분석 단위다. 한 SCM의 세 오류 유형은 반복 측정이며 표본 수를 세 배로 늘리지 않는다.
+
+각 유형별 regret은 고정 action grid에서 정책이 선택한 조작의 GT loss와 그 grid 안에서 최선인 GT loss의 차이다. `Regret(π)=L_GT(k_π)−min_{k∈K}L_GT(k)`. 따라서 regret은 비음수이며, 양·음 값이 가능한 것은 두 정책 regret의 대응 차이 `D_i,type`이다. `D_i`는 standard-loss scale의 기술적 평균이지 제조 비용 절감률이 아니다.
 
 ## 4. 합성 인과환경과 평가 방법
 
@@ -103,6 +107,12 @@ Step 5 원시 자료는 확인 코호트 실행 전에 읽기 전용으로 독�
 
 그래프가 달라진 빈도가 regret 차이 빈도보다 훨씬 크다. 이 결과는 구조 정확도와 의사결정 성능이 동일한 개념이 아님을 보여주는 제한된 합성 사례다. “같은 전체 구조 점수에서 결정 손실이 달라질 수 있다”는 초기 synthetic controlled-error 결과와 논리적으로 연결되지만, Step 5–6 자체는 전체 구조 점수 동점 쌍을 비교하는 실험이 아니다.
 
+전이 빈도를 보면 구조 차이만 발생하고 선택된 `k`와 regret이 같았던 경우가 Step 6 FN 62/200, FP 106/200, REV 68/200이었다. `k`와 regret이 함께 달라진 경우는 각각 14, 3, 25건이었다. 아래 도식은 각 단계에서 차이가 발생한 빈도를 나란히 보여준다.
+
+![Step 6 그래프, 선택 k, regret 차이 빈도](figures/step8_graph_k_regret_transition.svg)
+
+*그림 1. 각 수치는 200 SCM 중 해당 정책 출력 차이가 있었던 수다. 서로 다른 그래프 수가 조작 차이 수와 같지 않으며, 이 값은 특정 Step 6 구성의 빈도다.*
+
 ## 9. 두 코호트 비교와 이질성
 
 | 지표 | Step 5 개발 n=64 | Step 6 재현 n=200 |
@@ -119,6 +129,18 @@ Step 5 원시 자료는 확인 코호트 실행 전에 읽기 전용으로 독�
 
 Step 5 상위 두 사례의 차이 합계 비중은 69.4%, Step 6은 29.4%였다. 재현 코호트에서도 극단값 민감성이 남지만 개발보다 덜 집중됐다. 이를 결과 선택이나 표본 제거의 근거로 쓰지 않는다.
 
+![두 코호트의 SCM별 regret 차이 분포](figures/step8_scm_difference_distribution.svg)
+
+*그림 2. 각 점은 한 SCM이며 0값도 모두 표시했다. x방향 jitter는 겹친 점을 보이기 위한 display-only 처리다. 검은 마름모는 산술평균이다. 개발/재현 코호트는 별도이므로 점을 합쳐 하나의 추론 표본으로 세지 않는다.*
+
+![오류 유형별 평균 paired 차이](figures/step8_error_type_means.svg)
+
+*그림 3. FN/FP/REV 평균 차이의 기술 비교다. 오류 유형은 SCM 안에서 반복 측정이므로 각 막대 차이를 독립 표본 효과로 검정하지 않았다.*
+
+![극단값 사전 지정 민감도](figures/step8_extreme_sensitivity.svg)
+
+*그림 4. 전체 SCM 평균과 가장 큰 D 한/두 건 제외 민감도다. 전 코호트 평균이 일차 기술량으로 남고 제외 막대는 대체 추정량이 아니다.*
+
 ## 10. 주장 가능한 발견
 
 - 이 합성 모집단과 고정된 수정 규칙에서 정책별 그래프 차이는 종종 발생했지만, 대개 같은 과제 Action과 같은 `k`로 이어졌다.
@@ -128,6 +150,8 @@ Step 5 상위 두 사례의 차이 합계 비중은 69.4%, Step 6은 29.4%였다
 - 이 설계는 특정 Global 기준(노드 ID 순서), strict Q-common 모집단, indirect-only, B=1에 조건부다.
 
 이 증거로 Task-Focused가 일반적으로 우월하다거나, 특정 오류 유형이 늘 더 중요한지, 어떤 그래프 지표가 가장 낫다고 주장할 수 없다. Option B는 확인적 우월성·동등성 주장을 보류한다.
+
+대표 사례의 원시 이벤트 대조는 [CASE_STUDY_POSITIVE_NEGATIVE.md](CASE_STUDY_POSITIVE_NEGATIVE.md)에 기록했다. Step 6 proposal 238에서는 Task-Focused가 FN 및 REV에서 과제 경로 후보를 선택해 `k=−1`과 regret 0을 얻었고 Global은 `k=+1`, regret 0.914621이었다. FP에서는 양쪽이 같았다. 반대로 proposal 606의 REV에서는 Task-Focused가 과제 경로 간선을 복구했지만 `k=−1` 및 regret 0.434361이 되었고, Global은 off-route 방향을 반전한 뒤 `k=+1`, regret 0을 얻었다. 이는 정책 점수와 개입 성과가 기계적으로 일치하지 않는 실제 원시 반례다. 두 사례는 설명용이지 대표 표본이 아니다.
 
 ## 11. 한계
 
@@ -157,3 +181,5 @@ Step 5 상위 두 사례의 차이 합계 비중은 69.4%, Step 6은 29.4%였다
 - Step 5: `research/budget_aware_refinement/step5_development_v1/STEP5_DEVELOPMENT_EXECUTION_REPORT.md`, `STEP5_DEVELOPMENT_REGRET_ANALYSIS.md`, `STEP5_DEVELOPMENT_ANALYSIS_SUMMARY.json`, `STEP5_DEVELOPMENT_SCM_SUMMARY.csv`
 - Step 6: `research/budget_aware_refinement/step6_confirmation_v1/STEP6_CONFIRMATION_EXECUTION_REPORT.md`, `STEP6_CONFIRMATION_REGRET_ANALYSIS.md`, `STEP6_CONFIRMATION_ANALYSIS_SUMMARY.json`, `STEP6_CONFIRMATION_SCM_SUMMARY.csv`, `STEP5_VS_STEP6_REPLICATION_COMPARISON.md`
 - Methods context: `research/budget_aware_refinement/LITERATURE_NOVELTY_MATRIX.md` (Smart Predict, then Optimize; DOI: 10.1287/mnsc.2020.3922)
+- Step 8 심사·사례·선행연구: `FINAL_SCIENTIFIC_REVIEW.md`, `CASE_STUDY_POSITIVE_NEGATIVE.md`, `RELATED_WORK_AND_NOVELTY.md`, `FINAL_CLAIM_AUDIT.md`.
+- Figure inventory and generation: `FIGURE_SOURCES.md`; renderer: `scripts/render_step8_figures.py`.

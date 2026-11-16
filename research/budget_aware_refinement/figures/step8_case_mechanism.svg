@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="660" viewBox="0 0 1120 660">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#17212b}.small{font-size:12px}.axis{stroke:#637381;stroke-width:1}.grid{stroke:#dbe2e8;stroke-width:1}.muted{fill:#52616b}.title{font-size:22px;font-weight:700}.subtitle{font-size:13px}.label{font-size:14px;font-weight:600}</style>
+<text x="40" y="38" class="title">대표 SCM에서 편집 순서와 조작 결정</text>
+<text x="40" y="62" class="subtitle muted">Illustrative cases from Step 6 raw ledgers; task-path schematic omits non-task edges and is not a full DAG</text>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#334155"/></marker><marker id="orange" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c2410c"/></marker></defs>
+<rect x="35" y="105" width="1050" height="245" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="58" y="136" class="label">238 · Task-Focused 사례, FN</text><text x="58" y="157" class="small muted">V04 → V02 · two indirect routes</text>
+<line x1="170" y1="230" x2="250" y2="310" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="250" y1="310" x2="330" y2="230" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="170" y1="230" x2="250" y2="150" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="250" y1="150" x2="330" y2="230" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<circle cx="170" cy="230" r="24" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="170" y="234" text-anchor="middle" class="small">V04 · X</text>
+<circle cx="250" cy="310" r="24" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="250" y="314" text-anchor="middle" class="small">V03</text>
+<circle cx="330" cy="230" r="24" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="330" y="234" text-anchor="middle" class="small">V02 · Y</text>
+<circle cx="250" cy="150" r="24" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="250" y="154" text-anchor="middle" class="small">V06</text>
+<rect x="420" y="189" width="625" height="45" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<text x="438" y="209" class="small">Global restores V03→V01 (off task)</text><text x="438" y="226" class="small" fill="#64748b">k=+1 · GT regret 0.914621</text>
+<rect x="420" y="246" width="625" height="45" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+<text x="438" y="266" class="small">Task-Focused restores V04→V03 (task route)</text><text x="438" y="283" class="small" fill="#0f766e">k=−1 · GT regret 0</text>
+<rect x="35" y="390" width="1050" height="245" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="58" y="421" class="label">606 · Global 사례, REV</text><text x="58" y="442" class="small muted">V03 → V02 · two indirect routes</text>
+<line x1="170" y1="515" x2="250" y2="465" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="250" y1="465" x2="330" y2="515" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="170" y1="515" x2="250" y2="565" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<line x1="250" y1="565" x2="330" y2="515" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<circle cx="170" cy="515" r="24" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="170" y="519" text-anchor="middle" class="small">V03 · X</text>
+<circle cx="250" cy="465" r="24" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="250" y="469" text-anchor="middle" class="small">V04</text>
+<circle cx="330" cy="515" r="24" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="330" y="519" text-anchor="middle" class="small">V02 · Y</text>
+<circle cx="250" cy="565" r="24" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="250" y="569" text-anchor="middle" class="small">V06</text>
+<rect x="420" y="474" width="625" height="45" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+<text x="438" y="494" class="small">Global reverses V01→V04</text><text x="438" y="511" class="small" fill="#64748b">k=+1 · GT regret 0</text>
+<rect x="420" y="531" width="625" height="45" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+<text x="438" y="551" class="small">Task-Focused reverses V06→V03 → V03→V06</text><text x="438" y="568" class="small" fill="#0f766e">k=−1 · GT regret 0.434361</text>
+<text x="40" y="650" class="small muted">Selected k is the same action variable with a different standardized level. Regret is relative to the fixed candidate grid; cases are explanatory, not representative.</text>
+</svg>
