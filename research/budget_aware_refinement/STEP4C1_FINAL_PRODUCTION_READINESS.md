@@ -44,7 +44,7 @@ The full path was run only against one preselected topology and explicit fixed e
 - A separate child process was forcibly terminated immediately after the SCM, policy-graph, recommendation, and GT-evaluation checkpoints. Fresh processes resumed each ledger, and the terminal result SHA matched the uninterrupted fixed-fixture run in all four cases. This validates the integrated deterministic test fixture and existing durable stage outputs; it does not validate cohort-scale orchestration.
 - Candidate-stage checkpoints are bound to run/SCM/cohort/config/input identities. Cross-ledger equation deduplication and a cohort-wide accepted-ID registry remain incomplete.
 - Resource checks are inherited from the mock runner: unit timeout uses child termination; RSS is sampled and killed on detection with possible overshoot; ledger cap is checked before append; total active per-SCM stage wall time excludes downtime. These are not strict OS RSS limits or a cohort-wide wall-clock budget.
-- Full regression, exact frozen-asset verification, Python 3.11 CI on this HEAD, and Self-Review are pending.
+- Full Python 3.11 unittest discovery passed locally: 240 tests. Exact frozen-asset verification, Python 3.11 CI on this HEAD, and Self-Review are pending.
 - Historical v1–v4 reports remain as evidence of superseded task definitions; the active contract and this report define the strict current task. Historical raw results are not rewritten.
 
 Step 4C-1 remains IN_PROGRESS. Step 4 overall remains IN_PROGRESS / NOT FROZEN. Do not start Step 5 or generate the 64/200 cohorts until Step 4C-2 freezes implementation, settings, duplicate policy, durable resume, and final hash manifests.
