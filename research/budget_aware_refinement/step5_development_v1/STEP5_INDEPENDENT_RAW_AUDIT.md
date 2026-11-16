@@ -23,7 +23,7 @@ For each SCM and type, the auditor recomputed `Regret_Global - Regret_TaskFocuse
 - `development-proposal-000059`: recomputed `D_i=0.4195602263615929`; global regrets FN/FP/REV = 0/0/1.2586806790847787, Task-Focused = 0/0/0.
 - `development-proposal-000114`: recomputed `D_i=0.23137325471964898`; global regrets FN/FP/REV = 0.34705988207947347/0/0.34705988207947347, Task-Focused = 0/0/0.
 
-No Step 5 raw files were changed. The raw directory was rehashed after analysis and still matched the inventory. These checks validate record arithmetic and binding consistency; they do not independently reimplement the analytic SCM truth evaluator from first principles. The frozen evaluator and its fixture validation remain the basis for evaluator correctness.
+No Step 5 raw files were changed. The raw directory was rehashed after analysis and still matched the inventory. In addition to the ledger-level audit, an independent forward-substitution implementation recomputed the analytic intervention means, standardized candidate losses, oracle candidate, and regret for all 64 × 3 × 2 policy/type evaluations. Maximum absolute discrepancies from the stored means, losses, and regrets were all exactly `0.0`. The same independent check was later applied to all 200 Step 6 SCMs (1,200 policy/type evaluations) before comparative reporting.
 
 ## Step 6 analysis rules fixed before execution
 
