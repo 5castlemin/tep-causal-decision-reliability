@@ -1,5 +1,9 @@
 # 실험 등록부
 
+## Current Step 4 disposition (2026-11-16)
+
+Step 4 protocol and execution contract are FROZEN; this is not a completed research experiment. Step 4A/4B feasibility records and Step 4C fixed-fixture qualification are structural/software evidence only. Step 5 development cohort (64 eligible admissions; cap 386) and Step 6 held-out replication cohort (200 eligible admissions; cap 1,104) are NOT RUN. PR #38 remains Draft/unmerged; no study cohort is authorized by the freeze record.
+
 BAR-01의 제한 개발 파일럿만 실행됐다. 나머지는 계획이다. 실행 단위의 DAG/SCM·seed·훈련/검증·초기 오류·후보/거부/수정 장부·정책 및 비용·실패·원시 do·코드/데이터 hash를 별도 기록한다. 예산은 Step4 전 고정하지 않는다.
 
 | ID | 조건 | 상태 | 선행 조건 |

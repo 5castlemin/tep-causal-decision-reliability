@@ -1,0 +1,397 @@
+{
+  "decision_regret_analysis": false,
+  "independent_scm_n": 0,
+  "limitations": [
+    "one fixed proposal key per stratum",
+    "three timing repeats are not tail guarantees",
+    "proposal keys are a separate resource fixture namespace",
+    "no coefficient, noise, observation, effect, or regret was drawn"
+  ],
+  "master_seed": 20261116,
+  "purpose": "fixed_outcome_blind_proposal_resource_microbenchmark",
+  "repetitions": 3,
+  "rows": [
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.004239299974869937,
+      "independent_q_check_median_seconds": 0.0035216999822296202,
+      "node_count": 6,
+      "proposal_id": "resource-cost-chain_mediation-n6",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 24,
+        "REV": 0
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "chain_mediation",
+      "topology_only_median_seconds": 0.00022170000011101365,
+      "topology_seed_sha256": "f024c5878df49c2126c3d4f6c59cacbf4871387dcb8ddd9941365ac57ec5e8ae"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.009921199991367757,
+      "independent_q_check_median_seconds": 0.009883500053547323,
+      "node_count": 7,
+      "proposal_id": "resource-cost-chain_mediation-n7",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 56,
+        "REV": 0
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "chain_mediation",
+      "topology_only_median_seconds": 0.0002674999996088445,
+      "topology_seed_sha256": "748c2842fcdba5a54c4b70a2d831af07ea2c19e7803dc8db483de81d04687a8c"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.024007700034417212,
+      "independent_q_check_median_seconds": 0.01997809996828437,
+      "node_count": 8,
+      "proposal_id": "resource-cost-chain_mediation-n8",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 99,
+        "REV": 0
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "chain_mediation",
+      "topology_only_median_seconds": 0.0005918999668210745,
+      "topology_seed_sha256": "f7772b84954250b02e64231549d65b18563b04cefa82aee09ea63aab6f4f7b3b"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.04263039998477325,
+      "independent_q_check_median_seconds": 0.03659969998989254,
+      "node_count": 9,
+      "proposal_id": "resource-cost-chain_mediation-n9",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 154,
+        "REV": 0
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "chain_mediation",
+      "topology_only_median_seconds": 0.0007017999887466431,
+      "topology_seed_sha256": "553d6722e84cf8fd4b7ad40035140710d6a21f5902bdd860b63b9cf7b81a9825"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.07416849996661767,
+      "independent_q_check_median_seconds": 0.07450849999440834,
+      "node_count": 10,
+      "proposal_id": "resource-cost-chain_mediation-n10",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "accepted",
+      "q_recipe_counts": {
+        "FN": 21,
+        "FP": 220,
+        "REV": 8
+      },
+      "rejection_reason": null,
+      "study_scm": false,
+      "template": "chain_mediation",
+      "topology_only_median_seconds": 0.0009745000279508531,
+      "topology_seed_sha256": "012a0e07a571490fc675bb8a7697a20844b749e2d0942cd700e6d19cc375da8a"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.011760200024582446,
+      "independent_q_check_median_seconds": 0.00944669998716563,
+      "node_count": 6,
+      "proposal_id": "resource-cost-fork_branch-n6",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 81,
+        "REV": 0
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "fork_branch",
+      "topology_only_median_seconds": 0.0002856000210158527,
+      "topology_seed_sha256": "4b4586df09ead7aa8953ea2b8aa848210b7cacaf4d3da6dbff0b2c562cfc76c5"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.022346000012475997,
+      "independent_q_check_median_seconds": 0.02086699998471886,
+      "node_count": 7,
+      "proposal_id": "resource-cost-fork_branch-n7",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 176,
+        "REV": 0
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "fork_branch",
+      "topology_only_median_seconds": 0.00021999998716637492,
+      "topology_seed_sha256": "8d0b8584efe640b5f721faf06c681cf3a970e866409de21d1afd97ea2d91d246"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.03980810003122315,
+      "independent_q_check_median_seconds": 0.04138259997125715,
+      "node_count": 8,
+      "proposal_id": "resource-cost-fork_branch-n8",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 262,
+        "REV": 0
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "fork_branch",
+      "topology_only_median_seconds": 0.0004360000020824373,
+      "topology_seed_sha256": "85d4076c42f6ae9d2cec078c5ddf08a5c62c7d970a03ffeab729fc8123c28eeb"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.0883822999894619,
+      "independent_q_check_median_seconds": 0.10401629999978468,
+      "node_count": 9,
+      "proposal_id": "resource-cost-fork_branch-n9",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 519,
+        "REV": 1
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "fork_branch",
+      "topology_only_median_seconds": 0.0005294000147841871,
+      "topology_seed_sha256": "0ab70956afbb762efc8e8e2d6c8d0a23bba8c49e4a674f033a2dc1024887b4ab"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.14722080004867166,
+      "independent_q_check_median_seconds": 0.13333959999727085,
+      "node_count": 10,
+      "proposal_id": "resource-cost-fork_branch-n10",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "accepted",
+      "q_recipe_counts": {
+        "FN": 9,
+        "FP": 497,
+        "REV": 6
+      },
+      "rejection_reason": null,
+      "study_scm": false,
+      "template": "fork_branch",
+      "topology_only_median_seconds": 0.001191799994558096,
+      "topology_seed_sha256": "a6ee16c0a376eec7c414cdd3b751304e6b2145c145ade24cc411c8c30ad4f977"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.02404370001750067,
+      "independent_q_check_median_seconds": 0.022807299974374473,
+      "node_count": 6,
+      "proposal_id": "resource-cost-observed_common_cause-n6",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 70,
+        "REV": 2
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "observed_common_cause",
+      "topology_only_median_seconds": 0.0005290000117383897,
+      "topology_seed_sha256": "aae63b5688f5e864af2aac604139f937c60c9815b723cca4a8616330b3aa79d1"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.05325779999839142,
+      "independent_q_check_median_seconds": 0.05256189999636263,
+      "node_count": 7,
+      "proposal_id": "resource-cost-observed_common_cause-n7",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 145,
+        "REV": 2
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "observed_common_cause",
+      "topology_only_median_seconds": 0.0005517000099644065,
+      "topology_seed_sha256": "3ea6b1febea5a72f10200734f1ee3297a454f51c3e0c32bd0f00812b4ad88525"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.1130291000008583,
+      "independent_q_check_median_seconds": 0.10843839996960014,
+      "node_count": 8,
+      "proposal_id": "resource-cost-observed_common_cause-n8",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 265,
+        "REV": 1
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "observed_common_cause",
+      "topology_only_median_seconds": 0.0010998999932780862,
+      "topology_seed_sha256": "6bb07f65c904b7c20a98a6e4621044c000b272e686470d9774aeb7fdb9b722ae"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.18640829995274544,
+      "independent_q_check_median_seconds": 0.19110830000136048,
+      "node_count": 9,
+      "proposal_id": "resource-cost-observed_common_cause-n9",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 386,
+        "REV": 3
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "observed_common_cause",
+      "topology_only_median_seconds": 0.0013010000111535192,
+      "topology_seed_sha256": "79aa4075bcf3f52e1aa155d423e29c8cb256419bf3ad26e8e1778f9f1666f8d5"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.3375977000105195,
+      "independent_q_check_median_seconds": 0.33258039999054745,
+      "node_count": 10,
+      "proposal_id": "resource-cost-observed_common_cause-n10",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "accepted",
+      "q_recipe_counts": {
+        "FN": 35,
+        "FP": 462,
+        "REV": 22
+      },
+      "rejection_reason": null,
+      "study_scm": false,
+      "template": "observed_common_cause",
+      "topology_only_median_seconds": 0.0020098999957554042,
+      "topology_seed_sha256": "d0f27eb0641a7ebdecd5377bf21d204d95fa945f9f4aaf9b4b3f38ddbf892dfa"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.028271200018934906,
+      "independent_q_check_median_seconds": 0.02731649996712804,
+      "node_count": 6,
+      "proposal_id": "resource-cost-multiple_directed_paths-n6",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "accepted",
+      "q_recipe_counts": {
+        "FN": 4,
+        "FP": 78,
+        "REV": 4
+      },
+      "rejection_reason": null,
+      "study_scm": false,
+      "template": "multiple_directed_paths",
+      "topology_only_median_seconds": 0.00044439994962885976,
+      "topology_seed_sha256": "277134f3cbcda1bf160c17ffb192ceebcbc52773523a67c2e67c1ab51b39433a"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.06594499998027459,
+      "independent_q_check_median_seconds": 0.06996049999725074,
+      "node_count": 7,
+      "proposal_id": "resource-cost-multiple_directed_paths-n7",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "accepted",
+      "q_recipe_counts": {
+        "FN": 8,
+        "FP": 171,
+        "REV": 8
+      },
+      "rejection_reason": null,
+      "study_scm": false,
+      "template": "multiple_directed_paths",
+      "topology_only_median_seconds": 0.0005483999848365784,
+      "topology_seed_sha256": "24c9afd7b563924ce045f79528d571f81778efb75a44132c3ca959bab10ead1b"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.1354381000273861,
+      "independent_q_check_median_seconds": 0.13968719996046275,
+      "node_count": 8,
+      "proposal_id": "resource-cost-multiple_directed_paths-n8",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "accepted",
+      "q_recipe_counts": {
+        "FN": 16,
+        "FP": 311,
+        "REV": 16
+      },
+      "rejection_reason": null,
+      "study_scm": false,
+      "template": "multiple_directed_paths",
+      "topology_only_median_seconds": 0.0011153000523336232,
+      "topology_seed_sha256": "01ea4e1123cf49e35d82c8a3c0bab758d87f29c2a7c15db283f3151a032f7c61"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.18686109996633604,
+      "independent_q_check_median_seconds": 0.1791359999915585,
+      "node_count": 9,
+      "proposal_id": "resource-cost-multiple_directed_paths-n9",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "rejected",
+      "q_recipe_counts": {
+        "FN": 0,
+        "FP": 368,
+        "REV": 0
+      },
+      "rejection_reason": "missing_same_type_two_candidate_support",
+      "study_scm": false,
+      "template": "multiple_directed_paths",
+      "topology_only_median_seconds": 0.001483400003053248,
+      "topology_seed_sha256": "850bcec408151083132b9e428f2ff25f69224aadf135f6d145209d9cc4e4b553"
+    },
+    {
+      "coefficient_or_data_drawn": false,
+      "full_proposal_median_seconds": 0.3743013000348583,
+      "independent_q_check_median_seconds": 0.374360500019975,
+      "node_count": 10,
+      "proposal_id": "resource-cost-multiple_directed_paths-n10",
+      "proposal_repetitions_same_key": 3,
+      "proposal_status": "accepted",
+      "q_recipe_counts": {
+        "FN": 25,
+        "FP": 564,
+        "REV": 10
+      },
+      "rejection_reason": null,
+      "study_scm": false,
+      "template": "multiple_directed_paths",
+      "topology_only_median_seconds": 0.0019000000320374966,
+      "topology_seed_sha256": "976bd4c2f09fb467c1d154fc930dfeb49b510f04094a979dd2c19efb41b02700"
+    }
+  ],
+  "schema_version": 1,
+  "study_cohort_generated": false
+}

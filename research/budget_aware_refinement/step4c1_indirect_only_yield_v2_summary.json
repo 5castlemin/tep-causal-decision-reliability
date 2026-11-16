@@ -1,0 +1,273 @@
+{
+  "accepted_with_direct_edge": 0,
+  "actual_attempts": 2000,
+  "candidate_caps_same_rule": {
+    "200": {
+      "candidate_cap": 1104,
+      "conditional_probability_at_least_target": 0.9753973483045634,
+      "yield_lower_assumption": 0.20430796952039607
+    },
+    "64": {
+      "candidate_cap": 386,
+      "conditional_probability_at_least_target": 0.976027689640135,
+      "yield_lower_assumption": 0.20430796952039607
+    }
+  },
+  "caps_362_1036_still_met": false,
+  "changed_acceptance_rows": 42,
+  "failures_by_reason": {
+    "missing_one_or_more_error_type_support": 1389,
+    "no_indirect_only_task": 16
+  },
+  "interpretation": "fixed topology-only yield diagnostic; no SCMs, coefficients, observations, effects or regret",
+  "legacy_v1_accepted": 637,
+  "legacy_v1_rejected_by_strict_rule": 42,
+  "planned_attempts": 2000,
+  "raw_artifact_sha256": "959078f02df14f54af5915327115bab6d78e1b19f010c285cea2eb0f9de79ae3",
+  "settings": {
+    "candidate_ids_and_topology_task_seed_derivation": "preserved from step4b4_q_yield_v1",
+    "caps": {
+      "conditional_attainment": 0.975,
+      "lower_interval_alpha": 0.025,
+      "targets": [
+        64,
+        200
+      ]
+    },
+    "coefficient_or_data_drawn": false,
+    "master_seed": 20261115,
+    "outcomes_used": false,
+    "protocol": "STEP4C1_STRICT_INDIRECT_ONLY_YIELD_V2",
+    "q_rule": "all FN/FP/REV have same-type two-correction competition recipes under B=1; structural only",
+    "rng_protocol_version": "step4-rng-v1",
+    "source_protocol": "STEP4B4_Q_COMMON_STRATIFIED_YIELD_AUDIT_V1",
+    "stratum_design": "20 fixed template x node_count strata, 100 candidates each",
+    "task_rule": "X->Y direct edge absent AND at least one directed path of length >=2; preferred common-cause scaffold only when it satisfies this rule"
+  },
+  "settings_sha256": "b5fc9bb2f3767d1592aa560626c985eb7c853a4969cba2f5d5e899645564d52b",
+  "source_v1_sha256": "c0ce611bf7aeca025407d884111fa919175c5bd091f9d55537de022948aa406e",
+  "strata": [
+    {
+      "accepted": 0,
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 6,
+      "rate": 0.0,
+      "template": "chain_mediation"
+    },
+    {
+      "accepted": 0,
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 7,
+      "rate": 0.0,
+      "template": "chain_mediation"
+    },
+    {
+      "accepted": 17,
+      "attempts": 100,
+      "individual_cp95": [
+        0.10226491003552832,
+        0.25817541063215954
+      ],
+      "node_count": 8,
+      "rate": 0.17,
+      "template": "chain_mediation"
+    },
+    {
+      "accepted": 34,
+      "attempts": 100,
+      "individual_cp95": [
+        0.24822350154484407,
+        0.4415332677509587
+      ],
+      "node_count": 9,
+      "rate": 0.34,
+      "template": "chain_mediation"
+    },
+    {
+      "accepted": 56,
+      "attempts": 100,
+      "individual_cp95": [
+        0.4571874970633182,
+        0.6591639762765409
+      ],
+      "node_count": 10,
+      "rate": 0.56,
+      "template": "chain_mediation"
+    },
+    {
+      "accepted": 0,
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 6,
+      "rate": 0.0,
+      "template": "fork_branch"
+    },
+    {
+      "accepted": 0,
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 7,
+      "rate": 0.0,
+      "template": "fork_branch"
+    },
+    {
+      "accepted": 0,
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 8,
+      "rate": 0.0,
+      "template": "fork_branch"
+    },
+    {
+      "accepted": 35,
+      "attempts": 100,
+      "individual_cp95": [
+        0.2572937785314513,
+        0.4518493618239684
+      ],
+      "node_count": 9,
+      "rate": 0.35,
+      "template": "fork_branch"
+    },
+    {
+      "accepted": 34,
+      "attempts": 100,
+      "individual_cp95": [
+        0.24822350154484407,
+        0.4415332677509587
+      ],
+      "node_count": 10,
+      "rate": 0.34,
+      "template": "fork_branch"
+    },
+    {
+      "accepted": 0,
+      "attempts": 100,
+      "individual_cp95": [
+        0.0,
+        0.0362166926451762
+      ],
+      "node_count": 6,
+      "rate": 0.0,
+      "template": "observed_common_cause"
+    },
+    {
+      "accepted": 8,
+      "attempts": 100,
+      "individual_cp95": [
+        0.035171562518163044,
+        0.15155763586441956
+      ],
+      "node_count": 7,
+      "rate": 0.08,
+      "template": "observed_common_cause"
+    },
+    {
+      "accepted": 12,
+      "attempts": 100,
+      "individual_cp95": [
+        0.06356890256115966,
+        0.20023568361996963
+      ],
+      "node_count": 8,
+      "rate": 0.12,
+      "template": "observed_common_cause"
+    },
+    {
+      "accepted": 49,
+      "attempts": 100,
+      "individual_cp95": [
+        0.38864416516163725,
+        0.5919636708445453
+      ],
+      "node_count": 9,
+      "rate": 0.49,
+      "template": "observed_common_cause"
+    },
+    {
+      "accepted": 53,
+      "attempts": 100,
+      "individual_cp95": [
+        0.42758148489004544,
+        0.630594835805605
+      ],
+      "node_count": 10,
+      "rate": 0.53,
+      "template": "observed_common_cause"
+    },
+    {
+      "accepted": 100,
+      "attempts": 100,
+      "individual_cp95": [
+        0.9637833073548239,
+        1.0
+      ],
+      "node_count": 6,
+      "rate": 1.0,
+      "template": "multiple_directed_paths"
+    },
+    {
+      "accepted": 62,
+      "attempts": 100,
+      "individual_cp95": [
+        0.5174606942491935,
+        0.7152325238585204
+      ],
+      "node_count": 7,
+      "rate": 0.62,
+      "template": "multiple_directed_paths"
+    },
+    {
+      "accepted": 50,
+      "attempts": 100,
+      "individual_cp95": [
+        0.3983211295033019,
+        0.601678870496698
+      ],
+      "node_count": 8,
+      "rate": 0.5,
+      "template": "multiple_directed_paths"
+    },
+    {
+      "accepted": 44,
+      "attempts": 100,
+      "individual_cp95": [
+        0.3408360237234592,
+        0.5428125029366822
+      ],
+      "node_count": 9,
+      "rate": 0.44,
+      "template": "multiple_directed_paths"
+    },
+    {
+      "accepted": 41,
+      "attempts": 100,
+      "individual_cp95": [
+        0.31261997656757035,
+        0.5128557962332292
+      ],
+      "node_count": 10,
+      "rate": 0.41,
+      "template": "multiple_directed_paths"
+    }
+  ],
+  "strict_indirect_accepted": 595,
+  "strict_indirect_yield": 0.2975
+}

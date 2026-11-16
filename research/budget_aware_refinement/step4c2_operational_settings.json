@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "FROZEN",
+  "mode": "research_cohort_only",
+  "mock_mode_is_separate": true,
+  "cohorts": {
+    "development": {"eligible_admission_target": 64, "proposal_cap": 386},
+    "confirmation": {"eligible_admission_target": 200, "proposal_cap": 1104}
+  },
+  "active_contract": {
+    "population": "P conditioned on strict Q-common",
+    "task": "indirect-only",
+    "budget": 1,
+    "gamma": 1,
+    "policies": ["Task-Focused", "ID-ordered Global"],
+    "error_types": ["FN", "FP", "REV"],
+    "within_scm_type_weights": [1, 1, 1],
+    "independent_unit": "SCM",
+    "delta_assignment": "alternating +1/-1 by admitted ordinal separately within each cohort",
+    "inference": "Option B descriptive estimation; no confirmatory superiority or equivalence claim"
+  },
+  "runtime": {
+    "operating_system": "Windows",
+    "platform_fingerprint": "Windows-10-10.0.26200-SP0",
+    "python_implementation": "CPython",
+    "python_version": "3.11.15",
+    "dependencies": {"numpy": "2.4.3", "pandas": "3.0.1", "networkx": "3.6.1"},
+    "requirements_file": "requirements.txt"
+  },
+  "resources": {
+    "isolate_stages": true,
+    "unit_timeout_seconds": 2.0,
+    "scm_active_stage_time_cap_seconds": 1800,
+    "cohort_active_stage_time_cap_seconds": 7200,
+    "rss_sampled_kill_bytes": 536870912,
+    "individual_ledger_bytes_cap": 104857600,
+    "cohort_total_storage_bytes_cap": 104857600,
+    "failure_record_reserve_bytes": 5242880,
+    "minimum_free_disk_bytes": 1073741824,
+    "storage_check": "before every registry or JSONL write; dedicated cohort root; safe stop; no post-cap replacement",
+    "rss_guarantee": "sampled child working-set kill-on-detection; transient overshoot is possible",
+    "filesystem_quota": false
+  },
+  "restart_and_shortfall": {
+    "same_run_id_same_code_settings_inputs_rng_only": true,
+    "code_settings_runtime_binding_required": true,
+    "proposal_cap_shortfall": "retain all attempts and failures; report shortfall; do not add seeds or replace post-admission failures",
+    "resource_cap": "stop safely at stage/cohort boundary, preserve terminal failure and resume only under identical bindings"
+  },
+  "freeze_status": "FROZEN; manifest and Git commit/tree identities are independently recorded",
+  "resource_cap_basis": "Windows Python 3.11.15 production-isolated fixed-fixture qualification; 14 registry-backed preserved topology fixture runs with same-ledger replay plus a separate 20-stratum proposal timing fixture; caps are operational stop limits, not worst-case guarantees"
+}

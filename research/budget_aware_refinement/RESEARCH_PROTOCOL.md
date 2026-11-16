@@ -1,4 +1,26 @@
+# CURRENT CONTRACT POINTER (2026-11-16)
+
+The active Step 4 contract is frozen in `STEP4_CURRENT_ACTIVE_CONTRACT.md` and `STEP4_FROZEN_PROTOCOL.md`; production settings and content hashes are bound by `step4c2_operational_settings.json` and `step4c2_final_freeze_manifest.json`. Older P/B=4 confirmatory clauses below are historical superseded proposals, retained for audit history. Current inference is Option B and does not support confirmatory superiority/equivalence claims. This freezes the protocol and execution contract only; Step 5/6 remain NOT RUN.
+
+> All dated Step 4 status and design notes below this pointer are historical snapshots. Their contemporaneous `IN_PROGRESS`/`NOT FROZEN` labels are not the current status and are retained to preserve the decision trail.
+
+## Historical Step 4C-1 delta and cohort admission clarification (2026-11-16; superseded by freeze)
+
+The historical `delta_i ∈ {-1,+1}` balanced assignment remains active. For each cohort independently, after a proposal passes strict Q-common structural eligibility and is atomically admitted, the SQLite registry assigns `+1,-1,+1,...` by the zero-based accepted-SCM ordinal. The assignment is persisted and reused on replay. A given SCM's three error versions and both paired policies share the same delta. Rejections do not consume a delta position. This is deterministic and outcome/GT-blind. `run_eligible_proposal` requires an explicit delta and has no +1 default.
+
+The 64 development and 200 held-out replication targets count structurally eligible proposals atomically admitted to the SCM registry, not completed evaluations. Any later parameter, observation, policy, or GT failure remains in the admitted denominator and is never silently replaced. Report proposal attempts, strict-Q eligible proposals, registry admissions, parameter/data generation, complete FN/FP/REV vectors, failures/missing vectors, and complete composites separately. The 386/1,104 ceilings include every topology proposal, including structural rejections. These are operational target/cap definitions, not cohort execution or yield guarantees.
+
 # Step 0 연구 계약 — 2026-11-10
+
+## Current Step 4B-4 inferential disposition (2026-11-15)
+
+The primary estimand remains Q-common, indirect-only, B=1, gamma=1, Global versus Task-Focused, with `D_i=(D_FN+D_FP+D_REV)/3` and SCM as the independent unit. The v2 stress calibration found paired-t Type I error around 13.4% for an extreme zero-heavy skew distribution; the distribution is a stress diagnostic, not evidence about future Q-common outcomes. No variance or finite range for the paired regret difference follows from the current protocol, and no tail assumption is justified by structural or numeric fixtures. Therefore **confirmatory superiority inference is suspended**. Keep the SCM-level arithmetic mean as the target and report it with its observed SCM distribution. Normal-theory t intervals may appear only as explicitly assumption-dependent reference summaries; do not claim calibrated 5% superiority, equivalence, or industrial benefit from them. No alternative robust test is being searched for in this phase.
+
+Candidate allocation remains 64 development eligible SCMs and 200 independent Q-common eligible SCMs. These are fixed operational targets for descriptive estimation, not power guarantees. Development may validate code and summarize nuisance dispersion; it does not adapt confirmation N. Use uniform 1/20 proposal probability over the original 20 template×node-count strata and accept every Q-common candidate (rejection sampling), without reweighting the resulting conditional-Q target. The fixed topology audit recorded template counts Chain 107, Fork 69, Observed Common Cause 164, Multiple Directed Paths 297 (46.6%); these are pilot composition diagnostics, not exact future proportions. Report template-specific estimates as secondary descriptions.
+
+Finite attempt ceilings for the current plan are 362 development and 1,036 confirmation topology candidates, based on the v2 simultaneous lower-yield planning calculation; they are not guarantees. Retain every rejection. Stop at target N or cap, whichever occurs first. A confirmation shortfall, incomplete three-type SCM vector, or unresolved GT-evaluation failure suspends any inferential claim; do not replace after viewing outcomes, lower N, or average over available types. Infrastructure replay is allowed once only with identical input and RNG key. Eligible Ridge/recommendation failures may use common-grid k=0 only when training and truth inputs are valid; preserve original failure and report fallback separately.
+
+These decisions prospectively superseded the older P/B4 selected-policy-versus-Random confirmatory proposal and earlier use of 64/200 as power-backed sizes. Historical text and results remain unchanged. Development integration and structural feasibility are not research outcomes. At the time of this entry, Step 4 was IN_PROGRESS / NOT FROZEN; the current disposition is stated in the pointer above.
 
 ## 목표와 가설
 
@@ -41,3 +63,11 @@ GT 평균은 선형이면 정확 계산 우선, Monte Carlo일 경우 호출 정
 ## 외부·강건성
 
 기존 7개 TEP 그래프는 조건부 자산이며 기존28간선을 완전 물리 GT로 가정하지 않는다. TEP 동일환경은 미검증 가정, 단일 개입은 평균 인과효과가 아니다. CausalMan PR25 CONDITIONAL_NOT_ACCEPTED, 미병합 PR26 CONDITIONAL_REDESIGN; hard-do 부모 삭제 결함, 활성 GT 의미 및 잠재 비식별 미해결. 외부 검증은 선택적이며 차단 사유 기록 후 SKIPPED_WITH_REASON 가능. 비선형 DGP×추정기 및 gamma2/3은 Step7이며 이번 실행 아님.
+
+## Step 4B-3 사전 설계 결정안 (2026-11-15, 미동결)
+
+구조 전용 감사에서 기존 P/B=4 selected-policy 대 Matched Random 설계는 보존된 v4 행렬의 34,370개 대응쌍 전부에서 동일 최종 그래프를 만들었다. 따라서 이 비교는 광범위한 보조/탐색 벤치마크로 두고, H2의 계획상 주 확인 질문은 Q-common 모집단에서 B=1로 Global과 Task-Focused의 동일 오류 유형 내부 우선순위 효과를 비교하는 것으로 제안한다. 이 제안은 구조적 구별 가능성에 근거하며 Regret 결과에 근거하지 않는다.
+
+Q-common은 같은 독립 SCM/topology의 사전 선택 과제가 FN·FP·REV 각각에서 outcome-blind 구조 규칙을 통과한 경우다. SCM 내 세 오류 유형 버전을 동일 가중치 1/3로 합쳐 SCM당 하나의 대응 추정량을 만든다. 유형별 조건부 모집단은 별도 추정 대상으로 유지한다. Q-common의 관찰된 낮은 채택률 때문에 유형별 전체 모집단을 동일한 모집단처럼 취급하거나, 적격 셀을 결과에 따라 대체하지 않는다. 모집단 층화 가중치, finite attempt cap, shortfall 처리는 Step 4B-4에서 확정한다.
+
+새 RNG 키는 프로토콜 버전, cohort, master seed, 독립 SCM ID, template, node count, topology attempt, named stream 및 선택적 replicate/substream을 포함한다. Global/Task-Focused 대응 실행은 같은 입력·오류 후보·유형 schedule seed를 공유하고, Matched Random 반복 seed만 Random 선택 stream에서 달라진다. 이 RNG 결정과 Q/B=1 주 질문은 설계 제안이며, 통계 검정·표본 수·실패 처리·자원 상한·해시 freeze가 확정될 때까지 Step 4 및 이 protocol은 FROZEN이 아니다.

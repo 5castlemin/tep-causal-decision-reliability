@@ -1,4 +1,6 @@
-# Proposed failure contract — not yet frozen
+# Historical failure contract proposal — superseded
+
+> Current failure, fallback, missing-vector, retry and stop rules are frozen in `STEP4_CURRENT_ACTIVE_CONTRACT.md` and `STEP4_FROZEN_PROTOCOL.md`. The unresolved items below describe the historical proposal state and are not current instructions.
 
 2026-11-10; base `42b7c2a0e9d6c11ed72aae4205c0bb7114221a2a`; source hash in readiness audit. Every planned SCM, task, graph, policy and random seed receives one immutable status and denominator. Separate structure-ineligible and bounded graph-generation failures from learner, recommendation, truth-evaluator, nonfinite, timeout and system failures. Log attempted seeds/reasons. A cycle-rejected edit, no permitted candidate, budget exhaustion, no-edit, or unused budget is a valid outcome, not a failed run; keep the resulting graph and cost.
 

@@ -1,0 +1,22 @@
+{
+  "contract_version": "step4c1-runner-interface-v1",
+  "status": "NOT_FROZEN",
+  "active_estimand": "Q-common|indirect-only|B=1|gamma=1|Task-Focused-vs-ID-ordered-Global|equal-FN-FP-REV|SCM-mean-paired-regret-difference",
+  "stages": [
+    {"name": "proposal_stratum", "state": "STRUCTURE_ONLY_IMPLEMENTED", "rule": "uniform_1_of_20_by_stable_sha256_rejection_sampling"},
+    {"name": "topology_and_indirect_task", "state": "STRUCTURE_ONLY_IMPLEMENTED", "outputs": ["gt_topology", "topology_hash", "task", "role_map"]},
+    {"name": "q_common_eligibility_and_error_recipes", "state": "STRUCTURE_ONLY_IMPLEMENTED", "inputs": ["gt_topology", "task", "initial_error_graphs", "dag_valid_candidates"], "outcome_blind": true},
+    {"name": "scm_and_shared_data", "state": "IMPLEMENTED_FIXED_FIXTURE_VALIDATED_NOT_RUN_ON_STUDY_COHORT", "condition": "only_after_eligibility", "streams": ["coefficient", "exogenous_noise", "observational_sample"], "parameters": {"coefficient_magnitude": "Uniform[0.25,0.8]", "sign": "independent fair Bernoulli assigned by sorted edge ID", "node_noise_sd": "Uniform[0.8,1.2]", "disturbance": "independent centered Gaussian", "observations_per_scm": 512}},
+    {"name": "paired_policy_recommendations", "state": "STEP3_FIXED_FIXTURE_VALIDATED", "shared_within_scm": ["observations", "task", "initial_graph", "candidate_set", "cost", "budget", "error_type"], "policy_ids": ["Global", "Task-Focused"]},
+    {"name": "ground_truth_evaluation", "state": "STEP3_FIXED_FIXTURE_ADAPTER_VALIDATED_PRODUCTION_INPUT_REQUIRED", "access": "separate evaluator only", "real_scm_evaluation_performed": false},
+    {"name": "scm_composite", "state": "IMPLEMENTED", "requires": ["finite FN difference", "finite FP difference", "finite REV difference"], "weights": {"FN": 0.3333333333333333, "FP": 0.3333333333333333, "REV": 0.3333333333333333}},
+    {"name": "checkpoint_ledger", "state": "MOCK_VALIDATED_ONLY", "integrity": ["event_sha256", "output_sha256", "config_sha256", "input_sha256", "rng_key", "scm_id", "cohort"], "active_runtime_accounting": "cumulative_stage_wall_seconds_per_scm_excluding_downtime"},
+    {"name": "cohort_registry_and_orchestrator", "state": "IMPLEMENTED_FIXED_PROPOSAL_AND_LEDGER_FIXTURES_VALIDATED_NOT_RUN_ON_STUDY_COHORT", "registry": "SQLite BEGIN IMMEDIATE; unique proposal/attempt, SCM ID, equation signature", "proposal_order": "cohort-proposal-000000 onward; attempt=0 per candidate", "delta": "alternate +1,-1 by accepted SCM ordinal per cohort; replay persisted", "targets": {"development": 64, "confirmation": 200}, "proposal_caps": {"development": 386, "confirmation": 1104}, "post_admission_failure_replacement": false, "target_counts": "strict-Q eligible registry admissions; completed composite count reported separately"}
+  ],
+  "information_boundary": {"policy_inputs_exclude": ["gt_effect", "regret", "ground_truth_evaluation"], "eligibility_excludes": ["policy_performance", "regret", "gt_effect"]},
+  "cohort_namespace": {"development": "dev-*", "confirmation": "rep-*", "must_be_disjoint": true},
+  "resource_enforcement": {"unit_timeout": "spawned_child_termination", "rss": "sampled_kill_on_detection_overshoot_possible", "ledger_bytes": "pre_write_cap", "cohort_wall_cap": "optional accumulated-stage/coordination monitor; study-scale cap not frozen"},
+  "unresolved_generation_spec": ["study-scale resource qualification", "Step 4C-2 final freeze of code/settings/hash scope"],
+  "truth_stub_is_successful_evaluation": false,
+  "production_ready": false
+}

@@ -97,10 +97,11 @@ def compare_edits(a,b):
         n+=1
     return {"jaccard":len(aa&bb)/len(aa|bb) if aa|bb else 1.0,"sequence_equal":a==b,"common_prefix_length":n}
 
-def refine(*,node_ids,initial_edges,reference_edges,allowed_types,policy_id,budget,gamma,action,target,prior_edges=(),seed=0,display_names=None,graph_id=None):
+def refine(*,node_ids,initial_edges,reference_edges,allowed_types,policy_id,budget,gamma,action,target,prior_edges=(),seed=0,schedule_seed=None,display_names=None,graph_id=None):
     """Policy input is graph-only: rejects outcome/evaluator objects by construction."""
     nodes=_node_ids(node_ids);initial=_graph(nodes,initial_edges);truth=_graph(nodes,reference_edges)
-    if type(budget) is not int or budget<0 or type(gamma) is not int or gamma not in (1,2,3) or type(seed) is not int:raise ValueError("invalid budget/gamma/seed")
+    if type(budget) is not int or budget<0 or type(gamma) is not int or gamma not in (1,2,3) or type(seed) is not int or (schedule_seed is not None and type(schedule_seed) is not int):raise ValueError("invalid budget/gamma/seed")
+    schedule_seed=seed if schedule_seed is None else schedule_seed
     if type(action) is not str or type(target) is not str or action not in nodes or target not in nodes or action==target:raise ValueError("invalid task")
     if type(allowed_types) not in (list,tuple,set,frozenset) or type(prior_edges) not in (list,tuple,set,frozenset):raise ValueError("invalid collection")
     if type(policy_id) is not str or (graph_id is not None and (type(graph_id) is not str or not graph_id)):raise ValueError("invalid policy or graph ID")
@@ -119,9 +120,9 @@ def refine(*,node_ids,initial_edges,reference_edges,allowed_types,policy_id,budg
         if type(a) is not str or type(b) is not str or a not in nodes or b not in nodes or a==b or frozenset((a,b)) in pairs:raise ValueError("invalid H")
         pairs.add(frozenset((a,b)));h.append((a,b))
     distances=_distance(nodes,initial,set(h),action,target);graph=initial;rng=Random(seed)
-    order=allowed[seed%len(allowed):]+allowed[:seed%len(allowed)]
+    order=allowed[schedule_seed%len(allowed):]+allowed[:schedule_seed%len(allowed)]
     graph_hash=lambda g:_hash({"node_ids":nodes,"edges":sorted(g)})
-    log={"version":"step2-v1","initial_graph_id":graph_id or graph_hash(initial),"initial_hash":graph_hash(initial),"initial_graph":sorted(initial),"node_ids":nodes,"display_names":display_names,"allowed_types":allowed,"policy_id":policy_id,"budget":budget,"gamma":gamma,"action":action,"target":target,"prior_edges":sorted(h),"seed":seed,"type_schedule":order,"candidate_operations":[],"rejected_operations":[],"edit_sequence":[],"ledger":[],"type_opportunities":[],"failure_reason":None}
+    log={"version":"step2-v1","initial_graph_id":graph_id or graph_hash(initial),"initial_hash":graph_hash(initial),"initial_graph":sorted(initial),"node_ids":nodes,"display_names":display_names,"allowed_types":allowed,"policy_id":policy_id,"budget":budget,"gamma":gamma,"action":action,"target":target,"prior_edges":sorted(h),"seed":seed,"schedule_seed":schedule_seed,"type_schedule":order,"candidate_operations":[],"rejected_operations":[],"edit_sequence":[],"ledger":[],"type_opportunities":[],"failure_reason":None}
     spent=0;path_skips=set()
     if policy_id!="NO-EDIT":
         while True:

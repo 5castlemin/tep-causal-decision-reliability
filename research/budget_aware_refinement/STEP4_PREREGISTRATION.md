@@ -1,4 +1,16 @@
+# HISTORICAL PROPOSAL — SUPERSEDED
+
+> Current status (2026-11-16): Step 4 protocol/execution contract is FROZEN in `STEP4_CURRENT_ACTIVE_CONTRACT.md` and `STEP4_FROZEN_PROTOCOL.md`. This document preserves earlier proposals and is not an execution instruction. Step 5/6 cohorts remain NOT RUN.
+
+This document preserves earlier preregistration drafts. The active contract is `STEP4_CURRENT_ACTIVE_CONTRACT.md`; this file is not the current execution authority. Step 4 remains NOT FROZEN.
+
 # Step 4 provisional registration — NOT FROZEN
+
+## Current design disposition (2026-11-15; prospective, still NOT FROZEN)
+
+The prior P/B=4 selected-policy-versus-Random question is historical and is not the current primary. The current planned target is Q-common indirect-only at B=1, gamma=1, Task-Focused versus ID-ordered Global, with equal FN/FP/REV weighting in one SCM-level mean. See `STEP4B4_FINAL_DECISION.md` for the inferential restriction: Option B suspends confirmatory superiority claims because neither a finite paired-regret range/variance nor acceptable tail calibration is justified by current contracts. Report the arithmetic SCM mean and distribution; any t interval is an explicitly assumption-dependent reference only. Do not claim 5% superiority or equivalence.
+
+Use operational target counts N=64 development and N=200 confirmation for descriptive estimation; these are not power guarantees and development does not adapt confirmation N. The topology proposal chooses each of 20 template×node-count strata with probability 1/20 and accepts all Q-common candidates. Candidate caps are 362 and 1,036 respectively; these planning ceilings are not guaranteed yield. Shortfall or any incomplete three-type SCM vector suspends target-population inferential claims. Historical proposals below are retained as version history and are superseded by this addendum.
 
 2026-11-10; reference commit `42b7c2a0e9d6c11ed72aae4205c0bb7114221a2a`; source and recorded SHA: `STEP4_READINESS_AUDIT.md`. The present documents are a reviewable proposed contract, not authorization to generate or view confirmation SCMs. No confirmatory analysis has been run. Freeze requires resolution of the readiness audit, version-pinned code, immutable hashes and a dated pre-execution registration. Do not treat these numbers as executed or validated.
 

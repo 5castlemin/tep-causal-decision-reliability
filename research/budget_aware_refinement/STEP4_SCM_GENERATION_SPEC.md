@@ -1,4 +1,8 @@
-# Proposed SCM and graph generation — NOT FROZEN
+# Historical SCM and graph generation proposal — SUPERSEDED
+
+> **2026-11-16 status:** this file preserves the historical proposal. The active, frozen protocol and production settings are in `STEP4_CURRENT_ACTIVE_CONTRACT.md`, `STEP4_FROZEN_PROTOCOL.md`, and `step4c2_operational_settings.json`. The original proposal below is superseded where it conflicts with the active contract. The active task is strict indirect-only; the frozen generator uses sorted-edge coefficient assignment, independent fair signs, Uniform[0.8,1.2] node SD, centered independent Gaussian disturbances, and 512 shared observations. Numeric eligibility is limited to the documented finite-value and positive sample-variance checks. The Step 4 freeze does not mean Step 5/6 data have been generated.
+
+> **Cohort contract (2026-11-16; FROZEN):** the atomic registry assigns alternating signs by admitted SCM ordinal within each cohort after Q-common eligibility; rejections consume no sign and replay uses the persisted assignment. Targets 64/200 count eligible admissions; later failures remain admitted and are not replaced. Gaussian disturbances supersede the historical Uniform family proposal. This is prospective and does not change historical pilot data.
 
 2026-11-10; base `42b7c2a0e9d6c11ed72aae4205c0bb7114221a2a`; source hash in readiness audit. Complete observation, DAG, independent centered exogenous noise. Candidate 6–10 nodes, balanced node-count strata; topological-order DAG, maximum three parents, 0.2–0.4 target edge density subject to capacity. Draw signed coefficients with magnitude uniform [0.25,0.8], independent sign, and independent uniform disturbances with SD uniform [0.8,1.2]. Proposed common sample n=512. These bounded coefficients do not automatically guarantee stable variance, sufficient structural diversity or positive effects.
 

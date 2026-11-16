@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-10",
+  "checked_at": "2026-11-16",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -454,9 +454,9 @@
       "id": "BUDGET-REFINEMENT",
       "title": "예산 제약 인과구조 개선 연구 설계 후보",
       "status": "PARTIAL",
-      "evidence": "research/budget_aware_refinement/STEP4_READINESS_AUDIT.md; Step4 IN_PROGRESS; 개발 통합 준비 및 attic 태그 보존",
-      "next_action": "PR #36 검토·CI 후 개발 통합; Step4 생성기 가능성·실패·자원 사전등록 동결",
-      "acceptance": "Step1~9 각 Gate 및 독립 실험·재현·사용자 병합 승인; Step1 fixture는 가설 검증 아님",
+      "evidence": "PR #38 Draft/unmerged; Step 4C-2 final freeze audit; production-isolated 14/14 fixed-fixture runs and replay; final content manifest; Step 4 protocol/execution contract frozen only; no study cohort or Step 5/6 results",
+      "next_action": "Keep PR #38 Draft/unmerged pending separate decision; do not start development or held-out cohorts from this freeze alone; any authorized cohort must use exact clean commit/tree and frozen manifest/settings",
+      "acceptance": "Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result",
       "depends_on": []
     }
   ],
