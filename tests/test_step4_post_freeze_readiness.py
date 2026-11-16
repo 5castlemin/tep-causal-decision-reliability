@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import platform
 import subprocess
 import tempfile
 import unittest
@@ -23,6 +24,10 @@ class PostFreezeReadinessTests(unittest.TestCase):
         ).stdout.strip()
         return commit, tree
 
+    @unittest.skipUnless(
+        platform.system() == "Windows" and platform.python_version() == "3.11.15",
+        "positive readiness path must run in the frozen Windows/CPython 3.11.15 environment",
+    )
     def test_exact_clean_revision_passes_production_readiness_without_generating_data(self):
         commit, tree = self._revision()
 
