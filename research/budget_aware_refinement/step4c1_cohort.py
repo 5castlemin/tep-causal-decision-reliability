@@ -87,9 +87,13 @@ class CohortRegistry:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with closing(self._connect()) as db:
-            db.executescript("""
-                PRAGMA journal_mode=WAL;
-                CREATE TABLE IF NOT EXISTS proposals (
+            # Serialize first-time schema creation with SQLite's writer lock.
+            # executescript() implicitly commits and PRAGMA journal_mode can
+            # raise SQLITE_BUSY when two fresh processes open an empty registry
+            # together, despite busy_timeout. Keep DDL in one explicit txn.
+            db.execute("BEGIN IMMEDIATE")
+            try:
+                db.execute("""CREATE TABLE IF NOT EXISTS proposals (
                     cohort TEXT NOT NULL, proposal_id TEXT NOT NULL, attempt INTEGER NOT NULL,
                     scm_id TEXT UNIQUE, topology_hash TEXT NOT NULL,
                     equation_signature_sha256 TEXT, rng_binding TEXT NOT NULL, rng_key TEXT NOT NULL,
@@ -98,16 +102,20 @@ class CohortRegistry:
                     ledger_path TEXT, accepted_ordinal INTEGER,
                     created_at REAL NOT NULL, updated_at REAL NOT NULL,
                     PRIMARY KEY (cohort, proposal_id, attempt)
-                );
-                CREATE UNIQUE INDEX IF NOT EXISTS equation_signature_unique
+                )""")
+                db.execute("""CREATE UNIQUE INDEX IF NOT EXISTS equation_signature_unique
                     ON proposals(equation_signature_sha256)
                     WHERE equation_signature_sha256 IS NOT NULL;
-                CREATE TABLE IF NOT EXISTS cohorts (
+                """)
+                db.execute("""CREATE TABLE IF NOT EXISTS cohorts (
                     cohort TEXT PRIMARY KEY, master_seed INTEGER NOT NULL,
                     target_eligible INTEGER NOT NULL, proposal_cap INTEGER NOT NULL,
                     settings_sha256 TEXT NOT NULL, created_at REAL NOT NULL
-                );
-            """)
+                )""")
+                db.commit()
+            except BaseException:
+                db.rollback()
+                raise
 
     def _connect(self):
         db = sqlite3.connect(self.path, timeout=30, isolation_level=None)
