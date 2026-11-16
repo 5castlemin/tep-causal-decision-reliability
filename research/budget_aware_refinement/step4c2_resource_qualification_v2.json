@@ -1,0 +1,806 @@
+{
+  "decision_regret_analysis": false,
+  "failure_reserve_bytes": 5242880,
+  "independent_scm_n": 0,
+  "isolated_noop_spawn_and_initialization_median_seconds": 0.9690000000118744,
+  "isolated_noop_spawn_and_initialization_samples_seconds": [
+    0.9530000000377186,
+    1.0,
+    0.9219999999622814,
+    0.9839999999967404,
+    0.9540000000270084,
+    1.0310000000172295
+  ],
+  "limitations": [
+    "fixture measurements are not SCM samples",
+    "one run per accepted topology does not estimate p95 or tail risk",
+    "proposal rejection stage costs are reported separately in step4c2_proposal_cost_benchmark_v1.json",
+    "OS filesystem quota is not enforced",
+    "RSS is sampled child working-set size and may overshoot between samples"
+  ],
+  "minimum_free_disk_bytes": 1073741824,
+  "platform": "Windows-10-10.0.26200-SP0",
+  "process_rss_snapshot_after_bytes": 81195008,
+  "process_rss_snapshot_before_bytes": 78766080,
+  "purpose": "production_isolated_fixed_fixture_resource_qualification",
+  "python": "3.11.15 (main, Jun 23 2026, 15:20:37) [MSC v.1944 64 bit (AMD64)]",
+  "registry_counts": {
+    "composite_available": 14,
+    "delta_counts": {
+      "-1": 7,
+      "1": 7
+    },
+    "incomplete_or_failed": 0,
+    "missing_or_failed": 0,
+    "q_common_structural_rejections": 0,
+    "q_common_structurally_eligible": 14,
+    "registry_accepted": 14,
+    "scm_generation_success": 14,
+    "scm_parameter_generation_success": 14,
+    "shared_observation_generation_success": 14,
+    "three_type_evaluation_complete": 14,
+    "topology_or_task_generation_failures": 0,
+    "topology_proposals": 14,
+    "unexpected_generator_errors": 0
+  },
+  "registry_rows_are_fixed_fixture_test_doubles": true,
+  "registry_sqlite_and_wal_bytes": 40960,
+  "repetitions_per_stratum": 1,
+  "rows": [
+    {
+      "failure_reason": "no accepted row for this stratum in preserved fixed-yield diagnostic",
+      "node_count": 6,
+      "runs": [],
+      "strict_q_common_fixture_found": false,
+      "template": "chain_mediation"
+    },
+    {
+      "failure_reason": "no accepted row for this stratum in preserved fixed-yield diagnostic",
+      "node_count": 7,
+      "runs": [],
+      "strict_q_common_fixture_found": false,
+      "template": "chain_mediation"
+    },
+    {
+      "cohort_storage_bytes_after": 142397,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 113725,
+      "max_total_seconds": 8.915575100050773,
+      "median_total_seconds": 8.915575100050773,
+      "node_count": 8,
+      "proposal_id": "resource-v2-chain_mediation-n8",
+      "registry_delta": 1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": 1,
+          "elapsed_seconds": 8.915575100050773,
+          "isolate_stages": true,
+          "ledger_bytes": 113725,
+          "ledger_sha256": "6fb2a31982523d5240f98f0b0378895dac202dbc853a345b692e8791753d7013",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.17742429999634624,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69427200,
+            "error_graphs": 68694016,
+            "gt_evaluation": 69234688,
+            "observations": 67981312,
+            "policy_graphs": 68972544,
+            "proposal": 67457024,
+            "recommendations": 69582848,
+            "scm": 67563520
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.1400000000139698,
+            "error_graphs": 1.047000000020489,
+            "gt_evaluation": 1.0780000000377186,
+            "observations": 0.9529999999795109,
+            "policy_graphs": 1.125,
+            "proposal": 1.0160000000032596,
+            "recommendations": 1.1400000000139698,
+            "scm": 0.9689999999827705
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-chain_mediation-n8-a0000",
+      "strict_q_common": true,
+      "template": "chain_mediation",
+      "topology_sha256": "a87bac2d70fb048fcf1f1b02b6ddf1d88948059ae5528409f0a45b3788f19f0f"
+    },
+    {
+      "cohort_storage_bytes_after": 267596,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 125199,
+      "max_total_seconds": 9.19151370000327,
+      "median_total_seconds": 9.19151370000327,
+      "node_count": 9,
+      "proposal_id": "resource-v2-chain_mediation-n9",
+      "registry_delta": -1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": -1,
+          "elapsed_seconds": 9.19151370000327,
+          "isolate_stages": true,
+          "ledger_bytes": 125199,
+          "ledger_sha256": "b1bd0ebfcf6276a900d3c06bdabd296bed2bac3d2eac39e4c77bab3e50f3aacd",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.15824590000556782,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69615616,
+            "error_graphs": 69120000,
+            "gt_evaluation": 69730304,
+            "observations": 67833856,
+            "policy_graphs": 68935680,
+            "proposal": 67362816,
+            "recommendations": 69705728,
+            "scm": 67387392
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.1100000000442378,
+            "error_graphs": 1.1089999999967404,
+            "gt_evaluation": 1.1099999999860302,
+            "observations": 1.0630000000237487,
+            "policy_graphs": 1.2189999999827705,
+            "proposal": 1.0150000000139698,
+            "recommendations": 1.077999999979511,
+            "scm": 1.0469999999622814
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-chain_mediation-n9-a0000",
+      "strict_q_common": true,
+      "template": "chain_mediation",
+      "topology_sha256": "e72c42bfd8344f45a645c8661e6eef228b099fbc1e08b31298efd160cb0c8883"
+    },
+    {
+      "cohort_storage_bytes_after": 404497,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 136901,
+      "max_total_seconds": 9.05754710000474,
+      "median_total_seconds": 9.05754710000474,
+      "node_count": 10,
+      "proposal_id": "resource-v2-chain_mediation-n10",
+      "registry_delta": 1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": 1,
+          "elapsed_seconds": 9.05754710000474,
+          "isolate_stages": true,
+          "ledger_bytes": 136901,
+          "ledger_sha256": "587b70f3edfb542bc4d3295cb8208a9747ff59be5ac2b6031c76d366d4b094a9",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.08846769999945536,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69722112,
+            "error_graphs": 69615616,
+            "gt_evaluation": 69644288,
+            "observations": 67825664,
+            "policy_graphs": 69431296,
+            "proposal": 67272704,
+            "recommendations": 69550080,
+            "scm": 67497984
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.0939999999827705,
+            "error_graphs": 1.1089999999967404,
+            "gt_evaluation": 1.1089999999967404,
+            "observations": 1.0469999999622814,
+            "policy_graphs": 1.125,
+            "proposal": 1.0160000000032596,
+            "recommendations": 1.062000000034459,
+            "scm": 1.0160000000032596
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-chain_mediation-n10-a0000",
+      "strict_q_common": true,
+      "template": "chain_mediation",
+      "topology_sha256": "b6f59e2d72ae5d7b61ffb913929071ddf978ab79565c780a65016b44cc7bd688"
+    },
+    {
+      "failure_reason": "no accepted row for this stratum in preserved fixed-yield diagnostic",
+      "node_count": 6,
+      "runs": [],
+      "strict_q_common_fixture_found": false,
+      "template": "fork_branch"
+    },
+    {
+      "failure_reason": "no accepted row for this stratum in preserved fixed-yield diagnostic",
+      "node_count": 7,
+      "runs": [],
+      "strict_q_common_fixture_found": false,
+      "template": "fork_branch"
+    },
+    {
+      "failure_reason": "no accepted row for this stratum in preserved fixed-yield diagnostic",
+      "node_count": 8,
+      "runs": [],
+      "strict_q_common_fixture_found": false,
+      "template": "fork_branch"
+    },
+    {
+      "cohort_storage_bytes_after": 529635,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 125138,
+      "max_total_seconds": 9.179984499991406,
+      "median_total_seconds": 9.179984499991406,
+      "node_count": 9,
+      "proposal_id": "resource-v2-fork_branch-n9",
+      "registry_delta": -1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": -1,
+          "elapsed_seconds": 9.179984499991406,
+          "isolate_stages": true,
+          "ledger_bytes": 125138,
+          "ledger_sha256": "5474ce59f8737b874ed857762aef329200034c060142ec336a0dc53ef6a687cd",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.17982009996194392,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69578752,
+            "error_graphs": 69795840,
+            "gt_evaluation": 69750784,
+            "observations": 67780608,
+            "policy_graphs": 69488640,
+            "proposal": 67448832,
+            "recommendations": 69554176,
+            "scm": 67325952
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.1100000000442378,
+            "error_graphs": 1.1099999999860302,
+            "gt_evaluation": 1.1099999999860302,
+            "observations": 1.0469999999622814,
+            "policy_graphs": 1.1100000000442378,
+            "proposal": 1.0469999999622814,
+            "recommendations": 1.125,
+            "scm": 1.047000000020489
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-fork_branch-n9-a0000",
+      "strict_q_common": true,
+      "template": "fork_branch",
+      "topology_sha256": "6b362ddf1cb04a2a9f08061d66343d372a7f6a72ebceaf2a2e37decaf0bef828"
+    },
+    {
+      "cohort_storage_bytes_after": 666384,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 136749,
+      "max_total_seconds": 9.255199400009587,
+      "median_total_seconds": 9.255199400009587,
+      "node_count": 10,
+      "proposal_id": "resource-v2-fork_branch-n10",
+      "registry_delta": 1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": 1,
+          "elapsed_seconds": 9.255199400009587,
+          "isolate_stages": true,
+          "ledger_bytes": 136749,
+          "ledger_sha256": "9e8fbaec1e9803736db05f0f6d705990153868690e013eba98938d8e409cb2e3",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.16810080001596361,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69963776,
+            "error_graphs": 70332416,
+            "gt_evaluation": 69406720,
+            "observations": 68009984,
+            "policy_graphs": 69496832,
+            "proposal": 67387392,
+            "recommendations": 69697536,
+            "scm": 67514368
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.1089999999967404,
+            "error_graphs": 1.202999999979511,
+            "gt_evaluation": 1.077999999979511,
+            "observations": 1.077999999979511,
+            "policy_graphs": 1.0459999999729916,
+            "proposal": 1.047000000020489,
+            "recommendations": 1.0619999999762513,
+            "scm": 1.0469999999622814
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-fork_branch-n10-a0000",
+      "strict_q_common": true,
+      "template": "fork_branch",
+      "topology_sha256": "6d06e6e2faa6a34149476c6c7e8b38491b0d7b79543258ca9476f443a626600b"
+    },
+    {
+      "failure_reason": "no accepted row for this stratum in preserved fixed-yield diagnostic",
+      "node_count": 6,
+      "runs": [],
+      "strict_q_common_fixture_found": false,
+      "template": "observed_common_cause"
+    },
+    {
+      "cohort_storage_bytes_after": 769153,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 102769,
+      "max_total_seconds": 9.105986699985806,
+      "median_total_seconds": 9.105986699985806,
+      "node_count": 7,
+      "proposal_id": "resource-v2-observed_common_cause-n7",
+      "registry_delta": -1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": -1,
+          "elapsed_seconds": 9.105986699985806,
+          "isolate_stages": true,
+          "ledger_bytes": 102769,
+          "ledger_sha256": "39361b8b04a6b2b9412474ce912599a7a67f5fbc56f73018a9500db8b7b3192d",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.19671190000372007,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69025792,
+            "error_graphs": 68947968,
+            "gt_evaluation": 68829184,
+            "observations": 67751936,
+            "policy_graphs": 68636672,
+            "proposal": 67375104,
+            "recommendations": 69038080,
+            "scm": 67612672
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.1410000000032596,
+            "error_graphs": 1.047000000020489,
+            "gt_evaluation": 1.125,
+            "observations": 1.062000000034459,
+            "policy_graphs": 1.0149999999557622,
+            "proposal": 1.0780000000377186,
+            "recommendations": 1.172000000020489,
+            "scm": 1.0
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-observed_common_cause-n7-a0000",
+      "strict_q_common": true,
+      "template": "observed_common_cause",
+      "topology_sha256": "580abb16fe92ca6719d8f9f0bb7aa8c012ea174b3838ea31afb9597d7005637f"
+    },
+    {
+      "cohort_storage_bytes_after": 891311,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 113966,
+      "max_total_seconds": 9.227260899962857,
+      "median_total_seconds": 9.227260899962857,
+      "node_count": 8,
+      "proposal_id": "resource-v2-observed_common_cause-n8",
+      "registry_delta": 1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": 1,
+          "elapsed_seconds": 9.227260899962857,
+          "isolate_stages": true,
+          "ledger_bytes": 113966,
+          "ledger_sha256": "5cf832f0ae079c26032b831a8255c81681c7cccea99f35e04193adf2cfd92b98",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.17687169997952878,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69054464,
+            "error_graphs": 69599232,
+            "gt_evaluation": 69287936,
+            "observations": 67842048,
+            "policy_graphs": 68943872,
+            "proposal": 67473408,
+            "recommendations": 69476352,
+            "scm": 67510272
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.1089999999967404,
+            "error_graphs": 1.0939999999827705,
+            "gt_evaluation": 1.125,
+            "observations": 1.0310000000172295,
+            "policy_graphs": 1.0619999999762513,
+            "proposal": 1.0929999999934807,
+            "recommendations": 1.1399999999557622,
+            "scm": 1.0310000000172295
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-observed_common_cause-n8-a0000",
+      "strict_q_common": true,
+      "template": "observed_common_cause",
+      "topology_sha256": "2aa256093c0a7aa731381c572478ec1708a9da646b2a93bf7fafadc00be32d7d"
+    },
+    {
+      "cohort_storage_bytes_after": 1016880,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 125569,
+      "max_total_seconds": 8.728413500008173,
+      "median_total_seconds": 8.728413500008173,
+      "node_count": 9,
+      "proposal_id": "resource-v2-observed_common_cause-n9",
+      "registry_delta": -1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": -1,
+          "elapsed_seconds": 8.728413500008173,
+          "isolate_stages": true,
+          "ledger_bytes": 125569,
+          "ledger_sha256": "943c153b2c9720e98836aaa9b4f7a3791ee006dbeabb4ededb8fd635258042b9",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.16039789997739717,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69410816,
+            "error_graphs": 70291456,
+            "gt_evaluation": 69730304,
+            "observations": 67903488,
+            "policy_graphs": 69300224,
+            "proposal": 67452928,
+            "recommendations": 69533696,
+            "scm": 67416064
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.125,
+            "error_graphs": 1.047000000020489,
+            "gt_evaluation": 1.0780000000377186,
+            "observations": 1.0150000000139698,
+            "policy_graphs": 1.0160000000032596,
+            "proposal": 0.9689999999827705,
+            "recommendations": 1.0160000000032596,
+            "scm": 0.9689999999827705
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-observed_common_cause-n9-a0000",
+      "strict_q_common": true,
+      "template": "observed_common_cause",
+      "topology_sha256": "097e43f4dba7488fb4d4422be35d58e8b7c666cf0977880f87eb6453b89c994d"
+    },
+    {
+      "cohort_storage_bytes_after": 1153963,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 137083,
+      "max_total_seconds": 9.206464599992614,
+      "median_total_seconds": 9.206464599992614,
+      "node_count": 10,
+      "proposal_id": "resource-v2-observed_common_cause-n10",
+      "registry_delta": 1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": 1,
+          "elapsed_seconds": 9.206464599992614,
+          "isolate_stages": true,
+          "ledger_bytes": 137083,
+          "ledger_sha256": "c00c5ae73483d0d987689a3df76f891c0240c1f39b20a1f2a2e232980abb10d5",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.2017647000029683,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69869568,
+            "error_graphs": 70279168,
+            "gt_evaluation": 69763072,
+            "observations": 67989504,
+            "policy_graphs": 69222400,
+            "proposal": 67309568,
+            "recommendations": 69976064,
+            "scm": 67338240
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.1869999999762513,
+            "error_graphs": 1.1560000000172295,
+            "gt_evaluation": 1.0619999999762513,
+            "observations": 1.0790000000270084,
+            "policy_graphs": 1.0469999999622814,
+            "proposal": 0.9529999999795109,
+            "recommendations": 1.0469999999622814,
+            "scm": 1.0310000000172295
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-observed_common_cause-n10-a0000",
+      "strict_q_common": true,
+      "template": "observed_common_cause",
+      "topology_sha256": "6ed270b29bfaca83a8277bf93594e4c7b38614c82cf25e8f0cfc96d8ffbe6703"
+    },
+    {
+      "cohort_storage_bytes_after": 1246313,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 92350,
+      "max_total_seconds": 8.868551299965475,
+      "median_total_seconds": 8.868551299965475,
+      "node_count": 6,
+      "proposal_id": "resource-v2-multiple_directed_paths-n6",
+      "registry_delta": -1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": -1,
+          "elapsed_seconds": 8.868551299965475,
+          "isolate_stages": true,
+          "ledger_bytes": 92350,
+          "ledger_sha256": "1fd9b23f767a1074f7b3cad6ec653fb100306d5c33bdf6e25025fa29d73c2432",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.10005579999415204,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69099520,
+            "error_graphs": 68337664,
+            "gt_evaluation": 68694016,
+            "observations": 67604480,
+            "policy_graphs": 68509696,
+            "proposal": 67469312,
+            "recommendations": 69005312,
+            "scm": 67489792
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.0940000000409782,
+            "error_graphs": 1.0150000000139698,
+            "gt_evaluation": 1.0310000000172295,
+            "observations": 1.0320000000065193,
+            "policy_graphs": 1.0160000000032596,
+            "proposal": 1.062999999965541,
+            "recommendations": 1.0310000000172295,
+            "scm": 1.0160000000032596
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-multiple_directed_paths-n6-a0000",
+      "strict_q_common": true,
+      "template": "multiple_directed_paths",
+      "topology_sha256": "9c47f3bb5f34236368b8fca6ca62b8f2c1bc9dce94d4e6aae9a1792bcc3b0a42"
+    },
+    {
+      "cohort_storage_bytes_after": 1349321,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 103008,
+      "max_total_seconds": 8.78651439998066,
+      "median_total_seconds": 8.78651439998066,
+      "node_count": 7,
+      "proposal_id": "resource-v2-multiple_directed_paths-n7",
+      "registry_delta": 1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": 1,
+          "elapsed_seconds": 8.78651439998066,
+          "isolate_stages": true,
+          "ledger_bytes": 103008,
+          "ledger_sha256": "60ddaff6eb7aa23c543ddd11bfdef7f11d0e884aa5cbb70513ce509bfe1d9dfb",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.179302699980326,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 68759552,
+            "error_graphs": 68943872,
+            "gt_evaluation": 69165056,
+            "observations": 67780608,
+            "policy_graphs": 68808704,
+            "proposal": 67461120,
+            "recommendations": 68857856,
+            "scm": 67428352
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.0459999999729916,
+            "error_graphs": 1.047000000020489,
+            "gt_evaluation": 1.0619999999762513,
+            "observations": 1.0149999999557622,
+            "policy_graphs": 1.1400000000139698,
+            "proposal": 0.9380000000237487,
+            "recommendations": 1.0309999999590218,
+            "scm": 0.9849999999860302
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-multiple_directed_paths-n7-a0000",
+      "strict_q_common": true,
+      "template": "multiple_directed_paths",
+      "topology_sha256": "70660dbed89562fe38827effbb120d273235d59054d098e891fab54ef2fdf4e8"
+    },
+    {
+      "cohort_storage_bytes_after": 1463221,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 113900,
+      "max_total_seconds": 8.629486599995289,
+      "median_total_seconds": 8.629486599995289,
+      "node_count": 8,
+      "proposal_id": "resource-v2-multiple_directed_paths-n8",
+      "registry_delta": -1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": -1,
+          "elapsed_seconds": 8.629486599995289,
+          "isolate_stages": true,
+          "ledger_bytes": 113900,
+          "ledger_sha256": "734265b29f1b774e4b37478af548282de8129c3d23a34111f0869b2a8199d682",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.08479839999927208,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69115904,
+            "error_graphs": 70082560,
+            "gt_evaluation": 69308416,
+            "observations": 68050944,
+            "policy_graphs": 69128192,
+            "proposal": 67375104,
+            "recommendations": 69357568,
+            "scm": 67551232
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.0160000000032596,
+            "error_graphs": 1.0630000000237487,
+            "gt_evaluation": 1.0310000000172295,
+            "observations": 0.9380000000237487,
+            "policy_graphs": 1.0630000000237487,
+            "proposal": 0.9370000000344589,
+            "recommendations": 1.0320000000065193,
+            "scm": 1.0160000000032596
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-multiple_directed_paths-n8-a0000",
+      "strict_q_common": true,
+      "template": "multiple_directed_paths",
+      "topology_sha256": "63758f7cc05ae2abc0f91c57fc7763ec2a8b4cbf503c9919199ee47f3b545290"
+    },
+    {
+      "cohort_storage_bytes_after": 1593142,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 125825,
+      "max_total_seconds": 9.059001100016758,
+      "median_total_seconds": 9.059001100016758,
+      "node_count": 9,
+      "proposal_id": "resource-v2-multiple_directed_paths-n9",
+      "registry_delta": 1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": 1,
+          "elapsed_seconds": 9.059001100016758,
+          "isolate_stages": true,
+          "ledger_bytes": 125825,
+          "ledger_sha256": "4d4a6fb32c1749644c502da8e62f4cb320adbb3cb60a542111ffec51d801e702",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.08619670005282387,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69611520,
+            "error_graphs": 70115328,
+            "gt_evaluation": 69615616,
+            "observations": 67788800,
+            "policy_graphs": 69062656,
+            "proposal": 67207168,
+            "recommendations": 69701632,
+            "scm": 67526656
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.0939999999827705,
+            "error_graphs": 1.125,
+            "gt_evaluation": 1.0619999999762513,
+            "observations": 1.0790000000270084,
+            "policy_graphs": 1.077999999979511,
+            "proposal": 0.9849999999860302,
+            "recommendations": 1.1089999999967404,
+            "scm": 0.9839999999967404
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-multiple_directed_paths-n9-a0000",
+      "strict_q_common": true,
+      "template": "multiple_directed_paths",
+      "topology_sha256": "8f6409ce1386a74620fddc6acc8a974d85377187d1bf3a2c175f3295eb65a137"
+    },
+    {
+      "cohort_storage_bytes_after": 1730470,
+      "equation_signature_bound": true,
+      "max_ledger_bytes": 137328,
+      "max_total_seconds": 9.225357199960854,
+      "median_total_seconds": 9.225357199960854,
+      "node_count": 10,
+      "proposal_id": "resource-v2-multiple_directed_paths-n10",
+      "registry_delta": -1,
+      "registry_status": "completed",
+      "runs": [
+        {
+          "delta": -1,
+          "elapsed_seconds": 9.225357199960854,
+          "isolate_stages": true,
+          "ledger_bytes": 137328,
+          "ledger_sha256": "ed966bb3b91faf00dde4944ef96dd51be945e9e2b89795cf083f970e8f6b6a8e",
+          "max_unit_seconds": 2.0,
+          "repeat": 0,
+          "resume_replayed": true,
+          "resume_seconds": 0.08808900002622977,
+          "stage_sampled_child_rss_bytes": {
+            "composite": 69677056,
+            "error_graphs": 70930432,
+            "gt_evaluation": 69738496,
+            "observations": 67854336,
+            "policy_graphs": 69672960,
+            "proposal": 67391488,
+            "recommendations": 69660672,
+            "scm": 67493888
+          },
+          "stage_wall_seconds_including_spawn": {
+            "composite": 1.0469999999622814,
+            "error_graphs": 1.2189999999827705,
+            "gt_evaluation": 1.077999999979511,
+            "observations": 1.077999999979511,
+            "policy_graphs": 1.077999999979511,
+            "proposal": 1.0150000000139698,
+            "recommendations": 1.125,
+            "scm": 0.9679999999934807
+          },
+          "status": "OK"
+        }
+      ],
+      "scm_id": "dev-scm-resource-v2-multiple_directed_paths-n10-a0000",
+      "strict_q_common": true,
+      "template": "multiple_directed_paths",
+      "topology_sha256": "22722679acb73bda9711b9b8c71aa5f3fdcd8ff6b30a62dc2492214018a144c7"
+    }
+  ],
+  "rss_note": "parent process snapshots; child RSS is sampled by runner and may overshoot between checks; not peak RSS bound",
+  "runtime_fingerprint": {
+    "dependencies": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.3",
+      "pandas": "3.0.1"
+    },
+    "operating_system": "Windows",
+    "platform_fingerprint": "Windows-10-10.0.26200-SP0",
+    "python_implementation": "CPython",
+    "python_version": "3.11.15"
+  },
+  "schema_version": 2,
+  "settings": {
+    "cohort_storage_monitor_tested": "enabled for shared registry/WAL and all fixture ledgers; all appends guarded",
+    "individual_ledger_cap_bytes": 104857600,
+    "isolate_stages": true,
+    "rss_sampled_kill_bytes": 536870912,
+    "scm_active_stage_cap_seconds": 1800.0,
+    "unit_timeout_seconds": 2.0
+  },
+  "study_cohort_generated": false,
+  "study_eligible_admissions": 0,
+  "template_node_strata": 20,
+  "topology_source_sha256": "959078f02df14f54af5915327115bab6d78e1b19f010c285cea2eb0f9de79ae3",
+  "whole_cohort_storage_bytes": 1730470,
+  "whole_cohort_storage_cap_bytes": 104857600
+}

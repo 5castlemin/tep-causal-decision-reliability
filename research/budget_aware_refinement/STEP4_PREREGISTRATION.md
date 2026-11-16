@@ -1,5 +1,7 @@
 # HISTORICAL PROPOSAL — SUPERSEDED
 
+> Current status (2026-11-16): Step 4 protocol/execution contract is FROZEN in `STEP4_CURRENT_ACTIVE_CONTRACT.md` and `STEP4_FROZEN_PROTOCOL.md`. This document preserves earlier proposals and is not an execution instruction. Step 5/6 cohorts remain NOT RUN.
+
 This document preserves earlier preregistration drafts. The active contract is `STEP4_CURRENT_ACTIVE_CONTRACT.md`; this file is not the current execution authority. Step 4 remains NOT FROZEN.
 
 # Step 4 provisional registration — NOT FROZEN

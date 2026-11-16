@@ -332,11 +332,18 @@ def execution_binding(proposal: Mapping[str, object], delta: int,
     """Return the same config/input hashes used by the durable pipeline."""
     if type(delta) is not int or delta not in (-1, 1):
         raise ValueError("delta must be the prespecified +/-1 target direction")
+    from .step4c2_freeze import verify_freeze_manifest
+    # Fixture-only tests may run against a candidate manifest. The research
+    # cohort entry point separately requires a clean, exact revision and a
+    # FROZEN manifest before it generates its first proposal.
+    freeze_manifest, freeze_manifest_sha256 = verify_freeze_manifest(require_frozen=False)
     config = {"protocol": "step4c1-linear-scm-v1", "budget": ACTIVE_BUDGET,
               "gamma": ACTIVE_GAMMA, "delta": delta, "n_observations": 512,
               "coefficient_abs_range": [0.25, 0.8], "sign_probability": "1/2 each",
               "noise_family": "independent Gaussian, mean 0",
-              "noise_sd_range": [0.8, 1.2], "types": TYPES}
+              "noise_sd_range": [0.8, 1.2], "types": TYPES,
+              "freeze_manifest_sha256": freeze_manifest_sha256,
+              "operational_settings_sha256": freeze_manifest["settings_sha256"]}
     config_sha = hashlib.sha256(_canonical_json(config)).hexdigest()
     input_payload = {"proposal": dict(proposal)}
     if fixture_payload is not None:

@@ -1,8 +1,10 @@
 # CURRENT CONTRACT POINTER (2026-11-16)
 
-The active Step 4 contract is `STEP4_CURRENT_ACTIVE_CONTRACT.md`; the production interface and implementation status are in `STEP4C1_PRODUCTION_RUNNER_CONTRACT.json`. Older P/B=4 confirmatory clauses below are historical superseded proposals, retained for audit history. Current inference is Option B and does not support a confirmatory superiority claim. Step 4 is NOT FROZEN.
+The active Step 4 contract is frozen in `STEP4_CURRENT_ACTIVE_CONTRACT.md` and `STEP4_FROZEN_PROTOCOL.md`; production settings and content hashes are bound by `step4c2_operational_settings.json` and `step4c2_final_freeze_manifest.json`. Older P/B=4 confirmatory clauses below are historical superseded proposals, retained for audit history. Current inference is Option B and does not support confirmatory superiority/equivalence claims. This freezes the protocol and execution contract only; Step 5/6 remain NOT RUN.
 
-## Step 4C-1 current delta and cohort admission clarification (2026-11-16; NOT FROZEN)
+> All dated Step 4 status and design notes below this pointer are historical snapshots. Their contemporaneous `IN_PROGRESS`/`NOT FROZEN` labels are not the current status and are retained to preserve the decision trail.
+
+## Historical Step 4C-1 delta and cohort admission clarification (2026-11-16; superseded by freeze)
 
 The historical `delta_i ∈ {-1,+1}` balanced assignment remains active. For each cohort independently, after a proposal passes strict Q-common structural eligibility and is atomically admitted, the SQLite registry assigns `+1,-1,+1,...` by the zero-based accepted-SCM ordinal. The assignment is persisted and reused on replay. A given SCM's three error versions and both paired policies share the same delta. Rejections do not consume a delta position. This is deterministic and outcome/GT-blind. `run_eligible_proposal` requires an explicit delta and has no +1 default.
 
@@ -18,7 +20,7 @@ Candidate allocation remains 64 development eligible SCMs and 200 independent Q-
 
 Finite attempt ceilings for the current plan are 362 development and 1,036 confirmation topology candidates, based on the v2 simultaneous lower-yield planning calculation; they are not guarantees. Retain every rejection. Stop at target N or cap, whichever occurs first. A confirmation shortfall, incomplete three-type SCM vector, or unresolved GT-evaluation failure suspends any inferential claim; do not replace after viewing outcomes, lower N, or average over available types. Infrastructure replay is allowed once only with identical input and RNG key. Eligible Ridge/recommendation failures may use common-grid k=0 only when training and truth inputs are valid; preserve original failure and report fallback separately.
 
-These decisions prospectively supersede the older P/B4 selected-policy-versus-Random confirmatory proposal and earlier use of 64/200 as power-backed sizes. Historical text and results remain unchanged. Development integration and structural feasibility are not research outcomes. Step 4 remains IN_PROGRESS / NOT FROZEN pending Step 4C reconciliation and freeze.
+These decisions prospectively superseded the older P/B4 selected-policy-versus-Random confirmatory proposal and earlier use of 64/200 as power-backed sizes. Historical text and results remain unchanged. Development integration and structural feasibility are not research outcomes. At the time of this entry, Step 4 was IN_PROGRESS / NOT FROZEN; the current disposition is stated in the pointer above.
 
 ## 목표와 가설
 

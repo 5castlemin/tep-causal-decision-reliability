@@ -2,6 +2,13 @@
 
 기록 원칙: 실질 작업마다 날짜, 브랜치/커밋, 실행 명령, 실제 결과, 미수행/차단 사항을 추가한다. 이 문서는 작업 성공을 추정하지 않는다.
 
+## 2026-11-16 — Step 4C-2 final freeze closure
+
+- Requalified the production-isolated fixed-fixture path on Windows/CPython 3.11.15: 14/14 preserved strict-Q topology fixtures completed with 14/14 identical-ledger replays, no 2-second unit timeout, max stage 1.219 s, full-path max 9.255 s, sampled child RSS max 70,930,432 bytes, shared fixture-root storage 1,730,470 bytes. Six source topology strata had no accepted fixture and remain unavailable; no study SCM was sampled (`independent_scm_n=0`). Evidence: `research/budget_aware_refinement/step4c2_resource_qualification_v2.json`.
+- Separate fixed-key proposal timing covered 20 strata (7 accepted timing fixtures, 13 structural rejections); this is not a yield estimate. Conservative measured-cost extrapolation was ~737 s for 64 admissions/386 proposals and ~2,264 s for 200/1,104, without a worst-case guarantee.
+- Frozen safe-stop settings are 2 s/unit, 1,800 s/SCM active stages, 7,200 s/cohort active stages, sampled 512 MiB RSS, 100 MiB individual ledger and dedicated cohort root, 5 MiB failure reserve, and 1 GiB free-disk floor. The content manifest excludes itself; commit/tree are recorded externally.
+- Python 3.11.15 full local suite: 261 PASS. Research-state and docs checks plus `git diff --check` passed; Git-blob SHA-256 matched all 39 frozen assets. Exact-head GitHub Actions and PR Self-Review remain pending the final commit. No development/held-out cohort, research Decision Regret analysis, Step 5/6 or manufacturing intervention effect was run. PR #38 remains Draft/unmerged; protocol freeze is not cohort authorization.
+
 ## 2026-10-23 — Slack 자산 및 연구 운영 정비
 
 - 브랜치: `feature/slack-assets-research-ops` (커밋/PR은 이 작업 완료 시 Git 이력 참조).

@@ -231,9 +231,10 @@ def run_pipeline(
                                         completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
             return {"status": status, "resumed": bool(done), "completed_stages": sorted(done)}
         unit_start = clock()
+        observed_peak_rss = None
         try:
             if isolate_stages:
-                output, child_status, unit_seconds = _run_isolated(
+                output, child_status, unit_seconds, observed_peak_rss = _run_isolated(
                     stages[stage], min(max_unit_seconds, remaining), max_rss_bytes
                 )
                 if child_status == "STAGE_EXCEPTION":
@@ -242,10 +243,14 @@ def run_pipeline(
                     status = child_status.split("|", 1)[0].removeprefix("STAGE_FAILURE:") if child_status.startswith("STAGE_FAILURE:") else child_status
                     elapsed_used += unit_seconds
                     write_event(event(f"stage:{stage}", status=status,
-                                                elapsed_seconds=unit_seconds, elapsed_total_seconds=elapsed_used), max_bytes=max_ledger_bytes - 512)
+                                                elapsed_seconds=unit_seconds, elapsed_total_seconds=elapsed_used,
+                                                observed_rss_bytes=observed_peak_rss,
+                                                rss_measurement="sampled_child_working_set"), max_bytes=max_ledger_bytes - 512)
                     write_event(event("terminal", status=status,
                                                 completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
                     return {"status": status, "resumed": bool(done), "completed_stages": list(done)}
+                # Successful and failed isolated units both retain their
+                # highest sampled child working set in the durable event.
             else:
                 output = stages[stage]()
             unit_seconds = clock() - unit_start
@@ -268,7 +273,9 @@ def run_pipeline(
                                             completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
                 return {"status": cap_status, "resumed": bool(done), "completed_stages": sorted(done)}
             row = event(f"stage:{stage}", status="OK", output=output,
-                        elapsed_seconds=max(0.0, unit_seconds), elapsed_total_seconds=elapsed_total)
+                        elapsed_seconds=max(0.0, unit_seconds), elapsed_total_seconds=elapsed_total,
+                        **({"observed_rss_bytes": observed_peak_rss,
+                           "rss_measurement": "sampled_child_working_set"} if isolate_stages else {}))
             try:
                 write_event(row, max_bytes=max_ledger_bytes - 512)
             except OSError:
@@ -291,6 +298,9 @@ def run_pipeline(
             elapsed_used += unit_seconds
             detail = {"status": status, "failure_type": type(exc).__name__, "reason": str(exc)[:300],
                       "elapsed_seconds": unit_seconds, "elapsed_total_seconds": elapsed_used}
+            if isolate_stages:
+                detail["observed_rss_bytes"] = observed_peak_rss
+                detail["rss_measurement"] = "sampled_child_working_set"
             write_event(event(f"stage:{stage}", **detail), max_bytes=max_ledger_bytes)
             write_event(event("terminal", status=status,
                                         completed_stages=list(done), cumulative_elapsed_seconds=elapsed_used), max_bytes=max_ledger_bytes)
@@ -377,12 +387,19 @@ def _run_isolated(stage, timeout: float, rss_cap: int | None):
     ctx = multiprocessing.get_context("spawn")
     parent, child = ctx.Pipe(duplex=False)
     proc = ctx.Process(target=_worker, args=(child, stage))
+    started = time.monotonic()
     proc.start()
     child.close()
-    started = time.monotonic()
     failure = None
     message = None
+    sampled_peak_rss = None
     while proc.is_alive():
+        rss = _rss_for_pid(proc.pid)
+        if rss is not None:
+            sampled_peak_rss = rss if sampled_peak_rss is None else max(sampled_peak_rss, rss)
+            if rss_cap is not None and rss > rss_cap:
+                failure = "RSS_LIMIT"
+                break
         try:
             available = parent.poll()
         except OSError:
@@ -396,10 +413,6 @@ def _run_isolated(stage, timeout: float, rss_cap: int | None):
         if time.monotonic() - started > timeout:
             failure = "TIMEOUT"
             break
-        rss = _rss_for_pid(proc.pid)
-        if rss_cap is not None and rss is not None and rss > rss_cap:
-            failure = "RSS_LIMIT"
-            break
         proc.join(0.01)
     if failure:
         proc.terminate()
@@ -407,7 +420,8 @@ def _run_isolated(stage, timeout: float, rss_cap: int | None):
         if proc.is_alive() and hasattr(proc, "kill"):
             proc.kill()
             proc.join()
-        return None, failure, max(0.0, time.monotonic() - started)
+        parent.close()
+        return None, failure, max(0.0, time.monotonic() - started), sampled_peak_rss
     proc.join()
     if message is None:
         try:
@@ -417,9 +431,9 @@ def _run_isolated(stage, timeout: float, rss_cap: int | None):
             message = None
     parent.close()
     if message is None:
-        return None, "CHILD_EXIT", max(0.0, time.monotonic() - started)
+        return None, "CHILD_EXIT", max(0.0, time.monotonic() - started), sampled_peak_rss
     if message[0] == "EXCEPTION":
-        return None, "STAGE_EXCEPTION", max(0.0, time.monotonic() - started)
+        return None, "STAGE_EXCEPTION", max(0.0, time.monotonic() - started), sampled_peak_rss
     if message[0] == "STAGE_FAILURE":
-        return None, f"STAGE_FAILURE:{message[1]}|{message[2]}", max(0.0, time.monotonic() - started)
-    return message[1], None, max(0.0, time.monotonic() - started)
+        return None, f"STAGE_FAILURE:{message[1]}|{message[2]}", max(0.0, time.monotonic() - started), sampled_peak_rss
+    return message[1], None, max(0.0, time.monotonic() - started), sampled_peak_rss

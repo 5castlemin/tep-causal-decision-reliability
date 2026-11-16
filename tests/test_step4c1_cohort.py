@@ -205,15 +205,19 @@ class Step4C1CohortTests(unittest.TestCase):
     def test_step4c2_resource_report_matches_fixture_json(self):
         import json
         root=Path(__file__).resolve().parents[1]/"research"/"budget_aware_refinement"
-        raw=json.loads((root/"step4c2_resource_qualification_v1.json").read_text(encoding="utf-8"))
+        raw=json.loads((root/"step4c2_resource_qualification_v2.json").read_text(encoding="utf-8"))
         report=(root/"STEP4C2_FINAL_FREEZE_AUDIT.md").read_text(encoding="utf-8")
-        self.assertEqual([row["node_count"] for row in raw["results"]],[6,7,8,9,10])
+        self.assertEqual(raw["schema_version"],2)
         self.assertFalse(raw["study_cohort_generated"])
         self.assertFalse(raw["decision_regret_analysis"])
-        for row in raw["results"]:
-            self.assertTrue(row["complete"])
-            self.assertIn(f"{row['node_count']} | {row['median_seconds']:.4f}",report)
-            self.assertIn(f"{row['ledger_bytes_median']:,}",report)
+        runs=[run for row in raw["rows"] for run in row["runs"]]
+        self.assertEqual(len(runs),14)
+        self.assertEqual(sum(bool(row.get("strict_q_common")) for row in raw["rows"]),14)
+        self.assertEqual(raw["registry_counts"]["composite_available"],14)
+        self.assertIn(f"{max(run['elapsed_seconds'] for run in runs):.2f} seconds",report)
+        self.assertIn(f"{max(v for run in runs for v in run['stage_wall_seconds_including_spawn'].values()):.3f} seconds",report)
+        self.assertIn(f"{max(run['ledger_bytes'] for run in runs):,} bytes",report)
+        self.assertIn(f"{raw['whole_cohort_storage_bytes']:,} bytes",report)
 
     def test_per_ledger_limit_is_distinct_from_cohort_storage_limit(self):
         with tempfile.TemporaryDirectory() as td:

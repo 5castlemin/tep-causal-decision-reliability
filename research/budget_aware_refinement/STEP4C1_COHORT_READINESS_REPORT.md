@@ -1,4 +1,6 @@
-# Step 4C-1 Cohort Orchestration Readiness
+# Step 4C-1 Cohort Orchestration Readiness — historical snapshot
+
+> This report records its original review point. Step 4C-1 later completed on fixed fixtures; the current frozen Step 4 protocol and execution contract are in `STEP4_CURRENT_ACTIVE_CONTRACT.md` and `STEP4_FROZEN_PROTOCOL.md`. No development or replication study cohort has run.
 
 Status: **DONE for fixed-fixture implementation/readiness; Step 4 remains IN_PROGRESS / NOT FROZEN**. Validation uses deterministic proposal records, a SQLite registry, explicit fixed SCM equations/noise, and mock ledger events. No 64/200 SCM cohort, study observations, or Decision Regret experiment was generated.
 

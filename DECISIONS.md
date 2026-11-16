@@ -159,3 +159,7 @@ Step0의 전체 후보 위치 정렬과 유형 우선 정렬을 공통 seed 회�
 ## 2026-11-15 — Solo Research Self-Review 운영 전환
 
 저장소 운영자의 명시적 결정에 따라 PR의 기본 검토는 `CONTRIBUTING.md`의 증거 기반 Self-Review로 운영한다. PR 작성자의 공식 APPROVE를 가장하거나 플랫폼 필수 보호 규칙을 우회하지 않는다. PR #36의 개발 통합 결정은 이번 요청에 한정하며 후속 PR의 자동 병합 승인이 아니다. 과거 연구 가설과 Step 4의 NOT FROZEN 상태는 유지한다. 협업 형태가 바뀌면 검토 정책을 다시 결정한다.
+
+## 2026-11-16 — Step 4 protocol/execution freeze
+
+Q-common strict indirect-only, B=1/gamma=1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within-SCM weighting, alternating delta, 64/200 eligible-admission targets with 386/1,104 caps, and Option B descriptive estimation are frozen as the Step 4 protocol and execution contract. Production runtime/resource controls and content hashes are pinned in `research/budget_aware_refinement/step4c2_operational_settings.json` and `step4c2_final_freeze_manifest.json`. This does not constitute a study cohort or authorize Step 5/6 execution; PR #38 remains Draft/unmerged. Fixed-fixture qualification is software evidence only, with six template×node-count strata unavailable in the preserved strict-Q fixture source. Reconsider only via a new versioned protocol and freeze review.

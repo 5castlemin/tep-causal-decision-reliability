@@ -1,5 +1,13 @@
 # 결정 기록
 
+## 2026-11-16 — Step 4C-2 운영 검증 및 계약 동결
+
+- Active contract는 P|strict Q-common, indirect-only, B=1/gamma=1, Global vs Task-Focused, FN/FP/REV 동일 1/3, 독립 단위 SCM, admitted ordinal별 코호트 내 ±1 교대, development/replication admission 목표 64/200, proposal cap 386/1,104, Option B 기술적 추정으로 고정했다. P/B4 및 과거 confirmatory 제안은 대체된 기록이다.
+- 운영 환경은 Windows `Windows-10-10.0.26200-SP0`, CPython 3.11.15, NumPy 2.4.3, pandas 3.0.1, NetworkX 3.6.1이다. 격리 stage, 단위 2초, SCM active-stage 1,800초, cohort active-stage 7,200초, sampled RSS 512 MiB, ledger 100 MiB, 전용 cohort root 100 MiB, failure reserve 5 MiB, 최소 여유 공간 1 GiB를 safe-stop 설정으로 채택했다. RSS와 디스크 설정은 OS quota/worst-case 보장이 아니다.
+- 고정 fixture에서 생산 격리 모드를 재측정했다. 14개 보존 strict-Q 구조 fixture 전부 성공·동일 ledger hash로 재생됐고, 독립 SCM 표본은 0이다. 20 strata의 고정 키 proposal timing은 구조 수율 추정으로 취급하지 않는다.
+- 최종 content manifest는 파일 내용 해시와 settings/runtime을 묶고 자기 자신을 제외한다. Git commit/tree는 외부 PR/CI 증거에 기록한다. 변경된 코드·설정·입력·RNG 또는 필수 runtime binding으로 기존 실행을 재개하지 못하게 한다.
+- Step 4는 프로토콜/실행 계약으로만 FROZEN한다. Step 5/6 데이터 및 제조공정 개입 효과 결과는 생성되지 않았다. PR #38은 Draft/unmerged 유지; 이 freeze는 cohort 실행 승인으로 간주하지 않는다.
+
 - 2026-11-05 제안: 비용 제약의 구조 개선 정책과 후회 비교를 별도 연구 후보로 구축. 기존 RESEARCH_DESIGN.md와 완료 결과를 대체하지 않는다.
 - 주 제안은 참조를 사용하는 oracle이며 비oracle 정책은 후속 별도 계약. 선택 지표 외 지표의 변화도 허용·기록.
 - 균등 몫과 고정 순서를 예시로 사전 제안; 예산의 자유 배분 oracle과 구분. 겹치는 수정은 한 번만 과금. 통계적/계산 예산은 미승인.
@@ -107,3 +115,11 @@ The integrated mock runner previously skipped checkpointed stages but held prere
 - Separate explicit expected structural rejection reasons from unexpected proposal-generator exceptions and malformed/replay-mismatched records. Persist unexpected errors as fatal generator errors and stop at the same candidate on replay; do not count implementation errors as Q eligibility failures. This is an execution-integrity correction and does not change eligibility or the proposal denominator.
 - Keep the existing 100 MiB JSONL cap scoped to each ledger. Add an optional separate cohort-root monitor that totals ledgers, SQLite/WAL and other files, checks free disk before writes, and reserves an error terminal. The monitor's SQLite growth estimate is a preflight, not a filesystem quota; no whole-cohort cap or study-scale resource guarantee is frozen.
 - Fixed-fixture resource qualification reused one deterministic test fixture per node count (6–10) for three runs each. It measured pipeline, replay, registry and ledger size only; no independent SCM, cohort, or performance conclusion was produced. Step 4C-2 remains IN_PROGRESS and Step 4 NOT FROZEN.
+# 2026-11-16 — Step 4C-2 final protocol and execution freeze
+
+- Freeze the existing Q-common/strict-indirect/B=1/gamma=1 Global vs Task-Focused contract without changing the estimand, strata, error types, target sample admissions, or Option B descriptive status. This is a protocol/code/runtime freeze, not a research result or Step 5/6 completion.
+- Adopt Windows `Windows-10-10.0.26200-SP0`, CPython 3.11.15 and pinned NumPy 2.4.3 / pandas 3.0.1 / NetworkX 3.6.1 as the supported cohort runtime. The actual cohort entrypoint requires a clean checkout, exact commit/tree, frozen content manifest, operational settings, and validates the runtime before proposal generation.
+- Set operational stop limits from the production-isolated fixed-fixture qualification: 2 s per unit, 1,800 s cumulative active stage time per SCM, 7,200 s cohort active-stage stop, sampled 512 MiB child working-set kill-on-detection, 100 MiB per ledger, 100 MiB dedicated cohort-root preflight cap, 5 MiB failure-record reserve, and 1 GiB minimum free disk. These are safe-stop budgets, not absolute worst-case guarantees or OS quotas. A cap or execution failure preserves the failed denominator and causes shortfall; no proposal replacement is allowed.
+- The new production-isolated qualification contains 14 deterministic, registry-backed fixture rows from the preserved strict-Q yield diagnostic; n=6/7 and Fork/n=8 strata without accepted source fixtures remain recorded. It generated zero independent SCMs and performed no research Decision Regret analysis. The separate proposal-cost benchmark uses 20 fixed strata and 3 repeated keys per stratum; it does not change population weights or acceptance rules.
+- Code/content hashes are normalized for UTF-8 text line endings and raw-byte hashed for binary artifacts. The manifest excludes itself. Exact Git commit/tree are supplied at production entry and recorded externally in PR/CI to avoid a self-reference cycle. Any manifested change blocks resume and requires a new freeze revision.
+- PR #38 remains Draft and unmerged. No study cohort, Step 5, Step 6, or TEP/CausalMan experiment was run. Step 4 is FROZEN as protocol/execution contract only; no superiority or equivalence claim is authorized.

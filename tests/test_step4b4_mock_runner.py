@@ -212,8 +212,11 @@ run_pipeline('integrated-restart',Path(sys.argv[1]),stages,rng_key=MOCK_RNG_KEY,
                     stages[stage_name] = fail
                 else:
                     stages[stage_name] = failure
+                # The RSS fixture touches 96 MiB page-by-page; give it enough
+                # execution time to reach the RSS monitor on slower CI hosts.
+                unit_cap = 5.0 if expected == "RSS_LIMIT" else .15
                 result = run_pipeline("failed-run", ledger, stages, isolate_stages=isolated,
-                                      max_unit_seconds=.15,
+                                      max_unit_seconds=unit_cap,
                                       max_rss_bytes=64 * 1024 * 1024 if expected == "RSS_LIMIT" else None)
                 self.assertEqual(result["status"], expected)
                 rows = recover_jsonl(ledger)
@@ -221,7 +224,7 @@ run_pipeline('integrated-restart',Path(sys.argv[1]),stages,rng_key=MOCK_RNG_KEY,
                 self.assertEqual(rows[-1]["completed_stages"], [r["event"].split(":",1)[1]
                                  for r in rows if r["event"].startswith("stage:") and r["status"] == "OK"])
                 again = run_pipeline("failed-run", ledger, stages, isolate_stages=isolated,
-                                     max_unit_seconds=.15,
+                                     max_unit_seconds=unit_cap,
                                      max_rss_bytes=64 * 1024 * 1024 if expected == "RSS_LIMIT" else None)
                 self.assertEqual(again["status"], expected)
                 self.assertEqual(len(recover_jsonl(ledger)), len(rows))

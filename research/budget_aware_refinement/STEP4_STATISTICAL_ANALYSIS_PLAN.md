@@ -1,5 +1,7 @@
 # HISTORICAL ANALYSIS PROPOSAL — SUPERSEDED
 
+> Current status (2026-11-16): the active estimand and Option B reporting rule are frozen in `STEP4_CURRENT_ACTIVE_CONTRACT.md` and `STEP4_FROZEN_PROTOCOL.md`. The proposal below is retained as history; it does not authorize confirmatory superiority/equivalence inference.
+
 The P/B=4 comparisons and earlier inferential proposals below are historical. Current active estimand and Option B status are in `STEP4_CURRENT_ACTIVE_CONTRACT.md`. No confirmatory superiority inference is currently authorized; Step 4 is NOT FROZEN.
 
 # Proposed paired analysis — NOT FROZEN

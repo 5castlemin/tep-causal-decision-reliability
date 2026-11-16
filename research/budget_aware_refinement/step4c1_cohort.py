@@ -485,7 +485,11 @@ def _run_cohort_locked(*, cohort: str, master_seed: int, registry: CohortRegistr
                execution_binding_fn: Callable[[Mapping, int], tuple] | None = None,
                target_eligible: int | None = None, proposal_cap: int | None = None,
                resource_cap_seconds: float | None = None,
-               storage_monitor: CohortStorageMonitor | None = None) -> dict:
+               storage_monitor: CohortStorageMonitor | None = None,
+               isolate_stages: bool = True, max_unit_seconds: float = 2.0,
+               max_scm_active_seconds: float = 1800.0,
+               max_rss_bytes: int | None = 512 * 1024 * 1024,
+               max_ledger_bytes: int = 100 * 1024 * 1024) -> dict:
     """Run a deterministic candidate sequence; fixture tests pass a small cap.
 
     Eligible SCMs are counted at atomic registry admission after strict
@@ -508,7 +512,11 @@ def _run_cohort_locked(*, cohort: str, master_seed: int, registry: CohortRegistr
                 "max_cohort_storage_bytes": storage_monitor.max_bytes,
                 "failure_reserve_bytes": storage_monitor.failure_reserve_bytes,
                 "minimum_free_disk_bytes": storage_monitor.minimum_free_bytes,
-                "per_ledger_default_bytes": 100 * 1024 * 1024,
+                "per_ledger_default_bytes": max_ledger_bytes,
+                "isolate_stages": isolate_stages,
+                "unit_timeout_seconds": max_unit_seconds,
+                "scm_active_stage_time_cap_seconds": max_scm_active_seconds,
+                "rss_sampled_kill_bytes": max_rss_bytes,
             }})
     registry.bind_cohort(cohort,master_seed,target,cap,config_sha256)
     start = time.monotonic()
@@ -522,6 +530,11 @@ def _run_cohort_locked(*, cohort: str, master_seed: int, registry: CohortRegistr
         from .step4c1_pipeline import run_eligible_proposal
         proposal_runner = lambda proposal, ledger, delta: run_eligible_proposal(
             proposal, ledger, delta=delta,
+            isolate_stages=isolate_stages,
+            max_wall_seconds=max_scm_active_seconds,
+            max_unit_seconds=max_unit_seconds,
+            max_rss_bytes=max_rss_bytes,
+            max_ledger_bytes=max_ledger_bytes,
             pre_write_guard=(storage_monitor.before_ledger_event if storage_monitor else None))
     if execution_binding_fn is None:
         from .step4c1_pipeline import execution_binding
@@ -675,7 +688,11 @@ def run_cohort(*, cohort: str, master_seed: int, registry: CohortRegistry,
                cohort_storage_root: Path | None = None,
                max_cohort_storage_bytes: int | None = None,
                failure_reserve_bytes: int = 0,
-               minimum_free_disk_bytes: int = 0) -> dict:
+               minimum_free_disk_bytes: int = 0,
+               isolate_stages: bool = True, max_unit_seconds: float = 2.0,
+               max_scm_active_seconds: float = 1800.0,
+               max_rss_bytes: int | None = 512 * 1024 * 1024,
+               max_ledger_bytes: int = 100 * 1024 * 1024) -> dict:
     """Serialize cohort scheduling while allowing crash-safe OS lock release."""
     storage_monitor = None
     if max_cohort_storage_bytes is not None:
@@ -691,4 +708,7 @@ def run_cohort(*, cohort: str, master_seed: int, registry: CohortRegistry,
             ledger_dir=ledger_dir,config_sha256=config_sha256,proposal_builder=proposal_builder,
             proposal_runner=proposal_runner,execution_binding_fn=execution_binding_fn,
             target_eligible=target_eligible,proposal_cap=proposal_cap,
-            resource_cap_seconds=resource_cap_seconds,storage_monitor=storage_monitor)
+            resource_cap_seconds=resource_cap_seconds,storage_monitor=storage_monitor,
+            isolate_stages=isolate_stages,max_unit_seconds=max_unit_seconds,
+            max_scm_active_seconds=max_scm_active_seconds,max_rss_bytes=max_rss_bytes,
+            max_ledger_bytes=max_ledger_bytes)
