@@ -1,8 +1,8 @@
 {
-  "protocol": "STEP4C1_PRODUCTION_INTEGRATION_V1",
+  "protocol": "STEP4C1_COHORT_ORCHESTRATION_V2",
   "status": "NOT_FROZEN",
   "hash_normalization": "UTF-8 text CRLF normalized to LF; binary artifacts hashed byte-for-byte",
-  "active_contract": "Q-common strict indirect-only; B=1; gamma=1; Global vs Task-Focused; FN/FP/REV",
+  "active_contract": "Q-common strict indirect-only; B=1; gamma=1; Global vs Task-Focused; FN/FP/REV; balanced delta; SQLite registry; eligible-admission targets",
   "yield_settings_sha256": "b5fc9bb2f3767d1592aa560626c985eb7c853a4969cba2f5d5e899645564d52b",
   "yield_raw_gzip_sha256": "959078f02df14f54af5915327115bab6d78e1b19f010c285cea2eb0f9de79ae3",
   "attempt_caps": {
@@ -13,7 +13,7 @@
     "research/budget_aware_refinement/step4c1_proposal.py": "bec0c4f3e8e508178e8e7366821d06c077f07a9e3c7b1f83a64a144df289e7d2",
     "research/budget_aware_refinement/step4c1_scm.py": "95fe6ad320683bfb89ec37809dddbd463e6aa995434d6b92bbc0af9ca48d01b6",
     "research/budget_aware_refinement/step4c1_gt.py": "9a01ab41ba28c3f03b92493ea4a9107fc8dc0434d7edd6b2c72b4b262aa9af4f",
-    "research/budget_aware_refinement/step4c1_pipeline.py": "f601f539e2df8cfcf3387a1eef6b41ba32b369fcfd90c6ae6d0eafad8029d9e2",
+    "research/budget_aware_refinement/step4c1_pipeline.py": "37376ebbd21ce28066381ee0d0fcff9a01f5fa12318f7b72089d0e5dc6941751",
     "research/budget_aware_refinement/step4c1_evaluation.py": "572b782e9e0ca87771aa1795d65df6a2b5a56b8bfe36ef89417c9e302d88a7c1",
     "research/budget_aware_refinement/step3_adapter.py": "7508df6c2ba08d0c73266a1419458700ce22f05271f1d793b382aa83d833356e",
     "research/budget_aware_refinement/graph_adapter.py": "288eb2493c4a7d43684ee51680e210714238600016a96345ca75de6c417645e9",
@@ -21,12 +21,22 @@
     "research/budget_aware_refinement/run_step4c1_indirect_only_yield_v2.py": "ed84f9380a37cecc58b27cce8ac0c3239e5f50e0608c84e7cc17d1cb649408d2",
     "research/budget_aware_refinement/step4c1_indirect_only_yield_v2.json.gz": "959078f02df14f54af5915327115bab6d78e1b19f010c285cea2eb0f9de79ae3",
     "research/budget_aware_refinement/step4c1_indirect_only_yield_v2_summary.json": "70fc85388d98e447698f71f5c3d4ebcd7acda15acaf1402a1dc674f1c1f9da8f",
-    "research/budget_aware_refinement/STEP4_CURRENT_ACTIVE_CONTRACT.md": "addd90e104ba52f8d6f79d82217feef5d336df12bb5bbbfa809a5042a8295a3f",
-    "research/budget_aware_refinement/STEP4_SCM_GENERATION_SPEC.md": "48476d8ead581c132d37a95476f26b16a6480abdce59794faa40d4cb9470bf4f",
-    "research/budget_aware_refinement/STEP4C1_FINAL_PRODUCTION_READINESS.md": "1ffeebc901ae8d71a63ddd9387689788baaec618e436c077c2f4699e778c1846",
-    "research/budget_aware_refinement/RESEARCH_STATUS.md": "02005ac32c080b75f8f43c7ebda1b1f0bb6c1a16708781f0761b5a4ee13af926",
-    "research/budget_aware_refinement/DECISION_LOG.md": "72355524df1747332be62dda11643cc5beeff721f326d973d742d1c51384564f",
-    "tests/test_step4c1_production.py": "02c45caa5ad9dae6209afe71410fc4c3e860a63103b569387764a697f0e8506f",
-    "tests/step4c1_pipeline_worker.py": "c94eeab9f04a5a2068fcf7fa246a58e24791674479a053304e2fa4fb8408d35a"
-  }
+    "research/budget_aware_refinement/STEP4_CURRENT_ACTIVE_CONTRACT.md": "472a5fbeca7b6c1d36ca631c575fb33624c8d8088aef9476838ce621b017e0e0",
+    "research/budget_aware_refinement/STEP4_SCM_GENERATION_SPEC.md": "8df54adfc55bba5302bf2583c926343f282e2df0c64c5ff3160918ae97b1058c",
+    "research/budget_aware_refinement/STEP4C1_FINAL_PRODUCTION_READINESS.md": "0a29f1f94ffe026ec44412b76e06639c73d03ef03322f4bb2a6efabbf643f6e5",
+    "research/budget_aware_refinement/RESEARCH_STATUS.md": "a2237a371b7b947ae8ab68d7c89829512b5eeac7f3cd12a45592295df9d03c5e",
+    "research/budget_aware_refinement/DECISION_LOG.md": "b86f2f9bf4df093af0bfdbe07ba829913f81edbdd30b500583b7702e6f7dbd47",
+    "tests/test_step4c1_production.py": "7435970fd8bce842f5d9dce72ed8a70382b5b202e5b48869aea3064cffa1e5dc",
+    "tests/step4c1_pipeline_worker.py": "419cac3cf331088d3c0cfcd1e57435ffa973c78998fad90cbc7b8cacf3f8188f",
+    "research/budget_aware_refinement/step4c1_cohort.py": "d8acdfd6d9680428097380f82291da08a278b7ccdf0551031ebc79c36061e678",
+    "research/budget_aware_refinement/STEP4C1_COHORT_READINESS_REPORT.md": "80fefc87ef7805178e021d92621f7a7db0735a16a007fc33bd5be145afe16860",
+    "research/budget_aware_refinement/STEP4C1_PRODUCTION_RUNNER_CONTRACT.json": "9625cb6c7e1d75a9b90657bb6f5380e39fc270ac500cae7d0717a6a81115c23f",
+    "research/budget_aware_refinement/RESEARCH_PROTOCOL.md": "41ec3b581d560acfb088eca9db58912c8baf0916e4f150e86c3a80f6ddc61a9f",
+    "tests/test_step4c1_cohort.py": "7cdf76dc6532686fbec35d59e4e5778e475947a2899ac717d4af64bcaff3a75b",
+    "tests/test_step4b4_mock_runner.py": "5628c17ec0ffde6c8d037b42c55cddab02f583954f109c7a00cc6c93899d7df7"
+  },
+  "delta_assignment": "Persisted alternating +/-1 by zero-based admitted SCM ordinal, separately within each cohort",
+  "target_denominator": "strict-Q eligible registry admissions; post-admission failures not replaced; complete composite count separate",
+  "rng_binding": "per-proposal stream binding hash plus exact pipeline RNG key validated against every bound ledger event",
+  "cohort_settings_sha256": "b283e1a9c0860c7f77df0595c43943fbf04221e2e71f90b8a914d69d8f2b10de"
 }

@@ -1,5 +1,7 @@
 # Step 4C-1 Final Production Readiness (NOT FROZEN)
 
+> Historical single-proposal snapshot. Cohort orchestration, balanced delta allocation, and the SQLite registry are covered by the later `STEP4C1_COHORT_READINESS_REPORT.md`; statements below about missing cohort orchestration/registry describe this report's earlier checkpoint and are superseded.
+
 Date: 2026-11-16. This report records implementation and fixed-fixture evidence only. No development/replication cohort, newly sampled research SCM, or study Decision Regret experiment was run.
 
 ## Active task and strict Q-common definition

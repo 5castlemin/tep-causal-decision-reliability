@@ -2,6 +2,12 @@
 
 The active Step 4 contract is `STEP4_CURRENT_ACTIVE_CONTRACT.md`; the production interface and implementation status are in `STEP4C1_PRODUCTION_RUNNER_CONTRACT.json`. Older P/B=4 confirmatory clauses below are historical superseded proposals, retained for audit history. Current inference is Option B and does not support a confirmatory superiority claim. Step 4 is NOT FROZEN.
 
+## Step 4C-1 current delta and cohort admission clarification (2026-11-16; NOT FROZEN)
+
+The historical `delta_i ∈ {-1,+1}` balanced assignment remains active. For each cohort independently, after a proposal passes strict Q-common structural eligibility and is atomically admitted, the SQLite registry assigns `+1,-1,+1,...` by the zero-based accepted-SCM ordinal. The assignment is persisted and reused on replay. A given SCM's three error versions and both paired policies share the same delta. Rejections do not consume a delta position. This is deterministic and outcome/GT-blind. `run_eligible_proposal` requires an explicit delta and has no +1 default.
+
+The 64 development and 200 held-out replication targets count structurally eligible proposals atomically admitted to the SCM registry, not completed evaluations. Any later parameter, observation, policy, or GT failure remains in the admitted denominator and is never silently replaced. Report proposal attempts, strict-Q eligible proposals, registry admissions, parameter/data generation, complete FN/FP/REV vectors, failures/missing vectors, and complete composites separately. The 386/1,104 ceilings include every topology proposal, including structural rejections. These are operational target/cap definitions, not cohort execution or yield guarantees.
+
 # Step 0 연구 계약 — 2026-11-10
 
 ## Current Step 4B-4 inferential disposition (2026-11-15)

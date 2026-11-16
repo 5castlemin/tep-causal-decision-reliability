@@ -147,7 +147,7 @@ class Step4C1ProductionIntegrationTests(unittest.TestCase):
         with TemporaryDirectory() as td:
             ledger = Path(td) / "pipeline.jsonl"
             result = run_eligible_proposal(proposal, ledger,
-                isolate_stages=False, _fixture_payload=fixture, max_rss_bytes=None)
+                delta=1, isolate_stages=False, _fixture_payload=fixture, max_rss_bytes=None)
             composite = next(row["output"] for row in recover_jsonl(ledger)
                          if row.get("event") == "stage:composite")
         self.assertEqual(result["status"], "OK")

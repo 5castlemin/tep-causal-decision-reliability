@@ -40,7 +40,7 @@ PIPELINE_STAGES = ("proposal", "scm", "observations", "error_graphs",
                    "policy_graphs", "recommendations", "gt_evaluation", "composite")
 ACTIVE_BUDGET = 1
 ACTIVE_GAMMA = 1
-ACTIVE_DELTA = 1
+ACTIVE_DELTA = None  # Cohort registry assigns balanced +/-1 after Q eligibility.
 
 
 class _PolicyFailure(RuntimeError):
@@ -292,7 +292,7 @@ def prepare_single_candidate(*, cohort: str, master_seed: int, proposal_id: str,
                               attempt=attempt, template=template, node_count=node_count)
 
 
-def run_eligible_proposal(proposal: Mapping[str, object], ledger: Path, *, delta: int = ACTIVE_DELTA,
+def run_eligible_proposal(proposal: Mapping[str, object], ledger: Path, *, delta: int | None = ACTIVE_DELTA,
                           isolate_stages: bool = True, max_wall_seconds: float = 1800,
                           max_unit_seconds: float = 2, max_rss_bytes: int | None = 512 * 1024 * 1024,
                           max_ledger_bytes: int = 100 * 1024 * 1024,
@@ -313,21 +313,7 @@ def run_eligible_proposal(proposal: Mapping[str, object], ledger: Path, *, delta
         raise ValueError("delta must be the prespecified +/-1 target direction")
     if _fixture_payload is not None and cohort != "development":
         raise ValueError("fixed pipeline fixtures cannot use the replication namespace")
-    config = {"protocol": "step4c1-linear-scm-v1", "budget": ACTIVE_BUDGET,
-              "gamma": ACTIVE_GAMMA, "delta": delta, "n_observations": 512,
-              "coefficient_abs_range": [0.25, 0.8], "sign_probability": "1/2 each",
-              "noise_family": "independent Gaussian, mean 0",
-              "noise_sd_range": [0.8, 1.2], "types": TYPES}
-    config_sha = hashlib.sha256(_canonical_json(config)).hexdigest()
-    input_payload = {"proposal": dict(proposal)}
-    if _fixture_payload is not None:
-        input_payload["fixed_fixture"] = {
-            "truth_spec": _fixture_payload["truth_spec"],
-            "exogenous_noise_sha256": hashlib.sha256(
-                np.asarray(_fixture_payload["exogenous_noise"], dtype=np.float64).tobytes()).hexdigest()}
-        config["fixed_fixture_only"] = True
-        config_sha = hashlib.sha256(_canonical_json(config)).hexdigest()
-    input_sha = hashlib.sha256(_canonical_json(input_payload)).hexdigest()
+    config, config_sha, input_sha = execution_binding(proposal, delta, _fixture_payload)
     run_id = f"step4c1:{cohort}:{proposal['proposal_id']}:attempt-{proposal['attempt']}"
     stages = {name: ProductionStage(name, str(ledger), run_id, scm_id, cohort,
         config_sha, input_sha, dict(proposal), delta, _fixture_payload) for name in PIPELINE_STAGES}
@@ -337,3 +323,26 @@ def run_eligible_proposal(proposal: Mapping[str, object], ledger: Path, *, delta
         max_wall_seconds=max_wall_seconds, max_unit_seconds=max_unit_seconds,
         max_rss_bytes=max_rss_bytes, max_ledger_bytes=max_ledger_bytes,
         isolate_stages=isolate_stages, checkpoint_hook=checkpoint_hook)
+
+
+def execution_binding(proposal: Mapping[str, object], delta: int,
+                      fixture_payload: dict | None = None) -> tuple[dict, str, str]:
+    """Return the same config/input hashes used by the durable pipeline."""
+    if type(delta) is not int or delta not in (-1, 1):
+        raise ValueError("delta must be the prespecified +/-1 target direction")
+    config = {"protocol": "step4c1-linear-scm-v1", "budget": ACTIVE_BUDGET,
+              "gamma": ACTIVE_GAMMA, "delta": delta, "n_observations": 512,
+              "coefficient_abs_range": [0.25, 0.8], "sign_probability": "1/2 each",
+              "noise_family": "independent Gaussian, mean 0",
+              "noise_sd_range": [0.8, 1.2], "types": TYPES}
+    config_sha = hashlib.sha256(_canonical_json(config)).hexdigest()
+    input_payload = {"proposal": dict(proposal)}
+    if fixture_payload is not None:
+        input_payload["fixed_fixture"] = {
+            "truth_spec": fixture_payload["truth_spec"],
+            "exogenous_noise_sha256": hashlib.sha256(
+                np.asarray(fixture_payload["exogenous_noise"],dtype=np.float64).tobytes()).hexdigest()}
+        config["fixed_fixture_only"] = True
+        config_sha = hashlib.sha256(_canonical_json(config)).hexdigest()
+    input_sha = hashlib.sha256(_canonical_json(input_payload)).hexdigest()
+    return config, config_sha, input_sha

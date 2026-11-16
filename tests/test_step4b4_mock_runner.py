@@ -87,7 +87,10 @@ class Step4B4MockRunnerTests(unittest.TestCase):
         states = {stage["name"]: stage["state"] for stage in contract["stages"]}
         self.assertEqual(states["ground_truth_evaluation"],
                          "STEP3_FIXED_FIXTURE_ADAPTER_VALIDATED_PRODUCTION_INPUT_REQUIRED")
-        self.assertEqual(states["scm_and_shared_data"], "NOT_IMPLEMENTED")
+        self.assertEqual(states["scm_and_shared_data"],
+                         "IMPLEMENTED_FIXED_FIXTURE_VALIDATED_NOT_RUN_ON_STUDY_COHORT")
+        self.assertEqual(states["cohort_registry_and_orchestrator"],
+                         "IMPLEMENTED_FIXED_PROPOSAL_AND_LEDGER_FIXTURES_VALIDATED_NOT_RUN_ON_STUDY_COHORT")
         self.assertFalse(contract["production_ready"])
 
     def test_existing_graph_ridge_path_and_truth_stub_do_not_emit_outcomes(self):

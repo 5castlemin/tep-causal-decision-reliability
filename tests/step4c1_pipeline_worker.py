@@ -33,7 +33,7 @@ def main():
     proposal, payload = fixture()
     hook = (lambda stage: os._exit(29) if stage == stop_after else None) if stop_after != "-" else None
     result = run_eligible_proposal(proposal, ledger, _fixture_payload=payload,
-        checkpoint_hook=hook, max_rss_bytes=None)
+        delta=1, checkpoint_hook=hook, max_rss_bytes=None)
     print(result["status"])
 
 
