@@ -20,6 +20,9 @@
 | D14 | Information access | Oracle-assisted structural diagnosis; non-oracle separate work | deployability and oracle knowledge differences | OPEN |
 | D15 | Data separation | weight/policy development distinct from untouched evaluation | new sample and sample/statistical plan needed; Step5/6 unavailable as untouched | OPEN |
 | D16 | Outcome link | evaluate Decision Regret separately from structural penalty | no equivalence assumed; new independent data required | OPEN |
+| D17 | Greedy normalization | baseline initial-error counts | G0-fixed opportunity supports | fixture shows rankings can reverse; denominator changes target policy | OPEN |
+| D18 | M4 utility | preserve vector; scalarize only when multiple components are active | user-approved `β` over active FN/FP/REV/UNRES components | no scalar if one component is active in a fixture; multi-component policy selection awaits β | OPEN |
+| D19 | Candidate scheduling | per-metric one-candidate demonstration | recomputed marginal event burden and Δutility/cost over candidate pool | multi-candidate and DAG rejection path validated only in deterministic fixture helper; production policy code not implemented | OPEN |
 
 ## 고정 보호 원칙 (설계 원칙이지 새 연구 승인 아님)
 
