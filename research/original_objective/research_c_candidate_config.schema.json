@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "research-c-candidate-config-v1",
+  "title": "Research C candidate contract configuration",
+  "description": "Unapproved design candidate. Cohort execution is intentionally disabled.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_status", "research_cohort_execution_enabled", "population", "scm", "task", "g0", "repair", "evaluation"],
+  "properties": {
+    "contract_status": {"const": "PROPOSED_NOT_APPROVED"},
+    "research_cohort_execution_enabled": {"const": false},
+    "population": {
+      "type": "object", "additionalProperties": false,
+      "required": ["topology_source", "templates", "node_counts", "target_edge_density", "task_rule"],
+      "properties": {
+        "topology_source": {"const": "existing_step4_topology_generator_new_research_c_rng_namespace"},
+        "templates": {"const": ["chain_mediation", "fork_branch", "observed_common_cause", "multiple_directed_paths"]},
+        "node_counts": {"const": [6, 7, 8, 9, 10]},
+        "target_edge_density": {"const": [0.2, 0.4]},
+        "task_rule": {"const": "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge"}
+      }
+    },
+    "scm": {
+      "type": "object", "additionalProperties": false,
+      "required": ["family", "coefficient_abs_range", "sign_probability", "noise", "observations"],
+      "properties": {
+        "family": {"const": "signed_linear_acyclic"},
+        "coefficient_abs_range": {"const": [0.25, 0.8]},
+        "sign_probability": {"const": "independent_fair_sign"},
+        "noise": {"const": {"family": "independent_centered_gaussian", "sd_range": [0.8, 1.2]}},
+        "observations": {"const": {"n": 512, "shared_across_policies": true, "training": "common_observational_sample", "evaluation": "analytic_GT_no_heldout_observational_loss"}}
+      }
+    },
+    "task": {
+      "type": "object", "additionalProperties": false,
+      "required": ["action", "target", "delta", "action_grid", "loss"],
+      "properties": {
+        "action": {"const": "preselected_uniform_eligible_pair"},
+        "target": {"const": "preselected_uniform_eligible_pair"},
+        "delta": {"const": "alternating_by_admission_ordinal_within_new_cohort"},
+        "action_grid": {"const": [-1.0, -0.5, 0.0, 0.5, 1.0]},
+        "loss": {"const": "squared_standardized_target_mean_error_on_shared_grid"}
+      }
+    },
+    "g0": {
+      "type": "object", "additionalProperties": false,
+      "required": ["true_adjacency_corruption_rate", "false_adjacency_rate", "true_error_mix", "fp_orientation", "dag_invalid", "retry_limit"],
+      "properties": {
+        "true_adjacency_corruption_rate": {"const": 0.15},
+        "false_adjacency_rate": {"const": 0.05},
+        "true_error_mix": {"const": {"FN": 0.3333333333333333, "REV": 0.3333333333333333, "UNRES": 0.3333333333333333}},
+        "fp_orientation": {"const": "fair_direction_draw; reject_if_cyclic"},
+        "dag_invalid": {"const": "record_and_reject_without_redraw"},
+        "retry_limit": {"const": 0}
+      }
+    },
+    "repair": {
+      "type": "object", "additionalProperties": false,
+      "required": ["metric_subsets", "canonical_oracle", "normalization", "metric_weights", "m4_beta", "fp_rule", "edit_costs", "budgets"],
+      "properties": {
+        "metric_subsets": {"const": "all_15_nonempty_subsets_plus_S0"},
+        "canonical_oracle": {"const": "separate_same_information_candidate_cost_budget_DAG_constraints"},
+        "normalization": {"const": "G0_fixed_opportunity; sensitivity_initial_error_count"},
+        "metric_weights": {"const": "equal_selected_metric_weights"},
+        "m4_beta": {"const": "equal_active_FN_FP_REV_UNRES_components"},
+        "fp_rule": {"const": "A_primary_B_sensitivity"},
+        "edit_costs": {"const": {"add": 1, "delete": 1, "orient": 1, "resolve": 1, "delete_unresolved": 1}},
+        "budgets": {"const": [0, 1, 2, 3, 4]}
+      }
+    },
+    "evaluation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recommendation_input", "gt_evaluator", "regret", "research_result_gate"],
+      "properties": {
+        "recommendation_input": {"const": "shared_observations_and_repaired_graph_only"},
+        "gt_evaluator": {"const": "analytic_hard_do_after_recommendation_frozen"},
+        "regret": {"const": "GT_selected_candidate_loss_minus_best_loss_on_same_grid"},
+        "research_result_gate": {"const": "BLOCK_UNTIL_USER_APPROVAL_AND_PREREGISTRATION"}
+      }
+    }
+  }
+}

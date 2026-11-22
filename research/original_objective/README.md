@@ -1,27 +1,99 @@
-# 연구 C 구조 수정 엔진 (잠정 구현)
+# Research C integration candidate
 
-`policy_engine.py`는 정답 DAG를 이용해 **구조 오류만** 분류·수정하는 Oracle-assisted 진단기다. SCM 계수, 개입효과, GT 손실 및 Decision Regret은 입력받지 않는다. 기존 연구 B 생산 코드를 수정하지 않는다.
+Status: **PROPOSED / NOT APPROVED / NOT PREREGISTERED**. This package currently
+contains a structural repair engine, a deterministic G0 design candidate, and
+an end-to-end **TEST_ONLY** adapter. It does not expose an enabled research
+cohort runner.
+
+## Fixed-fixture check
 
 ```powershell
-python -m unittest discover -s tests -p test_original_objective_policy_engine.py -v
-python scripts/validate_original_research_fixture_contract.py
-python -m scripts.run_original_objective_policy_fixture
+uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python -m unittest tests.test_original_objective_e2e_fixture -v
+uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python scripts/run_original_objective_e2e_fixture.py
 ```
 
-호출 예:
+The fixture uses explicit coefficients and a deterministic 512-row exogenous
+sequence. Its output is labeled `TEST_ONLY`; it must not be cited as a research
+SCM or policy-performance result. The script refuses to overwrite the fixture
+output. `run_research_cohort()` fails closed until a separate user-approved,
+preregistered runner and frozen execution configuration exist.
 
-```python
-from research.original_objective.policy_engine import Config, state, run_catalog, save_json
-gt = state([("X", "M"), ("M", "Y"), ("A", "B")])
-g0 = state([("X", "M"), ("M", "Y")])
-result = run_catalog(gt, g0, "X", "Y", budget=1, config=Config())
-save_json("fixture_only.json", result)
-```
+## Proposed SCM/task population
 
-`state`는 각 비순서 노드쌍에 directed/UNRES/absent 중 하나만 허용한다. DAG 판정은 directed 부분에 적용한다. `task_zone`은 정답 X→Y 방향경로와 빈 conditioning에서 열린 backdoor 경로의 간선 합집합을 반환한다. FP Rule B의 추가 boundary pair는 `route_relevant_fp`로 명시해야 한다. 이 집합을 결과를 보고 생성해서는 안 된다.
+Candidate topology source is the existing four-template, 6–10-node topology
+generator, with its 0.2–0.4 target density and three-parent limit, under a new
+Research C RNG namespace. A task is sampled uniformly from all ordered pairs
+that have at least one directed path of length two or more and no direct
+`X→Y` edge. This is strict indirect-only eligibility. The observed common-cause
+and multiple-path templates can supply open backdoor/multiple-path cases;
+augmentation may create colliders and peripheral edges. Motifs are recorded,
+not forced into every SCM. A structurally eligible task with no qualifying
+pair is a recorded rejection, not a reason to change its seed or task rule.
 
-기본 Config는 **미승인 Fixture 후보**다: Rule A, G0 고정 기회 수 정규화, 동일 지표·M4 활성 성분 가중, add/delete/orient/resolve 각 비용 1, 동일 구조 벌점 가중과 task 배수 1. `initial_error_count`와 Rule B는 설정으로 비교할 수 있다. 비용과 가중치를 바꾸면 정책 자체가 달라질 수 있다.
+Candidate SCM family reuses the explicit signed linear acyclic family already
+implemented for Step 4 fixtures: edge magnitudes Uniform[0.25, 0.8], independent
+fair signs, independent centered Gaussian disturbances with node SD Uniform
+[0.8, 1.2], and one common 512-row observational matrix. This reuse is only a
+candidate; its synthetic support does not establish DAT process realism. The
+existing five-point action grid is expressed in observed action SD units; the
+target is observational mean plus `delta × target SD`, and evaluation uses the
+analytic SCM rather than a held-out observational outcome. The loss is squared
+standardized target-mean error. The absence of a held-out observational split
+means this candidate evaluates decisions under the specified model, not
+generalization to a new production dataset.
 
-`run_catalog`는 15개 nonempty subset 및 S0, 별도 `CANONICAL_ORACLE`을 동일 G0·GT·예산·비용·DAG 조건에서 실행한다. 기록에는 사건 유형·위치, 수정 비용, 점수, 그래프 해시, 전후 공식 지표, 정책용 `P_S`, 공통 구조 벌점 `P_all`이 포함된다. `evaluation`의 GT 관련 값은 `null`로 남는다. `evaluation_record`의 Decision Margin은 예측 손실 최선과 차선의 차이만 계산하며 동률이면 0이다. GT 평가기는 향후 별도 모듈에서 연결해야 한다.
+## Proposed G0 corruption candidate
 
-이 엔진의 실행 결과는 Fixture 산술 검증이며 연구 C의 SCM 또는 Regret 성능 결과가 아니다. D1–D19의 과학적 선택은 여전히 OPEN이다.
+`g0_candidate.corrupt_graph_candidate()` implements a concrete but
+unapproved corruption law: independently corrupt each true adjacency with
+probability 0.15; conditional on corruption, choose FN/REV/UNRES with equal
+probability. Independently attempt an FP on each true nonadjacent unordered
+pair with probability 0.05 and choose its direction fairly. One domain-separated
+deterministic stream is used for true and false pairs. Each pair is visited at
+most once. If a reversal or FP makes the directed graph cyclic, that attempted
+event is recorded and rejected without redraw. Consequently the delivered G0
+distribution is DAG-conditioned and the realized kind/zone opportunity counts
+must be reported; zero support is allowed. No coefficient, observation,
+predicted action, GT effect, loss, or regret is used.
+
+The rates are not empirically calibrated and require user approval. With a
+fixed true-edge corruption rate, task-zone errors scale with task-zone support;
+they are not artificially balanced against off-task errors. Conversely, the
+policy engine's fixed-opportunity normalization can give a single event a
+larger score when its support is small. The combination can favor a sparse M4
+component in the repair score even when G0 generation itself did not force M4
+coverage. Report per-metric opportunity counts, event counts, and same-graph
+policy collisions. A matched-opportunity diagnostic is needed before claiming
+that a difference is due to task relevance alone.
+
+## End-to-end fixture adapter
+
+`e2e_fixture.run_fixed_fixture()` runs S0, all 15 metric subsets, and the
+Canonical Oracle comparator for the supplied budgets. It reuses the existing
+Step 3 Ridge fitting, prediction, common action grid and analytic hard-do
+evaluator. The learner receives observations, task and repaired directed graph
+only. It does not receive GT coefficients/effects/losses/regret. GT evaluation
+starts after recommendations are frozen. Residual UNRES is currently rejected
+as `GRAPH_INPUT_UNSUPPORTED`; the Step 3 learner requires a directed DAG, so
+silently treating unresolved adjacency as absent is prohibited. Errors,
+no-candidate state, fit/recommendation failure and GT-evaluation failure are
+separately represented. Equal selected actions are asserted to have equal
+TEST_ONLY regret in the same fixture.
+
+The deterministic fitted-result cache key covers final graph, observation
+matrix hash, node order, task, delta, action grid, and Ridge setting. Each
+policy record remains present even when the fitted result is shared.
+
+## Gate and remaining execution work
+
+The JSON Schema `research_c_candidate_config.schema.json` records proposed
+settings but hard-codes research execution as disabled. No proposal loop,
+durable registry, cohort checkpoint/resume, independent evaluation process, or
+approved resource caps are implemented for Research C. The fixture script
+measures its own wall time, process peak working set on Windows, and serialized
+result bytes; these one-fixture measures are not a cohort projection. The
+existing Step 4 runner's resume logic is not evidence that this new Research C
+path is resumable.
+
+No Step 4 assets, Step 5/6 raw data, or A/B results are modified by this
+candidate.
