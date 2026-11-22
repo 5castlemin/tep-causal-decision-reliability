@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from hashlib import sha256
 from itertools import combinations
 import json
+import math
 from typing import Mapping
 
 UNRES = "UNRES"
@@ -108,7 +109,15 @@ class Config:
     def __post_init__(self):
         if self.fp_rule not in ("A", "B") or self.normalization not in ("fixed_opportunity", "initial_error_count"):
             raise ValueError("Unknown provisional configuration")
-        if any(v <= 0 for _, v in self.costs) or any(v < 0 for v in self.beta + self.weights) or self.task_multiplier < 0:
+        cost_names = [name for name, _ in self.costs]
+        required_costs = {"add", "delete", "orient", "resolve", "delete_unresolved"}
+        numeric = [v for _, v in self.costs] + list(self.beta) + list(self.weights) + [self.task_multiplier]
+        if (set(cost_names) != required_costs or len(cost_names) != len(set(cost_names))
+                or len(self.beta) != 4 or len(self.weights) != 4
+                or any(not math.isfinite(v) for v in numeric)
+                or any(v <= 0 for _, v in self.costs)
+                or any(v < 0 for v in self.beta + self.weights)
+                or self.task_multiplier < 0):
             raise ValueError("Invalid costs or weights")
 
 
@@ -218,6 +227,8 @@ def burden(stats, initial, subset, config):
                 if initial["counts"][m][k] and denom:
                     active.append((config.beta[i], stats["counts"][m][k] / denom))
             mass = sum(w for w, _ in active)
+            if active and mass <= 0:
+                raise ValueError("M4 active components require positive beta mass")
             terms.append(sum(w * x for w, x in active) / mass if mass else 0.0)
     return sum(terms) / len(terms)
 
@@ -235,7 +246,7 @@ def catalog():
 
 
 def run(truth, estimate, action, target, budget, subset, config=Config(), canonical=False):
-    if budget < 0 or not set(subset) <= set(METRICS) or len(set(subset)) != len(subset):
+    if not isinstance(budget, (int, float)) or not math.isfinite(budget) or budget < 0 or not set(subset) <= set(METRICS) or len(set(subset)) != len(subset):
         raise ValueError("Invalid budget or subset")
     if not dag(truth) or not dag(estimate):
         raise ValueError("Graph must be DAG")
