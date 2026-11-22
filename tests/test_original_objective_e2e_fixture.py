@@ -2,6 +2,7 @@
 import unittest
 import inspect
 import json
+from collections import Counter
 from pathlib import Path
 from unittest.mock import patch
 
@@ -9,6 +10,7 @@ from research.original_objective import policy_engine as pe
 from research.original_objective.e2e_fixture import run_fixed_fixture, run_research_cohort
 from research.original_objective.fixed_fixture_data import make_fixed_fixture
 from research.original_objective.g0_candidate import corrupt_graph_candidate
+from research.original_objective.unresolved_completion_test_only import complete_unresolved_for_test_only
 
 
 class G0CandidateTests(unittest.TestCase):
@@ -20,13 +22,14 @@ class G0CandidateTests(unittest.TestCase):
         b = corrupt_graph_candidate(truth, nodes=nodes, action="X", target="Y",
                                     master_seed=44, task_id="fixed-task")
         self.assertEqual(a, b)
-        graph = a["initial_graph"]
+        graph = pe.state(a["initial_graph"]["edges"], unresolved=a["initial_graph"]["unresolved"])
         self.assertTrue(pe.dag(graph))
-        self.assertEqual(a["status"], "PROPOSED_NOT_APPROVED")
-        self.assertEqual(a["summary"]["attempted"], len(a["attempted_events"]))
+        self.assertEqual(a["contract_status"], "PROPOSED_NOT_APPROVED")
+        json.dumps(a, allow_nan=False)
+        self.assertEqual(a["summary"]["proposed"], len(a["attempted_events"]))
         self.assertEqual(a["summary"]["retries"], 0)
-        self.assertEqual(a["summary"]["applied"] + a["summary"]["rejected_dag"],
-                         a["summary"]["attempted"])
+        self.assertEqual(a["summary"]["accepted"] + a["summary"]["rejected_dag"],
+                         a["summary"]["proposed"])
         self.assertEqual(len({tuple(row["pair"]) for row in a["attempted_events"]}),
                          len(a["attempted_events"]))
 
@@ -35,12 +38,40 @@ class G0CandidateTests(unittest.TestCase):
         result = corrupt_graph_candidate(meta["truth"], nodes=meta["nodes"], action="X", target="Y",
                                          master_seed=91, task_id="all-pairs-test",
                                          true_corruption_rate=1.0, false_adjacency_rate=1.0)
-        self.assertTrue(pe.dag(result["initial_graph"]))
+        graph = pe.state(result["initial_graph"]["edges"], unresolved=result["initial_graph"]["unresolved"])
+        self.assertTrue(pe.dag(graph))
         self.assertEqual(result["summary"]["retries"], 0)
         self.assertGreater(result["summary"]["rejected_dag"], 0)
-        self.assertEqual(result["summary"]["attempted"],
+        self.assertEqual(result["summary"]["proposed"],
                          result["summary"]["true_adjacencies_considered"]+
                          result["summary"]["false_pairs_considered"])
+
+    def test_proposals_opportunities_and_realized_errors_reconcile(self):
+        _, meta = make_fixed_fixture()
+        result = corrupt_graph_candidate(meta["truth"], nodes=meta["nodes"], action="X", target="Y",
+                                         master_seed=44, task_id="fixed-task")
+        accepted = [r for r in result["attempted_events"] if r["acceptance_status"] == "accepted"]
+        proposed_counts = Counter(r["kind"] for r in result["attempted_events"])
+        accepted_counts = Counter(r["kind"] for r in accepted)
+        realized_counts = Counter(k for row in result["realized_error_counts_by_metric"].values() for k, n in row.items() for _ in range(n))
+        self.assertEqual(sum(proposed_counts.values()), result["summary"]["proposed"])
+        self.assertEqual(sum(accepted_counts.values()), result["summary"]["accepted"])
+        self.assertEqual({kind: accepted_counts[kind] for kind in ("FN", "FP", "REV", "UNRES")},
+                         result["summary"]["accepted_by_kind"])
+        # Every realized event is an accepted proposal; DAG rejection cannot silently redraw.
+        self.assertEqual(dict(realized_counts), dict(accepted_counts))
+        self.assertEqual(result["rates"]["configured"]["conditional_true_error_mix"],
+                         {"FN": 1/3, "REV": 1/3, "UNRES": 1/3})
+        self.assertIn("event_opportunities_by_metric_kind_and_zone", result)
+
+    def test_zero_rate_is_recorded_as_zero_error_without_resampling(self):
+        _, meta = make_fixed_fixture()
+        result = corrupt_graph_candidate(meta["truth"], nodes=meta["nodes"], action="X", target="Y",
+                                         master_seed=44, task_id="zero", true_corruption_rate=0,
+                                         false_adjacency_rate=0)
+        self.assertEqual(result["generation_status"], "NO_INITIAL_ERRORS")
+        self.assertEqual(result["summary"]["proposed"], 0)
+        self.assertEqual(result["summary"]["retries"], 0)
 
 
 class EndToEndFixedFixtureTests(unittest.TestCase):
@@ -115,6 +146,47 @@ class EndToEndFixedFixtureTests(unittest.TestCase):
         result = run_fixed_fixture(modified, budgets=(0,))
         statuses = {p["status"] for p in result["budgets"][0]["policies"]}
         self.assertEqual(statuses, {"GRAPH_INPUT_UNSUPPORTED"})
+
+    def test_test_only_unresolved_completion_is_gt_blind_deterministic_and_fit_usable(self):
+        fixture, meta = make_fixed_fixture()
+        partial = pe.state([("C", "B"), ("B", "A")], unresolved=[("A", "C")])
+        with self.assertRaises(PermissionError):
+            complete_unresolved_for_test_only(partial, nodes=meta["nodes"])
+        completed = complete_unresolved_for_test_only(partial, nodes=meta["nodes"], test_only=True)
+        repeated = complete_unresolved_for_test_only(partial, nodes=meta["nodes"], test_only=True)
+        self.assertEqual(completed, repeated)
+        self.assertTrue(completed["gt_information_used"] is False)
+        self.assertTrue(completed["outcome_information_used"] is False)
+        self.assertTrue(completed["representation_transition_not_repair"])
+        self.assertFalse(completed["charged_to_repair_budget"])
+        self.assertEqual(completed["assignments"], [{"pair": ["A", "C"], "direction": ["C", "A"]}])
+        self.assertTrue(pe.dag(pe.state(completed["completed_edges"])))
+
+        # The adapter can now consume the completed directed graph, but no truth
+        # or GT outcome is passed to recommendation. This is still TEST_ONLY.
+        from research.budget_aware_refinement.step3_adapter import prepare
+        from integrated_pilot import fit_model
+        from decision_mvp import static_mean_response
+        graph_result, selection = prepare(
+            {"node_ids": list(meta["nodes"]), "action": fixture.action, "target": fixture.target},
+            fixture.observations, list(meta["nodes"]), list(meta["nodes"]), fixture.delta,
+            fit_model, static_mean_response,
+            graph_result={"final_graph": completed["completed_edges"], "edit_sequence": []})
+        self.assertEqual(selection["action"], "X")
+        self.assertNotIn("gt_loss", selection)
+        self.assertNotIn("regret", selection)
+
+    def test_policy_pair_diagnostics_separate_graph_action_and_regret_ties(self):
+        fixture, _ = make_fixed_fixture()
+        result = run_fixed_fixture(fixture, budgets=(1,))
+        row = result["budgets"][0]
+        diagnostics = row["policy_comparison_diagnostics"]
+        self.assertEqual(row["expected_policy_count"], 17)
+        self.assertEqual(row["evaluable_policy_count"], 17)
+        self.assertTrue(row["common_policy_comparison_allowed"])
+        self.assertEqual(sum(diagnostics["tie_cause_categories"].values()), diagnostics["pair_count"])
+        self.assertGreater(diagnostics["same_final_graph_pairs"], 0)
+        self.assertIsNotNone(diagnostics["same_action_rate"])
 
     def test_model_fit_failure_is_recorded_without_gt_evaluation(self):
         fixture, _ = make_fixed_fixture()

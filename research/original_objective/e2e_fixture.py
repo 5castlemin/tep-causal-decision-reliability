@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 import sys
 from typing import Mapping
+from itertools import combinations
 
 import numpy as np
 
@@ -103,10 +104,16 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                                  if structural["policy_id"] != "S0" else ())
             eligible_candidates = [e for e in all_candidates
                                    if is_canonical or e.metric in structural_subset]
+            candidate_counts_by_metric = {m: sum(e.metric == m for e in eligible_candidates)
+                                          for m in pe.METRICS}
+            selected_counts_by_metric = {m: sum(row["metric"] == m for row in structural["edits"])
+                                         for m in pe.METRICS}
             entry = {"policy_id": structural["policy_id"], "budget": budget,
                      "status": "OK", "failure_reason": None,
                      "initial_error_count": initial_error_count,
                      "repair_candidate_count": len(eligible_candidates),
+                     "repair_candidate_counts_by_metric": candidate_counts_by_metric,
+                     "selected_edit_counts_by_metric": selected_counts_by_metric,
                      "candidate_status": ("NO_EDIT_POLICY" if not structural_subset and not is_canonical else
                                           "NO_INITIAL_ERRORS" if initial_error_count == 0 else
                                           "NO_ELIGIBLE_REPAIR_CANDIDATES" if not eligible_candidates else
@@ -194,11 +201,19 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                 policy["same_action_as_S0"] = None
                 policy["same_regret_as_S0"] = None
                 policy["regret_change_from_S0"] = None
+        pairwise = _policy_comparison_diagnostics(policies, initial_error_count)
         # Remove the internal tuples from the output, retaining all per-policy
         # failures. S0 and policies are repeated observations within one fixture.
         rows.append({"budget": budget, "policies": policies,
                      "distinct_successful_graphs": len({p["final_graph_sha256"] for p in policies
                                                         if p["status"] == "OK"}),
+                     "policy_vector_status": "COMPLETE" if all(
+                         p["evaluation_status"] == "TEST_ONLY_OK" for p in policies) else "INCOMPLETE",
+                     "expected_policy_count": len(policies),
+                     "evaluable_policy_count": sum(p["evaluation_status"] == "TEST_ONLY_OK" for p in policies),
+                     "common_policy_comparison_allowed": all(
+                         p["evaluation_status"] == "TEST_ONLY_OK" for p in policies),
+                     "policy_comparison_diagnostics": pairwise,
                      "test_only": True})
     _check_equal_action_regret(rows)
     return {"status": "TEST_ONLY", "test_only": True,
@@ -214,6 +229,53 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
 def _decision_margin(candidates):
     values = sorted(float(row["predicted_loss"]) for row in candidates)
     return values[1] - values[0] if len(values) >= 2 else None
+
+
+def _policy_comparison_diagnostics(policies, initial_error_count):
+    graph_pairs = len(list(combinations(policies, 2)))
+    same_graph_pairs = 0
+    action_pairs = same_action = regret_pairs = regret_ties = 0
+    reasons = {"no_repairable_errors": 0, "same_graph": 0,
+               "different_graph_same_action": 0, "different_action_same_gt_loss": 0,
+               "different_action_different_gt_loss": 0, "not_comparable_failure": 0}
+    for left, right in combinations(policies, 2):
+        same_graph = left["final_graph_sha256"] == right["final_graph_sha256"]
+        if same_graph:
+            same_graph_pairs += 1
+        if (left["evaluation_status"] != "TEST_ONLY_OK"
+                or right["evaluation_status"] != "TEST_ONLY_OK"):
+            reasons["not_comparable_failure"] += 1
+            continue
+        action_pairs += 1
+        left_eval, right_eval = left["evaluation"], right["evaluation"]
+        same_act = (left_eval["selected_action"], left_eval["selected_k"]) == (
+            right_eval["selected_action"], right_eval["selected_k"])
+        if same_act:
+            same_action += 1
+        else:
+            equal_loss = abs(left_eval["gt_selected_loss"] - right_eval["gt_selected_loss"]) <= 1e-12
+        regret_pairs += 1
+        if abs(left_eval["regret"] - right_eval["regret"]) <= 1e-12:
+            regret_ties += 1
+        if initial_error_count == 0 or (left["repair_candidate_count"] == 0
+                                        and right["repair_candidate_count"] == 0):
+            reasons["no_repairable_errors"] += 1
+        elif same_graph:
+            reasons["same_graph"] += 1
+        elif same_act:
+            reasons["different_graph_same_action"] += 1
+        elif equal_loss:
+            reasons["different_action_same_gt_loss"] += 1
+        else:
+            reasons["different_action_different_gt_loss"] += 1
+    return {"pair_count": graph_pairs, "same_final_graph_pairs": same_graph_pairs,
+            "same_final_graph_rate": same_graph_pairs / graph_pairs if graph_pairs else None,
+            "action_comparable_pairs": action_pairs, "same_action_pairs": same_action,
+            "same_action_rate": same_action / action_pairs if action_pairs else None,
+            "regret_comparable_pairs": regret_pairs, "regret_tie_pairs": regret_ties,
+            "regret_tie_rate": regret_ties / regret_pairs if regret_pairs else None,
+            "tie_cause_categories": reasons,
+            "classification_status": "TEST_ONLY_DIAGNOSTIC_NOT_STUDY_ESTIMATE"}
 
 
 def _check_equal_action_regret(rows):
