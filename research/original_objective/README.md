@@ -1,9 +1,9 @@
 # Research C integration candidate
 
 Status: **PROPOSED / NOT APPROVED / NOT PREREGISTERED**. This package currently
-contains a structural repair engine, a deterministic G0 design candidate, and
-an end-to-end **TEST_ONLY** adapter. It does not expose an enabled research
-cohort runner.
+contains a structural repair engine, a deterministic G0 design candidate,
+an end-to-end **TEST_ONLY** adapter, and an independent single-fixture runner.
+Research cohort execution remains disabled.
 
 ## Fixed-fixture check
 
@@ -17,6 +17,21 @@ sequence. Its output is labeled `TEST_ONLY`; it must not be cited as a research
 SCM or policy-performance result. The script refuses to overwrite the fixture
 output. `run_research_cohort()` fails closed until a separate user-approved,
 preregistered runner and frozen execution configuration exist.
+
+The independent runner starts from the fixed SCM, produces deterministic G0
+with the existing corruption generator, then runs S0, all 15 metric subsets,
+and the canonical comparator through the existing repair/fit/recommend/analytic
+GT evaluation function. It atomically writes a checksummed result with code,
+configuration, and input hashes; existing outputs are never overwritten:
+
+```powershell
+uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python scripts/run_research_c_runner.py --mode fixture --output research/original_objective/test_outputs/independent_runner_fixture_v1.json
+```
+
+`--mode research` is fail-closed unless an approved config and matching
+execution manifest are provided. Even with such a bundle, this first-stage
+runner does not yet implement multi-SCM cohort orchestration; that remains a
+separate implementation gate.
 
 ## Proposed SCM/task population
 
