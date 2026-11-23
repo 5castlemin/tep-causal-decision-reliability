@@ -17,10 +17,10 @@ The frozen development cohort completed normally. This is the development study 
 
 ## Execution
 
-Command used (pinned Python 3.11.15 environment):
+Portable equivalent for the pinned Python 3.11.15 environment (the original command's user-specific interpreter path is redacted in this public copy; the recorded runtime fingerprint and execution evidence are unchanged):
 
 ```powershell
-uv run --python 'C:\Users\ehfal\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\python.exe' --with-requirements requirements.txt python -X utf8 -m research.budget_aware_refinement.run_step4c2_research_cohort --cohort development --master-seed 20261116 --output-root C:\DAT_STEP5_RUNS\step5-development-v1 --expected-commit 06cbd7d4e1efbbff45559eef84b280acc9d081ce --expected-tree 661f50e7cd859f5c32d909730f686cb93251cc59
+uv run --python 3.11.15 --with-requirements requirements.txt python -X utf8 -m research.budget_aware_refinement.run_step4c2_research_cohort --cohort development --master-seed 20261116 --output-root C:\DAT_STEP5_RUNS\step5-development-v1 --expected-commit 06cbd7d4e1efbbff45559eef84b280acc9d081ce --expected-tree 661f50e7cd859f5c32d909730f686cb93251cc59
 ```
 
 | Measure | Result |

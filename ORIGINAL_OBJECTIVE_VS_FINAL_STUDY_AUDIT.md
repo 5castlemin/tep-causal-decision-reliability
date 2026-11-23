@@ -8,10 +8,7 @@
 
 ## 근거 자료와 접근 범위
 
-원문 DOCX 로컬 사본을 확인하고 본문을 읽었다.
-
-- `C:\Users\ehfal\Downloads\인과그래프 독립 채점기준 4종 정의와 선정 근거 (1).docx` (동일 제목의 suffix 없는 사본도 존재)
-- `C:\Users\ehfal\Downloads\비용을 어떻게 할까.docx`
+사용자 제공 원문 DOCX 사본 두 개를 확인하고 본문을 읽었다. 공개본에서는 파일명과 로컬 절대 경로를 비공개로 두었다.
 
 확인한 사본 byte SHA-256: 지표 문서 `FE83334F7D8B34FB555D6E60E7E3BD2FD8EC2B51E913D57BD046853865CBE165`, 비용 문서 `A3D26FE83B736A6950C64CE54E2FCA7B131582E6DA19E3EA6E6AEDBDEF7C0818`.
 

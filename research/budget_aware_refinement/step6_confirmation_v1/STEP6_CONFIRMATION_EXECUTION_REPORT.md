@@ -22,10 +22,10 @@ One initial readiness invocation used the bare interpreter without frozen depend
 
 ## Execution
 
-The frozen production command was run with `--cohort confirmation`, master seed `20261116`, expected commit/tree above, and the dedicated confirmation output root:
+Portable equivalent for the pinned Python 3.11.15 environment (the original command's user-specific interpreter path is redacted in this public copy; the recorded runtime fingerprint and execution evidence are unchanged). The frozen production command used `--cohort confirmation`, master seed `20261116`, expected commit/tree above, and the dedicated confirmation output root:
 
 ```powershell
-uv run --python 'C:\Users\ehfal\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\python.exe' --with-requirements requirements.txt python -X utf8 -m research.budget_aware_refinement.run_step4c2_research_cohort --cohort confirmation --master-seed 20261116 --output-root C:\DAT_STEP6_RUNS\step6-confirmation-v1 --expected-commit 06cbd7d4e1efbbff45559eef84b280acc9d081ce --expected-tree 661f50e7cd859f5c32d909730f686cb93251cc59
+uv run --python 3.11.15 --with-requirements requirements.txt python -X utf8 -m research.budget_aware_refinement.run_step4c2_research_cohort --cohort confirmation --master-seed 20261116 --output-root C:\DAT_STEP6_RUNS\step6-confirmation-v1 --expected-commit 06cbd7d4e1efbbff45559eef84b280acc9d081ce --expected-tree 661f50e7cd859f5c32d909730f686cb93251cc59
 ```
 
 It stopped normally on 200 admissions, before proposal or resource caps.

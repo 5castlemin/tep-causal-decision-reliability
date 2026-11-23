@@ -18,7 +18,7 @@ Resource stops preserve a nonzero failure-record reserve and never mark a partia
 Command:
 
 ```powershell
-uv run --python 'C:\Users\ehfal\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\python.exe' --with-requirements requirements.txt python scripts/run_research_c_generated_fixture.py --output-root C:\DAT_TEST_ONLY\research-c3b-resource-qualification-v3 --run-id c3b-resource-qualification-v3 --master-seed 970000 --budgets 0 1 2 3 4 --resource-limits-test-only
+uv run --python 3.11.15 --with-requirements requirements.txt python scripts/run_research_c_generated_fixture.py --output-root C:\DAT_TEST_ONLY\research-c3b-resource-qualification-v3 --run-id c3b-resource-qualification-v3 --master-seed 970000 --budgets 0 1 2 3 4 --resource-limits-test-only
 ```
 
 The fixed harness processed two topology proposals (one admitted, one structurally ineligible), completed one TEST_ONLY SCM, and recorded 85 policy evaluations. Measured from the runner entry after argument parsing:
