@@ -19,6 +19,7 @@ from research.original_objective.cohort_runner import (
 from research.original_objective.fixed_fixture_data import (
     make_fixed_fixture, make_nondegenerate_fixture,
 )
+from research.original_objective.proposal_pipeline import run_test_only_proposal_cohort
 from research.budget_aware_refinement.step3_adapter import K
 
 
@@ -29,6 +30,114 @@ def _fixtures():
 
 
 class ResearchCCohortRunnerTests(unittest.TestCase):
+    def test_generated_proposal_to_regret_pipeline_and_rejection_are_distinct(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = run_test_only_proposal_cohort(
+                Path(directory), run_id="generated-test-only-v1", master_seed=970000,
+                proposal_specs=[
+                    {"proposal_id": "test-only-accepted-00", "attempt": 0,
+                     "template": "chain_mediation", "node_count": 8},
+                    {"proposal_id": "test-only-reject-chain_mediation-6", "attempt": 0,
+                     "template": "chain_mediation", "node_count": 6},
+                ], budgets=(0, 1))
+            self.assertEqual(result["classification"], "TEST_ONLY_NOT_RESEARCH_COHORT")
+            self.assertEqual(result["proposal_counts"]["admitted"], 1)
+            self.assertEqual(result["proposal_counts"]["structurally_ineligible"], 1)
+            self.assertEqual(result["completed_scm_count"], 1)
+            self.assertEqual(result["complete_policy_evaluations"], 34)
+            self.assertTrue(result["all_scm_complete"])
+            rejected = next(p for p in result["proposals"]
+                            if p["status"] == "STRUCTURALLY_INELIGIBLE")
+            self.assertIsNone(rejected["scm_id"])
+            self.assertIsNone(rejected["ledger_scm_id"])
+            admitted = next(p for p in result["proposals"] if p["status"] == "ADMITTED")
+            self.assertTrue(admitted["accepted"])
+            scm = result["scms"][0]
+            self.assertEqual(scm["scm_id"], admitted["ledger_scm_id"])
+            payload = scm["result"]
+            self.assertEqual(payload["classification"], "TEST_ONLY_NOT_RESEARCH_COHORT")
+            metadata = payload["fixture_metadata"]
+            self.assertEqual(metadata["classification"], "TEST_ONLY_GENERATED_PROPOSAL")
+            self.assertEqual(metadata["observation_rows"], 512)
+            self.assertEqual(payload["e2e_result"]["status"], "TEST_ONLY")
+            self.assertFalse(result["pipeline"]["research_execution_authorized"])
+            for budget in payload["e2e_result"]["budgets"]:
+                self.assertEqual(budget["policy_vector_status"], "COMPLETE")
+                self.assertEqual(len(budget["policies"]), 17)
+                self.assertEqual(len({p["shared_observations_sha256"]
+                                      for p in budget["policies"]}), 1)
+                for policy in budget["policies"]:
+                    self.assertIn("final_graph_sha256", policy)
+                    self.assertIn("edit_log", policy)
+                    self.assertIn(policy["evaluation_status"], {"TEST_ONLY_OK", "NOT_EVALUATED"})
+
+    def test_rejected_test_only_proposal_never_draws_scm_parameters(self):
+        with tempfile.TemporaryDirectory() as directory, \
+                patch("research.original_objective.proposal_pipeline.generate_scm_parameters",
+                      side_effect=AssertionError("rejected proposal must not draw SCM")):
+            result = run_test_only_proposal_cohort(
+                Path(directory), run_id="rejected-only-v1", master_seed=970000,
+                proposal_specs=[{"proposal_id": "test-only-reject-chain_mediation-6",
+                                 "attempt": 0, "template": "chain_mediation", "node_count": 6}],
+                budgets=(0,))
+            self.assertEqual(result["proposal_counts"]["structurally_ineligible"], 1)
+            self.assertEqual(result["completed_scm_count"], 0)
+            self.assertEqual(result["scms"], [])
+
+    def test_generated_proposal_process_termination_resumes_same_result(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        specs = [
+            {"proposal_id": "test-only-accepted-00", "attempt": 0,
+             "template": "chain_mediation", "node_count": 8},
+        ]
+        with tempfile.TemporaryDirectory() as interrupted_dir, \
+                tempfile.TemporaryDirectory() as uninterrupted_dir:
+            root = Path(interrupted_dir)
+            signal = root / "generated-hook-entered"
+            code = r'''
+import sys,time
+from pathlib import Path
+from research.original_objective.proposal_pipeline import run_test_only_proposal_cohort
+root,signal=Path(sys.argv[1]),Path(sys.argv[2])
+def hook(scm_id):
+    signal.write_text(scm_id,encoding="utf-8")
+    time.sleep(120)
+hook.__test_only_fixture_hook__=True
+run_test_only_proposal_cohort(root,run_id="generated-crash-resume",master_seed=970000,
+ proposal_specs=[{"proposal_id":"test-only-accepted-00","attempt":0,
+ "template":"chain_mediation","node_count":8}],budgets=(0,1),after_claim_hook=hook)
+'''
+            proc = subprocess.Popen([sys.executable, "-c", code, str(root), str(signal)],
+                                    cwd=repo_root, stdout=subprocess.DEVNULL,
+                                    stderr=subprocess.DEVNULL)
+            try:
+                deadline = time.monotonic() + 30
+                while time.monotonic() < deadline and not signal.exists() and proc.poll() is None:
+                    time.sleep(0.05)
+                self.assertTrue(signal.exists(), "generated pipeline did not reach claim hook")
+                with self.assertRaises(cr.LedgerConflict):
+                    run_test_only_proposal_cohort(
+                        root, run_id="generated-crash-resume", master_seed=970000,
+                        proposal_specs=specs, budgets=(0, 1))
+                proc.terminate(); proc.wait(timeout=15)
+            finally:
+                if proc.poll() is None:
+                    proc.kill(); proc.wait(timeout=15)
+            checkpoint = read_test_only_cohort(root, run_id="generated-crash-resume")
+            self.assertEqual(checkpoint["scms"][0]["status"], "RUNNING")
+            resumed = run_test_only_proposal_cohort(
+                root, run_id="generated-crash-resume", master_seed=970000,
+                proposal_specs=specs, budgets=(0, 1))
+            uninterrupted = run_test_only_proposal_cohort(
+                Path(uninterrupted_dir), run_id="generated-crash-resume", master_seed=970000,
+                proposal_specs=specs, budgets=(0, 1))
+            self.assertEqual(resumed["scms"][0]["result_sha256"],
+                             uninterrupted["scms"][0]["result_sha256"])
+            self.assertEqual(resumed["scms"][0]["input_sha256"],
+                             uninterrupted["scms"][0]["input_sha256"])
+            self.assertEqual(resumed["scms"][0]["attempt_count"], 2)
+            self.assertTrue(resumed["all_scm_complete"])
+
     def test_two_fixed_scms_complete_and_nondegenerate_regret_matches_hand_calculation(self):
         with tempfile.TemporaryDirectory() as directory:
             result = run_test_only_cohort(Path(directory), run_id="fixture-cohort-v1",

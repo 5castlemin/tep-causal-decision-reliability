@@ -54,6 +54,13 @@ def _schema(connection):
       reason TEXT, created_at REAL NOT NULL,
       FOREIGN KEY (run_id) REFERENCES runs(run_id)
     );
+    CREATE TABLE IF NOT EXISTS proposals (
+      run_id TEXT NOT NULL, proposal_id TEXT NOT NULL, status TEXT NOT NULL,
+      reason TEXT, topology_hash TEXT, scm_id TEXT, proposal_json TEXT NOT NULL,
+      proposal_sha256 TEXT NOT NULL,
+      PRIMARY KEY (run_id, proposal_id),
+      FOREIGN KEY (run_id) REFERENCES runs(run_id)
+    );
     """)
 
 
@@ -91,6 +98,7 @@ def _verify_result(result_json: str, expected_sha: str) -> dict:
 def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                          fixtures: dict, budgets=(0, 1, 2, 3, 4),
                          max_new_scms: int | None = None,
+                         proposal_outcomes: list[dict] | None = None,
                          after_claim_hook=None, before_commit_hook=None) -> dict:
     """Run/recover a fixed-fixture SCM sequence; never samples a study SCM.
 
@@ -101,8 +109,8 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
         raise ValueError("run_id must be a nonempty string of at most 100 chars")
     if type(master_seed) is not int or master_seed < 0:
         raise ValueError("master_seed must be a nonnegative integer")
-    if not fixtures or len(fixtures) != len(set(fixtures)):
-        raise ValueError("fixtures must have unique deterministic SCM IDs")
+    if (not fixtures and not proposal_outcomes) or len(fixtures) != len(set(fixtures)):
+        raise ValueError("fixtures or proposal outcomes are required; SCM IDs must be unique")
     if any(not callable(hook) or getattr(hook, "__test_only_fixture_hook__", False) is not True
            for hook in (after_claim_hook, before_commit_hook) if hook is not None):
         raise PermissionError("orchestration hooks are TEST_ONLY process-test hooks")
@@ -124,6 +132,15 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
     config = {"schema": "research-c-multi-fixture-v1", "cohort_type": "TEST_ONLY_FIXTURE",
               "run_id": run_id, "master_seed": master_seed, "budgets": list(budgets),
               "fixtures": factory_bindings, "execution_enabled_for_research": False}
+    proposals = proposal_outcomes or []
+    if any(not isinstance(item, dict) or item.get("proposal_id") is None for item in proposals):
+        raise ValueError("proposal_outcomes require explicit proposal_id records")
+    if len({item["proposal_id"] for item in proposals}) != len(proposals):
+        raise ValueError("proposal IDs must be unique")
+    proposal_bindings = [{k: item.get(k) for k in
+                          ("proposal_id", "status", "reason", "topology_hash", "scm_id")}
+                         for item in proposals]
+    config["proposal_outcomes"] = proposal_bindings
     config_sha = _digest({"config": config, "code_sha256": code_hashes})
     source = _git_revision(ROOT)
 
@@ -146,11 +163,25 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                         "INSERT INTO scms(run_id,scm_id,ordinal,status,rng_json) VALUES(?,?,?,?,?)",
                         (run_id, scm_id, ordinal, "PROPOSED", _canonical(streams).decode("ascii")))
                     _event(connection, run_id, scm_id, None, "PROPOSED", "FIXED_TEST_ONLY_FIXTURE")
+                for item in proposals:
+                    record = _jsonable(item)
+                    record_json = _canonical(record).decode("ascii")
+                    connection.execute("INSERT INTO proposals VALUES(?,?,?,?,?,?,?,?)",
+                        (run_id, str(item["proposal_id"]), str(item.get("status", "PROPOSED")),
+                         item.get("reason"), item.get("topology_hash"), item.get("scm_id"),
+                         record_json, _digest(record)))
             else:
                 if (existing["config_sha256"] != config_sha
                         or existing["cohort_type"] != "TEST_ONLY_FIXTURE"
                         or existing["master_seed"] != master_seed):
                     raise LedgerConflict("run_id reused with different fixture/config/code/seed binding")
+                stored_proposals = connection.execute(
+                    "SELECT proposal_id,proposal_sha256 FROM proposals WHERE run_id=? ORDER BY rowid",
+                    (run_id,)).fetchall()
+                expected_proposals = [(str(item["proposal_id"]), _digest(_jsonable(item)))
+                                      for item in proposals]
+                if [(row["proposal_id"], row["proposal_sha256"]) for row in stored_proposals] != expected_proposals:
+                    raise LedgerConflict("proposal outcomes differ from persisted run")
                 stored = connection.execute("SELECT scm_id,ordinal,rng_json FROM scms WHERE run_id=? ORDER BY ordinal",
                                             (run_id,)).fetchall()
                 expected = [(scm_id, i) for i, scm_id in enumerate(specs)]
@@ -248,6 +279,14 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                     record["result"] = _verify_result(row["result_json"], row["result_sha256"])
                 scm_results.append(record)
             states = [row["status"] for row in rows]
+            proposal_rows = connection.execute(
+                "SELECT * FROM proposals WHERE run_id=? ORDER BY rowid", (run_id,)).fetchall()
+            proposal_records = []
+            for proposal_row in proposal_rows:
+                parsed = json.loads(proposal_row["proposal_json"])
+                if _digest(parsed) != proposal_row["proposal_sha256"]:
+                    raise CohortIntegrityError("proposal record checksum mismatch")
+                proposal_records.append(parsed)
             return {"schema": "research-c-multi-fixture-v1", "classification": "TEST_ONLY_NOT_RESEARCH_COHORT",
                     "run_id": run_id, "cohort_type": "TEST_ONLY_FIXTURE", "master_seed": master_seed,
                     "config_sha256": config_sha, "code_sha256": code_hashes, "source_revision": source,
@@ -257,6 +296,10 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                     "complete_policy_evaluations": sum(
                         len(b["policies"]) for r in scm_results if r["status"] == "COMPLETED"
                         for b in r["result"]["e2e_result"]["budgets"]),
+                    "proposal_counts": {
+                        status.lower(): sum(item.get("status") == status for item in proposal_records)
+                        for status in ("PROPOSED", "STRUCTURALLY_INELIGIBLE", "ADMITTED")},
+                    "proposals": proposal_records,
                     "all_scm_complete": bool(states) and all(s == "COMPLETED" for s in states),
                     "scms": scm_results}
         finally:

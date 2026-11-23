@@ -26,14 +26,24 @@ ROOT = Path(__file__).resolve().parents[2]
 CODE_BINDING_FILES = (
     "research/original_objective/runner.py",
     "research/original_objective/cohort_runner.py",
+    "research/original_objective/proposal_pipeline.py",
+    "research/original_objective/cohort_ledger_test_only.py",
+    "scripts/run_research_c_generated_fixture.py",
     "research/original_objective/e2e_fixture.py",
     "research/original_objective/policy_engine.py",
     "research/original_objective/g0_candidate.py",
     "research/original_objective/fixed_fixture_data.py",
     "research/original_objective/unresolved_abstention.py",
     "research/budget_aware_refinement/step4c1_scm.py",
+    "research/budget_aware_refinement/step4c1_proposal.py",
+    "research/budget_aware_refinement/step4_rng.py",
+    "research/budget_aware_refinement/step4_topology_generator.py",
+    "research/budget_aware_refinement/step4b_task_budget.py",
+    "research/budget_aware_refinement/step4b2_population.py",
     "research/budget_aware_refinement/step3_adapter.py",
     "research/budget_aware_refinement/step4c1_gt.py",
+    "src/integrated_pilot.py",
+    "src/decision_mvp.py",
 )
 
 

@@ -117,6 +117,20 @@ seed, fixture set and budgets to resume:
 uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python scripts/run_research_c_fixture_cohort.py --output-root <new-temp-directory> --run-id fixture-cohort-v1 --master-seed 20261124 --budgets 0 1 2 3 4
 ```
 
+`scripts/run_research_c_generated_fixture.py` also exercises the existing
+topology/task proposal → SCM parameters → shared observations → Research C G0
+corruption → 17-policy E2E → analytic truth evaluation path on one fixed
+eligible proposal plus one fixed structurally rejected proposal. This is
+explicitly TEST_ONLY. The legacy proposal/SCM helpers require an internal
+`development` RNG namespace; the adapter uses `test-only-` proposal and SCM IDs
+in its ledger and outputs, records the generator's internal SCM ID for audit,
+and excludes these records from study denominators. The
+script does not authorize or start Development or Held-out cohorts.
+
+```powershell
+uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python scripts/run_research_c_generated_fixture.py --output-root <new-temp-directory> --run-id generated-fixture-v1 --master-seed 970000 --budgets 0 1 2 3 4
+```
+
 The cohort layer is TEST_ONLY. It does not sample research SCMs, enforce
 production resource caps, or isolate production workers mid-SCM. The separate
 `cohort_ledger_test_only.py` remains a fixture resource-stop test double.
