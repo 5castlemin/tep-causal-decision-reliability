@@ -169,3 +169,96 @@ A에 대한 권고는 **A2**다. 원 연구 질문은 strict indirect-only task 
 이 변경에서 A2 admission과 P1 primary를 C 전용 code/schema/contract에 반영했다. A2는 strict indirect-only task는 유지하면서 Q-common recipe 부족을 거절 사유에서 제거하고 그 상태를 secondary flag로 남긴다. P1은 B=2 `Regret(S0)-Regret(Full Greedy)`로 고정해 positive가 Full Greedy 개선을 뜻한다. Cohort 평균과 불확실성 분석은 Runner에서 산출하지 않으며 통계 계획은 별도 승인 대상이다. Manifest prep 도구는 승인·사전등록 상태인 config와 현재 clean source/runtime을 해시로 묶을 뿐 승인 상태를 부여하지 않는다. 나머지 A/B/C 규칙, 표본수, 불확실성 방식, 자원 제한 및 실행 승인은 미해결이다. 연구 SCM/Regret 결과를 만들지 않았고 Research Mode는 실제 승인 bundle 전까지 차단된다.
 
 **연구 C는 사용자 승인과 일치하는 config/manifest가 없으므로 연구 SCM 실행 미승인 상태다. 이 문서 작성은 A/B/C 승인, 사전등록, 기술적 승인 bundle 발급 또는 연구 결과 생성이 아니다.**
+
+## 10. 최종 통합 승인안 — A2/P1 이후 남은 계약
+
+이 절은 위의 검토표를 실행 승인에 필요한 구체값으로 모은다. 기존 문서·Schema·코드에 없는 값을 확정값처럼 채우지 않는다. 아래 모든 권고도 별도 사용자 결정 전까지 `PROPOSED`다. A2와 P1만은 이전 사용자 지시로 승인되어 있다.
+
+### 10.1 A — 모집단과 G0
+
+| 항목 | 권고 승인값 | 코드·계약 대조 및 해석 | 승인 전 차단 |
+|---|---|---|---|
+| Topology | 기존 Step 4 생성기의 `chain_mediation`, `fork_branch`, `observed_common_cause`, `multiple_directed_paths` 4종; 6–10 nodes; target edge density `[0.2, 0.4]` | Candidate/approved schema가 이 값으로 제한한다. 기존 SCM/결과 재사용이 아니라 생성 알고리즘 재사용이며 RNG namespace는 새로 둔다. | 값과 템플릿 정의의 사용자 승인 |
+| 적격 task | strict indirect-only ordered `(X,Y)` pair를 적격 pair에서 균등 선택; direct `X→Y` edge 없음 | Schema는 `uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge`다. 이 조건을 만족하지 못한 proposal은 구조 부적격으로 기록한다. | 모집단/task 승인 |
+| 모집단 gate | **A2 유지:** FN/FP/REV recipe support를 admission 조건으로 요구하지 않음; 무오류 G0 및 recipe 부재도 포함; Q-common은 secondary flag | A2는 승인되어 proposal/admission 구현에 반영됐다. 500개 구조 파일럿의 494개 적격은 이전 조건·구조 진단이며 A2 운영 수율로 사용하지 않는다. | 추가 gate 없음; strict task 구현과 무성과 기반 제외 원칙 승인 |
+| SCM 방정식 | signed linear acyclic SCM; 각 계수 절댓값 Uniform `[0.25, 0.8]`, 부호는 독립 fair sign; node noise는 독립 centered Gaussian, 각 SD Uniform `[0.8, 1.2]` | Candidate schema는 family/range/sign/noise를 고정한다. 이는 합성 family이며 실제 제조공정 계수의 추정치가 아니다. | 값 및 독립성 가정 승인 |
+| 관측자료 | SCM당 공통 관측표본 `n=512`, centered Gaussian SCM noise에서 관측 생성; 모든 정책·예산에서 동일 자료 사용 | Schema에 `shared_across_policies=true`, `training=common_observational_sample`; 관측 표본 크기가 정밀도 충분성을 입증하지는 않는다. | 값 승인 |
+| task/action/loss | eligible `(X,Y)`에서 task를 사전 선택; 행동 grid `[-1,-0.5,0,0.5,1]`; `delta`는 cohort admission ordinal에 따라 `+1,-1` 교대; 표준화된 target-mean squared error; GT 값은 analytic hard-do로 추천 확정 뒤 계산 | Schema/runner의 supported contract와 일치. 이는 합성 평가 손실이며 원화·수율·안전 손실이 아니다. | 값과 `delta` 교대 규칙 승인 |
+| G0 참 edge | 각 정답 adjacency의 corruption 제안 확률 `q=0.15`; 제안 시 FN/REV/UNRES 각각 조건부 `1/3` | Proposal 확률, 수락 오류율, 실현 오류율을 각각 기록한다. | 값 승인 |
+| G0 거짓 edge | 각 GT-nonadjacent unordered pair의 FP 제안 확률 `r=0.05`; 방향은 fair draw | 한 pair에 단일 상태만 허용. DAG-invalid 제안은 기록 후 거절, 재추출 없음(`retry_limit=0`). | 값 및 처리 승인 |
+| 오류 없는 제안·실패 | 오류 0건 G0는 유지. 구조 부적격 proposal은 별도 카운트. strict-task 적격 후 실패는 실패로 보존하고 성능을 보고 대체하지 않음. | 코드의 admission/evaluation ledger는 proposal, admission, 평가 완료와 실패를 분리한다. | 표본·실패 규칙 승인 |
+| cohort와 N | Development `target_admissions=64`; independent evaluation `target_admissions=200`. N은 **strict-task 적격 후 admission된 독립 SCM 목표 수**이며 완전 paired 분석 수나 policy-row 수가 아님. 동일 생성 규칙, 독립 `development`/`independent_evaluation` RNG namespace·ledger·출력 root. | 64/200은 연구 C 효과의 검정력 보장이 아니다. 실패가 있으면 complete paired N은 낮아질 수 있으며 보충 추출하지 않는다. | N 목표 및 cohort 분리 승인 |
+| Proposal cap | 제안: Development 최대 386 proposal attempts, independent evaluation 최대 1,104 attempts; target admission에 먼저 도달하면 정지. cap에서 미달하면 shortfall 보고 후 정지. | 이 값은 `step4c1_proposal.py` generator의 attempt 상한과 일치하지만 A2 모집단의 수율을 보장하지 않는다. A2 기준 생산 수율 자료는 없다. cap은 승인 config에서 별도 고정되어야 한다. | cap 수치 승인; MODIFY 시 정수 명시 |
+
+### 10.2 B — 수정 정책·비용·정보 접근
+
+| 항목 | 권고 승인값 | 코드·계약 대조 및 해석 | 승인 전 차단 |
+|---|---|---|---|
+| 원 지표·정책군 | M1 비과제 FN/support; M2 비과제 FP/추정 비과제 adjacency; M3 비과제 참 adjacency 방향 정확도와 unresolved rate 별도; M4 과제 구역 FN/FP/REV/UNRES 벡터. S0 + 15 nonempty subsets. | 공식 지표의 분자·분모·count·zero denominator NA를 policy utility와 분리한다. M4를 공식 단일 scalar로 축약하지 않는다. | 정의 및 지표 조합 승인 |
+| Task zone/FP | 모든 GT `X→Y` directed path edges + 무조건화 open backdoor path edges(내부 collider 없는 경로); FP Rule A는 두 끝점 모두 task-zone node set 안이면 M4 | Rule A는 task-zone node 내부 chord FP도 넓게 귀속할 수 있으며 개입 피해의 대체 정의는 아니다. Rule B는 경계 FP에 대한 별도 민감도 후보다. | Rule A 승인; Rule B를 사전 민감도에 넣을지 결정 |
+| Greedy | `Score = (P_S(before)-P_S(after))/operation_cost`; G0 고정 opportunity 분모; subset 내 선택 지표 동일 가중치; G0에서 support/error가 있는 M4 FN/FP/REV/UNRES 성분을 active로 하고 활성 성분 β 동일; deterministic tie order는 승인 config와 코드가 지원하는 순서 사용 | 작은 M4 support가 사건당 gain을 키울 수 있다. 이는 확인할 편향 위험이지 M4의 우월성 근거가 아니다. 초기-error-count normalization은 지정 sensitivity로만 비교한다. | 점수·정규화·β 승인 |
+| 비용·벌점 | add/delete/orient/resolve 각 relative cost `1`; 예산 초과 수정 금지; λ=`1`은 task/off-task event에 같은 총 배수; P_all은 FN/FP/REV/UNRES 사건을 같은 weight로 1회 계산; P_S는 Greedy subset 선택 효용, P_all은 공통 구조 결과, C는 사용 비용, Regret은 별도 행동 결과 | `delete_unresolved=1`은 Schema 호환용 reserved key일 뿐 후보 연산으로 생성·청구하지 않는다. UNRES 삭제는 금지; 방향 resolve는 1. 비용은 실제 통화가 아니다. | 비용·λ·벌점 승인 |
+| 예산·기준선 | 실행 grid `[0,1,2,3,4]`: B0 기준, B1 보조, B2 P1 primary, B3/B4 포화 진단. S0, 15 subset policies, Canonical Oracle는 서로 구분 | B0는 각 정책의 미수정 상태에 대한 기준이며 S0는 무수정 정책이다. 그래프가 같아지는 정책은 hash로 식별하고 중복 성능 표본으로 세지 않는다. | 예산 역할 승인 |
+| Canonical Oracle | 동일 G0, 후보 오류·GT 구조정보, 비용·예산·DAG 제약을 이용하되 지표 gain 점수 대신 고정 canonical ordering으로 수정 | GT SCM 계수, 개입 손실, GT 최적 action, Regret은 접근하지 않는다. Oracle diagnostic baseline일 뿐 전역 최적해·Regret 상한·배포 정책이 아니다. | 정보 범위 승인 |
+
+### 10.3 C — UNRES·결과·통계·실패
+
+| 항목 | 권고 승인값 | 코드·계약 대조 및 해석 | 승인 전 차단 |
+|---|---|---|---|
+| UNRES | 최종 구조 그래프에는 보존; 학습 DAG에는 directed parent/child edge로 넣지 않는 abstention encoding; 무료 방향 복구·수정비용 0 또는 GT 방향 보완으로 세지 않음; 두 그래프 hash 별도 기록 | 구조 지표는 원 구조 그래프에서 계산한다. 무방향 정보 손실로 UNRES가 많은 정책에 학습 불이익이나 fit failure가 생길 수 있으므로 성공률도 정책별 보고한다. | 주 처리 방식 승인; 다른 encoding은 결과를 보기 전 별도 민감도 계약 없이는 시행하지 않음 |
+| P1 | 이미 승인: B2 `Full Greedy(M1+M2+M3+M4)` 대 S0. SCM별 `delta_i=Regret_i(S0,B2)-Regret_i(FullGreedy,B2)`; 양수면 Full Greedy 유리. 효과량은 admitted population에서 완전 paired SCM의 `mean(delta_i)`로 보고 | 동일 SCM/자료/task/행동 grid/GT evaluator. P1의 cohort 추정은 실행 산출물에서 아직 미계산이다. | P1은 승인됨 |
+| Secondary | Full Greedy–Canonical; S0 대 나머지 14 subset; 정책별 구조개선·비용·기회·action change·Regret; B1 보조, B3/4 포화, B0 기준; Q-common 및 수정기회가 있는 사례 조건부 요약 | subset 비교는 탐색적이고 multiple-policy search를 primary로 승격하지 않는다. Development 선택 규칙은 Held-out 전에 봉인한다. | Secondary 범위 승인 |
+| 불확실성 | Primary mean paired difference 및 **95% paired-t CI**; SCM을 단위로 두고 `mean ± t_(n−1,0.975)·s_delta/√n`; 보조로 SCM 단위 paired percentile bootstrap 10,000회, 2.5/97.5 percentile CI를 사전 지정하는 안 | bootstrap은 SCM 행을 단위로 재표집하고 정책행은 분리 재표집하지 않는다. 분석 seed와 코드 버전은 결과를 열기 전에 고정한다. 현재 runner는 row 데이터 기록만 수행하고 CI를 계산하지 않는다. CI가 0을 포함하는 것은 무효과 증명도, 포함하지 않는 것은 제조 전반의 일반화도 아니다. | 요약값·CI 방식 승인 및 분석 코드 고정 |
+| 표본·분석분모 | 제안 N=64 Development, N=200 Held-out admitted SCM 목표. 완전 paired N은 각 SCM에서 S0/B2와 FullGreedy/B2 둘 다 평가 성공한 수. Proposal, strict eligible, admitted, policy-complete, complete-paired 수를 따로 보고. | 동률·`delta=0` 유지. incomplete pairs는 primary mean에서 제외하되 실패 원인·정책별 실패율과 전체 admission 분모를 공개한다. 실패 Regret=0 대체, 성과 기반 SCM 대체 금지. | 실패 규칙·분모 승인 |
+| Held-out 잠금 | 동일 모집단 생성 규칙·설정/실행 코드; 독립 seed namespace; 개발 결과로 고를 수 있는 것은 사전 지정된 탐색 절차 내 선택뿐. Held-out 결과를 열기 전에 정책/분석법/primary/N을 고정하고 이후 변경 금지 | Development와 Held-out는 다른 SCM이며 Step 5/6 표본을 재사용하지 않는다. | 절차 승인 |
+
+### 10.4 Runtime·Production 운영 Gate
+
+| 항목 | 확인된 현재값/구현 | 승인 권고와 차단 |
+|---|---|---|
+| Runtime | 격리 환경 CPython `3.11.15`; lock: NumPy `2.4.3`, pandas `3.0.1`, NetworkX `3.6.1`, jsonschema `4.26.0` 및 `research_c_runtime_lock.txt`에 기재된 전체 패키지 13개 | 이 환경에서 C 관련 회귀 80개 통과로 보고됐고 lock 일치가 기록돼 있다. 실제 실행은 OS release/machine 포함 fingerprint를 manifest에 묶어야 한다. Step 4 fingerprint 실패는 별도 상태다. |
+| RNG | protocol `step4-rng-v1`; config cohort namespace `development` 또는 `independent_evaluation`; master seed는 비음수 정수 필수 | 특정 master seed는 승인/실행 config에 고정되어야 하며 아직 승인값이 없다. 같은 cohort 내 topology/SCM/관측/G0 stream은 분리하고 held-out namespace와 분리한다. |
+| Proposal/worker timeout, SCM 및 cohort active time | 코드가 `unit_timeout_seconds`, `scm_active_seconds`, `cohort_active_seconds`를 검증하고 격리 실행에 연결 | **Production 숫자 미정.** 최종 기술 보고서에는 benchmark별 실제 시간 수치가 없다. 단위 시험의 timeout 값은 fail-path 검증값이지 실측 분포나 적정 Production 상한이 아니다. 근거 없는 값을 승인 config로 넣지 않는다. |
+| RSS | `sampled_rss_bytes` 감시·초과 종료 지원 | **Production 숫자 미정.** 주기 표본이며 사이 구간 overshoot 가능; OS hard quota가 아니다. 시험의 1-byte cap은 실패 유도값이라 운영 기준으로 쓸 수 없다. |
+| 파일/ledger/cohort 저장량·free disk | `max_result_bytes`, `max_ledger_bytes`, `max_cohort_storage_bytes`, `minimum_free_disk_bytes`를 쓰기 전 확인; SQLite/result checksum·원자 기록 사용 | **Production 숫자 미정.** 이는 filesystem quota가 아니다. 보고서에 A2 기반 실측 payload 크기·누적 bytes가 없으므로 시험에서 쓴 1/2/3 MB류 상한을 64/200 SCM에 외삽하지 않는다. |
+| 동시성 | `max_concurrent_scms=1`만 지원하고 runner는 직렬 실행 | 코드와 일치하는 권고값 `1`. |
+| Proposal cap | generator hard maximum은 development `386`, independent evaluation 내부 generator cohort `confirmation` `1,104`; config는 그 이하만 허용 | 권고 candidate는 cap 386/1,104. A2 생산 수율을 입증한 값은 아니며 cap에서 부족해도 확장·재추출 없이 shortfall을 보고한다. `independent_evaluation`→`confirmation` 내부 binding은 config/manifest에 고정해야 한다. |
+
+**Production 자원 결정의 실제 차단:** 기술 gate 보고서는 proposal·SCM 단계 시간/RSS를 sidecar 진단으로 수집할 수 있다고 확인하지만, 이 승인 브리프와 실행결과에는 A2 모집단의 초 단위 처리시간, peak RSS byte, 정책 결과 row 크기, SCM당/전체 cohort 누적 저장 byte가 남아 있지 않다. 그러므로 수치 상한을 권고값으로 제시하면 근거 없는 새 운영값이 된다. 현재 제안은 `concurrency=1`뿐이다. 나머지는 별도 사용자 합의된 작은 calibration cohort의 TEST_ONLY 구조·고정 fixture 계측 또는 명시적 운영 용량 제약으로 숫자를 정하고, 그 값을 승인 config에 담을 때까지 **Research Mode 실행 차단**을 유지한다. TEST_ONLY cap 값은 Production cap이 아니다.
+
+### 10.5 한 번에 응답할 승인표와 명시 문안
+
+| 결정 | 권고 선택 | 현재 상태 |
+|---|---|---|
+| A2 모집단 | strict indirect-only, recipe-support gate 없음, 무오류·no-op 포함 | **APPROVED** |
+| P1 | B2 Full Greedy vs S0, `Regret(S0)-Regret(FullGreedy)` | **APPROVED** |
+| A 잔여 | 4 topology, 6–10 nodes, SCM/noise/task/action/loss, q=.15/r=.05, FN/REV/UNRES conditional 1/3, no-redraw DAG rejection, N=64/200 admitted targets, proposal caps 386/1104 | **PROPOSED — APPROVAL_REQUIRED** |
+| B 잔여 | M1–M4와 16 policy set, Rule A, canonical Oracle structural-only, fixed opportunity, equal metric weights/active M4 β, add/delete/orient/resolve cost 1, λ=1, budgets 0–4, listed secondary sensitivities | **PROPOSED — APPROVAL_REQUIRED** |
+| C 잔여 | residual UNRES abstention encoding, 95% paired-t CI + SCM bootstrap sensitivity, complete-pair/실패 보고, held-out lock | **PROPOSED — APPROVAL_REQUIRED** |
+| Runtime/seed | Python 3.11.15 + exact 13-package lock; run-specific master seed and platform fingerprint bound in manifest | Runtime package versions **VERIFIED**; seed/fingerprint instance **NOT YET BOUND** |
+| Production resource profile | concurrency 1; timeout/RSS/bytes/disk numeric caps | **INCOMPLETE — 실행 차단** |
+
+사용자 결정은 각 A/B/C 및 운영 행에 `APPROVE`, `MODIFY(대체값 기재)`, `DEFER`로 기록할 수 있다. 아래 문안은 문서에서 제안한 수치를 그대로 승인하는 경우의 초안이며, **자원 상한 숫자가 아직 없으므로 이 문안만으로 Production 실행은 승인되지 않는다.**
+
+> “A2와 P1의 기존 승인 유지에 더해, 승인 브리프 §10의 A 모집단/G0 값(4 topology, 6–10 node, strict indirect-only, A2, signed-linear SCM 및 계수·잡음 범위, n=512, action/loss 규칙, q=.15, r=.05, FN/REV/UNRES 각 1/3, invalid-DAG no-redraw), B 정책/비용 값(Rule A, G0-fixed opportunity, 동일 선택 지표 가중치, 활성 M4 성분 β 동일, add/delete/orient/resolve 각 1, λ=1, 전체 예산 grid `[0,1,2,3,4]`, Canonical Oracle은 GT 구조정보만 사용), C 값(residual UNRES abstention, P1 유지, 95% SCM-paired t CI와 SCM bootstrap 보조, admitted SCM 목표 Development 64 / Held-out 200, proposal cap 386 / 1104, 실패·shortfall 무대체)을 승인한다. Development와 Held-out은 별도 RNG namespace·ledger·output으로 분리한다. 이는 아직 외부 공개 사전등록이나 Production 실행 승인을 뜻하지 않는다. Production resource 숫자와 run-specific master seed/fingerprint를 별도 명시·검토·config/manifest에 고정하기 전까지 실제 Research Mode 실행은 차단한다.”
+
+`MODIFY`를 선택할 때는 승인 문안의 해당 정확한 값만 바꾸고 계약/config/schema/hash를 다시 대조한다. `DEFER`된 과학 결정이 있으면 해당 항목이 해소되기 전 cohort proposal 생성은 금지한다. 특히 resource profile을 채우기 위해 TEST_ONLY 값을 승격하지 않는다.
+
+### 10.6 승인 후 명령 순서
+
+현재 실제 승인 config/manifest는 없다. 아래 명령은 **값이 승인되고 문서·코드가 해당 승인 계약과 일치하도록 커밋된 이후에만** 실행한다. `--mode research`는 gate 통과 시 proposal 생성 즉시 시작하므로 preflight 전 실행하지 않는다.
+
+```powershell
+# 1) 승인 config가 있고 runtime/코드가 clean 고정된 뒤 manifest를 바인딩한다.
+python scripts/prepare_research_c_manifest.py --approved-config <approved-config.json> --output <execution-manifest.json>
+
+# 2) 연구 proposal을 생성하지 않는 사전 검증
+python scripts/run_research_c_runner.py --mode preflight --approved-config <approved-config.json> --execution-manifest <execution-manifest.json>
+
+# 3) 별도 실행 승인 이후에만 Development 코호트를 실행한다.
+python scripts/run_research_c_runner.py --mode research --approved-config <approved-config.json> --execution-manifest <execution-manifest.json>
+```
+
+Manifest preparer는 이미 USER_APPROVED/PREREGISTERED config의 값과 source/runtime hash를 결합할 뿐이다. 승인 상태를 발급하지 않는다. Schema의 `PREREGISTERED` 문자열 검증은 외부 registry URL/ID 검증이 아니므로, 외부 공개 preregistration을 선택한다면 URL/ID 및 시각을 별도 승인기록에 보존한다. 실행 후 proposal, strict eligible, admitted, complete policy vector, complete paired SCM 분모와 실패율을 각각 보고한다.
+
+**최종 판정: `APPROVAL_REQUIRED`.** A2/P1 외의 과학적 결정은 승인 대기이고, 특히 실증 근거 없는 Production 자원 상한과 run-specific seed/fingerprint가 설정에 결합되기 전에는 Development 실행 Gate를 열 수 없다. 이번 절 추가는 계약 승인·사전등록·SCM 생성·Decision Regret 결과 생성이 아니다.
