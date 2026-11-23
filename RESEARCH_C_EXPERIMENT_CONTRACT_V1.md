@@ -1,10 +1,10 @@
 # 연구 C 주 실험 계약안 v1
 
-**상태: 승인용 제안서 / NOT APPROVED / NOT FROZEN / NOT PREREGISTERED**
+**상태: USER_APPROVED / INTERNALLY_FROZEN / NO_EXTERNAL_PUBLIC_REGISTRATION**
 
-**결정 반영 주석:** 사용자는 A2(Strict indirect-only task 유지, Q-common recipe support gate 제거, 기회 부재·무오류 G0 포함), P1(B=2 Full Greedy 대 S0, SCM별 `R(S0)-R(Full Greedy)`), 그리고 실제 생성기에 구현된 계층 Task 샘플링 방식의 채택만 승인했다. 이 세 선택만 계약에 반영한다. 나머지 A/B/C 설정은 여전히 제안이며, 본 문서는 전체 승인·동결·사전등록 상태가 아니다.
+**결정 반영 주석:** A2, P1, 계층 Task sampling은 이전 사용자 승인이다. 2026-11-23 사용자는 나머지 §10.1–10.4 A/B/C 과학적 계약과 Production 자원 상한, Development seed `2026112301`, N=64/cap=386, Held-out N=200/cap=1,104, paired-t CI와 SCM bootstrap 10,000회, 실패·shortfall 무대체를 승인했다. Rule B와 대체 정규화 민감도는 이번 주 실험 범위에서 제외한다. 이 문서는 내부 승인 계약이며 외부 공개 registry 등록을 의미하지 않는다. 실제 Development 실행은 config·manifest·비실행 Preflight 이후 별도 실행 승인 전까지 금지된다.
 
-이 계약안은 기존 연구 A/B의 Step 4 동결 계약, 데이터, 원시 결과를 바꾸지 않는다. 새로운 SCM·관측자료·개입 효과·Decision Regret은 이 문서를 준비하면서 생성하지 않았다. 연구 C 코호트와 결과는 아직 없다.
+이 계약안은 기존 연구 A/B의 Step 4 동결 계약, 데이터, 원시 결과를 바꾸지 않는다. 승인 이후에도 새로운 SCM·관측자료·개입 효과·Decision Regret은 아직 생성하지 않았다. 연구 C 코호트와 결과는 아직 없다.
 
 ## 1. 연구 질문과 주장 범위
 
@@ -14,7 +14,7 @@
 
 구조 부담 감소와 Regret 감소는 서로 다른 결과다. Shared Greedy는 아래의 구조 대리효용을 줄이는 myopic 정책이며 전역 최소 구조오류나 최소 Regret을 보장하지 않는다.
 
-## 2. 제안 주 분석 계약
+## 2. 승인된 주 분석 계약
 
 ### 2.1 분석 단위 및 대응 구조
 
@@ -26,12 +26,12 @@
 
 ### 2.1a 모집단 gate — A2 반영
 
-strict indirect-only task 적격성은 유지한다. 다만 FN·FP·REV의 legacy Q-common recipe가 모두 존재해야 한다는 추가 admission gate는 사용하지 않는다. 특정 오류 수정 기회가 없는 경우 해당 지표 정책은 정상적인 no-op일 수 있으며, G0 오류 0건도 결과를 본 뒤 제외하지 않는다. Q-common 여부와 recipe support 수는 secondary subset 분석을 위해 별도 기록한다. 이 A2 모집단 규칙은 승인되었지만, SCM/G0·비용·표본·운영의 나머지 계약은 미승인이다.
+strict indirect-only task 적격성은 유지한다. 다만 FN·FP·REV의 legacy Q-common recipe가 모두 존재해야 한다는 추가 admission gate는 사용하지 않는다. 특정 오류 수정 기회가 없는 경우 해당 지표 정책은 정상적인 no-op일 수 있으며, G0 오류 0건도 결과를 본 뒤 제외하지 않는다. Q-common 여부와 recipe support 수는 secondary subset 분석을 위해 별도 기록한다. A2는 승인되었다. 나머지 SCM/G0·정책·평가·표본·운영 계약은 2026-11-23 사용자 승인으로 확정되었으며, 실제 Development 실행은 별도 승인 전까지 차단한다.
 
 
 ### 2.1b Task 모집단 생성 — 계층 추출 선택 승인
 
-Task sampler의 실제 동작을 유지하는 계층 방식이 승인되었다. 이 선택은 모집단 생성의 한 항목만 확정하며 전체 A/B/C 계약을 승인하거나 동결하지 않는다.
+Task sampler의 실제 동작을 유지하는 계층 방식은 이전에 승인되었다. 이후 2026-11-23 사용자 승인으로 나머지 과학적·운영 계약도 내부적으로 고정되었으며, 실제 Development 실행은 별도 승인 전까지 금지된다.
 
 - 고정 strata 순서는 `TEMPLATES`의 기존 순서(chain_mediation, fork_branch, observed_common_cause, multiple_directed_paths) 각각에 노드 수 6, 7, 8, 9, 10을 결합한 20개 `(topology,node_count)` cell이다.
 - 각 proposal은 `(cohort, master_seed, proposal_id)`와 counter를 포함한 `step4c1-stratum-v1|...` 문자열의 SHA-256 digest를 계산한다. `2^256 - (2^256 mod 20)`보다 작은 digest만 받고 나머지는 counter를 늘려 다시 hash한다. 수락된 정수를 20으로 나머지 계산해 stratum을 결정한다. 이는 modulo bias를 없앤 결정적 hash 기반 의사무작위 배정 규칙이며 순환 순서 배정은 아니다. 같은 식별자와 seed는 같은 stratum을 재현한다.
@@ -40,9 +40,9 @@ Task sampler의 실제 동작을 유지하는 계층 방식이 승인되었다. 
 
 따라서 proposal 단계의 hash stratum assignment가 고정 seed 아래 20개 층의 실제 표본 수를 정확히 같게 보장하지 않으며, topology별 적격률과 admission conditioning 때문에 admitted SCM의 층 분포는 proposal strata 분포와 다를 수 있다. 층별 strict task pair의 개수 차이와 observed-common-cause scaffold 우선 규칙도 최종 task 분포에 영향을 준다. 이 설계는 전역 eligible `(X,Y)` pair-uniform 모집단이 아니다. 주 분석에서 사후 재가중은 하지 않는다. 층별 admitted 수는 기술통계로 기록할 수 있지만, 작은 층의 정책 성능 우월성을 단정하지 않는다. 추론 범위는 사전 지정된 합성 SCM 생성 규칙 및 strict-task 적격성 조건부 모집단이며 실제 제조공정 전체나 전역 pair-uniform 모집단으로 무조건 일반화하지 않는다.
 
-### 2.2 Task zone 후보
+### 2.2 승인된 Task zone
 
-주 분석의 구조 task zone은 정답 DAG에서 다음 간선의 합집합으로 제안한다.
+주 분석의 구조 task zone은 정답 DAG에서 다음 간선의 합집합으로 정의한다.
 
 1. `X`에서 `Y`로 가는 모든 단순 유향 경로의 간선.
 2. 빈 조건화 집합에서 열린 backdoor 경로의 간선. 경로는 `X`로 들어오는 화살표로 시작하고, 내부 노드는 collider가 없어야 한다.
@@ -64,19 +64,19 @@ Collider가 있는 경로는 무조건화 상태에서 차단된 것으로 분�
 
 **주 분석 Rule A:** GT-absent estimated adjacency의 두 endpoint가 task-zone node set 모두에 속할 때 task FP로 귀속한다. 다른 FP는 M2로 간다. 단순 endpoint 집합 규칙이므로 실제 causal harm을 보증하지 않으며, task-node 내부 chord FP까지 M4로 넓게 태그할 수 있다.
 
-**사전 지정 민감도 Rule B:** A에 더해 정확히 한 endpoint가 task-zone node set에 있는 boundary FP를 평가한다. 실행 가능한 B의 제안 정의는 추정 방향의 FP 간선을 GT DAG에 단독 추가했을 때, 그 간선이 X→Y 유향 경로 또는 열린 무조건화 backdoor 경로에 포함되는 경우에만 task FP로 태그하는 것이다. UNRES FP는 가능한 두 방향 중 하나라도 해당 경로를 만들면 task로 태그하는 보수 규칙을 제안한다. 여러 FP의 상호작용으로만 생기는 경로는 이 단일-edge 민감도에 포함하지 않는다. 구현 전 이 규칙을 별도 손그래프로 검증한다.
+**승인 범위 제외 — Rule B (실행 금지):** A에 더해 정확히 한 endpoint가 task-zone node set에 있는 boundary FP를 평가한다. 실행 가능한 B의 제안 정의는 추정 방향의 FP 간선을 GT DAG에 단독 추가했을 때, 그 간선이 X→Y 유향 경로 또는 열린 무조건화 backdoor 경로에 포함되는 경우에만 task FP로 태그하는 것이다. UNRES FP는 가능한 두 방향 중 하나라도 해당 경로를 만들면 task로 태그하는 보수 규칙을 제안한다. 여러 FP의 상호작용으로만 생기는 경로는 이 단일-edge 민감도에 포함하지 않는다. 구현 전 이 규칙을 별도 손그래프로 검증한다.
 
-Rule B는 같은 오류의 재분류 민감도이지 주 분석 정의를 바꾸는 선택이 아니다.
+위 Rule B 정의는 기존 검토 문서 보존용이며 이번 승인 실험에서는 실행하지 않는다. 주 분석은 Rule A만 사용한다.
 
-### 2.5 정책 집합 및 원자 수정
+### 2.5 승인된 정책 집합 및 원자 수정
 
 `S0` 무수정 1개와 `{M1,M2,M3,M4}`의 모든 비공집합 부분집합 15개를 유지한다. Canonical Oracle Baseline은 이 16개와 별도 comparator다. 기존 연구 B의 ID-ordered Global과 같은 정책으로 취급하지 않는다.
 
-잠정 허용 repair 연산은 참 방향 adjacency add, FP adjacency delete, REV orient, UNRES를 참 방향으로 resolve다. UNRES adjacency 삭제는 UNRES를 FN으로 바꾸며 이득을 보장하지 않으므로 주 후보 집합에서 제외한다. 오류를 UNRES로 바꾸는 mark/abstain 연산도 repair 후보로 허용하지 않는다. 연산 단가는 실제 제조 원화가 아닌 연구 내 상대 자원 단위다.
+승인된 repair 연산은 참 방향 adjacency add, FP adjacency delete, REV orient, UNRES를 참 방향으로 resolve다. UNRES adjacency 삭제는 UNRES를 FN으로 바꾸며 이득을 보장하지 않으므로 주 후보 집합에서 제외한다. 오류를 UNRES로 바꾸는 mark/abstain 연산도 repair 후보로 허용하지 않는다. 연산 단가는 실제 제조 원화가 아닌 연구 내 상대 자원 단위다.
 
 정책은 선택 subset의 오류 사건으로 직접 정당화되는 후보만 고려한다. 각 적용 후 오류, DAG, 비용, 지원 분모와 나머지 후보를 다시 확인한다. 이벤트가 실제로 사라지지 않은 후보 gain은 0이다. 여러 지표의 공식 rate가 함께 변하더라도 원 지표 전체의 전후 값과 오류 count를 모두 보고한다.
 
-### 2.6 Greedy 점수 — 주 분석 후보
+### 2.6 Greedy 점수 — 승인된 주 분석
 
 각 metric `m`의 고정 분모는 G0에서 한 번 정한다. G0에서 zero support인 metric은 그 SCM의 policy utility에서 비활성으로 두되, 사전 선택된 subset의 metric 수는 유지해 다른 metric의 가중치가 사후로 커지지 않게 한다. metric 공식 보고값의 분모는 이 policy denominator와 별개다.
 
@@ -91,9 +91,9 @@ Rule B는 같은 오류의 재분류 민감도이지 주 분석 정의를 바꾸
 
 ### 2.7 비용·구조 벌점·Regret 분리
 
-주 비용표 후보는 add/delete/orient/resolve 각각 1이다. 같은 수정을 중복 청구하지 않으며 총 비용 `C(π)≤B`를 강제한다. 비용은 통화나 실제 제조공정 비용 추정치가 아니다.
+승인된 주 비용표는 add/delete/orient/resolve 각각 1이다. 같은 수정을 중복 청구하지 않으며 총 비용 `C(π)≤B`를 강제한다. 비용은 통화나 실제 제조공정 비용 추정치가 아니다.
 
-공통 구조 벌점 `P_all` 후보는 모든 오류 유형을 같은 기본 단위로 한 번씩 세고, UNRES도 명시적으로 포함한다:
+공통 구조 벌점 `P_all` 정의는 모든 오류 유형을 같은 기본 단위로 한 번씩 세고, UNRES도 명시적으로 포함한다:
 
 `P_all(G)=Σ_r w_r [E_{r,off}(G)+λ E_{r,task}(G)]`, `r∈{FN,FP,REV,UNRES}`.
 
@@ -117,35 +117,28 @@ SCM마다 graph hash·수정 trajectory·error type과 task tag·후보 수·cos
 
 민감도는 주 분석을 대체하지 않으며 B=2에서 한 번에 한 축만 바꾼다. 상호작용을 해석하지 않는다.
 
-1. G0-fixed opportunity 대 G0 초기 오류 수 정규화.
-2. FP Rule A 대 위에 고정한 Rule B.
+1. **현재 승인 범위에서 제외:** G0 초기 오류 수 대체 정규화는 실행하지 않는다.
+2. **현재 승인 범위에서 제외:** FP Rule B는 실행하지 않으며 Rule A만 주 분석에 적용한다.
 3. `c_orient=c_resolve`의 상대 단가 1, 2, 3; 다른 단가는 1.
 4. task multiplier λ의 0.5, 1, 2 (주 분석 1 포함).
 5. M4 β의 동일 활성 성분 기준 대 FN 2배, UNRES 2배 stress vector. 두 stress vector는 중요도 추정치가 아니라 민감도용이다.
 
-세부 후보·시나리오를 outcome 열람 뒤 바꾸지 않는다. ρ tradeoff, 가중치 학습, 비용 최적화·exhaustive edit optimizer, equal quota, 추가 정책은 본 주 실험 밖으로 둔다.
+방향 수정 비용, λ 및 M4 β 민감도는 §10.3에 제안된 고정 후보만 허용한다. Rule B와 대체 정규화는 현 승인 실험에 포함하지 않는다. 세부 후보·시나리오를 outcome 열람 뒤 바꾸지 않는다. ρ tradeoff, 가중치 학습, 비용 최적화·exhaustive edit optimizer, equal quota, 추가 정책은 본 주 실험 밖으로 둔다.
 
-## 4. 코호트·표본 수 제안 및 제한
+## 4. 승인된 코호트·표본 수와 제한
 
-### 제안할 개발/평가 분리
+- Development: admitted 독립 SCM 목표 64개, proposal cap 386회.
+- Held-out: admitted 독립 SCM 목표 200개, proposal cap 1,104회.
+- N은 admitted SCM 목표이지 complete-pair 또는 정책 평가 행 수가 아니다. 적격 후 평가 실패와 cap shortfall을 그대로 기록하며 성능에 따라 표본을 대체하지 않는다.
+- P1 불확실성: 95% paired-t CI; 보조 SCM-level percentile bootstrap 10,000회. `s_max/h` 결과 기반 자동 증액은 사용하지 않는다.
+- 64/200은 power 또는 효과 정밀도 보장이 아니다. 실패 후 complete-pair 표본이 줄면 해당 분모와 실패율을 함께 보고하고, complete-case 추정량을 무조건 전체 admitted 모집단 평균으로 일반화하지 않는다.
 
-- 개발/engineering cohort: **64 SCM**을 제안한다. 목적은 pipeline debugging, G0/error coverage, 운영시간 측정과 SCM-level paired contrast의 개발 분산 산정이다. 개발 결과는 최종 정책 결론의 독립 재현으로 보고하지 않는다.
-- 별도 evaluation cohort: **200 SCM을 planning candidate**로 제안한다. 이것은 기존 Step 6 자료를 재사용하거나 새 C 효과의 power를 증명하지 않는다. seed/ID namespace와 출력 디렉터리는 독립적으로 생성한다.
-- 제안 N과 proposal cap은 연구 C의 SCM/task/G0 eligibility 및 자원 측정 전에 고정할 수 없다. 개발 결과로 evaluation N을 조정한다면 조정식과 목표 precision을 evaluation 열람 전에 고정하고, evaluation 결과를 본 뒤 N을 바꾸지 않는다.
+## 5. 현재 승인 범위 및 제외 항목
 
-기존 연구 B의 paired SCM SD 0.0824를 계획 참고 범위로만 대입하면, 정규근사 평균 SE의 1.96배는 N=64에서 약 0.0202, N=200에서 약 0.0114다. 연구 C는 정책·초기 graph·비교 수가 달라 실제 분산이 이와 같다는 근거가 없으므로 이 수치는 power 계산이나 보장된 CI 폭이 아니다. 사용 가능한 근거는 독립 단위가 SCM인 점, Step 5/6에서 64/200 코호트 운영이 가능했던 점, 그리고 C 기본 workload가 SCM당 B=1–4에서 약 65개 repair-model paths(16 repaired variants×4 budgets + S0 1개; graph hash가 같으면 실제 계산을 안전하게 공유 가능)라는 구조적 추산뿐이다. 민감도 workload는 여기에 중앙 B=2의 사전 고정 scenario 수만큼 추가된다.
+승인된 모집단은 4개 topology template, 노드 6–10개, signed linear acyclic SCM, G0 오류 제안 확률 `q=0.15`, `r=0.05`, true-edge 손상 시 FN/REV/UNRES 조건부 동일확률, no-redraw DAG 거절, 계층 Task sampler 및 A2 strict indirect-only admission이다. 승인 설정의 정확한 내용은 `RESEARCH_C_APPROVAL_DECISION_BRIEF.md` §10과 Development 승인 Configuration에 결합한다.
 
-따라서 64/200은 **주요 표본 목표 후보**이며 통계적 sufficiency가 아니다. 단일 최종 N은 별도 승인 묶음에서 개발 분산/운영 자원과 목표 기술적 정밀도를 함께 검토해 확정한다. 확인적 우월성 검정이나 Step 5/6의 결과 기반 재사용은 제안하지 않는다.
+정책은 기존 M1–M4, S0·15개 비공집합 subset·Canonical Oracle, Rule A, G0-fixed opportunity only, 기존 비용·벌점·가중치, B=0–4 grid를 사용한다. Rule B와 대체 정규화 민감도는 이번 주 실험 범위에서 제외한다. 나머지 제한 민감도도 §10.3에 정해진 후보만 적용하며 결과 열람 후 변경하지 않는다.
 
-## 5. 아직 필요한 연구 범위 선택
+## 6. 승인 지위와 실행 Gate
 
-실험에 들어가기 전에 가장 큰 대상 모집단 선택은 아래 중 하나로 고정해야 한다.
-
-- **좁은 재사용 generator family:** 새 RNG namespace로 Step 4의 signed linear SCM family를 새로 표집하되, C 전용 task와 G0 계약을 사전 지정한다. 기존 SCM/원시자료는 재사용하지 않는다.
-- **넓은 신규 corruption population:** C 전용 topology/task sampling과 G0 오류 생성 법칙을 새로 지정한다. 이 경우 지원 범위가 넓어질 수 있지만 생성 법칙과 오류율 자체가 새 연구 가정이 된다.
-
-현재 문서만으로는 G0의 초기 오류 생성법(학습기 출력인지, 오류 주입인지), 과제쌍 추출 규칙, 구조 적격·attempt cap을 결정할 수 없다. 이것은 결과 분포를 직접 바꾸는 핵심 결손이므로, 아래 승인 없이 모집단 대표성이나 자연 발생 오류에 대한 주장을 하지 않는다.
-
-## 6. 승인 지위
-
-이 문서는 실행 가능한 단일 기준안과 제한 민감도 후보를 제안하지만 승인된 설계나 preregistration이 아니다. 사용자 승인을 기록하고, G0/task/population 생성계약·평가 pipeline·정확한 표본·resource/stop rules를 재현 가능한 설정으로 고정한 후에만 새 SCM 실행을 별도 승인받는다.
+A/B/C 과학적 계약과 §10.4 Production 자원 상한은 2026-11-23 사용자 승인으로 내부 확정됐다. 이는 외부 공개 registry 등록을 의미하지 않는다. 승인 Config·Manifest와 비실행 Preflight를 준비하되, Development 코호트 시작은 별도 실행 승인 전까지 금지한다. Held-out 실행도 별도의 후속 승인이 필요하다. 이 문서와 준비 과정에서 연구 SCM, 관측자료, 실제 연구 Decision Regret을 생성하지 않았다.

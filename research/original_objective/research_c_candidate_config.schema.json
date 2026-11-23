@@ -64,10 +64,10 @@
       "properties": {
         "metric_subsets": {"const": "all_15_nonempty_subsets_plus_S0"},
         "canonical_oracle": {"const": "separate_same_information_candidate_cost_budget_DAG_constraints"},
-        "normalization": {"const": "G0_fixed_opportunity; sensitivity_initial_error_count"},
+        "normalization": {"const": "G0_fixed_opportunity_only"},
         "metric_weights": {"const": "equal_selected_metric_weights"},
         "m4_beta": {"const": "equal_active_FN_FP_REV_UNRES_components"},
-        "fp_rule": {"const": "A_primary_B_sensitivity"},
+        "fp_rule": {"const": "A_only; Rule_B_excluded"},
       "edit_costs": {
         "description": "Active repair operations are add, delete, orient, and resolve, each with unit relative cost. delete_unresolved is a reserved compatibility cost key only: no policy candidate emits that operation, it is never charged, and deleting an unresolved adjacency is not part of this contract.",
         "const": {"add": 1, "delete": 1, "orient": 1, "resolve": 1, "delete_unresolved": 1}

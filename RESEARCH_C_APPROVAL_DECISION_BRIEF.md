@@ -1,10 +1,10 @@
 # Research C — A/B/C 최종 과학적 계약 검토 및 승인 브리프
 
 **정합화 기준:** 이번 변경을 담는 로컬 커밋으로 갱신 예정.
-**상태:** A2, P1 및 계층 Task 추출 선택만 사용자 승인되어 구현·계약에 반영됨. 나머지 A/B/C 계약은 제안 상태이며 전체 승인·사전등록·연구 코호트 실행은 완료되지 않았다.
+**상태:** A2, P1, 계층 Task 추출 및 잔여 A/B/C 계약·§10.4 Production 자원 상한 권고값은 사용자가 승인했다. 내부 계약 설정은 반영·고정했으며, 실제 Development 실행은 별도 승인 전까지 금지된다.
 **범위:** 계층 Task 계약에 맞춰 Schema·Validator와 승인 문서를 정합화하고 TEST_ONLY 회귀를 검증했다. 새 SCM, 관측자료, 개입 결과 또는 연구 Regret은 만들지 않았다.
 
-이번 정합화는 이전에 승인된 A2 모집단·P1 primary와 이번 요청에서 승인한 계층 Task 분포 선택을 반영한다. strict indirect-only task는 유지하고 FN/FP/REV Q-common recipe support 추가 gate는 Research C admission에서 제거한다. P1은 B=2의 SCM별 `Regret(S0)-Regret(Full Greedy)`이며 cohort 평균은 실제 연구 cohort 분석 단계에서만 계산한다. 다른 과학적 설정의 승인, 전체 계약 동결, 사전등록, 연구 실행은 여전히 완료되지 않았다. 실제 Research C SCM/Regret 코호트와 실제 승인 Bundle은 생성하지 않았다. 최종 상태는 **APPROVAL_REQUIRED**다.
+이번 정합화는 앞선 A2 모집단·P1 primary·계층 Task 승인과 2026-11-23 사용자의 잔여 A/B/C 계약 및 Production 자원 상한 승인을 반영한다. 과학적 계약은 승인됐고, 실제 Development 실행은 별도 승인 전이다. 연구 코호트나 Regret은 생성하지 않았다. 상태는 **CONTRACT_APPROVED / CONFIGURATION_AND_PREFLIGHT_PENDING / EXECUTION_NOT_AUTHORIZED**다.
 
 ## 1. 연구 질문과 현재 증거
 
@@ -36,18 +36,18 @@ python -m unittest tests.test_step4_post_freeze_readiness.PostFreezeReadinessTes
 
 | 결정 항목 | 제안/코드에서 확인한 값 | 근거 및 한계 | 권고 |
 |---|---|---|---|
-| Topology·크기 | 4종: chain mediation, fork branch, observed common cause, multiple directed paths; 노드 6–10; density `[0.2, 0.4]` | 승인 schema가 상수로 제한. 기존 Step4 topology generator 재사용은 새 SCM 데이터가 아니라 생성 규칙 재사용임. 네 template의 의미와 구현을 사전등록 부록에 고정할 것. | APPROVE |
-| Task 추출 분포 | 각 proposal의 `(cohort, master_seed, proposal_id, counter)` 기반 SHA-256 digest를 rejection 방식으로 고정된 20개 topology×node-count strata에 결정적으로 매핑한다. 같은 입력은 같은 층을 재현하며, 해시 출력의 modulo bias를 피한다. 순환 배정은 아니다. 그 stratum에서 topology·relabel 후 strict indirect-only ordered pair를 선택하고 direct `X→Y`는 제외한다. | 이는 계층 추출이지 전역 eligible `(X,Y)` pair-uniform이 아니다. 일반 topology는 topology 내부 후보를 seeded uniform index로 고르고, `observed_common_cause`의 scaffold action-target pair가 strict indirect-only이면 우선한다. Stratum별 적격률·후보 수와 preferred 예외, admission conditioning 때문에 admitted task/stratum 분포는 달라질 수 있다. | **이 계층 Task 분포는 이번 지시로 승인됨.** 다른 A/B/C 모집단·생성 선택은 계속 미승인. |
-| **추가 Q-common support gate — A2 반영** | Research C proposal wrapper가 기존 frozen proposal generator의 `missing_same_type_two_candidate_support`만 C 전용으로 승격하고 `q_common_eligible=false`, recipe counts를 보존한다. 구조적으로 strict indirect-only task가 없는 proposal은 계속 거절한다. | 모집단은 오류별 recipe availability가 모두 있는 구조에 조건화되지 않는다. 500→494 파일럿은 다른 기존 builder 조건을 사용한 구조 진단이며 A2 production admission 비율 추정치가 아니다. Q-common 결과는 secondary subset 분석 플래그다. | **A2 승인됨.** 나머지 모집단 규칙은 미승인 |
-| SCM 구조·계수 | signed linear acyclic; 계수 절댓값 `[0.25,0.8]`, 독립 fair sign | 설정은 제안 상수. 이 합성 family 밖 제조 공정으로 일반화 불가. | APPROVE |
-| 관측자료·잡음 | SCM당 공통 관측자료 `n=512`; 독립 centered Gaussian noise, SD `[0.8,1.2]`; 정책별 동일 관측자료 | 계수/잡음/표본 생성용 RNG를 분리하고 seed namespace 기록. `n=512`는 효과 추정 정밀도를 보장한 근거가 아님. | APPROVE |
-| 행동·목표·손실 | 사전 선택 task, action grid `[-1,-.5,0,.5,1]`; standardized target mean squared error; GT 평가는 analytic hard-do | 동일 action grid와 손실을 전 정책에 적용. 실제 수율·안전·비용 함수가 아님. | APPROVE |
-| G0 오류 주입 | 참 adjacency 손상 `q=.15`, 손상 시 FN/REV/UNRES 각 1/3; GT nonadjacent pair FP 제안 `r=.05`, 방향 무작위 | q/r은 제안 확률이지 실현 오류율이 아님. 구조 전용 파일럿의 494 strict-task eligible 중 오류 없는 G0 55 (11.1%); 이는 Q-common 추가 적격성을 통과한 생산 모집단의 비율이 아님. 오류 제안 1,190 중 DAG 수락 1,044·거절 146. | 오류 생성 규칙 승인; 생산 G0분포/지원 조건은 별도 결정 |
-| DAG 거절·재추출 | DAG-invalid 오류 제안은 기록 후 거절, 재추출 없음 | 파일럿과 schema 제안이 일치. proposal 수와 accepted/rejected를 모두 분모와 함께 보존. | APPROVE |
-| Task zone·backdoor | 모든 X→Y 단순 유향 경로와 무조건화 상태의 open backdoor 경로; collider 내부 노드가 없는 backdoor만 open. Rule A FP 귀속 | 경로 기반 구조 표식은 실제 개입 손실 자체가 아님. 무조건화 backdoor 한정이며 특정 조건화 집합은 다루지 않음. Rule A는 양 끝점 모두 task-zone node set 내 FP를 task로 태깅하여 내부 chord를 넓게 포함할 수 있음. | Rule A 주 규칙 승인이 필요. Rule B는 별도 승인 없이는 필수 분석에서 제외 |
-| 오류 없는 G0·표본 흐름 | A2에 따라 G0 오류 0건도 admitted 모집단에서 제외하지 않음. Proposal, strict-task, Q-common 플래그, admitted, full-policy-complete SCM을 구분 | zero-error G0는 TEST_ONLY 전체 17개 정책이 비용 0으로 적합·추천·GT 평가까지 완료했다. 무오류 여부나 결과로 사후 제외하지 않음. | **A2 승인됨**; 기타 모집단 규칙은 미승인 |
-| Cohort | Development / `independent_evaluation`(표시상 held-out); 별도 seed namespace·ledger·output; 권고 N=64/200 admitted SCM, cap 386/1,104 | Schema에는 `independent_evaluation`, generator는 proposal namespace로 `confirmation` 사용. 외부 이름과 내부 RNG binding의 매핑을 Manifest에서 고정해야 함. N은 power 보장이 아님. | 분리·N/cap 승인 |
-| 모집단 분모 | `target_admissions`는 구조 적격 proposal 목표. 완료 SCM/완전 paired SCM 수를 뜻하지 않는다. `proposal_cap`까지 outcome-blind proposal을 진행하고 미달 shortfall은 보존. | Admission 후 정책 평가 실패는 다른 SCM으로 교체하지 않음. 실패율과 완전 평가 분모를 분리한다. generator 상한은 development 386, confirmation 1,104 proposal attempts. | APPROVE 분모 규칙; 실제 cap은 실행 전 설정에서 확정 |
+| Topology·크기 | 4종: chain mediation, fork branch, observed common cause, multiple directed paths; 노드 6–10; density `[0.2, 0.4]` | 승인 schema가 상수로 제한. 기존 Step4 topology generator 재사용은 새 SCM 데이터가 아니라 생성 규칙 재사용임. 네 template의 의미와 구현을 사전등록 부록에 고정할 것. | 승인됨 |
+| Task 추출 분포 | 각 proposal의 `(cohort, master_seed, proposal_id, counter)` 기반 SHA-256 digest를 rejection 방식으로 고정된 20개 topology×node-count strata에 결정적으로 매핑한다. 같은 입력은 같은 층을 재현하며, 해시 출력의 modulo bias를 피한다. 순환 배정은 아니다. 그 stratum에서 topology·relabel 후 strict indirect-only ordered pair를 선택하고 direct `X→Y`는 제외한다. | 이는 계층 추출이지 전역 eligible `(X,Y)` pair-uniform이 아니다. 일반 topology는 topology 내부 후보를 seeded uniform index로 고르고, `observed_common_cause`의 scaffold action-target pair가 strict indirect-only이면 우선한다. Stratum별 적격률·후보 수와 preferred 예외, admission conditioning 때문에 admitted task/stratum 분포는 달라질 수 있다. | **계층 Task 분포 승인됨.** 기타 A/G0 계약은 2026-11-23 승인 기록 참조. |
+| **추가 Q-common support gate — A2 반영** | Research C proposal wrapper가 기존 frozen proposal generator의 `missing_same_type_two_candidate_support`만 C 전용으로 승격하고 `q_common_eligible=false`, recipe counts를 보존한다. 구조적으로 strict indirect-only task가 없는 proposal은 계속 거절한다. | 모집단은 오류별 recipe availability가 모두 있는 구조에 조건화되지 않는다. 500→494 파일럿은 다른 기존 builder 조건을 사용한 구조 진단이며 A2 production admission 비율 추정치가 아니다. Q-common 결과는 secondary subset 분석 플래그다. | **A2 및 잔여 모집단 규칙은 2026-11-23 승인됨.** |
+| SCM 구조·계수 | signed linear acyclic; 계수 절댓값 `[0.25,0.8]`, 독립 fair sign | 설정은 제안 상수. 이 합성 family 밖 제조 공정으로 일반화 불가. | 승인됨 |
+| 관측자료·잡음 | SCM당 공통 관측자료 `n=512`; 독립 centered Gaussian noise, SD `[0.8,1.2]`; 정책별 동일 관측자료 | 계수/잡음/표본 생성용 RNG를 분리하고 seed namespace 기록. `n=512`는 효과 추정 정밀도를 보장한 근거가 아님. | 승인됨 |
+| 행동·목표·손실 | 사전 선택 task, action grid `[-1,-.5,0,.5,1]`; standardized target mean squared error; GT 평가는 analytic hard-do | 동일 action grid와 손실을 전 정책에 적용. 실제 수율·안전·비용 함수가 아님. | 승인됨 |
+| G0 오류 주입 | 참 adjacency 손상 `q=.15`, 손상 시 FN/REV/UNRES 각 1/3; GT nonadjacent pair FP 제안 `r=.05`, 방향 무작위 | q/r은 제안 확률이지 실현 오류율이 아님. 구조 전용 파일럿의 494 strict-task eligible 중 오류 없는 G0 55 (11.1%); 이는 Q-common 추가 적격성을 통과한 생산 모집단의 비율이 아님. 오류 제안 1,190 중 DAG 수락 1,044·거절 146. | 오류 생성 규칙 승인됨 |
+| DAG 거절·재추출 | DAG-invalid 오류 제안은 기록 후 거절, 재추출 없음 | 파일럿과 schema 제안이 일치. proposal 수와 accepted/rejected를 모두 분모와 함께 보존. | 승인됨 |
+| Task zone·backdoor | 모든 X→Y 단순 유향 경로와 무조건화 상태의 open backdoor 경로; collider 내부 노드가 없는 backdoor만 open. Rule A FP 귀속 | 경로 기반 구조 표식은 실제 개입 손실 자체가 아님. 무조건화 backdoor 한정이며 특정 조건화 집합은 다루지 않음. Rule A는 양 끝점 모두 task-zone node set 내 FP를 task로 태깅하여 내부 chord를 넓게 포함할 수 있음. | Rule A 승인; Rule B는 이번 범위에서 제외 |
+| 오류 없는 G0·표본 흐름 | A2에 따라 G0 오류 0건도 admitted 모집단에서 제외하지 않음. Proposal, strict-task, Q-common 플래그, admitted, full-policy-complete SCM을 구분 | zero-error G0는 TEST_ONLY 전체 17개 정책이 비용 0으로 적합·추천·GT 평가까지 완료했다. 무오류 여부나 결과로 사후 제외하지 않음. | **승인됨** |
+| Cohort | Development / `independent_evaluation`(표시상 held-out); 별도 seed namespace·ledger·output; 권고 N=64/200 admitted SCM, cap 386/1,104 | Schema에는 `independent_evaluation`, generator는 proposal namespace로 `confirmation` 사용. 외부 이름과 내부 RNG binding의 매핑을 Manifest에서 고정해야 함. N은 power 보장이 아님. | 분리·N/cap 승인됨 |
+| 모집단 분모 | `target_admissions`는 구조 적격 proposal 목표. 완료 SCM/완전 paired SCM 수를 뜻하지 않는다. `proposal_cap`까지 outcome-blind proposal을 진행하고 미달 shortfall은 보존. | Admission 후 정책 평가 실패는 다른 SCM으로 교체하지 않음. 실패율과 완전 평가 분모를 분리한다. generator 상한은 development 386, confirmation 1,104 proposal attempts. | 분모·cap 규칙 승인됨 |
 
 파일럿의 포화 진단에서 B=3/4 후보 선소진은 각각 87.6%/94.7%였으므로 이를 주 성능 예산으로 두기보다 포화 기술 결과로 보는 것이 타당하다. 권고는 B=2 주 비교, B=1 저예산 보조, B=3/4 후보 포화 기술 진단, B=0 S0 기준선이다.
 
@@ -59,7 +59,7 @@ python -m unittest tests.test_step4_post_freeze_readiness.PostFreezeReadinessTes
 | 16개 조합 | S0 무수정 + M1–M4 비공집합 부분집합 15개 | 이 전략군은 어떤 지표 subset에 repair 후보를 제한하는지 나타냄. 명목 16개가 서로 다른 그래프를 보장하지 않음. |
 | Canonical Oracle | 지표 gain 순위가 아닌 고정 canonical 순서로 같은 structural candidate pool을 수정; 같은 GT 구조정보·G0·비용·예산·DAG 제약 | 구조 라벨을 이용하는 oracle 진단 기준선. GT 계수·행동별 손실·최선 GT action·Regret은 쓰지 않음. 전역 최적해, regret upper bound, 배포 정책이 아님. |
 | Greedy | 매 단계 `(P_S(before)-P_S(after))/edit_cost`; 실제 오류 사건이 사라지는 gain만 인정; 매 수정 뒤 후보·DAG·비용 재계산; deterministic tie order | Myopic 구조 대리목적의 탐욕 정책이며 `P_S` 전역 최소화나 최소 Regret을 보장하지 않음. 정답 DAG로 후보를 찾는 Oracle-assisted 진단임. |
-| 정규화·가중치 | G0-fixed opportunity 분모, subset 내 지표 동일 가중, M4의 G0 active FN/FP/REV/UNRES components 동일 β | 작은 support는 사건당 상대 gain을 키울 수 있다. 파일럿과 별도 민감도 없이는 공정성/중립성 보장으로 표현 금지. 초기-error-count 정규화는 별도 승인될 때만 수행하며 기본 필수 범위가 아님. |
+| 정규화·가중치 | G0-fixed opportunity 분모, subset 내 지표 동일 가중, M4의 G0 active FN/FP/REV/UNRES components 동일 β | 작은 support는 사건당 상대 gain을 키울 수 있다. 파일럿과 별도 민감도 없이는 공정성/중립성 보장으로 표현 금지. 초기-error-count 대체 정규화는 이번 승인 범위에서 제외되어 실행하지 않는다. |
 | 비용·벌점 | `C≤B`; add/delete/orient/resolve 각각 1 상대 비용. `P_all=Σ_r w_r(E_off,r+λE_task,r)`, 모든 `w=1`, `λ=1`은 task 사건에 주는 총 배수(누적 `1+λ` 아님). `P_S`와 `P_all`, Decision Regret 별개. | 단위는 연구상 상대 자원이며 원화/제조 비용 추정이 아니다. `λ=1`은 task/off-task 동일 벌점. 비용과 벌점 같은 수정에 중복 부과 금지. |
 | 미확정 간선 수정 | 제안 허용은 true-edge add, FP delete, REV orient, UNRES resolve. `delete_unresolved` 키는 `Config`의 호환성 검증값으로만 요구됨. | 후보 생성 함수는 FN→add, FP→delete, REV→orient, UNRES→resolve만 만든다. `delete_unresolved`는 candidate pool에 나오지 않고, 우선순위·실제 지출 비용·정책 결과에 사용되지 않는다. 두 Schema에 이를 **비활성 예약 키**로 명시했다. 주 계약의 수정 연산은 바꾸지 않았다. |
 | 예산 | 현재 runner/schema는 `[0,1,2,3,4]` 전체를 실행한다. 분석 역할은 B=0 S0/reference, B=1 보조, B=2 주 후보, B=3/4 포화 진단이다. | 이는 모순이 아니다. Schema 설명을 보완했다. Runner는 예산별 결과를 실행·저장하고 통계 contrast를 계산하지 않는다. 그러므로 분석 역할은 승인된 분석 계약/사전등록에 고정해야 한다. |
@@ -76,36 +76,36 @@ Primary 추정 표본은 S0/B2와 Full Greedy/B2가 모두 정상 평가된 comp
 
 N은 Development admitted 목표 64, Held-out admitted 목표 200으로 고정하는 안을 권고하며 proposal cap 386/1,104를 사용한다. 이는 표본 목표이지 power·정밀도 보장이 아니다. 기존 계획의 development `s_max/h` 기반 자동 증액 아이디어는 역사적 계획으로 남기되 이번 권고에서는 **사용하지 않는다**. Step5/6 SD를 C의 분산 추정에 전용하지 않는다.
 
-최종 권고는 95% SCM-paired t 신뢰구간과 보조 SCM-level paired percentile bootstrap 10,000회(2.5/97.5 percentile CI)다. Bootstrap seed와 분석 코드 버전은 Held-out 결과 열람 전에 고정한다. 정책·예산 행을 따로 재표집하지 않는다. 통계 계약과 분석 구현은 아직 승인/완료되지 않았다.
+최종 권고는 95% SCM-paired t 신뢰구간과 보조 SCM-level paired percentile bootstrap 10,000회(2.5/97.5 percentile CI)다. Bootstrap seed와 분석 코드 버전은 Held-out 결과 열람 전에 고정한다. 정책·예산 행을 따로 재표집하지 않는다. 통계 계약은 승인됐다. 실제 cohort 통계량은 아직 계산하지 않았다.
 
 | C 결정 | 제안/코드 상태 | 승인 권고 |
 |---|---|---|
-| 잔여 UNRES | 구조 그래프에는 UNRES 유지; 학습 DAG에서는 방향 부모/자식으로 쓰지 않는 abstention encoding. GT 방향으로 채우지 않고 무료 구조 복구로 세지 않음. | APPROVE 주 처리로 제안; 정보 손실로 인해 UNRES 보유 정책에 학습 불이익 가능성을 한계/민감도에 명시. 대체 encoding은 사전 한정 민감도 또는 후속 연구로 제한. |
+| 잔여 UNRES | 구조 그래프에는 UNRES 유지; 학습 DAG에서는 방향 부모/자식으로 쓰지 않는 abstention encoding. GT 방향으로 채우지 않고 무료 구조 복구로 세지 않음. | 승인된 주 처리. 정보 손실로 인해 UNRES 보유 정책에 학습 불이익 가능성을 한계로 기록; 대체 encoding은 별도 승인 전 수행하지 않음. |
 | 결과·표본 단위 | 독립 SCM; 같은 SCM 내 정책/예산은 반복 측정. P1은 B2 `S0−Full Greedy` SCM paired difference의 평균. Full Greedy vs Canonical은 secondary. B1 보조, B3/B4 포화, B0 기준. | **P1 승인됨.** Primary 대상은 A2 admitted SCM이고 추정 표본은 두 정책이 모두 성공한 complete pair다. Complete-case mean을 실패 가정 없이 전체 admitted 모집단 평균으로 해석하지 않는다. |
 | 개발/평가 N | Development 64, Held-out 200 admitted 목표; proposal cap 386/1,104. 과거 `s_max/h` precision 기반 자동 증액은 이번 권고에서 쓰지 않음. | N은 고정 목표이지 power/precision 보장이 아니다. Complete pairs, 실패율과 사유를 따로 보고하고 cap shortfall은 유지한다. Held-out 열람 뒤 N·정책·Primary 변경 금지. |
-| 실패·complete-case | Proposal/admission/전 정책 완료/paired 벡터 수 각각 보존. 정책 일부 실패 SCM은 paired 주 비교에서 제외하되 전체 제안 분모와 원인별 실패율 보고. 실패 Regret=0 대체 금지, admitted SCM 사후 대체 금지. | APPROVE. 실패가 정책 의존적이면 complete-case 선택편향 위험을 결과 한계로 평가; 평가 실패율 차이가 심각하면 효과 결론을 보류. |
+| 실패·complete-case | Proposal/admission/전 정책 완료/paired 벡터 수 각각 보존. 정책 일부 실패 SCM은 paired 주 비교에서 제외하되 전체 제안 분모와 원인별 실패율 보고. 실패 Regret=0 대체 금지, admitted SCM 사후 대체 금지. | 승인됨. 실패가 정책 의존적이면 complete-case 선택편향 위험을 결과 한계로 평가; 평가 실패율 차이가 심각하면 효과 결론을 보류. |
 | 추정·불확실성 | Runner는 row 기록만 한다. 권고 N=64/200 admitted 목표와 cap 386/1,104를 사전 고정하고 `s_max/h` 자동 증액은 사용하지 않는다. Primary 95% paired-t CI; 보조 SCM-level paired percentile bootstrap 10,000회. | Complete-pair mean은 두 정책 모두 성공한 SCM에 한정하며 admitted 모집단 평균으로 자동 일반화하지 않는다. 실패율은 정책/원인별 보고. Bootstrap seed와 분석 코드 버전은 Held-out 결과 열람 전 고정. N은 power 보장이 아니다. |
 | 환경·실행 승인 | 격리 Windows CPython 3.11.15, NumPy 2.4.3, pandas 3.0.1, NetworkX 3.6.1, jsonschema 4.26.0. `research_c_runtime_lock.txt`에 pip 포함 전체 설치 패키지 버전을 고정. | 이 환경에서 Research C 테스트/fixture가 통과했다. 승인 설정은 실제 실행할 동일 runtime fingerprint와 전체 package inventory에 묶어야 한다. |
-| Gate·운영 | Runner가 JSON Schema, 승인 상태, 지원된 과학 설정, proposal/admission 수, budgets, runtime, hashes, output·resource limits를 검사한다. RSS는 sampled monitor, 저장량은 파일시스템 quota가 아닌 사전 검사. | `--mode preflight`는 같은 승인/Manifest Gate를 검증하고 proposal/SCM 없이 종료한다. `scripts/prepare_research_c_manifest.py`는 **이미 사용자 승인 및 사전등록된 config**의 해시 manifest만 바인딩한다. 도구 실행은 승인을 생성하지 않으며 이번에는 실제 config/manifest를 만들지 않는다. 외부 공개 preregistration URL/증빙은 별도 기록 필요. |
+| Gate·운영 | Runner가 JSON Schema, 승인 상태, 지원된 과학 설정, proposal/admission 수, budgets, runtime, hashes, output·resource limits를 검사한다. RSS는 sampled monitor, 저장량은 파일시스템 quota가 아닌 사전 검사. | `--mode preflight`는 같은 승인/Manifest Gate를 검증하고 proposal/SCM 없이 종료한다. `scripts/prepare_research_c_manifest.py`는 **이미 사용자 승인 및 사전등록된 config**의 해시 manifest만 바인딩한다. 도구 실행은 승인을 생성하지 않으며 이번 승인으로 Configuration·Manifest를 생성하고 비실행 Preflight까지 수행한다. 도구는 승인을 발급하지 않는다. `PREREGISTERED`는 저장소 내부 사전 고정 상태이며 외부 공개 registry 등록을 뜻하지 않는다. |
 
 ### 표본 크기와 자원
 
-64/200은 실행량 제안이지 최소 검정력이나 정밀도 보증이 아니다. 기존 계약은 Step5/6 paired SD 0.0824를 단순 대입한 숫자를 참고로만 제시하며, C의 분산에 적용된다고 주장하지 않는다. runner의 계획 workload는 예산 전체에서 SCM당 최대 65개 고유 graph/model 경로 전후(중복 그래프는 캐시·공유 가능)이고, 실제 시간은 topology 적격률, 오류 후보, 적합 실패와 민감도 수에 따라 달라진다. 생산 상한은 사용자 승인 runtime에서 먼저 작은 승인된 개발 실행의 계측을 본 후 고정해야 한다; 이 기술 검토만으로 N=200의 완료 가능성/통계력은 확정 못 한다.
+64/200은 승인된 admitted 실행 목표이지 최소 검정력이나 정밀도 보증이 아니다. 기존 계약은 Step5/6 paired SD 0.0824를 단순 대입한 숫자를 참고로만 제시하며, C의 분산에 적용된다고 주장하지 않는다. runner의 계획 workload는 예산 전체에서 SCM당 최대 65개 고유 graph/model 경로 전후(중복 그래프는 캐시·공유 가능)이고, 실제 시간은 topology 적격률, 오류 후보, 적합 실패와 민감도 수에 따라 달라진다. 생산 상한은 사용자 승인 runtime에서 먼저 작은 승인된 개발 실행의 계측을 본 후 고정해야 한다; 이 기술 검토만으로 N=200의 완료 가능성/통계력은 확정 못 한다.
 
-## 6. 핵심 결정 요청
+## 6. 승인 반영 및 별도 실행 Gate
 
-아래 표에서 **A2, P1 및 계층 Task 추출 선택은 사용자 지시로 승인되어 반영됐다.** 나머지 권고값은 제안이며 잠정 계약 전체를 동결하지 않는다. 남은 묶음만 별도로 결정해야 한다.
+사용자는 2026-11-23에 A2, P1, 계층 Task 추출 및 아래 표의 잔여 과학적·운영 설정을 승인했다. Rule B 및 대체 정규화 민감도는 승인 범위에서 제외했다. 이 승인은 계약 확정만 뜻하며 실제 Development 실행은 승인하지 않는다.
 
 | 묶음 | 권고 선택 | 사용자 응답 |
 |---|---|---|
-| **A — 모집단/G0** | strict indirect-only 유지. FN/FP/REV recipe support가 부족해도 admission하고 Q-common flag로 보존. 무오류 G0와 오류 유형별 no-op을 포함. A2는 C 전용 wrapper/schema에 반영, frozen Step4 proposal helper 유지. | **A2 — 사용자 승인 및 이번 변경에 반영됨.** 다른 모집단/G0 선택은 미승인. |
-| **B — 정책/비용** | Rule A + 열린 무조건화 backdoor task zone, S0+15 subsets+Canonical, G0-fixed opportunity 주 분석 및 초기-error sensitivity, 동일 subset metric weights 및 M4 active-component β, 단위 비용/λ=1, B2 primary·B1 보조·B3/4 saturation·B0 reference | `[ ] APPROVE 권고안` `[ ] MODIFY (값 명시)` `[ ] DEFER` |
-| **C — 평가/운영** | P1은 B2 `S0 − Full Greedy` SCM paired Regret 차이, positive = Full Greedy Regret 감소; Full Greedy–Canonical은 secondary. N64 dev/N200 평가 목표, paired-t CI, 실패·shortfall 규칙 등은 별도 결정. | **P1 — 사용자 승인 및 이번 변경에 반영됨.** 나머지 C 항목 미승인. |
-| **실행환경** | CPython 3.11.15 + 고정 `research_c_runtime_lock.txt` 전체 package inventory. 주요 직접 패키지 NumPy 2.4.3 / pandas 3.0.1 / NetworkX 3.6.1 / jsonschema 4.26.0 | `[ ] APPROVE 권고안` `[ ] MODIFY (버전 명시)` `[ ] DEFER` |
-| **운영** | Development admissions 목표 64, Held-out 200은 후보. Generator attempt 상한 386/1,104; 실행별 실제 proposal cap·resource cap은 config에서 사전 고정. Proposal shortfall 및 admitted 후 실패는 보존·대체 금지. | `[ ] APPROVE 권고안` `[ ] MODIFY (수치 명시)` `[ ] DEFER` |
-| **상태** | A2, P1, 계층 Task 추출 선택만 승인 반영. A/B/C 전체 계약, 사전등록과 코호트 실행은 미승인. | **APPROVAL_REQUIRED** |
+| **A — 모집단/G0** | strict indirect-only, A2; topology 4종·노드 6–10; signed linear SCM; G0 q=.15/r=.05, FN/REV/UNRES conditional 1/3; Development 64/cap386, Held-out 200/cap1104 | **APPROVED — 2026-11-23 사용자 승인.** |
+| **B — 정책/비용** | Rule A + 열린 무조건화 backdoor task zone, S0+15 subsets+Canonical, G0-fixed opportunity only; Rule B·대체 정규화 제외, 동일 subset metric weights 및 M4 active-component β, 단위 비용/λ=1, B2 primary·B1 보조·B3/4 saturation·B0 reference | **APPROVED — 2026-11-23 사용자 승인** |
+| **C — 평가/운영** | P1 B2 `S0 − Full Greedy`; 95% paired-t CI + paired bootstrap 10,000; no `s_max/h` increase; admitted goals and caps as specified; failures/shortfalls retained without replacement | **APPROVED — 2026-11-23 사용자 승인.** |
+| **실행환경** | CPython 3.11.15 + 고정 `research_c_runtime_lock.txt` 전체 package inventory. 주요 직접 패키지 NumPy 2.4.3 / pandas 3.0.1 / NetworkX 3.6.1 / jsonschema 4.26.0 | **APPROVED — CPython 3.11.15 + lock** |
+| **운영** | Development admissions 목표 64, Held-out 200은 후보. Generator attempt 상한 386/1,104; 실행별 실제 proposal cap·resource cap은 config에서 사전 고정. Proposal shortfall 및 admitted 후 실패는 보존·대체 금지. | **APPROVED — 목표·cap 및 무대체 규칙** |
+| **상태** | A2/P1/Task, 잔여 A/B/C와 Production resource profile 승인. Configuration·Manifest·비실행 Preflight를 준비하고 코호트 실행은 별도 승인 전까지 차단. | **CONTRACT_APPROVED / EXECUTION_APPROVAL_PENDING** |
 
-이번 지시로 계층 Task 분포 선택은 승인되었고 Schema·Validator·계약을 해당 분포에 맞추었다. 남은 결정은 seed `2026112301` 후보 채택과 A/B/C의 나머지 모집단·정책·평가·운영 설정이다. A/B/C의 남은 생성·오류·비용·정규화·가중치·UNRES·실패 처리 규칙, N=64/200 및 cap 386/1,104, 95% paired-t와 10,000회 bootstrap, 제안 자원 상한을 승인/수정/보류해야 한다. `s_max/h` 자동 표본 증액은 현재 권고안에 포함하지 않는다. Rule B 및 추가 정규화 민감도는 별도 승인 없이는 필수 범위가 아니다. 실제 연구 실행은 남은 계약과 승인 Bundle이 준비될 때까지 차단된다.
+사용자는 §10.1–10.4의 나머지 설정을 승인했고 Rule B·대체 정규화만 제외했다. Config·Manifest와 비실행 Preflight를 마친 뒤 Development 실행은 별도 승인을 받는다.
 
 A에 대한 권고는 **A2**다. 원 연구 질문은 strict indirect-only task 모집단에서 오류 위치의 우선순위를 비교하는 것이므로, 각 오류 유형의 topology-level recipe가 반드시 존재해야 한다는 조건으로 모집단을 선별하지 않고 지표별 수정 기회 0건도 결과로 포함하는 편이 목표에 더 잘 맞는다. A1을 선택하면 논문 모집단을 “FN/FP/REV recipe support가 모두 있는 Q-common subset”으로 제한해 명시해야 하며, 구조 파일럿 494/500을 그 수율 추정치로 사용하지 않는다.
 
@@ -142,7 +142,7 @@ A에 대한 권고는 **A2**다. 원 연구 질문은 strict indirect-only task 
 <isolated-research-c-python> -m unittest tests.test_original_objective_a2_preflight tests.test_original_objective_runner tests.test_original_objective_cohort_runner tests.test_original_objective_e2e_fixture tests.test_original_objective_policy_engine tests.test_original_objective_policy_engine_independent tests.test_original_objective_proposal_stage_gate tests.test_original_objective_structural_pilot_and_ledger -q
 ```
 
-**80 tests, 모두 통과.** 추가 A2 TEST_ONLY 검증은 오류가 있는 상태에서 FN/FP/REV 및 일부 복합 유형 support가 빠진 경우와 17정책 완전 E2E, Q-common/non-Q-common proposal 표시, no-op 비용 0, 실제 C proposal stage builder 주입, 무오류 G0를 확인했다. P1은 B=2 `S0 Regret − Full Greedy Regret` 수식·부호·공통 truth/data/task/action-grid hashes와 단일 SCM 기록(집계 미수행)을 확인했다. GT 계수/평가 결과를 바꿔도 수정 로그와 추천은 바뀌지 않고 평가 Regret만 달라지는 TEST_ONLY 검사도 통과했다. Manifest preparer는 임시 디렉터리의 test-only config에만 적용했고 proposed 상태 거부를 확인했다. 실제 승인 bundle, research manifest, 연구 SCM 또는 연구 Regret cohort는 생성하지 않았다. 미승인 CLI preflight 차단 테스트도 통과했다.
+**80 tests, 모두 통과(당시 기준).** 추가 A2 TEST_ONLY 검증은 오류가 있는 상태에서 FN/FP/REV 및 일부 복합 유형 support가 빠진 경우와 17정책 완전 E2E, Q-common/non-Q-common proposal 표시, no-op 비용 0, 실제 C proposal stage builder 주입, 무오류 G0를 확인했다. P1은 B=2 `S0 Regret − Full Greedy Regret` 수식·부호·공통 truth/data/task/action-grid hashes와 단일 SCM 기록(집계 미수행)을 확인했다. GT 계수/평가 결과를 바꿔도 수정 로그와 추천은 바뀌지 않고 평가 Regret만 달라지는 TEST_ONLY 검사도 통과했다. Manifest preparer는 임시 디렉터리의 test-only config에만 적용했고 proposed 상태 거부를 확인했다. 실제 승인 bundle, research manifest, 연구 SCM 또는 연구 Regret cohort는 생성하지 않았다. 미승인 CLI preflight 차단 테스트도 통과했다.
 
 실행 환경은 Windows CPython 3.11.15, NumPy 2.4.3, pandas 3.0.1, NetworkX 3.6.1, jsonschema 4.26.0이며 `research_c_runtime_lock.txt` 13개 항목이 설치 환경과 모두 일치했다. `python -m compileall -q ...` 및 `git diff --check`도 통과했다.
 
@@ -168,20 +168,20 @@ A에 대한 권고는 **A2**다. 원 연구 질문은 strict indirect-only task 
 
 ## 10. 최종 상태
 
-이 변경에서 A2 admission과 P1 primary를 C 전용 code/schema/contract에 반영했다. A2는 strict indirect-only task는 유지하면서 Q-common recipe 부족을 거절 사유에서 제거하고 그 상태를 secondary flag로 남긴다. P1은 B=2 `Regret(S0)-Regret(Full Greedy)`로 고정해 positive가 Full Greedy 개선을 뜻한다. Cohort 평균과 불확실성 분석은 Runner에서 산출하지 않으며 통계 계획은 별도 승인 대상이다. Manifest prep 도구는 승인·사전등록 상태인 config와 현재 clean source/runtime을 해시로 묶을 뿐 승인 상태를 부여하지 않는다. 나머지 A/B/C 규칙, 표본수, 불확실성 방식, 자원 제한 및 실행 승인은 미해결이다. 연구 SCM/Regret 결과를 만들지 않았고 Research Mode는 실제 승인 bundle 전까지 차단된다.
+A2 admission, P1 primary, 계층 Task 추출과 잔여 A/B/C 과학적·운영 계약은 승인되어 문서와 구현에 반영됐다. P1은 B=2 `Regret(S0)-Regret(Full Greedy)`이며 positive가 Full Greedy 개선을 뜻한다. Runner는 SCM별 결과만 기록하고 cohort 추정량/CI는 계산하지 않는다. Manifest preparer는 승인 설정과 source/runtime hash를 결합할 뿐 승인 상태를 발급하지 않는다. 지금은 승인 Config·Manifest와 비실행 Preflight를 준비하며, 별도 승인 전까지 실제 cohort 실행은 차단한다.
 
-**연구 C는 사용자 승인과 일치하는 config/manifest가 없으므로 연구 SCM 실행 미승인 상태다. 이 문서 작성은 A/B/C 승인, 사전등록, 기술적 승인 bundle 발급 또는 연구 결과 생성이 아니다.**
+**과학적 계약과 운영 상한은 승인됐다. 현재 실행 단계는 승인 Configuration·Manifest 생성 및 비실행 Preflight다. 별도 Development 실행 승인 전까지 proposal·SCM 생성은 차단한다.**
 
-## 10. 최종 통합 승인안 — A2/P1 이후 남은 계약
+## 10. 승인 계약 및 Development 실행 준비
 
-이 절은 위의 검토표를 실행 승인에 필요한 구체값으로 모은다. 기존 문서·Schema·코드에 없는 값을 확정값처럼 채우지 않는다. 계층 Task 추출 선택, A2, P1을 제외한 권고는 별도 사용자 결정 전까지 `PROPOSED`다.
+이 절은 승인된 실행 계약의 정확한 값을 모은다. 미실행 산출·결과와 외부 공개 등록은 별도 상태로 관리한다. Rule B 및 대체 정규화 민감도는 이번 실험 범위에서 제외한다.
 
 ### 10.1 A — 모집단과 G0
 
-| 항목 | 권고 승인값 | 코드·계약 대조 및 해석 | 승인 전 차단 |
+| 항목 | 승인 설정값 | 코드·계약 대조 및 해석 | 상태/해석 |
 |---|---|---|---|
 | Topology | 기존 Step 4 생성기의 `chain_mediation`, `fork_branch`, `observed_common_cause`, `multiple_directed_paths` 4종; 6–10 nodes; target edge density `[0.2, 0.4]` | Candidate/approved schema가 이 값으로 제한한다. 기존 SCM/결과 재사용이 아니라 생성 알고리즘 재사용이며 RNG namespace는 새로 둔다. | 값과 템플릿 정의의 사용자 승인 |
-| 적격 task 및 추출 분포 | Proposal ID·cohort·master seed로 SHA-256 rejection sampling을 적용해 기존 순서의 고정 20개 `(topology,node_count)` strata(4 topology × 노드 6–10)에 결정적으로 배정한다(순환 아님). 해당 topology 생성·relabel 후 strict indirect-only ordered `(X,Y)`를 topology 내부 seeded uniform-index로 선택하며 direct `X→Y`는 제외한다. 단 `observed_common_cause` scaffold action-target이 strict indirect-only이면 우선한다. | 이는 전역 eligible-pair 균등분포가 아니다. Proposal strata의 배정과 admitted strata 분포는 eligibility/admission 조건화로 달라질 수 있고 topology별 후보 수 및 scaffold 우선 예외가 최종 task 확률에 영향을 준다. 추론 대상은 사전 정의된 합성 SCM 생성·적격성 조건부 모집단이며 실제 제조공정 전체 또는 전역 pair-uniform 모집단으로 일반화하지 않는다. 사후 재가중은 하지 않으며 층별 표본 수는 기술통계로 기록하고 희소 층의 우월성을 주장하지 않는다. | 계층 Task 분포 선택만 이번 지시로 APPROVED. 나머지 모집단 설정은 PROPOSED — APPROVAL_REQUIRED. |
+| 적격 task 및 추출 분포 | Proposal ID·cohort·master seed로 SHA-256 rejection sampling을 적용해 고정된 20개 strata에 결정적으로 배정한다. 해당 topology 내 strict indirect-only ordered `(X,Y)`를 고르고 `observed_common_cause`의 strict scaffold pair를 우선한다. | 전역 eligible-pair uniform이 아니다. Strata·후보 수·scaffold 우선 및 eligibility/admission 조건화로 분포가 달라질 수 있다. 사후 재가중 없이 합성 생성·적격성 조건부 모집단으로 해석한다. | **APPROVED — 2026-11-23 사용자 승인.** |
 | 모집단 gate | **A2 유지:** FN/FP/REV recipe support를 admission 조건으로 요구하지 않음; 무오류 G0 및 recipe 부재도 포함; Q-common은 secondary flag | A2는 승인되어 proposal/admission 구현에 반영됐다. 500개 구조 파일럿의 494개 적격은 이전 조건·구조 진단이며 A2 운영 수율로 사용하지 않는다. | 추가 gate 없음; strict task 구현과 무성과 기반 제외 원칙 승인 |
 | SCM 방정식 | signed linear acyclic SCM; 각 계수 절댓값 Uniform `[0.25, 0.8]`, 부호는 독립 fair sign; node noise는 독립 centered Gaussian, 각 SD Uniform `[0.8, 1.2]` | Candidate schema는 family/range/sign/noise를 고정한다. 이는 합성 family이며 실제 제조공정 계수의 추정치가 아니다. | 값 및 독립성 가정 승인 |
 | 관측자료 | SCM당 공통 관측표본 `n=512`, centered Gaussian SCM noise에서 관측 생성; 모든 정책·예산에서 동일 자료 사용 | Schema에 `shared_across_policies=true`, `training=common_observational_sample`; 관측 표본 크기가 정밀도 충분성을 입증하지는 않는다. | 값 승인 |
@@ -190,78 +190,78 @@ A에 대한 권고는 **A2**다. 원 연구 질문은 strict indirect-only task 
 | G0 거짓 edge | 각 GT-nonadjacent unordered pair의 FP 제안 확률 `r=0.05`; 방향은 fair draw | 한 pair에 단일 상태만 허용. DAG-invalid 제안은 기록 후 거절, 재추출 없음(`retry_limit=0`). | 값 및 처리 승인 |
 | 오류 없는 제안·실패 | 오류 0건 G0는 유지. 구조 부적격 proposal은 별도 카운트. strict-task 적격 후 실패는 실패로 보존하고 성능을 보고 대체하지 않음. | 코드의 admission/evaluation ledger는 proposal, admission, 평가 완료와 실패를 분리한다. | 표본·실패 규칙 승인 |
 | cohort와 N | Development `target_admissions=64`; independent evaluation `target_admissions=200`. N은 **strict-task 적격 후 admission된 독립 SCM 목표 수**이며 완전 paired 분석 수나 policy-row 수가 아님. 동일 생성 규칙, 독립 `development`/`independent_evaluation` RNG namespace·ledger·출력 root. | 64/200은 연구 C 효과의 검정력 보장이 아니다. 실패가 있으면 complete paired N은 낮아질 수 있으며 보충 추출하지 않는다. | N 목표 및 cohort 분리 승인 |
-| Proposal cap | 제안: Development 최대 386 proposal attempts, independent evaluation 최대 1,104 attempts; target admission에 먼저 도달하면 정지. cap에서 미달하면 shortfall 보고 후 정지. | 이 값은 `step4c1_proposal.py` generator의 attempt 상한과 일치하지만 A2 모집단의 수율을 보장하지 않는다. A2 기준 생산 수율 자료는 없다. cap은 승인 config에서 별도 고정되어야 한다. | cap 수치 승인; MODIFY 시 정수 명시 |
+| Proposal cap | Development 최대 386, Held-out 최대 1,104 proposal attempts; admitted 목표를 먼저 채우면 정지하고 cap shortfall을 그대로 기록 | Generator 상한과 일치하나 A2 수율은 보장하지 않는다. 성능에 따른 SCM 대체는 금지한다. | **APPROVED — Development 64/386, Held-out 200/1,104.** |
 
 ### 10.2 B — 수정 정책·비용·정보 접근
 
-| 항목 | 권고 승인값 | 코드·계약 대조 및 해석 | 승인 전 차단 |
+| 항목 | 승인 설정값 | 코드·계약 대조 및 해석 | 상태/해석 |
 |---|---|---|---|
 | 원 지표·정책군 | M1 비과제 FN/support; M2 비과제 FP/추정 비과제 adjacency; M3 비과제 참 adjacency 방향 정확도와 unresolved rate 별도; M4 과제 구역 FN/FP/REV/UNRES 벡터. S0 + 15 nonempty subsets. | 공식 지표의 분자·분모·count·zero denominator NA를 policy utility와 분리한다. M4를 공식 단일 scalar로 축약하지 않는다. | 정의 및 지표 조합 승인 |
-| Task zone/FP | 모든 GT `X→Y` directed path edges + 무조건화 open backdoor path edges(내부 collider 없는 경로); FP Rule A는 두 끝점 모두 task-zone node set 안이면 M4 | Rule A는 task-zone node 내부 chord FP도 넓게 귀속할 수 있으며 개입 피해의 대체 정의는 아니다. Rule B는 별도 민감도 후보일 뿐이다. | Rule A 승인; Rule B는 별도 승인 없이는 제외 |
-| Greedy | `Score = (P_S(before)-P_S(after))/operation_cost`; G0 고정 opportunity 분모; subset 내 선택 지표 동일 가중치; G0에서 support/error가 있는 M4 FN/FP/REV/UNRES 성분을 active로 하고 활성 성분 β 동일; deterministic tie order는 승인 config와 코드가 지원하는 순서 사용 | 작은 M4 support가 사건당 gain을 키울 수 있다. 이는 확인할 편향 위험이지 M4의 우월성 근거가 아니다. 초기-error-count normalization은 별도 승인 없는 한 기본 분석에 포함하지 않는다. | 점수·정규화·β 승인 |
+| Task zone/FP | 모든 GT `X→Y` directed path edges + 무조건화 open backdoor path edges(내부 collider 없는 경로); FP Rule A는 두 끝점 모두 task-zone node set 안이면 M4 | Rule A는 task-zone node 내부 chord FP도 넓게 귀속할 수 있으며 개입 피해의 대체 정의는 아니다. Rule B는 이번 승인에서 명시적으로 제외되며 실행하지 않는다. | Rule A 승인; Rule B는 이번 scope에서 제외 |
+| Greedy | `Score = (P_S(before)-P_S(after))/operation_cost`; G0 고정 opportunity 분모; subset 내 선택 지표 동일 가중치; G0에서 support/error가 있는 M4 FN/FP/REV/UNRES 성분을 active로 하고 활성 성분 β 동일; deterministic tie order는 승인 config와 코드가 지원하는 순서 사용 | 작은 M4 support가 사건당 gain을 키울 수 있다. 이는 확인할 편향 위험이지 M4의 우월성 근거가 아니다. 대체 initial-error-count normalization은 이번 승인 범위에서 제외되어 실행하지 않는다. | 승인됨; 대체 정규화 민감도 제외 |
 | 비용·벌점 | add/delete/orient/resolve 각 relative cost `1`; 예산 초과 수정 금지; λ=`1`은 task/off-task event에 같은 총 배수; P_all은 FN/FP/REV/UNRES 사건을 같은 weight로 1회 계산; P_S는 Greedy subset 선택 효용, P_all은 공통 구조 결과, C는 사용 비용, Regret은 별도 행동 결과 | `delete_unresolved=1`은 Schema 호환용 reserved key일 뿐 후보 연산으로 생성·청구하지 않는다. UNRES 삭제는 금지; 방향 resolve는 1. 비용은 실제 통화가 아니다. | 비용·λ·벌점 승인 |
 | 예산·기준선 | 실행 grid `[0,1,2,3,4]`: B0 기준, B1 보조, B2 P1 primary, B3/B4 포화 진단. S0, 15 subset policies, Canonical Oracle는 서로 구분 | B0는 각 정책의 미수정 상태에 대한 기준이며 S0는 무수정 정책이다. 그래프가 같아지는 정책은 hash로 식별하고 중복 성능 표본으로 세지 않는다. | 예산 역할 승인 |
 | Canonical Oracle | 동일 G0, 후보 오류·GT 구조정보, 비용·예산·DAG 제약을 이용하되 지표 gain 점수 대신 고정 canonical ordering으로 수정 | GT SCM 계수, 개입 손실, GT 최적 action, Regret은 접근하지 않는다. Oracle diagnostic baseline일 뿐 전역 최적해·Regret 상한·배포 정책이 아니다. | 정보 범위 승인 |
 
 ### 10.3 C — UNRES·결과·통계·실패
 
-| 항목 | 권고 승인값 | 코드·계약 대조 및 해석 | 승인 전 차단 |
+| 항목 | 승인 설정값 | 코드·계약 대조 및 해석 | 상태/해석 |
 |---|---|---|---|
 | UNRES | 최종 구조 그래프에는 보존; 학습 DAG에는 directed parent/child edge로 넣지 않는 abstention encoding; 무료 방향 복구·수정비용 0 또는 GT 방향 보완으로 세지 않음; 두 그래프 hash 별도 기록 | 구조 지표는 원 구조 그래프에서 계산한다. 무방향 정보 손실로 UNRES가 많은 정책에 학습 불이익이나 fit failure가 생길 수 있으므로 성공률도 정책별 보고한다. | 주 처리 방식 승인; 다른 encoding은 결과를 보기 전 별도 민감도 계약 없이는 시행하지 않음 |
 | P1 | 이미 승인: B2 `Full Greedy(M1+M2+M3+M4)` 대 S0. SCM별 `delta_i=Regret_i(S0,B2)-Regret_i(FullGreedy,B2)`; 양수면 Full Greedy 유리. 효과량은 admitted population에서 완전 paired SCM의 `mean(delta_i)`로 보고 | 동일 SCM/자료/task/행동 grid/GT evaluator. P1의 cohort 추정은 실행 산출물에서 아직 미계산이다. | P1은 승인됨 |
 | Secondary | Full Greedy–Canonical; S0 대 나머지 14 subset; 정책별 구조개선·비용·기회·action change·Regret; B1 보조, B3/4 포화, B0 기준; Q-common 및 수정기회가 있는 사례 조건부 요약 | subset 비교는 탐색적이고 multiple-policy search를 primary로 승격하지 않는다. Development 선택 규칙은 Held-out 전에 봉인한다. | Secondary 범위 승인 |
-| 불확실성 | 권고: Primary 95% paired-t CI; 보조 SCM-level paired percentile bootstrap 10,000회, 2.5/97.5 percentile CI. | 재표집 단위는 SCM paired row. Bootstrap seed와 분석 코드 버전을 Held-out 결과 열람 전에 고정한다. Runner는 현재 CI를 계산하지 않는다. CI 포함 여부를 유효/무효 효과의 증명으로 해석하지 않는다. | 통계 규칙 승인·분석 코드 준비 필요 |
-| 표본·분석분모 | N=64 Development, N=200 Held-out admitted SCM 목표; cap 386/1,104. N은 admitted 목표이지 complete-pair 수가 아니다. 기존 `s_max/h` 자동 증액은 이번 권고에서 사용하지 않는다. | Complete-pair·policy-complete 수 및 실패를 별도 보존·보고한다. 동률/0차이는 유지; 실패 Regret=0 대체 및 성과 기반 대체 금지. Cap 미달은 shortfall로 남긴다. | 목표 N/cap 및 실패 규칙 승인 |
-| Held-out 잠금 | 동일 모집단 생성 규칙·설정/실행 코드; 독립 seed namespace; 개발 결과로 고를 수 있는 것은 사전 지정된 탐색 절차 내 선택뿐. Held-out 결과를 열기 전에 정책/분석법/primary/N을 고정하고 이후 변경 금지 | Development와 Held-out는 다른 SCM이며 Step 5/6 표본을 재사용하지 않는다. | 절차 승인 |
+| 불확실성 | 권고: Primary 95% paired-t CI; 보조 SCM-level paired percentile bootstrap 10,000회, 2.5/97.5 percentile CI. | 재표집 단위는 SCM paired row. Bootstrap seed와 분석 코드 버전을 Held-out 결과 열람 전에 고정한다. Runner는 현재 CI를 계산하지 않는다. CI 포함 여부를 유효/무효 효과의 증명으로 해석하지 않는다. | 통계 규칙 승인됨; 분석 코드는 Held-out 열람 전 고정 필요 |
+| 표본·분석분모 | N=64 Development, N=200 Held-out admitted SCM 목표; cap 386/1,104. N은 admitted 목표이지 complete-pair 수가 아니다. 기존 `s_max/h` 자동 증액은 이번 권고에서 사용하지 않는다. | Complete-pair·policy-complete 수 및 실패를 별도 보존·보고한다. 동률/0차이는 유지; 실패 Regret=0 대체 및 성과 기반 대체 금지. Cap 미달은 shortfall로 남긴다. | 목표 N/cap 및 실패 규칙 승인됨 |
+| Held-out 잠금 | 동일 모집단 생성 규칙·설정/실행 코드; 독립 seed namespace; 개발 결과로 고를 수 있는 것은 사전 지정된 탐색 절차 내 선택뿐. Held-out 결과를 열기 전에 정책/분석법/primary/N을 고정하고 이후 변경 금지 | Development와 Held-out는 다른 SCM이며 Step 5/6 표본을 재사용하지 않는다. | 절차 승인됨 |
 
 ### 10.4 Runtime·Production 운영 Gate
 
 | 항목 | 확인된 현재값/구현 | 승인 권고와 차단 |
 |---|---|---|
-| Runtime | 격리 환경 CPython `3.11.15`; lock: NumPy `2.4.3`, pandas `3.0.1`, NetworkX `3.6.1`, jsonschema `4.26.0` 및 `research_c_runtime_lock.txt`에 기재된 전체 패키지 13개 | 이 환경에서 C 관련 회귀 80개 통과로 보고됐고 lock 일치가 기록돼 있다. 실제 실행은 OS release/machine 포함 fingerprint를 manifest에 묶어야 한다. Step 4 fingerprint 실패는 별도 상태다. |
-| RNG | protocol `step4-rng-v1`; config cohort namespace `development` 또는 `independent_evaluation`; master seed는 비음수 정수 필수 | 특정 master seed는 승인/실행 config에 고정되어야 하며 아직 승인값이 없다. 같은 cohort 내 topology/SCM/관측/G0 stream은 분리하고 held-out namespace와 분리한다. |
-| Proposal/SCM worker timeout | 코드 필드는 `unit_timeout_seconds` 하나로 proposal/SCM worker 양쪽에 적용 | TEST_ONLY proposal worker 최대 `0.594s`, SCM worker 최대 `0.767s`. Development 후보 `30s` 공통 unit timeout(각 관측 최대의 약 50×/39×). 별도 proposal/SCM timeout을 지정하려면 코드 수정이 필요하므로 이번에는 같은 값으로 제안. |
-| SCM/campaign active time | `scm_active_seconds`, `cohort_active_seconds`로 누계 관리 | SCM 후보 `60s`(관측 최대의 약 78×); cohort 후보 `3,600s`(1시간). 386 proposal×0.594s + 64 SCM×0.767s의 보수적 선형 산식은 약 `278s`; 1시간은 이 산식의 약 12.9×. 운영·재개·외부 대기 전체 wall-time 보장은 아님. |
-| Sampled RSS | 격리 worker의 주기 표본을 보고 cap 초과 시 종료 | 후보 `536,870,912 bytes`(512 MiB); benchmark 최대 `71,589,888 bytes`의 약 7.5×. 표본 사이 overshoot가 가능하고 OS hard quota가 아님. |
-| 파일/ledger/cohort 저장량 | 사전 쓰기 검사·SQLite checksum/원자 저장. filesystem quota 아님 | 후보 result `4,194,304 bytes`(4 MiB; max 관측 351,861 bytes의 약 11.9×), 개별 SQLite ledger `268,435,456 bytes`(256 MiB; Dev 선형 추정 cohort ledger 약 21.8 MB의 약 12×), cohort directory `536,870,912 bytes`(512 MiB; proposal 포함 추정 약 24.0 MB의 약 22×). 모두 중단 경계이지 용량 보장치가 아님. |
-| 최소 여유 디스크 | 실제 실행 직전 free-space 검사 | 후보 `5,368,709,120 bytes`(5 GiB). 측정 당시 C: free `29,991,530,496 bytes`(약 27.94 GiB); 당시 조건이면 임계치 이후 약 22.94 GiB가 남음. 다른 실행 환경에는 같은 여유가 보장되지 않음. |
-| 동시성 | `max_concurrent_scms=1`만 지원하고 runner는 직렬 실행 | 코드와 일치하는 권고값 `1`. |
-| Proposal cap | generator hard maximum은 development `386`, independent evaluation 내부 generator cohort `confirmation` `1,104`; config는 그 이하만 허용 | 권고 candidate는 cap 386/1,104. A2 생산 수율을 입증한 값은 아니며 cap에서 부족해도 확장·재추출 없이 shortfall을 보고한다. `independent_evaluation`→`confirmation` 내부 binding은 config/manifest에 고정해야 한다. |
+| Runtime | CPython `3.11.15`; `research_c_runtime_lock.txt`의 13개 패키지 버전 | 승인된 lock 환경에서 실행하고 OS/machine fingerprint를 Manifest에 바인딩한다. Step 4 fingerprint 상태는 별도다. | **APPROVED; 현재 실행 Manifest에 fingerprint 결합 예정.** |
+| RNG | protocol `step4-rng-v1`; config cohort namespace `development` 또는 `independent_evaluation`; master seed는 비음수 정수 필수 | Development master seed는 `2026112301`로 승인되었으며 실행 Config에 고정한다. 같은 cohort 내 topology/SCM/관측/G0 stream은 분리하고 held-out namespace와 분리한다. |
+| Proposal/SCM worker timeout | 코드 필드는 `unit_timeout_seconds` 하나로 proposal/SCM worker 양쪽에 적용 | TEST_ONLY proposal worker 최대 `0.594s`, SCM worker 최대 `0.767s`. 승인값 `30s` 공통 unit timeout(각 관측 최대의 약 50×/39×). 별도 proposal/SCM timeout을 지정하려면 코드 수정이 필요하므로 이번에는 같은 값으로 제안. |
+| SCM/campaign active time | `scm_active_seconds`, `cohort_active_seconds`로 누계 관리 | 승인값 `60s`(관측 최대의 약 78×); 승인값 `3,600s`(1시간). 386 proposal×0.594s + 64 SCM×0.767s의 보수적 선형 산식은 약 `278s`; 1시간은 이 산식의 약 12.9×. 운영·재개·외부 대기 전체 wall-time 보장은 아님. |
+| Sampled RSS | 격리 worker의 주기 표본을 보고 cap 초과 시 종료 | 승인값 `536,870,912 bytes`(512 MiB); benchmark 최대 `71,589,888 bytes`의 약 7.5×. 표본 사이 overshoot가 가능하고 OS hard quota가 아님. |
+| 파일/ledger/cohort 저장량 | 사전 쓰기 검사·SQLite checksum/원자 저장. filesystem quota 아님 | 승인값 result `4,194,304 bytes`(4 MiB; max 관측 351,861 bytes의 약 11.9×), 개별 SQLite ledger `268,435,456 bytes`(256 MiB; Dev 선형 추정 cohort ledger 약 21.8 MB의 약 12×), cohort directory `536,870,912 bytes`(512 MiB; proposal 포함 추정 약 24.0 MB의 약 22×). 모두 중단 경계이지 용량 보장치가 아님. |
+| 최소 여유 디스크 | 실제 실행 직전 free-space 검사 | 승인값 `5,368,709,120 bytes`(5 GiB). 측정 당시 C: free `29,991,530,496 bytes`(약 27.94 GiB); 당시 조건이면 임계치 이후 약 22.94 GiB가 남음. 다른 실행 환경에는 같은 여유가 보장되지 않음. |
+| 동시성 | `max_concurrent_scms=1`만 지원하고 runner는 직렬 실행 | 사용자 승인값 `1`. |
+| Proposal cap | generator hard maximum은 development `386`, independent evaluation 내부 generator cohort `confirmation` `1,104`; config는 그 이하만 허용 | 승인 cap은 386/1,104. A2 생산 수율을 입증한 값은 아니며 cap에서 부족해도 확장·재추출 없이 shortfall을 보고한다. `independent_evaluation`→`confirmation` 내부 binding은 config/manifest에 고정해야 한다. |
 
 **측정 근거:** `scripts/benchmark_research_c_resources_test_only.py`가 사전에 고정한 4 topology × node count 6/10 × 3 proposal assignment를 사용해 동일한 24 TEST_ONLY 입력을 동일 seed `9,721,100`으로 세 번 실행했다. 72 SCM-run, 6,120 정책 평가(17×B0–4), 적격 proposal 72/72, 평가 실패 0, resource stop 0이다. 24개의 고유 SCM 입력 중 오류 없는 G0는 4개(16.7%); 모든 입력을 결과에 유지했다. 반복 간 결과 hash는 모두 같았다. 수정 기회 수 범위는 M1 0–2, M2 0–2, M3 0–2, M4 0–4였다. 이는 작은 TEST_ONLY 구조에서 기회가 부족하거나 없는 경우가 실제로 포함됨을 보여줄 뿐, 연구 정책 성능 근거가 아니다.
 
 관측 요약: proposal worker `0.438–0.594s`(중앙값 `0.500s`), proposal-stage wall time/24건 `12.494–12.732s`; SCM active worker `0.590–0.767s`(중앙값 `0.638s`), cohort wall/24 SCM `16.910–17.023s`. generation 함수 최대 시간은 SCM parameters `0.000602s`, observations `0.000650s`, G0 `0.000984s`. SCM당 17정책×5예산 aggregate stage 최대는 구조 수정 `0.0836s`, fit/recommend `0.0174s`, GT evaluation `0.0089s`, result validation/serialization `0.0926s`, atomic commit `0.0292s`. Proposal RSS 최대 `71,589,888 bytes`; SCM worker RSS 최대 `70,934,528 bytes`. 최대 결과 JSON row `351,861 bytes`; proposal SQLite ledger 최대 `118,784 bytes`; cohort SQLite ledger 최대 `8,159,232 bytes`; 24 SCM 전체 output 최대 `8,281,410 bytes`이다. raw 기록에는 run별 값과 code/runtime hash가 있다.
 
-Development 64 admitted SCM과 cap 386으로의 계산은 위 max 관측치를 선형 적용한 계획치다. proposal worker `386×0.594s≈229s`, SCM worker `64×0.767s≈49s`, 합계 약 `278s` active worker time이다. storage는 24 SCM 관측치에 `64/24`를 곱한 뒤 386/24 proposal ledger 증가를 더해 cohort output 약 24 MB를 추정했다. 실제 수율, 장시간 tail, coordinator overhead, 장애 재개 비용은 보장되지 않는다. 따라서 위 numerical profile은 **보수적 중단 후보**이지 resource sufficiency 인증이 아니다. profile을 초과하면 해당 실패를 기록하고 안전 중단하며, SCM을 결과에 따라 교체하지 않는다. RSS는 sampled monitoring이고 저장량은 pre-write 검사이므로 OS 메모리 quota 또는 파일시스템 quota로 표현하지 않는다. Production profile은 아래 사용자 승인 전까지 `PROPOSED`다.
+Development 64 admitted SCM과 cap 386으로의 계산은 위 max 관측치를 선형 적용한 계획치다. proposal worker `386×0.594s≈229s`, SCM worker `64×0.767s≈49s`, 합계 약 `278s` active worker time이다. storage는 24 SCM 관측치에 `64/24`를 곱한 뒤 386/24 proposal ledger 증가를 더해 cohort output 약 24 MB를 추정했다. 실제 수율, 장시간 tail, coordinator overhead, 장애 재개 비용은 보장되지 않는다. 따라서 위 numerical profile은 **보수적 중단 후보**이지 resource sufficiency 인증이 아니다. profile을 초과하면 해당 실패를 기록하고 안전 중단하며, SCM을 결과에 따라 교체하지 않는다. RSS는 sampled monitoring이고 저장량은 pre-write 검사이므로 OS 메모리 quota 또는 파일시스템 quota로 표현하지 않는다. Production profile은 이번 사용자 승인으로 확정된 중단 상한이며 TEST_ONLY 실측으로 최악값/성능 보장을 뜻하지 않는다.
 
 원시 계측: [resource_benchmark_f78952d_final.json](research/original_objective/test_outputs/resource_benchmark_f78952d_final.json). TEST_ONLY 실행 저장소는 `C:\DAT_TEST_ONLY\research-c-resource-benchmark-20261123-v4`이며 source checkout 밖에 있다. 이 산출물은 연구 표본 수에 포함되지 않는다.
 
-### 10.5 한 번에 응답할 승인표와 명시 문안
+### 10.5 승인 기록과 남은 실행 Gate
 
 | 결정 | 권고 선택 | 현재 상태 |
 |---|---|---|
 | A2 모집단 | strict indirect-only, recipe-support gate 없음, 무오류·no-op 포함 | **APPROVED** |
 | P1 | B2 Full Greedy vs S0, `Regret(S0)-Regret(FullGreedy)` | **APPROVED** |
-| Task sampling | 고정 20개 topology×node-count strata에 대한 SHA-256 rejection 배정 후 topology 조건부 strict indirect pair 선택, observed-common-cause strict scaffold 우선; 전역 eligible-pair uniform 아님 | **APPROVED — 이번 지시의 범위에서 이 선택만 승인.** |
-| A 잔여 | 4 topology, 6–10 nodes, SCM/noise/action/loss, q=.15/r=.05, FN/REV/UNRES conditional 1/3, no-redraw DAG rejection, N=64/200 admitted, cap 386/1,104 | **PROPOSED — APPROVAL_REQUIRED.** 생성기·적격성의 나머지 계약 승인 필요. |
-| B 잔여 | M1–M4와 16 policy set, Rule A, canonical Oracle structural-only, fixed opportunity, equal metric weights/active M4 β, add/delete/orient/resolve cost 1, λ=1, budgets 0–4. Rule B 및 추가 정규화 민감도는 별도 승인 없이는 제외. | **PROPOSED — APPROVAL_REQUIRED** |
-| C 잔여 | residual UNRES abstention; N=64/200 admitted targets, cap 386/1,104; P1 complete-pair mean and separate failure accounting; 95% paired-t CI + 10,000 SCM-paired bootstrap; no `s_max/h` automatic increase; held-out lock | **PROPOSED — APPROVAL_REQUIRED** |
-| Runtime/seed | CPython 3.11.15 + exact 13-package lock; Development master-seed candidate `2026112301`; run-specific platform fingerprint bound in Manifest | Runtime package versions **VERIFIED**; seed candidate **NOT APPROVED**; run fingerprint **NOT YET BOUND** |
-| Production resource profile | unit timeout 30s(shared); SCM active 60s; cohort active 3,600s; sampled RSS 536,870,912 B; result 4,194,304 B; ledger 268,435,456 B; cohort storage 536,870,912 B; min free disk 5,368,709,120 B; concurrency 1 | 실측 기반 **PROPOSED — APPROVAL_REQUIRED** |
+| Task sampling | 고정 20개 topology×node-count strata의 hash rejection 배정 후 topology 조건부 strict indirect pair 선택, observed-common-cause strict scaffold 우선 | **APPROVED — 이전 사용자 지시.** |
+| A 잔여 | 4 topology, 6–10 nodes, SCM/noise/action/loss, q=.15/r=.05, FN/REV/UNRES conditional 1/3, no-redraw DAG rejection, Development 64/386 및 Held-out 200/1,104 | **APPROVED — 2026-11-23 사용자 승인.** |
+| B 잔여 | M1–M4·15 subset+S0·Canonical Oracle structural-only, Rule A only, G0-fixed opportunity only, 동일 metric/M4 활성 성분 가중치, add/delete/orient/resolve 비용 1, λ=1, B=0–4. Rule B·대체 정규화 민감도 제외. | **APPROVED — 2026-11-23 사용자 승인.** |
+| C 잔여 | residual UNRES abstention; SCM 단위 complete-pair P1 mean; 95% paired-t CI 및 보조 SCM bootstrap 10,000회; shortfall/failure 무대체; `s_max/h` 자동 증액 없음; held-out 분석 잠금 | **APPROVED — 2026-11-23 사용자 승인.** |
+| Runtime/seed | CPython 3.11.15 + exact 13-package lock; Development master seed `2026112301`; run-specific platform fingerprint bound in Manifest | **APPROVED.** Runtime versions verified; this run’s fingerprint is to be bound in the Manifest prepared below. |
+| Production resource profile | unit timeout 30s(shared); SCM active 60s; cohort active 3,600s; sampled RSS 536,870,912 B; result 4,194,304 B; ledger 268,435,456 B; cohort storage 536,870,912 B; min free disk 5,368,709,120 B; concurrency 1 | **APPROVED.** RSS는 sampled monitor, storage는 사전 검사 경계이며 OS/filesystem quota가 아님. |
 
-**승인은 두 단계다.** 1) 과학적 계약·운영 상한의 결정: 아래 제안값을 `APPROVE`, `MODIFY(대체값 기재)`, `DEFER`로 응답한다. 2) 실제 실행 승인: 확정된 설정으로 Config를 만들고 clean commit, runtime fingerprint, source commit/tree·code hash, Manifest, cohort/output 경로를 결합한 후 비실행 Preflight를 통과시킨다. Development 실행 직전에 별도 실행 확인을 받는다. 실제 승인 Bundle은 아직 생성하지 않는다. 벤치마크 입력은 24개 TEST_ONLY SCM뿐이므로 resource limits는 안전 중단 경계이지 처리량·성공 보장이 아니다.
+**두 단계 중 계약 승인은 완료됐다.** 이번 사용자 메시지로 과학적 계약과 Production resource profile이 확정됐다. 지금은 승인된 Configuration·Manifest를 clean commit, runtime fingerprint, source commit/tree·code hash와 결합하고 비실행 Preflight만 수행한다. Development 실행은 Preflight 성공 후 별도 실행 확인을 받을 때까지 금지한다. 벤치마크 입력은 24개 TEST_ONLY SCM뿐이므로 resource limits는 안전 중단 경계이지 처리량·성공 보장이 아니다.
 
-**1단계 승인 문안(실행을 시작하지 않음):**
+**승인 기록 — 2026-11-23 (실행 승인 아님):**
 
-> “A2, P1 및 계층 Task 추출 선택의 기존 승인을 유지한다. 승인 브리프 §10.1–10.4의 제안 설정 전체를 승인한다. Task 추출은 20 strata 균등 배정 후 topology 조건부 strict indirect pair를 선택하는 계층 분포이며, `observed_common_cause` strict scaffold pair 우선 예외를 포함한다. 전역 eligible-pair 균등 선택을 뜻하지 않는다. 모집단 및 G0, 정책·비용·정규화, residual UNRES abstention, 표본 목표 Development 64/Held-out 200 admitted 및 proposal cap 386/1,104, P1 complete-pair 평균, 95% paired-t CI와 SCM-level paired bootstrap 10,000회, `s_max/h` 자동 증액 미사용, 실패·shortfall 무대체를 승인한다. Rule B와 추가 정규화 민감도는 별도 승인 없이는 필수 범위에 넣지 않는다. Development master seed 후보 `2026112301`을 채택한다. 제안 Production resource profile은 §10.4의 수치대로 승인한다. 이는 계약 승인일 뿐 실행 시작 승인이 아니다. Configuration, clean commit/runtime fingerprint/코드 식별, Manifest 및 비실행 Preflight 후 별도 실행 확인을 요구한다.”
+**사용자 승인 기록 — 2026-11-23:** A2, P1, 계층 Task sampling과 §10.1–10.4의 나머지 A/B/C 과학적 계약·Production resource profile 승인. Development 64 admitted/cap 386, Held-out 200 admitted/cap 1,104, seed `2026112301`, 95% paired-t CI, 보조 SCM-level bootstrap 10,000회, 실패·shortfall 무대체를 확정했다. Rule B 및 대체 정규화 민감도는 이번 필수 범위에서 제외했다. 이 승인은 내부 계약을 확정하며 외부 registry 등록이나 Development 실행 승인이 아니다.
 
-계층 Task 분포 선택은 이미 승인되었다. 이 문안은 master seed `2026112301` 채택(또는 대체 정수 지정)과 나머지 A/B/C·운영 계약에 대한 응답을 받는다. `MODIFY`는 대체값을 명시하고, `DEFER` 항목이 남으면 해당 계약의 cohort proposal은 계속 금지한다.
+2026-11-23 사용자 메시지가 이 표의 A/B/C 계약, Development master seed `2026112301`, 표본 목표·cap, 통계 및 실패 규칙, Production 자원 상한을 승인했다. Rule B 및 대체 정규화 민감도는 명시적으로 제외됐다. 이 승인은 내부 계약 고정으로 기록하며 외부 공개 registry 등록을 의미하지 않는다. Configuration·Manifest·비실행 Preflight 후 Development 실행은 별도 승인받는다.
 
 `MODIFY`를 선택할 때는 승인 문안의 해당 정확한 값만 바꾸고 계약/config/schema/hash를 다시 대조한다. `DEFER`된 과학 결정이 있으면 해당 항목이 해소되기 전 cohort proposal 생성은 금지한다. 특히 resource profile을 채우기 위해 TEST_ONLY 값을 승격하지 않는다.
 
 ### 10.6 승인 후 명령 순서
 
-현재 실제 승인 config/manifest는 없다. 아래 명령은 **값이 승인되고 문서·코드가 해당 승인 계약과 일치하도록 커밋된 이후에만** 실행한다. `--mode research`는 gate 통과 시 proposal 생성 즉시 시작하므로 preflight 전 실행하지 않는다.
+승인 config/manifest는 이 승인 문서를 반영한 커밋 이후 생성한다. 아래 단계에서 `--mode preflight`까지만 실행하며, research mode는 별도 실행 승인이 있어야 한다. `--mode research`는 gate 통과 시 proposal 생성 즉시 시작하므로 preflight 전 실행하지 않는다.
 
 ```powershell
 # 1) 승인 config가 있고 runtime/코드가 clean 고정된 뒤 manifest를 바인딩한다.
@@ -276,4 +276,4 @@ python scripts/run_research_c_runner.py --mode research --approved-config <appro
 
 Manifest preparer는 이미 USER_APPROVED/PREREGISTERED config의 값과 source/runtime hash를 결합할 뿐이다. 승인 상태를 발급하지 않는다. Schema의 `PREREGISTERED` 문자열 검증은 외부 registry URL/ID 검증이 아니므로, 외부 공개 preregistration을 선택한다면 URL/ID 및 시각을 별도 승인기록에 보존한다. 실행 후 proposal, strict eligible, admitted, complete policy vector, complete paired SCM 분모와 실패율을 각각 보고한다.
 
-**최종 판정: `APPROVAL_REQUIRED`.** A2/P1 외 과학적 결정과 제안 자원 상한은 미승인이다. run-specific Development master seed, final source/runtime fingerprint와 승인 config/manifest도 아직 없다. 승인 결정과 preflight가 끝나기 전까지 Development/Held-out 실행은 차단 상태다. 이번 benchmark와 문서 갱신은 계약 승인·사전등록·SCM 연구 표본·연구용 Decision Regret 결과 생성이 아니다.
+**최종 판정: `CONTRACT_APPROVED / CONFIGURATION_AND_PREFLIGHT_PENDING / EXECUTION_NOT_AUTHORIZED`.** 외부 공개 사전등록은 수행하지 않았다. Approved config와 manifest를 준비하고 비실행 Preflight만 통과시킨다. Development 실행은 별도 승인 전까지 차단하며 연구 SCM/Regret은 생성하지 않았다.
