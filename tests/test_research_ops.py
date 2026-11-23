@@ -5,9 +5,17 @@ from src.acquire_reference_data import FILES, COMMIT
 
 
 class ResearchOpsTest(unittest.TestCase):
-    def test_substantive_change_requires_all_three(self):
-        self.assertEqual(missing_documents({"src/new.py", "PROJECT_STATUS.md"}),
-                         {"PRIORITIES.md", "WORK_LOG.md"})
+    def test_substantive_change_requires_live_research_documents(self):
+        required = {
+            "docs/research_state_current.json",
+            "docs/current/PROJECT_STATUS_CURRENT.md",
+            "docs/current/PRIORITIES_CURRENT.md",
+            "docs/current/WORK_LOG_CURRENT.md",
+        }
+        self.assertEqual(missing_documents({"src/new.py", "PROJECT_STATUS.md"}), required)
+        self.assertEqual(missing_documents({"research/original_objective/policy_engine.py"}), required)
+        self.assertEqual(missing_documents({"src/new.py"} | required), set())
+        self.assertEqual(missing_documents({"src/new.py", "PROJECT_STATUS.md", "PRIORITIES.md", "WORK_LOG.md"}), required)
 
     def test_document_only_change_is_exempt(self):
         self.assertEqual(missing_documents({"README.md"}), set())
