@@ -39,7 +39,7 @@ def render(state):
         x = by_id[key]
         priority.append(f"| {key} | {x['status']} | {', '.join(x['depends_on']) or '없음'} | {x['next_action']} / {x['acceptance']} |")
     priority += ["", "## ID 이력", "", *[f"- {line}" for line in state["id_history"]], "", "새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다."]
-    return {"PROJECT_STATUS.md": "\n".join(status)+"\n", "PRIORITIES.md": "\n".join(priority)+"\n"}
+    return {"docs/current/PROJECT_STATUS_CURRENT.md": "\n".join(status)+"\n", "docs/current/PRIORITIES_CURRENT.md": "\n".join(priority)+"\n"}
 
 
 def main():
