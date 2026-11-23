@@ -1,0 +1,2387 @@
+{
+  "analysis": {
+    "Global_regret_by_error_type": {
+      "FN": {
+        "maximum": 0.34705988207947347,
+        "mean": 0.008362516090780064,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 64,
+        "negative_n": 0,
+        "positive_n": 4,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.045418011460092424,
+        "zero_fraction": 0.9375,
+        "zero_n": 60
+      },
+      "FP": {
+        "maximum": 0.06666323354346781,
+        "mean": 0.001074338406881304,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 64,
+        "negative_n": 0,
+        "positive_n": 2,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.008332861251051423,
+        "zero_fraction": 0.96875,
+        "zero_n": 62
+      },
+      "REV": {
+        "maximum": 1.2586806790847787,
+        "mean": 0.04069239528147281,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 64,
+        "negative_n": 0,
+        "positive_n": 8,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.17180486228945485,
+        "zero_fraction": 0.875,
+        "zero_n": 56
+      }
+    },
+    "SCM_composite_D_i": {
+      "maximum": 0.4195602263615929,
+      "mean": 0.014660484921723964,
+      "median": 0.0,
+      "minimum": -0.0006981414989785476,
+      "n": 64,
+      "negative_n": 1,
+      "positive_n": 6,
+      "q1_linear": 0.0,
+      "q3_linear": 0.0,
+      "sample_sd": 0.062157948295188885,
+      "zero_fraction": 0.890625,
+      "zero_n": 57
+    },
+    "TaskFocused_regret_by_error_type": {
+      "FN": {
+        "maximum": 0.09359295338618812,
+        "mean": 0.0025367283035404933,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 64,
+        "negative_n": 0,
+        "positive_n": 3,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.01425180292292235,
+        "zero_fraction": 0.953125,
+        "zero_n": 61
+      },
+      "FP": {
+        "maximum": 0.06666323354346781,
+        "mean": 0.001074338406881304,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 64,
+        "negative_n": 0,
+        "positive_n": 2,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.008332861251051423,
+        "zero_fraction": 0.96875,
+        "zero_n": 62
+      },
+      "REV": {
+        "maximum": 0.09359295338618812,
+        "mean": 0.0025367283035404933,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 64,
+        "negative_n": 0,
+        "positive_n": 3,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.01425180292292235,
+        "zero_fraction": 0.953125,
+        "zero_n": 61
+      }
+    },
+    "by_delta": {
+      "-1": {
+        "maximum": 0.4195602263615929,
+        "mean": 0.025156335508173526,
+        "median": 0.0,
+        "minimum": -0.0006981414989785476,
+        "n": 32,
+        "negative_n": 1,
+        "positive_n": 4,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.08452071217962018,
+        "zero_fraction": 0.84375,
+        "zero_n": 27
+      },
+      "1": {
+        "maximum": 0.12397331179518271,
+        "mean": 0.004164634335274405,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 32,
+        "negative_n": 0,
+        "positive_n": 2,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.021924183941757002,
+        "zero_fraction": 0.9375,
+        "zero_n": 30
+      }
+    },
+    "by_error_type_D_Global_minus_TaskFocused": {
+      "FN": {
+        "maximum": 0.34705988207947347,
+        "mean": 0.005825787787239571,
+        "median": 0.0,
+        "minimum": -0.002094424496935643,
+        "n": 64,
+        "negative_n": 1,
+        "positive_n": 2,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.04347237254179024,
+        "zero_fraction": 0.953125,
+        "zero_n": 61
+      },
+      "FP": {
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 64,
+        "negative_n": 0,
+        "positive_n": 0,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.0,
+        "zero_fraction": 1.0,
+        "zero_n": 64
+      },
+      "REV": {
+        "maximum": 1.2586806790847787,
+        "mean": 0.03815566697793232,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 64,
+        "negative_n": 0,
+        "positive_n": 5,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.17178606071702532,
+        "zero_fraction": 0.921875,
+        "zero_n": 59
+      }
+    },
+    "by_node_count": {
+      "10": {
+        "maximum": 0.23137325471964898,
+        "mean": 0.013610191454096999,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 17,
+        "negative_n": 0,
+        "positive_n": 1,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.05611625695012074,
+        "zero_fraction": 0.9411764705882353,
+        "zero_n": 16
+      },
+      "6": {
+        "maximum": 0.06827694691282253,
+        "mean": 0.006143527764894907,
+        "median": 0.0,
+        "minimum": -0.0006981414989785476,
+        "n": 11,
+        "negative_n": 1,
+        "positive_n": 1,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.020608388131803518,
+        "zero_fraction": 0.8181818181818182,
+        "zero_n": 9
+      },
+      "7": {
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 7,
+        "negative_n": 0,
+        "positive_n": 0,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.0,
+        "zero_fraction": 1.0,
+        "zero_n": 7
+      },
+      "8": {
+        "maximum": 0.4195602263615929,
+        "mean": 0.04262126499045605,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 15,
+        "negative_n": 0,
+        "positive_n": 4,
+        "q1_linear": 0.0,
+        "q3_linear": 0.00464749346679912,
+        "sample_sd": 0.11075022632165138,
+        "zero_fraction": 0.7333333333333333,
+        "zero_n": 11
+      },
+      "9": {
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 14,
+        "negative_n": 0,
+        "positive_n": 0,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.0,
+        "zero_fraction": 1.0,
+        "zero_n": 14
+      }
+    },
+    "by_template": {
+      "chain_mediation": {
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 17,
+        "negative_n": 0,
+        "positive_n": 0,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.0,
+        "zero_fraction": 1.0,
+        "zero_n": 17
+      },
+      "fork_branch": {
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 5,
+        "negative_n": 0,
+        "positive_n": 0,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.0,
+        "zero_fraction": 1.0,
+        "zero_n": 5
+      },
+      "multiple_directed_paths": {
+        "maximum": 0.4195602263615929,
+        "mean": 0.0220905556334589,
+        "median": 0.0,
+        "minimum": -0.0006981414989785476,
+        "n": 32,
+        "negative_n": 1,
+        "positive_n": 5,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.0778778249948968,
+        "zero_fraction": 0.8125,
+        "zero_n": 26
+      },
+      "observed_common_cause": {
+        "maximum": 0.23137325471964898,
+        "mean": 0.023137325471964898,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 10,
+        "negative_n": 0,
+        "positive_n": 1,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.0731666474560394,
+        "zero_fraction": 0.9,
+        "zero_n": 9
+      }
+    }
+  },
+  "approved_commit": "06cbd7d4e1efbbff45559eef84b280acc9d081ce",
+  "approved_tree": "661f50e7cd859f5c32d909730f686cb93251cc59",
+  "cohort": "development",
+  "counts": {
+    "composite_available": 64,
+    "delta_counts": {
+      "-1": 32,
+      "1": 32
+    },
+    "fallback_uses": 0,
+    "node_count_counts": {
+      "10": 17,
+      "6": 11,
+      "7": 7,
+      "8": 15,
+      "9": 14
+    },
+    "post_admission_failures": 0,
+    "pre_admission_topology_or_task_failures": 2,
+    "q_common_structural_rejections": 145,
+    "q_common_structurally_eligible": 64,
+    "registry_accepted": 64,
+    "resource_cap_reached": false,
+    "scm_generation_success": 64,
+    "shortfall_eligible": 0,
+    "status_reason_counts": {
+      "completed|(none)": 64,
+      "proposal_failed|no_indirect_only_task": 2,
+      "structural_rejected|missing_same_type_two_candidate_support": 145
+    },
+    "template_counts": {
+      "chain_mediation": 17,
+      "fork_branch": 5,
+      "multiple_directed_paths": 32,
+      "observed_common_cause": 10
+    },
+    "three_type_evaluation_complete": 64,
+    "topology_proposals": 211,
+    "unexpected_generator_errors": 0
+  },
+  "extreme_D_i": {
+    "highest": [
+      {
+        "D_i": 0.06827694691282253,
+        "accepted_ordinal": 61,
+        "action": "V00",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.20483084073846758
+        },
+        "node_count": 6,
+        "proposal_id": "development-proposal-000201",
+        "scm_id": "dev-scm-development-proposal-000201-a0000",
+        "target": "V03",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.20483084073846758
+        }
+      },
+      {
+        "D_i": 0.08649044976646696,
+        "accepted_ordinal": 7,
+        "action": "V02",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.25947134929940086
+        },
+        "node_count": 8,
+        "proposal_id": "development-proposal-000023",
+        "scm_id": "dev-scm-development-proposal-000023-a0000",
+        "target": "V06",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.25947134929940086
+        }
+      },
+      {
+        "D_i": 0.12397331179518271,
+        "accepted_ordinal": 62,
+        "action": "V00",
+        "delta": 1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.37191993538554813
+        },
+        "node_count": 8,
+        "proposal_id": "development-proposal-000206",
+        "scm_id": "dev-scm-development-proposal-000206-a0000",
+        "target": "V07",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.37191993538554813
+        }
+      },
+      {
+        "D_i": 0.23137325471964898,
+        "accepted_ordinal": 37,
+        "action": "V01",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.34705988207947347,
+          "FP": 0.0,
+          "REV": 0.34705988207947347
+        },
+        "node_count": 10,
+        "proposal_id": "development-proposal-000114",
+        "scm_id": "dev-scm-development-proposal-000114-a0000",
+        "target": "V09",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "observed_common_cause",
+        "type_differences": {
+          "FN": 0.34705988207947347,
+          "FP": 0.0,
+          "REV": 0.34705988207947347
+        }
+      },
+      {
+        "D_i": 0.4195602263615929,
+        "accepted_ordinal": 21,
+        "action": "V03",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 1.2586806790847787
+        },
+        "node_count": 8,
+        "proposal_id": "development-proposal-000059",
+        "scm_id": "dev-scm-development-proposal-000059-a0000",
+        "target": "V00",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 1.2586806790847787
+        }
+      }
+    ],
+    "lowest": [
+      {
+        "D_i": -0.0006981414989785476,
+        "accepted_ordinal": 63,
+        "action": "V02",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.002094424496935643,
+          "REV": 0.002094424496935643
+        },
+        "node_count": 6,
+        "proposal_id": "development-proposal-000210",
+        "scm_id": "dev-scm-development-proposal-000210-a0000",
+        "target": "V05",
+        "task_focused_regret": {
+          "FN": 0.002094424496935643,
+          "FP": 0.002094424496935643,
+          "REV": 0.002094424496935643
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": -0.002094424496935643,
+          "FP": 0.0,
+          "REV": 0.0
+        }
+      },
+      {
+        "D_i": 0.0,
+        "accepted_ordinal": 0,
+        "action": "V05",
+        "delta": 1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "node_count": 9,
+        "proposal_id": "development-proposal-000003",
+        "scm_id": "dev-scm-development-proposal-000003-a0000",
+        "target": "V04",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "fork_branch",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        }
+      },
+      {
+        "D_i": 0.0,
+        "accepted_ordinal": 1,
+        "action": "V03",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "node_count": 9,
+        "proposal_id": "development-proposal-000005",
+        "scm_id": "dev-scm-development-proposal-000005-a0000",
+        "target": "V05",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "observed_common_cause",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        }
+      },
+      {
+        "D_i": 0.0,
+        "accepted_ordinal": 2,
+        "action": "V02",
+        "delta": 1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "node_count": 10,
+        "proposal_id": "development-proposal-000009",
+        "scm_id": "dev-scm-development-proposal-000009-a0000",
+        "target": "V00",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "chain_mediation",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        }
+      },
+      {
+        "D_i": 0.0,
+        "accepted_ordinal": 3,
+        "action": "V01",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "node_count": 7,
+        "proposal_id": "development-proposal-000011",
+        "scm_id": "dev-scm-development-proposal-000011-a0000",
+        "target": "V04",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "Option B descriptive analysis only; no confirmatory superiority/equivalence claim.",
+    "Development cohort is not an independent replication or a population-level guarantee.",
+    "All three error types are repeated measures within SCM; the independent unit is SCM."
+  ],
+  "master_seed": 20261116,
+  "paired_policy_comparisons": {
+    "FN": {
+      "n": 64,
+      "same_action_n": 64,
+      "same_final_graph_n": 46,
+      "same_final_graph_rate": 0.71875,
+      "same_selected_k_n": 61
+    },
+    "FP": {
+      "n": 64,
+      "same_action_n": 64,
+      "same_final_graph_n": 33,
+      "same_final_graph_rate": 0.515625,
+      "same_selected_k_n": 64
+    },
+    "REV": {
+      "n": 64,
+      "same_action_n": 64,
+      "same_final_graph_n": 38,
+      "same_final_graph_rate": 0.59375,
+      "same_selected_k_n": 59
+    }
+  },
+  "per_scm": [
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 0,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000003",
+      "scm_id": "dev-scm-development-proposal-000003-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 1,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000005",
+      "scm_id": "dev-scm-development-proposal-000005-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 2,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000009",
+      "scm_id": "dev-scm-development-proposal-000009-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 3,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "development-proposal-000011",
+      "scm_id": "dev-scm-development-proposal-000011-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 4,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000016",
+      "scm_id": "dev-scm-development-proposal-000016-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 5,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "development-proposal-000019",
+      "scm_id": "dev-scm-development-proposal-000019-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 6,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000022",
+      "scm_id": "dev-scm-development-proposal-000022-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.08649044976646696,
+      "accepted_ordinal": 7,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.25947134929940086
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000023",
+      "scm_id": "dev-scm-development-proposal-000023-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.25947134929940086
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 8,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000024",
+      "scm_id": "dev-scm-development-proposal-000024-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 9,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000027",
+      "scm_id": "dev-scm-development-proposal-000027-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 10,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "development-proposal-000029",
+      "scm_id": "dev-scm-development-proposal-000029-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 11,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000030",
+      "scm_id": "dev-scm-development-proposal-000030-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 12,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000032",
+      "scm_id": "dev-scm-development-proposal-000032-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 13,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000033",
+      "scm_id": "dev-scm-development-proposal-000033-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 14,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000037",
+      "scm_id": "dev-scm-development-proposal-000037-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 15,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000038",
+      "scm_id": "dev-scm-development-proposal-000038-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 16,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000039",
+      "scm_id": "dev-scm-development-proposal-000039-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 17,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000045",
+      "scm_id": "dev-scm-development-proposal-000045-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 18,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "development-proposal-000053",
+      "scm_id": "dev-scm-development-proposal-000053-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 19,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000055",
+      "scm_id": "dev-scm-development-proposal-000055-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 20,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000058",
+      "scm_id": "dev-scm-development-proposal-000058-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.4195602263615929,
+      "accepted_ordinal": 21,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 1.2586806790847787
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000059",
+      "scm_id": "dev-scm-development-proposal-000059-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 1.2586806790847787
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 22,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000060",
+      "scm_id": "dev-scm-development-proposal-000060-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 23,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000062",
+      "scm_id": "dev-scm-development-proposal-000062-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 24,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000067",
+      "scm_id": "dev-scm-development-proposal-000067-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 25,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000071",
+      "scm_id": "dev-scm-development-proposal-000071-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 26,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000079",
+      "scm_id": "dev-scm-development-proposal-000079-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 27,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000084",
+      "scm_id": "dev-scm-development-proposal-000084-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 28,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000086",
+      "scm_id": "dev-scm-development-proposal-000086-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 29,
+      "action": "V06",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000092",
+      "scm_id": "dev-scm-development-proposal-000092-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 30,
+      "action": "V08",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000093",
+      "scm_id": "dev-scm-development-proposal-000093-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 31,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000096",
+      "scm_id": "dev-scm-development-proposal-000096-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 32,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000103",
+      "scm_id": "dev-scm-development-proposal-000103-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 33,
+      "action": "V08",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000107",
+      "scm_id": "dev-scm-development-proposal-000107-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 34,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000109",
+      "scm_id": "dev-scm-development-proposal-000109-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 35,
+      "action": "V09",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.09359295338618812,
+        "FP": 0.0,
+        "REV": 0.09359295338618812
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000110",
+      "scm_id": "dev-scm-development-proposal-000110-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.09359295338618812,
+        "FP": 0.0,
+        "REV": 0.09359295338618812
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 36,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000112",
+      "scm_id": "dev-scm-development-proposal-000112-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.23137325471964898,
+      "accepted_ordinal": 37,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.34705988207947347,
+        "FP": 0.0,
+        "REV": 0.34705988207947347
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000114",
+      "scm_id": "dev-scm-development-proposal-000114-a0000",
+      "target": "V09",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.34705988207947347,
+        "FP": 0.0,
+        "REV": 0.34705988207947347
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 38,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000115",
+      "scm_id": "dev-scm-development-proposal-000115-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 39,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000116",
+      "scm_id": "dev-scm-development-proposal-000116-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 40,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000132",
+      "scm_id": "dev-scm-development-proposal-000132-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 41,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000136",
+      "scm_id": "dev-scm-development-proposal-000136-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.00929498693359824,
+      "accepted_ordinal": 42,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.027884960800794723,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000138",
+      "scm_id": "dev-scm-development-proposal-000138-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.027884960800794723,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 43,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000139",
+      "scm_id": "dev-scm-development-proposal-000139-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 44,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000145",
+      "scm_id": "dev-scm-development-proposal-000145-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 45,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000151",
+      "scm_id": "dev-scm-development-proposal-000151-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 46,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000154",
+      "scm_id": "dev-scm-development-proposal-000154-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 47,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000156",
+      "scm_id": "dev-scm-development-proposal-000156-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 48,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "development-proposal-000157",
+      "scm_id": "dev-scm-development-proposal-000157-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 49,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000159",
+      "scm_id": "dev-scm-development-proposal-000159-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 50,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000162",
+      "scm_id": "dev-scm-development-proposal-000162-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 51,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000166",
+      "scm_id": "dev-scm-development-proposal-000166-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 52,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "development-proposal-000167",
+      "scm_id": "dev-scm-development-proposal-000167-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 53,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000169",
+      "scm_id": "dev-scm-development-proposal-000169-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 54,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.06666323354346781,
+        "FP": 0.06666323354346781,
+        "REV": 0.06666323354346781
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000174",
+      "scm_id": "dev-scm-development-proposal-000174-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.06666323354346781,
+        "FP": 0.06666323354346781,
+        "REV": 0.06666323354346781
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 55,
+      "action": "V09",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000175",
+      "scm_id": "dev-scm-development-proposal-000175-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 56,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000176",
+      "scm_id": "dev-scm-development-proposal-000176-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 57,
+      "action": "V09",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "development-proposal-000180",
+      "scm_id": "dev-scm-development-proposal-000180-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 58,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000187",
+      "scm_id": "dev-scm-development-proposal-000187-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 59,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "development-proposal-000192",
+      "scm_id": "dev-scm-development-proposal-000192-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 60,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "development-proposal-000196",
+      "scm_id": "dev-scm-development-proposal-000196-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.06827694691282253,
+      "accepted_ordinal": 61,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.20483084073846758
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000201",
+      "scm_id": "dev-scm-development-proposal-000201-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.20483084073846758
+      }
+    },
+    {
+      "D_i": 0.12397331179518271,
+      "accepted_ordinal": 62,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.37191993538554813
+      },
+      "node_count": 8,
+      "proposal_id": "development-proposal-000206",
+      "scm_id": "dev-scm-development-proposal-000206-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.37191993538554813
+      }
+    },
+    {
+      "D_i": -0.0006981414989785476,
+      "accepted_ordinal": 63,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.002094424496935643,
+        "REV": 0.002094424496935643
+      },
+      "node_count": 6,
+      "proposal_id": "development-proposal-000210",
+      "scm_id": "dev-scm-development-proposal-000210-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.002094424496935643,
+        "FP": 0.002094424496935643,
+        "REV": 0.002094424496935643
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": -0.002094424496935643,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    }
+  ],
+  "registry_integrity": "ok",
+  "schema_version": 1
+}

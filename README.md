@@ -1,39 +1,39 @@
-# Cost-Constrained, Decision-Aware Causal Graph Refinement
+# DAT 제조공정 — 제한된 예산에서 인과그래프의 어떤 오류를 고칠 것인가?
 
-## Current Research
+**현재 핵심 질문:** 주어진 구조 수정 예산 안에서 어떤 인과그래프 오류를 먼저 고쳐야 downstream 의사결정 손실(Decision Regret)이 줄어드는가? 이 저장소는 초기 TEP 정상 관측자료의 인과발견·구조 일치도 평가에서 출발했지만, 관측 예측과 실제 개입효과는 다르고 TEP 환경 정합성도 검증되지 않아, 정답 구조와 손실을 통제할 수 있는 합성 SCM 연구로 발전했다.
 
-제한된 구조 수정 예산에서 **누락 간선(FN), 잘못 추가된 간선(FP), 반대 방향(REV)**의 Task-Focused 수정 순서가 ID-ordered Global 기준선과 비교해 의사결정 손실에 어떤 차이를 만드는지 연구한다. 현행 계약은 [동결 프로토콜](research/budget_aware_refinement/STEP4_FROZEN_PROTOCOL.md)과 [활성 계약](research/budget_aware_refinement/STEP4_CURRENT_ACTIVE_CONTRACT.md)이다. 이전 제안은 연구 이력으로 보존한다.
+## 현재 연구 상태
 
-## Research Motivation
+현재 연구 브랜치의 Research C Held-out V1 상태는 **`HELDOUT_COMPLETED_AND_AUDITED`**다. 합성 SCM 200개를 평가했고, B=2에서 Full Greedy 대 S0의 평균 paired Decision Regret delta는 +0.07484 (95% paired-t CI `[0.05090, 0.09877]`)였다. 상세 결과와 제한은 [Held-out 결과 및 감사](RESEARCH_C_HELDOUT_V1_RESULTS.md)에 있다.
 
-합성환경에서는 같은 전체 구조 점수에서도 오류 위치에 따라 추천과 손실이 달라질 수 있었다. 이것은 특정 지표의 일반적 우월성을 증명하지 않는다. 연구는 점수의 상관관계에서 한 걸음 나아가, 제한된 자원으로 무엇을 수정할 때 의사결정이 개선되는지 평가한다.
+이는 승인된 합성 모집단에서의 결과다. 실제 제조공정 효과, TEP 개입 성능, 안전성 또는 보편적 정책 우월성을 검증한 것은 아니다. M4는 Development 결과를 본 뒤 지정한 Secondary이며 P1 Primary가 아니다.
 
-## Research Evolution
+> **브랜치 상태:** 이 설명과 Research C 산출물은 2026-11-23 현재 문서 작업 브랜치에서 확인한 내용이며 아직 `main`에 병합되지 않았다. main의 이력·상태와 혼동하지 않는다.
 
-TEP 구조 평가 → 합성환경의 오류 위치와 의사결정 분석 → 네 지표 조합의 예산 설계 → 현재의 오류 유형과 과제 우선순위 연구로 발전했다. 당시의 근거와 한계는 [연구 계보](RESEARCH_EVOLUTION.md), [기존 README](docs/history/README_PRE_REORGANIZATION_2026-11-10.md), [보관 인덱스](https://github.com/5castlemin/tep-causal-decision-reliability/blob/attic/legacy-research-2026-11-10/ARCHIVE_INDEX.md)를 참조한다.
+## 처음 읽는 순서
 
-## Methodology
+1. [전체 연구 계보와 팀 인수인계](RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md)
+2. [Research C 승인 계약](RESEARCH_C_APPROVAL_DECISION_BRIEF.md) 및 [실험 계약 V1](RESEARCH_C_EXPERIMENT_CONTRACT_V1.md)
+3. [Held-out 분석 잠금](RESEARCH_C_HELDOUT_ANALYSIS_LOCK.md)과 [최종 결과](RESEARCH_C_HELDOUT_V1_RESULTS.md)
+4. [Development 감사](RESEARCH_C_DEVELOPMENT_V1_AUDIT.md) 및 [provenance 정정 기록](RESEARCH_C_DEVELOPMENT_V1_PROVENANCE_CORRECTION.md)
+5. [Research C 구현 안내](research/original_objective/README.md)
 
-동결된 주 계약은 P에서 strict Q-common 구조 적격성을 만족한 간접 전용 과제, B=1/gamma=1, Task-Focused 대 ID-ordered Global, FN/FP/REV 동일 가중치다. 공통 관측자료로 학습한 모델이 조작을 추천하고, 별도 analytic GT evaluator가 평가한다. 주 결과는 SCM 수준 대응 평균 차이이며, Option B에 따라 기술적 추정과 민감도 보고만 허용하고 확인적 우월성·동등성 주장은 보류한다. 이 계약은 실제 제조공정 개입 효과 검증이나 배포 가능성을 입증하지 않는다.
+## 연구 흐름과 주요 자료
 
-## Current Progress
+- TEP 인과발견과 저장 그래프 감사: [`docs/audit/AUDIT_REPORT.md`](docs/audit/AUDIT_REPORT.md), [`docs/audit/step6_main_table.csv`](docs/audit/step6_main_table.csv), [`docs/reproducibility/GRAPH_REPRODUCIBILITY.json`](docs/reproducibility/GRAPH_REPRODUCIBILITY.json)
+- 오류 위치를 본 초기 합성 분석: [`SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md`](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md)
+- 별도 Step 5/6 예산 연구: [`STEP5_STEP6_FINAL_RESULTS.md`](research/budget_aware_refinement/STEP5_STEP6_FINAL_RESULTS.md), [`FINAL_RESEARCH_REPORT.md`](research/budget_aware_refinement/FINAL_RESEARCH_REPORT.md)
+- Research C 정책 코드: [`policy_engine.py`](research/original_objective/policy_engine.py); 실행·분석 경로는 `research/original_objective/`, `scripts/`, `tests/`에 있다.
+- TEP 환경·개입 브리지의 한계: [`TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md`](docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md), [`TEP_EFFECT_DECISION_FEASIBILITY.md`](docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md)
 
-Step 0–3 DONE. Step 4는 프로토콜·실행 계약으로 FROZEN됐지만 연구 완료를 뜻하지 않는다. Step 5 개발 코호트와 Step 6 독립 재현은 NOT RUN이며, 개발 코호트 실행에는 PR #38의 별도 통합 및 실행 결정이 필요하다. [연구 상태](research/budget_aware_refinement/RESEARCH_STATUS.md), [동결 프로토콜](research/budget_aware_refinement/STEP4_FROZEN_PROTOCOL.md), [Step 5 사전 실행 Runbook](research/budget_aware_refinement/STEP5_DEVELOPMENT_RUNBOOK.md), [로드맵](research/budget_aware_refinement/ROADMAP.md).
+원시 Development/Held-out SQLite 및 감사 파일은 승인된 로컬 `C:\DAT_RESEARCH\research-c\...` 경로에 있으며 Git에 복사하지 않았다. 다른 팀원의 해당 경로 접근 권한은 별도 확인이 필요하다. 자료 위치·권리·재현 절차는 [`data/README.md`](data/README.md)와 [`TEAM_GUIDE.md`](docs/reproducibility/TEAM_GUIDE.md)를 따른다.
 
-## Reproducibility
+## 팀 업무
 
-Python 3.11 및 `requirements.txt`를 사용한다. 자료 접근과 추가 의존성은 [팀 재현 가이드](docs/reproducibility/TEAM_GUIDE.md)를 따른다. 아래는 저장된 자산과 코드를 확인하는 명령이며 본 연구 실험을 실행하지 않는다.
+- **오성민:** 연구 총괄, A/B/C 및 초기 연구 결과 통합, 최종 보고·발표, PR/병합 결정.
+- **정창민:** M1–M4 정의와 실제 수정 이력·비용·행동·Regret의 메커니즘 분석. 상세 절차와 산출물은 [인수인계 문서 Part 6](RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md#part-6-팀원-역할과-실행-가능한-업무).
+- **황주희:** 이번 주 발표 준비 우선, 필수 연구 과업 없음. 발표 이후 선택적 가독성·예상 질문 검토.
 
-```powershell
-python -X utf8 graphs/final/verify_and_load.py
-python -X utf8 scripts/check_research_state.py
-python -X utf8 -m unittest discover -s tests -v
-```
+## 재현 및 협업
 
-## Legacy Research and Archived Experiments
-
-기존 TEP 1,499행과 28개 참조 간선, 7개 동결 그래프는 변경하지 않는다. 기존 [합성 결과와 주장](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md), [오류 위치 연구](docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md), [제조 벤치마크 검토](docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md)를 보존한다. TEP 관련 미병합 작업과 CausalMan 계약은 [보관 manifest](https://github.com/5castlemin/tep-causal-decision-reliability/blob/attic/legacy-research-2026-11-10/LEGACY_BRANCH_MANIFEST.json)와 태그에서 별도 추적한다.
-
-## Limitations
-
-정상 운전의 유사성은 TEP 관측·개입환경 동등성이나 28개 간선의 완전성을 입증하지 않는다. CausalMan의 GT·개입·효과 식별 문제는 미해결이다. 새 연구의 확인 실험과 가설 검증도 미실행이다. main으로의 개발 통합과 연구 완료는 별개의 판정이다. 협업과 기록은 [기여 안내](CONTRIBUTING.md), [상태](PROJECT_STATUS.md), [우선순위](PRIORITIES.md), [작업 기록](WORK_LOG.md)을 따른다.
+현재 운영 상태는 [`docs/research_state_current.json`](docs/research_state_current.json)을 원본으로 하며, [`docs/research_state.json`](docs/research_state.json)은 Step 4 동결 당시 스냅샷으로 보존한다. [`docs/current/PROJECT_STATUS_CURRENT.md`](docs/current/PROJECT_STATUS_CURRENT.md), [`docs/current/PRIORITIES_CURRENT.md`](docs/current/PRIORITIES_CURRENT.md)는 현재 운영 대시보드다. 루트의 `PROJECT_STATUS.md`, `PRIORITIES.md`, `WORK_LOG.md`는 과거 동결 증거로 보존하고, 최신 업무 이력은 [`docs/current/WORK_LOG_CURRENT.md`](docs/current/WORK_LOG_CURRENT.md)를 참고한다. 기여·브랜치·검토 지침은 [`CONTRIBUTING.md`](CONTRIBUTING.md)와 [`AGENTS.md`](AGENTS.md)를 읽는다. 새 연구 실행은 승인된 Configuration/Manifest와 별도 실행 승인 없이는 시작하지 않는다. 기존 결과·동결 파일은 읽기 전용으로 보존한다.

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "research-c-approved-execution-v1",
+  "title": "Research C approved execution bundle configuration",
+  "description": "Schema for a separately user-approved execution. This repository contains no approved instance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_status", "research_cohort_execution_enabled", "configuration_version", "preregistration_status", "cohort_type", "run_id", "output_root", "target_admissions", "proposal_cap", "budgets", "population", "scm", "task", "g0", "repair", "evaluation", "rng_protocol", "resource_limits", "runtime_fingerprint"],
+  "properties": {
+    "contract_status": {"const": "USER_APPROVED"},
+    "research_cohort_execution_enabled": {"const": true},
+    "configuration_version": {"const": "research-c-execution-v1"},
+    "preregistration_status": {"const": "PREREGISTERED"},
+    "cohort_type": {"enum": ["development", "independent_evaluation"]},
+    "run_id": {"type": "string", "minLength": 8},
+    "output_root": {"type": "string", "minLength": 3},
+    "target_admissions": {"type": "integer", "minimum": 1},
+    "proposal_cap": {"type": "integer", "minimum": 1},
+    "budgets": {
+      "description": "Execution grid: B=0 no-edit reference, B=1 secondary, B=2 user-approved P1 primary analysis budget, B=3/4 saturation diagnostics.",
+      "const": [0, 1, 2, 3, 4]
+    },
+    "population": {
+      "type": "object", "required": ["topology_source", "templates", "node_counts", "target_edge_density", "task_rule", "eligibility_rule"],
+      "properties": {
+        "topology_source": {"const": "existing_step4_topology_generator_new_research_c_rng_namespace"},
+        "templates": {"const": ["chain_mediation", "fork_branch", "observed_common_cause", "multiple_directed_paths"]},
+        "node_counts": {"const": [6, 7, 8, 9, 10]},
+        "target_edge_density": {"const": [0.2, 0.4]},
+        "task_rule": {
+          "description": "For each proposal, deterministically hash-assign one of the fixed 20 topology×node-count strata using SHA-256 rejection sampling (modulo-bias-free under the hash-output uniformity assumption), then generate that topology and select its strict indirect-only ordered task pair. Within-topology candidates use the existing seeded uniform-index rule, except an observed_common_cause scaffold action-target pair is preferred when it is strict indirect-only. This is not uniform sampling over all eligible pairs globally; admission conditioning may also change the admitted-stratum distribution.",
+          "const": "sha256_rejection_uniform_20_topology_node_strata; topology_conditional_strict_indirect_pair_uniform_except_observed_common_cause_scaffold_preference; no_direct_X_to_Y_edge"
+        },
+        "eligibility_rule": {"const": "strict_indirect_only; allow_zero_fn_fp_rev_recipe_support"}
+      }
+    },
+    "scm": {"$ref": "research-c-candidate-config-v1#/properties/scm"},
+    "task": {"$ref": "research-c-candidate-config-v1#/properties/task"},
+    "g0": {"$ref": "research-c-candidate-config-v1#/properties/g0"},
+    "repair": {"$ref": "research-c-candidate-config-v1#/properties/repair"},
+    "evaluation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recommendation_input", "gt_evaluator", "regret", "research_result_gate", "primary_contrast"],
+      "properties": {
+        "recommendation_input": {"const": "shared_observations_and_repaired_graph_only"},
+        "gt_evaluator": {"const": "analytic_hard_do_after_recommendation_frozen"},
+        "regret": {"const": "GT_selected_candidate_loss_minus_best_loss_on_same_grid"},
+        "research_result_gate": {"const": "APPROVED_PREREGISTERED_EXECUTION"},
+        "primary_contrast": {"const": "B2_S0_minus_Full_Greedy_mean_SCM_paired_Regret_difference"}
+      }
+    },
+    "rng_protocol": {
+      "type": "object", "additionalProperties": false,
+      "required": ["protocol_version", "master_seed", "cohort_namespace"],
+      "properties": {
+        "protocol_version": {"const": "step4-rng-v1"},
+        "master_seed": {"type": "integer", "minimum": 0},
+        "cohort_namespace": {"enum": ["development", "independent_evaluation"]}
+      }
+    },
+    "resource_limits": {
+      "type": "object", "additionalProperties": false,
+      "required": ["unit_timeout_seconds", "scm_active_seconds", "cohort_active_seconds", "sampled_rss_bytes", "max_result_bytes", "max_ledger_bytes", "max_cohort_storage_bytes", "minimum_free_disk_bytes"],
+      "properties": {
+        "unit_timeout_seconds": {"type": "number", "exclusiveMinimum": 0},
+        "scm_active_seconds": {"type": "number", "exclusiveMinimum": 0},
+        "cohort_active_seconds": {"type": "number", "exclusiveMinimum": 0},
+        "sampled_rss_bytes": {"type": ["integer", "null"], "minimum": 1},
+        "max_result_bytes": {"type": "integer", "minimum": 1},
+        "max_ledger_bytes": {"type": "integer", "minimum": 65536},
+        "max_cohort_storage_bytes": {"type": "integer", "minimum": 65536},
+        "minimum_free_disk_bytes": {"type": "integer", "minimum": 0},
+        "failure_reserve_bytes": {"type": "integer", "minimum": 0},
+        "max_concurrent_scms": {"const": 1}
+      }
+    },
+    "runtime_fingerprint": {
+      "type": "object", "additionalProperties": false,
+      "required": ["python_implementation", "python_version", "platform_system", "platform_release", "machine", "dependencies"],
+      "properties": {
+        "python_implementation": {"const": "CPython"},
+        "python_version": {"type": "string"},
+        "platform_system": {"type": "string"},
+        "platform_release": {"type": "string"},
+        "machine": {"type": "string"},
+        "dependencies": {"type": "object", "required": ["numpy", "pandas", "networkx", "jsonschema"]}
+      }
+    }
+  }
+}

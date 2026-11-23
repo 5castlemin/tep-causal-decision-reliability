@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install -r requirements.txt
+      - run: python -m pip install -r requirements.txt -r requirements-research-c-ci.txt
       - run: python -X utf8 graphs/final/verify_and_load.py
       - run: python -X utf8 -m unittest discover -s tests -v
       - run: python -X utf8 experiments/simulator/validate_feasibility.py

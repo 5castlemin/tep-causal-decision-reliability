@@ -1,0 +1,17 @@
+{
+  "status": "STRUCTURE_ONLY_PILOT_DESIGN_NOT_STUDY_CONTRACT",
+  "pilot_id": "research-c-structural-feasibility-v1",
+  "replicates_per_template_node_stratum": 25,
+  "templates": ["chain_mediation", "fork_branch", "observed_common_cause", "multiple_directed_paths"],
+  "node_counts": [6, 7, 8, 9, 10],
+  "strata_count": 20,
+  "topology_seed": {"master": 20261123, "derivation": "sha256(domain, template, node_count, replicate) first 32 bits"},
+  "task_seed": {"master": 20261124, "derivation": "sha256(domain, topology_seed, strict_indirect_pair_list) first 32 bits"},
+  "g0_seed": {"master": 81420623, "derivation": "pair-specific streams plus separate DAG acceptance-order stream in g0_candidate"},
+  "g0_rates": {"true_adjacency_corruption": 0.15, "false_adjacency": 0.05, "conditional_true_error_mix": {"FN": 0.3333333333333333, "REV": 0.3333333333333333, "UNRES": 0.3333333333333333}, "false_edge_orientation": "fair", "dag_invalid": "record_and_reject_without_resampling"},
+  "task": "uniform deterministic draw from strict indirect-only ordered pairs (length>=2 path and no direct X->Y edge)",
+  "policy_diagnostics": {"subsets": "S0 plus all 15 nonempty M1-M4 subsets plus Canonical Oracle comparator", "budgets": [0, 1, 2, 3, 4], "config": "default provisional Config, fixed_opportunity, Rule A, unit edit costs"},
+  "outputs": ["topology edge/nonedge counts", "strict-indirect task eligibility/rejection denominator", "metric-kind-task-zone opportunities", "proposed/accepted/DAG-rejected errors", "realized errors and zero-error rate", "metric activation", "competitive candidate counts", "budget-vs-candidate stop reason", "unique final graph counts", "policy graph-pair equality"],
+  "prohibitions": ["no SCM coefficients", "no observational data", "no intervention loss", "no Decision Regret", "no rate or budget tuning after inspection"],
+  "execution_enabled_for_research_cohorts": false
+}

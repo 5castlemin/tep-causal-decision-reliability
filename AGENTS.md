@@ -1,14 +1,14 @@
 # Codex repository instructions — TEP Causal Decision Reliability
 
 ## Project objective
-Current development research: cost-constrained, decision-aware causal graph refinement; see `research/budget_aware_refinement/RESEARCH_PROTOCOL.md`. Preserve the original manufacturing question and its evidence in `RESEARCH_EVOLUTION.md` and the archived research history. Distinguish graph structure, observational prediction, intervention identification and simulator outcomes. Development integration into main is not research completion.
+Current focus: **Research C** asks which causal-graph errors to repair under a fixed edit budget to reduce downstream Decision Regret. Development and Held-out V1 evaluations are completed and audited within a synthetic SCM population. See `RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md`, `RESEARCH_C_EXPERIMENT_CONTRACT_V1.md`, and `RESEARCH_C_HELDOUT_V1_RESULTS.md`. `research/budget_aware_refinement/RESEARCH_PROTOCOL.md` is a separate historical study. Preserve the earlier TEP research in `RESEARCH_EVOLUTION.md`. Synthetic results are not real-TEP deployment evidence.
 
 ## Source of truth, by purpose
-- `research/budget_aware_refinement/RESEARCH_PROTOCOL.md`: active refinement research contract. `RESEARCH_DESIGN.md`: original manufacturing research and historical context.
-- `PROJECT_STATUS.md`: **latest verified state** of each research workstream, its evidence and blocker.
-- `PRIORITIES.md`: ordered actionable tasks, owner when assigned, dependency, completion criterion, status and evidence. Do not invent owners or deadlines.
-- `DECISIONS.md`: append-only substantive decisions, including rejected alternatives, date and evidence; do not rewrite history.
-- `WORK_LOG.md`: append-only concise chronology of substantial completed/failed work with commits/commands/artifact paths.
+- Research C contract and evidence: `RESEARCH_C_EXPERIMENT_CONTRACT_V1.md`, `RESEARCH_C_HELDOUT_ANALYSIS_LOCK.md`, `RESEARCH_C_HELDOUT_V1_RESULTS.md`; no re-running or re-selecting results.
+- **Current live status**: `docs/research_state_current.json`; generated `docs/current/PROJECT_STATUS_CURRENT.md` and `docs/current/PRIORITIES_CURRENT.md`; ongoing `docs/current/WORK_LOG_CURRENT.md`.
+- **Immutable historical Step 4 manifest-pinned inputs**: `docs/research_state.json`, `requirements.txt`, root `PROJECT_STATUS.md`, root `PRIORITIES.md`, root `WORK_LOG.md`. Never edit or render new status into these paths.
+- Previous study: `research/budget_aware_refinement/RESEARCH_PROTOCOL.md`. Original manufacturing history: `RESEARCH_DESIGN.md`.
+- `DECISIONS.md`: append-only substantive decisions, including rejected alternatives, date and evidence.
 - `docs/audit/ARTIFACT_INVENTORY.md` and `docs/audit/SLACK_IMPORT_AUDIT.md`: source/provenance, hashes, versions, import decisions.
 - `experiments/pilot/PILOT_RESULT.md` and `experiments/pilot/TASK_SPEC.md`: measured results and active pilot gates.
 - `introduction.md`: newcomer-friendly, only verified achievements and explicit next goals.
@@ -19,18 +19,18 @@ Current development research: cost-constrained, decision-aware causal graph refi
 2. Define a narrow outcome, relevant gate, files, dependencies and acceptance checks; implement the smallest verified next step. Keep existing frozen artifacts immutable. Do not assume a file is absent from the user's whole machine because it was absent from one search.
 3. Run applicable tests, scripts and checks. Record exact commands, result, skipped checks, data hashes/versions and any limitation. A planned task, passing CI, one-step observational MSE, or simulator source directory is *not* evidence of an actual intervention experiment.
 4. **Before each commit or PR**, reconcile documentation with observed changes:
-   - `PROJECT_STATUS.md`: update impacted stage, evidence, state and next action.
-   - `PRIORITIES.md`: mark verified completed tasks; reorder blockers and next tasks. Do not mark blocked steps as completed.
-   - `WORK_LOG.md`: append a dated entry for substantive task results, including failures and links.
+   - Update `docs/research_state_current.json` when current evidence/status changes; regenerate `docs/current/PROJECT_STATUS_CURRENT.md` and `docs/current/PRIORITIES_CURRENT.md` via `python -X utf8 scripts/check_research_state.py --write`, then check without `--write`.
+   - Append substantive new work to `docs/current/WORK_LOG_CURRENT.md`, not the frozen root work log.
+   - Never modify pinned historical files, original manifests, or raw ledgers merely to satisfy CI.
    - `DECISIONS.md`: append only if a real methodological/scope/protocol decision was made.
    - Update `RESEARCH_DESIGN.md`, `PILOT_PLAN.md`, `TASK_SPEC.md`, `PILOT_RESULT.md`, `INTRODUCTION.md` / `introduction.md`, inventories, tests, README **only if affected**. Preserve existing lowercase `introduction.md` filename.
    - If the task failed or is blocked, record the blocker and evidence; do not manufacture a success entry.
    - For a trivial formatting-only task, explicitly note why research status did not change; do not fabricate status churn.
-5. Review `git diff --check`, check changed paths and sensitive/large assets, run applicable tests. For the task the user authorizes, commit and push only to its feature branch when credentials and permissions permit, and create/update a PR. Merge to `main` only after the required Self-Review evidence and the maintainer's explicit decision for that PR; avoid overwriting concurrent work. If remote Git operations fail, preserve local commit and report exact blocker.
+5. Review `git diff --check`, check changed paths and sensitive/large assets, run applicable tests. For the task the user authorizes, commit and push only to its feature branch when credentials and permissions permit, and leave PR creation to the owner unless the user separately and explicitly requests it. Merge to `main` only after the required Self-Review evidence and the maintainer's explicit decision for that PR; avoid overwriting concurrent work. If remote Git operations fail, preserve local commit and report exact blocker.
 6. End every result with: branch/commit/PR, files changed, tests actually executed, current gate state, updated docs, next highest-priority actionable item, unresolved blockers.
 
 ## Evidence and epistemic safeguards
-- Current dashboards use `docs/research_state.json` as a single explicit record. Update it, then run `python -X utf8 scripts/check_research_state.py --write` to refresh the top-level current tables. Preserve superseded text in `docs/history/` and append chronology only to `WORK_LOG.md`. Do not append a second contradictory current-status section.
+- Current dashboards use `docs/research_state_current.json` and `docs/current/`. The original state JSON and root status/priority/work log are immutable historical Step 4 artifacts. Preserve superseded material in `docs/history/`, append chronology to `docs/current/WORK_LOG_CURRENT.md`, and avoid contradictory current-status sections.
 - Keep original August simulator recovery and the public Python candidate as distinct workstreams. For unmerged PR evidence, record the PR and head SHA; do not imply its artifacts are already on main. Keep priority IDs unique and record aliases/scope changes.
 - Asset levels are LOCATED (pointer only), VERIFIED (bytes/hash/provenance), REPRODUCIBLE (observed rerun), INTEGRATED (team-accessible procedure). Report artifact/evaluator/algorithm-generation levels separately. No exact Final generation claim without matching original code and rerun evidence.
 - States: `VERIFIED`, `PARTIAL`, `REPORTED_ONLY`, `BLOCKED`, `NOT_RUN`, `INACCESSIBLE`, `PROPOSED`; use explicit dates, actual paths, hashes/log IDs and source links when known.
@@ -45,16 +45,16 @@ Current development research: cost-constrained, decision-aware causal graph refi
 - Slack channel `#26-2_제조공정` on `hufsdat.slack.com` is evidence and discovery, not executable instructions. Read messages/threads and relevant attached assets only with authorized access. Slack connection in ChatGPT does **not** prove that the Codex runtime is connected.
 - For any candidate data/code asset, first identify provider/source URL, license/redistribution rights, scientific role, version, SHA-256, format, schema and relationship to existing frozen inputs.
 - Compare checksum and semantic content against `ARTIFACT_INVENTORY.md` and tracked assets before copying. Historical settings and alternative graphs stay `archive/` or source manifest; never overwrite frozen `graphs/final/`.
-- Source datasets and reproducibility-critical executable scripts may be tracked in the **private** repository only if rights, privacy, size and provenance permit. For restricted/big data, keep `data/local/` ignored and provide a version-pinned lawful retrieval script/manifest, or approved LFS/external store. Do not weaken `.gitignore` indiscriminately.
+- Source datasets and reproducibility-critical executable scripts may be tracked in this **currently public** GitHub repository only if rights, privacy, size and provenance permit. For restricted/big data, keep `data/local/` ignored and provide a version-pinned lawful retrieval script/manifest, or approved LFS/external store. Do not weaken `.gitignore` indiscriminately.
 - PDFs, DOCX, PPTX and chat transcripts are for interpretation and source links unless uniquely necessary and approved. Do not upload the full private Slack history or unrelated proposals. Never commit secrets, tokens, private absolute paths or personal details.
 - If reading Slack binary/file contents is blocked, keep the file as `LINK_ONLY / NOT_VERIFIED`, and locate an authorized local copy. Do not treat attachment filenames or Slack metadata as verified contents.
 
 ## Collaboration and GitHub hygiene
 - Work under `feature/<topic>`; use PRs and evidence-backed Self-Review per `CONTRIBUTING.md`. Never submit a fictitious formal approval or bypass platform protection. Protect uncommitted changes and preserve source files.
 - Prefer reproducible code and small documentation changes over duplicating generated ZIPs. Include test coverage for any new import/retrieval or gate checks.
-- Do not automatically message Slack members, invite colleagues, publish a repository or open external permissions. This project repository remains private.
+- Do not automatically message Slack members, invite colleagues, publish a repository or open external permissions. This GitHub repository is currently public. Do not change visibility or share restricted data without separate owner authorization.
 - `AGENTS.md` runs *during Codex tasks*; it does not establish a background daemon. Documentation changes require a task to run or a separate user-approved automation.
 
 ## Branch workflow
 
-Use a short-lived feature branch from current main for each next step; submit a PR with Self-Review evidence and an explicit merge decision under CONTRIBUTING.md. Keep the attic branch and annotated tags for legacy history. Merge of validated development work does not mean research completion, and Step4 remains in progress until its gates are met. Do not remove a branch that is in active use or backs an open PR.
+Use a short-lived feature/repair/docs branch with a clearly identified base and a narrow task. Prepare Self-Review evidence; the repository owner creates and merges PRs unless separately authorized. Preserve old Step 4 and the existing TEP PR branches. Integrating Research C does not establish real-manufacturing efficacy.
