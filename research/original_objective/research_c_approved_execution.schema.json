@@ -78,7 +78,7 @@
         "platform_system": {"type": "string"},
         "platform_release": {"type": "string"},
         "machine": {"type": "string"},
-        "dependencies": {"type": "object", "required": ["numpy", "pandas", "networkx"]}
+        "dependencies": {"type": "object", "required": ["numpy", "pandas", "networkx", "jsonschema"]}
       }
     }
   }

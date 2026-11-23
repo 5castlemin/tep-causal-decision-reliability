@@ -40,6 +40,27 @@ a real approval bundle, and no such bundle is currently present. Therefore
 this implementation does not authorize or imply that a research cohort may
 run. TEST_ONLY subprocess runs remain labeled and stored separately.
 
+After an actual user-approved configuration and matching execution manifest
+have been prepared, validate them without starting proposal generation:
+
+```powershell
+python scripts/run_research_c_runner.py --mode preflight --approved-config <config.json> --execution-manifest <manifest.json>
+```
+
+This validates the approved configuration against both repository JSON
+Schemas, then checks the contract, manifest hashes, source revision, runtime,
+resource profile, and output conflicts. It does not create an output folder,
+proposal, SCM, or ledger. The separate `--mode research` command starts
+proposal generation immediately after the same checks and must only be used
+after approval. Do not use a TEST_ONLY synthetic gate fixture as a research
+approval.
+
+For the validated Windows CPython 3.11.15 environment, install the exact
+Research C package set with
+`python -m pip install -r research/original_objective/research_c_runtime_lock.txt`;
+`requirements.txt` declares the direct packages. The runtime fingerprint
+records the installed package inventory, including transitive dependencies.
+
 ## Proposed SCM/task population
 
 Candidate topology source is the existing four-template, 6–10-node topology

@@ -31,7 +31,7 @@ class ResearchCRunnerTests(unittest.TestCase):
             self.assertEqual(payload["input_sha256"], result["input_sha256"])
             self.assertTrue(payload["e2e_result"]["regret_research_result"] is False)
             self.assertFalse(payload["research_cohort_generated"])
-            self.assertEqual(len(payload["code_sha256"]), 23)
+            self.assertEqual(len(payload["code_sha256"]), 27)
             for budget in payload["e2e_result"]["budgets"]:
                 self.assertEqual(budget["policy_vector_status"], "COMPLETE")
                 policies = budget["policies"]

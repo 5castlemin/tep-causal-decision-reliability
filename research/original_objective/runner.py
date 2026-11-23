@@ -11,6 +11,7 @@ from hashlib import sha256
 import json
 import os
 from pathlib import Path
+import re
 import sqlite3
 import subprocess
 import platform
@@ -31,6 +32,10 @@ CODE_BINDING_FILES = (
     "research/original_objective/cohort_ledger_test_only.py",
     "research/original_objective/execution_limits.py",
     "research/original_objective/research_c_approved_execution.schema.json",
+    "research/original_objective/research_c_candidate_config.schema.json",
+    "research/original_objective/research_c_runtime_lock.txt",
+    "requirements.txt",
+    "scripts/run_research_c_runner.py",
     "scripts/run_research_c_generated_fixture.py",
     "research/original_objective/e2e_fixture.py",
     "research/original_objective/policy_engine.py",
@@ -90,11 +95,12 @@ def _git_revision(root: Path) -> dict[str, str | None]:
 
 def _runtime_fingerprint() -> dict:
     versions = {}
-    for distribution in ("numpy", "pandas", "networkx"):
-        try:
-            versions[distribution] = metadata.version(distribution)
-        except metadata.PackageNotFoundError:
-            versions[distribution] = None
+    for distribution in metadata.distributions():
+        name = distribution.metadata.get("Name")
+        if name:
+            normalized = re.sub(r"[-_.]+", "-", name).lower()
+            versions[normalized] = distribution.version
+    versions = dict(sorted(versions.items()))
     return {"python_implementation": platform.python_implementation(),
             "python_version": platform.python_version(),
             "platform_system": platform.system(),
@@ -163,6 +169,34 @@ def _validate_supported_research_contract(config: dict) -> None:
     for section, value in expected.items():
         if config.get(section) != value:
             raise ResearchModeBlocked(f"approved {section} settings differ from implemented contract candidate")
+
+
+def _validate_approved_config_schema(config: dict) -> None:
+    """Validate the approval instance against both repository JSON Schemas."""
+    schema_dir = ROOT / "research" / "original_objective"
+    try:
+        from jsonschema import Draft202012Validator
+        from referencing import Registry, Resource
+
+        approved_schema = json.loads((schema_dir / "research_c_approved_execution.schema.json")
+                                     .read_text(encoding="utf-8"))
+        candidate_schema = json.loads((schema_dir / "research_c_candidate_config.schema.json")
+                                      .read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(approved_schema)
+        Draft202012Validator.check_schema(candidate_schema)
+        registry = Registry().with_resource(
+            candidate_schema["$id"], Resource.from_contents(candidate_schema))
+        errors = sorted(Draft202012Validator(
+            approved_schema, registry=registry).iter_errors(config),
+            key=lambda error: (list(map(str, error.absolute_path)), error.message))
+    except Exception as exc:
+        raise ResearchModeBlocked(
+            f"approved configuration schema validation is unavailable or invalid: {exc}") from exc
+    if errors:
+        first = errors[0]
+        location = ".".join(map(str, first.absolute_path)) or "<root>"
+        raise ResearchModeBlocked(
+            f"approved configuration fails JSON Schema at {location}: {first.message}")
 
 
 def _input_binding(fixture) -> dict:
@@ -291,8 +325,14 @@ def run_fixture_mode(output_path: Path, *, g0_seed: int = 44017,
 def run_research_mode(*, approved_config_path: Path | None,
                       execution_manifest_path: Path | None,
                       fixture_factory=make_fixed_fixture,
-                      _test_only_gate_orchestrator=None):
-    """Validate the approval bundle, then invoke the shared approved cohort path."""
+                      _test_only_gate_orchestrator=None,
+                      validate_only: bool = False):
+    """Validate an approved bundle; optionally stop before any proposal generation.
+
+    ``validate_only`` is exposed by the CLI as ``--mode preflight``. It uses
+    the same fail-closed checks as Research Mode and returns a summary without
+    creating output directories, ledgers, proposals, or SCMs.
+    """
     if (_test_only_gate_orchestrator is not None
             and (not callable(_test_only_gate_orchestrator)
                  or getattr(_test_only_gate_orchestrator,
@@ -305,6 +345,7 @@ def run_research_mode(*, approved_config_path: Path | None,
         manifest = json.loads(Path(execution_manifest_path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise ResearchModeBlocked("approval config/manifest is missing or invalid") from exc
+    _validate_approved_config_schema(config)
     if (config.get("contract_status") != "USER_APPROVED"
             or config.get("research_cohort_execution_enabled") is not True):
         raise ResearchModeBlocked("research contract is not explicitly user-approved and enabled")
@@ -420,6 +461,23 @@ def run_research_mode(*, approved_config_path: Path | None,
         if any(existing_id != config["run_id"] or cohort != "RESEARCH_COHORT"
                for existing_id, cohort in existing_runs):
             raise ResearchModeBlocked("research output root is already bound to another run/cohort")
+    if validate_only:
+        return {
+            "classification": "RESEARCH_BUNDLE_PREFLIGHT_ONLY",
+            "validated": True,
+            "proposal_generation_started": False,
+            "scm_generation_started": False,
+            "cohort_type": config["cohort_type"],
+            "run_id": config["run_id"],
+            "target_admissions": config["target_admissions"],
+            "proposal_cap": config["proposal_cap"],
+            "budgets": list(config["budgets"]),
+            "output_root": str(output_root),
+            "configuration_sha256": _digest(config),
+            "source_revision": _git_revision(ROOT),
+            "runtime_fingerprint": _runtime_fingerprint(),
+            "manifest_status": "USER_APPROVED_BUNDLE_VALIDATED",
+        }
     if _test_only_gate_orchestrator is not None:
         # Test injection is deliberately absent from the production CLI. It is
         # invoked only after every real config, manifest, source and runtime
