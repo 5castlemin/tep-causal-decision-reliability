@@ -14,11 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from research.original_objective.analysis import (m4_secondary_delta, p1_delta,
-    paired_bootstrap_mean, paired_t_summary, paired_summary)
+from research.original_objective.analysis import (HELDOUT_BOOTSTRAP_REPLICATES,
+    HELDOUT_BOOTSTRAP_SEED, m4_secondary_delta, p1_delta, paired_bootstrap_mean,
+    paired_t_summary, paired_summary, validate_heldout_bootstrap_contract)
 from research.original_objective.runner import _digest
 
-DEFAULT_BOOTSTRAP_SEED = 2026112302  # PROPOSED only; must be explicitly approved for held-out analysis.
+DEFAULT_BOOTSTRAP_SEED = HELDOUT_BOOTSTRAP_SEED
 FULL = "M1+M2+M3+M4"
 POLICY_IDS = ["S0", *["+".join(s) for s in __import__(
     "research.original_objective.policy_engine", fromlist=["catalog"]).catalog() if s],
@@ -89,6 +90,7 @@ def analyze(cohort_db_path: Path, proposal_db_path: Path, *, config_path: Path,
             manifest_path: Path, run_id: str | None = None, bootstrap_seed: int,
             bootstrap_replicates: int = 10_000) -> dict:
     approved_config, manifest = _load_analysis_bundle(config_path, manifest_path)
+    validate_heldout_bootstrap_contract(bootstrap_seed, bootstrap_replicates)
     run_id = run_id or approved_config["run_id"]
     if run_id != approved_config["run_id"]:
         raise ValueError("requested run ID differs from approved configuration")
@@ -410,8 +412,9 @@ def analyze(cohort_db_path: Path, proposal_db_path: Path, *, config_path: Path,
             "proposal_stage_status": stage_row[0],
             "proposal_active_seconds": stage_row[1], "cohort_active_seconds": active_seconds},
         "p1": p1,
-        "bootstrap_sensitivity": {"status": "PROPOSED_SEED_REPRODUCIBILITY_CHECK_ONLY",
-            "seed_status": "PROPOSED_NOT_APPROVED", "seed": bootstrap_seed,
+        "bootstrap_sensitivity": {"status": "APPROVED_SEED_REPRODUCIBILITY_CHECK",
+            "seed_status": "USER_APPROVED_FOR_HELDOUT_ANALYSIS", "seed": bootstrap_seed,
+            "seed_scope": "analysis RNG only; independent of cohort RNG",
             "result": paired_bootstrap_mean(p1_deltas, seed=bootstrap_seed,
                                              replicates=bootstrap_replicates)},
         "m4_development_selected_secondary": m4_summary,

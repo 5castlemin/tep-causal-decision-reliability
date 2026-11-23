@@ -10,6 +10,7 @@ from research.original_objective.analysis import (
     paired_summary,
     paired_t_summary,
     percentile_linear,
+    validate_heldout_bootstrap_contract,
 )
 from research.original_objective.runner import _digest
 from scripts.analyze_research_c_cohort import _load_analysis_bundle
@@ -51,6 +52,13 @@ class ResearchCAnalysisTests(unittest.TestCase):
 
     def test_percentile_uses_linear_interpolation(self):
         self.assertEqual(percentile_linear([0.0, 10.0], 0.25), 2.5)
+
+    def test_approved_heldout_bootstrap_contract_is_fixed(self):
+        validate_heldout_bootstrap_contract(2026112302, 10_000)
+        with self.assertRaisesRegex(ValueError, "seed differs"):
+            validate_heldout_bootstrap_contract(2026112303, 10_000)
+        with self.assertRaisesRegex(ValueError, "replicate count differs"):
+            validate_heldout_bootstrap_contract(2026112302, 9999)
 
     def _bundle(self):
         config = {

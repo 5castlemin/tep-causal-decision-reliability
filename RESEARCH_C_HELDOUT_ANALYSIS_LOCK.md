@@ -1,8 +1,10 @@
 # Research C Held-out 분석 계획
 
-**상태: `APPROVAL_REQUIRED / PROPOSED_NOT_FROZEN`**
+**분석 계획 상태: `USER_APPROVED / FROZEN_FOR_HELDOUT_ANALYSIS`**
 
-이 문서는 Held-out 결과를 보기 전 분석 규칙을 고정하기 위한 제안이다. bootstrap seed가 아직 승인되지 않았고 Held-out 실행도 별도 승인 대상이므로, 외부 공개 사전등록 또는 계약 동결을 뜻하지 않는다.
+**Held-out 실행 상태: `NOT_AUTHORIZED`**
+
+사용자 승인일은 2026-11-23이다. Bootstrap seed `2026112302`와 분석 규칙은 승인되어 이 문서와 커밋에 고정한다. Held-out 실행은 별도 승인이 필요하다. 이 내부 Git 기반 분석 잠금은 외부 공개 사전등록을 뜻하지 않는다.
 
 ## 1. 기준 자료와 계보
 
@@ -10,6 +12,7 @@
 |---|---|
 | Research C 정책 실행 소스 | commit `01473797e8edd9e01935a7bee57107b63a4d53ca`, tree `3a1577c806ef0e6eff02fc1ffaa020f490ef6be9` |
 | Development 사후 감사 기준 | commit `cabd61ed7a4528aad073652568d1801fd1840b6c` |
+| Held-out source/bundle basis | 분석 잠금과 Config/Manifest를 포함하는 후속 commit/tree |
 | Development run | `development-20261123-seed-2026112301-v1` |
 | 승인 Config canonical SHA-256 | `96267e6f6004bc4255ae3765c8b4a939f3511690b1d4c34d2fd8195a8294b3f4` |
 | 승인 Config file SHA-256 | `5a22f5601705bae7c8d1675ef37807964bbf6c7382779fb0216e5b5169159819` |
@@ -35,10 +38,10 @@ python scripts\analyze_research_c_cohort.py `
   --approved-config C:\DAT_RESEARCH\research-c\approvals\development-v1-approved.json `
   --manifest C:\DAT_RESEARCH\research-c\approvals\development-v1-manifest.json `
   --bootstrap-seed 2026112302 --bootstrap-replicates 10000 `
-  --output C:\DAT_RESEARCH\research-c\analysis\development-v1-analysis-v11.json
+  --output C:\DAT_RESEARCH\research-c\analysis\development-v1-analysis-v13.json
 ```
 
-위 seed는 재현성 점검에 사용한 **PROPOSED 후보**일 뿐 승인 분석 seed가 아니다. 최종 분석 소스 해시와 본 문서를 포함한 commit은 이번 변경 커밋 이후 고정한다. Held-out 분석을 열기 전에는 seed와 분석 계획의 명시적 승인이 필요하다.
+승인된 분석 seed는 `2026112302`다. Held-out 출력은 승인된 Held-out Config/Manifest와 잠금된 분석 소스를 사용하며, 분석 전에 해당 Bundle의 코드·source·runtime binding을 검증한다.
 
 ## 3. Development 분석 재현값
 
@@ -69,7 +72,7 @@ python scripts\analyze_research_c_cohort.py `
 
 ### Bootstrap 민감도
 
-제안 절차는 SCM delta 전체를 복원 추출하고, 표본 평균 10,000개에서 선형 보간 2.5/97.5 분위수를 취하는 paired percentile bootstrap이다. Development에서 후보 seed `2026112302`, CPython `random.Random` MT19937로 두 번 실행했으며 두 산출물의 canonical analysis payload SHA가 일치했다. 점검상 bootstrap 구간은 `[0.0368331451, 0.1209794588]`이었다. **seed 미승인 상태이므로 이 값은 공식 민감도 분석 결과가 아닌 재현성 검사용 출력이다.** Paired-t CI가 승인된 주 불확실성 요약이며 bootstrap으로 대체하지 않는다.
+승인된 절차는 SCM delta 전체를 복원 추출하고, 표본 평균 10,000개에서 선형 보간 2.5/97.5 분위수를 취하는 paired percentile bootstrap이다. Development에서 seed `2026112302`, CPython `random.Random` MT19937로 반복 실행해 동일 canonical analysis payload SHA를 얻었다. Development bootstrap 구간은 `[0.0368331451, 0.1209794588]`이었다. 이는 Development 탐색 결과이며 Held-out 독립 검증이 아니다. Paired-t CI가 Primary 불확실성 요약이며 bootstrap으로 대체하지 않는다.
 
 ### Development-selected M4 비교
 
@@ -94,17 +97,17 @@ Full Greedy 대 S0, B=2에서 공통 구조 벌점 `P_all`은 57 SCM에서 낮�
 
 이전 감사의 “P_all 개선 43건” 표현은 개선 전체 수로 읽힐 수 있다. 본 SCM별 재계산에서 전체 P_all 개선은 57건이다. 이전 문장의 43건은 그중 Regret이 개선되지 않은 경우(동률 42 + 악화 1)를 뜻한다. 과거 감사 원문은 보존하고 본 분석에서 전체 개선과 Regret 방향을 분리한 값을 기준으로 해석한다.
 
-## 4. Held-out 분석 제안
+## 4. 승인된 Held-out 분석 계약
 
 다음 규칙은 A/B/C 승인 계약 및 기존 P1을 유지하는 제안이며, 별도 Held-out 실행 승인도 필요하다.
 
 1. **P1 변경 금지:** B=2 Full Greedy 대 S0, SCM-level complete-pair 평균 `delta`, 양수는 Full Greedy 유리. 양측 95% paired-t CI, SCM 단위 자유도 `n-1`을 사용한다.
 2. **Complete-pair 분모:** 목표 모집단은 A2 admitted SCM이다. 실제 P1 추정치는 S0와 Full Greedy가 모두 정상 완료된 SCM의 complete pairs다. 실패는 정책별·단계별 원인과 전체 admitted 대비 비율로 별도 보고한다. 누락 Regret을 0으로 치환하거나 결과에 따라 재추출·대체하지 않는다. complete-case 평균을 admitted 모집단 평균으로 자동 일반화하지 않는다.
-3. **Bootstrap:** seed 승인 후 SCM delta 10,000 paired percentile resamples, 복원추출, 선형 분위수 방법. RNG seed는 SCM cohort RNG와 분리한다. bootstrap seed와 분석 코드 hash는 Held-out 결과 열람 전에 잠근다. Paired-t가 Primary이고 bootstrap은 보조 민감도다.
+3. **Bootstrap:** 승인 seed `2026112302`로 SCM delta 10,000 paired percentile resamples, 복원추출, 선형 분위수 방법. RNG seed는 SCM cohort RNG와 분리한다. 분석 코드 hash는 Held-out 결과 열람 전에 잠근다. Paired-t가 Primary이고 bootstrap은 보조 민감도다.
 4. **사전 지정 secondary:** B=1 보조, B=3/4 포화 진단, B=0 기준선. 15개 부분집합과 Canonical Oracle은 전체 표의 기술 분석으로 보존한다. 다수 비교를 독립 표본으로 취급하거나 정책별 최솟값을 확증 결과로 고르지 않는다.
 5. **Development-selected M4 family:** B=2에서 M4를 Full Greedy, S0, Canonical Oracle, M1+M4, M2+M4, M3+M4와 SCM paired 비교한다. `Regret(other)-Regret(M4)`를 정의하고 mean/median/SD, sign counts, Regret, graph/action 일치, 수정 비용 및 task/off-task/error-type 구성을 모두 보고한다. 이는 Development 확인 후 선택한 secondary family임을 명시하고 P1을 대체하지 않는다.
 6. **구조-행동 진단:** 그래프/행동/Regret 변화 조합, no-op, 오류 기회, 수정 횟수·비용, `P_all`을 분리 기록한다. 미관측 범주는 0건으로 보고하고, SCM 사례를 결과에 유리하게 고르지 않는다.
-7. **Held-out 표본:** A2 admitted SCM 200개 목표, proposal cap 1,104. 실패 및 cap shortfall을 보존하며 실패 이후 대체하지 않는다. Development/held-out seed, namespace, Manifest, Ledger, 출력 경로는 분리한다. Held-out seed는 아직 미승인이다.
+7. **Held-out 표본:** A2 admitted SCM 200개 목표, proposal cap 1,104. 실패 및 cap shortfall을 보존하며 실패 이후 대체하지 않는다. Development/held-out seed, namespace, Manifest, Ledger, 출력 경로는 분리한다. Held-out master seed `2026112303`을 승인값으로 사용한다.
 8. **정보 경계:** GT DAG는 계약이 허용한 구조오류 분류·수정에만 쓰인다. GT SCM 손실과 최적 행동은 정책 순위나 추천 확정 전에 사용하지 않는다. GT 평가는 추천 확정 후 별도 계층에서 실행한다. Canonical Oracle은 structural-only 기준선이며 regret 상한선이 아니다.
 
 ## 5. Provenance 판정과 Held-out 재발 방지
@@ -113,29 +116,46 @@ Development의 오래된 G0 레이블 `PROPOSED_NOT_APPROVED`와 `not_authorized
 
 Held-out용 별도 승인 Bundle은 새 Held-out run ID와 독립 RNG namespace/seed, `independent_evaluation` cohort, 승인 Config, 현재 실행 source commit/tree 및 전체 Manifest code hash, Python/runtime fingerprint, 제안된 자원 상한, output root를 결합해야 한다. 기존 Development Manifest를 수정하거나 재사용하지 않는다. 새 분석 전용 코드 추가가 실행 코드 hash map에 포함되는 경우에도 Held-out Manifest에는 해당 시점의 전체 hash map을 고정한다.
 
-## 6. 결과 열람 전 잠금 조건과 분리된 승인
+## 6. 승인 상태 및 Held-out 실행 전 조건
 
-Held-out를 열기 전에 다음을 충족해야 한다.
+분석 계획과 bootstrap seed는 사용자가 승인했다. Held-out를 열기 전에는 다음 운영 조건을 충족해야 한다.
 
-- 제안 seed `2026112302` 및 bootstrap 방법에 대한 명시적 승인
 - 본 문서와 분석 코드가 든 Git commit 및 분석 파일 SHA-256 고정
 - Held-out 실행 source commit/tree, runtime lock, 승인 Config/Manifest, 독립 seed 및 output 경로 검증
 - 비실행 Preflight 통과
-- Held-out 실행에 대한 별도의 사용자 승인
+- Held-out 실행에 대한 별도의 사용자 승인 (현재 실행 승인 없음)
 - 실행 완료 후 Ledger/hash/complete-pair 검증; 이 검증 이후 분석 결과 접근
 
-내부 Git commit 기반 분석 잠금은 외부 공개 사전등록과 다르다. 현재 문서는 둘 중 어느 것도 승인·완료 상태라고 주장하지 않는다. 승인되지 않은 값이 있으면 분석 및 코호트 실행을 차단한다.
+내부 Git commit 기반 분석 잠금은 외부 공개 사전등록과 다르다. 외부 공개 사전등록은 완료했다고 주장하지 않는다. 실행 전 운영 항목이 충족되더라도 별도 실행 승인 전에는 proposal/SCM 생성과 Regret 평가를 차단한다.
 
 ## 7. 검증된 산출물
 
+승인된 Held-out Bundle 후보의 경로는 다음과 같다. 실제 Manifest SHA는 해당 Bundle을 생성한 뒤 확인하여 아래 표와 최종 보고에 기록한다. Bundle은 실행을 승인하지 않는다.
+
+| Artifact | 경로 |
+|---|---|
+| Approved config | `C:\DAT_RESEARCH\research-c\approvals\heldout-v1-approved.json` |
+| Execution manifest | `C:\DAT_RESEARCH\research-c\approvals\heldout-v1-manifest.json` |
+| Output root | `C:\DAT_RESEARCH\research-c\heldout\independent-evaluation-20261123-seed-2026112303-v1` |
+
+고정 Bundle 값: cohort `independent_evaluation`, master seed `2026112303`, target admitted SCM `200`, proposal cap `1104`, budgets `[0,1,2,3,4]`, bootstrap seed `2026112302`.
+
+비실행 Preflight 명령:
+
+```powershell
+python scripts\run_research_c_runner.py --mode preflight `
+  --approved-config C:\DAT_RESEARCH\research-c\approvals\heldout-v1-approved.json `
+  --execution-manifest C:\DAT_RESEARCH\research-c\approvals\heldout-v1-manifest.json
+```
+
 | 항목 | 값 |
 |---|---|
-| Read-only Development report | `C:\DAT_RESEARCH\research-c\analysis\development-v1-analysis-v11.json` |
-| Canonical analysis payload SHA-256 | `5eb3988413cf6a7f8fc5e96576e94959a25278ee687dba24e6215197a8aeab3e` |
-| Report file SHA-256 | `f0591789d2cb6d63acae4c51fbd6969ade87834ffd801023699f15c258042e5e` |
-| Analysis module SHA-256 | `4002be37f20ee5cf86e736acbEE52c05d1397e2f4c4c29cf517ca414eb16fb71` |
-| Analyzer script SHA-256 | `93d8f153011dcc80bc0fe438c774bd9df898d5be7986462e404165ababc883fc` |
+| Read-only Development report | `C:\DAT_RESEARCH\research-c\analysis\development-v1-analysis-v13.json` |
+| Canonical analysis payload SHA-256 | `0db159907220469aae1b68b31fa5cd48349bfc25facc8493e309da6dd802824c` |
+| Report file SHA-256 | `4053f5cb8a5a106e8420df48fe21485af3710ffdc3841cf4acccac8f05935045` |
+| Analysis module SHA-256 | `001ede1032b94878d1917db78f4d2ce0bea55ff5a891776b0301fc167dc1ba88` |
+| Analyzer script SHA-256 | `b88bacbaaaf5bccfcfa6ebe9e82229de904cae5d334176a43055de39846be7b8` |
 | Repeated run | 동일한 payload 및 파일 SHA-256 |
 | Held-out | 실행되지 않음; 결과/SCM 없음 |
 
-이 문서의 최종 상태는 `APPROVAL_REQUIRED`다. bootstrap seed와 Held-out 실행은 사용자 승인 전까지 잠기거나 실행되지 않는다.
+최종 상태는 `USER_APPROVED / FROZEN_FOR_HELDOUT_ANALYSIS`; 별도 Held-out 실행 승인 전까지 cohort 상태는 `NOT_AUTHORIZED`다.

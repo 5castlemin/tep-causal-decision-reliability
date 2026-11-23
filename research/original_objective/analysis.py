@@ -9,6 +9,17 @@ import math
 import random
 import statistics
 
+HELDOUT_BOOTSTRAP_SEED = 2026112302
+HELDOUT_BOOTSTRAP_REPLICATES = 10_000
+
+
+def validate_heldout_bootstrap_contract(seed: int, replicates: int) -> None:
+    """Reject analysis settings that differ from the user-approved lock."""
+    if seed != HELDOUT_BOOTSTRAP_SEED:
+        raise ValueError("bootstrap seed differs from the approved Held-out analysis lock")
+    if replicates != HELDOUT_BOOTSTRAP_REPLICATES:
+        raise ValueError("bootstrap replicate count differs from the approved Held-out analysis lock")
+
 
 def sign_counts(values: list[float]) -> dict[str, int]:
     return {"improve": sum(value > 0 for value in values),
