@@ -19,7 +19,8 @@ from research.budget_aware_refinement.step4c1_scm import (
 
 from . import policy_engine as pe
 from .cohort_ledger_test_only import _subseed
-from .cohort_runner import run_approved_research_cohort, run_test_only_cohort
+from .cohort_runner import (run_approved_research_cohort, run_proposal_stage,
+                            run_test_only_cohort)
 from .execution_limits import ResourceLimits
 from .e2e_fixture import FixtureInput
 from .g0_candidate import corrupt_graph_candidate
@@ -119,6 +120,7 @@ def run_cohort_orchestration(output_root, *, mode: str, run_id: str,
                              proposal_outcomes: list[dict] | None = None,
                              budgets=(0, 1, 2, 3, 4),
                              resource_limits: ResourceLimits | None = None,
+                             proposal_active_seconds: float = 0.0,
                              _authorization=None) -> dict:
     """Shared durable execution dispatch; production mode requires gate capability.
 
@@ -126,6 +128,8 @@ def run_cohort_orchestration(output_root, *, mode: str, run_id: str,
     No test-only override is accepted by the production CLI.
     """
     if mode == "TEST_ONLY":
+        if proposal_active_seconds != 0:
+            raise ValueError("proposal_active_seconds is reserved for approved research runs")
         if (resource_limits is not None
                 and resource_limits.classification != "TEST_ONLY_RESOURCE_ENVELOPE"):
             raise PermissionError("TEST_ONLY orchestration requires TEST_ONLY resource limits")
@@ -142,7 +146,9 @@ def run_cohort_orchestration(output_root, *, mode: str, run_id: str,
         return run_approved_research_cohort(
             output_root, run_id=run_id, master_seed=master_seed,
             fixtures=fixtures, budgets=budgets, proposal_outcomes=proposal_outcomes,
-            resource_limits=resource_limits, _authorization=_authorization)
+            resource_limits=resource_limits,
+            proposal_active_seconds=proposal_active_seconds,
+            _authorization=_authorization)
     raise ValueError("mode must be TEST_ONLY or RESEARCH")
 
 
@@ -241,12 +247,33 @@ def build_approved_research_inputs(*, cohort_type: str, master_seed: int,
     if type(master_seed) is not int or master_seed < 0:
         raise ValueError("master_seed must be a nonnegative integer")
 
-    outcomes, admitted = [], {}
-    admission_ordinal = 0
+    proposals = []
     for attempt in range(proposal_cap):
         proposal_id = f"{cohort}-proposal-{attempt + 1:06d}"
-        proposal = proposal_builder(cohort=cohort, master_seed=master_seed,
-                                    proposal_id=proposal_id, attempt=attempt)
+        proposals.append(proposal_builder(cohort=cohort, master_seed=master_seed,
+                                           proposal_id=proposal_id, attempt=attempt))
+        if sum(bool(p["accepted"]) for p in proposals) >= target_admissions:
+            break
+    return assemble_approved_research_inputs(
+        proposals, cohort_type=cohort_type, master_seed=master_seed,
+        target_admissions=target_admissions, proposal_cap=proposal_cap)
+
+
+def assemble_approved_research_inputs(proposals: Sequence[dict], *, cohort_type: str,
+                                      master_seed: int, target_admissions: int,
+                                      proposal_cap: int):
+    """Create factories only from already checkpointed, deterministic proposals."""
+    cohort = {"development": "development",
+              "independent_evaluation": "confirmation"}.get(cohort_type)
+    if cohort is None:
+        raise ValueError("unsupported approved cohort type")
+    outcomes, admitted = [], {}
+    admission_ordinal = 0
+    for proposal in proposals:
+        proposal_id = proposal.get("proposal_id")
+        if (proposal.get("cohort") != cohort or not isinstance(proposal_id, str)
+                or proposal.get("attempt") != len(outcomes)):
+            raise ValueError("checkpointed proposal sequence/cohort binding is invalid")
         accepted = bool(proposal["accepted"])
         record = {k: v for k, v in proposal.items() if k != "error_recipes"}
         if accepted and admission_ordinal < target_admissions:
@@ -283,17 +310,34 @@ def run_approved_research_proposal_cohort(output_root, *, run_id: str,
     from .e2e_fixture import _RESEARCH_EXECUTION_CAPABILITY
     if _authorization is not _RESEARCH_EXECUTION_CAPABILITY:
         raise PermissionError("research proposals require validated runner capability")
-    built = build_approved_research_inputs(
-        cohort_type=cohort_type, master_seed=master_seed,
+    stage = run_proposal_stage(
+        output_root, run_id=run_id, cohort_type=cohort_type,
+        master_seed=master_seed, target_admissions=target_admissions,
+        proposal_cap=proposal_cap, resource_limits=resource_limits,
+        _authorization=_authorization)
+    if not stage["proposal_stage_complete"]:
+        return {"run_id": run_id, "cohort_type": cohort_type,
+                "proposal_stage": stage, "admitted_scm_count": 0,
+                "completed_scm_count": 0, "all_scm_complete": False,
+                "all_target_admissions_completed": False,
+                "classification": "RESEARCH_COHORT_INCOMPLETE",
+                "reason": "proposal generation/checkpoint did not complete; no SCM admitted"}
+    built = assemble_approved_research_inputs(
+        stage["proposals"], cohort_type=cohort_type, master_seed=master_seed,
         target_admissions=target_admissions, proposal_cap=proposal_cap)
     result = run_cohort_orchestration(
         output_root, mode="RESEARCH", run_id=run_id, master_seed=master_seed,
         fixtures=built["admitted_factories"], budgets=budgets,
         proposal_outcomes=built["proposal_outcomes"],
-        resource_limits=resource_limits, _authorization=_authorization)
+        resource_limits=resource_limits,
+        proposal_active_seconds=stage["proposal_active_seconds"],
+        _authorization=_authorization)
     result["target_admissions"] = target_admissions
     result["proposal_cap"] = proposal_cap
     result["shortfall"] = built["shortfall"]
+    result["proposal_stage"] = {key: stage[key] for key in (
+        "proposal_stage_status", "proposal_count", "eligible_count", "shortfall",
+        "proposal_active_seconds", "config_sha256", "stop_reason", "database_path")}
     result["all_target_admissions_completed"] = (
         built["shortfall"] == 0 and result["completed_scm_count"] == target_admissions)
     result["pipeline"] = {"stages": ["configuration_and_manifest_gate", "topology_proposal",

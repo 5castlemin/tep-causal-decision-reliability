@@ -143,6 +143,13 @@ class ResearchCRunnerTests(unittest.TestCase):
             self.assertEqual(result["completed_scm_count"], 1)
             self.assertEqual(result["complete_policy_evaluations"], 17)
             self.assertFalse(result["scms"][0]["result"]["research_cohort_generated"])
+            timings = result["scms"][0]["stage_timings"]
+            self.assertGreaterEqual(timings["scm_observation_g0_generation_seconds"], 0)
+            self.assertGreaterEqual(timings["result_validation_and_serialization_seconds"], 0)
+            self.assertGreaterEqual(timings["atomic_result_commit_seconds"], 0)
+            self.assertEqual(len(timings["budgets"]), 1)
+            self.assertIn("fit_recommendation_seconds", timings["budgets"][0])
+            self.assertIn("gt_evaluation_seconds", timings["budgets"][0])
 
 
 if __name__ == "__main__":

@@ -23,11 +23,17 @@ from .execution_limits import (ResourceLimitStop, ResourceLimits, check_storage,
 
 def _compute_fixture_payload(factory, g0_seed, task_id, budgets, apply_g0_generator,
                              research_authorized=False):
+    generation_started = time.monotonic()
     fixture, metadata = factory()
-    return execute_fixture_input(fixture, metadata=metadata, g0_seed=g0_seed,
-                                 task_id=task_id, budgets=budgets,
-                                 apply_g0_generator=apply_g0_generator,
-                                 _research_authorized=research_authorized)
+    generation_seconds = time.monotonic() - generation_started
+    timing = {}
+    payload = execute_fixture_input(fixture, metadata=metadata, g0_seed=g0_seed,
+                                    task_id=task_id, budgets=budgets,
+                                    apply_g0_generator=apply_g0_generator,
+                                    _research_authorized=research_authorized,
+                                    _timing_sink=timing)
+    return payload, {"scm_observation_g0_generation_seconds": generation_seconds,
+                     **timing}
 
 
 class CohortIntegrityError(RuntimeError):
@@ -60,7 +66,7 @@ def _schema(connection):
       failure_reason TEXT, retryable INTEGER NOT NULL DEFAULT 0,
       started_at REAL, completed_at REAL,
       active_seconds REAL NOT NULL DEFAULT 0, sampled_rss_peak_bytes INTEGER,
-      failure_code TEXT,
+      failure_code TEXT, stage_timing_json TEXT,
       PRIMARY KEY (run_id, scm_id), UNIQUE (run_id, ordinal),
       FOREIGN KEY (run_id) REFERENCES runs(run_id)
     );
@@ -84,10 +90,35 @@ def _schema(connection):
         ("scms", "active_seconds", "REAL NOT NULL DEFAULT 0"),
         ("scms", "sampled_rss_peak_bytes", "INTEGER"),
         ("scms", "failure_code", "TEXT"),
+        ("scms", "stage_timing_json", "TEXT"),
     ):
         columns = {row[1] for row in connection.execute(f"PRAGMA table_info({table})")}
         if column not in columns:
             connection.execute(f"ALTER TABLE {table} ADD COLUMN {column} {declaration}")
+
+
+def _proposal_schema(connection):
+    """Keep proposal checkpoints in a compact, mode-separated SQLite ledger."""
+    connection.executescript("""
+    CREATE TABLE IF NOT EXISTS proposal_stage_runs (
+      run_id TEXT PRIMARY KEY, cohort_type TEXT NOT NULL, master_seed INTEGER NOT NULL,
+      target_admissions INTEGER NOT NULL, proposal_cap INTEGER NOT NULL,
+      config_json TEXT NOT NULL, config_sha256 TEXT NOT NULL,
+      status TEXT NOT NULL, active_seconds REAL NOT NULL DEFAULT 0,
+      failure_code TEXT, failure_reason TEXT, created_at REAL NOT NULL,
+      completed_at REAL
+    );
+    CREATE TABLE IF NOT EXISTS proposal_attempts (
+      run_id TEXT NOT NULL, attempt INTEGER NOT NULL, proposal_id TEXT NOT NULL,
+      status TEXT NOT NULL, rng_binding_json TEXT NOT NULL,
+      proposal_json TEXT, proposal_sha256 TEXT,
+      active_seconds REAL NOT NULL DEFAULT 0, sampled_rss_peak_bytes INTEGER,
+      failure_code TEXT, failure_reason TEXT,
+      started_at REAL, completed_at REAL,
+      PRIMARY KEY (run_id, attempt), UNIQUE (run_id, proposal_id),
+      FOREIGN KEY (run_id) REFERENCES proposal_stage_runs(run_id)
+    );
+    """)
 
 
 def _event(connection, run_id, scm_id, old, new, reason=None):
@@ -122,6 +153,272 @@ def _verify_result(result_json: str, expected_sha: str,
     return payload
 
 
+def _build_proposal_worker(cohort, master_seed, proposal_id, attempt, proposal_builder=None):
+    if proposal_builder is None:
+        from research.budget_aware_refinement.step4c1_proposal import build_structural_proposal
+        proposal_builder = build_structural_proposal
+    return proposal_builder(cohort=cohort, master_seed=master_seed,
+                            proposal_id=proposal_id, attempt=attempt)
+
+
+def run_proposal_stage(output_root: Path, *, run_id: str, cohort_type: str,
+                       master_seed: int, target_admissions: int, proposal_cap: int,
+                       resource_limits: ResourceLimits,
+                       _authorization=None, proposal_builder=None,
+                       after_proposal_checkpoint_hook=None,
+                       before_proposal_commit_hook=None) -> dict:
+    """Generate/checkpoint proposals one isolated unit at a time before admission.
+
+    Research execution requires the runner capability. TEST_ONLY calls use a
+    separate namespace and ledger file; hooks are accepted only for tests.
+    """
+    if cohort_type not in {"TEST_ONLY", "development", "independent_evaluation"}:
+        raise ValueError("unsupported proposal cohort type")
+    research_mode = cohort_type != "TEST_ONLY"
+    if research_mode:
+        if _authorization is not _RESEARCH_EXECUTION_CAPABILITY:
+            raise PermissionError("research proposal stage requires validated runner capability")
+        if resource_limits.classification != "USER_APPROVED_RESEARCH_RESOURCE_PROFILE":
+            raise PermissionError("research proposal stage requires approved resource profile")
+    elif resource_limits.classification != "TEST_ONLY_RESOURCE_ENVELOPE":
+        raise PermissionError("TEST_ONLY proposal stage requires TEST_ONLY resource limits")
+    for hook in (after_proposal_checkpoint_hook, before_proposal_commit_hook):
+        if hook is not None and getattr(hook, "__test_only_fixture_hook__", False) is not True:
+            raise PermissionError("proposal-stage interruption hooks are TEST_ONLY only")
+    if type(master_seed) is not int or master_seed < 0:
+        raise ValueError("master_seed must be a nonnegative integer")
+    if type(target_admissions) is not int or target_admissions <= 0:
+        raise ValueError("target_admissions must be positive")
+    if type(proposal_cap) is not int or proposal_cap < target_admissions:
+        raise ValueError("proposal_cap must cover target_admissions")
+    if not isinstance(run_id, str) or not run_id:
+        raise ValueError("run_id is required")
+    if (research_mode and not run_id.startswith(
+            "development-" if cohort_type == "development" else "independent-evaluation-")):
+        raise ValueError("research proposal run_id must be cohort-namespaced")
+    if not research_mode and not run_id.startswith("test-only-"):
+        raise PermissionError("TEST_ONLY proposal run_id must use test-only namespace")
+
+    from research.budget_aware_refinement.step4c1_proposal import ATTEMPT_CAPS
+    generator_cohort = {"TEST_ONLY": "development", "development": "development",
+                        "independent_evaluation": "confirmation"}[cohort_type]
+    if proposal_cap > ATTEMPT_CAPS[generator_cohort]:
+        raise ValueError("proposal_cap exceeds generator attempt cap")
+    code_hashes = _code_hashes(ROOT)
+    builder_name = ("default" if proposal_builder is None else
+                    f"{proposal_builder.__module__}.{proposal_builder.__qualname__}")
+    binding = {"schema": "research-c-proposal-stage-v1", "run_id": run_id,
+               "cohort_type": cohort_type, "master_seed": master_seed,
+               "target_admissions": target_admissions, "proposal_cap": proposal_cap,
+               "resource_limits": resource_limits.binding(), "builder": builder_name,
+               "code_sha256": code_hashes, "source_revision": _git_revision(ROOT),
+               "runtime_fingerprint": _runtime_fingerprint()}
+    config_sha = _digest(binding)
+    root = Path(output_root).expanduser().resolve()
+    root.mkdir(parents=True, exist_ok=True)
+    db_name = ("research_c_proposal_stage.sqlite" if research_mode
+               else "research_c_fixture_proposals.sqlite")
+    db_path = root / db_name
+    lock_path = root / f".{db_name}.lock"
+
+    with _run_lock(lock_path):
+        connection = _connect(db_path)
+        try:
+            _proposal_schema(connection)
+            connection.execute("BEGIN IMMEDIATE")
+            run = connection.execute(
+                "SELECT * FROM proposal_stage_runs WHERE run_id=?", (run_id,)).fetchone()
+            if run is None:
+                connection.execute("""INSERT INTO proposal_stage_runs
+                    (run_id,cohort_type,master_seed,target_admissions,proposal_cap,
+                     config_json,config_sha256,status,created_at)
+                    VALUES(?,?,?,?,?,?,?,?,?)""",
+                    (run_id, cohort_type, master_seed, target_admissions, proposal_cap,
+                     _canonical(binding).decode("ascii"), config_sha, "RUNNING", time.time()))
+                connection.commit()
+                active_seconds = 0.0
+            else:
+                stored_binding = json.loads(run["config_json"])
+                changed = sorted(key for key, value in binding.items()
+                                 if stored_binding.get(key) != value)
+                if (run["config_sha256"] != config_sha or run["cohort_type"] != cohort_type
+                        or run["master_seed"] != master_seed or changed):
+                    raise LedgerConflict(
+                        "proposal run ID is bound to different config/code/RNG; "
+                        f"changed_binding_fields={changed or ['run metadata']}")
+                active_seconds = float(run["active_seconds"])
+                connection.commit()
+
+            proposals, admitted_count = [], 0
+            stop_reason = None
+            for attempt in range(proposal_cap):
+                proposal_id = f"{generator_cohort}-proposal-{attempt + 1:06d}"
+                row = connection.execute(
+                    "SELECT * FROM proposal_attempts WHERE run_id=? AND attempt=?",
+                    (run_id, attempt)).fetchone()
+                if row is not None and row["status"] in {"ELIGIBLE", "STRUCTURALLY_INELIGIBLE"}:
+                    parsed = json.loads(row["proposal_json"])
+                    if _digest(parsed) != row["proposal_sha256"]:
+                        raise CohortIntegrityError("proposal checkpoint checksum mismatch")
+                    proposals.append(parsed)
+                    admitted_count += int(bool(parsed.get("accepted")))
+                    if admitted_count >= target_admissions:
+                        break
+                    continue
+
+                if row is not None and row["status"] == "RUNNING" and row["started_at"] is not None:
+                    # Reconcile a coordinator interruption conservatively. The
+                    # same proposal ID/attempt is retried; no later ID is drawn.
+                    interrupted = max(0.0, time.time() - float(row["started_at"]))
+                    active_seconds += interrupted
+                if active_seconds >= resource_limits.cohort_active_seconds:
+                    stop_reason = "COHORT_ACTIVE_TIME_CAP"
+                    break
+                try:
+                    check_storage(root, next_bytes=16 * 1024, limits=resource_limits)
+                except ResourceLimitStop as exc:
+                    stop_reason = exc.code
+                    break
+
+                rng_binding = {"cohort": generator_cohort, "master_seed": master_seed,
+                               "proposal_id": proposal_id, "attempt": attempt,
+                               "stream_protocol": "step4-rng-v1"}
+                connection.execute("BEGIN IMMEDIATE")
+                if row is None:
+                    connection.execute("""INSERT INTO proposal_attempts
+                        (run_id,attempt,proposal_id,status,rng_binding_json,started_at)
+                        VALUES(?,?,?,?,?,?)""",
+                        (run_id, attempt, proposal_id, "RUNNING",
+                         _canonical(rng_binding).decode("ascii"), time.time()))
+                else:
+                    connection.execute("""UPDATE proposal_attempts SET status='RUNNING',
+                        failure_code=NULL,failure_reason=NULL,started_at=?,completed_at=NULL
+                        WHERE run_id=? AND attempt=?""",
+                        (time.time(), run_id, attempt))
+                connection.commit()
+                remaining = resource_limits.cohort_active_seconds - active_seconds
+                timeout = min(resource_limits.unit_timeout_seconds, remaining)
+                started = time.monotonic()
+                try:
+                    proposal, stop_code, elapsed, sampled_peak = run_isolated(
+                        partial(_build_proposal_worker, generator_cohort, master_seed,
+                                proposal_id, attempt, proposal_builder),
+                        timeout_seconds=timeout,
+                        rss_cap_bytes=resource_limits.sampled_rss_bytes)
+                    elapsed = max(elapsed, time.monotonic() - started)
+                    active_seconds += elapsed
+                    if stop_code:
+                        code = ("COHORT_ACTIVE_TIME_CAP" if timeout < resource_limits.unit_timeout_seconds
+                                and remaining <= resource_limits.unit_timeout_seconds else stop_code)
+                        reason = f"{code}: isolated proposal worker did not complete"
+                        connection.execute("BEGIN IMMEDIATE")
+                        connection.execute("""UPDATE proposal_attempts SET status='RESOURCE_LIMIT',
+                            active_seconds=active_seconds+?,sampled_rss_peak_bytes=?,failure_code=?,
+                            failure_reason=?,started_at=NULL,completed_at=? WHERE run_id=? AND attempt=?""",
+                            (elapsed, sampled_peak, code, reason, time.time(), run_id, attempt))
+                        connection.execute("""UPDATE proposal_stage_runs SET status='RESOURCE_STOP',
+                            active_seconds=?,failure_code=?,failure_reason=? WHERE run_id=?""",
+                            (active_seconds, code, reason, run_id))
+                        connection.commit()
+                        stop_reason = code
+                        break
+                    if not isinstance(proposal, dict) or proposal.get("proposal_id") != proposal_id:
+                        raise CohortIntegrityError("proposal worker returned mismatched proposal identity")
+                    if proposal.get("cohort") != generator_cohort or proposal.get("attempt") != attempt:
+                        raise CohortIntegrityError("proposal worker returned mismatched RNG binding")
+                    status = "ELIGIBLE" if proposal.get("accepted") else "STRUCTURALLY_INELIGIBLE"
+                    proposal_json = _canonical(_jsonable(proposal)).decode("ascii")
+                    proposal_sha = _digest(_jsonable(proposal))
+                    if before_proposal_commit_hook is not None:
+                        before_proposal_commit_hook(proposal_id)
+                    encoded_bytes = len(proposal_json.encode("utf-8"))
+                    if encoded_bytes > resource_limits.max_result_bytes:
+                        raise ResourceLimitStop("PROPOSAL_BYTE_CAP", "proposal record exceeds result cap")
+                    ledger_bytes = db_path.stat().st_size if db_path.exists() else 0
+                    if ledger_bytes + encoded_bytes + 16 * 1024 > resource_limits.max_ledger_bytes:
+                        raise ResourceLimitStop("LEDGER_BYTE_CAP", "proposal checkpoint exceeds ledger cap")
+                    check_storage(root, next_bytes=encoded_bytes + 16 * 1024, limits=resource_limits)
+                    connection.execute("BEGIN IMMEDIATE")
+                    connection.execute("""UPDATE proposal_attempts SET status=?,proposal_json=?,
+                        proposal_sha256=?,active_seconds=active_seconds+?,sampled_rss_peak_bytes=?,
+                        failure_code=NULL,failure_reason=NULL,started_at=NULL,completed_at=?
+                        WHERE run_id=? AND attempt=?""",
+                        (status, proposal_json, proposal_sha, elapsed, sampled_peak,
+                         time.time(), run_id, attempt))
+                    connection.execute("""UPDATE proposal_stage_runs SET status='RUNNING',
+                        active_seconds=?,failure_code=NULL,failure_reason=NULL WHERE run_id=?""",
+                        (active_seconds, run_id))
+                    connection.commit()
+                    proposals.append(_jsonable(proposal))
+                    admitted_count += int(bool(proposal.get("accepted")))
+                    if after_proposal_checkpoint_hook is not None:
+                        after_proposal_checkpoint_hook(proposal_id)
+                    if admitted_count >= target_admissions:
+                        break
+                except Exception as exc:
+                    elapsed = max(0.0, time.monotonic() - started)
+                    active_seconds += elapsed
+                    code = getattr(exc, "code", None) or type(exc).__name__
+                    reason = f"{type(exc).__name__}:{str(exc)[:500]}"
+                    if connection.in_transaction:
+                        connection.rollback()
+                    connection.execute("BEGIN IMMEDIATE")
+                    connection.execute("""UPDATE proposal_attempts SET status='FAILED',
+                        active_seconds=active_seconds+?,failure_code=?,failure_reason=?,
+                        sampled_rss_peak_bytes=COALESCE(sampled_rss_peak_bytes,0),
+                        started_at=NULL,completed_at=? WHERE run_id=? AND attempt=?""",
+                        (elapsed, code, reason, time.time(), run_id, attempt))
+                    connection.execute("""UPDATE proposal_stage_runs SET status='FAILED',
+                        active_seconds=?,failure_code=?,failure_reason=? WHERE run_id=?""",
+                        (active_seconds, code, reason, run_id))
+                    connection.commit()
+                    stop_reason = code
+                    break
+
+            complete = stop_reason is None
+            if complete:
+                shortfall = max(0, target_admissions - admitted_count)
+                stage_status = "COMPLETED" if shortfall == 0 else "SHORTFALL_PROPOSAL_CAP"
+                connection.execute("BEGIN IMMEDIATE")
+                connection.execute("""UPDATE proposal_stage_runs SET status=?,active_seconds=?,
+                    failure_code=NULL,failure_reason=NULL,completed_at=? WHERE run_id=?""",
+                    (stage_status, active_seconds, time.time(), run_id))
+                connection.commit()
+            else:
+                shortfall = max(0, target_admissions - admitted_count)
+            records = []
+            for row in connection.execute(
+                    "SELECT * FROM proposal_attempts WHERE run_id=? ORDER BY attempt", (run_id,)):
+                item = {"attempt": row["attempt"], "proposal_id": row["proposal_id"],
+                        "status": row["status"], "rng_binding": json.loads(row["rng_binding_json"]),
+                        "active_seconds": row["active_seconds"],
+                        "sampled_rss_peak_bytes": row["sampled_rss_peak_bytes"],
+                        "failure_code": row["failure_code"],
+                        "failure_reason": row["failure_reason"]}
+                if row["proposal_json"]:
+                    proposal = json.loads(row["proposal_json"])
+                    if _digest(proposal) != row["proposal_sha256"]:
+                        raise CohortIntegrityError("proposal checkpoint checksum mismatch")
+                    item["proposal"] = proposal
+                records.append(item)
+            persisted_proposals = [item["proposal"] for item in records if "proposal" in item]
+            final_status = (stage_status if complete else
+                            ("RESOURCE_STOP" if stop_reason and
+                             ("CAP" in stop_reason or "LIMIT" in stop_reason)
+                             else "INCOMPLETE"))
+            return {"run_id": run_id, "cohort_type": cohort_type,
+                    "proposal_stage_status": final_status,
+                    "proposal_stage_complete": complete,
+                    "proposal_active_seconds": active_seconds,
+                    "proposal_count": len(persisted_proposals),
+                    "eligible_count": admitted_count, "shortfall": shortfall,
+                    "stop_reason": stop_reason, "proposals": persisted_proposals,
+                    "proposal_checkpoints": records, "config_sha256": config_sha,
+                    "database_path": str(db_path)}
+        finally:
+            connection.close()
+
+
 def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                          fixtures: dict, budgets=(0, 1, 2, 3, 4),
                          max_new_scms: int | None = None,
@@ -144,6 +441,7 @@ def run_approved_research_cohort(output_root: Path, *, run_id: str, master_seed:
                                  fixtures: dict, budgets=(0, 1, 2, 3, 4),
                                  proposal_outcomes: list[dict] | None = None,
                                  resource_limits: ResourceLimits,
+                                 proposal_active_seconds: float = 0.0,
                                  _authorization=None) -> dict:
     """Research ledger path; callable only with the runner's post-gate capability."""
     if _authorization is not _RESEARCH_EXECUTION_CAPABILITY:
@@ -154,7 +452,8 @@ def run_approved_research_cohort(output_root: Path, *, run_id: str, master_seed:
                        fixtures=fixtures, budgets=budgets, max_new_scms=None,
                        proposal_outcomes=proposal_outcomes, resource_limits=resource_limits,
                        after_claim_hook=None, before_commit_hook=None,
-                       cohort_type="RESEARCH_COHORT", research_authorized=True)
+                       cohort_type="RESEARCH_COHORT", research_authorized=True,
+                       initial_active_seconds=proposal_active_seconds)
 
 
 def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
@@ -163,7 +462,8 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
                 proposal_outcomes: list[dict] | None = None,
                 resource_limits: ResourceLimits | None = None,
                 after_claim_hook=None, before_commit_hook=None,
-                cohort_type="TEST_ONLY_FIXTURE", research_authorized=False) -> dict:
+                cohort_type="TEST_ONLY_FIXTURE", research_authorized=False,
+                initial_active_seconds: float = 0.0) -> dict:
     if cohort_type not in {"TEST_ONLY_FIXTURE", "RESEARCH_COHORT"}:
         raise ValueError("invalid cohort type")
     if cohort_type == "RESEARCH_COHORT" and not research_authorized:
@@ -174,6 +474,8 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
         raise ValueError("run_id must be a nonempty string of at most 100 chars")
     if type(master_seed) is not int or master_seed < 0:
         raise ValueError("master_seed must be a nonnegative integer")
+    if (type(initial_active_seconds) not in (int, float) or initial_active_seconds < 0):
+        raise ValueError("initial_active_seconds must be nonnegative")
     if (not fixtures and not proposal_outcomes) or len(fixtures) != len(set(fixtures)):
         raise ValueError("fixtures or proposal outcomes are required; SCM IDs must be unique")
     if any(not callable(hook) or getattr(hook, "__test_only_fixture_hook__", False) is not True
@@ -203,6 +505,7 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
     config = {"schema": "research-c-multi-cohort-v1", "cohort_type": cohort_type,
               "run_id": run_id, "master_seed": master_seed, "budgets": list(budgets),
               "fixtures": factory_bindings, "execution_enabled_for_research": research_authorized,
+              "proposal_active_seconds": float(initial_active_seconds),
               "resource_limits": resource_limits.binding() if resource_limits else None,
               "runtime_fingerprint": _runtime_fingerprint()}
     proposals = proposal_outcomes or []
@@ -225,10 +528,11 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
             existing = connection.execute("SELECT * FROM runs WHERE run_id=?", (run_id,)).fetchone()
             if existing is None:
                 connection.execute(
-                    "INSERT INTO runs(run_id,cohort_type,master_seed,config_json,config_sha256,code_json,source_json,created_at) VALUES(?,?,?,?,?,?,?,?)",
+                    "INSERT INTO runs(run_id,cohort_type,master_seed,config_json,config_sha256,code_json,source_json,created_at,active_seconds) VALUES(?,?,?,?,?,?,?,?,?)",
                     (run_id, cohort_type, master_seed, _canonical(config).decode("ascii"),
                      config_sha, _canonical(code_hashes).decode("ascii"),
-                     _canonical(source).decode("ascii"), time.time()))
+                     _canonical(source).decode("ascii"), time.time(),
+                     float(initial_active_seconds)))
                 for ordinal, (scm_id, spec) in enumerate(specs.items()):
                     namespace = cohort_type.lower()
                     streams = {name: _subseed(master_seed, namespace, scm_id, name)
@@ -358,12 +662,18 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
                                 stop_code = ("COHORT_ACTIVE_TIME_CAP" if remaining_cohort <= remaining_scm
                                              else "SCM_ACTIVE_TIME_CAP")
                             raise ResourceLimitStop(stop_code, "isolated SCM worker stopped")
+                        payload, stage_timings = payload
                     else:
+                        generation_started = time.monotonic()
                         fixture, metadata = spec["factory"]()
+                        generation_seconds = time.monotonic() - generation_started
+                        stage_timings = {}
                         payload = execute_fixture_input(
                             fixture, metadata=metadata, g0_seed=streams["g0"],
                             task_id=f"{run_id}:{scm_id}", budgets=budgets,
-                            apply_g0_generator=spec["apply_g0_generator"])
+                            apply_g0_generator=spec["apply_g0_generator"],
+                            _timing_sink=stage_timings)
+                        stage_timings["scm_observation_g0_generation_seconds"] = generation_seconds
                         worker_elapsed = max(0.0, time.monotonic() - unit_started)
                     expected_classification = ("RESEARCH_COHORT_RESULT" if research_authorized
                                                else "TEST_ONLY_NOT_RESEARCH_COHORT")
@@ -377,6 +687,7 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
                                                   "evaluation_seed_used_for_sampling": False}
                     if before_commit_hook is not None:
                         before_commit_hook(scm_id)
+                    persistence_started = time.perf_counter()
                     result_sha = _digest(payload)
                     result_json = json.dumps({"payload": _jsonable(payload),
                                               "payload_sha256": result_sha},
@@ -396,6 +707,9 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
                                 f"ledger={ledger_size}, result={result_bytes}, cap={resource_limits.max_ledger_bytes}")
                         check_storage(root, next_bytes=result_bytes + 16 * 1024,
                                       limits=resource_limits)
+                    stage_timings["result_validation_and_serialization_seconds"] = (
+                        time.perf_counter() - persistence_started)
+                    stage_timing_json = _canonical(stage_timings).decode("ascii")
                     input_sha = payload["input_sha256"]
                     connection.execute("BEGIN IMMEDIATE")
                     latest = connection.execute("SELECT status FROM scms WHERE run_id=? AND scm_id=?",
@@ -404,13 +718,30 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
                         raise LedgerConflict("SCM state changed before result commit")
                     connection.execute("""UPDATE scms SET status='COMPLETED',input_sha256=?,result_json=?,
                                         result_sha256=?,retryable=0,completed_at=?,started_at=NULL,
-                                        active_seconds=?,sampled_rss_peak_bytes=?
+                                        active_seconds=?,sampled_rss_peak_bytes=?,stage_timing_json=?
                                         WHERE run_id=? AND scm_id=?""",
                                        (input_sha, result_json, result_sha, time.time(), new_scm_active,
-                                        sampled_peak, run_id, scm_id))
+                                        sampled_peak, stage_timing_json, run_id, scm_id))
                     connection.execute("UPDATE runs SET active_seconds=? WHERE run_id=?",
                                        (new_run_active, run_id))
                     _event(connection, run_id, scm_id, "RUNNING", "COMPLETED", "ATOMIC_RESULT_COMMIT")
+                    commit_started = time.perf_counter()
+                    connection.commit()
+                    commit_seconds = time.perf_counter() - commit_started
+                    # Resource timings live beside, not inside, the deterministic
+                    # result payload. The primary result and its checksum remain
+                    # atomically committed together; this sidecar records the
+                    # measured first commit duration without changing that hash.
+                    stage_timings["atomic_result_commit_seconds"] = commit_seconds
+                    new_scm_active += commit_seconds
+                    new_run_active += commit_seconds
+                    run_active = new_run_active
+                    connection.execute("BEGIN IMMEDIATE")
+                    connection.execute("UPDATE scms SET active_seconds=?,stage_timing_json=? WHERE run_id=? AND scm_id=?",
+                                       (new_scm_active, _canonical(stage_timings).decode("ascii"),
+                                        run_id, scm_id))
+                    connection.execute("UPDATE runs SET active_seconds=? WHERE run_id=?",
+                                       (new_run_active, run_id))
                     connection.commit()
                 except Exception as exc:
                     elapsed = max(0.0, time.monotonic() - unit_started)
@@ -450,6 +781,8 @@ def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
                           "input_sha256": row["input_sha256"], "result_sha256": row["result_sha256"],
                           "failure_reason": row["failure_reason"], "failure_code": row["failure_code"],
                           "active_seconds": row["active_seconds"],
+                          "stage_timings": (json.loads(row["stage_timing_json"])
+                                            if row["stage_timing_json"] else None),
                           "sampled_rss_peak_bytes": row["sampled_rss_peak_bytes"],
                           "retryable": bool(row["retryable"])}
                 if row["status"] == "COMPLETED":

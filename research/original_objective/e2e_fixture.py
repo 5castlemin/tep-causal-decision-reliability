@@ -10,6 +10,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import sys
+import time
 from typing import Mapping
 from itertools import combinations
 
@@ -65,7 +66,8 @@ def _policy_graph_result(result: Mapping[str, object], nodes) -> dict:
 
 
 def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
-                      config: pe.Config = pe.Config(), _authorization=None) -> dict:
+                      config: pe.Config = pe.Config(), _authorization=None,
+                      _timing_sink: dict | None = None) -> dict:
     """Run the shared policy/fit/evaluation core for fixture or authorized study input."""
     if fixture.test_only is not True and _authorization is not _RESEARCH_EXECUTION_CAPABILITY:
         raise PermissionError("non-fixture evaluation requires the approved runner capability")
@@ -93,6 +95,7 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
     input_hash = sha256(data.tobytes(order="C")).hexdigest()
     graph_cache = {}
     rows = []
+    timing_by_budget = []
     for budget in budgets:
         if type(budget) is not int or budget < 0:
             raise ValueError("fixture budgets must be nonnegative integers")
@@ -102,12 +105,16 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
         initial_error_count = sum(sum(row.values()) for row in initial_stats["counts"].values())
         all_candidates = pe.candidates(truth, fixture.initial_graph, fixture.action,
                                        fixture.target, config)
+        structural_started = time.perf_counter()
         structural_runs = [(pe.run(truth, fixture.initial_graph, fixture.action,
                                    fixture.target, budget, subset, config), False)
                            for subset in pe.catalog()]
         canonical = pe.run(truth, fixture.initial_graph, fixture.action,
                            fixture.target, budget, pe.METRICS, config, canonical=True)
         structural_runs.append((canonical, True))
+        structural_seconds = time.perf_counter() - structural_started
+        fit_recommendation_seconds = 0.0
+        gt_evaluation_seconds = 0.0
         for structural, is_canonical in structural_runs:
             structural_subset = (pe.METRICS if is_canonical else
                                  tuple(structural["policy_id"].split("+"))
@@ -151,6 +158,7 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                 policies.append(entry)
                 continue
             try:
+                fit_started = time.perf_counter()
                 cache_key = _digest({"learner_dag": graph["final_graph"], "data": input_hash,
                                      "nodes": nodes, "action": fixture.action,
                                      "target": fixture.target, "delta": fixture.delta,
@@ -173,6 +181,7 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                                            guarded_fit, guarded_response, graph_result=graph)
                     graph_cache[cache_key] = selection
                 selection = graph_cache[cache_key]
+                fit_recommendation_seconds += time.perf_counter() - fit_started
             except Exception as exc:
                 entry["status"] = (exc.status if isinstance(exc, _FixtureStageError)
                                    else "FIXTURE_INPUT_OR_FIT_FAILURE")
@@ -183,7 +192,9 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
             # The learner receives only data, graph and task. Truth becomes
             # visible to the evaluator only after selection is frozen.
             try:
+                gt_started = time.perf_counter()
                 evaluation = evaluate(selection, fixture.truth_spec, analytic_response)
+                gt_evaluation_seconds += time.perf_counter() - gt_started
                 entry["evaluation_status"] = status_ok
                 entry["evaluation"] = {**evaluation, "selected_k": selection["selected_k"],
                                        "selected_action": next(r["action"] for r in selection["candidates"]
@@ -219,6 +230,10 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                 policy["same_regret_as_S0"] = None
                 policy["regret_change_from_S0"] = None
         pairwise = _policy_comparison_diagnostics(policies, initial_error_count, mode=mode)
+        timing_by_budget.append({"budget": budget,
+            "structural_policy_execution_seconds": structural_seconds,
+            "fit_recommendation_seconds": fit_recommendation_seconds,
+            "gt_evaluation_seconds": gt_evaluation_seconds})
         # Remove the internal tuples from the output, retaining all per-policy
         # failures. S0 and policies are repeated observations within one fixture.
         rows.append({"budget": budget, "policies": policies,
@@ -233,6 +248,8 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                      "policy_comparison_diagnostics": pairwise,
                      "test_only": fixture.test_only})
     _check_equal_action_regret(rows)
+    if _timing_sink is not None:
+        _timing_sink["budgets"] = timing_by_budget
     return {"status": mode, "test_only": fixture.test_only,
             "research_cohort_generated": not fixture.test_only,
             "regret_research_result": not fixture.test_only,

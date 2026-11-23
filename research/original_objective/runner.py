@@ -183,7 +183,8 @@ def _input_binding(fixture) -> dict:
 def execute_fixture_input(fixture, *, metadata: dict, g0_seed: int,
                           task_id: str, budgets=(0, 1, 2, 3, 4),
                           apply_g0_generator: bool = True,
-                          _research_authorized: bool = False) -> dict:
+                          _research_authorized: bool = False,
+                          _timing_sink: dict | None = None) -> dict:
     """Execute one explicit TEST_ONLY fixture without writing a result file."""
     if fixture.test_only is not True and not _research_authorized:
         raise PermissionError("non-fixture execution requires the approved research runner")
@@ -219,7 +220,8 @@ def execute_fixture_input(fixture, *, metadata: dict, g0_seed: int,
     config_hash = _digest({"config": config, "code_sha256": code_hashes})
     result = run_fixed_fixture(
         fixture, budgets=tuple(budgets), config=pe.Config(),
-        _authorization=_RESEARCH_EXECUTION_CAPABILITY if _research_authorized else None)
+        _authorization=_RESEARCH_EXECUTION_CAPABILITY if _research_authorized else None,
+        _timing_sink=_timing_sink)
     classification = ("TEST_ONLY_NOT_RESEARCH_COHORT" if fixture.test_only
                       else "RESEARCH_COHORT_RESULT")
 
@@ -288,8 +290,14 @@ def run_fixture_mode(output_path: Path, *, g0_seed: int = 44017,
 
 def run_research_mode(*, approved_config_path: Path | None,
                       execution_manifest_path: Path | None,
-                      fixture_factory=make_fixed_fixture):
+                      fixture_factory=make_fixed_fixture,
+                      _test_only_gate_orchestrator=None):
     """Validate the approval bundle, then invoke the shared approved cohort path."""
+    if (_test_only_gate_orchestrator is not None
+            and (not callable(_test_only_gate_orchestrator)
+                 or getattr(_test_only_gate_orchestrator,
+                            "__test_only_approval_gate_hook__", False) is not True)):
+        raise PermissionError("injected approval-gate orchestration is TEST_ONLY-only")
     if approved_config_path is None or execution_manifest_path is None:
         raise ResearchModeBlocked("approved config and matching execution manifest are required")
     try:
@@ -389,6 +397,19 @@ def run_research_mode(*, approved_config_path: Path | None,
         raise ResearchModeBlocked("research output must be outside the source checkout")
     if (output_root / "research_c_fixture_cohort.sqlite").exists():
         raise ResearchModeBlocked("research output root contains a TEST_ONLY cohort ledger")
+    if (output_root / "research_c_fixture_proposals.sqlite").exists():
+        raise ResearchModeBlocked("research output root contains a TEST_ONLY proposal ledger")
+    proposal_db = output_root / "research_c_proposal_stage.sqlite"
+    if proposal_db.exists():
+        try:
+            with sqlite3.connect(proposal_db) as db:
+                proposal_runs = db.execute(
+                    "SELECT run_id,cohort_type FROM proposal_stage_runs").fetchall()
+        except sqlite3.Error as exc:
+            raise ResearchModeBlocked("research proposal ledger is unreadable") from exc
+        if any(existing_id != config["run_id"] or cohort != config["cohort_type"]
+               for existing_id, cohort in proposal_runs):
+            raise ResearchModeBlocked("research output root is bound to another proposal run/cohort")
     research_db = output_root / "research_c_cohort.sqlite"
     if research_db.exists():
         try:
@@ -399,6 +420,13 @@ def run_research_mode(*, approved_config_path: Path | None,
         if any(existing_id != config["run_id"] or cohort != "RESEARCH_COHORT"
                for existing_id, cohort in existing_runs):
             raise ResearchModeBlocked("research output root is already bound to another run/cohort")
+    if _test_only_gate_orchestrator is not None:
+        # Test injection is deliberately absent from the production CLI. It is
+        # invoked only after every real config, manifest, source and runtime
+        # binding above has passed; tests route it to a TEST_ONLY output store.
+        return _test_only_gate_orchestrator(
+            config=config, manifest=manifest, output_root=output_root,
+            resource_limits=limits)
     return run_approved_research_proposal_cohort(
         output_root, run_id=config["run_id"], cohort_type=config["cohort_type"],
         master_seed=rng["master_seed"], target_admissions=config["target_admissions"],
