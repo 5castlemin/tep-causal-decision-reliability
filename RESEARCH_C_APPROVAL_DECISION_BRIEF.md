@@ -1,8 +1,8 @@
 # Research C — A/B/C 최종 과학적 계약 검토 및 승인 브리프
 
-**정합화 기준:** 이번 변경을 담는 로컬 커밋으로 갱신 예정.
+**정합화 기준:** 승인 반영 커밋 `8d720c090bbfdf4bdcb04e4fd21f946584c6e9cf`; 승인 Bundle Preflight 통과.
 **상태:** A2, P1, 계층 Task 추출 및 잔여 A/B/C 계약·§10.4 Production 자원 상한 권고값은 사용자가 승인했다. 내부 계약 설정은 반영·고정했으며, 실제 Development 실행은 별도 승인 전까지 금지된다.
-**범위:** 계층 Task 계약에 맞춰 Schema·Validator와 승인 문서를 정합화하고 TEST_ONLY 회귀를 검증했다. 새 SCM, 관측자료, 개입 결과 또는 연구 Regret은 만들지 않았다.
+**범위:** A/B/C 승인을 Schema·Validator와 계약 문서에 반영하고 Development 승인 Configuration·Manifest를 결합해 비실행 Preflight를 통과시켰다. 연구 SCM, 관측자료, 개입 결과 또는 연구 Regret은 만들지 않았다.
 
 이번 정합화는 앞선 A2 모집단·P1 primary·계층 Task 승인과 2026-11-23 사용자의 잔여 A/B/C 계약 및 Production 자원 상한 승인을 반영한다. 과학적 계약은 승인됐고, 실제 Development 실행은 별도 승인 전이다. 연구 코호트나 Regret은 생성하지 않았다. 상태는 **CONTRACT_APPROVED / CONFIGURATION_AND_PREFLIGHT_PENDING / EXECUTION_NOT_AUTHORIZED**다.
 
@@ -276,4 +276,4 @@ python scripts/run_research_c_runner.py --mode research --approved-config <appro
 
 Manifest preparer는 이미 USER_APPROVED/PREREGISTERED config의 값과 source/runtime hash를 결합할 뿐이다. 승인 상태를 발급하지 않는다. Schema의 `PREREGISTERED` 문자열 검증은 외부 registry URL/ID 검증이 아니므로, 외부 공개 preregistration을 선택한다면 URL/ID 및 시각을 별도 승인기록에 보존한다. 실행 후 proposal, strict eligible, admitted, complete policy vector, complete paired SCM 분모와 실패율을 각각 보고한다.
 
-**최종 판정: `CONTRACT_APPROVED / CONFIGURATION_AND_PREFLIGHT_PENDING / EXECUTION_NOT_AUTHORIZED`.** 외부 공개 사전등록은 수행하지 않았다. Approved config와 manifest를 준비하고 비실행 Preflight만 통과시킨다. Development 실행은 별도 승인 전까지 차단하며 연구 SCM/Regret은 생성하지 않았다.
+**최종 판정: `CONTRACT_APPROVED / PREFLIGHT_PASSED / EXECUTION_NOT_AUTHORIZED`.** 외부 공개 사전등록은 수행하지 않았다. 승인 Config와 Manifest는 소스 커밋·tree 및 Runtime fingerprint와 결합됐고 비실행 Preflight가 통과했다. Development 실행은 별도 승인 전까지 차단하며 연구 SCM/Regret은 생성하지 않았다. Config SHA-256은 `96267e6f6004bc4255ae3765c8b4a939f3511690b1d4c34d2fd8195a8294b3f4`; 최초 Preflight 시점의 source commit은 `8d720c090bbfdf4bdcb04e4fd21f946584c6e9cf`였다. 이 문서를 갱신한 최종 커밋 후 Manifest source binding을 다시 생성한다.
