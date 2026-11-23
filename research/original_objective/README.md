@@ -25,7 +25,7 @@ GT evaluation function. It atomically writes a checksummed result with code,
 configuration, and input hashes; existing outputs are never overwritten:
 
 ```powershell
-uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python scripts/run_research_c_runner.py --mode fixture --output research/original_objective/test_outputs/independent_runner_fixture_v1.json
+uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python scripts/run_research_c_runner.py --mode fixture --output research/original_objective/test_outputs/independent_runner_fixture_v2.json
 ```
 
 `--mode research` is fail-closed unless an approved config and matching
