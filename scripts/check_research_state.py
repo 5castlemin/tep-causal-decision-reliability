@@ -23,7 +23,7 @@ def render(state):
     if len(priorities) != len(set(priorities)) or not set(priorities) <= set(ids):
         raise ValueError("중복/알 수 없는 우선순위")
     by_id = {x["id"]: x for x in items}
-    status = ["# 프로젝트 현재 상태", "", f"기준일: {state['checked_at']}. 현재 상태는 이 표와 `docs/research_state.json`에만 정의한다.",
+    status = ["# 프로젝트 현재 상태", "", f"기준일: {state['checked_at']}. 현재 상태는 이 표와 `docs/research_state_current.json`에만 정의한다.",
               "과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.", "",
               "| ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |", "|---|---|---|---|---|"]
     for x in items:
@@ -46,7 +46,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--write", action="store_true")
     args = p.parse_args()
-    state = json.loads((ROOT / "docs/research_state.json").read_text(encoding="utf-8-sig"))
+    state = json.loads((ROOT / "docs/research_state_current.json").read_text(encoding="utf-8-sig"))
     for name, content in render(state).items():
         path = ROOT / name
         if args.write:
