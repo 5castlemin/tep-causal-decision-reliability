@@ -26,6 +26,7 @@ from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
 
 from . import policy_engine as pe
+from .unresolved_abstention import encode_residual_unresolved_abstention
 
 
 class _FixtureStageError(RuntimeError):
@@ -50,10 +51,13 @@ def _digest(value) -> str:
                               ensure_ascii=True, allow_nan=False).encode()).hexdigest()
 
 
-def _policy_graph_result(result: Mapping[str, object]) -> dict:
-    if result["final_unresolved"]:
-        raise ValueError("UNRESOLVED_GRAPH_UNSUPPORTED_BY_LINEAR_FIT_ADAPTER")
-    return {"final_graph": result["final_edges"], "edit_sequence": result["edits"]}
+def _policy_graph_result(result: Mapping[str, object], nodes) -> dict:
+    structural = pe.state(result["final_edges"], unresolved=result["final_unresolved"])
+    encoding = encode_residual_unresolved_abstention(structural, nodes=nodes)
+    return {"final_graph": encoding["learner_dag_edges"], "edit_sequence": result["edits"],
+            "learner_graph_sha256": encoding["learner_dag_sha256"],
+            "structural_graph_sha256": encoding["structural_graph_sha256"],
+            "abstention_encoding": encoding}
 
 
 def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
@@ -124,10 +128,16 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                      "unused_budget": structural["unused_budget"],
                      "stop_reason": structural["stop_reason"],
                      "structural_P_S": structural["P_S"], "structural_P_all": structural["P_all"],
+                     "final_error_counts": structural["final_counts"],
+                     "learner_graph_sha256": None, "structural_graph_sha256": structural["final_hash"],
+                     "unresolved_abstention": None,
                      "evaluation_status": "NOT_EVALUATED", "evaluation": None,
                      "test_only": True}
             try:
-                graph = _policy_graph_result(structural)
+                graph = _policy_graph_result(structural, nodes)
+                entry["learner_graph_sha256"] = graph["learner_graph_sha256"]
+                entry["structural_graph_sha256"] = graph["structural_graph_sha256"]
+                entry["unresolved_abstention"] = graph["abstention_encoding"]
             except ValueError as exc:
                 entry["status"] = "GRAPH_INPUT_UNSUPPORTED"
                 entry["failure_reason"] = str(exc)
@@ -135,10 +145,11 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                 policies.append(entry)
                 continue
             try:
-                cache_key = _digest({"graph": graph["final_graph"], "data": input_hash,
+                cache_key = _digest({"learner_dag": graph["final_graph"], "data": input_hash,
                                      "nodes": nodes, "action": fixture.action,
                                      "target": fixture.target, "delta": fixture.delta,
-                                     "candidate_grid": K, "fit": "ridge-alpha-1-v1"})
+                                     "candidate_grid": K, "fit": "ridge-alpha-1-v1",
+                                     "unresolved_encoding": "abstain-v1"})
                 if cache_key not in graph_cache:
                     request = {"node_ids": list(nodes), "action": fixture.action,
                                "target": fixture.target}
@@ -180,7 +191,7 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                                        "decision_margin": _decision_margin(selection["candidates"])}
                 entry["model_cache_key"] = cache_key
                 entry["training_data_sha256"] = input_hash
-                entry["fit_graph_sha256"] = structural["final_hash"]
+                entry["fit_graph_sha256"] = graph["learner_graph_sha256"]
             except Exception as exc:
                 entry["status"] = "GT_EVALUATION_FAILURE"
                 entry["failure_reason"] = f"{type(exc).__name__}:{str(exc)}"

@@ -109,7 +109,8 @@ class EndToEndFixedFixtureTests(unittest.TestCase):
                 self.assertLessEqual(policy["total_edit_cost"], policy["budget"])
                 if policy["evaluation_status"] == "TEST_ONLY_OK":
                     self.assertEqual(policy["training_data_sha256"], first["input"]["observations_sha256"])
-                    self.assertEqual(policy["fit_graph_sha256"], policy["final_graph_sha256"])
+                    self.assertEqual(policy["fit_graph_sha256"], policy["learner_graph_sha256"])
+                    self.assertEqual(policy["structural_graph_sha256"], policy["final_graph_sha256"])
                     self.assertAlmostEqual(policy["evaluation"]["regret"],
                                            policy["evaluation"]["gt_selected_loss"]-
                                            policy["evaluation"]["gt_best_loss"], places=12)
@@ -137,15 +138,22 @@ class EndToEndFixedFixtureTests(unittest.TestCase):
         self.assertEqual({p["candidate_status"] for p in result["budgets"][0]["policies"]
                           if p["policy_id"] != "S0"}, {"NO_INITIAL_ERRORS"})
 
-    def test_residual_unresolved_state_fails_closed_before_fit(self):
+    def test_residual_unresolved_abstention_keeps_structural_state_and_fits(self):
         fixture, meta = make_fixed_fixture()
         unresolved = pe.state([("A", "B"), ("C", "D"), ("X", "M"), ("M", "Y"), ("Z", "Y")],
                               unresolved=[("Z", "X")])
         modified = type(fixture)(fixture.truth_spec, unresolved, fixture.observations,
                                  fixture.action, fixture.target, fixture.delta, True)
         result = run_fixed_fixture(modified, budgets=(0,))
-        statuses = {p["status"] for p in result["budgets"][0]["policies"]}
-        self.assertEqual(statuses, {"GRAPH_INPUT_UNSUPPORTED"})
+        policies = result["budgets"][0]["policies"]
+        self.assertEqual({p["status"] for p in policies}, {"OK"})
+        self.assertEqual({p["evaluation_status"] for p in policies}, {"TEST_ONLY_OK"})
+        for policy in policies:
+            self.assertEqual(policy["final_error_counts"]["M4"]["UNRES"], 1)
+            self.assertEqual(policy["unresolved_abstention"]["omitted_unresolved_count"], 1)
+            self.assertTrue(policy["unresolved_abstention"]["structural_unresolved_removed"] is False)
+            self.assertFalse(policy["unresolved_abstention"]["uses_unresolved_as_directed_parent_child"])
+        self.assertTrue(result["budgets"][0]["common_policy_comparison_allowed"])
 
     def test_test_only_unresolved_completion_is_gt_blind_deterministic_and_fit_usable(self):
         fixture, meta = make_fixed_fixture()

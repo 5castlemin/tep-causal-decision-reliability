@@ -73,12 +73,15 @@ Canonical Oracle comparator for the supplied budgets. It reuses the existing
 Step 3 Ridge fitting, prediction, common action grid and analytic hard-do
 evaluator. The learner receives observations, task and repaired directed graph
 only. It does not receive GT coefficients/effects/losses/regret. GT evaluation
-starts after recommendations are frozen. Residual UNRES is currently rejected
-as `GRAPH_INPUT_UNSUPPORTED`; the Step 3 learner requires a directed DAG, so
-silently treating unresolved adjacency as absent is prohibited. Errors,
-no-candidate state, fit/recommendation failure and GT-evaluation failure are
-separately represented. Equal selected actions are asserted to have equal
-TEST_ONLY regret in the same fixture.
+starts after recommendations are frozen. The current TEST_ONLY integration
+offers `Residual UNRES Abstention Encoding`: residual unresolved pairs remain
+in the structural graph and its metric counts, but do not enter the directed
+learner DAG. This is an unapproved research-contract candidate, not a paid
+repair or resolution, and loses the unresolved edge's directional information.
+The prior `GRAPH_INPUT_UNSUPPORTED` behavior remains documented as the earlier
+fail-closed state. Errors, no-candidate state, fit/recommendation failure and
+GT-evaluation failure are separately represented. Equal selected actions are
+asserted to have equal TEST_ONLY regret in the same fixture.
 
 The deterministic fitted-result cache key covers final graph, observation
 matrix hash, node order, task, delta, action grid, and Ridge setting. Each
@@ -87,13 +90,15 @@ policy record remains present even when the fitted result is shared.
 ## Gate and remaining execution work
 
 The JSON Schema `research_c_candidate_config.schema.json` records proposed
-settings but hard-codes research execution as disabled. No proposal loop,
-durable registry, cohort checkpoint/resume, independent evaluation process, or
-approved resource caps are implemented for Research C. The fixture script
-measures its own wall time, process peak working set on Windows, and serialized
-result bytes; these one-fixture measures are not a cohort projection. The
-existing Step 4 runner's resume logic is not evidence that this new Research C
-path is resumable.
+settings but hard-codes research execution as disabled. The new
+`cohort_ledger_test_only.py` exercises fixture-only atomic per-SCM checkpoints,
+checksums, duplicate protection, resume and boundary resource stops. It is not
+connected to a research proposal/SCM cohort runner, does not isolate or kill a
+worker mid-SCM, and has no approved resource caps. Its RSS check is sampled.
+The structural pilot contains topology and G0 corruption only: no SCM
+coefficients, observations, interventions, fitted models, actions or regret.
+Its measurements are design-feasibility diagnostics, not a cohort resource
+projection or policy-performance result. Research execution remains fail-closed.
 
 No Step 4 assets, Step 5/6 raw data, or A/B results are modified by this
 candidate.
