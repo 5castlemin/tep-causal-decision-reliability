@@ -1,10 +1,12 @@
-# DAT 제조공정 인과 연구 계보와 팀 인수인계
+# DAT 제조공정 — 예산 제약 인과그래프 오류 수정 연구와 팀 인수인계
 
 > 기준: 2026-11-23, 로컬 연구 브랜치 `docs/research-journey-team-handoff-20261123`의 최신 검증 문서. 이 브랜치는 아직 `main`에 병합되지 않았다. 연구 결과는 기존 보고서와 감사 기록을 요약한 것이며, 이 문서 작업에서 새 실험을 실행하지 않았다.
 
 ## Part 1. 5분 만에 이해하는 연구
 
-### 우리가 알고 싶은 것
+### 최종 연구 질문: 주어진 예산에서 무엇부터 고쳐야 하는가?
+
+**현재 우리의 연구 질문은 ‘수정할 수 있는 간선 오류가 제한되어 있을 때, 어떤 오류를 먼저 고쳐야 의사결정 손실(Decision Regret)을 가장 줄일 수 있는가?’이다.** 모든 인과그래프 오류를 완벽하게 복구하려는 연구가 아니다.
 
 공정에서 조작할 수 있는 변수 하나를 바꾸면 목표 변수에 어떤 결과가 생길까? 그 답을 얻으려면 변수 사이의 인과 구조를 알아야 한다. 예를 들어 냉각수 밸브를 조절했을 때 반응기 온도가 어떻게 바뀌는지 알고 싶다고 하자. 냉각수와 온도가 함께 움직이는지만 보는 것으로는 부족하다. 원료 유량이나 압력이 둘 다에 영향을 주는지, 냉각수 변경이 온도에 직접 또는 다른 변수를 거쳐 영향을 주는지를 구분해야 한다.
 
@@ -18,74 +20,30 @@ Research C의 고정 합성 실험에서는 B=2에서 Full Greedy와 무수정 S
 
 ```mermaid
 flowchart LR
-  T[TEP 정상 관측 자료와 참조 그래프] --> D[초기 인과발견 및 구조 점수]
-  D --> Q[관측 적합과 의사결정 가능성 점검]
-  Q --> S[합성 SCM으로 통제된 오류 위치 탐색]
-  S --> R[예산 제약 구조 수정 정책 연구]
-  R --> C[Research C: 오류 주입 → 수정 → 추천 → GT Regret]
-  C --> DEV[Development V1: 64 SCM]
-  DEV --> HO[Held-out V1: 독립 200 SCM]
+  P[초기 TEP 구조 발견] --> L[전체 F1과 실제 결정 품질의 간극 발견]
+  L --> Q[제한된 예산에서 무엇부터 고칠까?]
+  Q --> M[M1~M4 오류 우선순위 정책]
+  M --> D[독립 합성 SCM에서 Regret 평가]
+  D --> H[Held-out V1: 200 SCM]
 ```
 
-## Part 2. 초기 TEP 연구와 Causal Discovery
 
-### 왜 TEP를 봤나
+## Part 2. 과거 연구는 왜 현재 질문으로 이어졌나?
 
-Tennessee Eastman Process는 공정 변수들이 함께 움직이는 복잡한 화학공정 벤치마크다. 실제 제조공정의 인과 연구를 시작하면서 관측 자료와 공정 구조 참조를 이용해 그래프 발견 방법을 비교하는 출발점으로 선택했다. 저장소에 있는 분석 자료는 `datasetTE.csv`의 1,499행 × 31개 분석 변수다. 원 참조 그래프의 33개 변수에서 X27과 X31을 제외해 분석 변수에 맞춘 31개 노드, 28개 간선을 구조 비교에 사용했다.
+초기에는 TEP 정상 운전 관측자료(1,499행 × 31개 변수)에서 PC-stable, BOSS, DirectLiNGAM 등을 포함한 Causal Discovery 방법으로 인과그래프를 추정하고, 28간선의 참고 구조와 F1·SHD 일치도를 비교했다. 하지만 **TEP 참고 그래프는 완전한 인과 Ground Truth로 검증되지 않았고**, 관측값 예측이 실제 개입 효과의 정확성을 뜻하지 않았다.
 
-이 참조 그래프는 **평가용 구조 참조**다. 완전한 실제 인과 Ground Truth로 검증된 것도, 개입 결과의 정답으로 검증된 것도 아니다. 따라서 F1·SHD는 발견 그래프와 이 참조 표현의 일치도를 설명할 뿐, 실제 개입 효과의 정확도를 직접 말해주지 않는다.
+한편 관측자료와 공개 시뮬레이터의 모델·제어기·기록 시계가 충분히 정합하다고 검증되지 않아 실제 TEP 조작 손실을 독립적으로 평가할 수 없었다. 따라서 정답 구조와 조작 결과를 통제하는 **합성 SCM**으로 전환했다. 초기 합성 실험에서는 전체 구조 점수가 같거나 비슷해도 오류가 조작 관련 경로에 있는지에 따라 추천 행동·손실이 달라지는 사례와 반례가 나왔다. **이것이 ‘그래프의 모든 오류를 동일하게 고칠 필요가 있는가?’라는 현재 연구 질문의 출발점**이다.
 
-### 어떤 알고리즘과 점수를 사용했나
+과거 Step 5/6은 별도의 예산·과제 설계를 평가한 연구이며, 현재 Research C의 M1~M4 조합 실험과 같은 코호트가 아니다. 초기 실패·중단·기술 Gate는 역사 기록에 보존하고 이 인수인계 문서에서는 필요한 배경만 설명한다.
 
-초기 저장 결과에는 PC-stable, BOSS, DirectLiNGAM, DAGMA, PCMCI+와 시간 지연을 다루는 VarLiNGAM, DYNOTEARS가 포함된다. 정적 알고리즘과 시계열 알고리즘의 출력 의미가 완전히 같지는 않다. 예를 들어 PCMCI+의 동시점 구조에는 식별 문제가 남았고, 시간 지연 그래프는 같은 시점 그래프와 직접 같은 조건으로 순위를 매길 수 없다.
+근거: [초기 구조 평가](docs/audit/AUDIT_REPORT.md), [초기 합성 결과 및 한계](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md), [TEP 브리지 타당성](docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md), [별도 Step 5/6 결과](research/budget_aware_refinement/STEP5_STEP6_FINAL_RESULTS.md).
 
-Skeleton F1은 방향을 무시하고 연결 유무를 비교한다. Directed F1은 연결뿐 아니라 화살표 방향도 맞는지 본다. SHD는 삽입·삭제·방향 오류를 그래프 거리로 센다. 저장된 비교표에서 표준 Skeleton F1은 PC-stable 0.360, BOSS 0.328, DirectLiNGAM 0.220, DAGMA 0.267, PCMCI+ 0.321, VarLiNGAM 0.175, DYNOTEARS 0.162였고 Directed F1은 각각 0.080, 0.103, 0.095, 0.064, 0.094, 0.025, 0.029였다. 값은 `docs/audit/step6_main_table.csv` 및 감사 보고서를 기준으로 한다.
 
-이 수치는 **저장된 참조 그래프에 대한 구조 일치도**다. 참조의 누락·방향 불확실성, 알고리즘별 그래프 표현 차이, 시간 지연과 동시점 관계 차이를 해결하지 않는다. 일부 Final 그래프 생성 코드도 회수되지 않아 모든 그래프의 생성 과정을 완전히 재실행할 수 있다고 주장하지 않는다.
+## Part 3. 최종 Research C: 어떤 오류를 먼저 수정하는가?
 
-근거: [TEP 구조 감사](docs/audit/AUDIT_REPORT.md), [그래프 재현성 인벤토리](docs/reproducibility/GRAPH_REPRODUCIBILITY.json), [구조 점수 표](docs/audit/step6_main_table.csv).
+### 예산이 2라면 어떤 오류 두 개를 고쳐야 할까?
 
-## Part 3. 초기 SCM과 의사결정 문제
-
-그래프는 변수 의존 구조를 나타내므로 SCM 적합의 부모 구조로 쓸 수 있다. 적합한 모형은 관측 자료에서 목표값을 예측하고, 후보 조작별 예상 결과를 계산해 추천을 만들 수 있다. 하지만 관측 예측을 잘하는 것만으로 조작의 인과 효과를 알아냈다고 할 수 없다. 조작은 관측 상관관계와 다른 분포를 만들 수 있고, 관측 자료만으로 그 차이를 식별하지 못할 수도 있다.
-
-초기 TEP 작업의 정상 관측 Ridge/SCM 적합은 관측 예측 진단이다. 이것은 개입 효과, 공정 회복, 안전성의 검증 결과가 아니다. 실제 조작 평가에는 동일 모델·제어기·운전 조건을 맞춘 검증된 개입 환경과 no-action 기준이 필요했지만, 초기 TEP 자료만으로 그런 독립 정답을 만들 수 없었다.
-
-Research C에서는 GT SCM에서 각 행동의 손실을 계산한 뒤 `추천 행동 손실 − 최선 후보 행동 손실`을 Regret으로 정의한다. 예측 오차가 작아도 의사결정 경계 근처에서 행동을 잘못 고르면 손실이 커질 수 있다. 반대로 예측 오차가 있어도 최선 행동과 같은 쪽을 추천하면 Regret은 0일 수 있다.
-
-근거: [정상 관측 적합 요약](experiments/pilot/logs/normal_fit_summary.json), [제조 타당성 Gate 검토](docs/research_design/MANUFACTURING_VALIDITY_GATE_REVIEW.md).
-
-## Part 4. 왜 합성 SCM으로 이동했나
-
-TEP 관측 자료와 저장된 참조 그래프는 구조 발견을 비교하는 데 유용했지만, 연구의 핵심 질문인 “그래프 오류를 고친 뒤 어떤 조작이 실제로 더 나은가?”에 필요한 개입 정답을 제공하지 않았다. 공개 시뮬레이터 후보, Manca 자료, Ricker 및 Python TEP 경로도 같은 버전·모델·제어기·운전 조건을 보장하는 검증된 동일 환경으로 연결되지 않았다. 브리지 검토는 기존 TEP 효과 경로를 중단하는 NO-GO로 정리했다.
-
-합성 SCM은 참 그래프와 구조방정식, 개입 결과를 생성 규칙 안에서 통제할 수 있다. 그래서 특정 오류가 구조 수정과 행동 선택에 미치는 영향을 분리해 확인할 수 있다. 그 대가로 합성 family의 선형식, 제한된 topology·task·행동 후보·손실 가정에 조건부인 결과만 얻는다. 실제 공정의 비선형성, 제어 루프, 안전 제약, 센서·운전 변화, 경제적 비용을 검증하지 않는다.
-
-근거: [통합 제조 벤치마크 검토](docs/research_design/INTEGRATED_MANUFACTURING_BENCHMARK_REVIEW.md), [TEP 환경 브리지 타당성](docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md), [TEP 효과·의사결정 타당성](docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md).
-
-## Part 5. 오류 위치와 구조 수정의 초기 근거
-
-초기 합성 오류 위치 분석은 같은 총 구조 점수로도 오류가 task 경로에 놓였는지에 따라 추천과 손실이 달라질 수 있음을 보여주는 탐색 자료였다. FN은 참 간선 누락, FP는 참이 아닌 간선 추가, REV는 참 인접성은 남지만 방향이 뒤집힌 경우다. 후속 Research C에서는 미확정 방향 UNRES도 별도 오류 상태로 다룬다.
-
-기존 합성 보고서에는 핵심 경로 누락이 손실을 크게 만든 C07 사례와, 핵심 경로 오류가 항상 더 나쁜 결정으로 이어지지는 않은 C03 반례가 함께 기록돼 있다. 주변 오류도 항상 무해하지 않았다. 이 사례들은 “오류 위치가 중요할 수 있다”는 후속 가설의 근거이지, 한 위치의 오류가 보편적으로 더 해롭다는 법칙은 아니다. path가 유지된다는 사실만으로 효과 추정과 행동이 안전하다고 보장되지 않으며, 경로의 방향·대체 경로·효과 크기·행동 선택 경계가 함께 작용할 수 있다.
-
-근거: [합성 최종 결과와 주장](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md), [Decision Reliability 탐색 보고서](docs/research_design/DECISION_RELIABILITY_NEXT_REPORT.md).
-
-## Part 6. 연구 단계와 방향의 발전
-
-명칭 A/B/C는 연구 계보의 편의상 붙인 단계이며 과거 Step 번호와 일대일 대응한다고 가정하지 않는다. 특히 Step 5/6의 예산 연구는 Research C와 별도 실험 계보로 보존한다.
-
-| 단계 | 질문·자료·방법 | 실제 관찰과 한계 | 왜 다음 단계가 필요했나 |
-|---|---|---|---|
-| 초기 TEP 구조 발견 | TEP 정상 관측 1,499×31과 31노드·28간선 참조를 사용해 여러 discovery 그래프를 비교 | 알고리즘별 구조 일치도는 계산했지만 참조 완전성 및 개입 효과 정답은 미검증. 일부 Final 생성 코드는 회수되지 않음 | 구조 점수만으로 downstream 조작 성능을 말할 수 없었음 |
-| 초기 관측 SCM 진단 | 발견 그래프를 활용한 관측 적합 및 조작 가능성 검토 | 정상 관측 예측 진단이지 독립 개입 효과가 아님 | 실제 개입 정답을 제공할 검증된 TEP 브리지가 없었음 |
-| 통제 합성 오류 위치 연구 | 작은 hand-designed 및 rule-generated SCM에서 핵심·주변 오류와 정책 변화를 탐색 | 같은 전체 점수에도 의사결정이 달라지는 사례와 반례를 확인. 작은·제한된 합성 표본 | 더 체계적인 모집단·오류 주입·고정 정책 비교 필요 |
-| Step 5/6 예산 연구 | Q-common indirect-only 합성 과제, Task-Focused 대 ID-ordered Global, B=1, 개발/확인 코호트 | 개발 64, 확인 200의 기술 비교. 평균 paired 차이는 각각 약 .01466, .02007. 이는 M1–M4 조합 최적화가 아니며 강한 우월성 주장을 뒷받침하지 않음 | 원래 관심이었던 구조 지표별 우선순위와 수정 예산 배분은 별도로 비교해야 했음 |
-| Research C | M1–M4 하위집합 정책, A2 모집단, 여러 예산, 행동 Regret 평가 | Dev 및 독립 Held-out 합성 코호트 완료. 전체 합성 연구 내 재현성 근거를 얻었으나 실제 공정 외부 검증은 없음 | 지금은 추가 정책 확장보다 메커니즘 해석과 현장 타당성의 한계를 정리할 시점 |
-
-Step 5/6 근거: [최종 결과](research/budget_aware_refinement/STEP5_STEP6_FINAL_RESULTS.md), [최종 연구 보고서](research/budget_aware_refinement/FINAL_RESEARCH_REPORT.md), [기존 목적과 최종 연구 감사](ORIGINAL_OBJECTIVE_VS_FINAL_STUDY_AUDIT.md). 해당 숫자를 Research C와 합산하거나 같은 정책 실험으로 표현하지 않는다.
-
-## Part 7. Research C 실험 설계
+*설명용 가상 예시:* 조작변수 X와 목표변수 Y를 잇는 핵심 경로의 누락(FN), 과제와 무관한 주변의 가짜 연결(FP), 그리고 과제 관련 방향 오류(REV)가 하나씩 있다고 가정하자. 오류를 모두 고칠 수 없다면 전체 그래프의 오류 개수보다는 **수정한 뒤 어떤 조작을 추천하고 그 행동의 손실이 어떻게 달라지는지**를 물어야 한다. 실제 정책은 ‘손실의 정답’을 미리 보지 않고 구조적 대리 점수와 단위 수정 비용에 따라 선택한다. 이 예시는 실험에 사용한 특정 SCM 사례가 아니다.
 
 ### 하나의 SCM에서 무엇을 했나
 
@@ -110,7 +68,8 @@ Step 5/6 근거: [최종 결과](research/budget_aware_refinement/STEP5_STEP6_FI
 
 근거: [승인 결정 브리프](RESEARCH_C_APPROVAL_DECISION_BRIEF.md), [실험 계약 V1](RESEARCH_C_EXPERIMENT_CONTRACT_V1.md), [Held-out 분석 잠금](RESEARCH_C_HELDOUT_ANALYSIS_LOCK.md), [정책 엔진](research/original_objective/policy_engine.py), [Research C 코드 안내](research/original_objective/README.md).
 
-## Part 8. Development와 Held-out 결과
+
+## Part 4. 독립 Held-out으로 확인한 결과
 
 원시 SQLite와 감사 JSON은 저장소 밖의 승인된 `C:\DAT_RESEARCH\research-c\...`에 있다. 아래 수치는 커밋된 [Held-out 결과·감사 보고서](RESEARCH_C_HELDOUT_V1_RESULTS.md)와 관련 Development 감사 문서를 기준으로 한다. 원본 ledger는 손대지 않는다.
 
@@ -134,7 +93,8 @@ M4 평균 Regret은 Held-out에서 Full Greedy보다 낮았지만 이는 Develop
 
 근거: [Held-out 전체 결과](RESEARCH_C_HELDOUT_V1_RESULTS.md), [Development 감사](RESEARCH_C_DEVELOPMENT_V1_AUDIT.md), [Development provenance 정정](RESEARCH_C_DEVELOPMENT_V1_PROVENANCE_CORRECTION.md).
 
-## Part 9. 무엇을 주장할 수 있고 없는가
+
+## Part 5. 최종 결론과 주장할 수 없는 것
 
 **확인된 범위:** 승인된 합성 SCM 생성·task·G0·수정·평가 조건에서 Full Greedy 대 S0의 P1 평균 paired regret 차이는 Development와 Held-out에서 모두 양수였다. 구조 변화, 행동 변화, Regret 변화는 각각 구분해 기록됐다.
 
@@ -144,7 +104,8 @@ M4 평균 Regret은 Held-out에서 Full Greedy보다 낮았지만 이는 Develop
 
 **한계:** 합성 signed-linear SCM, 네 topology template와 제한된 task/action/loss, GT DAG 기반 Oracle-assisted repair, 고정된 관측표본·오차 생성, 실제 TEP 개입 및 제조공정 외부 검증 부재. 본 결과는 실제 제조공정의 회복·수율·안전성이나 현장 배포를 입증하지 않는다. 초기 TEP 참조 그래프도 완전한 인과 GT로 검증되지 않았다.
 
-## Part 10. 팀원 역할과 실행 가능한 업무
+
+## Part 6. 팀원 역할과 실행 가능한 업무
 
 | 담당 | 책임 | 이번 주 범위 |
 |---|---|---|
@@ -168,11 +129,12 @@ M4 평균 Regret은 Held-out에서 Full Greedy보다 낮았지만 이는 Develop
 
 발표 이후 문서 중 이해하기 어려운 설명 표시, 연구 질문과 결과 연결에 대한 피드백, 비전공자 관점의 예상 질문 3–5개 제안이 가능하다. 이번 주에는 별도 코딩·시뮬레이터·연구 과제를 부여하지 않는다.
 
-## Part 11. 저장소와 GitHub 인수인계
+
+## Part 7. 저장소와 GitHub 인수인계
 
 ### 새 팀원이 읽을 순서
 
-1. `README.md` — 현재 로컬 연구 브랜치 상태와 시작 링크.
+1. `README.md` — 현재 연구 브랜치의 시작 링크.
 2. 이 문서 — 연구 질문이 바뀐 이유와 실험 계보.
 3. `RESEARCH_C_APPROVAL_DECISION_BRIEF.md` 및 `RESEARCH_C_EXPERIMENT_CONTRACT_V1.md` — 승인된 계약.
 4. `RESEARCH_C_HELDOUT_ANALYSIS_LOCK.md`, `RESEARCH_C_HELDOUT_V1_RESULTS.md` — 분석 잠금과 최종 결과.
@@ -188,13 +150,14 @@ M4 평균 Regret은 Held-out에서 Full Greedy보다 낮았지만 이는 Develop
 - Research C 실행·정책·테스트: `research/original_objective/`, `scripts/run_research_c_runner.py`, `tests/`.
 - Research C 계약·감사·결과: 저장소 루트의 `RESEARCH_C_*.md`.
 - 로컬 외부 원본: `C:\DAT_RESEARCH\research-c\...`; 저장소 밖이므로 팀원이 자동으로 볼 수 없으며 GitHub에 복사하지 않는다. 접근과 공유 권한은 별도 확인한다.
+- 운영 상태는 `docs/research_state_current.json`; `docs/research_state.json`은 과거 Step 4 동결 해시가 걸린 스냅샷으로 편집 금지.
 - 자료 출처·권리·재현 지침: `data/README.md`, `docs/reproducibility/TEAM_GUIDE.md`.
 
 ### 협업 원칙
 
 먼저 현재 작업 브랜치와 README의 source branch를 확인한다. 개인 작업은 별도 브랜치에서 하고, 목적과 변경 범위가 분명한 PR로 검토한다. 결과·원본을 읽기 전용으로 다루며, 문제 신고 시 SCM ID, proposal ID, source/config/manifest 식별자, 파일 checksum, 재현 명령, 기대/실제 차이 및 단계별 실패 사유를 제공한다. 원격 main 직접 수정, 동결 자료 덮어쓰기, 외부 원시 데이터 업로드는 하지 않는다.
 
-2026-11-23 조사 시 이 문서 브랜치는 로컬에서 `origin/main`보다 41개 커밋 앞서 있었고, 117개 파일 규모의 변경이 main 대비 포함됐다. 이는 문서만의 diff가 아니다. 따라서 이 작업에서는 넓은 연구 이력을 포함한 원격 Push를 보류한다. 문서는 현재 로컬 브랜치에서 검토 가능하며, GitHub 공개 범위는 사용자가 PR base/head와 기존 의존성 범위를 확인한 뒤 결정해야 한다. 기존 PR #38은 병합되었고, #34/#35는 별개의 TEP 작업이므로 이 작업에서 수정하지 않았다.
+인수인계와 Research C 산출물은 원격 연구·문서 브랜치에 Push되었지만 아직 `main`에 병합되지 않았다. [실제 main 대비 변경 범위](https://github.com/5castlemin/tep-causal-decision-reliability/compare/main...docs/research-journey-team-handoff-20261123)는 문서뿐 아니라 다수의 기존 연구 코드·결과를 포함한다. 별도 복구 브랜치 `repair/frozen-step4-active-state-20261123`는 Step 4 동결 파일과 현재 운영 상태를 분리해 검증하기 위한 후속 작업이다. PR #38은 2026-11-16 병합되었으며 #34/#35 등 별개 TEP PR은 여기서 변경하지 않는다. PR 생성 및 병합은 사용자 결정이다.
 
 ## 주요 근거 문서
 
