@@ -29,9 +29,10 @@ uv run --python <Python-3.11.15-path> --with-requirements requirements.txt pytho
 ```
 
 `--mode research` is fail-closed unless an approved config and matching
-execution manifest are provided. Even with such a bundle, this first-stage
-runner does not yet implement multi-SCM cohort orchestration; that remains a
-separate implementation gate.
+execution manifest are provided. The manifest must bind cohort type, config
+hash, commit/tree and every runner code hash. Even with such a bundle, the
+entry point still blocks because this TEST_ONLY orchestration is not a research
+cohort executor.
 
 ## Proposed SCM/task population
 
@@ -105,15 +106,26 @@ policy record remains present even when the fitted result is shared.
 ## Gate and remaining execution work
 
 The JSON Schema `research_c_candidate_config.schema.json` records proposed
-settings but hard-codes research execution as disabled. The new
-`cohort_ledger_test_only.py` exercises fixture-only atomic per-SCM checkpoints,
-checksums, duplicate protection, resume and boundary resource stops. It is not
-connected to a research proposal/SCM cohort runner, does not isolate or kill a
-worker mid-SCM, and has no approved resource caps. Its RSS check is sampled.
+settings and keeps research execution disabled. The independent multi-fixture
+runner uses a SQLite ledger with per-SCM states, domain-separated seed IDs,
+atomic result/checksum commits, resume and duplicate/config-conflict checks.
+`scripts/run_research_c_fixture_cohort.py` runs the fixed SCM and a separate
+hand-specified nondegenerate TEST_ONLY SCM. Use the same output root, run ID,
+seed, fixture set and budgets to resume:
+
+```powershell
+uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python scripts/run_research_c_fixture_cohort.py --output-root <new-temp-directory> --run-id fixture-cohort-v1 --master-seed 20261124 --budgets 0 1 2 3 4
+```
+
+The cohort layer is TEST_ONLY. It does not sample research SCMs, enforce
+production resource caps, or isolate production workers mid-SCM. The separate
+`cohort_ledger_test_only.py` remains a fixture resource-stop test double.
+Research execution stays fail-closed.
+
 The structural pilot contains topology and G0 corruption only: no SCM
 coefficients, observations, interventions, fitted models, actions or regret.
-Its measurements are design-feasibility diagnostics, not a cohort resource
-projection or policy-performance result. Research execution remains fail-closed.
+Its measurements are design-feasibility diagnostics, not policy-performance
+results.
 
 No Step 4 assets, Step 5/6 raw data, or A/B results are modified by this
 candidate.

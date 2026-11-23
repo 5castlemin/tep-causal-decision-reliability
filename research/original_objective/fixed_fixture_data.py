@@ -22,3 +22,31 @@ def make_fixed_fixture() -> tuple[FixtureInput, dict]:
     g0 = state([("D", "C"), ("X", "Z"), ("Z", "Y"), ("M", "Y"), ("A", "Y")])
     fixture = FixtureInput(truth_spec, g0, observations, "X", "Y", delta=1, test_only=True)
     return fixture, {"truth": state(edges), "nodes": nodes, "exogenous_noise_source": "fixed trigonometric sequence"}
+
+
+def make_nondegenerate_fixture() -> tuple[FixtureInput, dict]:
+    """Explicit three-node TEST_ONLY SCM where repairing one FN changes regret.
+
+    The hand-specified G0 omits X->M; it is a software verification example,
+    not a sampled SCM or evidence about a research policy.
+    """
+    nodes = ["X", "M", "Y"]
+    truth_spec = {
+        "nodes": nodes, "topological_order": nodes,
+        "edges": [["X", "M"], ["M", "Y"]],
+        "coefficients": {"X->M": 0.9, "M->Y": 0.9},
+        "noise": {"family": "fixed_test_only", "means": dict.fromkeys(nodes, 0.0),
+                  "sd": dict.fromkeys(nodes, 1.0)},
+    }
+    row = np.arange(512, dtype=np.float64)
+    noise = np.column_stack((np.sin(row * 0.013), np.cos(row * 0.017),
+                             np.sin(row * 0.023) + np.cos(row * 0.007)))
+    observations = np.asarray(
+        simulate_from_exogenous_noise(truth_spec, noise)["rows"], dtype=np.float64)
+    # Deliberate fixture FN: the directed path is broken at X->M.
+    g0 = state([("M", "Y")])
+    fixture = FixtureInput(truth_spec, g0, observations, "X", "Y", delta=1,
+                           test_only=True)
+    return fixture, {"truth": state(truth_spec["edges"]), "nodes": nodes,
+                     "exogenous_noise_source": "fixed trigonometric sequence",
+                     "fixture_role": "TEST_ONLY_NONDEGENERATE_REGRET_VALIDATION"}

@@ -3,7 +3,8 @@
 Fixture mode runs only the repository's explicit TEST_ONLY SCM through the
 existing G0, policy, fit/recommendation and analytic GT evaluation code.
 Research mode remains fail-closed until a separately approved contract and
-matching execution manifest exist; cohort orchestration is a later stage.
+matching execution manifest exist. Multi-SCM orchestration is fixture-only;
+production proposal sampling remains a later, approval-gated stage.
 """
 from __future__ import annotations
 
@@ -24,6 +25,7 @@ from research.budget_aware_refinement.step3_adapter import K
 ROOT = Path(__file__).resolve().parents[2]
 CODE_BINDING_FILES = (
     "research/original_objective/runner.py",
+    "research/original_objective/cohort_runner.py",
     "research/original_objective/e2e_fixture.py",
     "research/original_objective/policy_engine.py",
     "research/original_objective/g0_candidate.py",
@@ -87,28 +89,35 @@ def _input_binding(fixture) -> dict:
     }
 
 
-def run_fixture_mode(output_path: Path, *, g0_seed: int = 44017,
-                     task_id: str = "fixed-test-only-task",
-                     budgets=(0, 1, 2, 3, 4)) -> dict:
-    """Run one fixed TEST_ONLY SCM and atomically persist policy outcomes."""
-    output_path = Path(output_path).expanduser().resolve()
-    if output_path.exists():
-        raise FileExistsError(f"refusing to overwrite existing result: {output_path}")
-    fixture, metadata = make_fixed_fixture()
+def execute_fixture_input(fixture, *, metadata: dict, g0_seed: int,
+                          task_id: str, budgets=(0, 1, 2, 3, 4),
+                          apply_g0_generator: bool = True) -> dict:
+    """Execute one explicit TEST_ONLY fixture without writing a result file."""
+    if fixture.test_only is not True:
+        raise PermissionError("fixture runner accepts only explicit TEST_ONLY SCM inputs")
     truth = pe.state(fixture.truth_spec["edges"])
-    g0 = corrupt_graph_candidate(truth, nodes=fixture.truth_spec["nodes"],
-                                 action=fixture.action, target=fixture.target,
-                                 master_seed=g0_seed, task_id=task_id)
-    initial = pe.state(g0["initial_graph"]["edges"],
-                       unresolved=g0["initial_graph"]["unresolved"])
-    fixture = replace(fixture, initial_graph=initial, test_only=True)
+    if apply_g0_generator:
+        g0 = corrupt_graph_candidate(truth, nodes=fixture.truth_spec["nodes"],
+                                     action=fixture.action, target=fixture.target,
+                                     master_seed=g0_seed, task_id=task_id)
+        initial = pe.state(g0["initial_graph"]["edges"],
+                           unresolved=g0["initial_graph"]["unresolved"])
+        fixture = replace(fixture, initial_graph=initial, test_only=True)
+    else:
+        g0 = {"classification": "TEST_ONLY_FIXED_G0", "g0_seed_binding": g0_seed,
+              "task_id": task_id, "initial_graph": {
+                  "edges": [list(edge) for edge in fixture.initial_graph.values()
+                            if edge != pe.UNRES],
+                  "unresolved": [list(pair) for pair, edge in fixture.initial_graph.items()
+                                 if edge == pe.UNRES]},
+              "retries": 0}
 
     code_hashes = _code_hashes(ROOT)
     input_binding = _input_binding(fixture)
     config = {
         "mode": "FIXTURE_TEST_ONLY", "budgets": list(budgets),
         "g0_seed": g0_seed, "task_id": task_id,
-        "g0_rates": g0["rates"]["configured"],
+        "g0_rates": g0.get("rates", {}).get("configured", "EXPLICIT_TEST_ONLY_G0"),
         "policy_ids": ["S0", *["+".join(s) for s in pe.catalog()], "CANONICAL_ORACLE"],
         "repair_config": pe.Config().__dict__,
         "unresolved_encoding": "Residual UNRES Abstention Encoding",
@@ -121,7 +130,7 @@ def run_fixture_mode(output_path: Path, *, g0_seed: int = 44017,
             policy["shared_input_sha256"] = _digest(input_binding)
             policy["shared_observations_sha256"] = input_binding["observations_sha256"]
             policy["shared_action_candidates"] = input_binding["action_candidates"]
-    payload = {
+    return {
         "schema": "research-c-fixture-runner-v1",
         "classification": "TEST_ONLY_NOT_RESEARCH_COHORT",
         "test_only": True,
@@ -137,6 +146,18 @@ def run_fixture_mode(output_path: Path, *, g0_seed: int = 44017,
         "fixture_metadata": metadata,
         "e2e_result": result,
     }
+
+
+def run_fixture_mode(output_path: Path, *, g0_seed: int = 44017,
+                     task_id: str = "fixed-test-only-task",
+                     budgets=(0, 1, 2, 3, 4)) -> dict:
+    """Run one fixed TEST_ONLY SCM and atomically persist policy outcomes."""
+    output_path = Path(output_path).expanduser().resolve()
+    if output_path.exists():
+        raise FileExistsError(f"refusing to overwrite existing result: {output_path}")
+    fixture, metadata = make_fixed_fixture()
+    payload = execute_fixture_input(fixture, metadata=metadata, g0_seed=g0_seed,
+                                    task_id=task_id, budgets=budgets)
     wrapper = {"payload": payload, "payload_sha256": _digest(payload)}
     encoded = json.dumps(_jsonable(wrapper), ensure_ascii=False, sort_keys=True,
                          indent=2, allow_nan=False).encode("utf-8") + b"\n"
@@ -157,10 +178,12 @@ def run_fixture_mode(output_path: Path, *, g0_seed: int = 44017,
         if temp_path.exists():
             temp_path.unlink()
     return {"output_path": str(output_path), "payload_sha256": wrapper["payload_sha256"],
-            "config_sha256": config_hash, "input_sha256": payload["input_sha256"],
-            "policy_evaluation_count": sum(len(row["policies"]) for row in result["budgets"]),
-            "all_policy_vectors_complete": all(row["policy_vector_status"] == "COMPLETE"
-                                                for row in result["budgets"]),
+            "config_sha256": payload["config_sha256"], "input_sha256": payload["input_sha256"],
+            "policy_evaluation_count": sum(len(row["policies"])
+                                            for row in payload["e2e_result"]["budgets"]),
+            "all_policy_vectors_complete": all(
+                row["policy_vector_status"] == "COMPLETE"
+                for row in payload["e2e_result"]["budgets"]),
             "classification": payload["classification"]}
 
 
@@ -169,8 +192,9 @@ def run_research_mode(*, approved_config_path: Path | None,
                       fixture_factory=make_fixed_fixture):
     """Fail closed before invoking any data/SCM factory.
 
-    This first-stage runner intentionally has no research-cohort executor. A
-    valid future approval bundle will still require the later cohort runner.
+    The first-stage runner intentionally has no research-cohort executor. A
+    valid approval bundle is validated and then still blocked until a separate
+    production cohort executor is implemented.
     """
     if approved_config_path is None or execution_manifest_path is None:
         raise ResearchModeBlocked("approved config and matching execution manifest are required")
@@ -182,9 +206,20 @@ def run_research_mode(*, approved_config_path: Path | None,
     if (config.get("contract_status") != "USER_APPROVED"
             or config.get("research_cohort_execution_enabled") is not True):
         raise ResearchModeBlocked("research contract is not explicitly user-approved and enabled")
+    required = {"cohort_type", "population", "scm", "task", "g0", "repair", "evaluation"}
+    if not required.issubset(config):
+        raise ResearchModeBlocked(f"approved config missing fields: {sorted(required - set(config))}")
+    if config.get("cohort_type") not in {"development", "independent_evaluation"}:
+        raise ResearchModeBlocked("config cohort_type must be development or independent_evaluation")
     if manifest.get("approval_status") != "USER_APPROVED":
         raise ResearchModeBlocked("execution manifest lacks USER_APPROVED status")
     if manifest.get("config_sha256") != _digest(config):
         raise ResearchModeBlocked("execution manifest config hash mismatch")
+    if manifest.get("cohort_type") != config["cohort_type"]:
+        raise ResearchModeBlocked("execution manifest cohort type mismatch")
+    if manifest.get("source_revision") != _git_revision(ROOT):
+        raise ResearchModeBlocked("execution manifest commit/tree mismatch")
+    if manifest.get("code_sha256") != _code_hashes(ROOT):
+        raise ResearchModeBlocked("execution manifest code hash mismatch")
     raise NotImplementedError(
         "approval bundle validated, but multi-SCM production orchestration is a later implementation stage")
