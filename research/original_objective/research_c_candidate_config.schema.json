@@ -11,13 +11,14 @@
     "research_cohort_execution_enabled": {"const": false},
     "population": {
       "type": "object", "additionalProperties": false,
-      "required": ["topology_source", "templates", "node_counts", "target_edge_density", "task_rule"],
+      "required": ["topology_source", "templates", "node_counts", "target_edge_density", "task_rule", "eligibility_rule"],
       "properties": {
         "topology_source": {"const": "existing_step4_topology_generator_new_research_c_rng_namespace"},
         "templates": {"const": ["chain_mediation", "fork_branch", "observed_common_cause", "multiple_directed_paths"]},
         "node_counts": {"const": [6, 7, 8, 9, 10]},
         "target_edge_density": {"const": [0.2, 0.4]},
-        "task_rule": {"const": "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge"}
+        "task_rule": {"const": "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge"},
+        "eligibility_rule": {"const": "strict_indirect_only; allow_zero_fn_fp_rev_recipe_support"}
       }
     },
     "scm": {
@@ -69,19 +70,20 @@
         "const": {"add": 1, "delete": 1, "orient": 1, "resolve": 1, "delete_unresolved": 1}
       },
       "budgets": {
-        "description": "Execution stores outcomes for every budget: B=0 is the no-edit reference; B=1 is secondary; B=2 is the proposed primary analysis budget; B=3 and B=4 are saturation diagnostics. This field is the execution grid, not a statement that all budgets are co-primary.",
+      "description": "Execution stores outcomes for every budget: B=0 is the no-edit reference; B=1 is secondary; B=2 is the user-approved P1 primary analysis budget; B=3 and B=4 are saturation diagnostics. This field is the execution grid, not a statement that all budgets are co-primary.",
         "const": [0, 1, 2, 3, 4]
       }
       }
     },
     "evaluation": {
       "type": "object", "additionalProperties": false,
-      "required": ["recommendation_input", "gt_evaluator", "regret", "research_result_gate"],
+      "required": ["recommendation_input", "gt_evaluator", "regret", "research_result_gate", "primary_contrast"],
       "properties": {
         "recommendation_input": {"const": "shared_observations_and_repaired_graph_only"},
         "gt_evaluator": {"const": "analytic_hard_do_after_recommendation_frozen"},
         "regret": {"const": "GT_selected_candidate_loss_minus_best_loss_on_same_grid"},
-        "research_result_gate": {"const": "BLOCK_UNTIL_USER_APPROVAL_AND_PREREGISTRATION"}
+        "research_result_gate": {"const": "BLOCK_UNTIL_USER_APPROVAL_AND_PREREGISTRATION"},
+        "primary_contrast": {"const": "B2_S0_minus_Full_Greedy_mean_SCM_paired_Regret_difference"}
       }
     }
   }

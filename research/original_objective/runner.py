@@ -136,6 +136,7 @@ def _validate_supported_research_contract(config: dict) -> None:
             "templates": list(TEMPLATES), "node_counts": [6, 7, 8, 9, 10],
             "target_edge_density": [0.2, 0.4],
             "task_rule": "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge",
+            "eligibility_rule": "strict_indirect_only; allow_zero_fn_fp_rev_recipe_support",
         },
         "scm": {
             "family": "signed_linear_acyclic", "coefficient_abs_range": [0.25, 0.8],
@@ -164,6 +165,7 @@ def _validate_supported_research_contract(config: dict) -> None:
         "evaluation": {"recommendation_input": "shared_observations_and_repaired_graph_only",
             "gt_evaluator": "analytic_hard_do_after_recommendation_frozen",
             "regret": "GT_selected_candidate_loss_minus_best_loss_on_same_grid",
+            "primary_contrast": "B2_S0_minus_Full_Greedy_mean_SCM_paired_Regret_difference",
             "research_result_gate": "APPROVED_PREREGISTERED_EXECUTION"},
     }
     for section, value in expected.items():
@@ -264,6 +266,21 @@ def execute_fixture_input(fixture, *, metadata: dict, g0_seed: int,
             policy["shared_input_sha256"] = _digest(input_binding)
             policy["shared_observations_sha256"] = input_binding["observations_sha256"]
             policy["shared_action_candidates"] = input_binding["action_candidates"]
+        if budget_result["budget"] == 2:
+            primary = budget_result["primary_comparison"]
+            primary["shared_conditions"] = {
+                "truth_spec_sha256": input_binding["truth_spec_sha256"],
+                "observations_sha256": input_binding["observations_sha256"],
+                "action": input_binding["action"], "target": input_binding["target"],
+                "delta": input_binding["delta"],
+                "action_candidates": input_binding["action_candidates"],
+            }
+            primary["same_conditions_for_pair"] = all(
+                policy["shared_input_sha256"] == _digest(input_binding)
+                and policy["shared_observations_sha256"] == input_binding["observations_sha256"]
+                and policy["shared_action_candidates"] == input_binding["action_candidates"]
+                for policy in budget_result["policies"]
+                if policy["policy_id"] in {"S0", "M1+M2+M3+M4"})
     return {
         "schema": "research-c-fixture-runner-v1",
         "classification": classification,

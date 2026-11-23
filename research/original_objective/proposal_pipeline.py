@@ -12,7 +12,9 @@ from typing import Any
 
 import numpy as np
 
-from research.budget_aware_refinement.step4c1_proposal import build_structural_proposal
+from research.budget_aware_refinement.step4c1_proposal import (
+    _seed as _proposal_seed, build_structural_proposal,
+)
 from research.budget_aware_refinement.step4c1_scm import (
     generate_observations, generate_scm_parameters,
 )
@@ -24,6 +26,45 @@ from .cohort_runner import (run_approved_research_cohort, run_proposal_stage,
 from .execution_limits import ResourceLimits
 from .e2e_fixture import FixtureInput
 from .g0_candidate import corrupt_graph_candidate
+
+
+def build_research_c_proposal(*, cohort: str, master_seed: int,
+                              proposal_id: str, attempt: int,
+                              template: str | None = None,
+                              node_count: int | None = None) -> dict:
+    """Apply A2 admission without changing the frozen Step 4 proposal helper.
+
+    Strict indirect-only task eligibility remains the gate. A proposal rejected
+    only because it lacks legacy Q-common repair recipes is retained for
+    Research C and marked outside the Q-common secondary subset.
+    """
+    proposal = dict(build_structural_proposal(
+        cohort=cohort, master_seed=master_seed, proposal_id=proposal_id,
+        attempt=attempt, template=template, node_count=node_count))
+    proposal["q_common_eligible"] = bool(proposal.get("accepted"))
+    proposal.setdefault("q_recipe_counts", None)
+    if proposal.get("accepted"):
+        return proposal
+    if proposal.get("reason") != "missing_same_type_two_candidate_support":
+        return proposal
+
+    # The frozen helper selected and recorded a strict task before applying its
+    # legacy Q-common filter. Preserve the same deterministic SCM ID and streams.
+    prefix = "dev-scm-" if cohort == "development" else "rep-scm-"
+    scm_id = f"{prefix}{proposal_id}-a{attempt:04d}"
+    proposal.update({
+        "accepted": True, "reason": None, "scm_id": scm_id,
+        "q_common_eligible": False,
+        "post_eligibility_rng_seeds": {
+            stream: _proposal_seed(cohort, master_seed, scm_id,
+                proposal["template"], proposal["node_count"], attempt, stream)
+            for stream in ("coefficient", "exogenous_noise", "observational_sample",
+                           "policy_schedule")
+        },
+        "scm_generated": False,
+        "research_c_population_rule": "A2_STRICT_INDIRECT_ONLY_NO_Q_COMMON_RECIPE_GATE",
+    })
+    return proposal
 
 
 @dataclass(frozen=True)
@@ -227,7 +268,7 @@ def run_test_only_proposal_cohort(output_root, *, run_id: str,
 
 def build_approved_research_inputs(*, cohort_type: str, master_seed: int,
                                    target_admissions: int, proposal_cap: int,
-                                   proposal_builder=build_structural_proposal):
+                                   proposal_builder=build_research_c_proposal):
     """Build deterministic proposal records/factories without executing them.
 
     This function is called only after the runner validates the signed
@@ -314,7 +355,7 @@ def run_approved_research_proposal_cohort(output_root, *, run_id: str,
         output_root, run_id=run_id, cohort_type=cohort_type,
         master_seed=master_seed, target_admissions=target_admissions,
         proposal_cap=proposal_cap, resource_limits=resource_limits,
-        _authorization=_authorization)
+        _authorization=_authorization, proposal_builder=build_research_c_proposal)
     if not stage["proposal_stage_complete"]:
         return {"run_id": run_id, "cohort_type": cohort_type,
                 "proposal_stage": stage, "admitted_scm_count": 0,
@@ -341,7 +382,7 @@ def run_approved_research_proposal_cohort(output_root, *, run_id: str,
     result["all_target_admissions_completed"] = (
         built["shortfall"] == 0 and result["completed_scm_count"] == target_admissions)
     result["pipeline"] = {"stages": ["configuration_and_manifest_gate", "topology_proposal",
-        "strict_indirect_only_eligibility", "scm_admission", "scm_parameters",
+        "strict_indirect_only_eligibility_A2_no_Q_common_gate", "scm_admission", "scm_parameters",
         "shared_observations", "g0_corruption", "17_policy_e2e", "analytic_gt_evaluation",
         "regret", "checksum_ledger"], "cohort_namespace": built["cohort"],
         "regret_used_for_admission": False}

@@ -230,6 +230,29 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                 policy["same_regret_as_S0"] = None
                 policy["regret_change_from_S0"] = None
         pairwise = _policy_comparison_diagnostics(policies, initial_error_count, mode=mode)
+        primary = {"contrast_id": "P1_B2_S0_MINUS_FULL_GREEDY",
+                   "budget": 2, "unit": "SCM",
+                   "estimand": "mean_SCM_paired_Regret_difference",
+                   "formula": "Regret(S0,B=2)-Regret(FullGreedy,B=2)",
+                   "positive_means": "Full Greedy has lower Decision Regret",
+                   "cohort_aggregation": "not_computed_by_single_SCM_runner"}
+        if budget != 2:
+            primary.update({"status": "NOT_PRIMARY_BUDGET", "delta": None})
+        else:
+            s0_primary = next(p for p in policies if p["policy_id"] == "S0")
+            full_primary = next(p for p in policies
+                                if p["policy_id"] == "M1+M2+M3+M4")
+            complete_pair = all(
+                p["evaluation_status"] == status_ok
+                for p in (s0_primary, full_primary))
+            primary.update({
+                "status": "COMPLETE" if complete_pair else "INCOMPLETE_PAIRED_EVALUATION",
+                "policy_ids": ["S0", "M1+M2+M3+M4"],
+                "same_fixture_conditions": True,
+                "delta": (s0_primary["evaluation"]["regret"] -
+                          full_primary["evaluation"]["regret"])
+                         if complete_pair else None,
+            })
         timing_by_budget.append({"budget": budget,
             "structural_policy_execution_seconds": structural_seconds,
             "fit_recommendation_seconds": fit_recommendation_seconds,
@@ -237,6 +260,7 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
         # Remove the internal tuples from the output, retaining all per-policy
         # failures. S0 and policies are repeated observations within one fixture.
         rows.append({"budget": budget, "policies": policies,
+                     "primary_comparison": primary,
                      "distinct_successful_graphs": len({p["final_graph_sha256"] for p in policies
                                                         if p["status"] == "OK"}),
                      "policy_vector_status": "COMPLETE" if all(

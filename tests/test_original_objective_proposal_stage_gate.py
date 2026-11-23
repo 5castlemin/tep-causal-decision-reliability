@@ -51,7 +51,8 @@ def _contract():
         "population": {"topology_source": "existing_step4_topology_generator_new_research_c_rng_namespace",
             "templates": list(TEMPLATES), "node_counts": [6, 7, 8, 9, 10],
             "target_edge_density": [0.2, 0.4],
-            "task_rule": "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge"},
+            "task_rule": "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge",
+            "eligibility_rule": "strict_indirect_only; allow_zero_fn_fp_rev_recipe_support"},
         "scm": {"family": "signed_linear_acyclic", "coefficient_abs_range": [0.25, 0.8],
             "sign_probability": "independent_fair_sign",
             "noise": {"family": "independent_centered_gaussian", "sd_range": [0.8, 1.2]},
@@ -76,6 +77,7 @@ def _contract():
         "evaluation": {"recommendation_input": "shared_observations_and_repaired_graph_only",
             "gt_evaluator": "analytic_hard_do_after_recommendation_frozen",
             "regret": "GT_selected_candidate_loss_minus_best_loss_on_same_grid",
+            "primary_contrast": "B2_S0_minus_Full_Greedy_mean_SCM_paired_Regret_difference",
             "research_result_gate": "APPROVED_PREREGISTERED_EXECUTION"}}
 
 

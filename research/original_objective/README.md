@@ -1,6 +1,6 @@
 # Research C integration candidate
 
-Status: **PROPOSED / NOT APPROVED / NOT PREREGISTERED**. This package currently
+Status: **A2 and P1 approved only; remaining contract PROPOSED / NOT APPROVED / NOT PREREGISTERED**. This package currently
 contains a structural repair engine, a deterministic G0 design candidate,
 an end-to-end **TEST_ONLY** adapter, and an independent single-fixture runner.
 Research cohort execution is implemented behind a strict approval gate and
@@ -55,6 +55,18 @@ proposal generation immediately after the same checks and must only be used
 after approval. Do not use a TEST_ONLY synthetic gate fixture as a research
 approval.
 
+The manifest preparer binds an already approved configuration to a clean
+committed source revision and current Research C runtime:
+
+```powershell
+python scripts/prepare_research_c_manifest.py --approved-config <approved-config.json> --output <execution-manifest.json>
+python scripts/run_research_c_runner.py --mode preflight --approved-config <approved-config.json> --execution-manifest <execution-manifest.json>
+```
+
+Manifest preparation does not grant approval or preregister the study. It
+refuses a proposed config, an uncommitted source tree, or an existing output
+file. This command was not used to create an actual approval manifest here.
+
 For the validated Windows CPython 3.11.15 environment, install the exact
 Research C package set with
 `python -m pip install -r research/original_objective/research_c_runtime_lock.txt`;
@@ -84,6 +96,20 @@ analytic SCM rather than a held-out observational outcome. The loss is squared
 standardized target-mean error. The absence of a held-out observational split
 means this candidate evaluates decisions under the specified model, not
 generalization to a new production dataset.
+
+For the user-approved A2 admission rule, strict indirect-only task eligibility
+remains required, but lack of one or more legacy FN/FP/REV recipe supports is
+not an admission failure. The Research C proposal wrapper records
+`q_common_eligible` and recipe counts for a secondary Q-common subset analysis.
+Zero-error G0 and policy-specific no-op cases remain in the cohort; no-op has
+zero edits and zero cost. Other population and G0 values remain proposed.
+
+The user-approved P1 primary is B=2, S0 versus Full Greedy
+(`M1+M2+M3+M4`) on paired SCMs. Per-SCM records store
+`Regret(S0)-Regret(Full Greedy)`; positive values favor Full Greedy. The
+single-SCM runner does not calculate cohort means or uncertainty intervals.
+Canonical Oracle and all other policy/budget comparisons remain secondary or
+diagnostic; this choice does not establish Full Greedy as the best subset.
 
 ## Proposed G0 corruption candidate
 

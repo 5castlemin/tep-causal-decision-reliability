@@ -2,6 +2,8 @@
 
 **상태: 승인용 제안서 / NOT APPROVED / NOT FROZEN / NOT PREREGISTERED**
 
+**결정 반영 주석:** 사용자는 A2(Strict indirect-only task 유지, Q-common recipe support gate 제거, 기회 부재·무오류 G0 포함)와 P1(B=2 Full Greedy 대 S0, SCM별 `R(S0)-R(Full Greedy)`)만 승인했다. 이 두 선택만 계약에 반영한다. 나머지 A/B/C 설정은 여전히 제안이며, 본 문서는 전체 승인·동결·사전등록 상태가 아니다.
+
 이 계약안은 기존 연구 A/B의 Step 4 동결 계약, 데이터, 원시 결과를 바꾸지 않는다. 새로운 SCM·관측자료·개입 효과·Decision Regret은 이 문서를 준비하면서 생성하지 않았다. 연구 C 코호트와 결과는 아직 없다.
 
 ## 1. 연구 질문과 주장 범위
@@ -21,6 +23,10 @@
 - S0, 15개 subset 정책, Canonical Oracle Baseline을 동일 SCM과 같은 입력에서 실행한다.
 - 각 정책·예산의 재학습과 결과는 SCM 안의 반복 측정이다. 노드·간선·오류유형·정책을 독립 표본으로 세지 않는다.
 - 기존 Step 5/6 SCM은 새 연구의 개발·평가 표본에 포함하지 않는다.
+
+### 2.1a 모집단 gate — A2 반영
+
+strict indirect-only task 적격성은 유지한다. 다만 FN·FP·REV의 legacy Q-common recipe가 모두 존재해야 한다는 추가 admission gate는 사용하지 않는다. 특정 오류 수정 기회가 없는 경우 해당 지표 정책은 정상적인 no-op일 수 있으며, G0 오류 0건도 결과를 본 뒤 제외하지 않는다. Q-common 여부와 recipe support 수는 secondary subset 분석을 위해 별도 기록한다. 이 A2 모집단 규칙은 승인되었지만, SCM/G0·비용·표본·운영의 나머지 계약은 미승인이다.
 
 ### 2.2 Task zone 후보
 
@@ -85,11 +91,11 @@ Rule B는 같은 오류의 재분류 민감도이지 주 분석 정의를 바꾸
 
 `R(i,p,b)=L_GT(a(i,p,b))-min_{a∈A} L_GT(a)`.
 
-Primary paired contrast는 `Δ(i,p,b)=R(i,p,b)-R(i,S0)`이며 음수는 S0보다 낮은 regret이다. 같은 budget의 정책 간에는 `R(i,p,b)-R(i,q,b)`도 기술적으로 보고한다. 모든 손실은 같은 SCM, action candidate set, 목표, 표준화와 GT evaluator에서 비교한다.
+**승인된 P1 primary**는 B=2에서 S0와 Full Greedy(`M1+M2+M3+M4`)를 같은 SCM별로 비교하며 `delta_i = R(i,S0,2)-R(i,FullGreedy,2)`로 정의한다. 양수는 Full Greedy의 regret이 더 낮음을 뜻한다. Primary 효과량은 독립 SCM들의 `delta_i` 평균이다. 단일 SCM Runner는 `delta_i`만 기록하고 cohort 평균이나 신뢰구간을 계산하지 않는다. 일반 정책 대비 진단에는 `R(i,p,b)-R(i,S0,b)`를 계속 보존할 수 있지만, 이는 P1의 부호 정의와 별도다. 모든 손실은 같은 SCM, action candidate set, 목표, 표준화와 GT evaluator에서 비교한다.
 
 ### 2.8 예산 및 정책 보고
 
-기준 비용에서 B=1,2,3,4를 주 분석 budget grid로 제안하고 B=0은 S0/no-edit 참조로 둔다. 모든 정책은 각 B에서 별도로 비교하며 예산 간 평균으로 합치지 않는다. B=1은 단일 수정, B=2–4는 추가 수정 기회가 결과 구별을 바꾸는지 보여준다. Fixture는 이 grid에서 결과 중복이 가능함을 확인했지만, population에서의 중복률을 추정하지 않는다.
+전체 실행 grid는 B=0,1,2,3,4로 유지한다. 통계 분석 역할은 B=2 P1 primary, B=1 보조, B=3/4 포화 진단, B=0 무수정 기준이다. 모든 정책은 각 B에서 별도로 기록하며 예산 간 평균으로 합치지 않는다. Fixture는 이 grid에서 결과 중복이 가능함을 확인했지만, population에서의 중복률을 추정하지 않는다.
 
 SCM마다 graph hash·수정 trajectory·error type과 task tag·후보 수·cost·unused budget·stop reason·중복 최종 graph·모델 예측·선택 action/k·GT chosen/best loss·Regret을 보존한다. Graph change, fitted prediction, action change, Regret change를 순서대로 분석한다. 같은 action/k가 선택되면 동일 GT loss와 regret이어야 한다. 같은 graph인데 model/recommendation이 다르면 구현 일관성 문제로 점검한다.
 
