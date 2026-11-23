@@ -64,8 +64,14 @@
         "metric_weights": {"const": "equal_selected_metric_weights"},
         "m4_beta": {"const": "equal_active_FN_FP_REV_UNRES_components"},
         "fp_rule": {"const": "A_primary_B_sensitivity"},
-        "edit_costs": {"const": {"add": 1, "delete": 1, "orient": 1, "resolve": 1, "delete_unresolved": 1}},
-        "budgets": {"const": [0, 1, 2, 3, 4]}
+      "edit_costs": {
+        "description": "Active repair operations are add, delete, orient, and resolve, each with unit relative cost. delete_unresolved is a reserved compatibility cost key only: no policy candidate emits that operation, it is never charged, and deleting an unresolved adjacency is not part of this contract.",
+        "const": {"add": 1, "delete": 1, "orient": 1, "resolve": 1, "delete_unresolved": 1}
+      },
+      "budgets": {
+        "description": "Execution stores outcomes for every budget: B=0 is the no-edit reference; B=1 is secondary; B=2 is the proposed primary analysis budget; B=3 and B=4 are saturation diagnostics. This field is the execution grid, not a statement that all budgets are co-primary.",
+        "const": [0, 1, 2, 3, 4]
+      }
       }
     },
     "evaluation": {

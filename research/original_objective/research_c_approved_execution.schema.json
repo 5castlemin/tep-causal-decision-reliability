@@ -16,7 +16,10 @@
     "output_root": {"type": "string", "minLength": 3},
     "target_admissions": {"type": "integer", "minimum": 1},
     "proposal_cap": {"type": "integer", "minimum": 1},
-    "budgets": {"const": [0, 1, 2, 3, 4]},
+    "budgets": {
+      "description": "Execution grid: B=0 no-edit reference, B=1 secondary, B=2 proposed primary analysis budget, B=3/4 saturation diagnostics.",
+      "const": [0, 1, 2, 3, 4]
+    },
     "population": {
       "type": "object", "required": ["topology_source", "templates", "node_counts", "target_edge_density", "task_rule"],
       "properties": {
