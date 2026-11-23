@@ -14,6 +14,8 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import platform
+from importlib import metadata
 
 from . import policy_engine as pe
 from .e2e_fixture import run_fixed_fixture
@@ -28,6 +30,7 @@ CODE_BINDING_FILES = (
     "research/original_objective/cohort_runner.py",
     "research/original_objective/proposal_pipeline.py",
     "research/original_objective/cohort_ledger_test_only.py",
+    "research/original_objective/execution_limits.py",
     "scripts/run_research_c_generated_fixture.py",
     "research/original_objective/e2e_fixture.py",
     "research/original_objective/policy_engine.py",
@@ -42,6 +45,7 @@ CODE_BINDING_FILES = (
     "research/budget_aware_refinement/step4b2_population.py",
     "research/budget_aware_refinement/step3_adapter.py",
     "research/budget_aware_refinement/step4c1_gt.py",
+    "research/budget_aware_refinement/step4b4_mock_runner.py",
     "src/integrated_pilot.py",
     "src/decision_mvp.py",
 )
@@ -82,6 +86,38 @@ def _git_revision(root: Path) -> dict[str, str | None]:
         except (OSError, subprocess.CalledProcessError):
             return None
     return {"commit": get("HEAD"), "tree": get("HEAD^{tree}")}
+
+
+def _runtime_fingerprint() -> dict:
+    versions = {}
+    for distribution in ("numpy", "pandas", "networkx"):
+        try:
+            versions[distribution] = metadata.version(distribution)
+        except metadata.PackageNotFoundError:
+            versions[distribution] = None
+    return {"python_implementation": platform.python_implementation(),
+            "python_version": platform.python_version(),
+            "platform_system": platform.system(),
+            "platform_release": platform.release(),
+            "machine": platform.machine(),
+            "dependencies": versions}
+
+
+def _git_clean_except_build_artifacts(root: Path) -> bool:
+    try:
+        rows = subprocess.check_output(
+            ["git", "status", "--porcelain=v1", "-z", "--untracked-files=all"],
+            cwd=root, stderr=subprocess.DEVNULL).decode("utf-8", errors="strict").split("\0")
+    except (OSError, subprocess.CalledProcessError, UnicodeError):
+        return False
+    for row in rows:
+        if not row:
+            continue
+        path = row[3:]
+        if path == ".build_reframed" or path.startswith(".build_reframed/"):
+            continue
+        return False
+    return True
 
 
 def _input_binding(fixture) -> dict:
@@ -150,6 +186,7 @@ def execute_fixture_input(fixture, *, metadata: dict, g0_seed: int,
         "config_sha256": config_hash,
         "code_sha256": code_hashes,
         "source_revision": _git_revision(ROOT),
+        "runtime_fingerprint": _runtime_fingerprint(),
         "input_binding": input_binding,
         "input_sha256": _digest(input_binding),
         "g0_generation": g0,
@@ -216,17 +253,29 @@ def run_research_mode(*, approved_config_path: Path | None,
     if (config.get("contract_status") != "USER_APPROVED"
             or config.get("research_cohort_execution_enabled") is not True):
         raise ResearchModeBlocked("research contract is not explicitly user-approved and enabled")
-    required = {"cohort_type", "population", "scm", "task", "g0", "repair", "evaluation"}
+    required = {"configuration_version", "cohort_type", "run_id", "output_root",
+                "population", "scm", "task", "g0", "repair", "evaluation",
+                "rng_protocol", "resource_limits", "runtime_fingerprint"}
     if not required.issubset(config):
         raise ResearchModeBlocked(f"approved config missing fields: {sorted(required - set(config))}")
     if config.get("cohort_type") not in {"development", "independent_evaluation"}:
         raise ResearchModeBlocked("config cohort_type must be development or independent_evaluation")
+    if not isinstance(config.get("resource_limits"), dict) or not config["resource_limits"]:
+        raise ResearchModeBlocked("approved config must bind nonempty production resource limits")
+    if config.get("runtime_fingerprint") != _runtime_fingerprint():
+        raise ResearchModeBlocked("runtime fingerprint differs from approved configuration")
+    if not _git_clean_except_build_artifacts(ROOT):
+        raise ResearchModeBlocked("tracked or non-build untracked source changes block research execution")
     if manifest.get("approval_status") != "USER_APPROVED":
         raise ResearchModeBlocked("execution manifest lacks USER_APPROVED status")
     if manifest.get("config_sha256") != _digest(config):
         raise ResearchModeBlocked("execution manifest config hash mismatch")
     if manifest.get("cohort_type") != config["cohort_type"]:
         raise ResearchModeBlocked("execution manifest cohort type mismatch")
+    if manifest.get("runtime_fingerprint") != _runtime_fingerprint():
+        raise ResearchModeBlocked("execution manifest runtime fingerprint mismatch")
+    if manifest.get("excluded_untracked_paths") != [".build_reframed/"]:
+        raise ResearchModeBlocked("manifest must explicitly exclude only .build_reframed/ artifacts")
     if manifest.get("source_revision") != _git_revision(ROOT):
         raise ResearchModeBlocked("execution manifest commit/tree mismatch")
     if manifest.get("code_sha256") != _code_hashes(ROOT):

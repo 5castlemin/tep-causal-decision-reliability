@@ -131,10 +131,18 @@ script does not authorize or start Development or Held-out cohorts.
 uv run --python <Python-3.11.15-path> --with-requirements requirements.txt python scripts/run_research_c_generated_fixture.py --output-root <new-temp-directory> --run-id generated-fixture-v1 --master-seed 970000 --budgets 0 1 2 3 4
 ```
 
-The cohort layer is TEST_ONLY. It does not sample research SCMs, enforce
-production resource caps, or isolate production workers mid-SCM. The separate
-`cohort_ledger_test_only.py` remains a fixture resource-stop test double.
-Research execution stays fail-closed.
+Add `--resource-limits-test-only` to run the same fixed proposals in a spawned
+SCM worker with a TEST_ONLY timeout, sampled RSS, result/ledger/directory byte
+caps, active-time caps and minimum-free-space check. The preset is a harness
+for safety testing, not a proposed or approved production resource setting.
+
+The cohort layer and resource-limit profile remain TEST_ONLY. Resource tests
+exercise a spawned per-SCM worker, sampled RSS termination, active-time caps,
+per-result/SQLite/directory byte caps, minimum free disk, and serialized
+single-writer access. These settings are not approved Research C production
+limits. The current Research Mode validates the approval/runtime/code binding
+and then remains blocked because a production cohort executor and per-stage
+checkpoint integration are not complete.
 
 The structural pilot contains topology and G0 corruption only: no SCM
 coefficients, observations, interventions, fitted models, actions or regret.

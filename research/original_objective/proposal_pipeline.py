@@ -8,6 +8,7 @@ cohort. Research execution is still blocked by runner approval and safety gates.
 from __future__ import annotations
 
 from collections.abc import Sequence
+from dataclasses import dataclass
 from typing import Any
 
 import numpy as np
@@ -20,18 +21,24 @@ from research.budget_aware_refinement.step4c1_scm import (
 from . import policy_engine as pe
 from .cohort_ledger_test_only import _subseed
 from .cohort_runner import run_test_only_cohort
+from .execution_limits import ResourceLimits
 from .e2e_fixture import FixtureInput
 from .g0_candidate import corrupt_graph_candidate
 
 
-def _test_only_factory(proposal: dict, test_master_seed: int, outer_scm_id: str):
-    """Return deterministic data factory for one admitted proposal."""
-    def factory():
+@dataclass(frozen=True)
+class _TestOnlyGeneratedFactory:
+    proposal: dict
+    test_master_seed: int
+    outer_scm_id: str
+
+    def __call__(self):
+        proposal = self.proposal
         scm = generate_scm_parameters(proposal)
         observations = generate_observations(proposal, scm)
         truth = pe.state(proposal["topology_edges"])
         generator_scm_id = proposal["scm_id"]
-        g0_seed = _subseed(test_master_seed, "TEST_ONLY", outer_scm_id, "g0")
+        g0_seed = _subseed(self.test_master_seed, "TEST_ONLY", self.outer_scm_id, "g0")
         corruption = corrupt_graph_candidate(
             truth, nodes=proposal["nodes"], action=proposal["action"],
             target=proposal["target"], master_seed=g0_seed,
@@ -45,7 +52,7 @@ def _test_only_factory(proposal: dict, test_master_seed: int, outer_scm_id: str)
             delta=1, test_only=True)
         metadata = {
             "classification": "TEST_ONLY_GENERATED_PROPOSAL",
-            "proposal_id": proposal["proposal_id"], "scm_id": outer_scm_id,
+            "proposal_id": proposal["proposal_id"], "scm_id": self.outer_scm_id,
             "proposal_generator_scm_id": generator_scm_id,
             "proposal_cohort_namespace": proposal["cohort"],
             "topology_hash": proposal["topology_hash"],
@@ -58,13 +65,18 @@ def _test_only_factory(proposal: dict, test_master_seed: int, outer_scm_id: str)
             "study_sample": False,
         }
         return fixture, metadata
-    return factory
+
+
+def _test_only_factory(proposal: dict, test_master_seed: int, outer_scm_id: str):
+    """Return a picklable deterministic data factory for an isolated worker."""
+    return _TestOnlyGeneratedFactory(proposal, test_master_seed, outer_scm_id)
 
 
 def run_test_only_proposal_cohort(output_root, *, run_id: str,
                                   master_seed: int,
                                   proposal_specs: Sequence[dict],
                                   budgets=(0, 1, 2, 3, 4),
+                                  resource_limits: ResourceLimits | None = None,
                                   after_claim_hook=None,
                                   before_commit_hook=None) -> dict:
     """Run generator-to-regret E2E on named test proposals only.
@@ -113,6 +125,7 @@ def run_test_only_proposal_cohort(output_root, *, run_id: str,
     result = run_test_only_cohort(
         output_root, run_id=run_id, master_seed=master_seed,
         fixtures=admitted, budgets=budgets, proposal_outcomes=outcomes,
+        resource_limits=resource_limits,
         after_claim_hook=after_claim_hook, before_commit_hook=before_commit_hook)
     result["pipeline"] = {
         "classification": "TEST_ONLY_NOT_RESEARCH_COHORT",

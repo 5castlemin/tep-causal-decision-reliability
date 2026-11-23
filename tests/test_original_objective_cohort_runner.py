@@ -20,6 +20,7 @@ from research.original_objective.fixed_fixture_data import (
     make_fixed_fixture, make_nondegenerate_fixture,
 )
 from research.original_objective.proposal_pipeline import run_test_only_proposal_cohort
+from research.original_objective.execution_limits import ResourceLimits
 from research.budget_aware_refinement.step3_adapter import K
 
 
@@ -30,6 +31,66 @@ def _fixtures():
 
 
 class ResearchCCohortRunnerTests(unittest.TestCase):
+    def test_resource_time_rss_disk_and_result_caps_fail_closed(self):
+        cases = [
+            ("unit-timeout", ResourceLimits(.1, 20, 30, None, 10_000_000,
+                                             20_000_000, 30_000_000, 0), "UNIT_TIMEOUT"),
+            ("scm-timeout", ResourceLimits(10, .1, 30, None, 10_000_000,
+                                           20_000_000, 30_000_000, 0), "SCM_ACTIVE_TIME_CAP"),
+            ("cohort-timeout", ResourceLimits(10, 30, .1, None, 10_000_000,
+                                               20_000_000, 30_000_000, 0), "COHORT_ACTIVE_TIME_CAP"),
+            ("sampled-rss", ResourceLimits(20, 30, 40, 1, 10_000_000,
+                                            20_000_000, 30_000_000, 0), "SAMPLED_RSS_CAP"),
+            ("disk-floor", ResourceLimits(20, 30, 40, None, 10_000_000,
+                                           20_000_000, 30_000_000, 10**24), "MINIMUM_FREE_DISK"),
+            ("result-bytes", ResourceLimits(20, 30, 40, None, 1,
+                                             20_000_000, 30_000_000, 0), "RESULT_BYTE_CAP"),
+            ("cohort-storage", ResourceLimits(20, 30, 40, None, 20_000_000,
+                                               20_000_000, 64 * 1024, 0,
+                                               failure_reserve_bytes=512), "COHORT_STORAGE_CAP"),
+            ("ledger-bytes", ResourceLimits(20, 30, 40, None, 20_000_000,
+                                             64 * 1024, 30_000_000, 0), "LEDGER_BYTE_CAP"),
+        ]
+        for name, limits, expected_code in cases:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                result = run_test_only_cohort(
+                    Path(directory), run_id=f"resource-{name}", master_seed=991,
+                    fixtures={"fixed-scm": make_fixed_fixture}, budgets=(0,),
+                    resource_limits=limits)
+                row = result["scms"][0]
+                if name == "disk-floor":
+                    self.assertEqual(row["status"], "ADMITTED")
+                    self.assertEqual(result["cohort_stop_reason"], expected_code)
+                else:
+                    self.assertEqual(row["status"], "FAILED")
+                    self.assertEqual(row["failure_code"], expected_code)
+                self.assertFalse(result["all_scm_complete"])
+                self.assertEqual(result["resource_metrics"]["rss_is_sampled"], True)
+                self.assertEqual(result["resource_metrics"]["filesystem_quota_enforced"], False)
+
+    def test_resource_cap_binding_resume_conflict_and_single_concurrency(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            limits = ResourceLimits(20, 30, 40, None, 10_000_000,
+                                    20_000_000, 30_000_000, 0)
+            first = run_test_only_cohort(root, run_id="resource-binding", master_seed=992,
+                                         fixtures={"fixed-scm": make_fixed_fixture}, budgets=(0,),
+                                         resource_limits=limits)
+            again = run_test_only_cohort(root, run_id="resource-binding", master_seed=992,
+                                         fixtures={"fixed-scm": make_fixed_fixture}, budgets=(0,),
+                                         resource_limits=limits)
+            self.assertEqual(first["scms"][0]["result_sha256"], again["scms"][0]["result_sha256"])
+            self.assertGreaterEqual(again["cumulative_active_seconds"], 0)
+            changed = ResourceLimits(21, 30, 40, None, 10_000_000,
+                                     20_000_000, 30_000_000, 0)
+            with self.assertRaises(cr.LedgerConflict):
+                run_test_only_cohort(root, run_id="resource-binding", master_seed=992,
+                                     fixtures={"fixed-scm": make_fixed_fixture}, budgets=(0,),
+                                     resource_limits=changed)
+            with self.assertRaises(ValueError):
+                ResourceLimits(20, 30, 40, None, 10_000_000,
+                               20_000_000, 30_000_000, 0, max_concurrent_scms=2)
+
     def test_generated_proposal_to_regret_pipeline_and_rejection_are_distinct(self):
         with tempfile.TemporaryDirectory() as directory:
             result = run_test_only_proposal_cohort(
@@ -39,7 +100,10 @@ class ResearchCCohortRunnerTests(unittest.TestCase):
                      "template": "chain_mediation", "node_count": 8},
                     {"proposal_id": "test-only-reject-chain_mediation-6", "attempt": 0,
                      "template": "chain_mediation", "node_count": 6},
-                ], budgets=(0, 1))
+                ], budgets=(0, 1),
+                resource_limits=ResourceLimits(60, 120, 180, 512 * 1024 * 1024,
+                                               10_000_000, 20_000_000,
+                                               30_000_000, 0))
             self.assertEqual(result["classification"], "TEST_ONLY_NOT_RESEARCH_COHORT")
             self.assertEqual(result["proposal_counts"]["admitted"], 1)
             self.assertEqual(result["proposal_counts"]["structurally_ineligible"], 1)
