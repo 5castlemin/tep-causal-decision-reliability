@@ -1,8 +1,7 @@
-"""Durable multi-fixture orchestration for TEST_ONLY Research C inputs.
+"""Durable multi-SCM orchestration for TEST_ONLY and approved Research C runs.
 
-This is not a research-cohort executor. It stores each SCM's full existing
-single-SCM Runner output in one SQLite transaction and can replay an
-interrupted TEST_ONLY SCM deterministically.
+It stores each SCM's full shared single-SCM Runner output in one SQLite
+transaction and replays interrupted work under the same configuration binding.
 """
 from __future__ import annotations
 
@@ -17,15 +16,18 @@ import time
 from .cohort_ledger_test_only import LedgerConflict, _run_lock, _subseed
 from .runner import (ROOT, _canonical, _code_hashes, _digest, _git_revision,
                      _jsonable, _runtime_fingerprint, execute_fixture_input)
+from .e2e_fixture import _RESEARCH_EXECUTION_CAPABILITY
 from .execution_limits import (ResourceLimitStop, ResourceLimits, check_storage,
                               directory_usage_bytes, run_isolated)
 
 
-def _compute_fixture_payload(factory, g0_seed, task_id, budgets, apply_g0_generator):
+def _compute_fixture_payload(factory, g0_seed, task_id, budgets, apply_g0_generator,
+                             research_authorized=False):
     fixture, metadata = factory()
     return execute_fixture_input(fixture, metadata=metadata, g0_seed=g0_seed,
                                  task_id=task_id, budgets=budgets,
-                                 apply_g0_generator=apply_g0_generator)
+                                 apply_g0_generator=apply_g0_generator,
+                                 _research_authorized=research_authorized)
 
 
 class CohortIntegrityError(RuntimeError):
@@ -104,7 +106,8 @@ def _fixture_spec(value):
     raise TypeError("TEST_ONLY fixture mapping values must be factories or fixture specs")
 
 
-def _verify_result(result_json: str, expected_sha: str) -> dict:
+def _verify_result(result_json: str, expected_sha: str,
+                   expected_classification="TEST_ONLY_NOT_RESEARCH_COHORT") -> dict:
     try:
         wrapper = json.loads(result_json)
     except json.JSONDecodeError as exc:
@@ -114,8 +117,8 @@ def _verify_result(result_json: str, expected_sha: str) -> dict:
         raise CohortIntegrityError("SCM result checksum mismatch")
     if wrapper.get("payload_sha256") != expected_sha:
         raise CohortIntegrityError("SCM result wrapper checksum mismatch")
-    if payload.get("classification") != "TEST_ONLY_NOT_RESEARCH_COHORT":
-        raise CohortIntegrityError("non-fixture result found in TEST_ONLY cohort store")
+    if payload.get("classification") != expected_classification:
+        raise CohortIntegrityError("result classification does not match cohort store")
     return payload
 
 
@@ -130,6 +133,43 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
     Optional hooks exist only for actual subprocess termination tests and must
     carry the explicit ``__test_only_fixture_hook__`` marker.
     """
+    return _run_cohort(output_root, run_id=run_id, master_seed=master_seed,
+                       fixtures=fixtures, budgets=budgets, max_new_scms=max_new_scms,
+                       proposal_outcomes=proposal_outcomes, resource_limits=resource_limits,
+                       after_claim_hook=after_claim_hook, before_commit_hook=before_commit_hook,
+                       cohort_type="TEST_ONLY_FIXTURE", research_authorized=False)
+
+
+def run_approved_research_cohort(output_root: Path, *, run_id: str, master_seed: int,
+                                 fixtures: dict, budgets=(0, 1, 2, 3, 4),
+                                 proposal_outcomes: list[dict] | None = None,
+                                 resource_limits: ResourceLimits,
+                                 _authorization=None) -> dict:
+    """Research ledger path; callable only with the runner's post-gate capability."""
+    if _authorization is not _RESEARCH_EXECUTION_CAPABILITY:
+        raise PermissionError("research cohort execution requires validated runner capability")
+    if resource_limits.classification != "USER_APPROVED_RESEARCH_RESOURCE_PROFILE":
+        raise PermissionError("research cohort requires a research-classified resource profile")
+    return _run_cohort(output_root, run_id=run_id, master_seed=master_seed,
+                       fixtures=fixtures, budgets=budgets, max_new_scms=None,
+                       proposal_outcomes=proposal_outcomes, resource_limits=resource_limits,
+                       after_claim_hook=None, before_commit_hook=None,
+                       cohort_type="RESEARCH_COHORT", research_authorized=True)
+
+
+def _run_cohort(output_root: Path, *, run_id: str, master_seed: int,
+                fixtures: dict, budgets=(0, 1, 2, 3, 4),
+                max_new_scms: int | None = None,
+                proposal_outcomes: list[dict] | None = None,
+                resource_limits: ResourceLimits | None = None,
+                after_claim_hook=None, before_commit_hook=None,
+                cohort_type="TEST_ONLY_FIXTURE", research_authorized=False) -> dict:
+    if cohort_type not in {"TEST_ONLY_FIXTURE", "RESEARCH_COHORT"}:
+        raise ValueError("invalid cohort type")
+    if cohort_type == "RESEARCH_COHORT" and not research_authorized:
+        raise PermissionError("research cohort requires validated runner capability")
+    if cohort_type == "TEST_ONLY_FIXTURE" and resource_limits is not None and resource_limits.classification != "TEST_ONLY_RESOURCE_ENVELOPE":
+        raise PermissionError("TEST_ONLY runner requires TEST_ONLY resource limits")
     if not isinstance(run_id, str) or not run_id or len(run_id) > 100:
         raise ValueError("run_id must be a nonempty string of at most 100 chars")
     if type(master_seed) is not int or master_seed < 0:
@@ -149,8 +189,10 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
         raise ValueError("SCM fixture IDs must be stable nonempty strings")
     root = Path(output_root).expanduser().resolve()
     root.mkdir(parents=True, exist_ok=True)
-    db_path = root / "research_c_fixture_cohort.sqlite"
-    lock_path = root / ".research_c_fixture_cohort.lock"
+    db_name = ("research_c_cohort.sqlite" if cohort_type == "RESEARCH_COHORT"
+               else "research_c_fixture_cohort.sqlite")
+    db_path = root / db_name
+    lock_path = root / f".{db_name}.lock"
     code_hashes = _code_hashes(ROOT)
     factory_bindings = [{"scm_id": scm_id,
                          "factory": (f"{type(spec['factory']).__module__}.{type(spec['factory']).__qualname__}"
@@ -158,9 +200,9 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                                      f"{spec['factory'].__module__}.{spec['factory'].__qualname__}"),
                          "apply_g0_generator": spec["apply_g0_generator"]}
                         for scm_id, spec in specs.items()]
-    config = {"schema": "research-c-multi-fixture-v1", "cohort_type": "TEST_ONLY_FIXTURE",
+    config = {"schema": "research-c-multi-cohort-v1", "cohort_type": cohort_type,
               "run_id": run_id, "master_seed": master_seed, "budgets": list(budgets),
-              "fixtures": factory_bindings, "execution_enabled_for_research": False,
+              "fixtures": factory_bindings, "execution_enabled_for_research": research_authorized,
               "resource_limits": resource_limits.binding() if resource_limits else None,
               "runtime_fingerprint": _runtime_fingerprint()}
     proposals = proposal_outcomes or []
@@ -184,16 +226,17 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
             if existing is None:
                 connection.execute(
                     "INSERT INTO runs(run_id,cohort_type,master_seed,config_json,config_sha256,code_json,source_json,created_at) VALUES(?,?,?,?,?,?,?,?)",
-                    (run_id, "TEST_ONLY_FIXTURE", master_seed, _canonical(config).decode("ascii"),
+                    (run_id, cohort_type, master_seed, _canonical(config).decode("ascii"),
                      config_sha, _canonical(code_hashes).decode("ascii"),
                      _canonical(source).decode("ascii"), time.time()))
                 for ordinal, (scm_id, spec) in enumerate(specs.items()):
-                    streams = {name: _subseed(master_seed, "fixture", scm_id, name)
+                    namespace = cohort_type.lower()
+                    streams = {name: _subseed(master_seed, namespace, scm_id, name)
                                for name in ("scm", "g0", "evaluation")}
                     connection.execute(
                         "INSERT INTO scms(run_id,scm_id,ordinal,status,rng_json) VALUES(?,?,?,?,?)",
                         (run_id, scm_id, ordinal, "PROPOSED", _canonical(streams).decode("ascii")))
-                    _event(connection, run_id, scm_id, None, "PROPOSED", "FIXED_TEST_ONLY_FIXTURE")
+                    _event(connection, run_id, scm_id, None, "PROPOSED", cohort_type)
                 for item in proposals:
                     record = _jsonable(item)
                     record_json = _canonical(record).decode("ascii")
@@ -203,7 +246,7 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                          record_json, _digest(record)))
             else:
                 if (existing["config_sha256"] != config_sha
-                        or existing["cohort_type"] != "TEST_ONLY_FIXTURE"
+                        or existing["cohort_type"] != cohort_type
                         or existing["master_seed"] != master_seed):
                     raise LedgerConflict("run_id reused with different fixture/config/code/seed binding")
                 stored_proposals = connection.execute(
@@ -238,7 +281,8 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                                          (run_id, scm_id)).fetchone()
                 if row["status"] == "COMPLETED" or row["status"] == "FAILED":
                     if row["status"] == "COMPLETED":
-                        _verify_result(row["result_json"], row["result_sha256"])
+                        _verify_result(row["result_json"], row["result_sha256"],
+                                       "TEST_ONLY_NOT_RESEARCH_COHORT" if not research_authorized else "RESEARCH_COHORT_RESULT")
                     continue
                 if max_new_scms is not None and processed >= max_new_scms:
                     break
@@ -306,7 +350,7 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                         payload, stop_code, worker_elapsed, sampled_peak = run_isolated(
                             partial(_compute_fixture_payload, spec["factory"], streams["g0"],
                                     f"{run_id}:{scm_id}", tuple(budgets),
-                                    spec["apply_g0_generator"]),
+                                    spec["apply_g0_generator"], research_authorized),
                             timeout_seconds=timeout,
                             rss_cap_bytes=resource_limits.sampled_rss_bytes)
                         if stop_code:
@@ -321,11 +365,13 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                             task_id=f"{run_id}:{scm_id}", budgets=budgets,
                             apply_g0_generator=spec["apply_g0_generator"])
                         worker_elapsed = max(0.0, time.monotonic() - unit_started)
-                    if (payload["classification"] != "TEST_ONLY_NOT_RESEARCH_COHORT"
+                    expected_classification = ("RESEARCH_COHORT_RESULT" if research_authorized
+                                               else "TEST_ONLY_NOT_RESEARCH_COHORT")
+                    if (payload["classification"] != expected_classification
                             or not all(b["policy_vector_status"] == "COMPLETE"
                                        for b in payload["e2e_result"]["budgets"])):
                         raise CohortIntegrityError("incomplete TEST_ONLY policy vector")
-                    payload["cohort_binding"] = {"run_id": run_id, "cohort_type": "TEST_ONLY_FIXTURE",
+                    payload["cohort_binding"] = {"run_id": run_id, "cohort_type": cohort_type,
                                                   "scm_id": scm_id, "rng_streams": streams,
                                                   "scm_seed_used_for_sampling": False,
                                                   "evaluation_seed_used_for_sampling": False}
@@ -407,7 +453,9 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                           "sampled_rss_peak_bytes": row["sampled_rss_peak_bytes"],
                           "retryable": bool(row["retryable"])}
                 if row["status"] == "COMPLETED":
-                    record["result"] = _verify_result(row["result_json"], row["result_sha256"])
+                    expected_class = ("RESEARCH_COHORT_RESULT" if research_authorized
+                                      else "TEST_ONLY_NOT_RESEARCH_COHORT")
+                    record["result"] = _verify_result(row["result_json"], row["result_sha256"], expected_class)
                 scm_results.append(record)
             states = [row["status"] for row in rows]
             proposal_rows = connection.execute(
@@ -428,8 +476,10 @@ def run_test_only_cohort(output_root: Path, *, run_id: str, master_seed: int,
                                    "limit_binding": resource_limits.binding(),
                                    "rss_is_sampled": True,
                                    "filesystem_quota_enforced": False}
-            return {"schema": "research-c-multi-fixture-v1", "classification": "TEST_ONLY_NOT_RESEARCH_COHORT",
-                    "run_id": run_id, "cohort_type": "TEST_ONLY_FIXTURE", "master_seed": master_seed,
+            return {"schema": "research-c-multi-cohort-v1",
+                    "classification": ("RESEARCH_COHORT_RESULT" if research_authorized
+                                       else "TEST_ONLY_NOT_RESEARCH_COHORT"),
+                    "run_id": run_id, "cohort_type": cohort_type, "master_seed": master_seed,
                     "config_sha256": config_sha, "code_sha256": code_hashes, "source_revision": source,
                     "counts": {status.lower(): states.count(status)
                                for status in ("PROPOSED", "ADMITTED", "RUNNING", "COMPLETED", "FAILED")},
@@ -461,10 +511,36 @@ def read_test_only_cohort(output_root: Path, *, run_id: str) -> dict:
             raise KeyError(run_id)
         rows = connection.execute("SELECT * FROM scms WHERE run_id=? ORDER BY ordinal", (run_id,)).fetchall()
         payloads = []
+        expected_type = run["cohort_type"]
+        expected_class = ("RESEARCH_COHORT_RESULT" if expected_type == "RESEARCH_COHORT"
+                          else "TEST_ONLY_NOT_RESEARCH_COHORT")
         for row in rows:
-            result = _verify_result(row["result_json"], row["result_sha256"]) if row["result_json"] else None
+            result = _verify_result(row["result_json"], row["result_sha256"], expected_class) if row["result_json"] else None
             payloads.append({"scm_id": row["scm_id"], "status": row["status"],
                              "result": result, "failure_reason": row["failure_reason"]})
         return {"run_id": run_id, "config_sha256": run["config_sha256"], "scms": payloads}
+    finally:
+        connection.close()
+
+
+def read_approved_research_cohort(output_root: Path, *, run_id: str,
+                                  _authorization=None) -> dict:
+    """Read and checksum a previously approved research run after gate validation."""
+    if _authorization is not _RESEARCH_EXECUTION_CAPABILITY:
+        raise PermissionError("research result access requires validated runner capability")
+    root = Path(output_root).expanduser().resolve()
+    connection = _connect(root / "research_c_cohort.sqlite")
+    try:
+        _schema(connection)
+        run = connection.execute("SELECT * FROM runs WHERE run_id=?", (run_id,)).fetchone()
+        if run is None or run["cohort_type"] != "RESEARCH_COHORT":
+            raise KeyError(run_id)
+        rows = connection.execute("SELECT * FROM scms WHERE run_id=? ORDER BY ordinal", (run_id,)).fetchall()
+        expected = "RESEARCH_COHORT_RESULT"
+        return {"run_id": run_id, "config_sha256": run["config_sha256"],
+                "scms": [{"scm_id": row["scm_id"], "status": row["status"],
+                          "result": (_verify_result(row["result_json"], row["result_sha256"], expected)
+                                     if row["result_json"] else None),
+                          "failure_reason": row["failure_reason"]} for row in rows]}
     finally:
         connection.close()

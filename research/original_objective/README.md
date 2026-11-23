@@ -3,7 +3,9 @@
 Status: **PROPOSED / NOT APPROVED / NOT PREREGISTERED**. This package currently
 contains a structural repair engine, a deterministic G0 design candidate,
 an end-to-end **TEST_ONLY** adapter, and an independent single-fixture runner.
-Research cohort execution remains disabled.
+Research cohort execution is implemented behind a strict approval gate and
+remains disabled until a user-approved contract/configuration and matching
+manifest are supplied.
 
 ## Fixed-fixture check
 
@@ -15,8 +17,8 @@ uv run --python <Python-3.11.15-path> --with-requirements requirements.txt pytho
 The fixture uses explicit coefficients and a deterministic 512-row exogenous
 sequence. Its output is labeled `TEST_ONLY`; it must not be cited as a research
 SCM or policy-performance result. The script refuses to overwrite the fixture
-output. `run_research_cohort()` fails closed until a separate user-approved,
-preregistered runner and frozen execution configuration exist.
+output. Legacy fixture APIs named `run_research_cohort()` remain blocked; the
+approved CLI path is implemented separately in `runner.run_research_mode()`.
 
 The independent runner starts from the fixed SCM, produces deterministic G0
 with the existing corruption generator, then runs S0, all 15 metric subsets,
@@ -29,10 +31,14 @@ uv run --python <Python-3.11.15-path> --with-requirements requirements.txt pytho
 ```
 
 `--mode research` is fail-closed unless an approved config and matching
-execution manifest are provided. The manifest must bind cohort type, config
-hash, commit/tree and every runner code hash. Even with such a bundle, the
-entry point still blocks because this TEST_ONLY orchestration is not a research
-cohort executor.
+execution manifest are provided. It requires the cohort/admission target and
+proposal cap, budgets, RNG namespace, runtime fingerprint, production resource
+profile, output root, config/contract/resource hashes, commit/tree, and all
+runner code hashes. Once validated, it calls the same durable SCM runner and
+policy/fit/recommend/GT evaluation core. This path has not been exercised with
+a real approval bundle, and no such bundle is currently present. Therefore
+this implementation does not authorize or imply that a research cohort may
+run. TEST_ONLY subprocess runs remain labeled and stored separately.
 
 ## Proposed SCM/task population
 

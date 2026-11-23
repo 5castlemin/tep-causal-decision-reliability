@@ -31,8 +31,9 @@ class ResourceLimits:
     classification: str = "TEST_ONLY_RESOURCE_ENVELOPE"
 
     def __post_init__(self):
-        if self.classification != "TEST_ONLY_RESOURCE_ENVELOPE":
-            raise ValueError("resource limits here are restricted to TEST_ONLY")
+        if self.classification not in {"TEST_ONLY_RESOURCE_ENVELOPE",
+                                       "USER_APPROVED_RESEARCH_RESOURCE_PROFILE"}:
+            raise ValueError("unsupported resource-limit classification")
         if any(v <= 0 for v in (self.unit_timeout_seconds, self.scm_active_seconds,
                                 self.cohort_active_seconds, self.max_result_bytes,
                                 self.max_ledger_bytes, self.max_cohort_storage_bytes)):

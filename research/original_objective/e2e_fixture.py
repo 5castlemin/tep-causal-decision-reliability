@@ -1,7 +1,7 @@
-"""TEST_ONLY graph-repair -> fit -> action -> analytic-truth fixture bridge.
+"""Shared graph-repair -> fit -> action -> analytic-truth evaluation core.
 
-No cohort loop or study sampling is exposed here. Research runs require a
-separate approved, preregistered runner and are deliberately rejected below.
+Ordinary callers can execute TEST_ONLY fixtures. The approved runner supplies
+a process-local capability before non-fixture inputs can use this same core.
 """
 from __future__ import annotations
 
@@ -27,6 +27,10 @@ from decision_mvp import static_mean_response
 
 from . import policy_engine as pe
 from .unresolved_abstention import encode_residual_unresolved_abstention
+
+# Runner supplies this process-local capability only after validating the
+# approved configuration and manifest. It is not exposed by the CLI.
+_RESEARCH_EXECUTION_CAPABILITY = object()
 
 
 class _FixtureStageError(RuntimeError):
@@ -61,10 +65,12 @@ def _policy_graph_result(result: Mapping[str, object], nodes) -> dict:
 
 
 def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
-                      config: pe.Config = pe.Config()) -> dict:
-    """Execute only explicit test fixture inputs and mark all truth losses TEST_ONLY."""
-    if fixture.test_only is not True:
-        raise PermissionError("research cohort execution is not authorized by this fixture API")
+                      config: pe.Config = pe.Config(), _authorization=None) -> dict:
+    """Run the shared policy/fit/evaluation core for fixture or authorized study input."""
+    if fixture.test_only is not True and _authorization is not _RESEARCH_EXECUTION_CAPABILITY:
+        raise PermissionError("non-fixture evaluation requires the approved runner capability")
+    status_ok = "TEST_ONLY_OK" if fixture.test_only else "RESEARCH_OK"
+    mode = "TEST_ONLY" if fixture.test_only else "RESEARCH"
     nodes = tuple(fixture.truth_spec.get("nodes", ()))
     truth_edges = [tuple(edge) for edge in fixture.truth_spec.get("edges", ())]
     truth = pe.state(truth_edges)
@@ -132,7 +138,7 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                      "learner_graph_sha256": None, "structural_graph_sha256": structural["final_hash"],
                      "unresolved_abstention": None,
                      "evaluation_status": "NOT_EVALUATED", "evaluation": None,
-                     "test_only": True}
+                     "test_only": fixture.test_only}
             try:
                 graph = _policy_graph_result(structural, nodes)
                 entry["learner_graph_sha256"] = graph["learner_graph_sha256"]
@@ -178,7 +184,7 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
             # visible to the evaluator only after selection is frozen.
             try:
                 evaluation = evaluate(selection, fixture.truth_spec, analytic_response)
-                entry["evaluation_status"] = "TEST_ONLY_OK"
+                entry["evaluation_status"] = status_ok
                 entry["evaluation"] = {**evaluation, "selected_k": selection["selected_k"],
                                        "selected_action": next(r["action"] for r in selection["candidates"]
                                                                 if r["k"] == selection["selected_k"]),
@@ -200,8 +206,8 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
         s0 = next(p for p in policies if p["policy_id"] == "S0")
         for policy in policies:
             policy["same_graph_as_S0"] = policy["final_graph_sha256"] == s0["final_graph_sha256"]
-            if (policy["evaluation_status"] == "TEST_ONLY_OK"
-                    and s0["evaluation_status"] == "TEST_ONLY_OK"):
+            if (policy["evaluation_status"] == status_ok
+                    and s0["evaluation_status"] == status_ok):
                 policy["same_action_as_S0"] = (
                     policy["evaluation"]["selected_action"], policy["evaluation"]["selected_k"]
                 ) == (s0["evaluation"]["selected_action"], s0["evaluation"]["selected_k"])
@@ -212,23 +218,24 @@ def run_fixed_fixture(fixture: FixtureInput, *, budgets=(0, 1, 2, 3, 4),
                 policy["same_action_as_S0"] = None
                 policy["same_regret_as_S0"] = None
                 policy["regret_change_from_S0"] = None
-        pairwise = _policy_comparison_diagnostics(policies, initial_error_count)
+        pairwise = _policy_comparison_diagnostics(policies, initial_error_count, mode=mode)
         # Remove the internal tuples from the output, retaining all per-policy
         # failures. S0 and policies are repeated observations within one fixture.
         rows.append({"budget": budget, "policies": policies,
                      "distinct_successful_graphs": len({p["final_graph_sha256"] for p in policies
                                                         if p["status"] == "OK"}),
                      "policy_vector_status": "COMPLETE" if all(
-                         p["evaluation_status"] == "TEST_ONLY_OK" for p in policies) else "INCOMPLETE",
+                         p["evaluation_status"] == status_ok for p in policies) else "INCOMPLETE",
                      "expected_policy_count": len(policies),
-                     "evaluable_policy_count": sum(p["evaluation_status"] == "TEST_ONLY_OK" for p in policies),
+                     "evaluable_policy_count": sum(p["evaluation_status"] == status_ok for p in policies),
                      "common_policy_comparison_allowed": all(
-                         p["evaluation_status"] == "TEST_ONLY_OK" for p in policies),
+                         p["evaluation_status"] == status_ok for p in policies),
                      "policy_comparison_diagnostics": pairwise,
-                     "test_only": True})
+                     "test_only": fixture.test_only})
     _check_equal_action_regret(rows)
-    return {"status": "TEST_ONLY", "test_only": True,
-            "research_cohort_generated": False, "regret_research_result": False,
+    return {"status": mode, "test_only": fixture.test_only,
+            "research_cohort_generated": not fixture.test_only,
+            "regret_research_result": not fixture.test_only,
             "input": {"truth_graph_sha256": pe.graph_hash(truth),
                       "initial_graph_sha256": pe.graph_hash(fixture.initial_graph),
                       "observations_sha256": input_hash, "nodes": list(nodes),
@@ -242,7 +249,7 @@ def _decision_margin(candidates):
     return values[1] - values[0] if len(values) >= 2 else None
 
 
-def _policy_comparison_diagnostics(policies, initial_error_count):
+def _policy_comparison_diagnostics(policies, initial_error_count, *, mode="TEST_ONLY"):
     graph_pairs = len(list(combinations(policies, 2)))
     same_graph_pairs = 0
     action_pairs = same_action = regret_pairs = regret_ties = 0
@@ -253,8 +260,8 @@ def _policy_comparison_diagnostics(policies, initial_error_count):
         same_graph = left["final_graph_sha256"] == right["final_graph_sha256"]
         if same_graph:
             same_graph_pairs += 1
-        if (left["evaluation_status"] != "TEST_ONLY_OK"
-                or right["evaluation_status"] != "TEST_ONLY_OK"):
+        if left["evaluation_status"] not in {"TEST_ONLY_OK", "RESEARCH_OK"} \
+                or right["evaluation_status"] not in {"TEST_ONLY_OK", "RESEARCH_OK"}:
             reasons["not_comparable_failure"] += 1
             continue
         action_pairs += 1
@@ -286,14 +293,15 @@ def _policy_comparison_diagnostics(policies, initial_error_count):
             "regret_comparable_pairs": regret_pairs, "regret_tie_pairs": regret_ties,
             "regret_tie_rate": regret_ties / regret_pairs if regret_pairs else None,
             "tie_cause_categories": reasons,
-            "classification_status": "TEST_ONLY_DIAGNOSTIC_NOT_STUDY_ESTIMATE"}
+            "classification_status": ("TEST_ONLY_DIAGNOSTIC_NOT_STUDY_ESTIMATE"
+                                       if mode == "TEST_ONLY" else "RESEARCH_COHORT_DIAGNOSTIC")}
 
 
 def _check_equal_action_regret(rows):
     for budget in rows:
         seen = {}
         for policy in budget["policies"]:
-            if policy["evaluation_status"] != "TEST_ONLY_OK":
+            if policy["evaluation_status"] not in {"TEST_ONLY_OK", "RESEARCH_OK"}:
                 continue
             result = policy["evaluation"]
             action_key = (result["selected_action"], result["selected_k"])
