@@ -25,6 +25,12 @@ from research.budget_aware_refinement.step3_adapter import K
 
 
 ROOT = Path(__file__).resolve().parents[2]
+TASK_RULE_ID = (
+    "sha256_rejection_uniform_20_topology_node_strata;"
+    " topology_conditional_strict_indirect_pair_uniform_except_"
+    "observed_common_cause_scaffold_preference; no_direct_X_to_Y_edge"
+)
+TASK_SELECTION_DESCRIPTOR = "preselected_by_population_task_rule"
 CODE_BINDING_FILES = (
     "research/original_objective/runner.py",
     "research/original_objective/cohort_runner.py",
@@ -135,7 +141,7 @@ def _validate_supported_research_contract(config: dict) -> None:
             "topology_source": "existing_step4_topology_generator_new_research_c_rng_namespace",
             "templates": list(TEMPLATES), "node_counts": [6, 7, 8, 9, 10],
             "target_edge_density": [0.2, 0.4],
-            "task_rule": "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge",
+            "task_rule": TASK_RULE_ID,
             "eligibility_rule": "strict_indirect_only; allow_zero_fn_fp_rev_recipe_support",
         },
         "scm": {
@@ -146,8 +152,8 @@ def _validate_supported_research_contract(config: dict) -> None:
                 "training": "common_observational_sample",
                 "evaluation": "analytic_GT_no_heldout_observational_loss"},
         },
-        "task": {"action": "preselected_uniform_eligible_pair",
-            "target": "preselected_uniform_eligible_pair",
+        "task": {"action": TASK_SELECTION_DESCRIPTOR,
+            "target": TASK_SELECTION_DESCRIPTOR,
             "delta": "alternating_by_admission_ordinal_within_new_cohort",
             "action_grid": list(K), "loss": "squared_standardized_target_mean_error_on_shared_grid"},
         "g0": {"true_adjacency_corruption_rate": 0.15, "false_adjacency_rate": 0.05,

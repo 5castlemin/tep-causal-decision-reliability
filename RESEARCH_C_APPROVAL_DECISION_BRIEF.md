@@ -1,10 +1,10 @@
 # Research C — A/B/C 최종 과학적 계약 검토 및 승인 브리프
 
 **정합화 기준:** 이번 변경을 담는 로컬 커밋으로 갱신 예정.
-**상태:** A2와 P1만 사용자 승인되어 구현·계약에 반영됨. 나머지 A/B/C 계약은 제안 상태이며 전체 승인·사전등록·연구 코호트 실행은 완료되지 않았다.
-**범위:** 기존 문서·코드·테스트 검토만 수행했다. 새 SCM, 관측자료, 개입 결과 또는 연구 Regret을 만들지 않았다.
+**상태:** A2, P1 및 계층 Task 추출 선택만 사용자 승인되어 구현·계약에 반영됨. 나머지 A/B/C 계약은 제안 상태이며 전체 승인·사전등록·연구 코호트 실행은 완료되지 않았다.
+**범위:** 계층 Task 계약에 맞춰 Schema·Validator와 승인 문서를 정합화하고 TEST_ONLY 회귀를 검증했다. 새 SCM, 관측자료, 개입 결과 또는 연구 Regret은 만들지 않았다.
 
-이번 정합화는 이 요청에서 사용자가 명시적으로 선택한 A2 모집단과 P1 primary만 반영한다. strict indirect-only task는 유지하고 FN/FP/REV Q-common recipe support 추가 gate는 Research C admission에서 제거한다. P1은 B=2의 SCM별 `Regret(S0)-Regret(Full Greedy)`이며 cohort 평균은 실제 연구 cohort 분석 단계에서만 계산한다. 다른 과학적 설정의 승인, 전체 계약 동결, 사전등록, 연구 실행은 여전히 완료되지 않았다. 실제 Research C SCM/Regret 코호트와 실제 승인 Bundle은 생성하지 않았다. 최종 상태는 **APPROVAL_REQUIRED**다.
+이번 정합화는 이전에 승인된 A2 모집단·P1 primary와 이번 요청에서 승인한 계층 Task 분포 선택을 반영한다. strict indirect-only task는 유지하고 FN/FP/REV Q-common recipe support 추가 gate는 Research C admission에서 제거한다. P1은 B=2의 SCM별 `Regret(S0)-Regret(Full Greedy)`이며 cohort 평균은 실제 연구 cohort 분석 단계에서만 계산한다. 다른 과학적 설정의 승인, 전체 계약 동결, 사전등록, 연구 실행은 여전히 완료되지 않았다. 실제 Research C SCM/Regret 코호트와 실제 승인 Bundle은 생성하지 않았다. 최종 상태는 **APPROVAL_REQUIRED**다.
 
 ## 1. 연구 질문과 현재 증거
 
@@ -37,7 +37,7 @@ python -m unittest tests.test_step4_post_freeze_readiness.PostFreezeReadinessTes
 | 결정 항목 | 제안/코드에서 확인한 값 | 근거 및 한계 | 권고 |
 |---|---|---|---|
 | Topology·크기 | 4종: chain mediation, fork branch, observed common cause, multiple directed paths; 노드 6–10; density `[0.2, 0.4]` | 승인 schema가 상수로 제한. 기존 Step4 topology generator 재사용은 새 SCM 데이터가 아니라 생성 규칙 재사용임. 네 template의 의미와 구현을 사전등록 부록에 고정할 것. | APPROVE |
-| Task 추출 분포 | proposal마다 4 topology × 5 node-count의 20개 stratum 중 하나를 균등 선택한다. 그 stratum에서 topology를 생성하고, strict indirect-only ordered pair를 선택한다. direct `X→Y`는 제외한다. | 이는 **hierarchical sampling**이며 전체 모집단의 모든 eligible `(X,Y)` pair를 한꺼번에 균등 추출하는 것과 같지 않다. 일반 topology에서는 해당 topology 내 후보 pair 중 균등 선택하지만, `observed_common_cause`에서 scaffold-role pair가 strict indirect-only이면 이를 우선한다. pair 확률은 stratum별 eligibility·후보 수·preferred-pair 예외에 따라 달라진다. Admission 표본의 stratum 분포도 strict-task eligibility에 조건화되어 균등일 필요가 없다. `delta`는 admission ordinal에 따라 ±1 교대한다. | **현재 실제 분포를 A 잔여 결정으로 승인해야 한다.** global pair-uniform을 원하면 코드·Schema 수정과 재검토가 필요하다. |
+| Task 추출 분포 | 각 proposal의 `(cohort, master_seed, proposal_id, counter)` 기반 SHA-256 digest를 rejection 방식으로 고정된 20개 topology×node-count strata에 결정적으로 매핑한다. 같은 입력은 같은 층을 재현하며, 해시 출력의 modulo bias를 피한다. 순환 배정은 아니다. 그 stratum에서 topology·relabel 후 strict indirect-only ordered pair를 선택하고 direct `X→Y`는 제외한다. | 이는 계층 추출이지 전역 eligible `(X,Y)` pair-uniform이 아니다. 일반 topology는 topology 내부 후보를 seeded uniform index로 고르고, `observed_common_cause`의 scaffold action-target pair가 strict indirect-only이면 우선한다. Stratum별 적격률·후보 수와 preferred 예외, admission conditioning 때문에 admitted task/stratum 분포는 달라질 수 있다. | **이 계층 Task 분포는 이번 지시로 승인됨.** 다른 A/B/C 모집단·생성 선택은 계속 미승인. |
 | **추가 Q-common support gate — A2 반영** | Research C proposal wrapper가 기존 frozen proposal generator의 `missing_same_type_two_candidate_support`만 C 전용으로 승격하고 `q_common_eligible=false`, recipe counts를 보존한다. 구조적으로 strict indirect-only task가 없는 proposal은 계속 거절한다. | 모집단은 오류별 recipe availability가 모두 있는 구조에 조건화되지 않는다. 500→494 파일럿은 다른 기존 builder 조건을 사용한 구조 진단이며 A2 production admission 비율 추정치가 아니다. Q-common 결과는 secondary subset 분석 플래그다. | **A2 승인됨.** 나머지 모집단 규칙은 미승인 |
 | SCM 구조·계수 | signed linear acyclic; 계수 절댓값 `[0.25,0.8]`, 독립 fair sign | 설정은 제안 상수. 이 합성 family 밖 제조 공정으로 일반화 불가. | APPROVE |
 | 관측자료·잡음 | SCM당 공통 관측자료 `n=512`; 독립 centered Gaussian noise, SD `[0.8,1.2]`; 정책별 동일 관측자료 | 계수/잡음/표본 생성용 RNG를 분리하고 seed namespace 기록. `n=512`는 효과 추정 정밀도를 보장한 근거가 아님. | APPROVE |
@@ -94,7 +94,7 @@ N은 Development admitted 목표 64, Held-out admitted 목표 200으로 고정�
 
 ## 6. 핵심 결정 요청
 
-아래 표에서 **A2와 P1은 이번 사용자 요청으로 승인되어 반영됐다.** 나머지 권고값은 제안이며 잠정 계약 전체를 동결하지 않는다. 남은 묶음만 별도로 결정해야 한다.
+아래 표에서 **A2, P1 및 계층 Task 추출 선택은 사용자 지시로 승인되어 반영됐다.** 나머지 권고값은 제안이며 잠정 계약 전체를 동결하지 않는다. 남은 묶음만 별도로 결정해야 한다.
 
 | 묶음 | 권고 선택 | 사용자 응답 |
 |---|---|---|
@@ -103,9 +103,9 @@ N은 Development admitted 목표 64, Held-out admitted 목표 200으로 고정�
 | **C — 평가/운영** | P1은 B2 `S0 − Full Greedy` SCM paired Regret 차이, positive = Full Greedy Regret 감소; Full Greedy–Canonical은 secondary. N64 dev/N200 평가 목표, paired-t CI, 실패·shortfall 규칙 등은 별도 결정. | **P1 — 사용자 승인 및 이번 변경에 반영됨.** 나머지 C 항목 미승인. |
 | **실행환경** | CPython 3.11.15 + 고정 `research_c_runtime_lock.txt` 전체 package inventory. 주요 직접 패키지 NumPy 2.4.3 / pandas 3.0.1 / NetworkX 3.6.1 / jsonschema 4.26.0 | `[ ] APPROVE 권고안` `[ ] MODIFY (버전 명시)` `[ ] DEFER` |
 | **운영** | Development admissions 목표 64, Held-out 200은 후보. Generator attempt 상한 386/1,104; 실행별 실제 proposal cap·resource cap은 config에서 사전 고정. Proposal shortfall 및 admitted 후 실패는 보존·대체 금지. | `[ ] APPROVE 권고안` `[ ] MODIFY (수치 명시)` `[ ] DEFER` |
-| **상태** | A2/P1만 승인 반영. A/B/C 전체 계약, 사전등록과 코호트 실행은 미승인. | **APPROVAL_REQUIRED** |
+| **상태** | A2, P1, 계층 Task 추출 선택만 승인 반영. A/B/C 전체 계약, 사전등록과 코호트 실행은 미승인. | **APPROVAL_REQUIRED** |
 
-남은 결정은 A2/P1이 아니다. 우선 A의 Task 추출분포(구현된 계층분포를 승인할지, 전역 pair-uniform으로 수정할지)와 seed `2026112301` 후보 채택을 정해야 한다. 이어 A/B/C의 남은 생성·오류·비용·정규화·가중치·UNRES·실패 처리 규칙, N=64/200 및 cap 386/1,104, 95% paired-t와 10,000회 bootstrap, 제안 자원 상한을 승인/수정/보류해야 한다. `s_max/h` 자동 표본 증액은 현재 권고안에 포함하지 않는다. Rule B 및 추가 정규화 민감도는 별도 승인 없이는 필수 범위가 아니다. Task 분포를 선택해도 Schema/runner validator와 실제 생성기가 정합하도록 별도 코드·Schema 변경이 필요하며, 그 전까지 정식 Research Mode 실행은 차단해야 한다.
+이번 지시로 계층 Task 분포 선택은 승인되었고 Schema·Validator·계약을 해당 분포에 맞추었다. 남은 결정은 seed `2026112301` 후보 채택과 A/B/C의 나머지 모집단·정책·평가·운영 설정이다. A/B/C의 남은 생성·오류·비용·정규화·가중치·UNRES·실패 처리 규칙, N=64/200 및 cap 386/1,104, 95% paired-t와 10,000회 bootstrap, 제안 자원 상한을 승인/수정/보류해야 한다. `s_max/h` 자동 표본 증액은 현재 권고안에 포함하지 않는다. Rule B 및 추가 정규화 민감도는 별도 승인 없이는 필수 범위가 아니다. 실제 연구 실행은 남은 계약과 승인 Bundle이 준비될 때까지 차단된다.
 
 A에 대한 권고는 **A2**다. 원 연구 질문은 strict indirect-only task 모집단에서 오류 위치의 우선순위를 비교하는 것이므로, 각 오류 유형의 topology-level recipe가 반드시 존재해야 한다는 조건으로 모집단을 선별하지 않고 지표별 수정 기회 0건도 결과로 포함하는 편이 목표에 더 잘 맞는다. A1을 선택하면 논문 모집단을 “FN/FP/REV recipe support가 모두 있는 Q-common subset”으로 제한해 명시해야 하며, 구조 파일럿 494/500을 그 수율 추정치로 사용하지 않는다.
 
@@ -174,14 +174,14 @@ A에 대한 권고는 **A2**다. 원 연구 질문은 strict indirect-only task 
 
 ## 10. 최종 통합 승인안 — A2/P1 이후 남은 계약
 
-이 절은 위의 검토표를 실행 승인에 필요한 구체값으로 모은다. 기존 문서·Schema·코드에 없는 값을 확정값처럼 채우지 않는다. 아래 모든 권고도 별도 사용자 결정 전까지 `PROPOSED`다. A2와 P1만은 이전 사용자 지시로 승인되어 있다.
+이 절은 위의 검토표를 실행 승인에 필요한 구체값으로 모은다. 기존 문서·Schema·코드에 없는 값을 확정값처럼 채우지 않는다. 계층 Task 추출 선택, A2, P1을 제외한 권고는 별도 사용자 결정 전까지 `PROPOSED`다.
 
 ### 10.1 A — 모집단과 G0
 
 | 항목 | 권고 승인값 | 코드·계약 대조 및 해석 | 승인 전 차단 |
 |---|---|---|---|
 | Topology | 기존 Step 4 생성기의 `chain_mediation`, `fork_branch`, `observed_common_cause`, `multiple_directed_paths` 4종; 6–10 nodes; target edge density `[0.2, 0.4]` | Candidate/approved schema가 이 값으로 제한한다. 기존 SCM/결과 재사용이 아니라 생성 알고리즘 재사용이며 RNG namespace는 새로 둔다. | 값과 템플릿 정의의 사용자 승인 |
-| 적격 task 및 추출 분포 | 실제 proposal 경로: proposal ID/seed로 20개 topology×node-count stratum 중 하나를 균등 배정 → 그 stratum에서 topology·relabel 생성 → topology의 strict indirect-only `(X,Y)` pair 선택; direct `X→Y`는 제외. 일반 후보 집합에서는 seeded uniform index 선택. 단 `observed_common_cause` scaffold pair가 strict indirect-only이면 그 pair를 우선 선택. | `step4c1_proposal.proposal_stratum`은 20 strata를 proposal 단계에서 균등 배정한다. `step4b_task_budget.select_task_pair`는 topology 조건부 pair 선택을 하고, proposal builder가 common-cause preferred pair를 넘긴다. 따라서 이는 전역 eligible ordered-pair 균등분포가 아니다. Stratum별 eligible 비율과 후보 수, preferred 예외로 최종 admitted `(X,Y)` 확률이 다르고 admission 조건화 뒤 stratum도 균등하지 않을 수 있다. `research_c_approved_execution.schema.json`과 candidate schema의 task_rule, `runner._validate_supported_research_contract`는 전역 pair-uniform이라고 선언·요구한다. 즉 schema만의 문구 문제가 아니라 승인 검증 코드도 실제 생성기와 불일치한다. | 정확한 Task 분포는 A 잔여 사용자 결정. 현재 계층 분포를 승인해도 이후 schema·validator를 실제 규칙과 일치시키는 커밋이 필요하다. 전역 pair-uniform을 선택하면 generator·schema·validator 변경 및 검증이 필요하다. 이번에는 코드 변경하지 않음. |
+| 적격 task 및 추출 분포 | Proposal ID·cohort·master seed로 SHA-256 rejection sampling을 적용해 기존 순서의 고정 20개 `(topology,node_count)` strata(4 topology × 노드 6–10)에 결정적으로 배정한다(순환 아님). 해당 topology 생성·relabel 후 strict indirect-only ordered `(X,Y)`를 topology 내부 seeded uniform-index로 선택하며 direct `X→Y`는 제외한다. 단 `observed_common_cause` scaffold action-target이 strict indirect-only이면 우선한다. | 이는 전역 eligible-pair 균등분포가 아니다. Proposal strata의 배정과 admitted strata 분포는 eligibility/admission 조건화로 달라질 수 있고 topology별 후보 수 및 scaffold 우선 예외가 최종 task 확률에 영향을 준다. 추론 대상은 사전 정의된 합성 SCM 생성·적격성 조건부 모집단이며 실제 제조공정 전체 또는 전역 pair-uniform 모집단으로 일반화하지 않는다. 사후 재가중은 하지 않으며 층별 표본 수는 기술통계로 기록하고 희소 층의 우월성을 주장하지 않는다. | 계층 Task 분포 선택만 이번 지시로 APPROVED. 나머지 모집단 설정은 PROPOSED — APPROVAL_REQUIRED. |
 | 모집단 gate | **A2 유지:** FN/FP/REV recipe support를 admission 조건으로 요구하지 않음; 무오류 G0 및 recipe 부재도 포함; Q-common은 secondary flag | A2는 승인되어 proposal/admission 구현에 반영됐다. 500개 구조 파일럿의 494개 적격은 이전 조건·구조 진단이며 A2 운영 수율로 사용하지 않는다. | 추가 gate 없음; strict task 구현과 무성과 기반 제외 원칙 승인 |
 | SCM 방정식 | signed linear acyclic SCM; 각 계수 절댓값 Uniform `[0.25, 0.8]`, 부호는 독립 fair sign; node noise는 독립 centered Gaussian, 각 SD Uniform `[0.8, 1.2]` | Candidate schema는 family/range/sign/noise를 고정한다. 이는 합성 family이며 실제 제조공정 계수의 추정치가 아니다. | 값 및 독립성 가정 승인 |
 | 관측자료 | SCM당 공통 관측표본 `n=512`, centered Gaussian SCM noise에서 관측 생성; 모든 정책·예산에서 동일 자료 사용 | Schema에 `shared_across_policies=true`, `training=common_observational_sample`; 관측 표본 크기가 정밀도 충분성을 입증하지는 않는다. | 값 승인 |
@@ -242,7 +242,8 @@ Development 64 admitted SCM과 cap 386으로의 계산은 위 max 관측치를 �
 |---|---|---|
 | A2 모집단 | strict indirect-only, recipe-support gate 없음, 무오류·no-op 포함 | **APPROVED** |
 | P1 | B2 Full Greedy vs S0, `Regret(S0)-Regret(FullGreedy)` | **APPROVED** |
-| A 잔여 | 4 topology, 6–10 nodes, SCM/noise/action/loss, q=.15/r=.05, FN/REV/UNRES conditional 1/3, no-redraw DAG rejection, N=64/200 admitted, cap 386/1,104. Task draw is hierarchical: 20 strata uniform → topology → within-topology strict indirect pair, with observed-common-cause preferred scaffold pair. | **PROPOSED — APPROVAL_REQUIRED.** This implemented distribution differs from Schema’s global pair-uniform declaration; explicitly approve actual distribution or request a code/schema change. |
+| Task sampling | 고정 20개 topology×node-count strata에 대한 SHA-256 rejection 배정 후 topology 조건부 strict indirect pair 선택, observed-common-cause strict scaffold 우선; 전역 eligible-pair uniform 아님 | **APPROVED — 이번 지시의 범위에서 이 선택만 승인.** |
+| A 잔여 | 4 topology, 6–10 nodes, SCM/noise/action/loss, q=.15/r=.05, FN/REV/UNRES conditional 1/3, no-redraw DAG rejection, N=64/200 admitted, cap 386/1,104 | **PROPOSED — APPROVAL_REQUIRED.** 생성기·적격성의 나머지 계약 승인 필요. |
 | B 잔여 | M1–M4와 16 policy set, Rule A, canonical Oracle structural-only, fixed opportunity, equal metric weights/active M4 β, add/delete/orient/resolve cost 1, λ=1, budgets 0–4. Rule B 및 추가 정규화 민감도는 별도 승인 없이는 제외. | **PROPOSED — APPROVAL_REQUIRED** |
 | C 잔여 | residual UNRES abstention; N=64/200 admitted targets, cap 386/1,104; P1 complete-pair mean and separate failure accounting; 95% paired-t CI + 10,000 SCM-paired bootstrap; no `s_max/h` automatic increase; held-out lock | **PROPOSED — APPROVAL_REQUIRED** |
 | Runtime/seed | CPython 3.11.15 + exact 13-package lock; Development master-seed candidate `2026112301`; run-specific platform fingerprint bound in Manifest | Runtime package versions **VERIFIED**; seed candidate **NOT APPROVED**; run fingerprint **NOT YET BOUND** |
@@ -252,9 +253,9 @@ Development 64 admitted SCM과 cap 386으로의 계산은 위 max 관측치를 �
 
 **1단계 승인 문안(실행을 시작하지 않음):**
 
-> “A2와 P1의 기존 승인을 유지한다. 승인 브리프 §10.1–10.4의 제안 설정 전체를 승인한다. Task 추출은 20 strata 균등 배정 후 topology 조건부 strict indirect pair를 선택하는 계층 분포이며, `observed_common_cause` strict scaffold pair 우선 예외를 포함한다. 전역 eligible-pair 균등 선택을 뜻하지 않는다. 모집단 및 G0, 정책·비용·정규화, residual UNRES abstention, 표본 목표 Development 64/Held-out 200 admitted 및 proposal cap 386/1,104, P1 complete-pair 평균, 95% paired-t CI와 SCM-level paired bootstrap 10,000회, `s_max/h` 자동 증액 미사용, 실패·shortfall 무대체를 승인한다. Rule B와 추가 정규화 민감도는 별도 승인 없이는 필수 범위에 넣지 않는다. Development master seed 후보 `2026112301`을 채택한다. 제안 Production resource profile은 §10.4의 수치대로 승인한다. 이는 계약 승인일 뿐 실행 시작 승인이 아니다. Configuration, clean commit/runtime fingerprint/코드 식별, Manifest 및 비실행 Preflight 후 별도 실행 확인을 요구한다.”
+> “A2, P1 및 계층 Task 추출 선택의 기존 승인을 유지한다. 승인 브리프 §10.1–10.4의 제안 설정 전체를 승인한다. Task 추출은 20 strata 균등 배정 후 topology 조건부 strict indirect pair를 선택하는 계층 분포이며, `observed_common_cause` strict scaffold pair 우선 예외를 포함한다. 전역 eligible-pair 균등 선택을 뜻하지 않는다. 모집단 및 G0, 정책·비용·정규화, residual UNRES abstention, 표본 목표 Development 64/Held-out 200 admitted 및 proposal cap 386/1,104, P1 complete-pair 평균, 95% paired-t CI와 SCM-level paired bootstrap 10,000회, `s_max/h` 자동 증액 미사용, 실패·shortfall 무대체를 승인한다. Rule B와 추가 정규화 민감도는 별도 승인 없이는 필수 범위에 넣지 않는다. Development master seed 후보 `2026112301`을 채택한다. 제안 Production resource profile은 §10.4의 수치대로 승인한다. 이는 계약 승인일 뿐 실행 시작 승인이 아니다. Configuration, clean commit/runtime fingerprint/코드 식별, Manifest 및 비실행 Preflight 후 별도 실행 확인을 요구한다.”
 
-이 문안은 두 가지 잔여 결정을 구체적으로 포함한다: 실제 코드의 계층 Task 분포 승인(또는 global pair-uniform 변경 지시)과 master seed `2026112301` 채택(또는 대체 정수 지정). `MODIFY`는 대체값을 명시하고, `DEFER` 항목이 남으면 해당 계약의 cohort proposal은 계속 금지한다.
+계층 Task 분포 선택은 이미 승인되었다. 이 문안은 master seed `2026112301` 채택(또는 대체 정수 지정)과 나머지 A/B/C·운영 계약에 대한 응답을 받는다. `MODIFY`는 대체값을 명시하고, `DEFER` 항목이 남으면 해당 계약의 cohort proposal은 계속 금지한다.
 
 `MODIFY`를 선택할 때는 승인 문안의 해당 정확한 값만 바꾸고 계약/config/schema/hash를 다시 대조한다. `DEFER`된 과학 결정이 있으면 해당 항목이 해소되기 전 cohort proposal 생성은 금지한다. 특히 resource profile을 채우기 위해 TEST_ONLY 값을 승격하지 않는다.
 

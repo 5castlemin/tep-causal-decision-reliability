@@ -2,7 +2,7 @@
 
 **상태: 승인용 제안서 / NOT APPROVED / NOT FROZEN / NOT PREREGISTERED**
 
-**결정 반영 주석:** 사용자는 A2(Strict indirect-only task 유지, Q-common recipe support gate 제거, 기회 부재·무오류 G0 포함)와 P1(B=2 Full Greedy 대 S0, SCM별 `R(S0)-R(Full Greedy)`)만 승인했다. 이 두 선택만 계약에 반영한다. 나머지 A/B/C 설정은 여전히 제안이며, 본 문서는 전체 승인·동결·사전등록 상태가 아니다.
+**결정 반영 주석:** 사용자는 A2(Strict indirect-only task 유지, Q-common recipe support gate 제거, 기회 부재·무오류 G0 포함), P1(B=2 Full Greedy 대 S0, SCM별 `R(S0)-R(Full Greedy)`), 그리고 실제 생성기에 구현된 계층 Task 샘플링 방식의 채택만 승인했다. 이 세 선택만 계약에 반영한다. 나머지 A/B/C 설정은 여전히 제안이며, 본 문서는 전체 승인·동결·사전등록 상태가 아니다.
 
 이 계약안은 기존 연구 A/B의 Step 4 동결 계약, 데이터, 원시 결과를 바꾸지 않는다. 새로운 SCM·관측자료·개입 효과·Decision Regret은 이 문서를 준비하면서 생성하지 않았다. 연구 C 코호트와 결과는 아직 없다.
 
@@ -27,6 +27,18 @@
 ### 2.1a 모집단 gate — A2 반영
 
 strict indirect-only task 적격성은 유지한다. 다만 FN·FP·REV의 legacy Q-common recipe가 모두 존재해야 한다는 추가 admission gate는 사용하지 않는다. 특정 오류 수정 기회가 없는 경우 해당 지표 정책은 정상적인 no-op일 수 있으며, G0 오류 0건도 결과를 본 뒤 제외하지 않는다. Q-common 여부와 recipe support 수는 secondary subset 분석을 위해 별도 기록한다. 이 A2 모집단 규칙은 승인되었지만, SCM/G0·비용·표본·운영의 나머지 계약은 미승인이다.
+
+
+### 2.1b Task 모집단 생성 — 계층 추출 선택 승인
+
+Task sampler의 실제 동작을 유지하는 계층 방식이 승인되었다. 이 선택은 모집단 생성의 한 항목만 확정하며 전체 A/B/C 계약을 승인하거나 동결하지 않는다.
+
+- 고정 strata 순서는 `TEMPLATES`의 기존 순서(chain_mediation, fork_branch, observed_common_cause, multiple_directed_paths) 각각에 노드 수 6, 7, 8, 9, 10을 결합한 20개 `(topology,node_count)` cell이다.
+- 각 proposal은 `(cohort, master_seed, proposal_id)`와 counter를 포함한 `step4c1-stratum-v1|...` 문자열의 SHA-256 digest를 계산한다. `2^256 - (2^256 mod 20)`보다 작은 digest만 받고 나머지는 counter를 늘려 다시 hash한다. 수락된 정수를 20으로 나머지 계산해 stratum을 결정한다. 이는 modulo bias를 없앤 결정적 hash 기반 의사무작위 배정 규칙이며 순환 순서 배정은 아니다. 같은 식별자와 seed는 같은 stratum을 재현한다.
+- Stratum에 맞춰 topology를 생성·relabel하고, topology 내 strict indirect-only ordered task pair를 기존 seeded uniform-index 규칙으로 선택한다. 직접 `X→Y`가 있는 pair는 strict indirect-only가 아니므로 제외한다. `observed_common_cause` template에서 scaffold action-target pair가 strict indirect-only 후보이면 그 pair를 우선 선택하고, 아니면 기존 후보 선택을 사용한다.
+- A2 모집단에서는 strict indirect-only task가 없는 proposal은 구조 부적격이다. FN/FP/REV recipe support가 없다는 이유만으로는 추가 gate를 적용하지 않고 Q-common 상태는 보조 플래그로 둔다.
+
+따라서 proposal 단계의 hash stratum assignment가 고정 seed 아래 20개 층의 실제 표본 수를 정확히 같게 보장하지 않으며, topology별 적격률과 admission conditioning 때문에 admitted SCM의 층 분포는 proposal strata 분포와 다를 수 있다. 층별 strict task pair의 개수 차이와 observed-common-cause scaffold 우선 규칙도 최종 task 분포에 영향을 준다. 이 설계는 전역 eligible `(X,Y)` pair-uniform 모집단이 아니다. 주 분석에서 사후 재가중은 하지 않는다. 층별 admitted 수는 기술통계로 기록할 수 있지만, 작은 층의 정책 성능 우월성을 단정하지 않는다. 추론 범위는 사전 지정된 합성 SCM 생성 규칙 및 strict-task 적격성 조건부 모집단이며 실제 제조공정 전체나 전역 pair-uniform 모집단으로 무조건 일반화하지 않는다.
 
 ### 2.2 Task zone 후보
 

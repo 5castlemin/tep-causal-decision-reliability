@@ -15,6 +15,7 @@ from research.original_objective.execution_limits import ResourceLimits
 from research.original_objective.fixed_fixture_data import make_fixed_fixture
 from research.original_objective.e2e_fixture import _RESEARCH_EXECUTION_CAPABILITY
 from research.original_objective import proposal_pipeline
+from research.budget_aware_refinement.step4c1_proposal import STRATA, proposal_stratum
 
 
 def _proposal(cohort, master_seed, proposal_id, attempt):
@@ -51,7 +52,7 @@ def _contract():
         "population": {"topology_source": "existing_step4_topology_generator_new_research_c_rng_namespace",
             "templates": list(TEMPLATES), "node_counts": [6, 7, 8, 9, 10],
             "target_edge_density": [0.2, 0.4],
-            "task_rule": "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge",
+            "task_rule": runner.TASK_RULE_ID,
             "eligibility_rule": "strict_indirect_only; allow_zero_fn_fp_rev_recipe_support"},
         "scm": {"family": "signed_linear_acyclic", "coefficient_abs_range": [0.25, 0.8],
             "sign_probability": "independent_fair_sign",
@@ -59,8 +60,8 @@ def _contract():
             "observations": {"n": 512, "shared_across_policies": True,
                 "training": "common_observational_sample",
                 "evaluation": "analytic_GT_no_heldout_observational_loss"}},
-        "task": {"action": "preselected_uniform_eligible_pair",
-            "target": "preselected_uniform_eligible_pair",
+        "task": {"action": runner.TASK_SELECTION_DESCRIPTOR,
+            "target": runner.TASK_SELECTION_DESCRIPTOR,
             "delta": "alternating_by_admission_ordinal_within_new_cohort",
             "action_grid": list(K), "loss": "squared_standardized_target_mean_error_on_shared_grid"},
         "g0": {"true_adjacency_corruption_rate": 0.15, "false_adjacency_rate": 0.05,
@@ -148,6 +149,66 @@ class ProposalStageAndApprovalGateTests(unittest.TestCase):
     def setUp(self):
         self.limits = ResourceLimits(10, 20, 30, None, 1000000, 2000000,
                                      3000000, 0, failure_reserve_bytes=4096)
+
+    def test_hierarchical_task_schema_and_validator_match_generator(self):
+        from jsonschema import Draft202012Validator
+
+        schema_dir = runner.ROOT / "research" / "original_objective"
+        candidate_schema = json.loads((schema_dir /
+            "research_c_candidate_config.schema.json").read_text(encoding="utf-8"))
+        candidate = {"contract_status": "PROPOSED_NOT_APPROVED",
+            "research_cohort_execution_enabled": False, **_contract()}
+        candidate["evaluation"]["research_result_gate"] = (
+            "BLOCK_UNTIL_USER_APPROVAL_AND_PREREGISTRATION")
+        self.assertTrue(Draft202012Validator(candidate_schema).is_valid(candidate))
+
+        legacy_rule = "uniform_over_all_strict_indirect_only_pairs; require_no_direct_X_to_Y_edge"
+        legacy_candidate = json.loads(json.dumps(candidate))
+        legacy_candidate["population"]["task_rule"] = legacy_rule
+        self.assertFalse(Draft202012Validator(candidate_schema).is_valid(legacy_candidate))
+
+        with tempfile.TemporaryDirectory() as directory:
+            _, _, approved, _ = _approved_bundle(directory)
+            runner._validate_supported_research_contract(approved)
+            runner._validate_approved_config_schema(approved)
+
+            legacy_approved = json.loads(json.dumps(approved))
+            legacy_approved["population"]["task_rule"] = legacy_rule
+            legacy_approved["task"]["action"] = "preselected_uniform_eligible_pair"
+            legacy_approved["task"]["target"] = "preselected_uniform_eligible_pair"
+            with self.assertRaises(runner.ResearchModeBlocked):
+                runner._validate_supported_research_contract(legacy_approved)
+            with self.assertRaises(runner.ResearchModeBlocked):
+                runner._validate_approved_config_schema(legacy_approved)
+
+    def test_hash_rejection_strata_assignment_is_deterministic_not_cyclic(self):
+        self.assertEqual(len(STRATA), 20)
+        expected = [
+            ("fork_branch", 10), ("chain_mediation", 8),
+            ("fork_branch", 9), ("observed_common_cause", 9),
+            ("multiple_directed_paths", 7), ("observed_common_cause", 8),
+        ]
+        for i, wanted in enumerate(expected):
+            proposal_id = f"test-only-stratum-check-{i:04d}"
+            selected = proposal_stratum(cohort="development", master_seed=88002117,
+                                        proposal_id=proposal_id)
+            self.assertEqual(selected, wanted)
+            self.assertEqual(selected, proposal_stratum(cohort="development",
+                master_seed=88002117, proposal_id=proposal_id))
+        observed = {proposal_stratum(cohort="development", master_seed=88002117,
+            proposal_id=f"test-only-stratum-coverage-{i:04d}") for i in range(200)}
+        self.assertEqual(observed, set(STRATA))
+
+    def test_observed_common_cause_scaffold_preference_and_a2_recipe_support(self):
+        proposal = proposal_pipeline.build_research_c_proposal(cohort="development",
+            master_seed=88002117, proposal_id="test-only-scaffold-0000", attempt=0,
+            template="observed_common_cause", node_count=6)
+        self.assertEqual(proposal["action"], proposal["role_map"]["action"])
+        self.assertEqual(proposal["target"], proposal["role_map"]["target"])
+        self.assertNotIn((proposal["action"], proposal["target"]),
+                         {tuple(edge) for edge in proposal["topology_edges"]})
+        self.assertTrue(proposal["accepted"])
+        self.assertFalse(proposal["q_common_eligible"])
 
     def test_proposal_checkpoint_is_deterministic_and_separate_from_admission(self):
         with tempfile.TemporaryDirectory() as directory:
