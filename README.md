@@ -36,4 +36,4 @@
 
 ## 재현 및 협업
 
-연구 상태는 [`docs/research_state.json`](docs/research_state.json)을 원본으로 하며 `PROJECT_STATUS.md`, `PRIORITIES.md`는 생성 대시보드다. 기여·브랜치·검토 지침은 [`CONTRIBUTING.md`](CONTRIBUTING.md)와 [`AGENTS.md`](AGENTS.md)를 읽는다. 새 연구 실행은 승인된 Configuration/Manifest와 별도 실행 승인 없이는 시작하지 않는다. 기존 결과·동결 파일은 읽기 전용으로 보존한다.
+현재 운영 상태는 [`docs/research_state_current.json`](docs/research_state_current.json)을 원본으로 하며, [`docs/research_state.json`](docs/research_state.json)은 Step 4 동결 당시 스냅샷으로 보존한다. `PROJECT_STATUS.md`, `PRIORITIES.md`는 생성 대시보드다. 기여·브랜치·검토 지침은 [`CONTRIBUTING.md`](CONTRIBUTING.md)와 [`AGENTS.md`](AGENTS.md)를 읽는다. 새 연구 실행은 승인된 Configuration/Manifest와 별도 실행 승인 없이는 시작하지 않는다. 기존 결과·동결 파일은 읽기 전용으로 보존한다.
