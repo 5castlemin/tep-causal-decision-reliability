@@ -1,7 +1,7 @@
 # Research C Held-out V1 결과 및 감사
 
-**최종 상태: `HELDOUT_COMPLETED_AND_AUDITED`**  
-**실행일: 2026-11-23**  
+**최종 상태: `HELDOUT_COMPLETED_AND_AUDITED`**
+**실행일: 2026-11-23**
 **외부 공개 사전등록: 확인되지 않음. 본 문서는 내부 Git 기반 실행·분석 기록이다.**
 
 ## 1. 연구 질문과 해석 범위

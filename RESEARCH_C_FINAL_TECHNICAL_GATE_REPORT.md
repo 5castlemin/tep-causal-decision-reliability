@@ -58,4 +58,3 @@ positive 경로는 임시 디렉터리의 테스트용 config/manifest로 전체
 - A/B/C 과학적 계약 및 사전등록은 미승인이다. 제안된 topology/G0 분포, 지표·정규화·비용, 예산, UNRES 처리, N, resource limits를 사용자 승인 없이 실행 설정으로 확정하지 않았다.
 - Production resource profile 수치는 TEST_ONLY 검증값이 아니다. 실제 연구 실행 전 승인된 config/manifest, 정확한 commit/tree와 환경 fingerprint가 필요하다.
 - 전체 저장소 테스트의 Step 4 무결성/환경 실패는 별도 조사 대상이며, 동결 자료를 고쳐 해소하지 않았다. Research C 핵심 회귀군에서는 재현되지 않았다.
-
