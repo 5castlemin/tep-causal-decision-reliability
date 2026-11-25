@@ -21,7 +21,7 @@
 
 ## 비간선 분류 및 오류 호환성
 
-간선은 `SUPPORTED_DIRECT_EDGE`로 다룰 수 있는 설정 수준의 positive evidence다. 음성쌍은 문서의 명시적 부재 근거가 개별 pair에 연결될 때만 `SUPPORTED_NO_DIRECT_EDGE`가 될 수 있다. 나머지는 `REFERENCE_ABSENT_BUT_UNVERIFIED`; 문서의 표현이 복수 해석을 허용하면 `AMBIGUOUS_OR_UNRESOLVED`; 고정 메타데이터/진단 변수처럼 의사결정 구조에서 제외되는 쌍은 `OUT_OF_SCOPE`다. 이 audit은 4,005개 비인접 쌍을 일괄 true negative로 만들지 않는다. 세 Rule A chord도 명시적 부재의 과학적 근거가 없어 미확인이다.
+간선은 `SUPPORTED_DIRECT_EDGE`로 다룰 수 있는 설정 수준의 positive evidence다. 음성쌍은 문서의 명시적 부재 근거가 개별 pair에 연결될 때만 `SUPPORTED_NO_DIRECT_EDGE`가 될 수 있다. 나머지는 `REFERENCE_ABSENT_BUT_UNVERIFIED`; 문서의 표현이 복수 해석을 허용하면 `AMBIGUOUS_OR_UNRESOLVED`; 고정 메타데이터/진단 변수처럼 의사결정 구조에서 제외되는 쌍은 `OUT_OF_SCOPE`다. 이 audit은 전체 4,005개 unordered pair 가운데 3,863개 reference-absent pair를 일괄 true negative로 만들지 않는다. 방향별 FP 후보를 세면 7,726개다. 세 Rule A chord도 명시적 부재의 과학적 근거가 없어 미확인이다.
 
 | 오류 | 완전 DAG 계약 A | 제한 부분 참조 계약 B | reference-relative 계약 C |
 |---|---|---|---|

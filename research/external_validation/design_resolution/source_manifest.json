@@ -1,0 +1,35 @@
+{
+  "catalog_repository": "https://github.com/juangamella/causal-chamber",
+  "catalog_commit": "c2b307036446b8d3ca173e9f41ff465b7111819a",
+  "dataset": {
+    "name": "wt_bernoulli_v1",
+    "version": "v1.0",
+    "experiment": "random_loads_intake",
+    "archive_url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/wt_bernoulli_v1.zip",
+    "archive_file": "wt_bernoulli_v1.zip (retained outside Git in the existing work/data directory)",
+    "archive_bytes": 14047460,
+    "archive_sha256": "e5d58a67f6307b9099177425e91c449b9e62e7c712f8c6f34d1dc80ce4db01e3",
+    "license": "CC-BY-4.0",
+    "provenance": "physical measurement per official catalog/Step 0 manifest"
+  },
+  "official_sources": [
+    {
+      "path": "datasets/wt_bernoulli_v1/generators/random_loads_intake.py",
+      "url": "https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1/generators/random_loads_intake.py",
+      "bytes": 2490,
+      "sha256": "eb9978b45fb77ec0fa07007a5b796b50a8917e96d1e24e7aa868da45be18b282"
+    },
+    {
+      "path": "datasets/wt_bernoulli_v1/variables.csv",
+      "url": "https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1/variables.csv",
+      "note": "The file defers physical descriptions to Appendix II of the cited manuscript."
+    },
+    {
+      "path": "datasets/wt_bernoulli_v1/README.md",
+      "url": "https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1/README.md",
+      "note": "Identifies the standard configuration, Bernoulli-principle dataset purpose, experiment table, and licenses."
+    }
+  ],
+  "response_values_read": false,
+  "downloaded_again": false
+}

@@ -2,6 +2,16 @@
 
 기록 원칙: 실질 작업마다 날짜, 브랜치/커밋, 실행 명령, 실제 결과, 미수행/차단 사항을 추가한다. 이 문서는 작업 성공을 추정하지 않는다.
 
+# 2026-11-25 — Research D Step 2 설계 적격성 preflight
+
+- Step 1 commit `6483c9b49f1eb388ea862eb9ec20564b4f84cff5` 기반 브랜치 `research/research-d-design-resolution`에서 작업. Step1은 Step0 commit 아래 두 commit으로 이어짐.
+- 기존 `wt_bernoulli_v1.zip` (14,047,460 bytes, SHA-256 `e5d58a67f6307b9099177425e91c449b9e62e7c712f8c6f34d1dc80ce4db01e3`) 재사용. outcome 열을 선택하지 않고 flag, timestamp, command/config metadata만 읽음. 2,000개 100행 block, block당 설정 일관성, seed-42 명령열 전체 일치를 확인함.
+- `wt_standard` 32/42 DAG의 두 후보 `load_in→rpm_in`, `load_in→pressure_intake`는 직접 간선이고 각각 task zone 1 pair, Rule A task-FP opportunity 0. 기존 M1–M4의 실측 결정 유용성 비교에는 구조가 축소되어 OPTION C (`PHYSICAL_CASE_REDESIGN_REQUIRED`) 추천; Mk2는 `DEFERRED_PENDING_EXTERNAL_EVIDENCE` 유지.
+- Step 1 graph 문서의 쌍 수 문구를 바로잡음: 4,005는 전체 unordered pair, 3,863은 reference-absent unordered pair, 7,726은 oriented absent candidates. Step 1→Step0의 실제 커밋은 두 개이며 Step1 최종 commit의 직계 부모는 `7c5bd93...`.
+- 신규 outcome-blind graph/block validator와 deterministic fixture, root unittest discovery 연결을 추가. 실측 반응, policy recommendation, SCM fit, loss/regret 및 stochastic G0 cohort는 실행하지 않음. 외부 개발자 문의 초안은 작성만 하고 보내지 않음.
+- 검증: outcome-blind archive 검사 PASS; Step2 신규 테스트 3개 PASS, Step1 validator root-wrapper 1개 PASS, state generator/check PASS, `git diff --check` PASS. 전체 root suite는 364개까지 실행했으나, 환경/working-copy 관련 frozen runtime fingerprint mismatch와 CRLF로 인한 기존 Step 6 byte check failure가 있었고, 당시 신규 fixture 크기 테스트 1개도 실패했다. fixture 테스트는 100행 block으로 고쳐 targeted PASS를 다시 확인했다. 기존 frozen files/requirements를 바꾸지 않았다. `check_asset_manifest.py`와 `validate_pr_integration.py`도 Windows checkout에서 각각 config hash 및 Step6 byte comparison에서 중단되어 CI clean Linux checkout 검증이 필요하다. 정확한-head Actions CI 결과는 push 후 확인 예정.
+
+
 ## 2026-11-16 — Step 4C-2 final freeze closure
 
 - Requalified the production-isolated fixed-fixture path on Windows/CPython 3.11.15: 14/14 preserved strict-Q topology fixtures completed with 14/14 identical-ledger replays, no 2-second unit timeout, max stage 1.219 s, full-path max 9.255 s, sampled child RSS max 70,930,432 bytes, shared fixture-root storage 1,730,470 bytes. Six source topology strata had no accepted fixture and remain unavailable; no study SCM was sampled (`independent_scm_n=0`). Evidence: `research/budget_aware_refinement/step4c2_resource_qualification_v2.json`.

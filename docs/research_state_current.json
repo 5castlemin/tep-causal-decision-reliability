@@ -481,11 +481,11 @@
     },
     {
       "id": "RD-QUALIFICATION",
-      "title": "Research D Mk2 참조·시간·실험단위 적격성",
+      "title": "Research D 외부 설계 적격성 및 실측 preflight",
       "status": "PARTIAL",
-      "evidence": "research/external_validation/qualification/RESEARCH_D_QUALIFICATION_DECISION.md; qualification_summary.json; MK2_TEMPORAL_ALIGNMENT_AUDIT.md",
-      "next_action": "장치/session provenance와 SET–MSR 정렬 증거를 확보하거나 conditional physical case 한계를 검토; 최종 채택·본실험은 별도 승인",
-      "acceptance": "Step 1 audit 완료; full-DAG strict task, 행별 timing, 독립 run/session은 미확인; 정책 성능은 NOT_RUN",
+      "evidence": "research/external_validation/qualification/RESEARCH_D_QUALIFICATION_DECISION.md; research/external_validation/design_resolution/RESEARCH_D_DESIGN_RESOLUTION.md; WT block/schema preflight",
+      "next_action": "OPTION C 재설계 계약을 별도 검토·승인하고 target, learner, temporal estimand, reference-relative scope를 고정; 승인 없이는 실측 결과 열람·본실험 금지",
+      "acceptance": "Step 1 Mk2 unresolved 유지; Step 2 WT generator/archive assignment 일치와 direct-task 구조 검사 완료; 기존 M1–M4 비교에는 설계 재구성 필요; policy performance NOT_RUN",
       "depends_on": [
         "RD-FEASIBILITY"
       ]
@@ -556,7 +556,8 @@
     "2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.",
     "2026-11-23: RC-HELDOUT는 Research C Held-out V1 실행·감사 완료 상태를 의미한다. 연구 산출물은 이 로컬 연구 브랜치에 있으며 main 병합을 뜻하지 않는다. 후속 정창민 M1–M4 기전 분석은 사용자 배정 업무다.",
     "2026-11-23 repo repair: Step 4 frozen docs/research_state.json is preserved at its original frozen bytes. The changing operational status now lives in docs/research_state_current.json; PR #38 was merged on 2026-11-16. No frozen experiment, manifest, or cohort is rerun.",
-    "2026-11-25: RD-FEASIBILITY는 원자료 스키마·개입 support와 참조 검토가 완료된 감사다. CONDITIONAL_GO는 실험 채택이나 실행 승인을 뜻하지 않는다."
+    "2026-11-25: RD-FEASIBILITY는 원자료 스키마·개입 support와 참조 검토가 완료된 감사다. CONDITIONAL_GO는 실험 채택이나 실행 승인을 뜻하지 않는다.",
+    "2026-11-25: RD-QUALIFICATION Step 2는 Mk2 미해결을 유지하고 WT direct task는 기존 M1–M4의 유의미한 외부 결정 검증에 재설계가 필요하다고 판정했다. WT 무작위 배정 block 기록은 generator와 일치하지만 outcome/performance는 NOT_RUN; 본실험 별도 승인 필요."
   ],
   "integration_review": {
     "user_approved": true,

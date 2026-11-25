@@ -1,0 +1,50 @@
+{
+  "step": "Research D Step 2: Design Resolution and Bounded External Validation Preflight",
+  "date": "2026-11-25",
+  "base_commit": "6483c9b49f1eb388ea862eb9ec20564b4f84cff5",
+  "base_parent": "7c5bd93bfa798eeb2e3b3e3549cb68538f1688b8",
+  "step0_ancestor": "89a49224a997f33aee5a5075842144df48e39d45",
+  "step1_commits_after_step0": 2,
+  "recommended_option": "PHYSICAL_CASE_REDESIGN_REQUIRED",
+  "wt_status": "REDESIGN_REQUIRED_FOR_MEANINGFUL_M1_M4_EXTERNAL_DECISION_VALIDATION",
+  "mk2_status": "DEFERRED_PENDING_EXTERNAL_EVIDENCE",
+  "wt_graph": {
+    "nodes": 32,
+    "edges": 42,
+    "unordered_pairs": 496,
+    "reference_absent_pairs": 454,
+    "oriented_absent_candidates": 908,
+    "dag": true,
+    "all_graph_nodes_in_dataset_schema": true
+  },
+  "tasks": {
+    "load_in_to_rpm_in": {
+      "reference_relation": "direct_edge",
+      "task_zone_pairs": 1,
+      "rule_a_task_fp_opportunities": 0
+    },
+    "load_in_to_pressure_intake": {
+      "reference_relation": "direct_edge",
+      "task_zone_pairs": 1,
+      "rule_a_task_fp_opportunities": 0
+    }
+  },
+  "archive": {
+    "name": "wt_bernoulli_v1.zip",
+    "dataset_version": "v1",
+    "license": "CC-BY-4.0",
+    "bytes": 14047460,
+    "sha256": "e5d58a67f6307b9099177425e91c449b9e62e7c712f8c6f34d1dc80ce4db01e3",
+    "rows": 200000,
+    "columns": 37,
+    "flag_blocks": 2000,
+    "rows_per_block": 100,
+    "rng_seed_42_matches_blocks": 2000,
+    "candidate_action_blocks": {"0.10": 24, "0.30": 23, "0.50": 20, "0.70": 12, "0.90": 18},
+    "response_values_read": false
+  },
+  "structure_pilot": "deterministic_hand_graph_fixture_only; no stochastic G0 cohort or policy performance",
+  "technical_preflight": "graph_zone_and_metric_fixture_validated; no production policy adapter/evaluator because option B eligibility failed",
+  "tests": "3 new Step 2 tests and 1 Step 1 qualification root-wrapper test passed locally; full-suite exact-head CI pending",
+  "push": "pending"
+}
