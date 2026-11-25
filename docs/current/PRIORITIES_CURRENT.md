@@ -86,5 +86,6 @@
 - 2026-11-26: Research D external final outputs were re-audited read-only from the retained local response vectors and recommendation artifact: 27/27 checks PASS; independent primary delta 0.03422489689372574 agrees with the published analysis. No DRF refit, recommendation generation, or intervention sampling was run for this re-audit. Hash of local audit summary: 6fa458199ea814a61248a1088bbe5a3b96a586916516c02a1dd6b54c0331292b. Raw vectors remain outside the public repository.
 - 2026-11-26: Final Research C–D report and evidence matrix prepared from frozen C results, read-only original-ledger mechanism audit, and read-only Research D artifact audit. Research C contract/ledger/code and frozen files remain unchanged; Research D remains conditional external semisynthetic evidence, not manufacturing validation. Final operational step is team presentation preparation, not additional experiments.
 - 2026-11-26: Final Research C–D integration PR #41 merged as 4564e4d28fea62a0caebbad0ed6dd415d7f29cda; post-merge Actions 45654187713 SUCCESS. No new experiment or response sampling.
+- 2026-11-26: PR #42 merged as fc863182efd4ee721a7f5250c871d46afe9bf244 to record FINAL-INTEGRATION VERIFIED; post-merge main Actions 45656538612 SUCCESS. No experiment or response sampling.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.
