@@ -3,11 +3,9 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-import sys
 
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT / "research" / "original_objective"))
-from policy_engine import state, task_zone, metrics, Config  # noqa: E402
+from research.original_objective.policy_engine import state, task_zone, metrics, Config
 
 INSPECTION = ROOT / "research" / "external_validation" / "inspection_results.json"
 
