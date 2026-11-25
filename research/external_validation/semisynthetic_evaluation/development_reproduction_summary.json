@@ -1,0 +1,31 @@
+{
+  "schema": "RESEARCH_D_DEVELOPMENT_REPRODUCTION_ATTEMPT_V1",
+  "status": "DEVELOPMENT_PILOT_INCOMPLETE",
+  "run_id": "rd-development-reproduction-20261125-01",
+  "runner_commit": "16445173224f405c88a32e8856435bbc4290876b",
+  "attempt_count": 1,
+  "failure_phase": "pre_fit_historical_audit_schema_gate",
+  "failure": "runner expected top-level status; saved audit stores status at stored_artifact_audit.status",
+  "failure_corrected_in_commit": "4007dbf5bdd4b57f7c9df413ec78243706e4a7f6",
+  "retry_performed": false,
+  "generated": {
+    "drf_fit_samples": 0,
+    "training_rows": 0,
+    "recommendation_rows": 0,
+    "intervention_rows": 0,
+    "g0_records": 0,
+    "bootstrap_draws": 0
+  },
+  "artifacts_written": {
+    "reproduction_run_lock": false,
+    "recommendation_manifest": false,
+    "evaluation_artifact": false,
+    "execution_manifest": false,
+    "summary": false
+  },
+  "external_output_directory_empty": true,
+  "final_evaluation_generated": false,
+  "historical_pilot_promoted": false,
+  "research_c_changed": false,
+  "next_action": "No retry under current authorization; a new reproduction needs explicit authorization and a new run ID/lock."
+}

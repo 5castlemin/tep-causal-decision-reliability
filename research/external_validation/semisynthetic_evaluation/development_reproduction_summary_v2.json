@@ -1,0 +1,909 @@
+{
+  "action_losses": {
+    "0.000155911358968": {
+      "bias_corrected_loss": 0.9564639487856615,
+      "mc_correction_can_be_negative": false,
+      "plug_in_loss": 0.9604743537455884
+    },
+    "0.0001724093665238": {
+      "bias_corrected_loss": 1.0872392689655732,
+      "mc_correction_can_be_negative": false,
+      "plug_in_loss": 1.0918466186517983
+    },
+    "0.00018679686613765": {
+      "bias_corrected_loss": 0.9658600497561732,
+      "mc_correction_can_be_negative": false,
+      "plug_in_loss": 0.9702810495507461
+    },
+    "0.00020263502221978": {
+      "bias_corrected_loss": 0.8248435264370797,
+      "mc_correction_can_be_negative": false,
+      "plug_in_loss": 0.8284107155645554
+    },
+    "0.00022589388613683002": {
+      "bias_corrected_loss": 1.016303459094272,
+      "mc_correction_can_be_negative": false,
+      "plug_in_loss": 1.0200616861609886
+    }
+  },
+  "action_summaries": {
+    "0.000155911358968": {
+      "mean": 13.92578125,
+      "n": 256,
+      "response_sha256": "427d15d0ff9e6d77edd05d5ff950c746490703d27a5fd15ca3ec90bab3f2927a",
+      "sample_variance": 2.5160386029411765,
+      "sampling_seconds": 70.17360366000794
+    },
+    "0.0001724093665238": {
+      "mean": 13.82421875,
+      "n": 256,
+      "response_sha256": "2874822cc2fbc3b58320c28e5793df641f259d4fd4ccca5a0cff1cee8c754ece",
+      "sample_variance": 2.890548406862745,
+      "sampling_seconds": 70.17360366000794
+    },
+    "0.00018679686613765": {
+      "mean": 13.91796875,
+      "n": 256,
+      "response_sha256": "0f7b49410348596e764f54510cc713cbe25181401f7d8c9993cdca8a9aa6aaa2",
+      "sample_variance": 2.7736366421568626,
+      "sampling_seconds": 70.17360366000794
+    },
+    "0.00020263502221978": {
+      "mean": 14.03515625,
+      "n": 256,
+      "response_sha256": "2a82355a647761fc4244493ff2e1c55d0b0b2a0c9e7640fc518829107b0b529e",
+      "sample_variance": 2.2379748774509802,
+      "sampling_seconds": 70.17360366000794
+    },
+    "0.00022589388613683002": {
+      "mean": 13.87890625,
+      "n": 256,
+      "response_sha256": "1f30392d41bed247c748a1a10f43e38be208c50254426494742260cc12af865a",
+      "sample_variance": 2.357827818627451,
+      "sampling_seconds": 70.17360366000794
+    }
+  },
+  "execution_manifest_sha256": "2c291c1de94feb56c472addf68b59e8a70ffe949411af509e728a70bfee42e75",
+  "final_evaluation": false,
+  "g0_are_independent_external_scms": false,
+  "g0_count": 32,
+  "graph_free_association_baseline": {
+    "action": 0.000155911358968,
+    "interpretation": "observational association only",
+    "loss_bc": 0.9564639487856615,
+    "loss_plugin": 0.9604743537455884
+  },
+  "interpretation": "development-only conditional robustness pilot; no physical population inference",
+  "intervention_samples_persisted": true,
+  "one_fixed_dgp_and_one_training_sample": true,
+  "policy_budget_summary": [
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "CANONICAL_ORACLE",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M1",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M1+M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M1+M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M1+M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M1+M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M1+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M1+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M1+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 0,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "S0",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.957932089562304,
+      "mean_loss_plugin": 0.9620066499651443,
+      "mean_repair_cost": 0.75,
+      "policy_id": "CANONICAL_ORACLE",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.21875,
+      "policy_id": "M1",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.46875,
+      "policy_id": "M1+M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.6875,
+      "policy_id": "M1+M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.75,
+      "policy_id": "M1+M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.59375,
+      "policy_id": "M1+M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.5625,
+      "policy_id": "M1+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.65625,
+      "policy_id": "M1+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.40625,
+      "policy_id": "M1+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.34375,
+      "policy_id": "M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.625,
+      "policy_id": "M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.6875,
+      "policy_id": "M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.46875,
+      "policy_id": "M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.4375,
+      "policy_id": "M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.53125,
+      "policy_id": "M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.1875,
+      "policy_id": "M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 1,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "S0",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9570512050963185,
+      "mean_loss_plugin": 0.9610872722334107,
+      "mean_repair_cost": 1.15625,
+      "policy_id": "CANONICAL_ORACLE",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.21875,
+      "policy_id": "M1",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.5625,
+      "policy_id": "M1+M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 1.0,
+      "policy_id": "M1+M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 1.15625,
+      "policy_id": "M1+M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 0.78125,
+      "policy_id": "M1+M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.6875,
+      "policy_id": "M1+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.875,
+      "policy_id": "M1+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.40625,
+      "policy_id": "M1+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.34375,
+      "policy_id": "M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.84375,
+      "policy_id": "M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 1.0,
+      "policy_id": "M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 0.5625,
+      "policy_id": "M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.5,
+      "policy_id": "M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.6875,
+      "policy_id": "M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.1875,
+      "policy_id": "M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 2,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "S0",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 1.3125,
+      "policy_id": "CANONICAL_ORACLE",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.21875,
+      "policy_id": "M1",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.5625,
+      "policy_id": "M1+M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 1.09375,
+      "policy_id": "M1+M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 1.3125,
+      "policy_id": "M1+M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 0.78125,
+      "policy_id": "M1+M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.75,
+      "policy_id": "M1+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.9375,
+      "policy_id": "M1+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.40625,
+      "policy_id": "M1+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.34375,
+      "policy_id": "M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.875,
+      "policy_id": "M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 1.09375,
+      "policy_id": "M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 0.5625,
+      "policy_id": "M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.53125,
+      "policy_id": "M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.71875,
+      "policy_id": "M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.1875,
+      "policy_id": "M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 3,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "S0",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 1.3125,
+      "policy_id": "CANONICAL_ORACLE",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.21875,
+      "policy_id": "M1",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.5625,
+      "policy_id": "M1+M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 1.09375,
+      "policy_id": "M1+M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 1.3125,
+      "policy_id": "M1+M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 0.78125,
+      "policy_id": "M1+M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.75,
+      "policy_id": "M1+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.9375,
+      "policy_id": "M1+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.40625,
+      "policy_id": "M1+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.34375,
+      "policy_id": "M2",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9585193458729611,
+      "mean_loss_plugin": 0.9626195684529667,
+      "mean_repair_cost": 0.875,
+      "policy_id": "M2+M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 1.09375,
+      "policy_id": "M2+M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9564639487856615,
+      "mean_loss_plugin": 0.9604743537455884,
+      "mean_repair_cost": 0.5625,
+      "policy_id": "M2+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.53125,
+      "policy_id": "M3",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.71875,
+      "policy_id": "M3+M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.95675757694099,
+      "mean_loss_plugin": 0.9607808129894996,
+      "mean_repair_cost": 0.1875,
+      "policy_id": "M4",
+      "same_action_fraction": null
+    },
+    {
+      "budget": 4,
+      "g0_n": 32,
+      "mean_loss_bc": 0.9600957024147766,
+      "mean_loss_plugin": 0.9641752133470367,
+      "mean_repair_cost": 0.0,
+      "policy_id": "S0",
+      "same_action_fraction": null
+    }
+  ],
+  "primary_B2_S0_minus_FullGreedy": {
+    "interpretation": "development-only, conditional on one fitted DRF, one train sample and shared evaluation draws",
+    "max": 0.059839510308610566,
+    "mean_delta_loss_bc": 0.0033381254737865317,
+    "min": 0.0,
+    "n_g0": 32,
+    "positive_fraction": 0.1875,
+    "sd_across_g0_conditional_on_fixed_eval": 0.010874091652824425
+  },
+  "primary_uncertainty": {
+    "action_mc_only_percentile_95": [
+      -0.05853612495588549,
+      0.06343823975974354
+    ],
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 91420263,
+    "bootstrap_unit": "paired G0 seed plus within-action independent response-row resampling; shared action loss table preserved",
+    "g0_only_percentile_95": [
+      0.0005872563106569806,
+      0.007371723023403182
+    ],
+    "two_source_bootstrap_mean": 0.004239327465768812,
+    "two_source_percentile_95": [
+      -0.06532199359741737,
+      0.07546540523357707
+    ]
+  },
+  "recommendation_lock_sha256": "2a2caa8021d60e4d0c0b88993f2a77a6a0b395828e90779a15a11b5800041f8c",
+  "recommendation_rows": 2720,
+  "recommendations_locked_before_evaluation": true,
+  "response_vectors_artifact": {
+    "actions": [
+      0.000155911358968,
+      0.0001724093665238,
+      0.00018679686613765,
+      0.00020263502221978,
+      0.00022589388613683002
+    ],
+    "bytes": 11828,
+    "filename": "response_vectors.npz",
+    "format": "NPZ float64 arrays; evaluator-only; outside repository",
+    "rows_per_action": 256,
+    "sha256": "251ee7d5fbfb6ec473fa79229ac8741af0ce6d4a325a0377d5f9d3fb388ca803"
+  },
+  "run_id": "rd-development-reproduction-20261125-02",
+  "run_lock_sha256": "1476308f85c01b0c02941275d6b37d2d8ea973a0487f33efa4cff8a40abad8fa",
+  "schema": "RESEARCH_D_DEVELOPMENT_PILOT_SUMMARY_V1",
+  "secondary_B2_M4_minus_FullGreedy": {
+    "mean_delta_loss_bc": 0.0,
+    "n_g0": 32,
+    "positive_fraction": 0.0
+  },
+  "source": {
+    "data_sha256": {
+      "assembly_reference--ground_truth.json": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8",
+      "assembly_sample--assembly_line_500.csv": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e"
+    },
+    "package_version": "1.2.1",
+    "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9"
+  },
+  "status": "COMPLETED",
+  "training_sha256": "bcca5e56b01dd8cc59d227272906fcee6f9160897e9be2179bd9751619b4bc39",
+  "wall_seconds_after_lock": 463.613860799931
+}

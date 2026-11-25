@@ -1,0 +1,51 @@
+{
+  "recorded_at": "2026-11-25",
+  "sources": [
+    {
+      "role": "Mk2 linked_leds configuration and Figure 1",
+      "url": "https://cchamber-box.s3.eu-central-2.amazonaws.com/config_doc_lt_mk2_linked_leds.pdf",
+      "version": "configuration 1.0",
+      "local_bytes": 572573,
+      "local_sha256": "7b3ab33f66b6e39a29eff48ecf3710382d55363552e74281eaf979d45a9f1f87",
+      "local_artifact": "workspace work/data/linked_leds.pdf",
+      "redistributed": false
+    },
+    {
+      "role": "lt_spice_v1 physical measurement archive",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/lt_spice_v1.zip",
+      "version": "v1; catalog commit c2b307036446b8d3ca173e9f41ff465b7111819a",
+      "bytes": 40572526,
+      "sha256": "5e9f37c29b4823df34798e3ca9a39bf6f3a4e0ef71c8a92c45e6ed52ae99a118",
+      "license": "CC-BY-4.0",
+      "local_artifact": "workspace work/data/lt_spice_v1.zip",
+      "redistributed": false
+    },
+    {
+      "role": "public experiment generator (static review only)",
+      "url": "https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/lt_spice_v1/generators/spice.py",
+      "version": "catalog commit c2b307036446b8d3ca173e9f41ff465b7111819a",
+      "local_sha256": "a109a39623fbc1a0661b91f39d61564dc824bd503b2aa9797a04ac7fafeb85a0",
+      "local_artifact": "workspace work/chamber/datasets/lt_spice_v1/generators/spice.py",
+      "remote_lab_or_submit_executed": false
+    },
+    {
+      "role": "Causal Chamber SDK source used for protocol semantics",
+      "url": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a",
+      "version": "package 1.0.0 source artifact",
+      "local_sha256": "ec9ca8300a119b589a244c628d4db02e1bcd49c621d577ab3f055d47f6f32461",
+      "local_artifact": "workspace work/chamber-package/causalchamber/lab/chamber.py",
+      "wheel_sha256": "b03a6544e6c44bbd08ab8132aafab81aa2489f5c7decfecc895b31ca8faadd86"
+    },
+    {
+      "role": "SPICE paper (public literature exposure; no response-value analysis)",
+      "url": "https://arxiv.org/abs/2604.09135",
+      "version": "v2, revised 2026-09-25",
+      "downloaded": false,
+      "outcome_context_seen": true,
+      "published_result_table_snippet_exposed_by_search_extraction": true,
+      "exposure_used_for_task_or_action_selection": false,
+      "response_values_examined": false
+    }
+  ],
+  "primary_data_analysis": "schema, assignment sequence, timestamp/counter and experiment structure only; response measurements not inspected in this step"
+}

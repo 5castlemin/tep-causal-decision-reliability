@@ -1,0 +1,8 @@
+B,scm_id,template,nodes,action,target,opt_k,k_S0,k_FG,k_M4,regret_S0,regret_FG,regret_M4,FG_edits,M4_edits,FG_resid_task,M4_resid_task
+1,dev-scm-development-proposal-000004-a0003,multiple_directed_paths,6,V03,V00,1.0,0.0,0.0,1.0,0.27301,0.27301,0.00000,M2:FP(V00/V02),M4:UNRES(V00/V04),2,1
+1,dev-scm-development-proposal-000014-a0013,observed_common_cause,10,V06,V01,1.0,0.0,0.0,1.0,0.59038,0.59038,0.00000,M3:UNRES(V00/V06),M4:FN(V01/V07),1,0
+1,dev-scm-development-proposal-000027-a0026,observed_common_cause,9,V05,V07,1.0,-1.0,-1.0,1.0,0.81194,0.81194,0.00000,M1:FN(V01/V06),M4:UNRES(V07/V08),2,1
+1,dev-scm-development-proposal-000037-a0036,observed_common_cause,8,V06,V05,-1.0,0.0,0.0,-1.0,0.27382,0.27382,0.00000,M1:FN(V01/V04),M4:REV(V03/V06),2,1
+2,dev-scm-development-proposal-000014-a0013,observed_common_cause,10,V06,V01,1.0,0.0,0.0,1.0,0.59038,0.59038,0.00000,M3:UNRES(V00/V06) > M3:UNRES(V07/V09),M4:FN(V01/V07),1,0
+2,dev-scm-development-proposal-000037-a0036,observed_common_cause,8,V06,V05,-1.0,0.0,0.0,-1.0,0.27382,0.27382,0.00000,M1:FN(V01/V04) > M2:FP(V05/V07),M4:REV(V03/V06) > M4:UNRES(V00/V05),2,0
+2,dev-scm-development-proposal-000041-a0040,fork_branch,9,V07,V06,-1.0,0.0,0.0,-1.0,0.58944,0.58944,0.00000,M3:REV(V02/V06) > M4:UNRES(V01/V07),M4:UNRES(V01/V07) > M4:FN(V04/V07),1,0

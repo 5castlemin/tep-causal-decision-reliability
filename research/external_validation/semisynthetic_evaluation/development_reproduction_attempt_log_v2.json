@@ -1,0 +1,73 @@
+{
+  "attempts": [
+    {
+      "attempt_id": "rd-development-reproduction-20261125-02-preflight-01",
+      "generated": {
+        "evaluator_rows": 0,
+        "g0": 0,
+        "recommendations": 0,
+        "research_rows": 0
+      },
+      "phase": "actual_input_dry_run",
+      "status": "PASS_NO_RESEARCH_SAMPLES_GENERATED"
+    },
+    {
+      "attempt_id": "rd-development-reproduction-20261125-02-preflight-02-runner",
+      "failure": "only action_grid.support_checks metadata order differed; action values and all other scientific contract fields matched",
+      "generated": {
+        "evaluator_rows": 0,
+        "fit_diagnostic_rows": 48,
+        "g0_seed_records": 32,
+        "recommendations": 0,
+        "training_rows": 512
+      },
+      "phase": "post_training_scientific_lock_check",
+      "reused_inputs": {
+        "recommendation_input_sha256": "d6c79cf1bd29f7e56750dac0ec58af5af674ce9f6b3501e09e5c32a2a9251abb",
+        "training_csv_sha256": "dfc77931debb528db05defaf8302198048a04337d2d20a95ab51e5b1685a7094",
+        "training_numeric_sha256": "bcca5e56b01dd8cc59d227272906fcee6f9160897e9be2179bd9751619b4bc39"
+      },
+      "status": "TECHNICAL_FAILURE_PRESERVED_INPUTS_REUSED"
+    },
+    {
+      "attempt_id": "rd-development-reproduction-20261125-02-preflight-03",
+      "generated": {
+        "evaluator_rows": 0,
+        "g0": 0,
+        "recommendations": 0,
+        "research_rows": 0
+      },
+      "phase": "actual_input_recovery_dry_run",
+      "recovery_manifest_sha256": "E43978B5E841FEDBF75C29F6BBE606F7BFE395DA38DD112A5AB5F8C36038B654",
+      "status": "PASS_NO_RESEARCH_SAMPLES_GENERATED"
+    },
+    {
+      "attempt_id": "rd-development-reproduction-20261125-02",
+      "comparison_sha256": "ffc2aa28fffb2b7da4d7c91c14792b39a889476677d38f81026b5461ec1a5048",
+      "evaluator_rows": 1280,
+      "execution_manifest_sha256": "2c291c1de94feb56c472addf68b59e8a70ffe949411af509e728a70bfee42e75",
+      "final_samples_generated": false,
+      "phase": "same_condition_reproduction",
+      "recommendation_rows": 2720,
+      "response_vectors_sha256": "251ee7d5fbfb6ec473fa79229ac8741af0ce6d4a325a0377d5f9d3fb388ca803",
+      "run_lock_sha256": "1476308f85c01b0c02941275d6b37d2d8ea973a0487f33efa4cff8a40abad8fa",
+      "source_commit": "4f0bda50816b2fa08b8bf8cce31fc3fea44582eb",
+      "status": "COMPLETED",
+      "summary_sha256": "3be2b1db2a3ff5c880092a0199186ab10b959662f0e6208f04891f6d18f2093d"
+    },
+    {
+      "analysis_errors": [
+        "initial seed/action bootstrap indexing axis mismatch",
+        "historical summary was not loaded into separate variable"
+      ],
+      "evaluator_rerun": false,
+      "final_analysis_script": "analyze_development_reproduction_v2.py",
+      "phase": "post_run_independent_analysis",
+      "status": "PASS_AFTER_ANALYSIS_ONLY_FIXES"
+    }
+  ],
+  "final_evaluation_generated": false,
+  "final_gate": "READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW",
+  "run_id": "rd-development-reproduction-20261125-02",
+  "schema": "RESEARCH_D_DEVELOPMENT_REPRODUCTION_ATTEMPTS_V2"
+}

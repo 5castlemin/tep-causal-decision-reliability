@@ -1,0 +1,124 @@
+{
+  "attempt_id": "rd-development-reproduction-20261125-02-preflight-03",
+  "checks": {
+    "clean_worktree": true,
+    "original_sources_and_artifacts": true,
+    "outputs_absent": true,
+    "package_import_path": true,
+    "pinned_source_and_data": true,
+    "recovery_inputs_verified": true,
+    "roundtrip_csv_exact": true,
+    "runtime_and_packages": true,
+    "structural_preflight": true,
+    "worker_cli_arguments": true
+  },
+  "code_sha256": {
+    "research/external_validation/semisynthetic_adapter/float_hard_do_adapter.py": "d2b6d8ed88fe4107f9346dd83e6c185380900b67346bdd6e602d4cb65031efd2",
+    "research/external_validation/semisynthetic_evaluation/analyze_development_reproduction.py": "c83bcbfa87cd7e6f3693a6d5628f5049000a334eabaad3d96bfd8ff70cbea6af",
+    "research/external_validation/semisynthetic_evaluation/development_contract.json": "2a72eb9837d2c2d450612e0a227960d09562d950ea2ba715f425ec301a06702c",
+    "research/external_validation/semisynthetic_evaluation/evaluate_worker.py": "d867be88f0b3856d81c4a4b41da85e2edc0eae2d923c047edf27165c53eb9c1b",
+    "research/external_validation/semisynthetic_evaluation/pipeline.py": "4fc06dfac40b84dcc660819ec029256f0e1c951ba40b9af92c52a28854295b93",
+    "research/external_validation/semisynthetic_evaluation/recommendation_worker.py": "f71438836c5ca702445d16391cc7f8b0398c78399ae0c8a74fb5bf66270d151b",
+    "research/external_validation/semisynthetic_evaluation/reproducibility.py": "7d25193aa97077372312dfd6357a2cbec634f2b085a96a557006f8af9ea2e93b",
+    "research/external_validation/semisynthetic_evaluation/run_development_pilot.py": "5622c03ac9a334c18821cb891d04a630e3587026136cd393695c0fa1c0f06b65",
+    "research/original_objective/g0_candidate.py": "357ee60f8cdb6903f05967252a8f3462a403932c4a5bc9a24870c34beec19560",
+    "research/original_objective/policy_engine.py": "eeab5fa8f565f01970c610a356c57bbdbd05ed247e53d8c033ce06e56642e7ef",
+    "src/decision_mvp.py": "18a6dcc144368895e781272d3f83f731620533333633bce975ebedb27a55225a",
+    "src/integrated_pilot.py": "c2ff4d1bf0cb91f5206c285cf7b107c519aaa5598b2dc03e3d5c08327162d176",
+    "src/pilot_fit.py": "a02bedd4befe7f3627a2d709822267961a2cfc593b9e783d8b23ed3744f08a96"
+  },
+  "csv_float_roundtrip": {
+    "exact_bytes_match": true,
+    "input_numeric_sha256": "00f9cd90f330b73c236fca1528808f25dd2c99b4482efeb3e3725d5407ad486c",
+    "parser": "pandas.read_csv(float_precision='round_trip')",
+    "roundtrip_numeric_sha256": "00f9cd90f330b73c236fca1528808f25dd2c99b4482efeb3e3725d5407ad486c",
+    "rows": 9
+  },
+  "external_source": {
+    "commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+    "python_source_sha256": {
+      "causalAssembly/__init__.py": "ba8f1bc15a280a32d3563f3f73af0377ac75e8a4a89a87b56333664e79cbc607",
+      "causalAssembly/dag.py": "afae7c094e141afcfef9c0b0ee56a148abc07811aa8b206f0603da651cc0cec5",
+      "causalAssembly/dag_utils.py": "ecb107cafff42ffff2a6c25d5e45984919e676ca9bfb3955273ae721a519b151",
+      "causalAssembly/drf_fitting.py": "4cf62e0b9d0765842b7206111663462cf7a00f247e6858989df53d4f2a4c1baa",
+      "causalAssembly/metrics.py": "aa900dd64510232ee4af81fd18f8417db19dc8e1146f3254c41dc400d5a708a4",
+      "causalAssembly/models_dag.py": "260f3c394a1eb8b7425f831248381cc4ee540b18f3bcdd13d1a40d4b316db62f",
+      "causalAssembly/models_fcm.py": "2a40591c2c229a312117263fed70b28c8fd47dae0a650e9f72cbc00d84ab92d4",
+      "causalAssembly/pdag.py": "94c5b4527238b27336a98408059e0d512d7e8b87f1da0cfe61714f6739b81aac"
+    },
+    "worktree_clean": true
+  },
+  "historical_artifact_sha256": {
+    "evaluation": {
+      "bytes": 689145,
+      "sha256": "6d92f8dbed13c0b82da012b7366847b5ca5ade7fe8463d48f87a4f4fa3d68eb4"
+    },
+    "recommendations": {
+      "bytes": 6146232,
+      "sha256": "2823ee754cb24ed951a5344084a332664f6680b4e7d9ac8f0f0ffeab13690af8"
+    }
+  },
+  "original_audit_sha256": "a2f0a8ece1caae7320ca2a9bbc938e015c93e195f7920e8c21c62344172b563d",
+  "original_audit_status": "PASS_SAVED_ARTIFACTS_AUDITED_RAW_RESPONSE_ROWS_NOT_AVAILABLE",
+  "original_lock_sha256": "9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404",
+  "package_import": {
+    "module_file_relative_to_pinned_source": "causalAssembly/__init__.py",
+    "version": "1.2.1"
+  },
+  "planned_action_grid": [
+    0.000155911358968,
+    0.0001724093665238,
+    0.00018679686613765,
+    0.00020263502221978,
+    0.00022589388613683002
+  ],
+  "recovery_inputs": {
+    "additional_training_rows_generated": 0,
+    "g0_records_reconstructed_and_verified": 32,
+    "manifest_sha256": "e43978b5e841fedbf75c29f6bbe606f7bfe395da38dd112a5ab5f8c36038b654",
+    "recommendation_input_sha256": "d6c79cf1bd29f7e56750dac0ec58af5af674ce9f6b3501e09e5c32a2a9251abb",
+    "training_csv_sha256": "dfc77931debb528db05defaf8302198048a04337d2d20a95ab51e5b1685a7094",
+    "training_numeric_sha256": "bcca5e56b01dd8cc59d227272906fcee6f9160897e9be2179bd9751619b4bc39",
+    "training_rows_reused": 512
+  },
+  "repository": {
+    "commit": "4f0bda50816b2fa08b8bf8cce31fc3fea44582eb",
+    "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tree": "595379c1020649c9bbaec3b9794e0937aa2a2fa1",
+    "worktree_clean": true
+  },
+  "research_samples_generated": 0,
+  "run_id": "rd-development-reproduction-20261125-02",
+  "runtime": {
+    "R": "4.5.3",
+    "R_drf": "1.3.1",
+    "causalAssembly": "1.2.1",
+    "networkx": "3.4.2",
+    "numpy": "2.2.6",
+    "pandas": "2.3.1",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15",
+    "rpy2": "3.6.2"
+  },
+  "schema": "RESEARCH_D_REPRODUCTION_PREFLIGHT_V1",
+  "source": {
+    "data_sha256": {
+      "assembly_reference--ground_truth.json": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8",
+      "assembly_sample--assembly_line_500.csv": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e"
+    },
+    "package_version": "1.2.1",
+    "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9"
+  },
+  "status": "PASS_NO_RESEARCH_SAMPLES_GENERATED",
+  "structural_preflight_sha256": "85188b0bd98f91cb0e2b077eacb3d865c427c64a74292aaef9dbfb0db0d03bcc",
+  "worker_cli": {
+    "evaluate_worker": {
+      "exit_code": 0,
+      "help_available": true
+    },
+    "recommendation_worker": {
+      "exit_code": 0,
+      "help_available": true
+    }
+  }
+}

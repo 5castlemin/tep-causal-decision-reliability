@@ -1,0 +1,10 @@
+{
+  "status":"ORIGINAL_LEDGER_MECHANISM_ANALYSIS_VERIFIED",
+  "checked_at":"2026-11-26",
+  "access":"read-only SQLite; integrity_check=ok; no WAL/SHM sidecars observed",
+  "development":{"run_id":"development-20261123-seed-2026112301-v1","master_seed":2026112301,"completed_scm":64,"result_rows":5440,"cohort_sha256":"dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716","proposal_sha256":"1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584","manifest_sha256":"97ba1d89e75751d932b81e0a2ae1e07c797cdee93eaa1eeed7d7b5d491640c61"},
+  "heldout":{"run_id":"independent-evaluation-20261123-seed-2026112303-v1","master_seed":2026112303,"completed_scm":200,"result_rows":17000,"cohort_sha256":"37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba","proposal_sha256":"59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6","manifest_sha256":"f13b954850044a9c6b1b1c1812a855363f5772c1dc703ab7bec916a403a21357"},
+  "cross_checks":{"policy_budget_cells_per_cohort":85,"duplicate_keys":0,"checksum_errors":0,"development_primary_b2":0.07521088552636256,"heldout_primary_b2":0.07483635742836832,"heldout_s0_regret_b2":0.0934389767507605,"heldout_full_greedy_regret_b2":0.018602619322392183,"heldout_m4_regret_b2":0.003987745956050165,"m4_full_greedy_action_match":193,"heldout_regret_positive_s0_cases":55,"no_path_flat_prediction_cases":49,"m4_winning_action_disagreements":6,"m4_wins_by_path_restoration":5,"m4_wins_by_existing_path_direction_difference":1},
+  "comparison_limit":"PR #40 regenerated all-cell aggregates match at published precision; regenerated SCM-keyed raw outputs were not retained, so full key-by-key comparison is unavailable.",
+  "analysis_status":"post-hoc exploratory; original-ledger validation does not make it preregistered or confirmatory"
+}
