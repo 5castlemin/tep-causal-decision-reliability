@@ -1,0 +1,7376 @@
+{
+  "content_sha256": "03a238576ca3e25af47ac30bf818e86dbf06808d1c713924aed8956f59245a91",
+  "g0": [
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "c91d3a0faeb19100666ef42cc2e2f7feddea7946025f628a20c28c5cd726b2bc",
+      "master_seed": 2895822208,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702001,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "master_seed": 2373771071,
+      "proposal_summary": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702002,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "master_seed": 521514701,
+      "proposal_summary": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702003,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 3,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": true
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_3"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_3",
+            "Station1_mp_0"
+          ],
+          "proposed_state": [
+            "Station1_mp_3",
+            "Station1_mp_0"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_0"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "ee9cc78c921626f3041090ca38724ba5cb81bd5a461306414897b6bd845926eb",
+      "master_seed": 3037002811,
+      "proposal_summary": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702004,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 1
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "rejected_dag",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_2",
+            "Station1_mp_0"
+          ],
+          "proposed_state": [
+            "Station1_mp_2",
+            "Station1_mp_0"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "rejected_dag",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_3"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "master_seed": 38126614,
+      "proposal_summary": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 2,
+          "UNRES": 0
+        },
+        "rejected_dag": 2,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702005,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 4,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "rejected_dag",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_3"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 3,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_4",
+            "Station1_mp_2"
+          ],
+          "proposed_state": [
+            "Station1_mp_4",
+            "Station1_mp_2"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "473cd7b34bbec0fa104111ab399ae3a38e6b135409fd4b63f6685174401c3675",
+      "master_seed": 3812325388,
+      "proposal_summary": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 4,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702006,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "rejected_dag",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_3"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "master_seed": 1889810467,
+      "proposal_summary": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702007,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "master_seed": 129210825,
+      "proposal_summary": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702008,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": true
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "894dc7c3ee596223586094985fc97864d718d9cb1a880aac0160cb19235d68cf",
+      "master_seed": 2263112474,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702009,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 1
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "master_seed": 3339574996,
+      "proposal_summary": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702010,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "a051af905d39da94cef8e7c854811b8f277d697a878587bbad68944d2df5d792",
+      "master_seed": 80743827,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702011,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "master_seed": 2850258137,
+      "proposal_summary": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702012,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "3a816a854b5dd842ce579518d8e79836841c0230a8fe211cf40363d2ca07e94f",
+      "master_seed": 1383509283,
+      "proposal_summary": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702013,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_4",
+            "Station1_mp_2"
+          ],
+          "proposed_state": [
+            "Station1_mp_4",
+            "Station1_mp_2"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "8128fcd1bfb2c07f44045517188de3ce55924e6a994d14b1d7b95600ad711d02",
+      "master_seed": 2026642128,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702014,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 3,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "rejected_dag",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_1"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_1"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "1a7a2936bbc7cfc945cbf0e0553d4807b88d1964f0897e23207b5cdc31968a94",
+      "master_seed": 1605855568,
+      "proposal_summary": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 2,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702015,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 3,
+          "acceptance_status": "accepted",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "160e0ad45fceeb71592aeda7e16327cd04d707387579fe4768817aa6e0dc9d17",
+      "master_seed": 3591837212,
+      "proposal_summary": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702016,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "bdfeeb40278d070f8a92f52289fd9389f028b1d22a778fc28a682062190b3e98",
+      "master_seed": 3599929933,
+      "proposal_summary": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702017,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_2",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_2",
+            "Station1_mp_5"
+          ],
+          "proposed_state": [
+            "Station1_mp_2",
+            "Station1_mp_5"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_2",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "9979f1d357cedcad8edb0515c221a43d0f27d595ff2699b1770713bcc2403754",
+      "master_seed": 4236779900,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702018,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_4",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_4",
+            "Station1_mp_3"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_3"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "0f97be10d05bd19fc2219c906dc65699147af445f52409a844b3f107ca0b66f5",
+      "master_seed": 209702399,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702019,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_4",
+            "Station1_mp_1"
+          ],
+          "proposed_state": [
+            "Station1_mp_4",
+            "Station1_mp_1"
+          ],
+          "source": "true_adjacency",
+          "task_zone": true
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_5",
+            "Station1_mp_4"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "3342a32f93ed4167447ed0f38cdcc6ff105390d417dff0be7e4206719f69b48f",
+      "master_seed": 70609098,
+      "proposal_summary": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 2,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 2,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702020,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 1,
+          "task_zone": 1
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "198ef5205a97569bdf30de910bb497b0ea27a594f85d4654bf44c6cf88b9eb83",
+      "master_seed": 808973895,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702021,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": true
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "32acb2e2b3ac36eac6f9304855247dfa6083428d5e6f54702cd221d7ff2a7bf2",
+      "master_seed": 304609414,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702022,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 1
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          "proposed_state": [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "a39916dd62e1d53ee5c80b7ed71d1c5c522da2fe2ca0fdd9eb5daad9d3658d28",
+      "master_seed": 3263290362,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702023,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 3,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "894f36849f31c9926a6c2217eeac19006c362d7df0ffbfb36e7299d9238a9c37",
+      "master_seed": 125271709,
+      "proposal_summary": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 3
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 3
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 3
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702024,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 3,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "rejected_dag",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_4",
+            "Station1_mp_0"
+          ],
+          "proposed_state": [
+            "Station1_mp_4",
+            "Station1_mp_0"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": true
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "3047beda36c258f73a6ecc862b28b77eae599f6b063b686c7ea1b3888b85466f",
+      "master_seed": 2357479886,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702025,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_2",
+            "Station1_mp_1"
+          ],
+          "proposed_state": [
+            "Station1_mp_2",
+            "Station1_mp_1"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_2",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_2",
+            "Station1_mp_3"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "6845653a5db7bb47252da97d3cb3db36bc902bed7d9ce4e8ff5fc6882e586506",
+      "master_seed": 2999149216,
+      "proposal_summary": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702026,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "rejected_dag",
+          "kind": "REV",
+          "pair": [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_3"
+          ],
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "master_seed": 746397913,
+      "proposal_summary": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702027,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "7d9180369b6c11073ffd8e0012bcaf068c1c367177b73f84326eec09f40539d3",
+      "master_seed": 1584657251,
+      "proposal_summary": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702028,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_3"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_0",
+            "Station1_mp_3"
+          ],
+          "proposed_state": [
+            "Station1_mp_0",
+            "Station1_mp_3"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_3"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "572f24fc5f895cb5927676d2a4e1ab02e4e33fae80ea1bc4b542debcf9f3f7a5",
+      "master_seed": 3335393527,
+      "proposal_summary": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702029,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "FN",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "ABSENT",
+          "source": "true_adjacency",
+          "task_zone": true
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          "proposed_state": [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_2",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": []
+      },
+      "initial_graph_sha256": "4adefdfd39ececb8370d0fef4b53aea72e2213c1ebc7e5a9c13111de978cc8c3",
+      "master_seed": 3724763032,
+      "proposal_summary": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "seed_id": 702030,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 1
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 0,
+          "task_zone": 0
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": true
+        },
+        {
+          "acceptance_order": 3,
+          "acceptance_status": "accepted",
+          "kind": "FP",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_5"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": [
+            "Station1_mp_5",
+            "Station1_mp_1"
+          ],
+          "proposed_state": [
+            "Station1_mp_5",
+            "Station1_mp_1"
+          ],
+          "source": "true_nonadjacency",
+          "task_zone": false
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_5",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "d80a70b90f2f820cf3ed8d68a06d00d9486df2ac566c29d071d896b7780307fe",
+      "master_seed": 1506149994,
+      "proposal_summary": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 2
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 2
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "seed_id": 702031,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 1,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 1
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    },
+    {
+      "attempted_events": [
+        {
+          "acceptance_order": 2,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": false
+        },
+        {
+          "acceptance_order": 1,
+          "acceptance_status": "accepted",
+          "kind": "UNRES",
+          "pair": [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ],
+          "proposal_status": "proposed",
+          "proposed_direction": null,
+          "proposed_state": "UNRES",
+          "source": "true_adjacency",
+          "task_zone": true
+        }
+      ],
+      "event_opportunities_by_metric_kind_and_zone": {
+        "M1": {
+          "FN": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M2": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 7,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 0
+          }
+        },
+        "M3": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 0
+          },
+          "REV": {
+            "off_task": 5,
+            "task_zone": 0
+          },
+          "UNRES": {
+            "off_task": 5,
+            "task_zone": 0
+          }
+        },
+        "M4": {
+          "FN": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "FP": {
+            "off_task": 0,
+            "task_zone": 1
+          },
+          "REV": {
+            "off_task": 0,
+            "task_zone": 2
+          },
+          "UNRES": {
+            "off_task": 0,
+            "task_zone": 2
+          }
+        }
+      },
+      "initial_graph": {
+        "edges": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_1"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_4"
+          ],
+          [
+            "Station1_mp_3",
+            "Station1_mp_5"
+          ],
+          [
+            "Station1_mp_4",
+            "Station1_mp_5"
+          ]
+        ],
+        "unresolved": [
+          [
+            "Station1_mp_0",
+            "Station1_mp_2"
+          ],
+          [
+            "Station1_mp_1",
+            "Station1_mp_4"
+          ]
+        ]
+      },
+      "initial_graph_sha256": "fcd10ae984308e653467ba9bb3a1696aa69c72a2fe8080f0534035a4b317fa9e",
+      "master_seed": 3663782603,
+      "proposal_summary": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 2
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 2
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "realized_error_counts_by_metric": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "seed_id": 702032,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_off_task_error_counts": {
+        "FN": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "FP": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "REV": {
+          "off_task": 0,
+          "task_zone": 0
+        },
+        "UNRES": {
+          "off_task": 1,
+          "task_zone": 1
+        }
+      },
+      "task_zone_nodes": [
+        "Station1_mp_0",
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      "task_zone_pairs": [
+        [
+          "Station1_mp_0",
+          "Station1_mp_1"
+        ],
+        [
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ]
+      ]
+    }
+  ],
+  "g0_count": 32,
+  "outcome_blind_regeneration": true,
+  "recommendation_lock_sha256": "dd0edcef3a060d7f18857fb2a06df5b080231ee28f712100e87f9485b26c7c9b",
+  "reference_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+  "response_values_used": false,
+  "run_lock_sha256": "9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404",
+  "schema": "RESEARCH_D_DEVELOPMENT_G0_MANIFEST_V1",
+  "seed_replacement": false
+}

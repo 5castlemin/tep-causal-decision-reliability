@@ -26,15 +26,16 @@ Adapter는 finite 값 검증을 수행하지만 action support 판정기는 아�
 
 ## 결정론적 fixture
 
-명령 `..\ci-venv\Scripts\python.exe -m unittest tests.test_research_d_float_hard_do_adapter -v` — **7 tests PASS**.
+명령 `..\ci-venv\Scripts\python.exe -m unittest tests.test_research_d_float_hard_do_adapter -v` — **8 tests PASS**.
 
 1. `X→M→Y` root `do(X=.125)`의 수학적 값과 downstream 입력 검증.
 2. `Z→X→M→Y` non-root do에서 `Z→X` 메커니즘 생략, Z 및 downstream 메커니즘 보존.
-3. non-descendant 메커니즘/결과의 보존.
-4. `do(X=a)`, `do(X=b)` 후 별도의 observational sampling에서 intervention 상태 오염이 없음.
-5. 같은 seed 재현, 다른 seed의 비개입 stochastic root 표본 변화.
-6. bool/nonfinite/문자열/복소수/표현범위 초과 정수 invalid 값, 잘못된 size/RNG, missing node/mechanism fail-closed.
-7. `smoothed=False` root bootstrap의 replacement sampling 및 seed 재현.
+3. 다중 부모 조건부 메커니즘에 fitted parent-column order 그대로 전달.
+4. non-descendant 메커니즘/결과의 보존.
+5. `do(X=a)`, `do(X=b)` 후 별도의 observational sampling에서 intervention 상태 오염이 없음.
+6. 같은 seed 재현, 다른 seed의 비개입 stochastic root 표본 변화.
+7. bool/nonfinite/문자열/복소수/표현범위 초과 정수 invalid 값, 잘못된 size/RNG, missing node/mechanism fail-closed.
+8. `smoothed=False` root bootstrap의 replacement sampling 및 seed 재현.
 
 추가 검사에서 개입 graph는 incoming edge만 삭제하며 원 graph는 그대로였다. graph topology와 fitted mechanism 객체를 보존했다.
 
@@ -44,7 +45,7 @@ Adapter는 finite 값 검증을 수행하지만 action support 판정기는 아�
 
 ## 실제 R/DRF integration smoke
 
-합성 fixture 6개와 정수 호환 검사를 통과한 뒤, 기존 pinned 파일을 다시 사용해 Station1의 DRF 6개를 적합했다. 개발 전용 노드는 task 후보 action/target과 구분한 `Station1_mp_2`; 값은 training sample 중앙값으로 정하고 문서·출력에 수치를 노출하지 않았다. seed `2718`, draw당 2행, 동일 seed 반복 2회, **총 최대 4행**으로 고정했다. 두 반환 표본은 전부 finite였고, 개입 값은 정확히 고정됐으며, 열 순서와 fitted mechanism identity 및 original graph 보존, state 비누출, 같은 seed 재현을 확인했다.
+합성 fixture 8개 테스트와 정수 호환 검사를 통과한 뒤, 기존 pinned 파일을 다시 사용해 Station1의 DRF 6개를 적합했다. 개발 전용 노드는 task 후보 action/target과 구분한 `Station1_mp_2`; 값은 training sample 중앙값으로 정하고 문서·출력에 수치를 노출하지 않았다. seed `2718`, draw당 2행, 동일 seed 반복 2회, 최근 성공 실행에서 **4행**으로 고정했다. 두 반환 표본은 전부 finite였고, 개입 값은 정확히 고정됐으며, 열 순서와 fitted mechanism identity 및 original graph 보존, state 비누출, 같은 seed 재현을 확인했다.
 
 실행 명령:
 

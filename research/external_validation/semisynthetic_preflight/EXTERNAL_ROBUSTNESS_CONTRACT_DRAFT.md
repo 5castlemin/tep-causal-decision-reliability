@@ -1,22 +1,22 @@
 # Research D External Semisynthetic Robustness — 미승인 계약 초안
 
-이 초안은 `CONDITIONAL_SEMISYNTHETIC` 후속 검토용이다. 숫자 cohort, 정책별 성능 또는 최종 task/목표를 승인하지 않는다. 실험 실행 전 별도 승인으로 잠가야 한다.
+이 문서는 Step 0–3 단계의 역사적 제안 초안이다. 2026-11-25 사용자 승인으로 bounded Development Pilot에 한해 현재 유효한 계약은 `research/external_validation/semisynthetic_evaluation/RESEARCH_D_DEVELOPMENT_CONTRACT.md`와 해시 잠금 실행 설정이다. 아래의 미확정 표현은 superseded 기록으로 보존한다.
 
 ## 연구 주장 범위
 
-질문은 “외부 제조자료와 공식 station DAG에서 조건부 분포를 적합한 반합성 비선형 생성환경에서도, 제한 구조 수정 예산의 오류 수정 우선순위가 decision loss에 미치는 방향/크기가 유지되는가?”다. 이는 실제 제조라인 intervention 효과나 제조현장 배포성 평가가 아니며, 단일 benchmark generator에 조건부인 강건성 사례다. 생성 reference는 CausalAssembly의 benchmark DAG이고 정책은 여전히 reference-assisted Oracle repair를 받는다.
+질문은 “외부 제조공정 benchmark 자료와 공식 station DAG에 `fit_drf()`를 적용한 **DRF-based external semisynthetic generator**에서도, 제한 구조 수정 예산의 오류 수정 우선순위가 decision loss에 미치는 방향/크기가 유지되는가?”다. 이는 실제 제조라인 intervention 효과나 제조현장 배포성 평가가 아니며, 단일 benchmark generator에 조건부인 강건성 사례다. 생성 reference는 CausalAssembly의 benchmark DAG이고 정책은 여전히 reference-assisted Oracle repair를 받는다. DRF가 특정 Station1 fit에서 실제로 비선형 함수를 표현한다는 진단은 아직 수행하지 않았으며, 이 설계는 그 주장을 전제하지 않는다.
 
 ## 후보 과제와 정보 경계
 
 - 제안 task: `Station1_mp_0` 가상 hard-do → `Station1_mp_4` target-tracking, reference path `mp_0 → mp_1 → mp_4`.
 - 이 task는 Research C strict indirect-only의 **반합성 확장 task**로서 직접 경로가 없는 것은 맞지만, 물리 장치에서 `mp_0`을 조작할 수 있다는 증거가 없다.
-- 후보 action support: generator-fit sample `Station1_mp_0`의 train-only 10/30/50/70/90% quantile grid. 값은 모든 arm에 공통으로 고정하고 intervention evaluator 자료를 만들기 전에 기록한다. 현재 sampler float bug를 해결하기 전 확정·실행하지 않는다.
+- 현재 승인된 Development action support: generator-fit source의 `Station1_mp_0` 10/30/50/70/90% quantile. 실제 수치는 개발 설정 잠금 파일에서 기록하며, 공통 evaluator 표본 생성 전에 고정한다. finite float hard-do adapter는 `PASS_FLOAT_HARD_DO_ADAPTER`를 통과했으며 이는 본실험 승인이 아니다.
 - 목표 `y*` 및 scale은 별도 generated observational learner-training split에서 target 요약과 척도를 정하는 방안을 검토한다. intervention evaluation response로 결정하지 않는다. 실제 운영 목표라고 해석하지 않는다.
 - Task/target은 구조 및 데이터 스키마에 따라 평가값 보기 전에 검토한다. 이 preflight의 exploratory output은 최종 평가에서 제외한다.
 
 ## Generator, learner, evaluator 분리
 
-1. **Generator fit set:** pinned 500×98 공개 반합성 benchmark sample 및 pinned official DAG. 논문은 이 generator의 기반이 제조 assembly line에서 수집된 실측 자료와 공정 물리 지식에 기초한 partial causal ground truth이며, conditional DRF들을 결합해 반합성 표본을 만든다고 설명한다. 이 CSV 자체는 제조 원자료가 아니라 공개 반합성 benchmark 표본이다. 이 표본에 기존 `fit_drf`를 재적합하므로 이번 외부 DGP는 **반합성 표본에 다시 적합한 외부 자료 기반 DGP**이며, 외부 연구진이 물리적으로 확정한 causal mechanism을 그대로 사용한 것이 아니다 ([Göbler et al., 2024](https://proceedings.mlr.press/v236/gobler24a.html)). seed/R version/DRF version을 기록한다.
+1. **Generator fit set:** pinned 500×98 공개 반합성 benchmark sample 및 pinned official DAG. 논문은 이 generator의 기반이 제조 assembly line에서 수집된 실측 자료와 공정 물리 지식에 기초한 partial causal ground truth이며, conditional DRF들을 결합해 반합성 표본을 만든다고 설명한다. 이 CSV 자체는 제조 원자료가 아니라 공개 반합성 benchmark 표본이다. 이 표본에 기존 `fit_drf`를 재적합하므로 이번 외부 DGP는 **반합성 표본에 다시 적합한 외부 자료 기반 DGP**이며, 외부 연구진이 물리적으로 확정한 causal mechanism을 그대로 사용한 것이 아니다 ([Göbler et al., 2024](https://proceedings.mlr.press/v236/gobler24a.html)). Python/R/DRF 버전과 적합 seed를 기록한다.
 2. **Learner train set:** 고정 fitted DRF에서 별도 seed로 생성한 observational sample. Research C의 기존 observational Ridge learner 및 기존 graph recommendation/policy code를 유지한다. 생성 DGP object/DRF, intervention draw 및 `Y(do(a))`를 learner에 전달하지 않는다.
 3. **Intervention evaluation:** train set 및 추천 freeze 후 별도 evaluator-only process에서 각 사전 고정 action의 별도 interventional DRF draw를 생성한다. same action-set/common evaluation protocol을 S0와 Full Greedy에 적용한다. 샘플은 smoke-exposed 표본과 분리한다.
 4. **Structure repair:** pinned Station1 reference에서 Causal C error-injection / M1–M4 / S0 / Full Greedy / M4 / atomic cost 1을 유지하는 후보. policy engine 코드 변경 없이 existing Research C engine에 mapping하는 별도 adapter를 사용한다. Exact seed/candidate lists and information access must be frozen.

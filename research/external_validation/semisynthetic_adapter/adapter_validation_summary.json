@@ -15,8 +15,8 @@
   },
   "fixture_validation": {
     "command": "..\\ci-venv\\Scripts\\python.exe -m unittest tests.test_research_d_float_hard_do_adapter -v",
-    "tests": 7,
-    "passed": 7,
+    "tests": 8,
+    "passed": 8,
     "failed": 0,
     "root_chain": true,
     "nonroot_cut_and_mechanism_skip": true,
@@ -25,6 +25,7 @@
     "seed_reproducibility_and_variation": true,
     "invalid_input_fail_closed": true,
     "parent_order_and_output_schema": true,
+    "multiple_parent_column_order_fixture": true,
     "unsmoothed_root_bootstrap_seeded_with_replacement": true,
     "numpy_real_scalar_supported": true
   },
@@ -85,7 +86,9 @@
     "loss_or_regret_computed": false
   },
   "exposure_and_claims": {
-    "station1_interventional_smoke_rows_exposed": 4,
+    "station1_interventional_smoke_rows_exposed": 8,
+    "latest_successful_run_interventional_rows": 4,
+    "cumulative_successful_run_interventional_rows": 8,
     "exposure_status": "exploratory only; discard; never reuse for development or evaluation",
     "data_are_public_semisynthetic_sample": true,
     "external_physical_causal_mechanism_claimed": false,

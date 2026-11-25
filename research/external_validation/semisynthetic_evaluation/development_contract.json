@@ -1,0 +1,116 @@
+{
+  "schema": "RESEARCH_D_EXTERNAL_SEMISYNTHETIC_DEVELOPMENT_V1",
+  "status": "LOCKED_FOR_DEVELOPMENT_PILOT",
+  "scope": "one DRF refit to pinned semisynthetic source; conditional benchmark robustness only",
+  "upstream": {
+    "repository": "https://github.com/boschresearch/causalAssembly",
+    "commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+    "version": "1.2.1",
+    "license": "AGPL-3.0",
+    "sample_sha256": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e",
+    "reference_sha256": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8"
+  },
+  "generator": {
+    "reference": "official Station1 graph",
+    "nodes": 6,
+    "edges": 7,
+    "fit_method": "causalAssembly.fit_drf",
+    "fit_seed": 91420261,
+    "fit_source": "pinned public 500x98 semisynthetic sample; Station1 columns only",
+    "observations": "generated from same fixed fitted DRF; not physical measurements",
+    "fit_save": "native model is not serialized; deterministic same-seed refit and sampled-frame digest comparison required"
+  },
+  "task": {
+    "action": "Station1_mp_0",
+    "target": "Station1_mp_4",
+    "reference_path": ["Station1_mp_0", "Station1_mp_1", "Station1_mp_4"],
+    "strict_indirect_only": true,
+    "intervention": "virtual finite continuous hard-do",
+    "target_delta_sd": 1,
+    "target_rule": "mean(Y_train) + 1 sample SD(Y_train), ddof=1"
+  },
+  "action": {
+    "source": "pinned generator-fit Station1_mp_0 source column",
+    "quantiles": [0.1, 0.3, 0.5, 0.7, 0.9],
+    "duplicates": "fail closed",
+    "units": "benchmark variable units; no operational interpretation claimed",
+    "support_gate": "finite, strictly increasing, inside fit-source and generated learner-training marginal range; direct fitted DRF parent inputs checked where available; joint support not guaranteed"
+  },
+  "learner": {
+    "training_n": 512,
+    "training_seed": 91420262,
+    "common_across_all_graphs_policies_and_budgets": true,
+    "model": "existing Ridge graph learner: standardized variables, alpha=1.0, existing static mean-response recommendation",
+    "prediction_action_grid": "locked five action values",
+    "graph_unresolved_handling": "existing learner receives confirmed directed edges; unresolved pairs are abstentions and omitted",
+    "recommendation_tie_break": "minimum predicted standardized target loss; then closest to action-grid median; then lower action",
+    "graph_free_auxiliary": "same observational sample, univariate Ridge X-to-Y association prediction, alpha=1.0; not causal"
+  },
+  "g0": {
+    "seed_namespace": "research-d-external-semisynthetic-development-v1",
+    "seeds": [701001, 701064],
+    "count": 64,
+    "corruption_q": 0.15,
+    "false_adjacency_r": 0.05,
+    "true_error_mix": {"FN": 0.3333333333333333, "REV": 0.3333333333333333, "UNRES": 0.3333333333333333},
+    "fp_direction": "fair",
+    "dag_invalid": "record and reject without redraw",
+    "task_fp_rule": "A",
+    "normalization": "G0-fixed opportunity",
+    "costs": {"add": 1, "delete": 1, "orient": 1, "resolve": 1},
+    "budgets": [0, 1, 2, 3, 4],
+    "policies": "S0, all 15 nonempty M1-M4 subsets, Canonical Oracle comparator"
+  },
+  "structural_preflight": {
+    "maximum_g0": 64,
+    "outcome_blind": true,
+    "seed_ids": "701001..701064",
+    "purpose": "error support, activation, DAG rejection, duplicate/no-op and cost only"
+  },
+  "development_pilot": {
+    "maximum_g0": 32,
+    "seed_ids": "702001..702032",
+    "training_rows": 512,
+    "evaluation_action_count_max": 5,
+    "evaluation_rows_per_action_max": 256,
+    "evaluation_rows_total_max": 1280,
+    "budgets": [0, 1, 2, 3, 4],
+    "final_evaluation": false,
+    "final_seed_namespace_used": false
+  },
+  "estimand": {
+    "primary": "B=2 Delta_D = L_exp(a_S0)-L_exp(a_FullGreedy)",
+    "interpretation": "positive favors Full Greedy; same action set so population common-optimum term cancels from regret difference",
+    "loss": "(mu_do(a)-target)^2 / sample_sd(Y_train)^2",
+    "primary_estimator": "bias-corrected squared-mean plug-in: ((mean-target)^2 - sample_variance/n)/scale^2; no truncation",
+    "secondary": ["M4 versus Full Greedy signed loss contrast", "B=0..4 curves", "Canonical Oracle", "graph-free association baseline", "repair cost and structural outcomes"],
+    "absolute_regret": "development descriptive only; sampled minimum is selection-biased and not primary"
+  },
+  "uncertainty": {
+    "pilot": "report fixed-evaluation-sample G0-seed paired spread separately from action-wise evaluation-row bootstrap Monte Carlo uncertainty; no physical population inference",
+    "bootstrap": {"replicates": 2000, "seed": 91420263, "resampling": "resample G0 rows paired; independently resample within each action's 256 evaluation draws; recompute bias-corrected action losses and averaged B=2 paired contrast"},
+    "training_sample_variation": "not estimated in this single-training-sample pilot",
+    "generator_fit_variation": "not estimated; one deterministic refit DGP only"
+  },
+  "rng": {
+    "namespace": "research-d-external-semisynthetic-development-v1",
+    "fit_seed": 91420261,
+    "train_seed": 91420262,
+    "evaluation_seed_root": 91420264,
+    "bootstrap_seed": 91420263,
+    "pilot_g0_seed_range": [702001, 702032],
+    "final_evaluation_seed": "NOT_CREATED"
+  },
+  "information_boundary": {
+    "recommendation_inputs": ["generated observational training frame", "pinned Station1 reference", "G0", "task", "fixed actions", "training-only target and scale", "existing policy/learner"],
+    "recommendation_forbidden": ["fitted DRF", "evaluator RNG", "intervention draws", "action response/loss table", "best action"],
+    "evaluation_requires": "recommendation manifest content hash and contract hash verified before any intervention draw",
+    "raw_evaluation_samples": "memory only; not written to repository"
+  },
+  "failure_rules": [
+    "fail on contract/source hash mismatch, invalid DAG, task mismatch, unsupported or duplicate action, nonfinite or invalid sample, repeated seed, manifest tampering, preexisting evaluator artifact, output schema mismatch, DGP/refit reproducibility failure, or resource cap breach",
+    "retain all no-error/no-task-error/no-op/budget-unused G0 rows; no replacement",
+    "do not change task, action, target, scale, budget, metrics, policy, seed or estimator after viewing evaluation responses",
+    "negative or null policy effects are valid results and do not trigger STOP"
+  ]
+}

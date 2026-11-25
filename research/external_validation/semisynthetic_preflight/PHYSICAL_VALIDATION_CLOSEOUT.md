@@ -13,7 +13,7 @@
 
 Mk2는 Step 1 이후 해결되지 않은 reference negative-pair 범위, SET–MSR alignment, carryover, 장치·세션·reset provenance blocker가 남아 있다. Wind Tunnel은 block 배정이 재현되지만 후보 과제가 reference direct edge이고 M4 task-FP 지원이 없으며, 실험 run을 독립 장치·세션으로 셀 수 없다. 이는 각각 [Step 1 판정](../qualification/RESEARCH_D_QUALIFICATION_DECISION.md) 및 [Step 2 설계 결정](../design_resolution/RESEARCH_D_DESIGN_RESOLUTION.md)에 기록되어 있다.
 
-반합성 검토는 별개의 조건부 후보다. causalAssembly는 제조 데이터와 공정 지식에서 구성한 참조 DAG에 DRF 조건부 분포를 적합해, 그래프에 Markov인 표본을 만든다. 따라서 제조기반 비선형 생성환경에서 구조 오류 수정 우선순위의 강건성을 시험할 수 있지만, 물리 장치의 실제 개입효과나 DAT 제조 현장으로의 전이를 시험하지 않는다.
+반합성 검토는 별개의 조건부 후보다. causalAssembly의 공개 반합성 자료와 참조 DAG에 이번 연구가 DRF를 재적합한 **DRF-based external semisynthetic generator**를 사용한다. DRF가 특정 Station1 fit에서 실제로 비선형 관계를 포착했는지는 별도로 검증되지 않았다. 이 설계는 물리 장치의 실제 개입효과나 DAT 제조 현장으로의 전이를 시험하지 않는다.
 
 ## 다음 경계
 

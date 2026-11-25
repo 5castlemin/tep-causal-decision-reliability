@@ -83,6 +83,29 @@ class FloatHardDoAdapterTests(unittest.TestCase):
         self.assertEqual(mechanisms["M"].seen_columns, [["X"]])
         self.assertEqual(mechanisms["Y"].seen_columns, [["M"]])
 
+    def test_multiple_parent_conditional_preserves_fitted_parent_column_order(self):
+        nodes = ["X", "Z", "M", "Y"]
+        mechanisms = {
+            "X": FakeKDE([0.0]),
+            "Z": FakeKDE([2.0]),
+            # Edge insertion makes the fitted parent order Z, X, deliberately
+            # different from the public node order X, Z, M, Y.
+            "M": ConstantMechanism(None, ["Z", "X"]),
+            "Y": ConstantMechanism(None, ["M"]),
+        }
+        mechanisms["M"].value = lambda d: 10 * d["Z"].to_numpy() + d["X"].to_numpy()
+        mechanisms["Y"].value = lambda d: d["M"].to_numpy() - 1
+        model = FakeFittedModel(
+            [("Z", "M"), ("X", "M"), ("M", "Y")], nodes, mechanisms
+        )
+        result = sample_hard_do(model, "X", 0.125, size=3, rng=np.random.default_rng(41))
+        np.testing.assert_array_equal(result["X"], [0.125] * 3)
+        np.testing.assert_array_equal(result["Z"], [2.0] * 3)
+        np.testing.assert_array_equal(result["M"], [20.125] * 3)
+        np.testing.assert_array_equal(result["Y"], [19.125] * 3)
+        self.assertEqual(mechanisms["M"].seen_columns, [["Z", "X"]])
+        self.assertEqual(mechanisms["Y"].seen_columns, [["M"]])
+
     def test_nonroot_do_cuts_parent_mechanism_but_keeps_other_mechanisms(self):
         nodes = ["Z", "X", "M", "Y"]
         mechanisms = {

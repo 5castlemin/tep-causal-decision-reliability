@@ -1,0 +1,4826 @@
+{
+  "decision_regret_calculated": false,
+  "fit_seed": 91420261,
+  "official_graph": {
+    "edges": [
+      [
+        "Station1_mp_0",
+        "Station1_mp_1"
+      ],
+      [
+        "Station1_mp_0",
+        "Station1_mp_2"
+      ],
+      [
+        "Station1_mp_1",
+        "Station1_mp_2"
+      ],
+      [
+        "Station1_mp_1",
+        "Station1_mp_4"
+      ],
+      [
+        "Station1_mp_3",
+        "Station1_mp_4"
+      ],
+      [
+        "Station1_mp_3",
+        "Station1_mp_5"
+      ],
+      [
+        "Station1_mp_4",
+        "Station1_mp_5"
+      ]
+    ],
+    "fit_seconds": 32.9155449999962,
+    "graph_sha256": "92902ee9d83ba9bae677e9126050d7b647b64e980f78a0bc02948141b7bf72ca",
+    "nodes": [
+      "Station1_mp_0",
+      "Station1_mp_1",
+      "Station1_mp_2",
+      "Station1_mp_3",
+      "Station1_mp_4",
+      "Station1_mp_5"
+    ]
+  },
+  "outcome_data_generated_or_read": false,
+  "schema": "RESEARCH_D_STRUCTURAL_PREFLIGHT_V1",
+  "seed_records": [
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "2494d559d108c28405fcf47b0fb3dcb038e2751001f4564365825112ff591315",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701001,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 2,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 2,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "3e15d5e85fff591a9a28532cf77e56771748b68748d4c8723bdc7d68826765ab",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 2,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 4,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 4,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701002,
+      "support": {
+        "M1": 5,
+        "M2": 7,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "894dc7c3ee596223586094985fc97864d718d9cb1a880aac0160cb19235d68cf",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701003,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "67d2efaf5551a418d84b791edd9df0ef3b5f6eed1628eb95ae3e5377fd35445f",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701004,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "abd9905ee3ad9d047677a6f819276ac7450d2cf346a4cc37e934a38026d443db",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701005,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "d1dd82352f3574dd1b0e177ebd02081a3e9399e9d3b9f40d925b012dddb4575f",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701006,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "0f6534b91e34d07f08dc3a44d5c9ea83025858c47f0b895fdff7a85450733ecd",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701007,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 3,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "3047beda36c258f73a6ecc862b28b77eae599f6b063b686c7ea1b3888b85466f",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701008,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "134e23406eed1fa6034576e748b2b54087acbd6d8ef19ea980a7c3f9c9f2b43d",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701009,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701010,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 2,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "32729071338311cad48fa69bf213e67a215c1fa64dc265e584c89acc5dc37fbe",
+      "proposal_kinds": {
+        "FN": 2,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701011,
+      "support": {
+        "M1": 5,
+        "M2": 3,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701012,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "7eaaf36eafe9638ae0a402ff3c17c724ded86654223509bd57746b22e9c96e10",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701013,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "1ed3186572ab7b413ec52e44b59e5e0efb64923136b5b4608ac55a37afef36be",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701014,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "d39753886f23b9f034b71aba05ce2268b062b3fc000565346e65323050f3f28a",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701015,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 3,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "9979f1d357cedcad8edb0515c221a43d0f27d595ff2699b1770713bcc2403754",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701016,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "301de03a7e4b0bbed7dbd9fa893e2922acb28da4a21e5c5668de985eb7504a1d",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701017,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4305382efb066ba795c4021bc532f64bd377989f652089339484af5a78099f4d",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701018,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "ad7a7bbcd407d1f7bd6b5927dd1c3c4ed0426449c71e2e3067169c6dec278fd8",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701019,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "c91d3a0faeb19100666ef42cc2e2f7feddea7946025f628a20c28c5cd726b2bc",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701020,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 2,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "6e53cd37635f94f356879dee8a40e6a9eba264652d3af8432bab4551874f33a6",
+      "proposal_kinds": {
+        "FN": 2,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701021,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "dcd9429083fd6ac427a43536b949724ff45e91714fdf716d98c81738fc45e9cb",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701022,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "99066351e5e08307d3bb82e360a8c5643ac05440846559f063645c45e683af72",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701023,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "67185807c90898a0811d9c03639029eb4f12cf5dd2ec67429523738b741edb2d",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701024,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701025,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "b0eadc30c0c1b01201fcc381825563c53e360a667a9b9671aa0a5730f15ddfb2",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701026,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "ad7a7bbcd407d1f7bd6b5927dd1c3c4ed0426449c71e2e3067169c6dec278fd8",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701027,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "640760481cf21c936ec05c0ebeded57ecb8a43ff53a2d852e1881af28c6b423e",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701028,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "ae40e0bf2efe2e32faf83aee5066aee61039379cb1288400aa860f1b0812428b",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701029,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "ad7a7bbcd407d1f7bd6b5927dd1c3c4ed0426449c71e2e3067169c6dec278fd8",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701030,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "ad7a7bbcd407d1f7bd6b5927dd1c3c4ed0426449c71e2e3067169c6dec278fd8",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701031,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "d147e3dd609d010c57ec3caec33e7f2d644747f26f0337f0d40200c34f2f5bb0",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701032,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701033,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "198ef5205a97569bdf30de910bb497b0ea27a594f85d4654bf44c6cf88b9eb83",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701034,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 2,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "2a77a4fef8ee6004eb6036bf9edd29a3591a36ceb5fab6a306c2611f2bedf62c",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 2,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 2,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 2,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701035,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "a051af905d39da94cef8e7c854811b8f277d697a878587bbad68944d2df5d792",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701036,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "aebdf6076e167e51fad07ee4028502efe6912071e856e7f5d6fb5a06addb9fee",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701037,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "cb36f2f819a7cbf9b84e00d3d96dc555caadb16e0b63c7b1a834efc2aa9fc908",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701038,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "e2a8b3130f6d58483a6b490581bcfa13ceda9d49bd3875a4769528d5589f1f11",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701039,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "be3ee9631db01164a0dc9d0686d00188c02bcae602ed841a9ea920dd105d1084",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 2,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 2,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701040,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701041,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "57b777a7b3b45298cdbb1194d87f78333f2b423492a335fb4465e1bcbd19d8bf",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701042,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "8128fcd1bfb2c07f44045517188de3ce55924e6a994d14b1d7b95600ad711d02",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701043,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701044,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701045,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701046,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 2,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "24829729f2eac46a4cc86f4f1f6cd33a53f08bc95361c34fab17ead0ad15e31f",
+      "proposal_kinds": {
+        "FN": 2,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 4,
+        "accepted_by_kind": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 4,
+        "proposed_by_kind": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701047,
+      "support": {
+        "M1": 5,
+        "M2": 3,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 3,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701048,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "07f82f746292b67effc24e86b0da2dad0f1b4621512a3048226c59a58cd52c61",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701049,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701050,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "31b646b5c933cac4558cda2db763945f995148978d0378ec5c05c881f7d5ccc9",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701051,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "bf7a07bba3ed5f7ce29d888c3c0baa3c6c954ef19d9ed355e1687e1c00542e4f",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701052,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "8128fcd1bfb2c07f44045517188de3ce55924e6a994d14b1d7b95600ad711d02",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701053,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "1bfda33c6962257babca944b52dacb49caff44a9407fc19995c6725b0ea68696",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701054,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 2,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 2,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "7ecb4d437f9edcfe0f3a890c508cc31a8ef16b31691c35e936a35e71e49f6c93",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 2,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 2,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 2,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701055,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 2,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "edaa97a05c0ef8b78b9f60fff74741b21369ef85c0b98e7bb90887ec87d4d8a6",
+      "proposal_kinds": {
+        "FN": 2,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701056,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701057,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 2,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "0cda9afb9ef852b1baad33441a161c9d35b22ac9e820961e784608ef124feff3",
+      "proposal_kinds": {
+        "FN": 2,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 3,
+        "accepted_by_kind": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 2,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701058,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 2,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 2,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "ee40e4532aecbaca13f5c878146f425457f5d447d24536866ebfd52cce25ba6c",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 2,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 4,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 4,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701059,
+      "support": {
+        "M1": 5,
+        "M2": 7,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 1,
+          "REV": 1,
+          "UNRES": 1
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        }
+      },
+      "initial_graph_sha256": "959d9818468dbe5e0bbccf380372117f9686cc2c9df1d862ae65d2c08023eedb",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701060,
+      "support": {
+        "M1": 5,
+        "M2": 6,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 1,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": true
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 1,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "89b521bfa0b5c1ec4eecedcc94d43f2e1e43f9d8527347493681261420f28c2f",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 2,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 2,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 1,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 3,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 2,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701061,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "4c9c74c8aded92321c3b7593ae1d416a3355f30bf115d0852f2e2433a703bd85",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 0,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 0,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701062,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "7d9180369b6c11073ffd8e0012bcaf068c1c367177b73f84326eec09f40539d3",
+      "proposal_kinds": {
+        "FN": 0,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 1
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "false_pairs_considered": 8,
+        "proposed": 1,
+        "proposed_by_kind": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 1
+        },
+        "rejected_dag": 0,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701063,
+      "support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    },
+    {
+      "accepted_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 0,
+        "UNRES": 0
+      },
+      "error_counts": {
+        "M1": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M2": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M3": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "M4": {
+          "FN": 0,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        }
+      },
+      "initial_graph_sha256": "3047beda36c258f73a6ecc862b28b77eae599f6b063b686c7ea1b3888b85466f",
+      "proposal_kinds": {
+        "FN": 1,
+        "FP": 0,
+        "REV": 1,
+        "UNRES": 0
+      },
+      "proposals": {
+        "accepted": 1,
+        "accepted_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 0,
+          "UNRES": 0
+        },
+        "false_pairs_considered": 8,
+        "proposed": 2,
+        "proposed_by_kind": {
+          "FN": 1,
+          "FP": 0,
+          "REV": 1,
+          "UNRES": 0
+        },
+        "rejected_dag": 1,
+        "retries": 0,
+        "true_adjacencies_considered": 7
+      },
+      "seed_id": 701064,
+      "support": {
+        "M1": 5,
+        "M2": 4,
+        "M3": 5,
+        "M4": {
+          "FN": 2,
+          "FP": 2,
+          "REV": 2,
+          "UNRES": 2
+        }
+      },
+      "task_zone_error_present": false
+    }
+  ],
+  "source": {
+    "data_sha256": {
+      "assembly_reference--ground_truth.json": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8",
+      "assembly_sample--assembly_line_500.csv": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e"
+    },
+    "package_version": "1.2.1",
+    "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9"
+  },
+  "status": "COMPLETED_OUTCOME_BLIND",
+  "summary": {
+    "all_g0_rows_retained": true,
+    "dag_rejected_proposals": 12,
+    "duplicate_final_graph_excess_count": 4685,
+    "duplicate_final_graph_fraction_over_policy_budget_rows": 0.8612132352941176,
+    "metric_activation_counts": {
+      "M1": 17,
+      "M2": 20,
+      "M3": 22,
+      "M4": 23
+    },
+    "n_g0": 64,
+    "no_initial_error_count": 12,
+    "no_initial_error_fraction": 0.1875,
+    "policy_budget_rows": 5440,
+    "proposed_events": 104,
+    "response_values_read": false,
+    "task_zone_error_count": 23,
+    "task_zone_error_events": 27,
+    "task_zone_error_fraction": 0.359375,
+    "total_structural_edits_over_policy_budget_rows": 2994
+  },
+  "task": {
+    "action": "Station1_mp_0",
+    "reference_path": [
+      "Station1_mp_0",
+      "Station1_mp_1",
+      "Station1_mp_4"
+    ],
+    "target": "Station1_mp_4"
+  }
+}

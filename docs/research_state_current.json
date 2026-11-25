@@ -481,11 +481,11 @@
     },
     {
       "id": "RD-QUALIFICATION",
-      "title": "Research D 외부 검증 결정 및 반합성 preflight",
+      "title": "Research D 반합성 평가 계약·파이프라인·개발 파일럿",
       "status": "PARTIAL",
-      "evidence": "research/external_validation/semisynthetic_adapter/HARD_DO_ADAPTER_QUALIFICATION.md; research/external_validation/semisynthetic_adapter/adapter_validation_summary.json; research/external_validation/semisynthetic_preflight/PHYSICAL_VALIDATION_CLOSEOUT.md; research/external_validation/semisynthetic_preflight/CAUSALASSEMBLY_PREFLIGHT.md",
-      "next_action": "기술 adapter gate는 PASS. 별도 검토로 Research D 반합성 평가계약, action support, train/evaluation 분할, evaluator 정보격리를 제안·잠근 뒤 개발 파일럿 여부를 승인; 실측 평가는 DEFERRED",
-      "acceptance": "PASS_FLOAT_HARD_DO_ADAPTER는 기술 적격성만 의미. causalAssembly 외부 반합성 연구는 별도 계약·파일럿 승인 전 CONDITIONAL; Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 본실험·정책 Regret NOT_RUN",
+      "evidence": "research/external_validation/semisynthetic_evaluation/RESEARCH_D_DEVELOPMENT_CONTRACT.md; RESEARCH_D_PIPELINE_VALIDATION.md; RESEARCH_D_DEVELOPMENT_PILOT_RESULTS.md; RESEARCH_D_FINAL_CONTRACT_DRAFT.md; development_run_lock.json; development_g0_manifest.json",
+      "next_action": "완료된 G1/G2/G3 및 READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW를 검토하여 별도 승인 또는 외부 검증 종료 결정. 최종 평가자료는 아직 생성하지 않음; 물리 실측 평가는 DEFERRED",
+      "acceptance": "B=2 Development Δ=+0.003338, two-source 95% bootstrap [-0.065322,0.075465]; 단일 고정 DRF와 32 G0에 조건부인 개발 결과. 최종 외부평가·확증 주장 미승인. Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 실측 개입 검증 DEFERRED",
       "depends_on": [
         "RD-FEASIBILITY"
       ]
