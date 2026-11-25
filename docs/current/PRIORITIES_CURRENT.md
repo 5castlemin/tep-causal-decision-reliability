@@ -4,14 +4,15 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **RC-HELDOUT — Research C Held-out V1 독립 평가**: 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 (VERIFIED)
-2. **RD-FEASIBILITY — Research D 외부 검증 타당성 감사**: CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 (VERIFIED)
-3. **BUDGET-REFINEMENT — 예산 제약 인과구조 개선 연구 설계 후보**: ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts (PARTIAL)
+1. **RD-QUALIFICATION — Research D Mk2 참조·시간·실험단위 적격성**: 장치/session provenance와 SET–MSR 정렬 증거를 확보하거나 conditional physical case 한계를 검토; 최종 채택·본실험은 별도 승인 (PARTIAL)
+2. **RC-HELDOUT — Research C Held-out V1 독립 평가**: 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 (VERIFIED)
+3. **RD-FEASIBILITY — Research D 외부 검증 타당성 감사**: CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 (VERIFIED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| RD-QUALIFICATION | PARTIAL | RD-FEASIBILITY | 장치/session provenance와 SET–MSR 정렬 증거를 확보하거나 conditional physical case 한계를 검토; 최종 채택·본실험은 별도 승인 / Step 1 audit 완료; full-DAG strict task, 행별 timing, 독립 run/session은 미확인; 정책 성능은 NOT_RUN |
 | RC-HELDOUT | VERIFIED | 없음 | 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 / 정의 리뷰, SCM ID 연결 수정·비용·행동·Regret 표, 반례 포함 사례 3–5개, final analysis note; 기존 ledger·정책 코드 불변 |
 | RD-FEASIBILITY | VERIFIED | RC-HELDOUT | CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 / 감사 완료. 후보 채택·Research D 분석계약·본실험 승인은 별도 |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |

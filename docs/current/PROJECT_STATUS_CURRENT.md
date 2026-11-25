@@ -51,6 +51,7 @@
 | BUDGET-REFINEMENT | 예산 제약 인과구조 개선 연구 설계 후보 | PARTIAL | PR #38 merged on 2026-11-16; frozen Step 4C2 contract retained as historical; subsequent Step 5/6 synthetic results documented in research/budget_aware_refinement/STEP5_STEP6_FINAL_RESULTS.md; not Research C | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts |
 | RC-HELDOUT | Research C Held-out V1 독립 평가 | VERIFIED | RESEARCH_C_HELDOUT_V1_RESULTS.md; RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md | 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 |
 | RD-FEASIBILITY | Research D 외부 검증 타당성 감사 | VERIFIED | research/external_validation/RESEARCH_D_FEASIBILITY_AUDIT.md; research/external_validation/inspection_results.json | CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 |
+| RD-QUALIFICATION | Research D Mk2 참조·시간·실험단위 적격성 | PARTIAL | research/external_validation/qualification/RESEARCH_D_QUALIFICATION_DECISION.md; qualification_summary.json; MK2_TEMPORAL_ALIGNMENT_AUDIT.md | 장치/session provenance와 SET–MSR 정렬 증거를 확보하거나 conditional physical case 한계를 검토; 최종 채택·본실험은 별도 승인 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

@@ -478,9 +478,21 @@
       "depends_on": [
         "RC-HELDOUT"
       ]
+    },
+    {
+      "id": "RD-QUALIFICATION",
+      "title": "Research D Mk2 참조·시간·실험단위 적격성",
+      "status": "PARTIAL",
+      "evidence": "research/external_validation/qualification/RESEARCH_D_QUALIFICATION_DECISION.md; qualification_summary.json; MK2_TEMPORAL_ALIGNMENT_AUDIT.md",
+      "next_action": "장치/session provenance와 SET–MSR 정렬 증거를 확보하거나 conditional physical case 한계를 검토; 최종 채택·본실험은 별도 승인",
+      "acceptance": "Step 1 audit 완료; full-DAG strict task, 행별 timing, 독립 run/session은 미확인; 정책 성능은 NOT_RUN",
+      "depends_on": [
+        "RD-FEASIBILITY"
+      ]
     }
   ],
   "priority_order": [
+    "RD-QUALIFICATION",
     "RC-HELDOUT",
     "RD-FEASIBILITY",
     "BUDGET-REFINEMENT",
