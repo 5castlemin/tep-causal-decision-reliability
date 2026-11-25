@@ -63,6 +63,7 @@ def code_hashes():
     names = ["research/external_validation/semisynthetic_evaluation/pipeline.py",
         "research/external_validation/semisynthetic_evaluation/run_development_pilot.py",
         "research/external_validation/semisynthetic_evaluation/reproducibility.py",
+        "research/external_validation/semisynthetic_evaluation/analyze_development_reproduction.py",
         "research/external_validation/semisynthetic_evaluation/recommendation_worker.py",
         "research/external_validation/semisynthetic_evaluation/evaluate_worker.py",
         "research/external_validation/semisynthetic_evaluation/development_contract.json",
@@ -78,9 +79,12 @@ AUTHORIZED_RUN_ID = "rd-development-reproduction-20261125-02"
 def dry_run_mode(args):
     if args.run_id != AUTHORIZED_RUN_ID:
         raise ValueError(f"this authorization permits only run id {AUTHORIZED_RUN_ID}")
+    if args.attempt_id not in {f"{AUTHORIZED_RUN_ID}-preflight-0{i}" for i in range(1, 4)}:
+        raise ValueError("preflight attempt ID must be one of the three authorized unique IDs")
     repo_identity = repro.repository_identity(d.ROOT)
     outputs = [args.output, args.lock, args.recommendations, args.evaluation, args.summary,
-               args.execution_manifest, args.training_frame, args.recommendation_input]
+               args.execution_manifest, args.training_frame, args.recommendation_input,
+               args.response_vectors]
     repro.require_external_outputs(d.ROOT, outputs)
     repro.require_external_outputs(d.ROOT, [args.historical_artifact_dir])
     for path in outputs:
@@ -152,7 +156,7 @@ def dry_run_mode(args):
         help_results[module] = {"exit_code": completed.returncode, "help_available": True}
     preflight = {"schema": "RESEARCH_D_REPRODUCTION_PREFLIGHT_V1",
         "status": "PASS_NO_RESEARCH_SAMPLES_GENERATED",
-        "attempt_id": "rd-development-reproduction-20261125-02-preflight-01",
+        "attempt_id": args.attempt_id,
         "run_id": args.run_id, "repository": repo_identity,
         "code_sha256": current_codes, "runtime": runtime, "source": source_info,
         "external_source": external_source, "original_lock_sha256": d.file_sha256(args.original_lock),
@@ -212,6 +216,7 @@ def make_lock(args, source, train, model, actions, support_checks, fit_check, re
         "recommendation_input_sha256": recommendation_input_sha256,
         "training_frame_csv_sha256": training_csv_sha256,
         "preflight_report_sha256": preflight_sha256,
+        "response_vectors_filename": args.response_vectors.name,
         "graph_sha256": pe.graph_hash(truth_from_model(model)), "node_order": list(model.nodes),
         "task": {"action": d.TASK_X, "target": d.TASK_Y,
             "reference_path": [d.TASK_X, "Station1_mp_1", d.TASK_Y], "strict_indirect_only": True,
@@ -278,13 +283,13 @@ def pilot_mode(args):
     repo_identity = repro.repository_identity(d.ROOT)
     repro.require_external_outputs(d.ROOT, [args.output, args.lock, args.recommendations, args.evaluation,
         args.summary, args.execution_manifest, args.training_frame, args.recommendation_input,
-        args.historical_artifact_dir, args.preflight_report])
+        args.response_vectors, args.historical_artifact_dir, args.preflight_report])
     approved_id = AUTHORIZED_RUN_ID
     if args.run_id != approved_id:
         raise ValueError(f"this authorization permits only run id {approved_id}")
     for path in (args.lock, args.recommendations, args.evaluation, args.summary,
                  args.execution_manifest, args.training_frame, args.recommendation_input,
-                 args.output):
+                 args.response_vectors, args.output):
         if path.exists(): raise FileExistsError(f"reproduction output already exists: {path.name}")
     original_lock_sha = d.file_sha256(args.original_lock)
     if original_lock_sha != "9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404":
@@ -411,6 +416,7 @@ def pilot_mode(args):
         "--execution-manifest-sha256", execution_manifest_sha,
         "--bootstrap-replicates", str(lock["evaluation"]["bootstrap_replicates"]),
         "--bootstrap-seed", str(lock["evaluation"]["bootstrap_seed"])]
+    command += ["--response-vectors", str(args.response_vectors.resolve())]
     started = time.perf_counter()
     completed = subprocess.run(command, cwd=d.ROOT, env=env, text=True, capture_output=True,
                                timeout=args.timeout_seconds)
@@ -438,7 +444,8 @@ def pilot_mode(args):
         "recommendation_worker_stdout": rec_result.stdout.strip(),
         "recommendation_worker_seconds": time.perf_counter() - rec_started,
         "recommendations_locked_before_evaluation": True,
-        "intervention_samples_persisted": False})
+        "intervention_samples_persisted": True})
+    summary["response_vectors_artifact"] = evaluation.get("response_vectors_artifact")
     write_new(args.summary, summary)
     return summary
 
@@ -462,20 +469,22 @@ def main(argv=None):
     parser.add_argument("--execution-manifest", type=Path)
     parser.add_argument("--training-frame", type=Path)
     parser.add_argument("--recommendation-input", type=Path)
+    parser.add_argument("--response-vectors", type=Path)
     parser.add_argument("--run-id")
+    parser.add_argument("--attempt-id")
     parser.add_argument("--timeout-seconds", type=int, default=21600)
     args = parser.parse_args(argv)
     if args.mode == "structural":
         result = structural_mode(args)
     elif args.mode == "dry-run":
         for name in ("structural", "lock", "recommendations", "evaluation", "summary", "r_library",
-                     "original_lock", "original_audit", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input"):
+                     "original_lock", "original_audit", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input", "response_vectors", "attempt_id"):
             if getattr(args, name) is None: parser.error(f"--{name.replace('_','-')} is required in dry-run mode")
         os.environ["R_LIBS_USER"] = str(args.r_library.resolve())
         result = dry_run_mode(args)
     else:
         for name in ("structural", "lock", "recommendations", "evaluation", "summary", "r_library",
-                     "original_lock", "original_audit", "preflight_report", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input"):
+                     "original_lock", "original_audit", "preflight_report", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input", "response_vectors"):
             if getattr(args, name) is None: parser.error(f"--{name.replace('_','-')} is required in pilot mode")
         result = pilot_mode(args)
     print(json.dumps({"status": result["status"], "output": args.output.name}, sort_keys=True))

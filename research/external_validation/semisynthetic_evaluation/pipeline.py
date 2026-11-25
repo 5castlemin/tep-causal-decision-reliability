@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import math
 import os
@@ -355,9 +356,12 @@ def validate_recommendation_lock(path: Path, expected_contract_hash: str):
 
 def evaluate_locked(*, model, lock_path: Path, contract_path: Path, output_path: Path,
                     evaluation_seed_root: int, rows_per_action: int,
-                    bootstrap_replicates: int = 2000, bootstrap_seed: int = 91420263):
+                    bootstrap_replicates: int = 2000, bootstrap_seed: int = 91420263,
+                    response_vectors_path: Path | None = None):
     from research.external_validation.semisynthetic_adapter.float_hard_do_adapter import sample_hard_do
     if output_path.exists(): raise FileExistsError("evaluator output already exists")
+    if response_vectors_path is not None and response_vectors_path.exists():
+        raise FileExistsError("evaluator response-vector artifact already exists")
     contract_hash = file_sha256(contract_path)
     manifest, lock_hash = validate_recommendation_lock(lock_path, contract_hash)
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
@@ -484,6 +488,21 @@ def evaluate_locked(*, model, lock_path: Path, contract_path: Path, output_path:
         "graph_free_association_baseline": {"action": baseline_action, "loss_bc": baseline_loss["bias_corrected_loss"],
             "loss_plugin": baseline_loss["plug_in_loss"], "interpretation": "observational association only"},
         "raw_response_rows_saved": False, "policy_recommendation_changed_after_lock": False}
+    if response_vectors_path is not None:
+        response_buffer = io.BytesIO()
+        response_payload = {f"response_{index:02d}": response_vectors[action]
+            for index, action in enumerate(actions)}
+        response_payload["action_order"] = np.asarray(actions, dtype=np.float64)
+        np.savez(response_buffer, **response_payload)
+        response_raw = response_buffer.getvalue()
+        response_vectors_path.parent.mkdir(parents=True, exist_ok=True)
+        with response_vectors_path.open("xb") as stream:
+            stream.write(response_raw)
+        result["response_vectors_artifact"] = {"filename": response_vectors_path.name,
+            "sha256": sha256_bytes(response_raw), "bytes": len(response_raw),
+            "rows_per_action": rows_per_action, "actions": actions,
+            "format": "NPZ float64 arrays; evaluator-only; outside repository"}
+        result["raw_response_rows_saved"] = True
     response_vectors.clear()
     output_path.write_bytes(canonical_json(result) + b"\n")
     return result

@@ -128,6 +128,34 @@ class SemisyntheticPipelineBoundaryTests(unittest.TestCase):
             self.assertEqual(len(result["evaluation_rows"]), 85)
             self.assertEqual(len(result["primary_two_source_uncertainty"]["two_source_percentile_95"]), 2)
 
+    def test_evaluator_persists_hash_bound_response_vectors_for_independent_reanalysis(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            contract = root / "contract.json"
+            contract.write_text(json.dumps({"mode": "development_reproduction_only",
+                "action_grid": {"values": [0.5]},
+                "evaluation": {"seed_root": 314159, "rows_per_action": 2,
+                    "bootstrap_replicates": 20, "bootstrap_seed": 314160},
+                "task": {"action": "Station1_mp_0", "target": "Station1_mp_4"},
+                "g0": {"seed_ids": [8], "budgets": [0, 1, 2, 3, 4]},
+                "target_scale": {"target": 0.5, "scale": 1.0},
+                "training": {"n": 512, "sha256": "b" * 64}}), encoding="utf-8")
+            lock, output, vector_path = root / "recommendations.json", root / "evaluation.json", root / "vectors.npz"
+            self._locked_manifest(lock, contract)
+            result = evaluate_locked(model=self._Model(), lock_path=lock, contract_path=contract,
+                output_path=output, evaluation_seed_root=314159, rows_per_action=2,
+                bootstrap_replicates=20, bootstrap_seed=314160, response_vectors_path=vector_path)
+            record = result["response_vectors_artifact"]
+            self.assertTrue(result["raw_response_rows_saved"])
+            self.assertEqual(record["sha256"], hashlib.sha256(vector_path.read_bytes()).hexdigest())
+            with np.load(vector_path, allow_pickle=False) as stored:
+                self.assertEqual(stored["action_order"].tolist(), [0.5])
+                responses = stored["response_00"]
+                self.assertEqual(len(responses), 2)
+                self.assertEqual(hashlib.sha256(responses.tobytes()).hexdigest(),
+                                 result["action_summary"]["0.5"]["response_sha256"])
+
     def test_evaluator_refuses_recommendation_actions_outside_common_grid(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

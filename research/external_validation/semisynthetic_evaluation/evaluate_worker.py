@@ -30,12 +30,14 @@ def main(argv=None):
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--execution-manifest", type=Path, required=True)
     parser.add_argument("--execution-manifest-sha256", required=True)
+    parser.add_argument("--response-vectors", type=Path, required=True)
     parser.add_argument("--bootstrap-replicates", type=int, required=True)
     parser.add_argument("--bootstrap-seed", type=int, required=True)
     args = parser.parse_args(argv)
-    repro.require_external_outputs(ROOT, [args.lock, args.contract, args.output,
+    repro.require_external_outputs(ROOT, [args.lock, args.contract, args.output, args.response_vectors,
         args.execution_manifest])
-    if args.output.exists(): raise FileExistsError("refusing to overwrite evaluator output")
+    if args.output.exists() or args.response_vectors.exists():
+        raise FileExistsError("refusing to overwrite evaluator output or response vectors")
     verify_sources(args.source_root, args.data_root)
     # No policy engine, learner, G0 generator, or recommendation module is
     # imported in this process. It reads a hash-verified locked manifest only.
@@ -72,7 +74,7 @@ def main(argv=None):
     result = evaluate_locked(model=model, lock_path=args.lock, contract_path=args.contract,
         output_path=args.output, evaluation_seed_root=args.evaluation_seed_root,
         rows_per_action=args.rows, bootstrap_replicates=args.bootstrap_replicates,
-        bootstrap_seed=args.bootstrap_seed)
+        bootstrap_seed=args.bootstrap_seed, response_vectors_path=args.response_vectors)
     result["evaluator_process"] = {"isolated_subprocess": True,
         "policy_modules_loaded": False, "fit_seconds": fit_info["fit_seconds"],
         "generator_refit_sample_check": "exact 16-row observational frame SHA-256 match"}
