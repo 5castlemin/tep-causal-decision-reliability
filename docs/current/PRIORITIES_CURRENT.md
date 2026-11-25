@@ -1,20 +1,18 @@
 # 연구 우선순위
 
-기준일: 2026-11-25. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-11-26. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
-1. **RD-QUALIFICATION — Research D 반합성 평가 계약·파이프라인·개발 파일럿**: Gate READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW: 사용자가 고정/신규 training frame, precision tolerance 및 최종 표본·자원 한도를 선택한 뒤 별도 최종평가 승인. final seed/sample은 아직 생성하지 않음; 실측 검증 DEFERRED (PARTIAL)
-2. **RC-HELDOUT — Research C Held-out V1 독립 평가**: 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 (VERIFIED)
-3. **RD-FEASIBILITY — Research D 외부 검증 타당성 감사**: CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 (VERIFIED)
+1. **RC-HELDOUT — Research C Held-out V1 독립 평가**: 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 (VERIFIED)
+2. **BUDGET-REFINEMENT — 예산 제약 인과구조 개선 연구 설계 후보**: ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts (PARTIAL)
+3. **MFG-MICRO — CausalMan micro 실제 수용 검사**: CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 (PARTIAL)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| RD-QUALIFICATION | PARTIAL | RD-FEASIBILITY | Gate READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW: 사용자가 고정/신규 training frame, precision tolerance 및 최종 표본·자원 한도를 선택한 뒤 별도 최종평가 승인. final seed/sample은 아직 생성하지 않음; 실측 검증 DEFERRED / 같은 조건의 Development Reproduction 1,280개 응답으로 완료, 기존 저장 집계 및 2,720개 recommendation과 정확히 대조. historical pilot은 execution completed / provenance incomplete at original closeout으로 보존하고 raw responses 없음. 최종 평가는 미생성·미승인. Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 실측 개입 검증 DEFERRED |
 | RC-HELDOUT | VERIFIED | 없음 | 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 / 정의 리뷰, SCM ID 연결 수정·비용·행동·Regret 표, 반례 포함 사례 3–5개, final analysis note; 기존 ledger·정책 코드 불변 |
-| RD-FEASIBILITY | VERIFIED | RC-HELDOUT | CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 / 감사 완료. 후보 채택·Research D 분석계약·본실험 승인은 별도 |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |
 | MFG-MICRO | PARTIAL | MFG-INTEGRATED | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 / hard-do 그래프 부모 삭제 결함과 참조/효과 식별 계약이 남음.외부 import·관측1/do16000 1완료,do30000중단·replay미실행;공식채택아님 |
 | ERROR-CONFIRM | PARTIAL | ERROR-DIAG | REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 / 대응손실계약고정;미해결2개는정밀도-구조예산및종단실행비용근거.30개반폭0.446/유지15개0.742;구조단위598/유지총1650근사. 신규SCM/적합/do0 |
@@ -81,5 +79,6 @@
 - 2026-11-25: RD-QUALIFICATION Step 2는 Mk2 미해결을 유지하고 WT direct task는 기존 M1–M4의 유의미한 외부 결정 검증에 재설계가 필요하다고 판정했다. WT 무작위 배정 block 기록은 generator와 일치하지만 outcome/performance는 NOT_RUN; 본실험 별도 승인 필요.
 - 2026-11-25: Research D 실측 평가는 Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE, Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED로 보류했다. causalAssembly pinned commit 8da3729는 98/485 official DAG와 500x98 sample로 Station1 6-node DRF fit/observational sampling을 성공시켰으나 float hard-do sampler blocker로 CONDITIONAL_SEMISYNTHETIC만 가능하다. Action-level response/loss/regret and physical control NOT_RUN; next step is one bounded adapter fix under separate approval.
 - 2026-11-25: Research D run rd-development-reproduction-20261125-02는 보존된 512행 training frame 재사용 후 완료. 2,720개 recommendation과 1,280개 evaluator response가 기존 saved pilot action summaries/Primary와 정확히 일치; independent vector bootstrap 재계산 통과. Gate READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW, final evaluation 미승인·미생성. 사용자 결정: training A/B, precision tolerance, final sample/resource cap.
+- RD-FINAL added 2026-11-26: locked external semisynthetic final evaluation and scientific closeout verified; physical external validation remains deferred.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

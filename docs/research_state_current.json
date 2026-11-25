@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-26",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -482,19 +482,28 @@
     {
       "id": "RD-QUALIFICATION",
       "title": "Research D 반합성 평가 계약·파이프라인·개발 파일럿",
-      "status": "PARTIAL",
-      "evidence": "research/external_validation/semisynthetic_evaluation/RESEARCH_D_PROVENANCE_RECOVERY.md; RESEARCH_D_DEVELOPMENT_REPRODUCTION_RESULTS.md; RESEARCH_D_FINAL_PRECISION_PLAN.md; RESEARCH_D_FINAL_CONTRACT_REVIEW.md; development_reproduction_run_lock_v2.json; development_reproduction_comparison_v2.json",
-      "next_action": "Gate READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW: 사용자가 고정/신규 training frame, precision tolerance 및 최종 표본·자원 한도를 선택한 뒤 별도 최종평가 승인. final seed/sample은 아직 생성하지 않음; 실측 검증 DEFERRED",
-      "acceptance": "같은 조건의 Development Reproduction 1,280개 응답으로 완료, 기존 저장 집계 및 2,720개 recommendation과 정확히 대조. historical pilot은 execution completed / provenance incomplete at original closeout으로 보존하고 raw responses 없음. 최종 평가는 미생성·미승인. Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 실측 개입 검증 DEFERRED",
+      "status": "VERIFIED",
+      "evidence": "research/external_validation/semisynthetic_final/RESEARCH_D_FINAL_CONTRACT_REVIEW.md; RESEARCH_D_FINAL_RESULTS.md; final_summary.json; final_public_execution_manifest.json; final_independent_analysis_comparison.json",
+      "next_action": "최종 외부 반합성 평가는 종료. 실측 Mk2/Wind Tunnel 검증은 DEFERRED 유지; 추가 표본이나 외부 후보 탐색 없음",
+      "acceptance": "Final Gate EXTERNAL_FINAL_EVALUATION_VERIFIED; 17,000 recommendation, 12,500 intervention rows, independent 27-check audit; Research C 동결 보존",
       "depends_on": [
         "RD-FEASIBILITY"
+      ]
+    },
+    {
+      "id": "RD-FINAL",
+      "title": "Research D 최종 반합성 강건성 평가 및 과학적 종료",
+      "status": "VERIFIED",
+      "evidence": "research/external_validation/semisynthetic_final/RESEARCH_D_FINAL_RESULTS.md; RESEARCH_D_FINAL_UNCERTAINTY_REPORT.md; RESEARCH_C_D_SCIENTIFIC_SYNTHESIS.md; final_summary.json; final_public_execution_manifest.json",
+      "next_action": "최종 결과를 조건부 외부 반합성 강건성 증거로 보존; 물리 제조공정 효과·완전 GT·독립 SCM 모집단 주장으로 확대하지 않음",
+      "acceptance": "EXTERNAL_FINAL_EVALUATION_VERIFIED; final G0 200개와 개입 응답 12,500행의 해시/독립 요약 감사 PASS; CI SUCCESS; Research C 동결 파일 무변경",
+      "depends_on": [
+        "RD-QUALIFICATION"
       ]
     }
   ],
   "priority_order": [
-    "RD-QUALIFICATION",
     "RC-HELDOUT",
-    "RD-FEASIBILITY",
     "BUDGET-REFINEMENT",
     "MFG-MICRO",
     "ERROR-CONFIRM",
@@ -559,7 +568,8 @@
     "2026-11-25: RD-FEASIBILITY는 원자료 스키마·개입 support와 참조 검토가 완료된 감사다. CONDITIONAL_GO는 실험 채택이나 실행 승인을 뜻하지 않는다.",
     "2026-11-25: RD-QUALIFICATION Step 2는 Mk2 미해결을 유지하고 WT direct task는 기존 M1–M4의 유의미한 외부 결정 검증에 재설계가 필요하다고 판정했다. WT 무작위 배정 block 기록은 generator와 일치하지만 outcome/performance는 NOT_RUN; 본실험 별도 승인 필요.",
     "2026-11-25: Research D 실측 평가는 Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE, Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED로 보류했다. causalAssembly pinned commit 8da3729는 98/485 official DAG와 500x98 sample로 Station1 6-node DRF fit/observational sampling을 성공시켰으나 float hard-do sampler blocker로 CONDITIONAL_SEMISYNTHETIC만 가능하다. Action-level response/loss/regret and physical control NOT_RUN; next step is one bounded adapter fix under separate approval.",
-    "2026-11-25: Research D run rd-development-reproduction-20261125-02는 보존된 512행 training frame 재사용 후 완료. 2,720개 recommendation과 1,280개 evaluator response가 기존 saved pilot action summaries/Primary와 정확히 일치; independent vector bootstrap 재계산 통과. Gate READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW, final evaluation 미승인·미생성. 사용자 결정: training A/B, precision tolerance, final sample/resource cap."
+    "2026-11-25: Research D run rd-development-reproduction-20261125-02는 보존된 512행 training frame 재사용 후 완료. 2,720개 recommendation과 1,280개 evaluator response가 기존 saved pilot action summaries/Primary와 정확히 일치; independent vector bootstrap 재계산 통과. Gate READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW, final evaluation 미승인·미생성. 사용자 결정: training A/B, precision tolerance, final sample/resource cap.",
+    "RD-FINAL added 2026-11-26: locked external semisynthetic final evaluation and scientific closeout verified; physical external validation remains deferred."
   ],
   "integration_review": {
     "user_approved": true,
