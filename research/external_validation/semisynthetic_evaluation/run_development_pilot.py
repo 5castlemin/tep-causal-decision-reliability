@@ -183,10 +183,7 @@ def pilot_mode(args):
     if original_lock_sha != "9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404":
         raise ValueError("historical Development lock differs from its independently recorded SHA-256")
     original_audit = json.loads(args.original_audit.read_text(encoding="utf-8"))
-    if (original_audit.get("status") != "PASS_SAVED_ARTIFACTS_AUDITED_RAW_RESPONSE_ROWS_NOT_AVAILABLE"
-            or not original_audit.get("pipeline_exact_hash_recovered")
-            or original_audit.get("historical_gate_promoted_retroactively") is not False):
-        raise ValueError("historical source/artifact audit is incomplete or inconsistent")
+    repro.validate_original_artifact_audit(original_audit)
     original_lock = json.loads(args.original_lock.read_text(encoding="utf-8"))
     current_codes = code_hashes()
     for name in ("research/external_validation/semisynthetic_adapter/float_hard_do_adapter.py",

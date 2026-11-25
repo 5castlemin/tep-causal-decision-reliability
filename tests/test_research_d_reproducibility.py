@@ -7,7 +7,7 @@ import unittest
 
 from research.external_validation.semisynthetic_evaluation.reproducibility import (
     locked_invocation, validate_code_hashes, validate_locked_invocation, verify_file_digest,
-    validate_reproduction_science,
+    validate_reproduction_science, validate_original_artifact_audit,
 )
 
 
@@ -97,6 +97,16 @@ class ResearchDReproducibilityTests(unittest.TestCase):
         new["target_scale"]["target"] += 0.1
         with self.assertRaisesRegex(ValueError, "target/scale"):
             validate_reproduction_science(new, old)
+
+    def test_historical_audit_status_is_read_from_saved_artifact_audit_record(self):
+        audit = {"pipeline_exact_hash_recovered": True,
+            "historical_gate_promoted_retroactively": False,
+            "stored_artifact_audit": {"status":
+                "PASS_SAVED_ARTIFACTS_AUDITED_RAW_RESPONSE_ROWS_NOT_AVAILABLE"}}
+        validate_original_artifact_audit(audit)
+        audit["stored_artifact_audit"]["status"] = "FAIL"
+        with self.assertRaisesRegex(ValueError, "audit"):
+            validate_original_artifact_audit(audit)
 
 
 if __name__ == "__main__":

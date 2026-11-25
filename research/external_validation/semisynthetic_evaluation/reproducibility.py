@@ -56,6 +56,14 @@ def verify_file_digest(path: Path, expected: str, label: str) -> str:
     return actual
 
 
+def validate_original_artifact_audit(audit: dict) -> None:
+    stored = audit.get("stored_artifact_audit", {})
+    if (stored.get("status") != "PASS_SAVED_ARTIFACTS_AUDITED_RAW_RESPONSE_ROWS_NOT_AVAILABLE"
+            or not audit.get("pipeline_exact_hash_recovered")
+            or audit.get("historical_gate_promoted_retroactively") is not False):
+        raise ValueError("historical source/artifact audit is incomplete or inconsistent")
+
+
 def validate_code_hashes(expected: dict[str, str], actual: dict[str, str]) -> None:
     if actual != expected:
         changed = sorted(set(actual) | set(expected))
