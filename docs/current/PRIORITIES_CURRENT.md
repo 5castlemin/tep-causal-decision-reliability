@@ -5,7 +5,7 @@
 ## 다음 가장 중요한 작업 3개
 
 1. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
-2. **FINAL-INTEGRATION — Research C–D 과학적 통합 및 저장소 종료**: 통합 산출물과 로컬 검증 완료. 통합 PR의 원격 CI 및 권한·리뷰 조건을 확인하고 병합 후 검증 (PARTIAL)
+2. **FINAL-INTEGRATION — Research C–D 과학적 통합 및 저장소 종료**: 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 (VERIFIED)
 3. **BUDGET-REFINEMENT — 예산 제약 인과구조 개선 연구 설계 후보**: ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts (PARTIAL)
 
 ## 전체 실행 대기열
@@ -13,7 +13,7 @@
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
-| FINAL-INTEGRATION | PARTIAL | 없음 | 통합 산출물과 로컬 검증 완료. 통합 PR의 원격 CI 및 권한·리뷰 조건을 확인하고 병합 후 검증 / 원본 Ledger·Research D 저장 산출물 대조, 해석 수정, 보호 자산 보존 및 필수 원격 검증 완료; main 병합은 실제 플랫폼 조건 충족 시 |
+| FINAL-INTEGRATION | VERIFIED | 없음 | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 / 원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료 |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |
 | MFG-MICRO | PARTIAL | MFG-INTEGRATED | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 / hard-do 그래프 부모 삭제 결함과 참조/효과 식별 계약이 남음.외부 import·관측1/do16000 1완료,do30000중단·replay미실행;공식채택아님 |
 | ERROR-CONFIRM | PARTIAL | ERROR-DIAG | REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 / 대응손실계약고정;미해결2개는정밀도-구조예산및종단실행비용근거.30개반폭0.446/유지15개0.742;구조단위598/유지총1650근사. 신규SCM/적합/do0 |
@@ -85,5 +85,6 @@
 - 2026-11-26: PR #40의 기존 post-hoc mechanism outputs를 원본 Research C Development/Held-out SQLite에서 read-only로 재검증했다. 원본 DB SHA-256은 Dev dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716, Held-out 37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba이며 승인 audit/manifest 및 완료 SCM 상태와 일치했다. 5,440+17,000행에서 checksum/중복 오류 0, 85 policy-budget aggregates가 표의 공개 반올림 정밀도에서 일치했다. PR #40 재생성본의 모든 SCM별 raw output은 저장되지 않아 전체 SCM-keyed 결과의 완전 대조는 주장하지 않는다. M4/Full Greedy의 6개 M4 우세 사례 중 5개만 X→Y 경로 복원; rep-scm-confirmation-proposal-000139-a0138은 초기 경로가 이미 있었으며 M4가 정답 부호 action을 선택하고 Full Greedy는 다른 부호를 선택했다. 지표 검토의 1/|S| 희석 문구는 공통 정규화 항이어서 상대 순위를 설명하지 못하도록 수정했다. 사후 탐색 지위 유지.
 - 2026-11-26: Research D external final outputs were re-audited read-only from the retained local response vectors and recommendation artifact: 27/27 checks PASS; independent primary delta 0.03422489689372574 agrees with the published analysis. No DRF refit, recommendation generation, or intervention sampling was run for this re-audit. Hash of local audit summary: 6fa458199ea814a61248a1088bbe5a3b96a586916516c02a1dd6b54c0331292b. Raw vectors remain outside the public repository.
 - 2026-11-26: Final Research C–D report and evidence matrix prepared from frozen C results, read-only original-ledger mechanism audit, and read-only Research D artifact audit. Research C contract/ledger/code and frozen files remain unchanged; Research D remains conditional external semisynthetic evidence, not manufacturing validation. Final operational step is team presentation preparation, not additional experiments.
+- 2026-11-26: Final Research C–D integration PR #41 merged as 4564e4d28fea62a0caebbad0ed6dd415d7f29cda; post-merge Actions 45654187713 SUCCESS. No new experiment or response sampling.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.
