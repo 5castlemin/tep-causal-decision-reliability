@@ -1,5 +1,13 @@
 # 작업 기록
 
+# 2026-11-25 — Research D provenance recovery and reproduction closeout
+
+- Branch `research/research-d-design-resolution`; recovery commit `116e81d48dbeb4ee86ea164be8f1ffd908c03f62` exactly restores the historical pipeline bytes at expected SHA-256 `cbb830bc9421bbde851183868037ddc7681dbbac72c1847feb662cf75ae51291`. The nine remaining source hashes were reconciled against Git blob/runtime bytes and Windows CRLF. Historical artifacts audit in `original_pilot_artifact_audit_v2.json` passes saved bindings/counts/arithmetic (2,720 recommendations, 2,720 policy evaluation rows, 1,280 response rows); raw response rows are unavailable, so bootstrap intervals were not independently recomputed. Historical gate remains incomplete at original closeout.
+- Added immutable source/runtime/data/contract binding, recommendation subprocess boundary, evaluator invocation validation, pre/post source checks, overwrite refusals, and regression tests. Commit `add3a3c344b4dca033abf1086153727a2e85dd36` CI run `45563155664` succeeded, including full unittest discovery. Follow-up commit `16445173224f405c88a32e8856435bbc4290876b` adds fail-closed pre-fit checks.
+- One authorized reproduction runner invocation was attempted at commit `1644517`; it stopped before DRF fit because the runner read the audit status at the wrong JSON level. No DRF sample, 512-row learner frame, recommendation, G0, intervention response, bootstrap draw, run lock or evaluation artifact was generated. The output directory remained empty. No retry was made. The field-path defect was fixed and tested in commit `4007dbf5bdd4b57f7c9df413ec78243706e4a7f6`. Gate remains `DEVELOPMENT_PILOT_INCOMPLETE`; any new reproduction requires explicit authorization and a new run ID/lock. Final evaluation data were not generated.
+- Local Research D focused tests passed (22 in the corrected run). The Windows dirty-worktree full discovery had two unrelated environment failures (clean-worktree guard while files were modified; frozen Step4B4 byte hash under Windows checkout). GitHub Actions at `1644517` passed full discovery; CI run `45563697816` for `4007dbf5bdd4b57f7c9df413ec78243706e4a7f6` succeeded: 389 tests, all passed; remaining workflow validations and frozen asset checks succeeded.
+
+
 기록 원칙: 실질 작업마다 날짜, 브랜치/커밋, 실행 명령, 실제 결과, 미수행/차단 사항을 추가한다. 이 문서는 작업 성공을 추정하지 않는다.
 
 # 2026-11-25 — Research D 최종 실측 판정 및 반합성 preflight
