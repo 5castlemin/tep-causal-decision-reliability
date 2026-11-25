@@ -1,6 +1,6 @@
 # DAT 제조공정 — 예산 제약 인과그래프 오류 수정 연구와 팀 인수인계
 
-> 기준: 2026-11-23, 로컬 연구 브랜치 `docs/research-journey-team-handoff-20261123`의 최신 검증 문서. 이 브랜치는 아직 `main`에 병합되지 않았다. 연구 결과는 기존 보고서와 감사 기록을 요약한 것이며, 이 문서 작업에서 새 실험을 실행하지 않았다.
+> 역사적 본문 기준: 2026-11-23의 로컬 연구 브랜치 `docs/research-journey-team-handoff-20261123`. 당시의 상태 표현은 해당 날짜의 기록이며 현재 main 상태를 뜻하지 않는다. 2026-11-26 최종 인수인계는 Part 8에 추가했다. 이 통합에서 새 실험은 실행하지 않았다.
 
 ## Part 1. 5분 만에 이해하는 연구
 
@@ -157,7 +157,7 @@ M4 평균 Regret은 Held-out에서 Full Greedy보다 낮았지만 이는 Develop
 
 먼저 현재 작업 브랜치와 README의 source branch를 확인한다. 개인 작업은 별도 브랜치에서 하고, 목적과 변경 범위가 분명한 PR로 검토한다. 결과·원본을 읽기 전용으로 다루며, 문제 신고 시 SCM ID, proposal ID, source/config/manifest 식별자, 파일 checksum, 재현 명령, 기대/실제 차이 및 단계별 실패 사유를 제공한다. 원격 main 직접 수정, 동결 자료 덮어쓰기, 외부 원시 데이터 업로드는 하지 않는다.
 
-인수인계와 Research C 산출물은 원격 연구·문서 브랜치에 Push되었지만 아직 `main`에 병합되지 않았다. [실제 main 대비 변경 범위](https://github.com/5castlemin/tep-causal-decision-reliability/compare/main...docs/research-journey-team-handoff-20261123)는 문서뿐 아니라 다수의 기존 연구 코드·결과를 포함한다. 별도 복구 브랜치 `repair/frozen-step4-active-state-20261123`는 Step 4 동결 파일과 현재 운영 상태를 분리해 검증하기 위한 후속 작업이다. PR #38은 2026-11-16 병합되었으며 #34/#35 등 별개 TEP PR은 여기서 변경하지 않는다. PR 생성 및 병합은 사용자 결정이다.
+역사적으로 이 문서는 2026-11-23 시점에 Research C가 main에 아직 병합되지 않았다고 기록했다. 이후 PR #39가 main에 병합되었다. 2026-11-26 최종 통합에서 PR #40 메커니즘 분석과 Research D를 통합 브랜치로 정리한다. 본 문서의 시점별 이력은 보존하며 최종 통합 PR의 현재 상태는 실제 GitHub 기록을 따른다.
 
 ## 주요 근거 문서
 
@@ -166,3 +166,14 @@ M4 평균 Regret은 Held-out에서 Full Greedy보다 낮았지만 이는 Develop
 - [초기 합성 결과](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md) · [TEP 브리지 검토](docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md)
 - [Step 5/6 결과](research/budget_aware_refinement/STEP5_STEP6_FINAL_RESULTS.md) · [Research C 계약](RESEARCH_C_EXPERIMENT_CONTRACT_V1.md)
 - [Research C 승인 브리프](RESEARCH_C_APPROVAL_DECISION_BRIEF.md) · [Held-out 분석 잠금](RESEARCH_C_HELDOUT_ANALYSIS_LOCK.md) · [Held-out 결과](RESEARCH_C_HELDOUT_V1_RESULTS.md)
+
+
+## Part 8. Research C–D 최종 통합 인수인계
+
+최종 연구 질문은 제한된 그래프 수정 예산을 어떤 구조 오류에 우선 배분해야 downstream 의사결정 손실을 줄이는지다. Research C의 Held-out 결과는 독립 synthetic SCM 모집단에 대한 동결 계약 내 증거다. 정창민의 M1–M4 분석은 원본 Ledger로 후속 검증했지만 결과를 본 뒤 수행한 사후 탐색이다. Research D는 공개 반합성 표본에 재적합한 단일 DRF DGP에 조건부인 강건성 사례이며 실제 제조 개입 검증이 아니다.
+
+통합 결과와 발표 근거는 `research/final_integration/`에 있다. 먼저 `FINAL_RESEARCH_REPORT.md`, `FINAL_RESULTS_TABLES.md`, `FINAL_CLAIMS_EVIDENCE_MATRIX.md`, `FINAL_PRESENTATION_EVIDENCE_GUIDE.md`를 읽는다. 원본 Ledger 감사와 D 재감사 범위는 각각 `ORIGINAL_LEDGER_MECHANISM_AUDIT.md`, `RESEARCH_D_FINAL_REAUDIT.md`다. 공개 저장소에는 SQLite, 학습 CSV, response vectors 또는 fitted native model을 넣지 않는다.
+
+팀 역할은 확인된 범위로 기록한다. 오성민은 연구 설계·실험·통합 및 Research D를 수행하고 최종 보고·발표를 조율한다. 정창민은 메커니즘 분석과 PR #40을 작성했다. 황주희의 과거 연구 기여는 기록으로 확인되지 않아 만들지 않는다. 발표 이후 선택적 피드백은 가독성 및 예상 질문 검토로 제한한다.
+
+새 실험은 승인되지 않았다. 후속 업무는 최종 보고서 검토, 발표 자료 제작, 주장 범위 점검 및 최종 제출 준비다. Research C와 D를 실제 제조라인의 현장 효능·안전성·배포 준비성으로 표현하지 않는다.

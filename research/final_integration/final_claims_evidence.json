@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "claims": [
+    {"id":"claim-1","grade":"CONFIRMATORY_WITHIN_FROZEN_SYNTHETIC_CONTRACT","statement":"Budgeted graph repair can reduce downstream decision loss relative to no repair within the frozen synthetic contract.","research_c":{"unit":"200 independent held-out synthetic SCMs","estimand":"B=2 paired regret(S0)-regret(Full Greedy)","estimate":0.07483635742836832,"ci95":[0.05089822,0.09877450]},"research_d":{"grade":"CONDITIONAL_EXTERNAL_ROBUSTNESS","unit":"200 corruption draws conditional on one DRF DGP and one training frame","estimate":0.03422489689372574,"ci95_two_source":[0.00617347,0.06535080]},"limitation":"Research D is semisynthetic and does not establish physical manufacturing effects."},
+    {"id":"claim-2","grade":"DEVELOPMENT_SELECTED_SECONDARY","statement":"M4 uses fewer atomic edits on average in the reported comparisons.","research_c":{"m4_mean_edits":0.695,"full_greedy_mean_edits":1.435},"research_d":{"m4_mean_edits":0.335,"full_greedy_mean_edits":1.160,"m4_minus_full_greedy_loss":0.00122956},"limitation":"Edit count is not labor, time, monetary cost, or safety cost."},
+    {"id":"claim-3","grade":"POST_HOC_MECHANISM_EVIDENCE","statement":"Path availability and estimated effect direction help explain observed decision differences.","evidence":"Original-ledger post-hoc analysis; 49 of 55 held-out S0 regret-positive cases lacked an X-to-Y path; 5 of 6 M4-winning action disagreements restored a path and one retained an existing path but selected a different action direction.","limitation":"Exploratory post-hoc mechanism analysis, not confirmatory mediation."},
+    {"id":"claim-4","grade":"UNSUPPORTED","statement":"M4 is always superior to Full Greedy.","counterexamples":"Full Greedy wins some Research C cases; Research D M4 loss exceeds Full Greedy by 0.00122956."},
+    {"id":"claim-5","grade":"UNSUPPORTED","statement":"Graph-based repair generally outperforms graph-free regression.","evidence":"Research D graph-free association baseline loss equals Full Greedy loss at the reported precision."},
+    {"id":"claim-6","grade":"UNSUPPORTED","statement":"The method has been validated on physical manufacturing interventions or is deployment-ready.","evidence":"No physical intervention validation was performed."}
+  ]
+}

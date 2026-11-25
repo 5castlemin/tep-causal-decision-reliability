@@ -1,39 +1,55 @@
-# DAT 제조공정 — 제한된 예산에서 인과그래프의 어떤 오류를 고칠 것인가?
+# DAT 제조공정 인과그래프 수리 연구
 
-**현재 핵심 질문:** 주어진 구조 수정 예산 안에서 어떤 인과그래프 오류를 먼저 고쳐야 downstream 의사결정 손실(Decision Regret)이 줄어드는가? 이 저장소는 초기 TEP 정상 관측자료의 인과발견·구조 일치도 평가에서 출발했지만, 관측 예측과 실제 개입효과는 다르고 TEP 환경 정합성도 검증되지 않아, 정답 구조와 손실을 통제할 수 있는 합성 SCM 연구로 발전했다.
+## 문제와 최종 연구 질문
 
-## 현재 연구 상태
+이 프로젝트는 불완전한 인과그래프를 제한된 수정 예산으로 수리할 때, 어떤 구조 오류를 우선 고쳐야 downstream 의사결정 손실을 줄일 수 있는지 연구한다. 핵심은 그래프 정확도를 높이는 일과 실제 결정 품질을 높이는 일을 구분하는 것이다.
 
-현재 연구 브랜치의 Research C Held-out V1 상태는 **`HELDOUT_COMPLETED_AND_AUDITED`**다. 합성 SCM 200개를 평가했고, B=2에서 Full Greedy 대 S0의 평균 paired Decision Regret delta는 +0.07484 (95% paired-t CI `[0.05090, 0.09877]`)였다. 상세 결과와 제한은 [Held-out 결과 및 감사](RESEARCH_C_HELDOUT_V1_RESULTS.md)에 있다.
+## 핵심 발견
 
-이는 승인된 합성 모집단에서의 결과다. 실제 제조공정 효과, TEP 개입 성능, 안전성 또는 보편적 정책 우월성을 검증한 것은 아니다. M4는 Development 결과를 본 뒤 지정한 Secondary이며 P1 Primary가 아니다.
+1. 동결된 합성 계약의 독립 Held-out 200 SCM에서 B=2 Full Greedy는 S0보다 평균 Regret이 0.07483636 낮았다(95% paired-t CI [0.05089822, 0.09877450]).
+2. 원본 Ledger 기반 사후 분석은 경로 가용성과 효과 방향이 일부 결정 차이를 설명함을 보였으나, off-task 수정도 경로를 만들거나 DAG 제약을 해소할 수 있었고 구조 수정 뒤 성능이 악화된 반례도 있었다.
+3. Research D의 외부 반합성 단일 DRF 생성환경에서 같은 방향의 조건부 차이가 관찰됐지만, graph-free baseline은 Full Greedy와 같은 손실을 보였고 두 정밀도 목표도 충족되지 않았다.
 
-> **브랜치 상태:** 이 설명과 Research C 산출물은 2026-11-23 현재 문서 작업 브랜치에서 확인한 내용이며 아직 `main`에 병합되지 않았다. main의 이력·상태와 혼동하지 않는다.
+## 세 증거 층위
 
-## 처음 읽는 순서
+- **Research C:** 사전 동결된 통제 합성 SCM 실험. Held-out 표본 단위는 독립 synthetic SCM 200개다. [계약](RESEARCH_C_EXPERIMENT_CONTRACT_V1.md) · [Held-out 결과](RESEARCH_C_HELDOUT_V1_RESULTS.md)
+- **메커니즘 분석:** Research C 저장 Ledger를 이번 통합에서 read-only로 재검증한 사후 탐색 분석. 정창민의 PR #40 기여 및 커밋 이력을 보존한다. 재생성본의 SCM별 전체 결과는 원본과 완전 대조할 수 없었다.
+- **Research D:** 공개 제조공정 기반 반합성 자료에 재적합한 하나의 DRF DGP, 고정 학습 프레임, 200 graph-corruption draws에 조건부인 강건성 평가. 실측 제조 개입이나 독립 외부 SCM 검증이 아니다.
 
-1. [전체 연구 계보와 팀 인수인계](RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md)
-2. [Research C 승인 계약](RESEARCH_C_APPROVAL_DECISION_BRIEF.md) 및 [실험 계약 V1](RESEARCH_C_EXPERIMENT_CONTRACT_V1.md)
-3. [Held-out 분석 잠금](RESEARCH_C_HELDOUT_ANALYSIS_LOCK.md)과 [최종 결과](RESEARCH_C_HELDOUT_V1_RESULTS.md)
-4. [Development 감사](RESEARCH_C_DEVELOPMENT_V1_AUDIT.md) 및 [provenance 정정 기록](RESEARCH_C_DEVELOPMENT_V1_PROVENANCE_CORRECTION.md)
-5. [Research C 구현 안내](research/original_objective/README.md)
+## 결과 요약
 
-## 연구 흐름과 주요 자료
+| 분석 | 단위·대비 | 결과 | 제한 |
+|---|---|---|---|
+| Research C Held-out | 200 independent synthetic SCMs, B=2 S0−Full Greedy Regret | +0.07483636; 95% CI [0.05089822, 0.09877450] | 합성 계약 내 결과 |
+| Research C M4 | B=2 평균 edit 수 | M4 .695; Full Greedy 1.435; 동일 행동 193/200 | Development-selected Secondary; edit count는 현장 비용이 아님 |
+| Research D | 고정 DRF DGP·학습 프레임의 200 G0, B=2 S0−FG loss | +0.03422490; two-source CI [0.00617347, 0.06535080] | 단일 반합성 DGP; MC 정밀도 목표 미달 |
+| Research D M4 / baseline | B=2 | M4−FG loss +0.00122956; 비용 .335 vs 1.160; graph-free loss=FG | M4의 trade-off와 baseline 동률을 함께 해석 |
 
-- TEP 인과발견과 저장 그래프 감사: [`docs/audit/AUDIT_REPORT.md`](docs/audit/AUDIT_REPORT.md), [`docs/audit/step6_main_table.csv`](docs/audit/step6_main_table.csv), [`docs/reproducibility/GRAPH_REPRODUCIBILITY.json`](docs/reproducibility/GRAPH_REPRODUCIBILITY.json)
-- 오류 위치를 본 초기 합성 분석: [`SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md`](docs/research_design/SYNTHETIC_FINAL_RESULTS_AND_CLAIMS.md)
-- 별도 Step 5/6 예산 연구: [`STEP5_STEP6_FINAL_RESULTS.md`](research/budget_aware_refinement/STEP5_STEP6_FINAL_RESULTS.md), [`FINAL_RESEARCH_REPORT.md`](research/budget_aware_refinement/FINAL_RESEARCH_REPORT.md)
-- Research C 정책 코드: [`policy_engine.py`](research/original_objective/policy_engine.py); 실행·분석 경로는 `research/original_objective/`, `scripts/`, `tests/`에 있다.
-- TEP 환경·개입 브리지의 한계: [`TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md`](docs/research_design/TEP_ENVIRONMENT_BRIDGE_FEASIBILITY.md), [`TEP_EFFECT_DECISION_FEASIBILITY.md`](docs/research_design/TEP_EFFECT_DECISION_FEASIBILITY.md)
+## 주장 범위와 한계
 
-원시 Development/Held-out SQLite 및 감사 파일은 승인된 로컬 `C:\DAT_RESEARCH\research-c\...` 경로에 있으며 Git에 복사하지 않았다. 다른 팀원의 해당 경로 접근 권한은 별도 확인이 필요하다. 자료 위치·권리·재현 절차는 [`data/README.md`](data/README.md)와 [`TEAM_GUIDE.md`](docs/reproducibility/TEAM_GUIDE.md)를 따른다.
+Research C와 D는 모두 reference DAG를 활용한 oracle-assisted 구조 수리다. 현장처럼 참 구조를 모르는 상황의 오류 발견을 해결하지 않는다. D의 200개는 독립 SCM이 아니라 하나의 DGP에서 뽑은 graph-corruption draw다. 어느 실험도 실제 공장 개입, 안전성, 실제 전문가 시간·금전 비용, 배포 가능성을 입증하지 않는다. M4의 보편적 우월성 및 graph-based 방법의 보편적 우월성은 주장하지 않는다. 수치와 주장별 근거·반례는 [최종 결과표](research/final_integration/FINAL_RESULTS_TABLES.md), [주장–근거 매트릭스](research/final_integration/FINAL_CLAIMS_EVIDENCE_MATRIX.md), [최종 보고서](research/final_integration/FINAL_RESEARCH_REPORT.md)에 있다.
 
-## 팀 업무
+## 저장소 구조와 재현성
 
-- **오성민:** 연구 총괄, A/B/C 및 초기 연구 결과 통합, 최종 보고·발표, PR/병합 결정.
-- **정창민:** M1–M4 정의와 실제 수정 이력·비용·행동·Regret의 메커니즘 분석. 상세 절차와 산출물은 [인수인계 문서 Part 6](RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md#part-6-팀원-역할과-실행-가능한-업무).
-- **황주희:** 이번 주 발표 준비 우선, 필수 연구 과업 없음. 발표 이후 선택적 가독성·예상 질문 검토.
+- Research C 계약·결과: 루트 `RESEARCH_C_*.md`, `research/original_objective/`.
+- Research C 메커니즘: `research/research_c_mechanism_analysis/`.
+- Research D 조사·실행 산출물: `research/external_validation/`.
+- 통합·발표 자료: `research/final_integration/`.
+- 현재 운영 현황: `docs/research_state_current.json`, `docs/current/`.
+- Research C 원본 SQLite와 Research D raw response vectors 및 fitted native object는 공개 저장소에 없다. 보존한 hash와 aggregate는 출처·무결성 확인에 쓰이며, 공개 저장소만으로 원자료 전체 재실행을 보장하지 않는다.
 
-## 재현 및 협업
+새 연구 실행은 승인된 계약과 별도 권한을 요구한다. 이 통합은 새로운 SCM, 평가 표본 또는 물리 실험을 만들지 않는다. 재현·보존 원칙은 [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md)를 따른다.
 
-현재 운영 상태는 [`docs/research_state_current.json`](docs/research_state_current.json)을 원본으로 하며, [`docs/research_state.json`](docs/research_state.json)은 Step 4 동결 당시 스냅샷으로 보존한다. [`docs/current/PROJECT_STATUS_CURRENT.md`](docs/current/PROJECT_STATUS_CURRENT.md), [`docs/current/PRIORITIES_CURRENT.md`](docs/current/PRIORITIES_CURRENT.md)는 현재 운영 대시보드다. 루트의 `PROJECT_STATUS.md`, `PRIORITIES.md`, `WORK_LOG.md`는 과거 동결 증거로 보존하고, 최신 업무 이력은 [`docs/current/WORK_LOG_CURRENT.md`](docs/current/WORK_LOG_CURRENT.md)를 참고한다. 기여·브랜치·검토 지침은 [`CONTRIBUTING.md`](CONTRIBUTING.md)와 [`AGENTS.md`](AGENTS.md)를 읽는다. 새 연구 실행은 승인된 Configuration/Manifest와 별도 실행 승인 없이는 시작하지 않는다. 기존 결과·동결 파일은 읽기 전용으로 보존한다.
+## 팀
+
+- **오성민:** 연구 설계·실험·통합 및 Research D; 최종 보고와 발표 조율.
+- **정창민:** Research C M1–M4 메커니즘 분석 및 PR #40.
+- **황주희:** 기존 기록에서 확인된 기여만 보존한다. 발표 준비 우선 기록은 있으며, 미확인 과거 연구 기여를 새로 귀속하지 않는다.
+
+세부 인수인계와 발표 준비는 [팀 인수인계](RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md), [기여·발표 체크리스트](research/final_integration/TEAM_CONTRIBUTION_AND_HANDOFF.md)를 참조한다.
+
+## 과거 연구 및 실측 검증 상태
+
+프로젝트는 TEP 구조 탐색과 인과발견 비교에서 출발했다. TEP 및 CausalMan 환경은 연구 계약에 필요한 reference/intervention 조건을 충족하지 못해 보류되었고, Causal Chambers의 Mk2/Wind Tunnel도 현재 연구 질문에 적합한 실측 정책 비교로 채택되지 않았다. 해당 이력은 제거하지 않고 `docs/research_design/`과 `research/external_validation/`에 보존한다. 이번 최종 연구는 실측 제조 검증이 아니다.
+
+> 통합 브랜치의 PR/merge 상태는 GitHub에서 확인한다. 문서 작성 시점의 main 상태를 과거 Research C 병합 이전으로 표현하지 않으며, 최종 통합 PR의 결과는 실제 원격 상태 확인 뒤 current dashboard에 기록한다.

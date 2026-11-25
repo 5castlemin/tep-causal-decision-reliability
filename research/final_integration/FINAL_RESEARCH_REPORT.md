@@ -1,0 +1,102 @@
+# DAT 제조공정 프로젝트 최종 연구 보고서
+
+팀: 닦고조이고기름치자
+
+상태: Research C 실험·감사 완료, Research C 메커니즘 분석 원본 Ledger 대조 완료, Research D 외부 반합성 평가 완료. 본 문서는 새 실험을 보고하지 않고 기존 증거를 종합한다.
+
+## 1. 연구 배경
+
+제조공정의 인과관계를 이해하려는 초기 연구는 TEP 관측자료에서 여러 Causal Discovery 알고리즘이 추정한 그래프와 참고 구조의 일치도를 살펴보는 데서 출발했다. 하지만 참고 그래프가 완전한 물리적 인과 Ground Truth라는 증거가 제한적이었고, 관측 예측 성능만으로 실제 조작의 효과를 검증할 수 없었다. 공개 TEP 시뮬레이터·기록 데이터 사이의 실행 및 개입 정합성도 입증되지 않았다.
+
+이에 따라 연구 초점은 알고리즘별 F1/SHD 순위에서 구조 오류가 조작 관련 경로에 놓였는지, 그리고 오류를 고치면 의사결정이 달라지는지로 이동했다. Research C는 이 질문을 확인 가능한 합성 SCM 계약으로 제한해 실험했고, Research D는 실제 제조자료를 대체하지 않는 외부 반합성 생성환경에서 조건부 강건성을 점검했다.
+
+## 2. 연구 질문의 발전과 최종 질문
+
+현재 연구 질문은 다음과 같다.
+
+> **한정된 인과그래프 수정 예산을 어떤 구조 불일치에 배분할 때, downstream 의사결정 손실이 어떻게 달라지는가?**
+
+“전체 그래프를 더 정확히 만드는가?”와 “주어진 조작 과제의 추천 행동과 손실이 개선되는가?”를 분리한다. 본 연구는 참조 DAG가 주어진 Oracle-assisted 오류 수리 설정을 다루며, 참 구조를 모르는 현장 자동 오류 발견 문제까지 해결했다고 주장하지 않는다.
+
+## 3. 오류와 정책 비교 방법
+
+각 실험 단위에서 reference DAG, 조작변수 X, 목표변수 Y와 strict indirect-only task를 정하고 초기 그래프 G0에 FN, FP, REV, UNRES 불일치를 만든다. 원자 수정은 누락 간선 추가, 가짜 간선 삭제, 역방향 간선 방향 수정, 미결정 간선 확정이며 각 비용은 1이다. 이 비용은 실제 수정 시간이나 금액이 아니라 edit count다. 구조 수리 예산은 B=0–4다.
+
+Research C의 M1–M4는 다음 구조 오류 지표다.
+
+- **M1:** task zone 밖의 참 인접성 누락(FN).
+- **M2:** task zone 밖의 가짜 인접성(FP).
+- **M3:** task zone 밖의 방향 반전과 unresolved.
+- **M4:** task-zone 오류의 FN/FP/REV/UNRES 구성요소와 각각의 support.
+
+공식 보고 지표와 Greedy 선택 점수는 다르다. Greedy는 선택된 metric subset의 G0 고정 opportunity support로 나눈 잔여 오류율을 같은 가중으로 평균한 `P_S` 감소량을 원자 수정 비용으로 나누어 후보를 매 단계 다시 평가한다. M4 proxy는 G0에서 오류와 support가 양수인 활성 성분의 비율을 같은 가중으로 평균한다. 따라서 task 오류 정의와 실제 수리 우선순위는 구조 점수이지 예상 regret 자체가 아니다. FP Rule A는 FP 양끝 노드가 task-zone node set에 모두 속할 때 task-related로 분류한다. 이 규칙상 off-task FP도 X/Y에 연결되어 경로를 만들거나 DAG 수리 가능성을 바꿀 수 있다.
+
+비교 정책은 무수정 S0, M1–M4의 15개 비공집합 metric subset, Full Greedy(M1+M2+M3+M4), Canonical Oracle로 구성된다. Canonical Oracle은 참 구조에 기반한 고정 순서 구조 진단 기준선이며 regret-optimal 정책이 아니다. 참 DAG와 task zone은 오류 판정·수리 후보에 쓰일 수 있지만, 추천은 공통 관측 학습자료와 수정 graph를 사용한다. GT 행동별 loss와 optimal action은 추천을 잠근 뒤 평가에만 사용한다.
+
+## 4. Research C 설계와 핵심 결과
+
+Research C는 64개의 Development synthetic SCM으로 정책·계약을 개발하고, 200개의 독립 synthetic SCM Held-out cohort로 동결 Primary를 평가했다. 각 SCM 안에서 정책들은 같은 관측자료, task, 후보 행동 및 analytic GT evaluator를 공유한다. Primary는 B=2에서 `Regret(S0)−Regret(Full Greedy)`의 SCM paired 평균이다. 양수는 Full Greedy의 regret이 낮다는 뜻이다.
+
+Held-out 평균 regret은 S0 `0.09343898`, Full Greedy `0.01860262`였고 Primary는 `+0.07483636` (95% paired-t CI `[0.05089822, 0.09877450]`)이었다. 개선/악화/동률은 45/1/154다. 이 결과는 사전 동결된 합성 SCM 계약 안에서 제한된 수리가 무수정보다 평균 regret을 낮출 수 있다는 증거다.
+
+M4 평균 regret `0.00398775`는 Development에서 선택한 Secondary로 유지한다. M4는 B=2 평균 edit count `0.695`, Full Greedy `1.435`였고 행동은 193/200 SCM에서 같았다. 이 비교는 사후/선택 영향을 받을 수 있어 M4의 보편적 우월성 증거가 아니다.
+
+## 5. 메커니즘 분석
+
+정창민의 M1–M4 기여는 PR #40의 지표 정의 리뷰, 정책 분석, 집계표, 사례 및 분석 스크립트다. 초안은 원본 Ledger 접근 불가로 재생성 Ledger를 이용한 사후 탐색으로 시작했다. 이번 통합에서 승인된 원본 Development/Held-out SQLite를 read-only로 확인했다. DB run ID, seed, 승인 manifest, raw hash, source revision, schema, completed SCM 수, SQLite integrity 및 payload checksum을 대조했다. 원본에서 5,440 및 17,000 정책×예산행을 다시 읽어 85개 policy-budget aggregate와 저장된 정책 불일치 사례를 비교했다. 공개된 PR 집계표는 표시 반올림 정밀도에서 원본 값과 일치했다. 재생성 cohort의 모든 SCM-keyed raw 결과는 PR에 보존되어 있지 않으므로 SCM별 완전 일치를 주장하지 않는다.
+
+Held-out S0에서 regret이 양수인 55개 사례 중 49개는 learner graph에 X→Y 유향 경로가 없었고 6개는 경로가 있었지만 추천 action 방향이 맞지 않았다. 전체 22,440 정책×예산 행에서 path가 있으면 predicted loss가 non-flat, 경로가 없으면 flat인 패턴이 저장된 결과에서 모두 일치했다. 이것은 현 learner와 target-tracking 행동 grid에 대한 경험적 관계다. 독립 표본 22,440개나 보편적 인과 정리로 해석하지 않는다.
+
+메커니즘 사례는 단순한 “task 우선이 항상 낫다”는 설명을 지지하지 않는다. M4가 Full Greedy보다 나았던 Held-out B=2 행동 불일치 6건 가운데 5건은 M4가 X→Y 경로를 복원했고, 1건은 기존 경로가 있었지만 추정 방향과 추천 부호가 달랐다. 반례 `…000076`에서는 off-task FP가 남아 있으면 task 방향 수정이 DAG 순환을 일으켜 M4가 중단됐고 Full Greedy가 FP를 먼저 제거해 더 나았다. `…000141`의 off-task FP는 올바른 방향의 유일 경로를 만들고 있어 삭제가 추천을 악화시켰다. `…000146`에서는 구조 수정 후 경로가 끊기며 원래 맞았던 action이 악화됐다.
+
+Greedy 점수 설명도 수정했다. 같은 subset 안의 공통 `1/|S|` 정규화는 후보 간 상대 순위를 설명하지 않는다. M4의 상대 gain에는 활성 오류 성분 수, 각 성분의 G0 고정 support, 후보 구조 및 DAG 제약, 동점 순서가 함께 작용한다. M4 지표 자체가 잘못 정의됐다는 결론은 내리지 않는다.
+
+이 분석은 Held-out을 열람한 뒤 수행한 post-hoc exploratory analysis다. 원본 Ledger 검증은 출처 정확성을 개선했지만 분석을 사전 등록된 확증 분석으로 바꾸지 않는다.
+
+## 6. Research D 반합성 강건성 평가
+
+실제 물리 검증은 Causal Chamber Mk2와 Wind Tunnel에서 참조 구조·시간 정렬·독립 실험 단위의 근거가 기존 연구 계약을 지원하기에 부족해 보류했다. 다른 dataset 탐색을 이어가지 않고 causalAssembly Station1 외부 반합성 강건성 검증으로 연구 범위를 좁혔다.
+
+Research D는 causalAssembly 1.2.1의 공개 제조공정 기반 반합성 sample 및 official Station1 benchmark DAG에 DRF를 재적합한 **단일 고정 생성환경**을 사용했다. Station1 reference는 6 nodes, 7 directed edges다. Study task는 `Station1_mp_0 → Station1_mp_4`, reference path `mp_0 → mp_1 → mp_4`; 이는 virtual benchmark hard-do다. 고정된 Development training frame 512행, 200 G0 corruption draws, 5 common actions, action당 2,500 evaluator rows를 사용했다. 200개 G0는 200개의 독립 외부 SCM이 아니다.
+
+B=2에서 S0 mean bias-corrected target-tracking loss는 `0.823587`, Full Greedy는 `0.789362`; Primary `+0.03422490`이다. G0-only 95% interval `[0.02664478,0.04180501]`, action-MC-only `[0.00650999,0.06284998]`, two-source `[0.00617347,0.06535080]`. Action-MC 반폭 0.020 및 two-source 반폭 0.025의 사전 보고 정밀도 목표는 모두 미충족했다. 승인 sample size 이후 표본을 늘리지 않았다.
+
+M4 B=2 loss `0.790592`; M4−Full Greedy `+0.00122956`, two-source interval `[0.00000000,0.00391596]`. M4 mean edit count 0.335, Full Greedy 1.160, 동일 행동 198/200. Graph-free observational association baseline의 loss는 `0.789362`로 Full Greedy와 같았다. Graph-free 모델은 causal effect estimator가 아니다.
+
+Independent artifact audit 27/27 checks와 이 문서 작성 시점의 read-only 재감사가 모두 PASS였다. 연구 실행 자원은 약 407.6초, process-tree RSS 표본 peak 약 1.92 GB였다. 이 기술 무결성은 추정 효과 크기의 정밀도 부족이나 단일 DGP 한계를 해소하지 않는다.
+
+## 7. Research C–D 통합 해석
+
+Research C는 독립 synthetic SCM population에서 정해진 구조 수리 절차의 analytic regret을 시험했다. Research D는 다른 topology와 DRF 기반 외부 반합성 생성 메커니즘에서 같은 큰 방향의 양의 정책 대비를 관찰했다. 두 결과는 “구조 정확도 자체”가 아니라 한정된 수리 정책이 이들 계약 안에서 실제 행동 loss에 연관될 수 있다는 점을 보여준다.
+
+두 Primary의 효과 크기는 직접 합산·비교하지 않는다. Task, SCM/DGP, learner-training frame, loss evaluator 및 표본 단위가 다르다. Research D는 유리한 벤치마크를 통과했더라도 graph-free baseline과 같았고 정밀도 목표에 못 미쳤다. C와 D 모두 reference graph를 사용하므로 field deployment에서 참 구조를 모르는 상황의 오류 탐지 성능을 검증한 것이 아니다.
+
+## 8. 경영학적 시사점
+
+이 결과는 의사결정에 가까운 구조 수리 기회를 제한된 분석 자원 배분의 후보 기준으로 삼을 수 있다는 연구 설계상의 시사점을 준다. 다만 본 연구에서 수정 비용은 간선 edit count뿐이다. 전문가 검토 시간, 검증 비용, 생산중단, 안전 리스크, 조직의 데이터 접근 제약 또는 실제 운영손실을 측정하지 않았다. 현장 관리자가 task-zone 점수에 따라 예산을 배분해야 한다는 처방이나 경제적 ROI를 도출하지 않는다.
+
+## 9. 연구 한계
+
+1. **Oracle-assisted repair:** reference DAG로 오류와 task zone을 정의했다. 현장처럼 참 구조를 모르는 graph repair를 해결하지 않았다.
+2. **환경:** C는 자체 설계 synthetic SCM, D는 공개 반합성 표본으로 적합한 단일 DRF DGP다. 물리 제조 개입 또는 complete physical GT 검증이 아니다.
+3. **통계 단위:** C의 200은 독립 SCM이고 D의 200은 한 DGP에서 graph corruption draws다. D에서 fitted generator·학습 frame의 불확실성은 포함되지 않았다.
+4. **정밀도:** D의 action-MC-only 및 combined interval 반폭 목표를 충족하지 못했다.
+5. **행동·손실:** 각 환경의 고정 action grid와 target-tracking loss에만 조건부다. D의 모든 관측 action 평균은 target보다 낮았으나 이것은 finite sample 요약이며 population infeasibility 증거가 아니다.
+6. **수리비용:** edit count는 노동시간, 비용, 안전·검증 노력을 측정하지 않는다.
+7. **Secondary/post-hoc:** M4는 Development-selected Secondary, Changmin 메커니즘 분석은 Held-out 열람 뒤의 탐색이다.
+8. **Baseline/반례:** D graph-free baseline은 Full Greedy와 같은 손실을 냈다. off-task FP가 task 수정에 영향을 준 C 반례가 존재한다. M4의 일반 우월성을 주장할 수 없다.
+9. **외부 자료 provenance:** causalAssembly sample을 다시 적합한 DRF generator이며 외부 연구진이 물리적으로 확정한 causal mechanism을 그대로 사용한 것이 아니다.
+
+## 10. 결론
+
+동결된 Research C 계약 안에서는 B=2 Full Greedy가 Held-out 200 synthetic SCM에서 무수정보다 낮은 평균 regret을 보였다. 원본 Ledger 후속 감사는 메커니즘 분석이 승인 결과와 연결되는 정도를 높였지만 사후 분석 지위는 그대로다. Research D 단일 외부 반합성 DGP에서도 양의 S0−Full Greedy loss contrast가 관찰됐으나 두 MC 정밀도 목표를 충족하지 못했고, baseline과 같은 손실 및 M4의 일부 악화 사례를 함께 고려해야 한다.
+
+따라서 최종 결론은 “과제 관련 경로 구조를 고려하는 수리가 이 두 연구 계약에서 downstream 결정 손실 개선과 연결될 수 있다”로 제한한다. 실제 제조공정 개입효과, 참 DAG 불확실 환경에서의 자동 repair, M4의 일반적 우월성 또는 현장 경제성·배포 가능성은 아직 입증되지 않았다.
+
+## 재현 문서
+
+- [주장–증거 매핑](FINAL_CLAIMS_EVIDENCE_MATRIX.md)
+- [검증 결과표](FINAL_RESULTS_TABLES.md)
+- [원본 Ledger 감사](ORIGINAL_LEDGER_MECHANISM_AUDIT.md)
+- [Research D 재감사](RESEARCH_D_FINAL_REAUDIT.md)
+- [발표 증거 가이드](FINAL_PRESENTATION_EVIDENCE_GUIDE.md)
