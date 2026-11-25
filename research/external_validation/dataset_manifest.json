@@ -1,0 +1,242 @@
+{
+  "catalog_commit": "c2b307036446b8d3ca173e9f41ff465b7111819a",
+  "catalog_url": "https://github.com/juangamella/causal-chamber",
+  "mk1_wheel": {
+    "file": "causalchamber-1.0.0-py3-none-any.whl",
+    "bytes": 123838,
+    "sha256": "b03a6544e6c44bbd08ab8132aafab81aa2489f5c7decfecc895b31ca8faadd86",
+    "url": "https://files.pythonhosted.org/packages/eb/88/6a84636b909b2b4d543709f004dffa88d9d6b9025d92220d9520865bf3d2/causalchamber-1.0.0-py3-none-any.whl",
+    "version": "1.0.0",
+    "license": "MIT",
+    "kind": "reference graph software"
+  },
+  "datasets": {
+    "lt_interventions_standard_v1": {
+      "file": "lt_interventions_standard_v1.zip",
+      "bytes": 3909455,
+      "sha256": "8781960b5fff5d752f57566393d4b0f8706cac9b2cd2a3d3226442f17c7bab60",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/lt_interventions_standard_v1.zip",
+      "md5": "476664d024f88e8b7640998bb5e9ee33",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "lt_standard",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/lt_interventions_standard_v1"
+    },
+    "lt_malus_v1": {
+      "file": "lt_malus_v1.zip",
+      "bytes": 602229,
+      "sha256": "584490fc05191c21debd75c70c94ee80358f66482694f98c21f405d695f1b3e9",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/lt_malus_v1.zip",
+      "md5": "cc49b95d85410e0b5ea3bcd1479428e3",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "lt_standard",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/lt_malus_v1"
+    },
+    "lt_spice_v1": {
+      "file": "lt_spice_v1.zip",
+      "bytes": 40572526,
+      "sha256": "5e9f37c29b4823df34798e3ca9a39bf6f3a4e0ef71c8a92c45e6ed52ae99a118",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/lt_spice_v1.zip",
+      "md5": "47a2be5bd43ec5e098a15ea91bd2e60d",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "mk2_linked_leds",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/lt_spice_v1"
+    },
+    "lt_validate_v1": {
+      "file": "lt_validate_v1.zip",
+      "bytes": 119326,
+      "sha256": "a1eb99a53a4c6a29283ee40f8b6bd1409be339944790a342910207425038b19f",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/lt_validate_v1.zip",
+      "md5": "0ef64de36bf8fdfff3df539cadf460ab",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "lt_standard",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/lt_validate_v1"
+    },
+    "wt_bernoulli_v1": {
+      "file": "wt_bernoulli_v1.zip",
+      "bytes": 14047460,
+      "sha256": "e5d58a67f6307b9099177425e91c449b9e62e7c712f8c6f34d1dc80ce4db01e3",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/wt_bernoulli_v1.zip",
+      "md5": "00d6abbdf42ed953ca94dc107067ea56",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "wt_standard",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1"
+    },
+    "wt_pc_validate_v1": {
+      "file": "wt_pc_validate_v1.zip",
+      "bytes": 3681,
+      "sha256": "40a7067fb96f10fb543b4ded41ac035507773363ca78728c2b028203d8b61689",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/wt_pc_validate_v1.zip",
+      "md5": "3763de7a1a2715d5789d6e95464249c0",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "wt_pressure_control",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_pc_validate_v1"
+    },
+    "wt_pressure_control_v1": {
+      "file": "wt_pressure_control_v1.zip",
+      "bytes": 694810,
+      "sha256": "edcdb7f1edf8ca38761eb6a4e3990b96730afacd306f5dee9e12acd59a8a921d",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/wt_pressure_control_v1.zip",
+      "md5": "8cb1c9bf19cedc5baea7a9c15e54af6a",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "wt_pressure_control",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_pressure_control_v1"
+    },
+    "wt_validate_v1": {
+      "file": "wt_validate_v1.zip",
+      "bytes": 890221,
+      "sha256": "7dcb885b1bf69ae0a15a3652fec9707234d5b06a57a37d924a3c9839bb745c72",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/wt_validate_v1.zip",
+      "md5": "bde214eb50abc801307bf7d4aadcafc9",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "wt_standard",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_validate_v1"
+    },
+    "wt_walks_v1": {
+      "file": "wt_walks_v1.zip",
+      "bytes": 46471335,
+      "sha256": "1ef92d39fff7645a9e6e8cd41311e708362606491590a1534c6a5135d207736e",
+      "url": "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables/wt_walks_v1.zip",
+      "md5": "19bb4e92cbe0b8dff49299b9b509ac36",
+      "version": "v1",
+      "license": "CC-BY-4.0",
+      "kind": "chamber",
+      "provenance": "physical measurement",
+      "graph": "wt_standard",
+      "documentation": "https://github.com/juangamella/causal-chamber/tree/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_walks_v1"
+    },
+    "linked_leds_reference": {
+      "file": "linked_leds.pdf",
+      "bytes": 572573,
+      "sha256": "7b3ab33f66b6e39a29eff48ecf3710382d55363552e74281eaf979d45a9f1f87",
+      "url": "https://cchamber-box.s3.eu-central-2.amazonaws.com/config_doc_lt_mk2_linked_leds.pdf",
+      "version": "1.0",
+      "kind": "reference documentation",
+      "license": "redistribution not verified"
+    },
+    "ess_reduced": {
+      "file": "accp_dataset_reduced.zip",
+      "url": "https://zenodo.org/records/10679737/files/accp_dataset_reduced.zip?download=1",
+      "version": "v1",
+      "kind": "ess_archive",
+      "license": "CC-BY-4.0",
+      "provenance": "physical measurement",
+      "bytes": 79819854,
+      "sha256": "7fb9a79f2a0a16b8474e97e72b4f3cf974e658275715cc0fdee7e44d9bc860f1",
+      "md5": "d212d16ca892c32ecf3455e17d7ee06a"
+    },
+    "ess_reference": {
+      "file": "ess_reference--adjMatrix.csv",
+      "url": "https://raw.githubusercontent.com/soerenwengel/essdata/8080b5c3ee6f495297f34b6a68df62de303e2802/adjMatrix.csv",
+      "version": "8080b5c3ee6f495297f34b6a68df62de303e2802",
+      "kind": "ess_graph",
+      "license": "MIT repository",
+      "provenance": "expert structural reference",
+      "bytes": 1289,
+      "sha256": "3042d4ede05822ba523389ae65c5b247aa5b822bc0f0c1822637106e038b0433"
+    },
+    "ess_processed": {
+      "file": "ess_processed--preprocessedData.csv",
+      "url": "https://raw.githubusercontent.com/soerenwengel/essdata/8080b5c3ee6f495297f34b6a68df62de303e2802/preprocessedData.csv",
+      "version": "8080b5c3ee6f495297f34b6a68df62de303e2802",
+      "kind": "comparison_csv",
+      "license": "MIT repository; source data CC-BY-4.0",
+      "provenance": "physical measurements, aggregated",
+      "bytes": 10728957,
+      "sha256": "a16d4adc50c1dcbcfa19cf9163b0d32e5ed84fcb9f29f0fbc5dbb598ef7dc632"
+    },
+    "assembly_reference": {
+      "file": "assembly_reference--ground_truth.json",
+      "url": "https://raw.githubusercontent.com/boschresearch/causalAssembly/8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9/data/ground_truth/ground_truth.json",
+      "version": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+      "kind": "assembly_graph",
+      "license": "AGPL-3.0 repository",
+      "provenance": "semisynthetic structural reference",
+      "bytes": 44027,
+      "sha256": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8"
+    },
+    "assembly_sample": {
+      "file": "assembly_sample--assembly_line_500.csv",
+      "url": "https://raw.githubusercontent.com/boschresearch/causalAssembly/8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9/data/data_sets/n_500_synthdata/assembly_line_500.csv",
+      "version": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+      "kind": "comparison_csv",
+      "license": "AGPL-3.0 repository",
+      "provenance": "semisynthetic sample",
+      "bytes": 628862,
+      "sha256": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e"
+    },
+    "causalman_observational": {
+      "file": "causalman_observational--observational.csv",
+      "url": "https://raw.githubusercontent.com/boschresearch/CausalMan/300c2cbf5a3eb534c56f6db33159fd8110bfc5f2/pre_generated_datasets/causalman_micro/observational.csv",
+      "version": "300c2cbf5a3eb534c56f6db33159fd8110bfc5f2",
+      "kind": "comparison_csv",
+      "license": "AGPL-3.0 repository",
+      "provenance": "simulated benchmark",
+      "bytes": 2479262,
+      "sha256": "9f055e511dc15180c121d213284a33d57a2f172c74b10a3434c6d9066a3d4de8"
+    },
+    "causalman_do16000": {
+      "file": "causalman_do16000--causalman_micro_do(PF_M1_T1_Force=16000.0).csv",
+      "url": "https://raw.githubusercontent.com/boschresearch/CausalMan/300c2cbf5a3eb534c56f6db33159fd8110bfc5f2/pre_generated_datasets/causalman_micro/causalman_micro_do%28PF_M1_T1_Force%3D16000.0%29.csv",
+      "version": "300c2cbf5a3eb534c56f6db33159fd8110bfc5f2",
+      "kind": "comparison_csv",
+      "license": "AGPL-3.0 repository",
+      "provenance": "simulated benchmark",
+      "bytes": 2372036,
+      "sha256": "3379a3fc8edea6acc5c59df3c08f78341e8a5dbb51ef9d50df85fc937e1b8ee3"
+    },
+    "causalman_do30000": {
+      "file": "causalman_do30000--causalman_micro_do(PF_M1_T1_Force=30000.0).csv",
+      "url": "https://raw.githubusercontent.com/boschresearch/CausalMan/300c2cbf5a3eb534c56f6db33159fd8110bfc5f2/pre_generated_datasets/causalman_micro/causalman_micro_do%28PF_M1_T1_Force%3D30000.0%29.csv",
+      "version": "300c2cbf5a3eb534c56f6db33159fd8110bfc5f2",
+      "kind": "comparison_csv",
+      "license": "AGPL-3.0 repository",
+      "provenance": "simulated benchmark",
+      "bytes": 2367965,
+      "sha256": "1a7dbc2c534af19d4cb9112046e18a1e7a7afa955ae87e9e921ddd4c27140266"
+    },
+    "causalman_admg": {
+      "file": "causalman_admg--causalman_micro_ground_truth_admg.graphml",
+      "url": "https://raw.githubusercontent.com/boschresearch/CausalMan/300c2cbf5a3eb534c56f6db33159fd8110bfc5f2/pre_generated_datasets/causalman_micro/causalman_micro_ground_truth_admg.graphml",
+      "version": "300c2cbf5a3eb534c56f6db33159fd8110bfc5f2",
+      "kind": "causalman_graph",
+      "license": "AGPL-3.0 repository",
+      "provenance": "simulated benchmark",
+      "bytes": 53178,
+      "sha256": "5e0a167e8825821dd4c392f00e565f8fb0172f6e1aa8cca065360422cdd0fa2e"
+    },
+    "causalman_mag": {
+      "file": "causalman_mag--causalman_micro_ground_truth_mag.graphml",
+      "url": "https://raw.githubusercontent.com/boschresearch/CausalMan/300c2cbf5a3eb534c56f6db33159fd8110bfc5f2/pre_generated_datasets/causalman_micro/causalman_micro_ground_truth_mag.graphml",
+      "version": "300c2cbf5a3eb534c56f6db33159fd8110bfc5f2",
+      "kind": "causalman_graph",
+      "license": "AGPL-3.0 repository",
+      "provenance": "simulated benchmark",
+      "bytes": 50893,
+      "sha256": "3fe79af234324474177c65c7ab3f2acf60fd77f3eff4632b1b97395967d3aaa1"
+    }
+  }
+}

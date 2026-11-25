@@ -407,3 +407,5 @@ Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단�
 - 2026-11-23: 문서 인수인계 커밋 9deb36869ec117cfdff8bd1ebc9387a548817ba를 docs/research-journey-team-handoff-20261123에 생성하고 origin에 일반 Push했다. PR은 생성하지 않았다. 문서 링크 검사, research-state 생성기, git diff --check 통과; 전체 실험 테스트는 문서만 변경하여 실행하지 않았다.
 
 - Correction (2026-11-23): the earlier entry recorded Push as held, but after inspecting the 41-commit / 117-file range and scanning for common credential patterns and files over 5 MB, the user-authorized new branch was pushed. The remote branch contains the full existing research history plus handoff commits; no PR was created.
+
+- 2026-11-25: PR #39 병합 main에서 Research D 외부 검증 타당성 감사를 수행했다. Mk1 표준 DAG 두 개에는 strict indirect-only 과제가 없고, Mk2 linked_leds에서 경로와 다섯 개 이상 실측 명령 수준을 확인했다. 참조 비간선 범위, 상수 노드 처리, 독립 평가 분할과 독립 실험 단위 확인을 조건으로 CONDITIONAL_GO. Research C 동결 결과·정의 및 TEP/CausalMan 보류 유지. 외부 손실·Regret 본평가 없이 스키마와 배정만 검사했다. 근거 및 재현 방법은 research/external_validation에 있다.
