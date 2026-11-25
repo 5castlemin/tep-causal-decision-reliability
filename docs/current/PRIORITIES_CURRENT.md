@@ -1,6 +1,6 @@
 # 연구 우선순위
 
-기준일: 2026-11-23. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-11-26. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
@@ -75,5 +75,10 @@
 - 2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.
 - 2026-11-23: RC-HELDOUT는 Research C Held-out V1 실행·감사 완료 상태를 의미한다. 연구 산출물은 이 로컬 연구 브랜치에 있으며 main 병합을 뜻하지 않는다. 후속 정창민 M1–M4 기전 분석은 사용자 배정 업무다.
 - 2026-11-23 repo repair: Step 4 frozen docs/research_state.json is preserved at its original frozen bytes. The changing operational status now lives in docs/research_state_current.json; PR #38 was merged on 2026-11-16. No frozen experiment, manifest, or cohort is rerun.
+- 2026-11-25: RD-FEASIBILITY는 원자료 스키마·개입 support와 참조 검토가 완료된 감사다. CONDITIONAL_GO는 실험 채택이나 실행 승인을 뜻하지 않는다.
+- 2026-11-25: RD-QUALIFICATION Step 2는 Mk2 미해결을 유지하고 WT direct task는 기존 M1–M4의 유의미한 외부 결정 검증에 재설계가 필요하다고 판정했다. WT 무작위 배정 block 기록은 generator와 일치하지만 outcome/performance는 NOT_RUN; 본실험 별도 승인 필요.
+- 2026-11-25: Research D 실측 평가는 Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE, Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED로 보류했다. causalAssembly pinned commit 8da3729는 98/485 official DAG와 500x98 sample로 Station1 6-node DRF fit/observational sampling을 성공시켰으나 float hard-do sampler blocker로 CONDITIONAL_SEMISYNTHETIC만 가능하다. Action-level response/loss/regret and physical control NOT_RUN; next step is one bounded adapter fix under separate approval.
+- 2026-11-25: Research D run rd-development-reproduction-20261125-02는 보존된 512행 training frame 재사용 후 완료. 2,720개 recommendation과 1,280개 evaluator response가 기존 saved pilot action summaries/Primary와 정확히 일치; independent vector bootstrap 재계산 통과. Gate READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW, final evaluation 미승인·미생성. 사용자 결정: training A/B, precision tolerance, final sample/resource cap.
+- RD-FINAL added 2026-11-26: locked external semisynthetic final evaluation and scientific closeout verified; physical external validation remains deferred.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-11-23. 현재 상태는 이 표와 `docs/research_state_current.json`에만 정의한다.
+기준일: 2026-11-26. 현재 상태는 이 표와 `docs/research_state_current.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
@@ -50,6 +50,9 @@
 | MFG-MICRO | CausalMan micro 실제 수용 검사 | PARTIAL | docs/research_design/CAUSALMAN_MICRO_ACCEPTANCE_REPORT.md; research_runs/causalman_micro_acceptance/RESULT.json, GATE.json | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 |
 | BUDGET-REFINEMENT | 예산 제약 인과구조 개선 연구 설계 후보 | PARTIAL | PR #38 merged on 2026-11-16; frozen Step 4C2 contract retained as historical; subsequent Step 5/6 synthetic results documented in research/budget_aware_refinement/STEP5_STEP6_FINAL_RESULTS.md; not Research C | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts |
 | RC-HELDOUT | Research C Held-out V1 독립 평가 | VERIFIED | RESEARCH_C_HELDOUT_V1_RESULTS.md; RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md | 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 |
+| RD-FEASIBILITY | Research D 외부 검증 타당성 감사 | VERIFIED | research/external_validation/RESEARCH_D_FEASIBILITY_AUDIT.md; research/external_validation/inspection_results.json | CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 |
+| RD-QUALIFICATION | Research D 반합성 평가 계약·파이프라인·개발 파일럿 | VERIFIED | research/external_validation/semisynthetic_final/RESEARCH_D_FINAL_CONTRACT_REVIEW.md; RESEARCH_D_FINAL_RESULTS.md; final_summary.json; final_public_execution_manifest.json; final_independent_analysis_comparison.json | 최종 외부 반합성 평가는 종료. 실측 Mk2/Wind Tunnel 검증은 DEFERRED 유지; 추가 표본이나 외부 후보 탐색 없음 |
+| RD-FINAL | Research D 최종 반합성 강건성 평가 및 과학적 종료 | VERIFIED | research/external_validation/semisynthetic_final/RESEARCH_D_FINAL_RESULTS.md; RESEARCH_D_FINAL_UNCERTAINTY_REPORT.md; RESEARCH_C_D_SCIENTIFIC_SYNTHESIS.md; final_summary.json; final_public_execution_manifest.json | 최종 결과를 조건부 외부 반합성 강건성 증거로 보존; 물리 제조공정 효과·완전 GT·독립 SCM 모집단 주장으로 확대하지 않음 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

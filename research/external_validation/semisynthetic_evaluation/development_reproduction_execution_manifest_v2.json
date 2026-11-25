@@ -1,0 +1,148 @@
+{
+  "code_sha256": {
+    "research/external_validation/semisynthetic_adapter/float_hard_do_adapter.py": "d2b6d8ed88fe4107f9346dd83e6c185380900b67346bdd6e602d4cb65031efd2",
+    "research/external_validation/semisynthetic_evaluation/analyze_development_reproduction.py": "c83bcbfa87cd7e6f3693a6d5628f5049000a334eabaad3d96bfd8ff70cbea6af",
+    "research/external_validation/semisynthetic_evaluation/development_contract.json": "2a72eb9837d2c2d450612e0a227960d09562d950ea2ba715f425ec301a06702c",
+    "research/external_validation/semisynthetic_evaluation/evaluate_worker.py": "d867be88f0b3856d81c4a4b41da85e2edc0eae2d923c047edf27165c53eb9c1b",
+    "research/external_validation/semisynthetic_evaluation/pipeline.py": "4fc06dfac40b84dcc660819ec029256f0e1c951ba40b9af92c52a28854295b93",
+    "research/external_validation/semisynthetic_evaluation/recommendation_worker.py": "f71438836c5ca702445d16391cc7f8b0398c78399ae0c8a74fb5bf66270d151b",
+    "research/external_validation/semisynthetic_evaluation/reproducibility.py": "7d25193aa97077372312dfd6357a2cbec634f2b085a96a557006f8af9ea2e93b",
+    "research/external_validation/semisynthetic_evaluation/run_development_pilot.py": "5622c03ac9a334c18821cb891d04a630e3587026136cd393695c0fa1c0f06b65",
+    "research/original_objective/g0_candidate.py": "357ee60f8cdb6903f05967252a8f3462a403932c4a5bc9a24870c34beec19560",
+    "research/original_objective/policy_engine.py": "eeab5fa8f565f01970c610a356c57bbdbd05ed247e53d8c033ce06e56642e7ef",
+    "src/decision_mvp.py": "18a6dcc144368895e781272d3f83f731620533333633bce975ebedb27a55225a",
+    "src/integrated_pilot.py": "c2ff4d1bf0cb91f5206c285cf7b107c519aaa5598b2dc03e3d5c08327162d176",
+    "src/pilot_fit.py": "a02bedd4befe7f3627a2d709822267961a2cfc593b9e783d8b23ed3744f08a96"
+  },
+  "contract_sha256": "1476308f85c01b0c02941275d6b37d2d8ea973a0487f33efa4cff8a40abad8fa",
+  "external_source": {
+    "commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+    "python_source_sha256": {
+      "causalAssembly/__init__.py": "ba8f1bc15a280a32d3563f3f73af0377ac75e8a4a89a87b56333664e79cbc607",
+      "causalAssembly/dag.py": "afae7c094e141afcfef9c0b0ee56a148abc07811aa8b206f0603da651cc0cec5",
+      "causalAssembly/dag_utils.py": "ecb107cafff42ffff2a6c25d5e45984919e676ca9bfb3955273ae721a519b151",
+      "causalAssembly/drf_fitting.py": "4cf62e0b9d0765842b7206111663462cf7a00f247e6858989df53d4f2a4c1baa",
+      "causalAssembly/metrics.py": "aa900dd64510232ee4af81fd18f8417db19dc8e1146f3254c41dc400d5a708a4",
+      "causalAssembly/models_dag.py": "260f3c394a1eb8b7425f831248381cc4ee540b18f3bcdd13d1a40d4b316db62f",
+      "causalAssembly/models_fcm.py": "2a40591c2c229a312117263fed70b28c8fd47dae0a650e9f72cbc00d84ab92d4",
+      "causalAssembly/pdag.py": "94c5b4527238b27336a98408059e0d512d7e8b87f1da0cfe61714f6739b81aac"
+    },
+    "worktree_clean": true
+  },
+  "invocation": {
+    "actions": [
+      0.000155911358968,
+      0.0001724093665238,
+      0.00018679686613765,
+      0.00020263502221978,
+      0.00022589388613683002
+    ],
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 91420263,
+    "budgets": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "evaluation_seed_root": 3218321017,
+    "fit_check_seed": 3124221787,
+    "fit_check_sha256": "11f3a13511bfcf405c8ab167aced154a01fd068711a1fee06fca89e6362856f1",
+    "fit_seed": 91420261,
+    "g0_seed_ids": [
+      702001,
+      702002,
+      702003,
+      702004,
+      702005,
+      702006,
+      702007,
+      702008,
+      702009,
+      702010,
+      702011,
+      702012,
+      702013,
+      702014,
+      702015,
+      702016,
+      702017,
+      702018,
+      702019,
+      702020,
+      702021,
+      702022,
+      702023,
+      702024,
+      702025,
+      702026,
+      702027,
+      702028,
+      702029,
+      702030,
+      702031,
+      702032
+    ],
+    "mode": "development_reproduction_only",
+    "policy_ids": [
+      "S0",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M1+M2",
+      "M1+M3",
+      "M1+M4",
+      "M2+M3",
+      "M2+M4",
+      "M3+M4",
+      "M1+M2+M3",
+      "M1+M2+M4",
+      "M1+M3+M4",
+      "M2+M3+M4",
+      "M1+M2+M3+M4",
+      "CANONICAL_ORACLE"
+    ],
+    "rows_per_action": 256,
+    "run_id": "rd-development-reproduction-20261125-02",
+    "scale": 1.565469292160237,
+    "target": 15.460000542160238
+  },
+  "mode": "development_reproduction_only",
+  "recommendation_content_sha256": "2a2caa8021d60e4d0c0b88993f2a77a6a0b395828e90779a15a11b5800041f8c",
+  "recommendation_raw_sha256": "4a46e7dac53dacc21111f74444e51334d59e4795d4441427c94be720ee5133f8",
+  "recommendation_row_count": 2720,
+  "repository": {
+    "commit": "4f0bda50816b2fa08b8bf8cce31fc3fea44582eb",
+    "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tree": "595379c1020649c9bbaec3b9794e0937aa2a2fa1",
+    "worktree_clean": true
+  },
+  "run_id": "rd-development-reproduction-20261125-02",
+  "runtime": {
+    "R": "4.5.3",
+    "R_drf": "1.3.1",
+    "causalAssembly": "1.2.1",
+    "networkx": "3.4.2",
+    "numpy": "2.2.6",
+    "pandas": "2.3.1",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15",
+    "rpy2": "3.6.2"
+  },
+  "schema": "RESEARCH_D_REPRODUCTION_EXECUTION_MANIFEST_V1",
+  "source": {
+    "data_sha256": {
+      "assembly_reference--ground_truth.json": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8",
+      "assembly_sample--assembly_line_500.csv": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e"
+    },
+    "package_version": "1.2.1",
+    "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9"
+  },
+  "support_artifact_sha256": {
+    "recommendation_input": "d6c79cf1bd29f7e56750dac0ec58af5af674ce9f6b3501e09e5c32a2a9251abb",
+    "training_frame_csv": "dfc77931debb528db05defaf8302198048a04337d2d20a95ab51e5b1685a7094"
+  },
+  "training_sha256": "bcca5e56b01dd8cc59d227272906fcee6f9160897e9be2179bd9751619b4bc39"
+}

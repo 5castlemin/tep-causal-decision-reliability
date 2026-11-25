@@ -1,0 +1,150 @@
+{
+  "analysis": {
+    "action_loss_table_shared": true,
+    "estimator": "((mean-target)^2 - sample_variance/n)/scale^2; ddof=1; no truncation",
+    "intervals": [
+      "G0-only",
+      "action-MC-only",
+      "two-source paired percentile 95%"
+    ],
+    "primary": "B=2, L(S0)-L(FullGreedy)"
+  },
+  "code_commit": "a6d751e3f157fca63a93931d62b9f7a9318c6cb5",
+  "code_sha256": {
+    "research/external_validation/semisynthetic_adapter/float_hard_do_adapter.py": "d2b6d8ed88fe4107f9346dd83e6c185380900b67346bdd6e602d4cb65031efd2",
+    "research/external_validation/semisynthetic_evaluation/pipeline.py": "4fc06dfac40b84dcc660819ec029256f0e1c951ba40b9af92c52a28854295b93",
+    "research/external_validation/semisynthetic_evaluation/recommendation_worker.py": "f71438836c5ca702445d16391cc7f8b0398c78399ae0c8a74fb5bf66270d151b",
+    "research/external_validation/semisynthetic_evaluation/reproducibility.py": "7d25193aa97077372312dfd6357a2cbec634f2b085a96a557006f8af9ea2e93b",
+    "research/external_validation/semisynthetic_final/RESEARCH_D_FINAL_CONTRACT.md": "35a16505cfb6585b2c714ab281ccc7b35f8595a0f9a8636328b9be399e6fea08",
+    "research/external_validation/semisynthetic_final/final_analyze.py": "c45d117ade9c949755b4da8bb0d9295df3b5feac16bc61d17611caa3f3f06651",
+    "research/external_validation/semisynthetic_final/final_contract.json": "3212408ec23ec638c0315aa1b22e4b839c431816a5ee0ccc44017ff3901c10f0",
+    "research/external_validation/semisynthetic_final/final_evaluate_worker.py": "4ab3d929949b6d8ca04237b7d43800d91bbe54ab68f37fde2992a4c30a377d99",
+    "research/external_validation/semisynthetic_final/final_pipeline.py": "f9b9ed32b0c4681e852d05bd469cb466cc7de445b23fb5af60e4875b9489f339",
+    "research/external_validation/semisynthetic_final/final_runner.py": "ac40046d6a3df1f29c6f2412333d2ade785a9bc5d0c489871443e82a21e93da5",
+    "research/external_validation/semisynthetic_final/resource_supervisor.py": "4114fc11988861178ad9f2b5bdf270a47c65eafd97adfcf4e821f18e84f43860",
+    "research/original_objective/g0_candidate.py": "357ee60f8cdb6903f05967252a8f3462a403932c4a5bc9a24870c34beec19560",
+    "research/original_objective/policy_engine.py": "eeab5fa8f565f01970c610a356c57bbdbd05ed247e53d8c033ce06e56642e7ef",
+    "src/decision_mvp.py": "18a6dcc144368895e781272d3f83f731620533333633bce975ebedb27a55225a",
+    "src/integrated_pilot.py": "c2ff4d1bf0cb91f5206c285cf7b107c519aaa5598b2dc03e3d5c08327162d176",
+    "src/pilot_fit.py": "a02bedd4befe7f3627a2d709822267961a2cfc593b9e783d8b23ed3744f08a96",
+    "tests/test_research_d_final_pipeline.py": "7a0477365eecb1adf335a4ed07e761a48f8965467d777144244823ceb4fde384"
+  },
+  "code_tree": "fa1aaf635518e6d7a1f292f410185d220ccacc99",
+  "contract_sha256": "3212408ec23ec638c0315aa1b22e4b839c431816a5ee0ccc44017ff3901c10f0",
+  "evaluation_manifest_sha256": "136c5d97bfad66ecf3e95f0afd1023d730df33841ab6997f6ec18c4b0f50291f",
+  "execution_manifest_sha256": "9ae374e873d6dec68a0ad7bd396506483c6c447a42053a9bce97a5cbb5fd8eed",
+  "final_gate": "EXTERNAL_FINAL_EVALUATION_VERIFIED",
+  "fitted_generator": {
+    "diagnostic_is_full_dgp_identity_proof": false,
+    "fit_diagnostic_sha256": "11f3a13511bfcf405c8ab167aced154a01fd068711a1fee06fca89e6362856f1",
+    "fit_seed": 91420261,
+    "kind": "DRF-based external semisynthetic generator"
+  },
+  "independent_analysis_sha256": "2cdb1e3585c95cc3d373d4113017ca2f84c46e4003d62a0ba25439d3c0346e1a",
+  "independent_artifact_audit_sha256": "ef78ec371139f504b4bb0fe1bb64cfabdb8a40ac2eacffb6d8148c542373b02b",
+  "raw_training_data_recommendations_and_responses_in_git": false,
+  "recommendation_raw_sha256": "20453dc69698ce21fb7aa0d32eac242301bc816486540e13ca677a6df63cc738",
+  "reference": {
+    "edge_count": 7,
+    "graph_sha256": "92902ee9d83ba9bae677e9126050d7b647b64e980f78a0bc02948141b7bf72ca",
+    "kind": "official Station1 benchmark DAG; reference-relative discrepancies",
+    "node_count": 6,
+    "node_order": [
+      "Station1_mp_0",
+      "Station1_mp_1",
+      "Station1_mp_2",
+      "Station1_mp_3",
+      "Station1_mp_4",
+      "Station1_mp_5"
+    ]
+  },
+  "resource_supervision_sha256": "9f77a8b482da8bc4b26ce3a65da532c6269780ff8176fd7c05bc4b9dd20f654c",
+  "response_vector_file_sha256": {
+    "0.000155911358968": "b3e70ae4e429799b2effe8c3b3640d9bfb5db47e9fc5bca8f8fa1ccd90075244",
+    "0.0001724093665238": "276f7cc293679ae81efe318751d83a0d014ccb5de8697a061a31352f04c3ce32",
+    "0.00018679686613765": "e632bfa01ad4309e43de62780ee379d10df11551cae9c3c5db0d0fa73dfceb2b",
+    "0.00020263502221978": "20240cd94d29f6e02008c4f2b653de18c454a97369c7471e4e38acda38fb319c",
+    "0.00022589388613683002": "4215f00f68ca66b1d4d7ee27ac482785c75a19113d04cfc9df1d260928ba8665"
+  },
+  "run_id": "rd-external-final-20261125-01",
+  "run_lock_sha256": "8cc953098352ae8ff97ffc6618cd5353ee6565a9d8300b3143b0b45d08acdda2",
+  "runtime": {
+    "R": "4.5.3",
+    "R_drf": "1.3.1",
+    "causalAssembly": "1.2.1",
+    "networkx": "3.4.2",
+    "numpy": "2.2.6",
+    "pandas": "2.3.1",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15",
+    "rpy2": "3.6.2"
+  },
+  "samples": {
+    "bootstrap_chunk_replicates": 128,
+    "bootstrap_replicates": 10000,
+    "g0_count": 200,
+    "g0_id_range_only": true,
+    "g0_ids": [
+      703001,
+      703200
+    ],
+    "g0_master_seed_sha256": "110fdf88c1f349e79f1988c1393108faa68c9922e987d40414074d950ecd6dc7",
+    "recommendation_rows": 17000,
+    "rows_per_action": 2500,
+    "total_intervention_rows": 12500
+  },
+  "schema": "RESEARCH_D_FINAL_PUBLIC_EXECUTION_MANIFEST_V1",
+  "seed_streams": {
+    "action_seeds": [
+      1470200581,
+      1303109557,
+      3139259026,
+      979345515,
+      683677524
+    ],
+    "namespace": "research-d-external-semisynthetic-final-v1",
+    "paired_cost_seed": 2427238499,
+    "primary_bootstrap_seed": 403812923,
+    "prior_seed_collision_count": 0,
+    "resource_benchmark_seed": 1968505587,
+    "secondary_bootstrap_seed": 565851546
+  },
+  "source": {
+    "commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+    "license": "AGPL-3.0",
+    "package_version": "1.2.1",
+    "reference_sha256": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8",
+    "repository": "https://github.com/boschresearch/causalAssembly",
+    "sample_sha256": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e"
+  },
+  "source_absolute_paths_published": false,
+  "study_type": "CONDITIONAL_EXTERNAL_SEMISYNTHETIC_ROBUSTNESS",
+  "synthetic_resource_benchmark_sha256": "684d4c232fa1d37eaa02f76d4ec19146c79df25c121d74897c5e65d5a000c635",
+  "task": {
+    "action": "Station1_mp_0",
+    "actions": [
+      0.000155911358968,
+      0.0001724093665238,
+      0.00018679686613765,
+      0.00020263502221978,
+      0.00022589388613683002
+    ],
+    "physical_operability_claim": false,
+    "reference_path": [
+      "Station1_mp_0",
+      "Station1_mp_1",
+      "Station1_mp_4"
+    ],
+    "scale": 1.565469292160237,
+    "target": 15.460000542160238,
+    "target_value": 15.460000542160238,
+    "virtual_hard_do": true
+  },
+  "training": {
+    "choice": "A_FIXED_DEVELOPMENT_FRAME",
+    "new_rows": 0,
+    "numeric_sha256": "bcca5e56b01dd8cc59d227272906fcee6f9160897e9be2179bd9751619b4bc39",
+    "raw_csv_sha256": "dfc77931debb528db05defaf8302198048a04337d2d20a95ab51e5b1685a7094",
+    "rows": 512
+  }
+}
