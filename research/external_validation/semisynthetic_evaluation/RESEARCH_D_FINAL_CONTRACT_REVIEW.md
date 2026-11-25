@@ -11,7 +11,7 @@
 | Lock/source and recommendation boundary | PASS for this run | Commit `4f0bda5` clean at run time; code hashes matched after execution; pinned source and data hashes matched; recommendation subprocess emitted 2,720 rows and was hash-locked before evaluator subprocess. No OS sandbox claim. |
 | Same-condition reproduction | PASS | Exact DRF 16-row diagnostic hash, training numeric digest, five actions, target/scale, 32 G0 seeds/initial graph hashes, recommendation actions/costs/graph hashes, five response hashes/means/variances, loss table, Primary, Secondary, baseline and intervals. |
 | Independent saved-vector analysis | PASS | External 1,280-row float64 response NPZ was raw-hash checked; v2 analysis independently reproduced Primary and all three bootstrap intervals exactly. |
-| CI and protected assets | PASS | GitHub Actions run `45573197045`, commit `4f0bda50816b2fa08b8bf8cce31fc3fea44582eb`: 393 tests, 392 passed, 1 skipped; remaining workflow validations succeeded. Research C and frozen files unchanged. |
+| CI and protected assets | PASS | GitHub Actions run `45578030405`, commit `5f7f1017f08f1ac7c9378dbba68cd8ff69a2826d`: full workflow SUCCESS; 394 tests, 393 passed, 1 skipped; frozen graph, asset manifest, research state and repository validators passed. Research C and frozen files unchanged. |
 
 ## Scientific result and limits
 
