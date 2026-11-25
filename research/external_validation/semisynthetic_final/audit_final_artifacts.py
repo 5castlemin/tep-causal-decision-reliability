@@ -52,9 +52,11 @@ def audit(root: Path, repo: Path) -> dict:
     body = dict(recommendation)
     content_sha = body.pop("content_sha256", None)
     checks["recommendation_content_hash"] = hashlib.sha256(canonical(body)).hexdigest() == content_sha
-    checks["repository_commit_tree"] = subprocess.check_output(
-        ["git", "-C", str(repo), "rev-parse", "HEAD"], text=True).strip() == lock["repository"]["commit"] and \
-        subprocess.check_output(["git", "-C", str(repo), "rev-parse", "HEAD^{tree}"], text=True).strip() == lock["repository"]["tree"]
+    locked_tree = subprocess.check_output(["git", "-C", str(repo), "rev-parse",
+        f"{lock['repository']['commit']}^{{tree}}"], text=True).strip()
+    ancestry = subprocess.run(["git", "-C", str(repo), "merge-base", "--is-ancestor",
+        lock["repository"]["commit"], "HEAD"], check=False)
+    checks["repository_locked_revision_in_history"] = locked_tree == lock["repository"]["tree"] and ancestry.returncode == 0
     code_checks = {}
     for name, expected in lock["code_sha256"].items():
         p = repo / name
