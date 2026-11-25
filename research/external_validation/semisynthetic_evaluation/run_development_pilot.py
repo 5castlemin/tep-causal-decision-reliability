@@ -170,13 +170,23 @@ def summarize_pilot(result):
 
 def pilot_mode(args):
     repo_identity = repro.repository_identity(d.ROOT)
-    repro.require_external_outputs(d.ROOT, [args.lock, args.recommendations, args.evaluation,
+    repro.require_external_outputs(d.ROOT, [args.output, args.lock, args.recommendations, args.evaluation,
         args.summary, args.execution_manifest, args.training_frame, args.recommendation_input])
     approved_id = "rd-development-reproduction-20261125-01"
     if args.run_id != approved_id:
         raise ValueError(f"this authorization permits only run id {approved_id}")
-    for path in (args.lock, args.recommendations, args.evaluation, args.execution_manifest):
+    for path in (args.lock, args.recommendations, args.evaluation, args.summary,
+                 args.execution_manifest, args.training_frame, args.recommendation_input,
+                 args.output):
         if path.exists(): raise FileExistsError(f"reproduction output already exists: {path.name}")
+    original_lock_sha = d.file_sha256(args.original_lock)
+    if original_lock_sha != "9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404":
+        raise ValueError("historical Development lock differs from its independently recorded SHA-256")
+    original_audit = json.loads(args.original_audit.read_text(encoding="utf-8"))
+    if (original_audit.get("status") != "PASS_SAVED_ARTIFACTS_AUDITED_RAW_RESPONSE_ROWS_NOT_AVAILABLE"
+            or not original_audit.get("pipeline_exact_hash_recovered")
+            or original_audit.get("historical_gate_promoted_retroactively") is not False):
+        raise ValueError("historical source/artifact audit is incomplete or inconsistent")
     original_lock = json.loads(args.original_lock.read_text(encoding="utf-8"))
     current_codes = code_hashes()
     for name in ("research/external_validation/semisynthetic_adapter/float_hard_do_adapter.py",
@@ -324,6 +334,7 @@ def main(argv=None):
     parser.add_argument("--summary", type=Path)
     parser.add_argument("--r-library", type=Path)
     parser.add_argument("--original-lock", type=Path)
+    parser.add_argument("--original-audit", type=Path)
     parser.add_argument("--execution-manifest", type=Path)
     parser.add_argument("--training-frame", type=Path)
     parser.add_argument("--recommendation-input", type=Path)
@@ -334,7 +345,7 @@ def main(argv=None):
         result = structural_mode(args)
     else:
         for name in ("structural", "lock", "recommendations", "evaluation", "summary", "r_library",
-                     "original_lock", "execution_manifest", "training_frame", "recommendation_input"):
+                     "original_lock", "original_audit", "execution_manifest", "training_frame", "recommendation_input"):
             if getattr(args, name) is None: parser.error(f"--{name.replace('_','-')} is required in pilot mode")
         result = pilot_mode(args)
     print(json.dumps({"status": result["status"], "output": args.output.name}, sort_keys=True))
