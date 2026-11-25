@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import importlib.metadata
+import io
 import json
 import platform
 import subprocess
@@ -62,6 +63,44 @@ def validate_original_artifact_audit(audit: dict) -> None:
             or not audit.get("pipeline_exact_hash_recovered")
             or audit.get("historical_gate_promoted_retroactively") is not False):
         raise ValueError("historical source/artifact audit is incomplete or inconsistent")
+
+
+def serialize_training_frame(frame: pd.DataFrame) -> bytes:
+    if not isinstance(frame, pd.DataFrame) or frame.empty:
+        raise ValueError("training frame must be a nonempty DataFrame")
+    values = frame.to_numpy(dtype=float)
+    if not np.isfinite(values).all():
+        raise ValueError("training frame contains nonfinite values")
+    return frame.to_csv(index=False, float_format="%.17g", lineterminator="\n").encode("utf-8")
+
+
+def read_training_frame(path: Path, *, node_order: list[str], rows: int,
+                        expected_numeric_sha256: str) -> pd.DataFrame:
+    frame = pd.read_csv(path, float_precision="round_trip")
+    if list(frame.columns) != list(node_order) or frame.shape != (rows, len(node_order)):
+        raise ValueError("round-trip training CSV schema/shape mismatch")
+    values = frame.to_numpy(dtype=float)
+    if not np.isfinite(values).all():
+        raise ValueError("round-trip training CSV contains nonfinite values")
+    actual = hashlib.sha256(values.tobytes(order="C")).hexdigest()
+    if actual != expected_numeric_sha256:
+        raise ValueError("round-trip training CSV numeric digest mismatch")
+    return frame
+
+
+def validate_csv_float_round_trip(values: list[float]) -> dict:
+    frame = pd.DataFrame({"value": np.asarray(values, dtype=np.float64)})
+    raw = serialize_training_frame(frame)
+    decoded = pd.read_csv(io.BytesIO(raw), float_precision="round_trip")
+    if decoded.shape != frame.shape or list(decoded.columns) != list(frame.columns):
+        raise ValueError("CSV float round-trip changed shape or column order")
+    before = frame.to_numpy(dtype=np.float64).tobytes(order="C")
+    after = decoded.to_numpy(dtype=np.float64).tobytes(order="C")
+    if before != after:
+        raise ValueError("CSV float round-trip changed IEEE-754 values")
+    return {"rows": len(frame), "input_numeric_sha256": hashlib.sha256(before).hexdigest(),
+            "roundtrip_numeric_sha256": hashlib.sha256(after).hexdigest(),
+            "exact_bytes_match": True, "parser": "pandas.read_csv(float_precision='round_trip')"}
 
 
 def validate_code_hashes(expected: dict[str, str], actual: dict[str, str]) -> None:

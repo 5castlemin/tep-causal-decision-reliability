@@ -3,6 +3,9 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib
+import importlib.metadata
+import importlib.util
 import json
 import os
 import subprocess
@@ -69,6 +72,108 @@ def code_hashes():
     return {name: d.file_sha256(d.ROOT / name) for name in names}
 
 
+AUTHORIZED_RUN_ID = "rd-development-reproduction-20261125-02"
+
+
+def dry_run_mode(args):
+    if args.run_id != AUTHORIZED_RUN_ID:
+        raise ValueError(f"this authorization permits only run id {AUTHORIZED_RUN_ID}")
+    repo_identity = repro.repository_identity(d.ROOT)
+    outputs = [args.output, args.lock, args.recommendations, args.evaluation, args.summary,
+               args.execution_manifest, args.training_frame, args.recommendation_input]
+    repro.require_external_outputs(d.ROOT, outputs)
+    repro.require_external_outputs(d.ROOT, [args.historical_artifact_dir])
+    for path in outputs:
+        if path.exists():
+            raise FileExistsError(f"dry-run output path already exists: {path.name}")
+    if d.file_sha256(args.original_lock) != "9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404":
+        raise ValueError("historical Development lock SHA-256 mismatch")
+    original_lock = json.loads(args.original_lock.read_text(encoding="utf-8"))
+    original_audit = json.loads(args.original_audit.read_text(encoding="utf-8"))
+    repro.validate_original_artifact_audit(original_audit)
+    audit_status = original_audit["stored_artifact_audit"]["status"]
+    historical_hashes = original_audit["stored_artifact_audit"]["artifacts"]
+    historical_artifacts = {}
+    for name in ("recommendations", "evaluation"):
+        artifact = args.historical_artifact_dir / f"{name}.json"
+        expected = historical_hashes[name]["sha256"]
+        if not artifact.is_file() or d.file_sha256(artifact) != expected:
+            raise ValueError(f"historical local {name} artifact missing or SHA-256 mismatch")
+        historical_artifacts[name] = {"sha256": expected, "bytes": artifact.stat().st_size}
+    current_codes = code_hashes()
+    for name in ("research/external_validation/semisynthetic_adapter/float_hard_do_adapter.py",
+                 "research/external_validation/semisynthetic_evaluation/development_contract.json",
+                 "research/original_objective/g0_candidate.py", "research/original_objective/policy_engine.py",
+                 "src/decision_mvp.py", "src/integrated_pilot.py", "src/pilot_fit.py"):
+        if current_codes[name] != original_lock["code_sha256"][name]:
+            raise ValueError(f"historical scientific dependency digest mismatch: {name}")
+    runtime = repro.runtime_fingerprint()
+    if any(runtime.get(key) != value for key, value in original_lock["runtime"].items()):
+        raise ValueError("runtime fingerprint differs from historical Development")
+    source_info = d.verify_sources(args.source_root, args.data_root)
+    external_source = repro.external_source_manifest(args.source_root)
+    structural = json.loads(args.structural.read_text(encoding="utf-8"))
+    if structural.get("status") != "COMPLETED_OUTCOME_BLIND" or structural.get("summary", {}).get("n_g0") != 64:
+        raise ValueError("outcome-blind 64-seed structural preflight is not valid")
+    structural_graph = structural.get("official_graph", {})
+    if (structural_graph.get("nodes") != original_lock.get("node_order")
+            or len(structural_graph.get("edges", [])) != 7
+            or structural.get("source") != original_lock.get("source")):
+        raise ValueError("structural preflight graph/source differs from the original lock")
+    structural_truth = {pe.pair(a, b): (a, b) for a, b in structural_graph["edges"]}
+    if pe.graph_hash(structural_truth) != original_lock["graph_sha256"]:
+        raise ValueError("structural preflight reference graph digest mismatch")
+
+    # Confirm the exact package that the runner would import, without fitting or sampling.
+    sys.path.insert(0, str(args.source_root.resolve()))
+    spec = importlib.util.find_spec("causalAssembly")
+    package = importlib.import_module("causalAssembly")
+    package_file = Path(package.__file__).resolve()
+    source_path = args.source_root.resolve()
+    if source_path not in package_file.parents or spec is None:
+        raise ValueError("imported causalAssembly package is not from the pinned source checkout")
+    package_version = importlib.metadata.version("causalAssembly")
+    if package_version != "1.2.1":
+        raise ValueError("imported causalAssembly distribution version is not 1.2.1")
+
+    actions = original_lock["action_grid"]["values"]
+    if actions != [0.000155911358968, 0.0001724093665238, 0.00018679686613765,
+                   0.00020263502221978, 0.00022589388613683002]:
+        raise ValueError("historical action grid differs from the authorized fixed values")
+    csv_roundtrip = repro.validate_csv_float_round_trip(actions +
+        [0.1, 1e-200, float(np.nextafter(0.5, 1.0)), 1.2345678901234567])
+    help_results = {}
+    for module in ("recommendation_worker", "evaluate_worker"):
+        command = [sys.executable, "-m",
+            f"research.external_validation.semisynthetic_evaluation.{module}", "--help"]
+        completed = subprocess.run(command, cwd=d.ROOT, text=True, capture_output=True, timeout=30)
+        if completed.returncode != 0:
+            raise RuntimeError(f"{module} CLI dry-run failed: {completed.stderr[-1000:]}")
+        help_results[module] = {"exit_code": completed.returncode, "help_available": True}
+    preflight = {"schema": "RESEARCH_D_REPRODUCTION_PREFLIGHT_V1",
+        "status": "PASS_NO_RESEARCH_SAMPLES_GENERATED",
+        "attempt_id": "rd-development-reproduction-20261125-02-preflight-01",
+        "run_id": args.run_id, "repository": repo_identity,
+        "code_sha256": current_codes, "runtime": runtime, "source": source_info,
+        "external_source": external_source, "original_lock_sha256": d.file_sha256(args.original_lock),
+        "original_audit_sha256": d.file_sha256(args.original_audit),
+        "original_audit_status": audit_status,
+        "historical_artifact_sha256": historical_artifacts,
+        "structural_preflight_sha256": d.file_sha256(args.structural),
+        "package_import": {"version": package_version,
+            "module_file_relative_to_pinned_source": package_file.relative_to(source_path).as_posix()},
+        "csv_float_roundtrip": csv_roundtrip, "worker_cli": help_results,
+        "planned_action_grid": actions,
+        "research_samples_generated": 0,
+        "checks": {"clean_worktree": True, "outputs_absent": True,
+            "original_sources_and_artifacts": True, "runtime_and_packages": True,
+            "pinned_source_and_data": True, "structural_preflight": True,
+            "package_import_path": True, "roundtrip_csv_exact": True,
+            "worker_cli_arguments": True}}
+    write_new(args.output, preflight)
+    return preflight
+
+
 def fit_repro_check(source_root, data_root):
     import numpy as np
     first, _source, info1 = d.load_fit_station1(source_root, data_root, 91420261)
@@ -91,7 +196,7 @@ def fit_repro_check(source_root, data_root):
 
 
 def make_lock(args, source, train, model, actions, support_checks, fit_check, repo_identity,
-              recommendation_input_sha256, training_csv_sha256):
+              recommendation_input_sha256, training_csv_sha256, preflight_sha256):
     y = train[d.TASK_Y].to_numpy(dtype=float)
     target, scale = float(y.mean() + y.std(ddof=1)), float(y.std(ddof=1))
     if not np.isfinite([target, scale]).all() or scale <= 0: raise ValueError("invalid training target/scale")
@@ -106,6 +211,7 @@ def make_lock(args, source, train, model, actions, support_checks, fit_check, re
         "base_contract_sha256": d.file_sha256(d.CONTRACT_PATH), "source": source_info,
         "recommendation_input_sha256": recommendation_input_sha256,
         "training_frame_csv_sha256": training_csv_sha256,
+        "preflight_report_sha256": preflight_sha256,
         "graph_sha256": pe.graph_hash(truth_from_model(model)), "node_order": list(model.nodes),
         "task": {"action": d.TASK_X, "target": d.TASK_Y,
             "reference_path": [d.TASK_X, "Station1_mp_1", d.TASK_Y], "strict_indirect_only": True,
@@ -171,8 +277,9 @@ def summarize_pilot(result):
 def pilot_mode(args):
     repo_identity = repro.repository_identity(d.ROOT)
     repro.require_external_outputs(d.ROOT, [args.output, args.lock, args.recommendations, args.evaluation,
-        args.summary, args.execution_manifest, args.training_frame, args.recommendation_input])
-    approved_id = "rd-development-reproduction-20261125-01"
+        args.summary, args.execution_manifest, args.training_frame, args.recommendation_input,
+        args.historical_artifact_dir, args.preflight_report])
+    approved_id = AUTHORIZED_RUN_ID
     if args.run_id != approved_id:
         raise ValueError(f"this authorization permits only run id {approved_id}")
     for path in (args.lock, args.recommendations, args.evaluation, args.summary,
@@ -184,6 +291,20 @@ def pilot_mode(args):
         raise ValueError("historical Development lock differs from its independently recorded SHA-256")
     original_audit = json.loads(args.original_audit.read_text(encoding="utf-8"))
     repro.validate_original_artifact_audit(original_audit)
+    preflight = json.loads(args.preflight_report.read_text(encoding="utf-8"))
+    if (preflight.get("status") != "PASS_NO_RESEARCH_SAMPLES_GENERATED"
+            or preflight.get("run_id") != approved_id
+            or preflight.get("repository") != repo_identity
+            or preflight.get("code_sha256") != code_hashes()
+            or preflight.get("source") != d.verify_sources(args.source_root, args.data_root)
+            or preflight.get("historical_artifact_sha256") is None):
+        raise ValueError("actual-input dry-run does not bind to this clean code/source/run")
+    for name, record in preflight["historical_artifact_sha256"].items():
+        artifact = args.historical_artifact_dir / f"{name}.json"
+        if not artifact.is_file() or d.file_sha256(artifact) != record["sha256"]:
+            raise ValueError(f"historical {name} artifact changed after dry-run")
+    repro.validate_csv_float_round_trip(json.loads(args.original_lock.read_text(encoding="utf-8"))
+        ["action_grid"]["values"])
     original_lock = json.loads(args.original_lock.read_text(encoding="utf-8"))
     current_codes = code_hashes()
     for name in ("research/external_validation/semisynthetic_adapter/float_hard_do_adapter.py",
@@ -231,8 +352,12 @@ def pilot_mode(args):
     if args.training_frame.exists() or args.recommendation_input.exists():
         raise FileExistsError("reproduction training/recommendation inputs already exist")
     args.training_frame.parent.mkdir(parents=True, exist_ok=True)
-    csv_bytes = train.to_csv(index=False, float_format="%.17g", lineterminator="\n").encode("utf-8")
+    csv_bytes = repro.serialize_training_frame(train)
     args.training_frame.write_bytes(csv_bytes)
+    roundtrip_train = repro.read_training_frame(args.training_frame, node_order=list(model.nodes),
+        rows=512, expected_numeric_sha256=train_hash)
+    if roundtrip_train.to_numpy(dtype=float).tobytes(order="C") != train.to_numpy(dtype=float).tobytes(order="C"):
+        raise RuntimeError("serialized learner frame differs byte-for-byte after CSV round-trip")
     recommendation_request = {"schema": "RESEARCH_D_RECOMMENDATION_INPUT_V1",
         "nodes": list(model.nodes), "reference_edges": [list(edge) for edge in model.graph.edges],
         "actions": actions, "training_numeric_sha256": train_hash,
@@ -242,7 +367,7 @@ def pilot_mode(args):
     training_csv_sha = d.file_sha256(args.training_frame)
     recommendation_input_sha = d.file_sha256(args.recommendation_input)
     lock = make_lock(args, source_frame, train, model, actions, support_checks, fit_check,
-        repo_identity, recommendation_input_sha, training_csv_sha)
+        repo_identity, recommendation_input_sha, training_csv_sha, d.file_sha256(args.preflight_report))
     lock["fit_reproducibility"]["same_seed_refit_sample_sha256"] = check_digest
     repro.validate_reproduction_science(lock, original_lock)
     if args.lock.exists(): raise FileExistsError("pilot run lock already exists; refuse seed/config reuse")
@@ -320,7 +445,7 @@ def pilot_mode(args):
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=("structural", "pilot"), required=True)
+    parser.add_argument("--mode", choices=("structural", "dry-run", "pilot"), required=True)
     parser.add_argument("--source-root", type=Path, required=True)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -332,6 +457,8 @@ def main(argv=None):
     parser.add_argument("--r-library", type=Path)
     parser.add_argument("--original-lock", type=Path)
     parser.add_argument("--original-audit", type=Path)
+    parser.add_argument("--preflight-report", type=Path)
+    parser.add_argument("--historical-artifact-dir", type=Path)
     parser.add_argument("--execution-manifest", type=Path)
     parser.add_argument("--training-frame", type=Path)
     parser.add_argument("--recommendation-input", type=Path)
@@ -340,9 +467,15 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.mode == "structural":
         result = structural_mode(args)
+    elif args.mode == "dry-run":
+        for name in ("structural", "lock", "recommendations", "evaluation", "summary", "r_library",
+                     "original_lock", "original_audit", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input"):
+            if getattr(args, name) is None: parser.error(f"--{name.replace('_','-')} is required in dry-run mode")
+        os.environ["R_LIBS_USER"] = str(args.r_library.resolve())
+        result = dry_run_mode(args)
     else:
         for name in ("structural", "lock", "recommendations", "evaluation", "summary", "r_library",
-                     "original_lock", "original_audit", "execution_manifest", "training_frame", "recommendation_input"):
+                     "original_lock", "original_audit", "preflight_report", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input"):
             if getattr(args, name) is None: parser.error(f"--{name.replace('_','-')} is required in pilot mode")
         result = pilot_mode(args)
     print(json.dumps({"status": result["status"], "output": args.output.name}, sort_keys=True))

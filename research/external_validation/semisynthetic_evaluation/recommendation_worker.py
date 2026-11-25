@@ -6,9 +6,8 @@ import hashlib
 import json
 from pathlib import Path
 
-import pandas as pd
-
 from research.external_validation.semisynthetic_evaluation import pipeline as d
+from research.external_validation.semisynthetic_evaluation.reproducibility import read_training_frame
 from research.original_objective import policy_engine as pe
 
 
@@ -27,10 +26,9 @@ def main(argv=None):
     if d.file_sha256(args.training) != args.training_sha256:
         raise ValueError("learner training CSV raw-byte hash mismatch")
     request = json.loads(args.input.read_text(encoding="utf-8"))
-    train = pd.read_csv(args.training)
     nodes = request["nodes"]
-    values = d._validate_frame(train, nodes, 512)
-    train = pd.DataFrame(values, columns=nodes)
+    train = read_training_frame(args.training, node_order=nodes, rows=512,
+                                expected_numeric_sha256=request["training_numeric_sha256"])
     numeric_hash = hashlib.sha256(train.to_numpy(dtype=float).tobytes(order="C")).hexdigest()
     if numeric_hash != request["training_numeric_sha256"]:
         raise ValueError("recommendation training numeric digest mismatch")

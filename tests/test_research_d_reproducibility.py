@@ -3,11 +3,17 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import tempfile
 import unittest
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
 
 from research.external_validation.semisynthetic_evaluation.reproducibility import (
     locked_invocation, validate_code_hashes, validate_locked_invocation, verify_file_digest,
     validate_reproduction_science, validate_original_artifact_audit,
+    serialize_training_frame, read_training_frame, validate_csv_float_round_trip,
 )
 
 
@@ -107,6 +113,31 @@ class ResearchDReproducibilityTests(unittest.TestCase):
         audit["stored_artifact_audit"]["status"] = "FAIL"
         with self.assertRaisesRegex(ValueError, "audit"):
             validate_original_artifact_audit(audit)
+
+    def test_action_grid_and_edge_case_doubles_round_trip_exactly(self):
+        actions = [0.000155911358968, 0.0001724093665238, 0.00018679686613765,
+                   0.00020263502221978, 0.00022589388613683002]
+        result = validate_csv_float_round_trip(actions +
+            [0.1, 1e-200, float(np.nextafter(0.5, 1.0)), 1.2345678901234567])
+        self.assertTrue(result["exact_bytes_match"])
+        self.assertEqual(result["input_numeric_sha256"], result["roundtrip_numeric_sha256"])
+
+    def test_training_csv_loader_preserves_numeric_digest_order_shape_and_values(self):
+        frame = pd.DataFrame({"X": [0.000155911358968, 1e-200, 1.2345678901234567],
+                              "Y": [0.1, float(np.nextafter(0.5, 1.0)), -3.141592653589793]})
+        expected = hashlib.sha256(frame.to_numpy(dtype=float).tobytes(order="C")).hexdigest()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "training.csv"
+            path.write_bytes(serialize_training_frame(frame))
+            loaded = read_training_frame(path, node_order=["X", "Y"], rows=3,
+                                         expected_numeric_sha256=expected)
+            self.assertEqual(list(loaded.columns), ["X", "Y"])
+            self.assertEqual(loaded.shape, (3, 2))
+            self.assertEqual(frame.to_numpy(dtype=float).tobytes(order="C"),
+                             loaded.to_numpy(dtype=float).tobytes(order="C"))
+            with self.assertRaisesRegex(ValueError, "schema/shape"):
+                read_training_frame(path, node_order=["Y", "X"], rows=3,
+                                    expected_numeric_sha256=expected)
 
 
 if __name__ == "__main__":
