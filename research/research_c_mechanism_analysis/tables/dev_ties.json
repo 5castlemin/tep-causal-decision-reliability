@@ -1,0 +1,564 @@
+{
+ "stats": {
+  "B1_replay_match": 64,
+  "B1_task_chosen": 24,
+  "B2_replay_match": 64,
+  "B2_task_chosen": 32,
+  "B2_off_chosen_no_task_available": 50,
+  "B1_off_chosen_no_task_available": 26,
+  "B1_off_chosen_over_task_strict": 6,
+  "B2_off_chosen_over_task_strict": 9,
+  "B1_off_chosen_over_task_tie": 1,
+  "B2_off_chosen_over_task_tie": 2
+ },
+ "detail": [
+  {
+   "scm": "dev-scm-development-proposal-000004-a0003",
+   "B": 1,
+   "order": 1,
+   "chosen": "M2",
+   "score": 0.125,
+   "best_task": 0.0625,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000004-a0003",
+   "B": 2,
+   "order": 1,
+   "chosen": "M2",
+   "score": 0.125,
+   "best_task": 0.0625,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000013-a0012",
+   "B": 1,
+   "order": 1,
+   "chosen": "M2",
+   "score": 0.0625,
+   "best_task": 0.01666666666666669,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000013-a0012",
+   "B": 2,
+   "order": 1,
+   "chosen": "M2",
+   "score": 0.0625,
+   "best_task": 0.01666666666666669,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000013-a0012",
+   "B": 2,
+   "order": 2,
+   "chosen": "M1",
+   "score": 0.0625,
+   "best_task": 0.01666666666666669,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000014-a0013",
+   "B": 1,
+   "order": 1,
+   "chosen": "M3",
+   "score": 0.035714285714285726,
+   "best_task": 0.035714285714285726,
+   "tie": true
+  },
+  {
+   "scm": "dev-scm-development-proposal-000014-a0013",
+   "B": 2,
+   "order": 1,
+   "chosen": "M3",
+   "score": 0.035714285714285726,
+   "best_task": 0.035714285714285726,
+   "tie": true
+  },
+  {
+   "scm": "dev-scm-development-proposal-000014-a0013",
+   "B": 2,
+   "order": 2,
+   "chosen": "M3",
+   "score": 0.03571428571428571,
+   "best_task": 0.03571428571428571,
+   "tie": true
+  },
+  {
+   "scm": "dev-scm-development-proposal-000017-a0016",
+   "B": 1,
+   "order": 1,
+   "chosen": "M1",
+   "score": 0.05,
+   "best_task": 0.013888888888888895,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000017-a0016",
+   "B": 2,
+   "order": 1,
+   "chosen": "M1",
+   "score": 0.05,
+   "best_task": 0.013888888888888895,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000017-a0016",
+   "B": 2,
+   "order": 2,
+   "chosen": "M2",
+   "score": 0.04166666666666667,
+   "best_task": 0.013888888888888881,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000027-a0026",
+   "B": 1,
+   "order": 1,
+   "chosen": "M1",
+   "score": 0.05,
+   "best_task": 0.02083333333333333,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000027-a0026",
+   "B": 2,
+   "order": 1,
+   "chosen": "M1",
+   "score": 0.05,
+   "best_task": 0.02083333333333333,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000037-a0036",
+   "B": 1,
+   "order": 1,
+   "chosen": "M1",
+   "score": 0.0625,
+   "best_task": 0.04166666666666666,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000037-a0036",
+   "B": 2,
+   "order": 1,
+   "chosen": "M1",
+   "score": 0.0625,
+   "best_task": 0.04166666666666666,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000037-a0036",
+   "B": 2,
+   "order": 2,
+   "chosen": "M2",
+   "score": 0.0625,
+   "best_task": 0.04166666666666666,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000041-a0040",
+   "B": 1,
+   "order": 1,
+   "chosen": "M3",
+   "score": 0.041666666666666664,
+   "best_task": 0.03125,
+   "tie": false
+  },
+  {
+   "scm": "dev-scm-development-proposal-000041-a0040",
+   "B": 2,
+   "order": 1,
+   "chosen": "M3",
+   "score": 0.041666666666666664,
+   "best_task": 0.03125,
+   "tie": false
+  }
+ ],
+ "zone_sizes": [
+  {
+   "scm": "dev-scm-development-proposal-000001-a0000",
+   "task_true": 2,
+   "off_true": 9,
+   "off_pred": 9
+  },
+  {
+   "scm": "dev-scm-development-proposal-000002-a0001",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 6
+  },
+  {
+   "scm": "dev-scm-development-proposal-000003-a0002",
+   "task_true": 4,
+   "off_true": 4,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000004-a0003",
+   "task_true": 4,
+   "off_true": 1,
+   "off_pred": 2
+  },
+  {
+   "scm": "dev-scm-development-proposal-000005-a0004",
+   "task_true": 5,
+   "off_true": 1,
+   "off_pred": 1
+  },
+  {
+   "scm": "dev-scm-development-proposal-000006-a0005",
+   "task_true": 7,
+   "off_true": 4,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000007-a0006",
+   "task_true": 3,
+   "off_true": 8,
+   "off_pred": 8
+  },
+  {
+   "scm": "dev-scm-development-proposal-000008-a0007",
+   "task_true": 4,
+   "off_true": 2,
+   "off_pred": 2
+  },
+  {
+   "scm": "dev-scm-development-proposal-000009-a0008",
+   "task_true": 4,
+   "off_true": 4,
+   "off_pred": 5
+  },
+  {
+   "scm": "dev-scm-development-proposal-000010-a0009",
+   "task_true": 7,
+   "off_true": 4,
+   "off_pred": 3
+  },
+  {
+   "scm": "dev-scm-development-proposal-000011-a0010",
+   "task_true": 6,
+   "off_true": 2,
+   "off_pred": 2
+  },
+  {
+   "scm": "dev-scm-development-proposal-000012-a0011",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 5
+  },
+  {
+   "scm": "dev-scm-development-proposal-000013-a0012",
+   "task_true": 7,
+   "off_true": 4,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000014-a0013",
+   "task_true": 7,
+   "off_true": 7,
+   "off_pred": 8
+  },
+  {
+   "scm": "dev-scm-development-proposal-000015-a0014",
+   "task_true": 2,
+   "off_true": 9,
+   "off_pred": 10
+  },
+  {
+   "scm": "dev-scm-development-proposal-000016-a0015",
+   "task_true": 4,
+   "off_true": 1,
+   "off_pred": 1
+  },
+  {
+   "scm": "dev-scm-development-proposal-000017-a0016",
+   "task_true": 9,
+   "off_true": 5,
+   "off_pred": 6
+  },
+  {
+   "scm": "dev-scm-development-proposal-000018-a0017",
+   "task_true": 2,
+   "off_true": 3,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000019-a0018",
+   "task_true": 6,
+   "off_true": 8,
+   "off_pred": 8
+  },
+  {
+   "scm": "dev-scm-development-proposal-000020-a0019",
+   "task_true": 4,
+   "off_true": 4,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000021-a0020",
+   "task_true": 3,
+   "off_true": 11,
+   "off_pred": 10
+  },
+  {
+   "scm": "dev-scm-development-proposal-000022-a0021",
+   "task_true": 5,
+   "off_true": 1,
+   "off_pred": 1
+  },
+  {
+   "scm": "dev-scm-development-proposal-000023-a0022",
+   "task_true": 4,
+   "off_true": 4,
+   "off_pred": 3
+  },
+  {
+   "scm": "dev-scm-development-proposal-000024-a0023",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000025-a0024",
+   "task_true": 2,
+   "off_true": 6,
+   "off_pred": 6
+  },
+  {
+   "scm": "dev-scm-development-proposal-000026-a0025",
+   "task_true": 4,
+   "off_true": 2,
+   "off_pred": 2
+  },
+  {
+   "scm": "dev-scm-development-proposal-000027-a0026",
+   "task_true": 6,
+   "off_true": 5,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000028-a0027",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 5
+  },
+  {
+   "scm": "dev-scm-development-proposal-000029-a0028",
+   "task_true": 4,
+   "off_true": 2,
+   "off_pred": 2
+  },
+  {
+   "scm": "dev-scm-development-proposal-000030-a0029",
+   "task_true": 2,
+   "off_true": 9,
+   "off_pred": 9
+  },
+  {
+   "scm": "dev-scm-development-proposal-000031-a0030",
+   "task_true": 5,
+   "off_true": 9,
+   "off_pred": 10
+  },
+  {
+   "scm": "dev-scm-development-proposal-000032-a0031",
+   "task_true": 4,
+   "off_true": 2,
+   "off_pred": 2
+  },
+  {
+   "scm": "dev-scm-development-proposal-000033-a0032",
+   "task_true": 4,
+   "off_true": 1,
+   "off_pred": 1
+  },
+  {
+   "scm": "dev-scm-development-proposal-000034-a0033",
+   "task_true": 8,
+   "off_true": 0,
+   "off_pred": 0
+  },
+  {
+   "scm": "dev-scm-development-proposal-000035-a0034",
+   "task_true": 2,
+   "off_true": 6,
+   "off_pred": 6
+  },
+  {
+   "scm": "dev-scm-development-proposal-000036-a0035",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 5
+  },
+  {
+   "scm": "dev-scm-development-proposal-000037-a0036",
+   "task_true": 4,
+   "off_true": 4,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000038-a0037",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 5
+  },
+  {
+   "scm": "dev-scm-development-proposal-000039-a0038",
+   "task_true": 11,
+   "off_true": 0,
+   "off_pred": 0
+  },
+  {
+   "scm": "dev-scm-development-proposal-000040-a0039",
+   "task_true": 4,
+   "off_true": 10,
+   "off_pred": 12
+  },
+  {
+   "scm": "dev-scm-development-proposal-000041-a0040",
+   "task_true": 5,
+   "off_true": 6,
+   "off_pred": 6
+  },
+  {
+   "scm": "dev-scm-development-proposal-000042-a0041",
+   "task_true": 4,
+   "off_true": 1,
+   "off_pred": 1
+  },
+  {
+   "scm": "dev-scm-development-proposal-000043-a0042",
+   "task_true": 10,
+   "off_true": 1,
+   "off_pred": 1
+  },
+  {
+   "scm": "dev-scm-development-proposal-000044-a0043",
+   "task_true": 6,
+   "off_true": 8,
+   "off_pred": 9
+  },
+  {
+   "scm": "dev-scm-development-proposal-000045-a0044",
+   "task_true": 7,
+   "off_true": 4,
+   "off_pred": 5
+  },
+  {
+   "scm": "dev-scm-development-proposal-000046-a0045",
+   "task_true": 6,
+   "off_true": 8,
+   "off_pred": 9
+  },
+  {
+   "scm": "dev-scm-development-proposal-000047-a0046",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000048-a0047",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000049-a0048",
+   "task_true": 3,
+   "off_true": 2,
+   "off_pred": 2
+  },
+  {
+   "scm": "dev-scm-development-proposal-000050-a0049",
+   "task_true": 2,
+   "off_true": 6,
+   "off_pred": 7
+  },
+  {
+   "scm": "dev-scm-development-proposal-000051-a0050",
+   "task_true": 6,
+   "off_true": 8,
+   "off_pred": 9
+  },
+  {
+   "scm": "dev-scm-development-proposal-000052-a0051",
+   "task_true": 2,
+   "off_true": 12,
+   "off_pred": 13
+  },
+  {
+   "scm": "dev-scm-development-proposal-000053-a0052",
+   "task_true": 2,
+   "off_true": 9,
+   "off_pred": 10
+  },
+  {
+   "scm": "dev-scm-development-proposal-000054-a0053",
+   "task_true": 4,
+   "off_true": 10,
+   "off_pred": 10
+  },
+  {
+   "scm": "dev-scm-development-proposal-000055-a0054",
+   "task_true": 4,
+   "off_true": 1,
+   "off_pred": 1
+  },
+  {
+   "scm": "dev-scm-development-proposal-000056-a0055",
+   "task_true": 4,
+   "off_true": 2,
+   "off_pred": 3
+  },
+  {
+   "scm": "dev-scm-development-proposal-000057-a0056",
+   "task_true": 2,
+   "off_true": 6,
+   "off_pred": 7
+  },
+  {
+   "scm": "dev-scm-development-proposal-000058-a0057",
+   "task_true": 2,
+   "off_true": 3,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000059-a0058",
+   "task_true": 4,
+   "off_true": 4,
+   "off_pred": 5
+  },
+  {
+   "scm": "dev-scm-development-proposal-000060-a0059",
+   "task_true": 6,
+   "off_true": 2,
+   "off_pred": 2
+  },
+  {
+   "scm": "dev-scm-development-proposal-000061-a0060",
+   "task_true": 6,
+   "off_true": 5,
+   "off_pred": 4
+  },
+  {
+   "scm": "dev-scm-development-proposal-000062-a0061",
+   "task_true": 6,
+   "off_true": 8,
+   "off_pred": 8
+  },
+  {
+   "scm": "dev-scm-development-proposal-000063-a0062",
+   "task_true": 2,
+   "off_true": 3,
+   "off_pred": 3
+  },
+  {
+   "scm": "dev-scm-development-proposal-000064-a0063",
+   "task_true": 2,
+   "off_true": 4,
+   "off_pred": 5
+  }
+ ]
+}
