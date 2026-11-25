@@ -1,64 +1,58 @@
 # Research D External Semisynthetic Final Contract Draft
 
-**Status: PROPOSED FOR REVIEW — NOT APPROVED; NO FINAL EVALUATION DATA GENERATED.** This draft follows the completed bounded Development Pilot. It does not alter or supersede Research C's frozen contract.
+**Status: ready for user review; not approved for final evaluation.** Development Reproduction is complete and source/output provenance is verified. This proposal does not modify Research C's frozen contract and has generated no final seeds or samples.
 
 ## Study type and claim
 
-This would be a **conditional external semisynthetic robustness evaluation**: causalAssembly's pinned manufacturing-process-based public semisynthetic sample and official Station1 benchmark DAG are used to fit one new DRF generator. It is not a real manufacturing intervention study or validation against a complete physical causal graph. The finite hard-do is a virtual intervention in the fitted factorization. The result would be conditional on one reference graph and one fixed DRF DGP, not a population of physical systems or independent SCMs.
+This is a conditional external semisynthetic robustness evaluation using causalAssembly's pinned manufacturing-process-based public semisynthetic sample, the official Station1 benchmark DAG and one newly fitted DRF generator. The task is a virtual hard-do in that fitted factorization, not a physical plant intervention. Results are conditional on one reference graph and one fitted generator; they do not represent a population of physical systems or independent SCMs.
 
-## Prespecified task and common actions
+## Locked task and structure policy
 
-- Action `Station1_mp_0`; outcome `Station1_mp_4`; benchmark reference path `Station1_mp_0 → Station1_mp_1 → Station1_mp_4`; no direct reference action-to-target edge.
-- Preserve the five pinned-source 10/30/50/70/90% action quantiles recorded in the Development lock. Verify their finite values, support, uniqueness and fitted conditional-input ranges from the source before new final data generation. Do not choose action values from Development evaluator response means.
-- Virtual hard-do only. Do not claim that these columns are physically controllable at a plant.
-- Generate a fresh observational learner-training sample of 512 from the same deterministic generator refit recipe under a final-only training seed. Use `target=mean(Y_train)+1 sample SD(Y_train,ddof=1)` and `scale=sample SD(Y_train,ddof=1)`. These are training-only benchmark target/scale values, not a physical operating point.
-- The Development sample and evaluator responses are exploratory and must not be reused as final learner or evaluator data.
+- Action `Station1_mp_0`; target `Station1_mp_4`; reference path `Station1_mp_0 → Station1_mp_1 → Station1_mp_4`; strict indirect-only relative to the official Station1 DAG.
+- Retain the five Development action values exactly: `0.000155911358968`, `0.0001724093665238`, `0.00018679686613765`, `0.00020263502221978`, `0.00022589388613683002`.
+- Treat graph errors as discrepancies relative to the official benchmark graph, not proven errors against complete physical GT.
+- Retain Research C's existing Task zone, FP Rule A, M1–M4 definitions, S0, all 15 nonempty metric subsets, Full Greedy, Canonical Oracle, atomic edit cost 1, `q=0.15`, `r=0.05`, FN/REV/UNRES mix, fair FP orientation, DAG rejection without redraw and G0-fixed opportunity normalization.
+- Policies: all 17 existing policies; budgets `B=0–4`; Primary at `B=2`, S0 versus Full Greedy. M4 remains Secondary. Do not promote Secondary or exploratory contrasts to Primary.
+- Use 200 new prespecified G0 seed IDs as a candidate; include all generated cases and rejections without replacement. The seeds are draws under one fixed graph/DGP, not independent SCMs.
 
-## Reference and structure policy
+## Learner, target and training choice
 
-- Use the official Station1 reference graph in **reference-relative controlled corruption** mode. Classify errors as disagreement with the pinned reference, not proven errors in a complete physical GT.
-- Retain the existing Research C task-zone and FP Rule A algorithm, M1–M4 definitions, S0, all 15 metric subsets, Full Greedy, Canonical Oracle comparator, unit edit costs, q=0.15, r=0.05, FN/REV/UNRES conditional equal mix, fair FP orientation, DAG rejection without redraw, and G0-fixed opportunity normalization.
-- Use budgets 0–4 and B=2 as Primary. Report every no-error G0, no-task-zone-error G0, no-op, unused budget, DAG rejection, duplicate repaired graph, metric support and task/off-task error count. No seed replacement.
-- Start with 200 final G0 seed IDs from a final-only Research D namespace. They are repeated graph-corruption draws under one DAG/DGP, not 200 independent external systems. Final seed IDs are not yet generated.
-- A fixed action set and reference must apply to all policies; expose exact initial and final graph hashes and the G0 event ledger.
+- Reuse the existing Ridge graph learner (`alpha=1.0`) and recommendation logic. All policies/G0s share one 512-row observational learner frame and common action set.
+- Target rule `mean(Y_train)+SD(Y_train)` and scale `sample SD(Y_train, ddof=1)`; the target is a benchmark tracking value, not an operating setpoint or plant utility.
+- **Preferred training choice A:** freeze and reuse the reproduced 512-row training frame, numeric digest `bcca5e56b01dd8cc59d227272906fcee6f9160897e9be2179bd9751619b4bc39`. New G0/evaluator streams then estimate the same training-conditioned contrast. No training-frame variability claim follows.
+- Alternative B is one new 512-row training draw; it changes target/scale and recommendations and therefore targets another training-conditioned environment. If selected, keep the result separate from A. User choice is required before the final lock.
+- Keep the X–Y regression baseline using only the same training frame. Label it observational association, never a causal effect estimator. Do not give it intervention training data.
 
-## Learner and baselines
+## Primary evaluation and uncertainty
 
-- Reuse the existing Ridge graph learner and static mean-response recommendation: standardized variables, alpha=1.0, same train sample and action grid for every policy/G0.
-- Keep unresolved pairs as abstentions and omit them from the confirmed directed-edge set as in the current learner path. Invalid cycles, constant scales, nonfinite predictions and unsupported actions fail closed.
-- Primary policies are S0 and Full Greedy at B=2. M4 remains Secondary. Keep all 17 policies and the Canonical Oracle results.
-- Include the univariate Ridge observational X–Y association baseline on the same train sample and action set. Label it associational; it does not estimate `do(X)` effects. It gets no intervention training data.
-- Cache only identical repaired learner-input graph + train digest + Ridge settings. Do not use evaluator outcomes for policy recommendation, task selection or cache keys.
+- For action `a`, `L(a)=((E[Y|do(a)]−target)^2)/scale^2`, estimated by the existing bias-corrected squared sample mean `( (mean−target)^2 − sample_variance/n )/scale^2`, without truncation. This is mean-response target-tracking loss, not individual MSE, plant cost or safety.
+- Primary `Δ_D=L_exp(a_S0)−L_exp(a_FullGreedy)` at B=2; positive favors Full Greedy. Use one shared action-level evaluator table for every policy and G0.
+- Generate all recommendations first, validate and hash-lock them, then start evaluator-only sampling. Evaluator outcomes cannot alter recommendations, task, actions, target or exclusions.
+- Use independent RNG streams per action. Candidate sample count: 2,500 rows/action (12,500 total), pending the reviewed 0.02 standardized-loss-unit 95% action-MC half-width tolerance and resource check. The tolerance is a precision/reporting target, not a domain meaningful-effect threshold.
+- Candidate 10,000 paired two-source bootstrap replicates with a shared resampled action-loss table. Report G0-only, action-MC-only and combined intervals. Use chunked resampling and fixed sample counts; no outcome-based sample expansion.
+- Report absolute empirical regret only as secondary, with best-action selection uncertainty; shared best-action loss cancels from the common-action policy contrast.
 
-## Evaluation and primary estimator
+The reproduced delta-method calculation estimates an action-MC half-width of `0.061218` at 256 rows/action and approximately 2,399 rows/action for 0.02; 2,500 is a rounded proposal. The reproduction two-source interval was `[-0.065322, 0.075465]` and included zero. The five evaluator means were below the training-only target; disclose this support limitation without changing the task or implying population infeasibility.
 
-- Generate one common action-level evaluation table, with independent action RNG streams, after all final recommendations are hash-locked. Start with 2,500 finite interventional rows/action (12,500 total) as a **planning value**. Final sample count must be approved against a fixed precision target and resource cap after a pilot-based simulation of the locked two-source estimator.
-- Loss per candidate action is `L(a)=((E[Y|do(a)]-target)^2)/scale^2`, a mean-response target-tracking loss. It is neither individual-response MSE nor a plant cost/safety measure.
-- Primary estimand at B=2 is `Δ_D=L_exp(a_S0)-L_exp(a_FullGreedy)`; positive favors Full Greedy. With the same task and action set it is the same population contrast as the regret difference because the shared best-action loss cancels. Use the bias-corrected loss `((mean-target)^2-sample_variance/n)/scale^2`, without truncating negative values.
-- Report absolute empirical regret only as secondary and only with action-minimum selection uncertainty. Do not use the noisy empirical best action as a recommendation.
-- Primary uncertainty: paired G0 resampling plus within-action sample-row resampling, preserving one shared resampled action-loss table across all policies/G0s. Proposed final bootstrap count: 10,000. Report G0-only and action-MC components separately. Do not interpret any interval as manufacturing-system population uncertainty.
-- Pilot-based planning suggests an action-MC-only 95% half-width of about 0.061 at 256 rows/action; scaling to a proposed 0.02 tolerance suggests roughly 2,380 rows/action. 2,500/action is a rounded starting proposal, not an approved sample size. The pilot's two-source interval remains the relevant uncertainty evidence and includes zero.
+## Training/evaluation information boundary
 
-## Information boundary and execution lock
+1. Use pinned source sample, official DAG and fixed DRF fit/runtime configuration.
+2. Select training design A or B before final run lock; target and scale are training-only.
+3. Recommendation process receives only the training frame, reference/G0/task/action/target/scale and existing learner/policy code.
+4. Lock all recommendations, seeds, source/data/code hashes and invocation settings.
+5. Evaluator process verifies the lock, independently refits the pinned generator, samples common actions from final-only evaluator seeds and writes raw vectors only to external local storage.
+6. Preserve hashes, approved aggregates, exclusions and final code/tree identity. Do not upload raw training, recommendations, response vectors, fitted objects or original public data.
 
-1. Pinned fit-source and official DAG; fixed DRF fit seed/runtime.
-2. Separate final-seed 512-row observational training sample; training-only target/scale.
-3. Recommendation stage receives only train frame, reference/G0/task/actions/target/scale and existing C policies/learner.
-4. Write recommendation manifest, configuration, code/data hashes and seed namespace; validate completeness and content hash.
-5. Start evaluator-only subprocess after the lock. It refits from the pinned official source, verifies same-seed reproducibility, reads locked actions/recommendations, and cannot alter recommendations. Keep raw evaluation frames out of Git.
-6. Persist aggregate action/policy results, sample counts, hashes, failed/omitted rows and exact analysis script version.
+Process/module separation is not an OS-level security sandbox. Oracle-assisted reference access remains an explicit limitation.
 
-Process separation and module allow-lists are engineering boundaries, not OS-level security isolation. Record that limitation. No unresolved failure may be silently replaced.
+## Proposed resource limits and stop rules
 
-## Development evidence and review questions
+Propose a 2-hour wall-time ceiling and 4 GiB process-memory ceiling, sequential sampling and chunked bootstrap. The reproduction took 350.868 seconds to sample 1,280 rows and 463.614 seconds post-lock; linear scaling implies about 57 minutes for 12,500 rows before final bootstrap. The proposed ceiling must be validated with a response-blind resource benchmark and frozen before final generation; peak memory was not measured in the reproduction. Stop on code/source/data/lock mismatch, invalid support/schema/nonfinite draws, incomplete recommendations, information-boundary failure or resource breach. Preserve shortfalls; never replace seeds, actions, policies or samples silently.
 
-The Development Primary mean was `+0.003338`, but its two-source 95% bootstrap interval was `[-0.065322,0.075465]`; it does not resolve the effect direction. The target was above all five Development evaluator action means. That observed feasibility gap must be disclosed; it may not be used to pick a different action, task or target. At B=2, M4 selected the same action as Full Greedy in all 32 Development G0s, so the pilot did not discriminate M4 from Full Greedy on the decision outcome.
+## User decisions before final approval
 
-Before approval, review whether (a) a 0.02 standardized-loss precision tolerance is useful, (b) 200 G0 seeds and 2,500 evaluator rows/action fit the resource budget, (c) one fixed DGP is sufficient for the intended robustness claim, and (d) the target-tracking task remains scientifically useful despite target values above observed action means. No one of these questions is answered by the Development pilot.
+1. Choose fixed Development training frame (A, recommended) or one new training frame (B).
+2. Approve or revise 0.02 action-MC half-width tolerance and separate total-interval reporting goal.
+3. Approve 200 G0 seeds, 2,500 rows/action, 10,000 bootstrap replicates and proposed 2-hour/4-GiB ceilings after the resource benchmark.
 
-## Exclusions and stop conditions
-
-- No physical device actuation, real manufacturing causal effect or deployment claim.
-- No new dataset search; no additional causal discovery; no change to Research C.
-- No new G0 seed, action, task, target, estimator or Primary selected after viewing Development results.
-- Stop final generation on source/hash mismatch, non-reproducible refit, invalid support/schema/nonfinite draws, incomplete recommendation lock, information-boundary violation, or resource-cap breach. Keep all failures and shortfalls; do not replace.
+This draft is not execution authorization. No final seed, final training sample, or final evaluator response may be generated until a separate approval locks these decisions.
