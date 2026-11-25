@@ -2,6 +2,14 @@
 
 기록 원칙: 실질 작업마다 날짜, 브랜치/커밋, 실행 명령, 실제 결과, 미수행/차단 사항을 추가한다. 이 문서는 작업 성공을 추정하지 않는다.
 
+# 2026-11-25 — Research D 최종 실측 판정 및 반합성 preflight
+
+- Step 2 브랜치 `research/research-d-design-resolution`에서 진행. Mk2 `DEFERRED_PENDING_EXTERNAL_EVIDENCE`, Wind Tunnel `PHYSICAL_CASE_REDESIGN_REQUIRED`, 현재 실측 정책 평가 `DEFERRED`로 종료. 별도 causalAssembly 유형 `EXTERNAL_SEMISYNTHETIC_ROBUSTNESS`는 `CONDITIONAL_SEMISYNTHETIC`.
+- 기존 Step 0 graph/sample 파일을 재다운로드 없이 재사용했고 SHA-256을 확인. package checkout commit `8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9`의 공식 loader로 98/485 DAG 및 500×98 sample 스키마 확인. Station1 6/7 official cell에서 strict path `mp_0→mp_1→mp_4`, Rule A false-pair support 1, M1/M2/M3/M4 구조 support 확인. 변수는 virtual do만 가능하며 물리 조작 가능하다고 해석하지 않음.
+- 별도 Python venv와 venv-local `R_LIBS_USER`에 causalAssembly 의존성/CRAN drf 설치. `fit_drf` 6개 station node 모델, 관측표본 생성 및 동일 seed 재현 PASS. in-support float hard intervention은 `intervene_on`이 저장하지만 `sample_from_interventional_drf`가 `NotImplementedError`로 실패; 개입 결과 0행. 25개의 탐색 관측 response row가 smoke 과정에서 생성됐지만 값/평균/성능 계산에 사용하거나 저장하지 않았고, 최종 평가에서 재사용 금지. Full policy/regret/G0 cohort NOT_RUN.
+- `design_resolution/preflight.py`의 스키마 검사를 `random_loads_intake` 대상으로 바로잡고 구별 스키마 회귀 테스트를 추가. Research C 코드·계약·Ledger·frozen manifest·requirements 불변.
+- 재현 명령, 환경, API 결과와 hard-do blocker는 `research/external_validation/semisynthetic_preflight/`에 기록. 다음 단계는 별도 승인 후 numeric float hard-do adapter 한 건만 검증; 실패하면 외부 검증 종료. 이번 판정은 본실험 승인 아님.
+
 # 2026-11-25 — Research D Step 2 설계 적격성 preflight
 
 - Step 1 commit `6483c9b49f1eb388ea862eb9ec20564b4f84cff5` 기반 브랜치 `research/research-d-design-resolution`에서 작업. Step1은 Step0 commit 아래 두 commit으로 이어짐.

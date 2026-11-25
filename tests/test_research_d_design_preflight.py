@@ -1,4 +1,6 @@
 import unittest
+import json
+from pathlib import Path
 
 import pandas as pd
 
@@ -17,6 +19,18 @@ class ResearchDDesignPreflightTests(unittest.TestCase):
             self.assertEqual(len(task["zone_pairs"]), 1)
             self.assertEqual(task["task_fp_opportunities_rule_a"], 0)
         self.assertFalse(result["response_values_read"])
+
+    def test_graph_schema_validation_uses_the_intake_experiment(self):
+        path = Path(__file__).resolve().parents[1] / "research" / "external_validation" / "inspection_results.json"
+        inspection = json.loads(path.read_text(encoding="utf-8"))
+        experiments = inspection["chamber"]["wt_bernoulli_v1"]["experiments"]
+        expected = set(experiments["random_loads_intake"]["dtypes"])
+        self.assertEqual(experiments["random_loads_intake"]["dtypes"], experiments["random_loads_both"]["dtypes"])
+        experiments["random_loads_both"]["dtypes"] = []
+        result = qualify_graph(inspection)
+        self.assertEqual(result["csv_schema_experiment"], "random_loads_intake")
+        self.assertTrue(result["all_graph_nodes_in_csv_schema"])
+        self.assertEqual(result["csv_variables_outside_graph"], sorted(expected - set(inspection["mk1_graphs"]["wt_standard"]["nodes"])))
 
     def test_policy_metric_fixture_covers_m1_through_m4(self):
         cases = fixture_checks()["cases"]

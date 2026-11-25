@@ -1,0 +1,155 @@
+{
+  "step": "Research D Final Physical Validation Decision and External Semisynthetic Robustness Preflight",
+  "date": "2026-11-25",
+  "recommended_gate": "CONDITIONAL_SEMISYNTHETIC",
+  "physical_validation": {
+    "mk2": "DEFERRED_PENDING_EXTERNAL_EVIDENCE",
+    "wind_tunnel": "PHYSICAL_CASE_REDESIGN_REQUIRED",
+    "research_d_real_measurement_policy_evaluation": "DEFERRED",
+    "physical_machine_controlled": false
+  },
+  "causalassembly": {
+    "classification": "EXTERNAL_SEMISYNTHETIC_ROBUSTNESS",
+    "generator_type": "external_data_based_DRF_refit_from_pinned_semisynthetic_sample",
+    "source_repository": "https://github.com/boschresearch/causalAssembly",
+    "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+    "package_version": "1.2.1",
+    "software_license": "AGPL-3.0",
+    "rights_status": "Pinned public repository declares AGPL-3.0; no per-file data license override found. Preserve source attribution and comply with repository terms for any downstream redistribution.",
+    "source_hashes": {
+      "assembly_reference--ground_truth.json": {
+        "bytes": 44027,
+        "sha256": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8"
+      },
+      "assembly_sample--assembly_line_500.csv": {
+        "bytes": 628862,
+        "rows": 500,
+        "columns": 98,
+        "missing_values": 0,
+        "sha256": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e"
+      }
+    },
+    "graph": {
+      "nodes": 98,
+      "directed_edges": 485,
+      "dag": true,
+      "data_columns_match": true,
+      "interpretation": "official semisynthetic generator reference, not independently measured complete physical GT"
+    },
+    "station1": {
+      "nodes": 6,
+      "directed_edges": 7,
+      "external_parents": false,
+      "candidate_task": {
+        "action_node": "Station1_mp_0",
+        "target_node": "Station1_mp_4",
+        "strict_indirect_only": true,
+        "reference_path": [
+          "Station1_mp_0",
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ],
+        "task_zone_nodes": [
+          "Station1_mp_0",
+          "Station1_mp_1",
+          "Station1_mp_4"
+        ],
+        "task_zone_reference_edges": 2,
+        "rule_a_fp_absent_unordered_pairs": 1,
+        "interpretation": "virtual benchmark do on a measured process variable; physical manipulability/unit not established"
+      },
+      "policy_metric_engine_reference_support": {
+        "M1": 5,
+        "M2": 5,
+        "M3": 5,
+        "M4_FN_FP_REV_UNRES": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "note": "structural support check on reference=estimate; no damaged graph cohort, recommendations, or outcomes"
+      },
+      "action_support_from_training_sample": {
+        "unique_values": 500,
+        "minimum": 0.000113858129695,
+        "maximum": 0.0002976110671615,
+        "quantile_probabilities": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9
+        ],
+        "quantiles": [
+          0.000155911358968,
+          0.0001724093665238,
+          0.00018679686613765,
+          0.00020263502221978,
+          0.00022589388613683002
+        ],
+        "status": "predeclared_action_support_proposal_only; not a locked action set"
+      }
+    },
+    "execution": {
+      "official_get_ground_truth_and_get_data": "PASS using pinned local files",
+      "fit_drf_station1": "PASS",
+      "fit_models": 6,
+      "fit_seconds": 22.325,
+      "observational_sampling": "PASS",
+      "same_model_same_numpy_seed_reproducible": true,
+      "float_hard_do_registration": "PASS",
+      "float_hard_do_sample_generation": "FAIL_NOT_IMPLEMENTED",
+      "interventional_rows_returned": 0,
+      "fresh_object_intervention_state_empty": true,
+      "python": "3.11.15",
+      "numpy": "2.2.6",
+      "pandas": "2.3.1",
+      "networkx": "3.4.2",
+      "scipy": "1.15.3",
+      "R": "4.5.3",
+      "R_drf": "1.3.1",
+      "fit_seed": 2031,
+      "sampling_seed": 2031,
+      "R_LIBS_USER_isolated_under_preflight_venv": true
+    },
+    "exposure": {
+      "exploratory_observational_response_rows_generated_total": 25,
+      "target_response_summary_calculated": false,
+      "action_level_intervention_response_rows_returned": 0,
+      "policy_recommendation_or_performance_calculated": false,
+      "loss_or_regret_calculated": false,
+      "smoke_samples_reusable_as_evaluation": false,
+      "public_benchmark_literature_read": true,
+      "candidate_task_action_response_results_read": false,
+      "benchmark_wholly_unseen": false
+    }
+  },
+  "error_budget_draft": {
+    "graph_nodes": 6,
+    "reference_edges": 7,
+    "unordered_pairs": 15,
+    "reference_absent_unordered_pairs": 8,
+    "q": 0.15,
+    "r": 0.05,
+    "expected_true_adjacency_damage_proposals_before_dag_rejection": 1.05,
+    "expected_each_FN_REV_UNRES_proposals_under_uniform_three_type_draw": 0.35,
+    "expected_FP_proposals_before_dag_rejection": 0.4,
+    "absolute_edit_cost": 1,
+    "primary_budget_candidate": 2,
+    "cohort_executed": false
+  },
+  "research_contract": {
+    "research_c_contract_modified": false,
+    "research_c_code_or_frozen_artifacts_modified": false,
+    "policy_performance_run": false,
+    "research_d_main_experiment_approved": false,
+    "next_single_blocker": "Implement and independently verify a Research D adapter for finite numeric float hard interventions; stop external validation if unsupported without further vendor modification."
+  },
+  "qualification_test_fix": {
+    "file": "research/external_validation/design_resolution/preflight.py",
+    "issue": "schema check used random_loads_both although target data are random_loads_intake",
+    "corrected": true,
+    "regression_test_added": true
+  }
+}

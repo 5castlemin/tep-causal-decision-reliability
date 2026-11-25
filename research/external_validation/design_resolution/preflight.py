@@ -10,12 +10,16 @@ from research.original_objective.policy_engine import state, task_zone, metrics,
 INSPECTION = ROOT / "research" / "external_validation" / "inspection_results.json"
 
 
-def qualify_graph() -> dict:
-    inspection = json.loads(INSPECTION.read_text(encoding="utf-8"))
+def qualify_graph(inspection: dict | None = None) -> dict:
+    if inspection is None:
+        inspection = json.loads(INSPECTION.read_text(encoding="utf-8"))
     source = inspection["mk1_graphs"]["wt_standard"]
     truth = state(source["edges"])
     nodes = set(source["nodes"])
-    csv_variables = set(inspection["chamber"]["wt_bernoulli_v1"]["experiments"]["random_loads_both"]["dtypes"])
+    schema_experiment = "random_loads_intake"
+    csv_variables = set(
+        inspection["chamber"]["wt_bernoulli_v1"]["experiments"][schema_experiment]["dtypes"]
+    )
     if len(nodes) != 32 or len(truth) != 42 or not source["dag"]:
         raise ValueError("Unexpected pinned Wind Tunnel standard graph")
     if {n for edge in truth.values() for n in edge} != nodes:
@@ -35,6 +39,7 @@ def qualify_graph() -> dict:
         "nodes": len(nodes), "edges": len(truth), "unordered_pairs": pair_total,
         "reference_absent_pairs": absent, "oriented_absent_candidates": absent * 2,
         "dag": True, "tasks": tasks,
+        "csv_schema_experiment": schema_experiment,
         "all_graph_nodes_in_csv_schema": nodes <= csv_variables,
         "csv_variables_outside_graph": sorted(csv_variables - nodes),
         "response_values_read": False,
