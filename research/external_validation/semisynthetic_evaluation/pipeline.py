@@ -482,3 +482,4 @@ def paired_primary(result):
         "min": float(np.min(deltas)), "max": float(np.max(deltas)),
         "positive_fraction": float(np.mean(np.asarray(deltas) > 0)),
         "interpretation": "development-only, conditional on one fitted DRF, one train sample and shared evaluation draws"}
+
