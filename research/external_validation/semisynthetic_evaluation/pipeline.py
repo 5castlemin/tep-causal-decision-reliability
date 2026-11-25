@@ -481,4 +481,4 @@ def paired_primary(result):
         "sd_across_g0_conditional_on_fixed_eval": float(np.std(deltas, ddof=1)) if len(deltas) > 1 else 0.0,
         "min": float(np.min(deltas)), "max": float(np.max(deltas)),
         "positive_fraction": float(np.mean(np.asarray(deltas) > 0)),
-        "interpretation": "development-only, conditional on one fitted DRF, one train sample and shared evaluation draws"}\n
+        "interpretation": "development-only, conditional on one fitted DRF, one train sample and shared evaluation draws"}
