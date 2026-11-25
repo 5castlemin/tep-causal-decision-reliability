@@ -143,7 +143,8 @@ def action_grid(source, train, model):
     # Check the fitted mechanism's direct action-parent input support where the
     # node exists. This does not establish multivariate/joint conditional support.
     checked = []
-    for node in nx.descendants(model.graph, TASK_X):
+    topo_index = {node: index for index, node in enumerate(nx.topological_sort(model.graph))}
+    for node in sorted(nx.descendants(model.graph, TASK_X), key=topo_index.__getitem__, reverse=True):
         mechanism = model.drf[node]
         xtrain = getattr(mechanism, "X_train", None)
         if xtrain is not None and TASK_X in list(xtrain.columns):

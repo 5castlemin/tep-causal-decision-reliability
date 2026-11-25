@@ -76,6 +76,44 @@ def code_hashes():
 AUTHORIZED_RUN_ID = "rd-development-reproduction-20261125-02"
 
 
+def validate_recovery_inputs(args, original_lock=None):
+    if args.recovery_manifest is None:
+        return None
+    manifest = json.loads(args.recovery_manifest.read_text(encoding="utf-8"))
+    if (manifest.get("schema") != "RESEARCH_D_REPRODUCTION_RECOVERY_INPUTS_V1"
+            or manifest.get("run_id") != AUTHORIZED_RUN_ID
+            or manifest.get("failed_attempt_id") != f"{AUTHORIZED_RUN_ID}-preflight-02-runner"
+            or manifest.get("learner_training_rows") != 512
+            or manifest.get("g0_seed_records") != 32
+            or manifest.get("recommendation_rows") != 0
+            or manifest.get("evaluator_rows") != 0):
+        raise ValueError("recovery manifest does not describe the authorized post-training failure")
+    if d.file_sha256(args.training_frame) != manifest.get("training_csv_sha256"):
+        raise ValueError("preserved training CSV raw digest differs from recovery manifest")
+    if d.file_sha256(args.recommendation_input) != manifest.get("recommendation_input_sha256"):
+        raise ValueError("preserved recommendation input digest differs from recovery manifest")
+    expected_numeric = manifest.get("training_numeric_sha256")
+    lock = original_lock or json.loads(args.original_lock.read_text(encoding="utf-8"))
+    if expected_numeric != lock["training"]["sha256"]:
+        raise ValueError("recovery training numeric digest differs from the historical lock")
+    train = repro.read_training_frame(args.training_frame, node_order=lock["node_order"],
+        rows=512, expected_numeric_sha256=expected_numeric)
+    if train.shape != (512, 6):
+        raise ValueError("recovered learner input has an unexpected shape")
+    request = json.loads(args.recommendation_input.read_text(encoding="utf-8"))
+    if (request.get("schema") != "RESEARCH_D_RECOMMENDATION_INPUT_V1"
+            or request.get("training_numeric_sha256") != expected_numeric
+            or len(request.get("g0", [])) != 32
+            or len(request.get("actions", [])) != 5):
+        raise ValueError("preserved recommendation request does not match recovery manifest")
+    return {"manifest_sha256": d.file_sha256(args.recovery_manifest),
+        "training_csv_sha256": manifest["training_csv_sha256"],
+        "training_numeric_sha256": expected_numeric,
+        "recommendation_input_sha256": manifest["recommendation_input_sha256"],
+        "training_rows_reused": 512, "g0_records_reconstructed_and_verified": 32,
+        "additional_training_rows_generated": 0}
+
+
 def dry_run_mode(args):
     if args.run_id != AUTHORIZED_RUN_ID:
         raise ValueError(f"this authorization permits only run id {AUTHORIZED_RUN_ID}")
@@ -87,12 +125,16 @@ def dry_run_mode(args):
                args.response_vectors]
     repro.require_external_outputs(d.ROOT, outputs)
     repro.require_external_outputs(d.ROOT, [args.historical_artifact_dir])
+    original_lock = json.loads(args.original_lock.read_text(encoding="utf-8"))
+    recovery = validate_recovery_inputs(args, original_lock)
+    reused = {args.training_frame.resolve(), args.recommendation_input.resolve()} if recovery else set()
     for path in outputs:
+        if path.resolve() in reused:
+            continue
         if path.exists():
             raise FileExistsError(f"dry-run output path already exists: {path.name}")
     if d.file_sha256(args.original_lock) != "9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404":
         raise ValueError("historical Development lock SHA-256 mismatch")
-    original_lock = json.loads(args.original_lock.read_text(encoding="utf-8"))
     original_audit = json.loads(args.original_audit.read_text(encoding="utf-8"))
     repro.validate_original_artifact_audit(original_audit)
     audit_status = original_audit["stored_artifact_audit"]["status"]
@@ -163,6 +205,7 @@ def dry_run_mode(args):
         "original_audit_sha256": d.file_sha256(args.original_audit),
         "original_audit_status": audit_status,
         "historical_artifact_sha256": historical_artifacts,
+        "recovery_inputs": recovery,
         "structural_preflight_sha256": d.file_sha256(args.structural),
         "package_import": {"version": package_version,
             "module_file_relative_to_pinned_source": package_file.relative_to(source_path).as_posix()},
@@ -173,7 +216,7 @@ def dry_run_mode(args):
             "original_sources_and_artifacts": True, "runtime_and_packages": True,
             "pinned_source_and_data": True, "structural_preflight": True,
             "package_import_path": True, "roundtrip_csv_exact": True,
-            "worker_cli_arguments": True}}
+            "worker_cli_arguments": True, "recovery_inputs_verified": recovery is not None}}
     write_new(args.output, preflight)
     return preflight
 
@@ -287,9 +330,14 @@ def pilot_mode(args):
     approved_id = AUTHORIZED_RUN_ID
     if args.run_id != approved_id:
         raise ValueError(f"this authorization permits only run id {approved_id}")
+    original_lock = json.loads(args.original_lock.read_text(encoding="utf-8"))
+    recovery = validate_recovery_inputs(args, original_lock)
+    reused = {args.training_frame.resolve(), args.recommendation_input.resolve()} if recovery else set()
     for path in (args.lock, args.recommendations, args.evaluation, args.summary,
                  args.execution_manifest, args.training_frame, args.recommendation_input,
                  args.response_vectors, args.output):
+        if path.resolve() in reused:
+            continue
         if path.exists(): raise FileExistsError(f"reproduction output already exists: {path.name}")
     original_lock_sha = d.file_sha256(args.original_lock)
     if original_lock_sha != "9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404":
@@ -302,6 +350,7 @@ def pilot_mode(args):
             or preflight.get("repository") != repo_identity
             or preflight.get("code_sha256") != code_hashes()
             or preflight.get("source") != d.verify_sources(args.source_root, args.data_root)
+            or preflight.get("recovery_inputs") != recovery
             or preflight.get("historical_artifact_sha256") is None):
         raise ValueError("actual-input dry-run does not bind to this clean code/source/run")
     for name, record in preflight["historical_artifact_sha256"].items():
@@ -310,7 +359,6 @@ def pilot_mode(args):
             raise ValueError(f"historical {name} artifact changed after dry-run")
     repro.validate_csv_float_round_trip(json.loads(args.original_lock.read_text(encoding="utf-8"))
         ["action_grid"]["values"])
-    original_lock = json.loads(args.original_lock.read_text(encoding="utf-8"))
     current_codes = code_hashes()
     for name in ("research/external_validation/semisynthetic_adapter/float_hard_do_adapter.py",
                  "research/external_validation/semisynthetic_evaluation/development_contract.json",
@@ -336,12 +384,18 @@ def pilot_mode(args):
         raise RuntimeError("same-seed DRF refit check differs from original Development")
     del check_frame
     train_seed = d.derive_seed("training-sample", 91420262)
-    model.random_state = np.random.default_rng(train_seed)
-    train = model.sample_from_drf(size=512)
-    values = d._validate_frame(train, list(model.nodes), 512)
-    train_hash = hashlib.sha256(train.to_numpy(dtype=float).tobytes(order="C")).hexdigest()
-    if train_hash != original_lock["training"]["sha256"]:
-        raise RuntimeError("same-seed learner-training frame differs from original Development")
+    if recovery:
+        train = repro.read_training_frame(args.training_frame, node_order=list(model.nodes),
+            rows=512, expected_numeric_sha256=original_lock["training"]["sha256"])
+        values = train.to_numpy(dtype=float)
+        train_hash = hashlib.sha256(values.tobytes(order="C")).hexdigest()
+    else:
+        model.random_state = np.random.default_rng(train_seed)
+        train = model.sample_from_drf(size=512)
+        values = d._validate_frame(train, list(model.nodes), 512)
+        train_hash = hashlib.sha256(train.to_numpy(dtype=float).tobytes(order="C")).hexdigest()
+        if train_hash != original_lock["training"]["sha256"]:
+            raise RuntimeError("same-seed learner-training frame differs from original Development")
     source_info = d.verify_sources(args.source_root, args.data_root)
     import pandas as pd
     # Retain only the learner training frame in this process.
@@ -354,21 +408,26 @@ def pilot_mode(args):
     train_hash = hashlib.sha256(train.to_numpy(dtype=float).tobytes(order="C")).hexdigest()
     truth = truth_from_model(model)
     g0_rows = d.structural_rows(truth, list(model.nodes), list(range(702001, 702033)))
-    if args.training_frame.exists() or args.recommendation_input.exists():
-        raise FileExistsError("reproduction training/recommendation inputs already exist")
-    args.training_frame.parent.mkdir(parents=True, exist_ok=True)
-    csv_bytes = repro.serialize_training_frame(train)
-    args.training_frame.write_bytes(csv_bytes)
-    roundtrip_train = repro.read_training_frame(args.training_frame, node_order=list(model.nodes),
-        rows=512, expected_numeric_sha256=train_hash)
-    if roundtrip_train.to_numpy(dtype=float).tobytes(order="C") != train.to_numpy(dtype=float).tobytes(order="C"):
-        raise RuntimeError("serialized learner frame differs byte-for-byte after CSV round-trip")
     recommendation_request = {"schema": "RESEARCH_D_RECOMMENDATION_INPUT_V1",
         "nodes": list(model.nodes), "reference_edges": [list(edge) for edge in model.graph.edges],
         "actions": actions, "training_numeric_sha256": train_hash,
         "g0": [{"seed_id": row["seed_id"], "record": row["record"],
                 "graph_sha256": pe.graph_hash(row["g0"])} for row in g0_rows]}
-    write_new(args.recommendation_input, recommendation_request)
+    if recovery:
+        existing_request = json.loads(args.recommendation_input.read_text(encoding="utf-8"))
+        if existing_request != recommendation_request:
+            raise ValueError("preserved recommendation request differs from deterministic G0 reconstruction")
+    else:
+        if args.training_frame.exists() or args.recommendation_input.exists():
+            raise FileExistsError("reproduction training/recommendation inputs already exist")
+        args.training_frame.parent.mkdir(parents=True, exist_ok=True)
+        csv_bytes = repro.serialize_training_frame(train)
+        args.training_frame.write_bytes(csv_bytes)
+        roundtrip_train = repro.read_training_frame(args.training_frame, node_order=list(model.nodes),
+            rows=512, expected_numeric_sha256=train_hash)
+        if roundtrip_train.to_numpy(dtype=float).tobytes(order="C") != train.to_numpy(dtype=float).tobytes(order="C"):
+            raise RuntimeError("serialized learner frame differs byte-for-byte after CSV round-trip")
+        write_new(args.recommendation_input, recommendation_request)
     training_csv_sha = d.file_sha256(args.training_frame)
     recommendation_input_sha = d.file_sha256(args.recommendation_input)
     lock = make_lock(args, source_frame, train, model, actions, support_checks, fit_check,
@@ -470,6 +529,7 @@ def main(argv=None):
     parser.add_argument("--training-frame", type=Path)
     parser.add_argument("--recommendation-input", type=Path)
     parser.add_argument("--response-vectors", type=Path)
+    parser.add_argument("--recovery-manifest", type=Path)
     parser.add_argument("--run-id")
     parser.add_argument("--attempt-id")
     parser.add_argument("--timeout-seconds", type=int, default=21600)
@@ -478,13 +538,13 @@ def main(argv=None):
         result = structural_mode(args)
     elif args.mode == "dry-run":
         for name in ("structural", "lock", "recommendations", "evaluation", "summary", "r_library",
-                     "original_lock", "original_audit", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input", "response_vectors", "attempt_id"):
+                     "original_lock", "original_audit", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input", "response_vectors", "attempt_id", "recovery_manifest"):
             if getattr(args, name) is None: parser.error(f"--{name.replace('_','-')} is required in dry-run mode")
         os.environ["R_LIBS_USER"] = str(args.r_library.resolve())
         result = dry_run_mode(args)
     else:
         for name in ("structural", "lock", "recommendations", "evaluation", "summary", "r_library",
-                     "original_lock", "original_audit", "preflight_report", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input", "response_vectors"):
+                     "original_lock", "original_audit", "preflight_report", "historical_artifact_dir", "execution_manifest", "training_frame", "recommendation_input", "response_vectors", "recovery_manifest"):
             if getattr(args, name) is None: parser.error(f"--{name.replace('_','-')} is required in pilot mode")
         result = pilot_mode(args)
     print(json.dumps({"status": result["status"], "output": args.output.name}, sort_keys=True))

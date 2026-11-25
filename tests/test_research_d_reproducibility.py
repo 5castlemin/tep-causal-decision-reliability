@@ -3,9 +3,11 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import json
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import pandas as pd
@@ -138,6 +140,43 @@ class ResearchDReproducibilityTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "schema/shape"):
                 read_training_frame(path, node_order=["Y", "X"], rows=3,
                                     expected_numeric_sha256=expected)
+
+    def test_recovery_inputs_require_exact_preserved_training_and_g0_request(self):
+        from research.external_validation.semisynthetic_evaluation.run_development_pilot import (
+            AUTHORIZED_RUN_ID, validate_recovery_inputs)
+        from research.external_validation.semisynthetic_evaluation.pipeline import file_sha256
+        frame = pd.DataFrame(np.arange(512 * 6, dtype=float).reshape(512, 6),
+            columns=["Station1_mp_0", "Station1_mp_1", "Station1_mp_2",
+                     "Station1_mp_3", "Station1_mp_4", "Station1_mp_5"])
+        numeric_hash = hashlib.sha256(frame.to_numpy(dtype=float).tobytes(order="C")).hexdigest()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            training, request_path, lock_path, manifest_path = (
+                root / "training.csv", root / "request.json", root / "lock.json", root / "recovery.json")
+            training.write_bytes(serialize_training_frame(frame))
+            request_path.write_text(json.dumps({"schema": "RESEARCH_D_RECOMMENDATION_INPUT_V1",
+                "training_numeric_sha256": numeric_hash, "actions": [0.1, 0.2, 0.3, 0.4, 0.5],
+                "g0": [{} for _ in range(32)]}), encoding="utf-8")
+            lock_path.write_text(json.dumps({"node_order": list(frame.columns),
+                "training": {"sha256": numeric_hash}}), encoding="utf-8")
+            manifest = {"schema": "RESEARCH_D_REPRODUCTION_RECOVERY_INPUTS_V1",
+                "run_id": AUTHORIZED_RUN_ID,
+                "failed_attempt_id": f"{AUTHORIZED_RUN_ID}-preflight-02-runner",
+                "learner_training_rows": 512, "g0_seed_records": 32,
+                "recommendation_rows": 0, "evaluator_rows": 0,
+                "training_csv_sha256": file_sha256(training),
+                "training_numeric_sha256": numeric_hash,
+                "recommendation_input_sha256": file_sha256(request_path)}
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            args = SimpleNamespace(recovery_manifest=manifest_path, training_frame=training,
+                recommendation_input=request_path, original_lock=lock_path)
+            result = validate_recovery_inputs(args)
+            self.assertEqual(result["training_rows_reused"], 512)
+            self.assertEqual(result["additional_training_rows_generated"], 0)
+            manifest["recommendation_rows"] = 1
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "recovery manifest"):
+                validate_recovery_inputs(args)
 
 
 if __name__ == "__main__":
