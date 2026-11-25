@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-25",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -463,8 +463,8 @@
       "id": "RC-HELDOUT",
       "title": "Research C Held-out V1 독립 평가",
       "status": "VERIFIED",
-      "evidence": "RESEARCH_C_HELDOUT_V1_RESULTS.md; RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md",
-      "next_action": "정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성",
+      "evidence": "RESEARCH_C_HELDOUT_V1_RESULTS.md; RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md; research/research_c_mechanism_analysis/CHANGMIN_METRIC_POLICY_ANALYSIS.md (PR #40, 미병합)",
+      "next_action": "정창민 M1–M4 메커니즘 분석 초안 작성 완료(PR #40, 재생성 ledger 기반 사후 탐색). 검토 후 원본 ledger로 read-only 대조",
       "acceptance": "정의 리뷰, SCM ID 연결 수정·비용·행동·Regret 표, 반례 포함 사례 3–5개, final analysis note; 기존 ledger·정책 코드 불변",
       "depends_on": []
     }
@@ -531,7 +531,8 @@
     "2026-10-29 ERROR-CONFIRM 단일사전계약·예산검토완료/PARTIAL,REDESIGN_REQUIRED. PATH-PRECISION의MAE와별개Δ선택손실0.1폭계획. 신규실험없음;자원범위결정전실행안함.",
     "2026-10-29 MFG-INTEGRATED는새대체후보의정적탐색/PARTIAL.CausalMan CONDITIONAL-CANDIDATE,실제GT/관측/do연결미검증.기존TEP STOP/ERROR-CONFIRM REDESIGN 및연구A원시·예산불변.공식채택/실행승인아님.",
     "2026-11-23: RC-HELDOUT는 Research C Held-out V1 실행·감사 완료 상태를 의미한다. 연구 산출물은 이 로컬 연구 브랜치에 있으며 main 병합을 뜻하지 않는다. 후속 정창민 M1–M4 기전 분석은 사용자 배정 업무다.",
-    "2026-11-23 repo repair: Step 4 frozen docs/research_state.json is preserved at its original frozen bytes. The changing operational status now lives in docs/research_state_current.json; PR #38 was merged on 2026-11-16. No frozen experiment, manifest, or cohort is rerun."
+    "2026-11-23 repo repair: Step 4 frozen docs/research_state.json is preserved at its original frozen bytes. The changing operational status now lives in docs/research_state_current.json; PR #38 was merged on 2026-11-16. No frozen experiment, manifest, or cohort is rerun.",
+    "2026-11-25: RC-HELDOUT 후속 M1–M4 메커니즘 분석을 research/research_c_mechanism_analysis/에 추가(PR #40). 원본 ledger 대신 문서화된 seed로 Linux에서 재생성한 ledger를 사용했고 요약 수치는 기존 결과와 일치했다. 승인 코드·Manifest·기존 ledger는 변경하지 않았다."
   ],
   "integration_review": {
     "user_approved": true,

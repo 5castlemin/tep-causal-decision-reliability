@@ -407,3 +407,5 @@ Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단�
 - 2026-11-23: 문서 인수인계 커밋 9deb36869ec117cfdff8bd1ebc9387a548817ba를 docs/research-journey-team-handoff-20261123에 생성하고 origin에 일반 Push했다. PR은 생성하지 않았다. 문서 링크 검사, research-state 생성기, git diff --check 통과; 전체 실험 테스트는 문서만 변경하여 실행하지 않았다.
 
 - Correction (2026-11-23): the earlier entry recorded Push as held, but after inspecting the 41-commit / 117-file range and scanning for common credential patterns and files over 5 MB, the user-authorized new branch was pushed. The remote branch contains the full existing research history plus handoff commits; no PR was created.
+
+- 2026-11-25: 정창민 담당 M1–M4 메커니즘 분석을 `claude/project-thread-sjj7ri`에서 `research/research_c_mechanism_analysis/`로 추가했다(PR #40). 원본 SQLite(`C:\DAT_RESEARCH`)에 접근할 수 없어 문서화된 seed·target·cap(Dev 2026112301/64/386, Held-out 2026112303/200/1104)으로 Linux CPython 3.11.18·동일 lock에서 `run_approved_research_proposal_cohort`를 직접 호출해 분석용 ledger를 재생성했다(승인 gate 미경유, research 결과 아님). 17×5 평균 Regret, P1 delta·CI 구성값, 개선/악화/동률, 수정 건수가 기존 결과 문서와 일치했다. 재생성 DB는 Git에 넣지 않았다. 승인 코드·Manifest·기존 ledger는 변경하지 않았다. 분석은 Held-out 열람 후 사후 탐색이다.
