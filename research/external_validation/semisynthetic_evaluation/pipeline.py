@@ -281,7 +281,8 @@ def graph_free_recommendation(train, actions, target, scale):
 
 
 def lock_recommendations(train, train_hash, truth, nodes, actions, g0_rows, lock_path,
-                         contract_path: Path = CONTRACT_PATH):
+                         contract_path: Path = CONTRACT_PATH,
+                         contract_sha256: str | None = None):
     from research.original_objective import policy_engine as pe
     if lock_path.exists(): raise FileExistsError("recommendation lock artifact already exists")
     y = train[TASK_Y].to_numpy(dtype=float)
@@ -320,8 +321,11 @@ def lock_recommendations(train, train_hash, truth, nodes, actions, g0_rows, lock
     keys = [(r["g0_seed_id"], r["budget"], r["policy_id"]) for r in rows]
     if len(rows) != expected or len(set(keys)) != expected:
         raise ValueError("recommendation manifest has missing or duplicate rows")
+    bound_contract_sha = contract_sha256 or file_sha256(contract_path)
+    if len(bound_contract_sha) != 64 or any(c not in "0123456789abcdef" for c in bound_contract_sha):
+        raise ValueError("invalid bound scientific contract digest")
     manifest = {"schema": "RESEARCH_D_RECOMMENDATION_LOCK_V1", "locked": True,
-        "contract_sha256": file_sha256(contract_path), "training_sha256": train_hash,
+        "contract_sha256": bound_contract_sha, "training_sha256": train_hash,
         "task": {"action": TASK_X, "target": TASK_Y}, "actions": actions,
         "target_training_only": target, "scale_training_only": scale,
         "training_rows": int(len(train)), "g0_seed_ids": [r["seed_id"] for r in g0_rows],
@@ -350,16 +354,33 @@ def validate_recommendation_lock(path: Path, expected_contract_hash: str):
 
 
 def evaluate_locked(*, model, lock_path: Path, contract_path: Path, output_path: Path,
-                    evaluation_seed_root: int, rows_per_action: int):
+                    evaluation_seed_root: int, rows_per_action: int,
+                    bootstrap_replicates: int = 2000, bootstrap_seed: int = 91420263):
     from research.external_validation.semisynthetic_adapter.float_hard_do_adapter import sample_hard_do
     if output_path.exists(): raise FileExistsError("evaluator output already exists")
     contract_hash = file_sha256(contract_path)
     manifest, lock_hash = validate_recommendation_lock(lock_path, contract_hash)
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
     actions = [float(v) for v in manifest["actions"]]
     if not actions or len(actions) > 5 or len(set(actions)) != len(actions):
         raise ValueError("invalid common action set")
     if rows_per_action > 256 or len(actions) * rows_per_action > 1280:
         raise ValueError("pilot evaluation sample cap exceeded")
+    if (contract.get("mode") != "development_reproduction_only"
+            or actions != contract.get("action_grid", {}).get("values")
+            or evaluation_seed_root != contract.get("evaluation", {}).get("seed_root")
+            or rows_per_action != contract.get("evaluation", {}).get("rows_per_action")
+            or bootstrap_replicates != contract.get("evaluation", {}).get("bootstrap_replicates")
+            or bootstrap_seed != contract.get("evaluation", {}).get("bootstrap_seed")
+            or manifest.get("task") != {"action": contract["task"]["action"], "target": contract["task"]["target"]}
+            or manifest.get("g0_seed_ids") != contract.get("g0", {}).get("seed_ids")
+            or manifest.get("target_training_only") != contract.get("target_scale", {}).get("target")
+            or manifest.get("scale_training_only") != contract.get("target_scale", {}).get("scale")
+            or manifest.get("training_rows") != contract.get("training", {}).get("n")
+            or manifest.get("training_sha256") != contract.get("training", {}).get("sha256")):
+        raise ValueError("evaluator inputs differ from the exact scientific reproduction lock")
+    if bootstrap_replicates <= 0:
+        raise ValueError("bootstrap replicate count must be positive")
     names = list(model.nodes)
     targets = {row["recommended_action"] for row in manifest["recommendations"]}
     if not targets.issubset(set(actions)): raise ValueError("recommendation outside locked action support")
@@ -414,7 +435,7 @@ def evaluate_locked(*, model, lock_path: Path, contract_path: Path, output_path:
     # Two-source bootstrap: resample G0s as paired units and independently
     # resample rows within each common action draw. The action resample is shared
     # across all graph seeds because the observed action loss table is shared.
-    b_reps, rng = 2000, np.random.default_rng(91420263)
+    b_reps, rng = bootstrap_replicates, np.random.default_rng(bootstrap_seed)
     paired = {}
     for row in evaluated:
         if row["budget"] == 2 and row["policy_id"] in ("S0", "M1+M2+M3+M4"):
@@ -447,7 +468,7 @@ def evaluate_locked(*, model, lock_path: Path, contract_path: Path, output_path:
     for j in range(b_reps): g0_only_draws[j] = np.mean(rng.choice(fixed_deltas, size=len(fixed_deltas), replace=True))
     baseline_action = float(manifest["graph_free_baseline"]["action"])
     baseline_loss = loss_table[action_lookup[baseline_action]]
-    primary_uncertainty = {"bootstrap_replicates": b_reps, "bootstrap_seed": 91420263,
+    primary_uncertainty = {"bootstrap_replicates": b_reps, "bootstrap_seed": bootstrap_seed,
         "g0_only_percentile_95": [float(x) for x in np.quantile(g0_only_draws, [0.025, 0.975])],
         "action_mc_only_percentile_95": [float(x) for x in np.quantile(mc_only, [0.025, 0.975])],
         "two_source_percentile_95": [float(x) for x in np.quantile(two_source, [0.025, 0.975])],

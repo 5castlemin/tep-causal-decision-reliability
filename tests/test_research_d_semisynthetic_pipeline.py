@@ -42,6 +42,8 @@ class SemisyntheticPipelineBoundaryTests(unittest.TestCase):
         body = {"locked": True, "contract_sha256": sha256_bytes(contract.read_bytes()),
             "actions": [0.5], "g0_seed_ids": [8], "recommendations": rows,
             "target_training_only": 0.5, "scale_training_only": 1.0,
+            "training_rows": 512, "training_sha256": "b" * 64,
+            "task": {"action": "Station1_mp_0", "target": "Station1_mp_4"},
             "graph_free_baseline": {"action": 0.5}}
         body["content_sha256"] = sha256_bytes(canonical_json(body))
         path.write_text(json.dumps(body), encoding="utf-8")
@@ -50,7 +52,14 @@ class SemisyntheticPipelineBoundaryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             contract = root / "contract.json"
-            contract.write_text('{"contract":"locked"}', encoding="utf-8")
+            contract.write_text(json.dumps({"mode": "development_reproduction_only",
+                "action_grid": {"values": [0.5]},
+                "evaluation": {"seed_root": 314159, "rows_per_action": 2,
+                    "bootstrap_replicates": 20, "bootstrap_seed": 314160},
+                "task": {"action": "Station1_mp_0", "target": "Station1_mp_4"},
+                "g0": {"seed_ids": [8], "budgets": [0, 1, 2, 3, 4]},
+                "target_scale": {"target": 0.5, "scale": 1.0},
+                "training": {"n": 512, "sha256": "b" * 64}}), encoding="utf-8")
             missing = root / "missing.json"
             with self.assertRaises(ValueError):
                 validate_recommendation_lock(missing, sha256_bytes(contract.read_bytes()))
@@ -99,12 +108,20 @@ class SemisyntheticPipelineBoundaryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             contract = root / "contract.json"
-            contract.write_text('{"contract":"locked"}', encoding="utf-8")
+            contract.write_text(json.dumps({"mode": "development_reproduction_only",
+                "action_grid": {"values": [0.5]},
+                "evaluation": {"seed_root": 314159, "rows_per_action": 2,
+                    "bootstrap_replicates": 20, "bootstrap_seed": 314160},
+                "task": {"action": "Station1_mp_0", "target": "Station1_mp_4"},
+                "g0": {"seed_ids": [8], "budgets": [0, 1, 2, 3, 4]},
+                "target_scale": {"target": 0.5, "scale": 1.0},
+                "training": {"n": 512, "sha256": "b" * 64}}), encoding="utf-8")
             lock = root / "recommendations.json"
             output = root / "evaluation.json"
             self._locked_manifest(lock, contract)
             result = evaluate_locked(model=self._Model(), lock_path=lock, contract_path=contract,
-                output_path=output, evaluation_seed_root=314159, rows_per_action=2)
+                output_path=output, evaluation_seed_root=314159, rows_per_action=2,
+                bootstrap_replicates=20, bootstrap_seed=314160)
             self.assertEqual(result["total_intervention_rows"], 2)
             self.assertTrue(result["raw_response_rows_saved"] is False)
             self.assertFalse(result["policy_recommendation_changed_after_lock"])
