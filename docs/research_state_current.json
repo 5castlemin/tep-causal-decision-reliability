@@ -483,9 +483,9 @@
       "id": "RD-QUALIFICATION",
       "title": "Research D 외부 검증 결정 및 반합성 preflight",
       "status": "PARTIAL",
-      "evidence": "research/external_validation/semisynthetic_preflight/PHYSICAL_VALIDATION_CLOSEOUT.md; research/external_validation/semisynthetic_preflight/CAUSALASSEMBLY_PREFLIGHT.md; research/external_validation/semisynthetic_preflight/preflight_summary.json",
-      "next_action": "별도 승인 후 causalAssembly용 Research D adapter에서 in-support float hard-do를 구현·검증. 실패하면 STOP_EXTERNAL_VALIDATION; 실측 평가와 본실험은 계속 보류",
-      "acceptance": "Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; causalAssembly CONDITIONAL_SEMISYNTHETIC (fit/sample PASS, float hard-do blocker); 본실험·정책 Regret NOT_RUN",
+      "evidence": "research/external_validation/semisynthetic_adapter/HARD_DO_ADAPTER_QUALIFICATION.md; research/external_validation/semisynthetic_adapter/adapter_validation_summary.json; research/external_validation/semisynthetic_preflight/PHYSICAL_VALIDATION_CLOSEOUT.md; research/external_validation/semisynthetic_preflight/CAUSALASSEMBLY_PREFLIGHT.md",
+      "next_action": "기술 adapter gate는 PASS. 별도 검토로 Research D 반합성 평가계약, action support, train/evaluation 분할, evaluator 정보격리를 제안·잠근 뒤 개발 파일럿 여부를 승인; 실측 평가는 DEFERRED",
+      "acceptance": "PASS_FLOAT_HARD_DO_ADAPTER는 기술 적격성만 의미. causalAssembly 외부 반합성 연구는 별도 계약·파일럿 승인 전 CONDITIONAL; Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 본실험·정책 Regret NOT_RUN",
       "depends_on": [
         "RD-FEASIBILITY"
       ]

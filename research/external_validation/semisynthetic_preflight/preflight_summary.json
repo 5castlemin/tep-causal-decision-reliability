@@ -144,12 +144,23 @@
     "research_c_code_or_frozen_artifacts_modified": false,
     "policy_performance_run": false,
     "research_d_main_experiment_approved": false,
-    "next_single_blocker": "Implement and independently verify a Research D adapter for finite numeric float hard interventions; stop external validation if unsupported without further vendor modification."
+    "next_single_blocker": "Float hard-do adapter technical blocker resolved in separate Research D qualification; next requires review/approval of a separate external robustness contract, action support, train/evaluation separation, and evaluator isolation. No main experiment approved."
   },
   "qualification_test_fix": {
     "file": "research/external_validation/design_resolution/preflight.py",
     "issue": "schema check used random_loads_both although target data are random_loads_intake",
     "corrected": true,
     "regression_test_added": true
+  },
+  "adapter_followup": {
+    "gate": "PASS_FLOAT_HARD_DO_ADAPTER",
+    "evidence": "research/external_validation/semisynthetic_adapter/HARD_DO_ADAPTER_QUALIFICATION.md",
+    "summary": "research/external_validation/semisynthetic_adapter/adapter_validation_summary.json",
+    "fixture_tests": "7/7 PASS",
+    "upstream_integer_parity": "PASS exact DataFrame match on separate in-support synthetic development fixture",
+    "station1_float_smoke": "PASS; two successful runs, 4 rows each; all 8 response rows exploratory and discarded",
+    "failed_pre_sampling_attempts": 2,
+    "study_or_regret_run": false,
+    "main_experiment_approved": false
   }
 }

@@ -4,7 +4,7 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **RD-QUALIFICATION — Research D 외부 검증 결정 및 반합성 preflight**: 별도 승인 후 causalAssembly용 Research D adapter에서 in-support float hard-do를 구현·검증. 실패하면 STOP_EXTERNAL_VALIDATION; 실측 평가와 본실험은 계속 보류 (PARTIAL)
+1. **RD-QUALIFICATION — Research D 외부 검증 결정 및 반합성 preflight**: 기술 adapter gate는 PASS. 별도 검토로 Research D 반합성 평가계약, action support, train/evaluation 분할, evaluator 정보격리를 제안·잠근 뒤 개발 파일럿 여부를 승인; 실측 평가는 DEFERRED (PARTIAL)
 2. **RC-HELDOUT — Research C Held-out V1 독립 평가**: 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 (VERIFIED)
 3. **RD-FEASIBILITY — Research D 외부 검증 타당성 감사**: CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 (VERIFIED)
 
@@ -12,7 +12,7 @@
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| RD-QUALIFICATION | PARTIAL | RD-FEASIBILITY | 별도 승인 후 causalAssembly용 Research D adapter에서 in-support float hard-do를 구현·검증. 실패하면 STOP_EXTERNAL_VALIDATION; 실측 평가와 본실험은 계속 보류 / Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; causalAssembly CONDITIONAL_SEMISYNTHETIC (fit/sample PASS, float hard-do blocker); 본실험·정책 Regret NOT_RUN |
+| RD-QUALIFICATION | PARTIAL | RD-FEASIBILITY | 기술 adapter gate는 PASS. 별도 검토로 Research D 반합성 평가계약, action support, train/evaluation 분할, evaluator 정보격리를 제안·잠근 뒤 개발 파일럿 여부를 승인; 실측 평가는 DEFERRED / PASS_FLOAT_HARD_DO_ADAPTER는 기술 적격성만 의미. causalAssembly 외부 반합성 연구는 별도 계약·파일럿 승인 전 CONDITIONAL; Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 본실험·정책 Regret NOT_RUN |
 | RC-HELDOUT | VERIFIED | 없음 | 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 / 정의 리뷰, SCM ID 연결 수정·비용·행동·Regret 표, 반례 포함 사례 3–5개, final analysis note; 기존 ledger·정책 코드 불변 |
 | RD-FEASIBILITY | VERIFIED | RC-HELDOUT | CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 / 감사 완료. 후보 채택·Research D 분석계약·본실험 승인은 별도 |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |

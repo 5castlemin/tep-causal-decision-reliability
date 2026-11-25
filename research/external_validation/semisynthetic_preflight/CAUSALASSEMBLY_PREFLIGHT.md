@@ -4,7 +4,7 @@
 
 Step 0의 외부 소스 checkout 및 다운로드 산출물을 재사용했다. causalAssembly 저장소는 commit `8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9`에 고정되어 있으며 공식 package version은 `1.2.1`이다. 이 checkout의 `LICENSE.txt`는 AGPL-3.0을 선언한다. 별도 파일별 데이터 이용조건을 찾지 못했으므로 후속 배포 시 출처 표시와 라이선스 조건을 검토해야 한다. 원자료와 외부 코드의 사본은 이 저장소에 추가하지 않았다.
 
-공식 논문은 이 도구가 assembly-line 제조 측정자료 및 공정 물리 지식으로부터 구성된 partial ground truth를 이용하고, 노드별 조건부 DRF를 결합해 reference graph에 Markov인 반합성 표본을 생성한다고 설명한다 ([Göbler et al., 2024](https://proceedings.mlr.press/v236/gobler24a.html)). 따라서 아래 graph는 생성된 자료의 **benchmark/generator reference**로 사용할 수 있지만, 98개 모든 간선이 독립 물리실험으로 입증된 완전한 실제 인과 GT라는 뜻은 아니다.
+공식 논문은 generator 기반이 assembly-line 제조 측정자료이며 physics-informed partial causal reference와 node-wise DRF 조건부를 사용해 공개 semisynthetic samples를 만든다고 설명한다 ([Göbler et al., 2024](https://proceedings.mlr.press/v236/gobler24a.html)). 따라서 아래 CSV는 제조 원자료가 아니라 해당 공개 generator의 반합성 출력이다. 이번 preflight의 DRF 적합은 이 출력에 대한 재적합이므로 외부 자료 기반 **2차 fit generator**라고 표현한다. 그래프는 생성 benchmark/reference이며 98개 모든 간선이 독립 물리 실험으로 입증된 완전한 실제 인과 GT라는 뜻은 아니다.
 
 | 핀된 자료 | 크기/스키마 | SHA-256 |
 |---|---:|---|
@@ -59,7 +59,7 @@ utils.install_packages("drf", repos="https://cloud.r-project.org/", lib=r('Sys.g
 
 `ProductionLineGraph.get_ground_truth()`, `get_data()`, `fit_drf()`를 실행했다. pinned archive 기준 재현에서 6개 station node 모델의 fit은 약 22.3초 걸렸다. 같은 fit object와 같은 NumPy seed로 2개 관측행을 두 번 생성한 결과가 일치했고, 모든 값은 finite였다. `ProductionLineGraph`는 생성자에서 intervention state가 비어 있는 새 객체를 만들어 재사용 가능한 fitted DRF를 연결할 수 있다.
 
-연속 action 지원 확인은 실패했다. Station1 `mp_0`의 학습자료 중앙값(관측 범위 안의 float)은 `intervene_on()`에는 저장되지만 `sample_from_interventional_drf()`가 `NotImplementedError: Currently only hard and soft interventions are implemented`를 반환했다. 소스는 hard constant intervention을 `int`만 반복 생성하고, 그 외 실수값은 지원하지 않는다. 제시된 제조측 변수의 데이터 값은 연속 float이므로 임의 정수 조작은 in-support action 검증으로 볼 수 없다. `RandomSymbol` soft intervention도 fixed hard do와 estimand가 다르므로 대체로 쓰지 않았다.
+이 실행 시점에는 연속 action 지원 확인이 실패했다. Station1 `mp_0`의 학습자료 중앙값(관측 범위 안의 float)은 `intervene_on()`에는 저장되지만 `sample_from_interventional_drf()`가 `NotImplementedError: Currently only hard and soft interventions are implemented`를 반환했다. 소스는 hard constant intervention을 `int`만 반복 생성하고, 그 외 실수값은 지원하지 않는다. 제시된 변수의 데이터 값은 연속 float이므로 임의 정수 조작은 in-support action 검증으로 볼 수 없다. `RandomSymbol` soft intervention도 fixed hard do와 estimand가 다르므로 대체로 쓰지 않았다. 이후 별도 adapter의 실제 통과 결과는 `../semisynthetic_adapter/HARD_DO_ADAPTER_QUALIFICATION.md`에 기록했다. 이 수정은 upstream API 실패를 덮거나 원자료 검사를 바꾸지 않는다.
 
 DRF R package 설치와 적합은 별도 venv/R library에서 정상 동작했다. R startup은 Windows에서 ABI 모드로 fallback하고 locale warning을 냈지만 적합 및 관측 샘플 생성에는 영향을 주지 않았다. smoke test는 generator fit에 R `set.seed(2031)`, 표본 추출에 NumPy `default_rng(2031)`를 썼다. pinned API의 기본 ProductionLineGraph RNG는 seed 2023이며 sampling RNG를 바꿀 수 있다. `fit_drf()` 함수 자체에는 seed 인자가 없어 재현 스크립트가 R 전역 RNG를 설정했다.
 

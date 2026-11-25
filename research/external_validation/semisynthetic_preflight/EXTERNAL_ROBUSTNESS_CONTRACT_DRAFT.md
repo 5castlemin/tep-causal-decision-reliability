@@ -16,7 +16,7 @@
 
 ## Generator, learner, evaluator 분리
 
-1. **Generator fit set:** pinned 500×98 external semisynthetic sample 및 pinned official DAG. 기존 `fit_drf`를 지정된 Station1 subgraph에 적합하고, seed/R version/DRF version을 기록한다. 이는 external data-based refit이며 외부에서 독립 확인된 물리 mechanism이 아니다.
+1. **Generator fit set:** pinned 500×98 공개 반합성 benchmark sample 및 pinned official DAG. 논문은 이 generator의 기반이 제조 assembly line에서 수집된 실측 자료와 공정 물리 지식에 기초한 partial causal ground truth이며, conditional DRF들을 결합해 반합성 표본을 만든다고 설명한다. 이 CSV 자체는 제조 원자료가 아니라 공개 반합성 benchmark 표본이다. 이 표본에 기존 `fit_drf`를 재적합하므로 이번 외부 DGP는 **반합성 표본에 다시 적합한 외부 자료 기반 DGP**이며, 외부 연구진이 물리적으로 확정한 causal mechanism을 그대로 사용한 것이 아니다 ([Göbler et al., 2024](https://proceedings.mlr.press/v236/gobler24a.html)). seed/R version/DRF version을 기록한다.
 2. **Learner train set:** 고정 fitted DRF에서 별도 seed로 생성한 observational sample. Research C의 기존 observational Ridge learner 및 기존 graph recommendation/policy code를 유지한다. 생성 DGP object/DRF, intervention draw 및 `Y(do(a))`를 learner에 전달하지 않는다.
 3. **Intervention evaluation:** train set 및 추천 freeze 후 별도 evaluator-only process에서 각 사전 고정 action의 별도 interventional DRF draw를 생성한다. same action-set/common evaluation protocol을 S0와 Full Greedy에 적용한다. 샘플은 smoke-exposed 표본과 분리한다.
 4. **Structure repair:** pinned Station1 reference에서 Causal C error-injection / M1–M4 / S0 / Full Greedy / M4 / atomic cost 1을 유지하는 후보. policy engine 코드 변경 없이 existing Research C engine에 mapping하는 별도 adapter를 사용한다. Exact seed/candidate lists and information access must be frozen.
@@ -32,7 +32,7 @@ Station1은 6 nodes, 7 edges, 8 absent unordered pairs로 Research C가 사용�
 - Primary candidate: B=2에서 `Δ = Regret(S0) − Regret(Full Greedy)`; 동일 task/action set/training sample/reference/G0/target/scale/evaluation draws로 paired.
 - 같은 공통 action set의 population-optimal loss 항은 두 regret의 차에서 상쇄되므로 우선 추정량은 `L_exp(a_S0)-L_exp(a_FullGreedy)`이다.
 - loss: `L(a)=(E[Y|do(a)]-y*)²/scale_train²`. 이는 목표 평균추종 손실이지 개별 행 MSE도, 물리 생산성 손실도 아니다.
-- M4는 Secondary다. Graph-free arm-mean baseline은 같은 learner train samples/action set/evaluation samples/target/scale을 사용하며 구조정보가 다른 점을 명시한다.
+- M4는 Secondary다. 연속 action 변수에 관측자료의 exact arm-mean을 바로 적용할 수 있다고 가정하지 않는다. 후속 계약은 같은 observational learner training data와 action support를 사용하는 단순 X–Y 회귀 추천 및 사전 고정 비선형 association regression을 graph-free **association** 기준선 후보로 비교 검토한다. 별도 intervention training data가 향후 승인되면 arm-mean을 별도 정보 수준 기준선으로 제안할 수 있지만, 평가 intervention 표본의 arm mean으로 행동을 추천하지 않는다. 이번 adapter preflight에서는 어떤 graph-free learner도 학습·비교하지 않았다.
 - 절대 empirical regret은 행동 최솟값 선택 편향과 평가표본 불확실성을 별도 타당화하기 전 Primary로 두지 않는다.
 
 ## 분석 단위와 불확실성
@@ -41,7 +41,7 @@ Station1은 6 nodes, 7 edges, 8 absent unordered pairs로 Research C가 사용�
 
 ## 실패·제외 및 진입 전 잠금
 
-- float hard-do adapter가 action 값을 정확히 적용하지 못함, DAG/reference/variable hash 불일치, 공통 action split 지원 부족, seed 재현 실패, policy/evaluator 정보 경계 침해, 평가자료 누출이면 중단.
+- float hard-do adapter는 별도 Research D 코드에서 제한된 fixture 및 pinned causalAssembly R/DRF smoke로 기술 검증됐다. 이는 최종 action 집합, learner/evaluator split, 전체 정책 실행, 정보 경계 production gate 또는 본실험 승인이 아니다. 후속 계약 전에는 DAG/reference/variable hash, 공통 action support, generated observational training/evaluation split, evaluator 격리, loss/uncertainty 계약을 잠근다. float adapter의 재현 실패, 정보 경계 침해, 평가자료 누출이면 중단.
 - 평가 response를 보고 task, action, target, scale, error strata, budget을 바꾸지 않는다.
 - 개발 표본·외부 공개 benchmark 결과를 완전한 미열람 held-out이라고 부르지 않는다.
-- 다음 단계 진입 조건: adapter 소스·합성 fixture 테스트 리뷰, evaluator isolation/seed test, licensing/attribution 확인, G0 strata 및 split 계약 승인. 이 조건 중 첫 번째 hard-do 문제를 해결하지 못하면 외부 validation을 종료한다.
+- 다음 단계 진입 조건: adapter source와 fixture 테스트 리뷰, 단일 hard-do API 범위 승인, 향후 evaluator isolation/seed 및 train/evaluation separation 구현 계약, licensing/attribution 확인, G0 strata와 split contract 승인. 이번 기술 adapter PASS만으로 후속 개발 pilot이나 본실험을 승인하지 않는다. AGPL-3.0 pinned software source를 수정·복제하지 않고 얇은 adapter만 유지한다.
