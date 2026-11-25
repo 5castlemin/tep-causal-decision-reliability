@@ -2,7 +2,7 @@
 
 ## Graph inventory
 
-검사 입력은 Step 0 `inspection_results.json`의 핀된 `wt_standard` graph다. graph 32 nodes / 42 edges / DAG, 모든 graph node가 `random_loads_intake` CSV 스키마의 데이터 변수 목록과 일치한다. 전체 unordered pair 496, reference-absent 454, oriented absent pair 908이다.
+검사 입력은 Step 0 `inspection_results.json`의 핀된 `wt_standard` graph다. 독립 재현으로 pinned 공식 `causal-chamber-package` 저장소의 `causalchamber.ground_truth.graph('wt','standard')`를 실행했고, 반환된 32×32/42-edge edge set이 Step 0 graph와 정확히 일치했다. 소스 commit `087725404b9bad99df3162a0b3bd7da250f44fe3`, 파일 SHA-256은 source manifest에 기록했다. graph는 DAG이며 모든 노드가 `random_loads_intake` CSV 데이터 변수 목록과 일치한다. 전체 unordered pair 496, reference-absent 454, oriented absent pair 908이다. 이는 공식 reference 구현의 재현이지 모든 비간선에 대한 물리적 부재 증거가 아니다.
 
 후보 `load_in→rpm_in`과 `load_in→pressure_intake`는 모두 reference edge다. 둘 다 경로 길이 1, `task_zone()` pair count 1, zone nodes 2, Rule A task-FP 후보 0이다. 후보 과제 선택은 이 구조의 사전 검토로 판단되며 outcome 값은 접근하지 않았다.
 

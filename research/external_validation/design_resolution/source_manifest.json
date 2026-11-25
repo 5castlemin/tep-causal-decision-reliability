@@ -28,6 +28,20 @@
       "path": "datasets/wt_bernoulli_v1/README.md",
       "url": "https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1/README.md",
       "note": "Identifies the standard configuration, Bernoulli-principle dataset purpose, experiment table, and licenses."
+    },
+    {
+      "repository": "https://github.com/juangamella/causal-chamber-package",
+      "commit": "087725404b9bad99df3162a0b3bd7da250f44fe3",
+      "path": "causalchamber/ground_truth/main.py",
+      "bytes": 14114,
+      "sha256": "938c359313c13964922b4f3b3f13d4e9251a8d7834aa6f5d63000517c75c5207",
+      "verification": "Executed graph('wt','standard'); exact edge-set match to Step 0 inventory (32 nodes, 42 directed edges)."
+    },
+    {
+      "url": "https://arxiv.org/html/2404.11341",
+      "version": "2404.11341v2 (2024-08-26)",
+      "sections_used": ["Appendix II variable definitions", "reference graph limitations", "Appendix V intervention validation"],
+      "exposure_note": "Public edge-level intervention validation was read as provenance/context; no response means, action values, or policy outcomes were used to select the task or target. Benchmark is not wholly unseen."
     }
   ],
   "response_values_read": false,

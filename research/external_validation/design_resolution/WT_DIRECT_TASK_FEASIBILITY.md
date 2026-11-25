@@ -6,12 +6,14 @@
 
 ## 변수와 운영 해석
 
-공식 [variables.csv](https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1/variables.csv)는 `load_in`, `rpm_in`, `pressure_intake`를 측정 변수 목록에 두고 각 설명을 원 논문 Appendix II로 연결한다. 공식 [generator](https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1/generators/random_loads_intake.py)는 `load_in`을 0–1에서 draw해 0.01 단위로 기록하고 그 외 주요 외생 설정을 고정한다. 코드는 조작 명령을 직접 뒷받침하지만 variables.csv만으로 센서의 물리 단위와 제어 목적의 적절성을 확정하지 못한다. Dataset README는 이를 Bernoulli 원리 설명 및 symbolic regression(Fig. 6e) 자료로 소개하며 RPM/압력 setpoint 결정 과제로 제시하지 않는다.
+공식 [variables.csv](https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1/variables.csv)는 각 변수의 설명을 원 논문 Appendix II로 연결한다. 그 정의에 따르면 `load_in`은 흡입 팬을 제어하는 0–1 PWM duty-cycle 설정, `rpm_in`은 팬 회전수 센서의 RPM 측정, `pressure_intake`는 흡입구 barometer의 압력(Pa) 측정이다 ([원 논문 Appendix II](https://arxiv.org/html/2404.11341#A2)). 공식 [generator](https://github.com/juangamella/causal-chamber/blob/c2b307036446b8d3ca173e9f41ff465b7111819a/datasets/wt_bernoulli_v1/generators/random_loads_intake.py)는 `load_in`을 0–1에서 draw해 0.01 단위로 기록하고 그 외 주요 외생 설정을 고정한다. Dataset README는 자료를 Bernoulli 원리와 symbolic regression(Fig. 6e)에 연결하며 운영상 RPM/압력 setpoint 과제로 정하지 않는다.
 
 | 후보 | 참조 관계 | 과제 의미 | 한계 |
 |---|---|---|---|
-| `load_in → rpm_in` | 직접 간선 | 팬/흡입 측 부하 설정에 따른 흡입측 회전수 계측. 회전수 setpoint 추종이라는 제어 손실 후보 | 문서에 운영상 목표 회전수, 허용편차 또는 안전/효율 기준이 없음. `rpm_in`의 값 단위를 변수 CSV 자체가 제공하지 않음 |
-| `load_in → pressure_intake` | 직접 간선 | 부하 설정에 따른 흡입측 압력 계측. 압력 setpoint 추종 후보 | 목표 압력의 운영 의미, 변수 단위 및 직접-edge 외 경로의 완전성이 이 task 선정 근거로 확보되지 않음 |
+| `load_in → rpm_in` | 직접 간선 | PWM duty cycle 설정에 따른 흡입 팬 회전수(RPM) 계측. 물리 의미가 명확한 제어 결과 후보 | 운영상 목표 RPM, 허용편차, 안전/효율 기준이 없음. 운영 목표를 정당화할 자료는 미확보 |
+| `load_in → pressure_intake` | 직접 간선 | 설정에 따른 흡입구 압력(Pa) 계측 | 외기 대기압이 barometer에 영향을 준다고 논문이 명시하므로 미측정 환경 교란 우려가 있음. 목표 압력의 운영 의미도 미정 |
+
+물리 의미만으로 후속 재설계 후보를 하나 우선순위화한다면 `rpm_in`이 더 직접적이다. 이는 `load_in`이 팬 속도를 제어하고 `rpm_in`이 RPM을 측정한다는 사전 장치 의미에 따른 제안이며 결과 반응값에 따른 선택이 아니다. 그러나 운영 목표 RPM이나 손실의 실질적 의미가 주어지지 않아 과제를 확정하지 않는다. 논문은 `pressure_intake`가 외부 대기압 영향에 노출됨을 기술하고, `load_in→rpm_in` 및 `load_in→pressure_intake`를 별도 개입 검증 표에도 보고한다. 이 공개 outcome 관련 문헌 노출 때문에 Wind Tunnel benchmark를 완전히 미열람 held-out이라고 부를 수 없다. 표의 통계량은 과제나 목표 선택에 사용하지 않았다 ([논문](https://arxiv.org/html/2404.11341#A5)).
 
 두 Y 모두 측정 결과이지 조작 변수가 아니다. 손실이 작아진다 해도 실제 에너지 소비, 환기 품질, 안전 또는 산업 공정 개선으로 해석할 수 없다. 명령 설정 `load_in`과 실제 팬 부하가 같다는 telemetry도 없다.
 

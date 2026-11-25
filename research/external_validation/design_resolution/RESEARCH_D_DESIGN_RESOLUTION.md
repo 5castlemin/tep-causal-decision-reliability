@@ -24,7 +24,7 @@ Wind Tunnel 수치 오류·시계열 동작이 Mk2를 소급 해결하지 않는
 
 ## D. M1–M4 비교 가치 및 오류 계약
 
-공식 `wt_standard` graph는 32/42 DAG이며 모든 graph node가 CSV schema에 있다. pair는 전체 496, 참조 부재 454, oriented candidates 908. 다만 graph는 모든 부재 pair의 물리 음성 검증이 아니다.
+공식 package의 pinned graph loader를 독립 실행하여 Step 0 graph와 32 nodes/42 edges가 정확히 일치함을 확인했다(소스 commit 및 SHA-256은 source manifest). 모든 graph node가 CSV schema에 있다. Pair는 전체 496, 참조 부재 454, oriented candidates 908. 다만 이는 공식 reference 구현의 재현이지 모든 부재 pair의 물리 음성 검증이 아니다. 원 논문은 비간선이 인과효과 부재를 뜻하지 않으며 외부 대기압이 pressure 센서에 영향을 줄 수 있다고 명시한다. 변수 정의상 `load_in`은 0–1 PWM duty cycle, `rpm_in`은 RPM 센서, `pressure_intake`는 Pa barometer다. 후속 재설계의 물리 의미 우선 후보로 RPM을 제안할 수 있으나 operating target은 확인되지 않아 과제 미확정이다. 논문의 직접 개입 edge 검증 결과를 포함한 Appendix V를 읽었으므로 문헌상 outcome 관련 노출이 있었고, 이를 과제 선택이나 성능 예측에 사용하지 않았다. 본 benchmark를 완전히 미열람 외부 평가라 하지 않는다.
 
 완전 물리 GT 계약은 FAIL, 제한 verified reference는 pair-specific negative evidence가 없어 지금 채택 불가, reference-relative benchmark는 명확한 표현으로 가능하지만 direct task에서 M4가 1개 edge의 FN/REV/UNRES만 처리하고 FP opportunity 0인 구조다. off-task 오류가 실측 action loss를 바꾼다는 증거는 없다. M1–M4의 정책 점수 proxy가 외부 환경에서 유용한 수리 우선순위를 제공한다는 전제가 이 task만으로 평가될 수 없다. 전체 대안은 [reference contract](REFERENCE_RELATIVE_CONTRACT_OPTIONS.md), 구조 fixture 결과는 [preflight](EXTERNAL_STRUCTURE_PREFLIGHT.md)에 기록했다.
 
