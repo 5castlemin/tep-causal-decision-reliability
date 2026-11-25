@@ -67,4 +67,4 @@ The question is whether the Research C repair-priority relationship is observed 
 - Exact pre-evaluation lock: `development_run_lock.json` (includes source, graph, training and code hashes, exact action values, target/scale, environment and limits).
 - Recommendation lock: local ignored file `data/local/research-d-semisen-pilot/recommendations.json`; its hash is reported in the results, while generated evaluation rows and raw frames stay out of Git.
 - Development G0 structural audit: `development_g0_manifest.json`.
-- Structural-only qualification: `structural_preflight.json`.\n
+- Structural-only qualification: `structural_preflight.json`.

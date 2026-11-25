@@ -484,8 +484,8 @@
       "title": "Research D 반합성 평가 계약·파이프라인·개발 파일럿",
       "status": "PARTIAL",
       "evidence": "research/external_validation/semisynthetic_evaluation/RESEARCH_D_DEVELOPMENT_CONTRACT.md; RESEARCH_D_PIPELINE_VALIDATION.md; RESEARCH_D_DEVELOPMENT_PILOT_RESULTS.md; RESEARCH_D_FINAL_CONTRACT_DRAFT.md; development_run_lock.json; development_g0_manifest.json",
-      "next_action": "완료된 G1/G2/G3 및 READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW를 검토하여 별도 승인 또는 외부 검증 종료 결정. 최종 평가자료는 아직 생성하지 않음; 물리 실측 평가는 DEFERRED",
-      "acceptance": "B=2 Development Δ=+0.003338, two-source 95% bootstrap [-0.065322,0.075465]; 단일 고정 DRF와 32 G0에 조건부인 개발 결과. 최종 외부평가·확증 주장 미승인. Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 실측 개입 검증 DEFERRED",
+      "next_action": "G1/G2 통과, G3 DEVELOPMENT_PILOT_INCOMPLETE: 사전 잠금 pipeline SHA와 현재 파일 SHA가 불일치. 새 계약 잠금으로 제한 파일럿 재실행 승인 여부 결정; 최종 평가자료 미생성, 물리 실측 DEFERRED",
+      "acceptance": "실행된 파일럿 aggregate는 exploratory: B=2 Δ=+0.003338, two-source 95% bootstrap [-0.065322,0.075465]. 사전 잠금 pipeline SHA와 현재 파일 SHA 불일치로 G3 DEVELOPMENT_PILOT_INCOMPLETE; 재잠금 반복 전 과학적 근거로 사용하지 않음. 최종 외부평가 미생성. Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 실측 개입 검증 DEFERRED",
       "depends_on": [
         "RD-FEASIBILITY"
       ]

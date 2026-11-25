@@ -4,7 +4,7 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **RD-QUALIFICATION — Research D 반합성 평가 계약·파이프라인·개발 파일럿**: 완료된 G1/G2/G3 및 READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW를 검토하여 별도 승인 또는 외부 검증 종료 결정. 최종 평가자료는 아직 생성하지 않음; 물리 실측 평가는 DEFERRED (PARTIAL)
+1. **RD-QUALIFICATION — Research D 반합성 평가 계약·파이프라인·개발 파일럿**: G1/G2 통과, G3 DEVELOPMENT_PILOT_INCOMPLETE: 사전 잠금 pipeline SHA와 현재 파일 SHA가 불일치. 새 계약 잠금으로 제한 파일럿 재실행 승인 여부 결정; 최종 평가자료 미생성, 물리 실측 DEFERRED (PARTIAL)
 2. **RC-HELDOUT — Research C Held-out V1 독립 평가**: 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 (VERIFIED)
 3. **RD-FEASIBILITY — Research D 외부 검증 타당성 감사**: CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 (VERIFIED)
 
@@ -12,7 +12,7 @@
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| RD-QUALIFICATION | PARTIAL | RD-FEASIBILITY | 완료된 G1/G2/G3 및 READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW를 검토하여 별도 승인 또는 외부 검증 종료 결정. 최종 평가자료는 아직 생성하지 않음; 물리 실측 평가는 DEFERRED / B=2 Development Δ=+0.003338, two-source 95% bootstrap [-0.065322,0.075465]; 단일 고정 DRF와 32 G0에 조건부인 개발 결과. 최종 외부평가·확증 주장 미승인. Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 실측 개입 검증 DEFERRED |
+| RD-QUALIFICATION | PARTIAL | RD-FEASIBILITY | G1/G2 통과, G3 DEVELOPMENT_PILOT_INCOMPLETE: 사전 잠금 pipeline SHA와 현재 파일 SHA가 불일치. 새 계약 잠금으로 제한 파일럿 재실행 승인 여부 결정; 최종 평가자료 미생성, 물리 실측 DEFERRED / 실행된 파일럿 aggregate는 exploratory: B=2 Δ=+0.003338, two-source 95% bootstrap [-0.065322,0.075465]. 사전 잠금 pipeline SHA와 현재 파일 SHA 불일치로 G3 DEVELOPMENT_PILOT_INCOMPLETE; 재잠금 반복 전 과학적 근거로 사용하지 않음. 최종 외부평가 미생성. Mk2 DEFERRED_PENDING_EXTERNAL_EVIDENCE; Wind Tunnel PHYSICAL_CASE_REDESIGN_REQUIRED; 실측 개입 검증 DEFERRED |
 | RC-HELDOUT | VERIFIED | 없음 | 정창민: 동결된 원시 결과를 읽기 전용으로 분석해 M1–M4 수정 메커니즘 보고서를 작성 / 정의 리뷰, SCM ID 연결 수정·비용·행동·Regret 표, 반례 포함 사례 3–5개, final analysis note; 기존 ledger·정책 코드 불변 |
 | RD-FEASIBILITY | VERIFIED | RC-HELDOUT | CONDITIONAL_GO 감사 검토 후 Mk2 linked_leds 참조 범위, 세션/분할 증빙과 평가 계약 검토 여부를 결정 / 감사 완료. 후보 채택·Research D 분석계약·본실험 승인은 별도 |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |

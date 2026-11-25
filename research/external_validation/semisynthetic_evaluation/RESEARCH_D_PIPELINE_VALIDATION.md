@@ -4,9 +4,9 @@
 
 - **G1 Scientific contract: PASS for the bounded Development Pilot.** The exact task, numeric actions, learner-training-only target/scale, q/r corruption, budgets, policy set, estimands, bootstrap, seeds, resource limits and code/source hashes were written to `development_run_lock.json` before any evaluator intervention sample was generated.
 - **G2 Technical pipeline: PASS for this bounded pilot.** Fixture, Research C-policy-to-Ridge adapter, lock/tamper rejection, complete evaluator fixture, exact schema/finiteness, actual pinned R/DRF fit, parent-order checks, exact float hard-do, deterministic refit and separate evaluator subprocess all passed.
-- **G3 Development Pilot: COMPLETED within bounds.** One DRF fit distribution, one 512-row training sample, 32 G0 seeds, 17 policies, five budgets, five common actions, 256 evaluator rows/action and 1,280 total evaluator rows. No final seed or final evaluation sample was created.
+- **G3 Development Pilot: INCOMPLETE for byte-level provenance.** The bounded run completed, but a post-run formatting error changed the current pipeline.py SHA-256 from the pre-run lock; aggregates remain exploratory and require a newly locked repeat before final-contract review. One DRF fit distribution, one 512-row training sample, 32 G0 seeds, 17 policies, five budgets, five common actions, 256 evaluator rows/action and 1,280 total evaluator rows. No final seed or final evaluation sample was created.
 
-These are technical and development gates, not approval for a final external evaluation or a claim of real manufacturing validity.
+G1 and G2 passed. G3 execution completed within bounds, but DEVELOPMENT_PILOT_INCOMPLETE is the final gate because the recorded code digest no longer matches the current source byte stream. These results are exploratory and not approval for a final external evaluation or a claim of real manufacturing validity.
 
 ## Pinned integration checks
 
@@ -48,4 +48,4 @@ The separate integration command used the pinned `causalassembly-preflight-venv`
 - Exact run-lock file SHA-256: `9f3c63c5aa33123a0619511bfc5cc129b887200700227c5fec4d2f4c2b88a404`.
 - Recommendation content hash: `dd0edcef3a060d7f18857fb2a06df5b080231ee28f712100e87f9485b26c7c9b`.
 - Development G0 manifest content hash: `03a238576ca3e25af47ac30bf818e86dbf06808d1c713924aed8956f59245a91`.
-- The full local evaluator artifact is intentionally ignored by Git; its hash is recorded in `development_policy_diagnostics.json` and the execution report.\n
+- The full local evaluator artifact is intentionally ignored by Git; its hash is recorded in `development_policy_diagnostics.json` and the execution report.

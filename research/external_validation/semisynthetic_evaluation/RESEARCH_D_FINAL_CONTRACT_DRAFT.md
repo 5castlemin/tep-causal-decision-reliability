@@ -61,4 +61,4 @@ Before approval, review whether (a) a 0.02 standardized-loss precision tolerance
 - No physical device actuation, real manufacturing causal effect or deployment claim.
 - No new dataset search; no additional causal discovery; no change to Research C.
 - No new G0 seed, action, task, target, estimator or Primary selected after viewing Development results.
-- Stop final generation on source/hash mismatch, non-reproducible refit, invalid support/schema/nonfinite draws, incomplete recommendation lock, information-boundary violation, or resource-cap breach. Keep all failures and shortfalls; do not replace.\n
+- Stop final generation on source/hash mismatch, non-reproducible refit, invalid support/schema/nonfinite draws, incomplete recommendation lock, information-boundary violation, or resource-cap breach. Keep all failures and shortfalls; do not replace.

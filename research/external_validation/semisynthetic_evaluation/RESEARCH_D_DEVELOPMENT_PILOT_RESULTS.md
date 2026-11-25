@@ -67,4 +67,9 @@ The fixed 32-seed development cohort had 8 no-error G0s and 7 seeds with task-zo
 
 ## Interpretation
 
-The pipeline can now run end to end and produces a small positive B=2 average contrast under this one fitted DRF, but evaluator Monte Carlo uncertainty is large enough that the pilot does not determine whether the mean contrast is positive. Only six G0s changed the action under Full Greedy; all 26 remaining pairs tied. M4 was not distinguished from Full Greedy by recommendation in this task at B=2. The pilot therefore supports readiness to review a final **conditional robustness** contract, not a claim that the Research C effect replicated or that M4 is preferable.\n
+The pipeline can now run end to end and produces a small positive B=2 average contrast under this one fitted DRF, but evaluator Monte Carlo uncertainty is large enough that the pilot does not determine whether the mean contrast is positive. Only six G0s changed the action under Full Greedy; all 26 remaining pairs tied. M4 was not distinguished from Full Greedy by recommendation in this task at B=2. Before the post-run byte-provenance issue was detected, the pilot appeared technically ready for contract review. Because the current source digest differs from the run lock, all policy aggregates are now exploratory and the pilot is incomplete for final-contract review.
+
+
+## Provenance status
+
+A post-run source-file terminator formatting error caused the current pipeline.py byte hash to differ from the pre-run digest in development_run_lock.json. Although the executable statements were not changed and the module was repaired, exact run-to-source byte provenance is not intact. Treat all policy aggregates above as exploratory Development Pilot output; Gate G3 is DEVELOPMENT_PILOT_INCOMPLETE until a newly locked, bounded repeat is separately approved and run. No final evaluation data were generated.

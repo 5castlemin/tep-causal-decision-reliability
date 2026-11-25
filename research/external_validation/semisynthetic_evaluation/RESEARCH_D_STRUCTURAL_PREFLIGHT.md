@@ -38,4 +38,4 @@ M1–M4 all have support somewhere in this fixed pilot. Each metric is absent in
 
 The 32 Development seed IDs were generated from the already locked run settings, with no outcome-based selection. Their G0s were regenerated using those exact IDs and checked against the graph hashes in the recommendation lock. All 32 matched. `development_g0_manifest.json` records, per seed, the initial graph hash, proposal order and status, accepted/rejected error types, task/off-task counts, metric opportunity supports, and initial error counts. This regeneration is deterministic, outcome blind, and did not replace any seed.
 
-The detailed 64-seed structural result is in `structural_preflight.json`; the fixed 32-seed record is in `development_g0_manifest.json`. These graph seeds are not independent external SCMs.\n
+The detailed 64-seed structural result is in `structural_preflight.json`; the fixed 32-seed record is in `development_g0_manifest.json`. These graph seeds are not independent external SCMs.
