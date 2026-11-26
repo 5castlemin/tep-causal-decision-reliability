@@ -536,9 +536,9 @@
       "id": "F-LITE-01",
       "title": "Research F-Lite reference-blind query policy post-hoc evaluation",
       "status": "VERIFIED",
-      "evidence": "research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md; outputs/final_audit_aggregate.json; outputs/final_audit_manifest.json; audit code commit d8f5c57fc8783f379a59778f2fd495a49003907d; PR #46 follow-up pending",
-      "next_action": "PR #46 최종 CI 및 병합 후 main 상태 확인. 이후 보고서·발표 준비; 추가 연구 실험 없음",
-      "acceptance": "저장 산출물 hash 감사 및 공통-index bootstrap 재집계; Random action-change 정의 분리; pending replay audit; C–E frozen 유지; PR/merge verification pending",
+      "evidence": "research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md; research/decision_oriented_verification/outputs/final_audit_aggregate.json; PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 SUCCESS; main Actions 45798944410 SUCCESS",
+      "next_action": "추가 실험 없음; 최종 보고서 검토 및 발표 준비",
+      "acceptance": "저장자료 hash 감사, 공통-index bootstrap 재집계, pending replay, PR/main CI 및 merge 후 상태 검증 완료; Research C–E frozen 유지; 제한사항 문서화",
       "depends_on": []
     }
   ],
@@ -622,7 +622,8 @@
     "2026-11-26: Research E closeout audit added as post-hoc evidence. Corrected full restoration versus residual error fractions, C Held-out Adaptive M4 B3 Full Greedy cost (1.790), and nonzero DAG constraint saturation cells. Reaggregated existing E unit outputs only; generated no SCM/G0/DRF/training/intervention samples. Research D raw evaluator vectors were not found in the designated store; prior 27-check audit summary/hash was confirmed, but no new raw-vector independent analysis was claimed. Local full test suite: 410 run, 408 pass, 1 frozen runtime fingerprint error and 1 missing local frozen dataset failure; Research E focused tests pass. PR #44 closeout/merge pending.",
     "2026-11-26: PR #44 merged as 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; Actions 45760776088 SUCCESS. Research C–D–E closeout is integrated. No new experimental data were generated; move to report/presentation preparation.",
     "2026-11-26 — F-LITE-01 added as completed post-hoc verification-policy evidence; no new experiments planned",
-    "2026-11-26 — F-Lite final audit reaggregated saved rows only; corrected Random action-change interpretation, recomputed shared-index pointwise bootstrap, replayed pending states, and verified original C/F artifact hashes; no research samples generated; PR #46 update and merge verification pending"
+    "2026-11-26 — F-Lite final audit reaggregated saved rows only; corrected Random action-change interpretation, recomputed shared-index pointwise bootstrap, replayed pending states, and verified original C/F artifact hashes; no research samples generated; PR #46 update and merge verification pending",
+    "2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only."
   ],
   "integration_review": {
     "user_approved": true,
