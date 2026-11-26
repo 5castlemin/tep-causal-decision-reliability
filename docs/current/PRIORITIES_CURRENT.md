@@ -5,14 +5,15 @@
 ## 다음 가장 중요한 작업 3개
 
 1. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
-2. **RESEARCH-E — Research E budget-adaptive graph repair post-hoc extension**: Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. (VERIFIED)
-3. **FINAL-INTEGRATION — Research C–D 과학적 통합 및 저장소 종료**: 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 (VERIFIED)
+2. **F-LITE-01 — Research F-Lite reference-blind query policy post-hoc evaluation**: PR #46 최종 CI 및 병합 후 main 상태 확인. 이후 보고서·발표 준비; 추가 연구 실험 없음 (VERIFIED)
+3. **RESEARCH-E — Research E budget-adaptive graph repair post-hoc extension**: Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. (VERIFIED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
+| F-LITE-01 | VERIFIED | 없음 | PR #46 최종 CI 및 병합 후 main 상태 확인. 이후 보고서·발표 준비; 추가 연구 실험 없음 / 저장 산출물 hash 감사 및 공통-index bootstrap 재집계; Random action-change 정의 분리; pending replay audit; C–E frozen 유지; PR/merge verification pending |
 | RESEARCH-E | VERIFIED | FINAL-INTEGRATION | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. / E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; Research E remains post-hoc CORE_COMPLETED_WITH_LIMITATIONS; protected assets untouched. |
 | FINAL-INTEGRATION | VERIFIED | 없음 | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 / 원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료 |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |
@@ -90,5 +91,7 @@
 - 2026-11-26: PR #42 merged as fc863182efd4ee721a7f5250c871d46afe9bf244 to record FINAL-INTEGRATION VERIFIED; post-merge main Actions 45656538612 SUCCESS. No experiment or response sampling.
 - 2026-11-26: Research E closeout audit added as post-hoc evidence. Corrected full restoration versus residual error fractions, C Held-out Adaptive M4 B3 Full Greedy cost (1.790), and nonzero DAG constraint saturation cells. Reaggregated existing E unit outputs only; generated no SCM/G0/DRF/training/intervention samples. Research D raw evaluator vectors were not found in the designated store; prior 27-check audit summary/hash was confirmed, but no new raw-vector independent analysis was claimed. Local full test suite: 410 run, 408 pass, 1 frozen runtime fingerprint error and 1 missing local frozen dataset failure; Research E focused tests pass. PR #44 closeout/merge pending.
 - 2026-11-26: PR #44 merged as 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; Actions 45760776088 SUCCESS. Research C–D–E closeout is integrated. No new experimental data were generated; move to report/presentation preparation.
+- 2026-11-26 — F-LITE-01 added as completed post-hoc verification-policy evidence; no new experiments planned
+- 2026-11-26 — F-Lite final audit reaggregated saved rows only; corrected Random action-change interpretation, recomputed shared-index pointwise bootstrap, replayed pending states, and verified original C/F artifact hashes; no research samples generated; PR #46 update and merge verification pending
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

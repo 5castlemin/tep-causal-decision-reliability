@@ -56,6 +56,7 @@
 | FINAL-INTEGRATION | Research C–D 과학적 통합 및 저장소 종료 | VERIFIED | PR #41 scientific integration merged; PR #42 closeout merged; main fc863182efd4ee721a7f5250c871d46afe9bf244; Actions 45656538612 SUCCESS; research/final_integration/ | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 |
 | TEAM-PRESENTATION | 최종 발표자료 및 팀 인수인계 | PROPOSED | research/final_integration/FINAL_PRESENTATION_EVIDENCE_GUIDE.md; research/final_integration/TEAM_CONTRIBUTION_AND_HANDOFF.md | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 |
 | RESEARCH-E | Research E budget-adaptive graph repair post-hoc extension | VERIFIED | research/final_integration/RESEARCH_E_FINAL_AUDIT.md; research/final_integration/research_e_audit/research_e_final_audit_manifest.json; PR #44 merged as 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; Actions 45760776088 SUCCESS | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. |
+| F-LITE-01 | Research F-Lite reference-blind query policy post-hoc evaluation | VERIFIED | research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md; outputs/final_audit_aggregate.json; outputs/final_audit_manifest.json; audit code commit d8f5c57fc8783f379a59778f2fd495a49003907d; PR #46 follow-up pending | PR #46 최종 CI 및 병합 후 main 상태 확인. 이후 보고서·발표 준비; 추가 연구 실험 없음 |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

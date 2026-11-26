@@ -1,0 +1,29 @@
+{
+  "study": "Research F-Lite optional hypothetical expert-noise sensitivity",
+  "run_id": "f-lite-noise-sensitivity-v1",
+  "status_at_lock": "LOCKED_NOT_RUN",
+  "code_commit": "9b8b0f83474bccdd029e04eb621bbaa65c44887e",
+  "runner_path": "research/decision_oriented_verification/run_expert_noise_sensitivity.py",
+  "runner_raw_sha256": "1eda32831abc978229363b506a1a2967c7958d222286a2674876c0da2a5fa26a",
+  "runner_git_blob": "2e43df9e59f348b3d91cc363ccd698baa37bfeeb",
+  "source_execution_lock_sha256": "70aeb723faa5f87fc1023026894a099b144134f8a3fcb332651f530a0b598ece",
+  "input_cohort_hashes": {
+    "C_DEVELOPMENT_cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "C_DEVELOPMENT_proposal": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "C_HELDOUT_cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "C_HELDOUT_proposal": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+  },
+  "accuracies": [0.9, 0.8],
+  "repeats_per_scm_accuracy": 16,
+  "budget": 4,
+  "policies": ["RANDOM_VERIFICATION", "SUSPICION_ONLY", "DECISION_IMPACT_ONLY", "DECISION_WEIGHTED_VERIFICATION"],
+  "scm_units": {"C_DEVELOPMENT": 64, "C_HELDOUT": 200},
+  "maximum_trajectories": 33800,
+  "maximum_queries": 135200,
+  "evaluator": "existing analytic evaluator on restored C truths; no new SCM/G0/observation/intervention generation",
+  "noise_seed_namespace": "hypothetical-expert-noise-v1; deterministic stable_seed(cohort, scm, accuracy, repeat, pair)",
+  "random_policy_seed_namespace": "hypothetical-expert-noise-random-policy-v1",
+  "resource_caps": {"wall_seconds": 7200, "process_rss_bytes": 4294967296},
+  "estimated_runtime_seconds": 2223.2162314653397,
+  "pre_run_technical_failure": {"attempt": 1, "reason": "obsolete budget_adaptive_repair import path", "research_samples_generated": 0, "corrected_before_run": true}
+}

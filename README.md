@@ -26,17 +26,19 @@
 | Research D | 고정 DRF DGP·학습 프레임의 200 G0, B=2 S0−FG loss | +0.03422490; two-source CI [0.00617347, 0.06535080] | 단일 반합성 DGP; MC 정밀도 목표 미달 |
 | Research D M4 / baseline | B=2 | M4−FG loss +0.00122956; 비용 .335 vs 1.160; graph-free loss=FG | M4의 trade-off와 baseline 동률을 함께 해석 |
 | Research E | C Held-out B=5–9 | M4 regret .00129902; Adaptive/M2+M4/FG .00082758 | Post-hoc; budget effect nonmonotone; no new SCMs |
+| Research F-Lite | Reused C Held-out, B=4 query policies | Decision-weighted .016281 regret; Random .081223; Fit .003770; Suspicion .006061 | Post-hoc on known SCMs; combined heuristic loses to simpler baselines |
 | Research E Adaptive M4 | C Held-out B=3 | 1/200 better, 0 worse, 199 tie; +.020 mean edits vs M4 | one-blocker exploratory heuristic; no general superiority |
 
 ## 주장 범위와 한계
 
-Research C와 D는 모두 reference DAG를 활용한 oracle-assisted 구조 수리다. 현장처럼 참 구조를 모르는 상황의 오류 발견을 해결하지 않는다. D의 200개는 독립 SCM이 아니라 하나의 DGP에서 뽑은 graph-corruption draw다. 어느 실험도 실제 공장 개입, 안전성, 실제 전문가 시간·금전 비용, 배포 가능성을 입증하지 않는다. M4의 보편적 우월성 및 graph-based 방법의 보편적 우월성은 주장하지 않는다. Research E는 기존 C 원자료에 대한 사후 확장이다. F/G/H는 후속 연구 제안으로만 남기며 이번 연구에서 설계·실행하지 않았다. 수치와 주장별 근거·반례는 [최종 결과표](research/final_integration/FINAL_RESULTS_TABLES.md), [주장–근거 매트릭스](research/final_integration/FINAL_CLAIMS_EVIDENCE_MATRIX.md), [최종 보고서](research/final_integration/FINAL_RESEARCH_REPORT.md)에 있다.
+Research C와 D는 모두 reference DAG를 활용한 oracle-assisted 구조 수리다. 현장처럼 참 구조를 모르는 상황의 오류 발견을 해결하지 않는다. D의 200개는 독립 SCM이 아니라 하나의 DGP에서 뽑은 graph-corruption draw다. 어느 실험도 실제 공장 개입, 안전성, 실제 전문가 시간·금전 비용, 배포 가능성을 입증하지 않는다. M4의 보편적 우월성 및 graph-based 방법의 보편적 우월성은 주장하지 않는다. Research E와 F-Lite는 기존 입력을 재사용한 post-hoc 확장이다. F-Lite에서 decision-weighted query policy는 Held-out에서 Random보다 낮은 regret을 보였지만 fit-based 및 suspicion-only보다 높았고 impact-only와 거의 같았다. 따라서 결합 heuristic의 추가 이점은 확인되지 않았다. 기존 targeted causal elicitation 연구와의 중복도 커서 새 개념의 최초성을 주장하지 않는다. G/H는 향후 연구 제안으로만 남기며 수행하지 않았다. 수치와 주장별 근거·반례는 [C–D 최종 결과표](research/final_integration/FINAL_RESULTS_TABLES.md), [F-Lite 결과](research/decision_oriented_verification/RESEARCH_F_FINAL_RESULTS.md), [F-Lite 주장–근거 매트릭스](research/decision_oriented_verification/RESEARCH_F_CLAIMS_EVIDENCE_MATRIX.md), [최종 보고서](research/final_integration/FINAL_RESEARCH_REPORT.md)에 있다.
 
 ## 저장소 구조와 재현성
 
 - Research C 계약·결과: 루트 `RESEARCH_C_*.md`, `research/original_objective/`.
 - Research C 메커니즘: `research/research_c_mechanism_analysis/`.
 - Research D 조사·실행 산출물: `research/external_validation/`.
+- Research F-Lite 사후 query-policy prototype, 결과 및 민감도: `research/decision_oriented_verification/`; [한국어 최종 보고서](research/decision_oriented_verification/RESEARCH_F_FINAL_REPORT_KO.md).
 - 통합·발표·최종 감사 자료: `research/final_integration/` (E 감사: `RESEARCH_E_FINAL_AUDIT.md`, 집계: `research_e_audit/`).
 - 현재 운영 현황: `docs/research_state_current.json`, `docs/current/`.
 - Research C 원본 SQLite와 Research D raw response vectors 및 fitted native object는 공개 저장소에 없다. 보존한 hash와 aggregate는 출처·무결성 확인에 쓰이며, 공개 저장소만으로 원자료 전체 재실행을 보장하지 않는다.
@@ -51,8 +53,10 @@ Research C와 D는 모두 reference DAG를 활용한 oracle-assisted 구조 수�
 
 세부 인수인계와 발표 준비는 [팀 인수인계](RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md), [기여·발표 체크리스트](research/final_integration/TEAM_CONTRIBUTION_AND_HANDOFF.md)를 참조한다.
 
+F-Lite 최종 저장자료 감사 및 지표 정정은 [감사 보고서](research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md)와 [집계 JSON](research/decision_oriented_verification/outputs/final_audit_aggregate.json)에 기록한다. Random B4 Held-out 평균 반복별 행동 변경률은 4.09%이며 기존 27%는 32회 중 한 번이라도 변경된 SCM 비율이다.
+
 ## 과거 연구 및 실측 검증 상태
 
 프로젝트는 TEP 구조 탐색과 인과발견 비교에서 출발했다. TEP 및 CausalMan 환경은 연구 계약에 필요한 reference/intervention 조건을 충족하지 못해 보류되었고, Causal Chambers의 Mk2/Wind Tunnel도 현재 연구 질문에 적합한 실측 정책 비교로 채택되지 않았다. 해당 이력은 제거하지 않고 `docs/research_design/`과 `research/external_validation/`에 보존한다. 이번 최종 연구는 실측 제조 검증이 아니다.
 
-> Research C–D–E 최종 감사는 PR #44로 main에 병합됐다(merge commit 5e2b7fd). Actions run 45760776088이 통과했다. Research E는 사후 확장 분석이며, Research D 원시 응답 자료 재감사에는 접근 제한이 남아 있다. 이후에는 보고서와 발표 준비로 전환하며 추가 실험은 계획하지 않는다.
+> Research C–D–E 최종 감사는 PR #44로 main에 병합됐다(merge commit 5e2b7fd). Actions run 45760776088이 통과했다. Research E와 Research F-Lite는 기존 자료 기반 사후 확장이다. F-Lite의 결합 질의 점수는 Held-out에서 Random보다 나았지만 fit-based/suspicion-only보다 regret이 높았고 impact-only와 거의 같았다. 따라서 추가 가치는 확인되지 않았다. Research D 원시 응답 자료 재감사에는 접근 제한이 남아 있다. 추가 실험은 계획하지 않으며 보고서·발표 준비로 전환한다.

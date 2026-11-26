@@ -1,0 +1,12 @@
+# Research F-Lite claims–evidence matrix
+
+| Claim | Grade | Evidence | Counterpoint / limit | Permitted wording |
+|---|---|---|---|---|
+| A reference-blind query heuristic can be run against downstream regret on existing SCM inputs | `DESCRIPTIVE_ONLY` | Stored complete Development/Held-out recommendation and evaluator keys; saved-output audit | Interface separation only; reused SCMs and perfect core expert | “We evaluated a reference-blind-at-the-interface query policy on previously used synthetic SCMs.” |
+| Decision-weighted beats random at B=4 on reused Held-out | `POST_HOC_MECHANISM_EVIDENCE` | Paired mean comparator-minus-proposed +0.064942; 95% SCM bootstrap [0.045436, 0.086207]; 48 better, 7 worse, 145 ties | Post-hoc cohort reuse; interval is conditional on these source SCMs | “In this reused cohort, decision-weighted had lower regret than random at B=4.” |
+| Product score is better than fit/suspicion heuristics | `UNSUPPORTED` | Fit-based regret 0.003770 and suspicion 0.006061 versus proposed 0.016281 | Paired contrasts favor both simpler policies | Do not claim superiority; say product score did not improve on these baselines here. |
+| Combining suspicion and impact adds value over impact alone | `UNSUPPORTED` | Held-out difference +0.000988 (impact minus proposed), interval [0, 0.002881], 198/200 SCM ties | No meaningful separation; not an equivalence test | “The two policies were nearly tied on this cohort; incremental value was not established.” |
+| More errors found implies lower regret | `UNSUPPORTED` | Fit/suspicion discover more errors and have lower Held-out regret; impact policies discover fewer | Association is policy- and cohort-dependent; no causal mediation analysis | “Error discovery and decision quality are distinct descriptive outcomes.” |
+| Oracle-assisted M4 is a fair blind-policy competitor | `UNSUPPORTED` | M4 uses reference/task-zone information | Different information conditions | Present only as a reference-informed diagnostic. |
+| The method is novel targeted causal elicitation | `UNSUPPORTED` | Close existing work includes Ibrahim et al. 2022, Ankan & Textor 2025, Bonilla et al. 2026 | Related work already targets downstream tasks or actively queries experts | Claim only a narrow exploratory comparison on the reused C benchmark. |
+| Results validate human experts or factory deployment | `UNSUPPORTED` | No real expert study or physical intervention | Noise process is hypothetical; manufacturing validation absent | “This is a synthetic prototype, not field validation.” |

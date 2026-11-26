@@ -43,3 +43,11 @@
 11. **Reference learner 및 target 의존성:** reference graph learner를 최적 oracle로 부르지 않는다. δ=0은 특수한 평균 편차 목표. 근거: `reference_learner_summary.csv`, `target_sensitivity_unit_results.csv`(로컬 전용; 공개 요약만 사용).
 
 E는 이미 Held-out을 본 뒤의 탐색 분석이므로 C Primary 대체나 신규 확증 결과로 발표하지 않는다. Research D의 원시 response는 이번 closeout에서 다시 열 수 없었고 기존 audit summary와 공개 집계까지만 인용한다.
+
+## Research F-Lite 최종 감사 슬라이드
+
+12. **질의 정책 비교:** Held-out B4 Decision-weighted regret .016281은 Random .081223보다 낮지만 Fit-based .003770 및 Suspicion-only .006061보다 높고 Impact-only .017270에 가깝다. 분석 단위는 재사용된 200 SCM이며 post-hoc이다.
+13. **Random action 변화 정의:** 반복별 평균 변경률 4.09%와 SCM 중 최소 한 번 변경 비율 27.0%를 별도 막대/표기로 제시한다. 기존 27%를 반복별 평균으로 발표하지 않는다.
+14. **자원과 정보 경계:** B4에서 질의는 모두 4회지만 평균 edit는 Fit 1.905, Suspicion 1.885, Impact .425, 제안 .450, Random .305다. Query 비용과 graph edit 비용을 구분하고 실제 시간·금액 비용이라고 하지 않는다. 인터페이스에서 정책은 reference-blind지만 simulated expert는 reference를 본다.
+
+근거: `research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md`, `outputs/final_audit_aggregate.json`, `outputs/random_action_change_audit.csv`. C/D/E/F-Lite의 서로 다른 loss와 분석 단위를 하나의 축으로 직접 비교하지 않는다.
