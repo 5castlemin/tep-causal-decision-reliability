@@ -545,13 +545,14 @@
       "id": "SUPP-01",
       "title": "Decision-objective robustness and structural-metric validation",
       "status": "PARTIAL",
-      "evidence": "research/final_supplementary_validation/SUPPLEMENTARY_FINAL_AUDIT.md; branch research/final-supplementary-robustness-metric-validation (PR/CI pending)",
-      "next_action": "Complete repository tests, protected-asset check, publish branch, and verify PR CI; keep C–F frozen results unchanged",
-      "acceptance": "Stored-only S1/S2 audit passes; no new research samples; reports and public aggregate hashes checked",
+      "evidence": "PR #48 open at head b5e3074f2488d9a207979f76906feb441b9dd158; GitHub Actions run 45824450627: all validations except required priority-document sync passed",
+      "next_action": "Include the live priority document in this substantive PR, regenerate current status docs, and verify the updated PR CI",
+      "acceptance": "Stored-only S1/S2 audit passes; no new research samples; all required PR CI checks pass; private outputs remain untracked",
       "depends_on": []
     }
   ],
   "priority_order": [
+    "SUPP-01",
     "TEAM-PRESENTATION",
     "F-LITE-01",
     "RESEARCH-E",
