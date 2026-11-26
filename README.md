@@ -55,4 +55,4 @@ Research C와 D는 모두 reference DAG를 활용한 oracle-assisted 구조 수�
 
 프로젝트는 TEP 구조 탐색과 인과발견 비교에서 출발했다. TEP 및 CausalMan 환경은 연구 계약에 필요한 reference/intervention 조건을 충족하지 못해 보류되었고, Causal Chambers의 Mk2/Wind Tunnel도 현재 연구 질문에 적합한 실측 정책 비교로 채택되지 않았다. 해당 이력은 제거하지 않고 `docs/research_design/`과 `research/external_validation/`에 보존한다. 이번 최종 연구는 실측 제조 검증이 아니다.
 
-> Research C–D 통합은 main에 반영됐다. Research E는 PR #44에서 최종 정정과 프로젝트 종료 문서를 추가 검토 중이다. PR의 현재 merge 상태와 CI는 GitHub에서 확인한다.
+> Research C–D–E 최종 감사는 PR #44로 main에 병합됐다(merge commit 5e2b7fd). Actions run 45760776088이 통과했다. Research E는 사후 확장 분석이며, Research D 원시 응답 자료 재감사에는 접근 제한이 남아 있다. 이후에는 보고서와 발표 준비로 전환하며 추가 실험은 계획하지 않는다.
