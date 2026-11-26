@@ -1,16 +1,31 @@
-# Research E — Final results
+# Research E — Final results and closeout
 
-## Gate
+## Gate and scope
 
-`RESEARCH_E_CORE_COMPLETED_WITH_LIMITATIONS`: E-1 completed for C unit data and D saved aggregates; C E-2 exact reconstruction, B0–4 replay and B>4 downstream evaluation completed; C-only E-3 Adaptive M4 and target sensitivity completed. D unit-level extensions were not run because the accessible D audit had no per-G0 rows or response vectors. This limitation does not invalidate E-1 C results or D's existing frozen final report.
+**Gate: `RESEARCH_E_CORE_COMPLETED_WITH_LIMITATIONS`.** Locked reruns completed for E1–E3 on Research C inputs. E1 covers original C unit records and D's 85 saved policy-budget aggregates. E2 exactly restored all 264 original C SCM inputs, replayed B0–4, then evaluated B5–7 for Development and B5–9 for Held-out. E3 is limited to C and remains post-hoc exploratory. Research D unit-level extensions were not performed because the designated local D artifact contains no per-G0 recommendations or response vectors. No new SCM/G0, DRF fit or D intervention rows were created.
 
-## Selected findings
+## E1 — budgets and trade-offs
 
-1. In C Held-out, M4 mean regret fell from `0.093439` at B0 to `0.003988` at B2, `0.001435` at B3, and stayed there at B4. M2+M4 at B4 reached `0.000964` with mean cost `1.440`; Full Greedy reached the same aggregate regret with mean cost `2.005`.
-2. Increasing budget was not uniformly beneficial. C Held-out M2 had negative marginal benefit at B0→1 (`−0.004823` regret units); all negative increments remain in the tables.
-3. At the C cohort caps, canonical structural repair removed every initial reference discrepancy for 47/64 Development and 156/200 Held-out SCMs. Structural and policy/decision saturation differed; see terminal-feasibility diagnostics.
-4. Adaptive M4 matched M4 at B2. In Held-out, limited blocker edits improved some larger-budget aggregate results, but effects are exploratory and paired per-SCM differences are retained. It is not a general-purpose planner.
-5. At the target mean (`delta=0`), the target's optimum often moved to an interior action on the fixed grid; this illustrates task dependence rather than invalidating the original target.
-6. D's aggregate B2 graph-free association baseline has the same loss as Full Greedy (`0.789362`) at zero graph-edit count. This is an important competing baseline, with edge-count-only cost and no unit-level reanalysis.
+Research C Held-out M4 mean regret was 0.093439, 0.029327, 0.003988, 0.001435, 0.001435 at B=0–4; mean edits were 0, 0.515, 0.695, 0.760, 0.780. Improvement largely saturated by B=3 in the cohort mean, while per-SCM results were not uniformly monotone. At B=4 M2+M4 reached 0.000964 mean regret at 1.440 edits, matching Full Greedy's reported mean regret with 2.005 edits. Research D's reported B2 graph-free association baseline matched Full Greedy's mean loss (0.789362) with zero graph edits; this only uses edit-count cost and does not imply zero modeling or operational cost.
 
-All primary Research C and D conclusions, contracts, and effect estimates remain as previously reported. Research E is a descriptive post-hoc extension, not a replacement primary or an independent physical validation.
+Marginal benefit is previous-budget mean loss/regret minus current-budget mean loss/regret. Negative increments are retained; for example Research C Held-out M2 loses performance from B0 to B1 by 0.004823 regret units. The ratio per added mean edit is a descriptive ratio of cohort means, not a causal effect of an individual edit. C intervals resample paired SCM units jointly across budgets; D new uncertainty was not computed. Pointwise intervals across many policies/budgets are not simultaneous intervals.
+
+The observed C Held-out frontier (B≤4) contains S0/B0, M3/B1, M4/B1–3 and M2+M4/B4, with exact coordinate ties retained. In D, the graph-free baseline's zero edit count and loss equal to Full Greedy make it competitive and dominating/equal under the narrow edge-count-only cost coordinate. Frontier membership is descriptive, not statistical superiority. Bootstrap frontier inclusion and leave-one-out diagnostics are in the output tables. The B4 M4–Full Greedy ordering reaches a tie boundary when the single influential Held-out SCM is omitted; no unit was excluded from the main analysis.
+
+Lambda is a hypothetical standardized-loss penalty per atomic edit. The grid and exact pairwise breakpoints show how observed mean choices change under that constructed preference, not monetary prices. C and D lambda values are not comparable economic preferences.
+
+## E2 — saturation
+
+The pre-fixed cohort cap `max(4,max_i E_i)` is Bmax=7 for C Development and Bmax=9 for C Held-out. All original B0–4 outcomes matched by graph hash, edit sequence, selected action and analytic regret over 22,440 SCM×policy×budget rows before B>4 results were accepted. At Bmax, Canonical Oracle structurally removed all reference discrepancies in 64/64 Development and 200/200 Held-out cases. M4 structurally saturated in 18/64 and 80/200 cases, leaving mean residual discrepancy counts 1.422 and 1.380; M2+M4 in 27/64 and 109/200, leaving 0.719 and 0.655. Structural, policy, DAG-constraint and decision saturation are separately recorded. Full reference structure is not a decision-optimal oracle; residual decision loss is not uniquely attributed to one cause.
+
+## E3 — bounded exploration
+
+Adaptive M4 made no blocker edits in Development and two total blocker deletions in Held-out. It matched M4 at B2. At Held-out B3, Adaptive−M4 paired mean regret difference was −0.000471 (95% paired SCM bootstrap interval [−0.001414, 0.000000]); this is a sparse, post-hoc blocker result, not general superiority. Adaptive M4 is a one-blocker lookahead heuristic and can spend edits without changing actions or can worsen outcomes in individual SCMs.
+
+Target sensitivity changed only `target=mean(Y_train)+delta×SD(Y_train)` for delta −1, −0.5, 0, 0.5, 1, retaining the existing C action grid. At delta 0, the action-grid optimum was interior for 90.6% Development and 92.5% Held-out SCMs under the selected M4/B2 diagnostic; the other tested deltas placed it at an endpoint. This demonstrates dependence on the target definition, not invalidity of the frozen task. No D sensitivity was run.
+
+## Scientific interpretation
+
+Research E is a post-hoc extension of already observed Research C Held-out results, not a new confirmatory study. C still supplies the independent synthetic-SCM evaluation under its frozen contract. D remains a single DRF-based semisynthetic DGP conditional on one fixed training frame and its graph-corruption draws; C and D loss scales and statistical units are not pooled. Edit counts are not labor, money, safety or deployment cost. All graph-repair analyses remain reference/Oracle-assisted. Nothing here validates interventions on a physical manufacturing process.
+
+Detailed aggregate tables and figures are linked from `RESEARCH_E_PRESENTATION_EVIDENCE_GUIDE.md`; private/local unit-level outputs are excluded from Git.

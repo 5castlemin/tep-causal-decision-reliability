@@ -1,7 +1,8 @@
 # Research E — Budget-Adaptive Causal Graph Repair
 
-**Classification:** `POST_HOC_BUDGET_AND_COST_EFFECTIVENESS_EXTENSION`  
-**Scope:** Research C original Development and Held-out cohorts; Research D saved final audit summaries; exact, hash-checked reconstruction of the original Research C inputs for budgets above four.  
+**Classification:** `POST_HOC_BUDGET_AND_COST_EFFECTIVENESS_EXTENSION`
+
+**Scope:** Research C original Development and Held-out cohorts; Research D saved final audit summaries; exact, hash-checked reconstruction of the original Research C inputs for budgets above four.
 **Status:** Exploratory follow-up. Research C and D primary/secondary contracts remain frozen.
 
 ## Research question

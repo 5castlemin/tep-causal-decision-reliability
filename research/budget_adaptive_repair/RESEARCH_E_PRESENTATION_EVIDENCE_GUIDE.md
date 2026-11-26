@@ -1,24 +1,41 @@
 # Research E — presentation evidence guide
 
-## Suggested narrative
+## Core message
 
-1. Ask how a limited graph-repair budget should be allocated to improve downstream decisions.
-2. Show Research C's frozen B2 Primary and clearly distinguish its 200-SCM inference from the post-hoc budget extension.
-3. Show the C cost–regret curve: early gains for M4, M2+M4's later cost trade-off, and M2's negative marginal return.
-4. Show the extended B5–9 curves and explain that the same original SCMs were deterministically restored and replayed, not resampled.
-5. Show the decision saturation chart beside structural saturation; they need not coincide.
-6. Present Adaptive M4 as a limited exploratory response to a known blocker pattern, with paired comparisons and non-universal behavior.
-7. End with Research D's conditional role: a single DRF semisynthetic environment, under-missed precision goals, and a competitive graph-free baseline.
+**A larger edit budget does not imply a uniformly better or more efficient repair policy.** Results depend on which reference-relative errors are present, the metric subset, available edit opportunities, task/target, and how an edit is valued. Evidence is post-hoc and limited to the frozen synthetic C cohorts and one semisynthetic D benchmark.
 
-## Recommended visuals
+## Recommended figure sequence
 
-Use SVG figures in `figures/`: `E1_policy_budget_heatmap.svg`; separate C cohort and D `E2_curves_*.svg`; `E4_pareto_*.svg`; `E7_adaptive_M4_*.svg`; `E8_target_sensitivity_*.svg`. Tables `e2_extended_marginal_benefit.csv`, `e2_extended_pareto_frontiers.csv`, `e2_saturation_diagnostics.csv`, `e3_adaptive_paired_comparisons.csv`, and `target_sensitivity_aggregate.csv` provide the numeric backing.
+1. **E1 heatmap** — all 17 policies, B0–4; keep C Development and Held-out separate and do not combine with D loss.
+2. **E2 cohort curves** — all policy losses/regrets over B; selected policy view emphasizes S0, M4, M2+M4 and Full Greedy.
+3. **E3 marginal benefit** — retain negative increments; the ratio to average added edit count is descriptive.
+4. **E4 Pareto** — show separate cohort frontiers; include D's graph-free point on the edge-edit-count-only comparison.
+5. **E5 lambda choices** — lambda is a hypothetical normalized edit penalty, not money.
+6. **E6 saturation** — distinguish structural completion, policy candidate exhaustion, DAG feasibility and unchanged action/loss.
+7. **E7 Adaptive M4** — show sparse Held-out blocker evidence, paired uncertainty and counterexamples.
+8. **E8 target sensitivity** — action set fixed; changing target changes the task.
 
-Every figure is exploratory and cohort-specific. Research C uses SCM-level regret; Research D uses standardized target-tracking loss. Edit count is a proxy, not money or work hours. The lambda axis is hypothetical. Do not say the D intervention was physical, that its 200 units were SCMs, that graph-free cost is zero overall, or that the new Adaptive policy is validated generally.
+Every chart is exploratory/descriptive, uses original SCM units for C, and uses aggregate-only fixed-DGP evidence for D where applicable. Pointwise intervals are not simultaneous. Match each SVG under `figures/` with the corresponding aggregate CSV under `outputs/`.
 
-## Likely questions
+## Suggested result table
 
-- **Why does more budget sometimes hurt?** The selected edit sequence is heuristic and decision loss is not monotone in structural repair. The C M2 negative marginal benefit is retained.
-- **Is B=7 or 9 a universal cap?** No. It is the maximum observed initial error burden in these fixed cohorts under this unit-cost candidate definition.
-- **Does complete graph recovery solve all regret?** Not necessarily. The reference-graph learner is a diagnostic and still depends on finite training data, Ridge and the fixed action grid/target.
-- **Does D confirm manufacturing impact?** No. It is a DRF-based semisynthetic benchmark with virtual hard-do actions and a single fitted DGP.
+| Cohort | Unit | Key result | Inference boundary |
+|---|---|---|---|
+| C Held-out | 200 original independent synthetic SCMs | M4 regret 0.093439 at B0, 0.001435 at B3/B4; M2+M4 B4 0.000964 at 1.440 edits | Post-hoc extension; original C Primary remains unchanged |
+| C budget extension | Same 64/200 SCMs | Bmax 7/9; canonical structural restoration complete at cohort cap | Hash-identically restored existing inputs, not new SCMs |
+| D Final | 200 graph-corruption draws conditional on one DGP | Graph-free association mean loss 0.789362 equals Full Greedy at B2 with zero graph edits | Saved aggregate only; not 200 independent SCMs; no new uncertainty |
+
+## Questions to prepare for
+
+- **Does more budget always help?** No. Some policy/unit increments are negative; individual outcomes are non-monotone.
+- **Is M4 best?** No universal claim. Held-Out M4 is efficient at low budgets, while other combinations reach a lower observed mean at larger budgets; frontiers are sample summaries.
+- **Did Adaptive M4 solve the cycle blocker?** Only a bounded one-blocker case was evaluated. Two blocker repairs occurred in Held-Out; the interval touches zero and evidence is exploratory.
+- **Does this show factory cost savings?** No. Edge count is only a structural edit-count proxy.
+- **Is the graph known in deployment?** No. Repair is Oracle-assisted against a reference DAG.
+- **Did we validate manufacturing interventions?** No. D is a DRF-based semisynthetic generator, not physical intervention evidence.
+- **Why no D budget extension?** The accessible audited artifacts lacked unit-level recommendations and response vectors; no synthetic substitute was fabricated.
+- **What remains uncertain?** D's original MC-only and combined precision targets were missed. E did not address that by generating more samples. Generator-fit and training-frame variation remain outside scope.
+
+## Claims to avoid
+
+Do not claim that M4 is always best, all off-task errors are harmless, more edits necessarily improve decisions, a Pareto point is statistically superior, Adaptive M4 is general, graph-based recommendations beat graph-free learning, or the findings establish factory deployment or monetary savings.
