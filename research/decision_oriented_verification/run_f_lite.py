@@ -442,7 +442,7 @@ def aggregate_cohort(evaluated, cohort, out_dir):
 
 
 def main():
-    lock = verify_execution_lock()
+    execution_lock = verify_execution_lock()
     PRIVATE_ROOT.mkdir(parents=True, exist_ok=True)
     all_public = {"status": "RUNNING", "inputs": {}, "cohorts": {}}
     for source in SOURCES:
@@ -453,18 +453,18 @@ def main():
         eval_path = PRIVATE_ROOT / f"{cohort.lower()}_evaluator_results.jsonl"
         if rec_path.exists() or eval_path.exists():
             raise FileExistsError(f"F-Lite output exists; refusing overwrite for {cohort}")
-        reco, lock = run_recommendations(records, cohort, rec_path)
-        evaluated = evaluate_locked(records, reco, lock, rec_path, eval_path)
+        reco, recommendation_lock = run_recommendations(records, cohort, rec_path)
+        evaluated = evaluate_locked(records, reco, recommendation_lock, rec_path, eval_path)
         agg, contrasts = aggregate_cohort(evaluated, cohort, ROOT / "research/decision_oriented_verification/outputs")
-        all_public["cohorts"][cohort] = {"n_scm": len(records), "recommendation_lock": lock,
+        all_public["cohorts"][cohort] = {"n_scm": len(records), "recommendation_lock": recommendation_lock,
                                          "evaluator_results_sha256": sha256_file(eval_path),
                                          "evaluator_rows": len(evaluated), "recommendation_path_external": True,
                                          "aggregate_rows": len(agg), "paired_contrasts": contrasts}
     all_public["status"] = "COMPLETED"
     verify_execution_lock()
     all_public["execution_lock_sha256"] = sha256_file(EXECUTION_LOCK)
-    all_public["code_commit"] = lock["code_commit"]
-    all_public["code_tree"] = lock["code_tree"]
+    all_public["code_commit"] = execution_lock["code_commit"]
+    all_public["code_tree"] = execution_lock["code_tree"]
     (ROOT / "research/decision_oriented_verification/run_summary_private_redacted.json").write_text(json.dumps(all_public, indent=2), encoding="utf-8")
     print(json.dumps(all_public, indent=2))
 
