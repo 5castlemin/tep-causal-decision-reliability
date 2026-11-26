@@ -258,6 +258,7 @@ def run_recommendations(records, cohort_name, outpath):
             raise MemoryError(f"recommendation RSS cap exceeded for {cohort_name}")
     # Oracle-assisted M4 is copied from the already completed, frozen C ledger; it is not a query policy.
     for rec in records:
+        view = make_policy_view(rec)
         for b in range(5):
             old = next(x for x in rec["payload"]["e2e_result"]["budgets"][b]["policies"] if x["policy_id"] == "M4")
             selection = {"action": rec["action"], "target_node": rec["target"], "target": rec["target_value"],
