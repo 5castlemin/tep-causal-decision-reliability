@@ -520,9 +520,21 @@
       "depends_on": [
         "FINAL-INTEGRATION"
       ]
+    },
+    {
+      "id": "RESEARCH-E",
+      "title": "Research E budget-adaptive graph repair post-hoc extension",
+      "status": "PARTIAL",
+      "evidence": "research/budget_adaptive_repair/RESEARCH_E_CONTRACT.md; E1–E3 analyses in progress; original C ledgers read-only verified",
+      "next_action": "Rerun locked E1–E3 analyses on committed code, complete artifact integrity review, CI, and open the authorized PR; no main merge",
+      "acceptance": "C original input restoration and B0–4 replay exact; C budget extension and bounded exploratory E3 verified; D aggregate-only limitations explicit; protected assets unchanged",
+      "depends_on": [
+        "FINAL-INTEGRATION"
+      ]
     }
   ],
   "priority_order": [
+    "RESEARCH-E",
     "TEAM-PRESENTATION",
     "FINAL-INTEGRATION",
     "BUDGET-REFINEMENT",

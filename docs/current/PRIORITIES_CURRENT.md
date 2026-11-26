@@ -4,14 +4,15 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
-2. **FINAL-INTEGRATION — Research C–D 과학적 통합 및 저장소 종료**: 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 (VERIFIED)
-3. **BUDGET-REFINEMENT — 예산 제약 인과구조 개선 연구 설계 후보**: ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts (PARTIAL)
+1. **RESEARCH-E — Research E budget-adaptive graph repair post-hoc extension**: Rerun locked E1–E3 analyses on committed code, complete artifact integrity review, CI, and open the authorized PR; no main merge (PARTIAL)
+2. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
+3. **FINAL-INTEGRATION — Research C–D 과학적 통합 및 저장소 종료**: 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 (VERIFIED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| RESEARCH-E | PARTIAL | FINAL-INTEGRATION | Rerun locked E1–E3 analyses on committed code, complete artifact integrity review, CI, and open the authorized PR; no main merge / C original input restoration and B0–4 replay exact; C budget extension and bounded exploratory E3 verified; D aggregate-only limitations explicit; protected assets unchanged |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
 | FINAL-INTEGRATION | VERIFIED | 없음 | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 / 원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료 |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |

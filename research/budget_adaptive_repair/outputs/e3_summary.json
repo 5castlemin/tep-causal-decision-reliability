@@ -1,0 +1,31 @@
+{
+  "status": "C_ONLY_EXPLORATORY_COMPLETE_D_ROW_LEVEL_UNAVAILABLE",
+  "cohorts": [
+    {
+      "cohort": "C_DEVELOPMENT",
+      "n": 64,
+      "B_max": 7
+    },
+    {
+      "cohort": "C_HELDOUT",
+      "n": 200,
+      "B_max": 9
+    }
+  ],
+  "adaptive_policy": "ADAPTIVE_M4_BLOCKER_AWARE; reference-only blocker logic, max one off-task FP deletion per task repair pair; outcomes not inputs",
+  "target_sensitivity": {
+    "targets": [
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "action_grid": "same five existing C training-frame actions",
+    "graph_free": "NOT_APPLICABLE: no approved C graph-free baseline; D unit-level data unavailable"
+  },
+  "D": "Not run: raw D rows/artifacts unavailable; do not infer C-like SCM units from D aggregate means.",
+  "elapsed_seconds": 32.03335739998147,
+  "new_scm_or_g0_count": 0,
+  "new_intervention_rows": 0
+}

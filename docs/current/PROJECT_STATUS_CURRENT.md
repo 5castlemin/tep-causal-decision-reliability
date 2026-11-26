@@ -55,6 +55,7 @@
 | RD-FINAL | Research D 최종 반합성 강건성 평가 및 과학적 종료 | VERIFIED | research/external_validation/semisynthetic_final/RESEARCH_D_FINAL_RESULTS.md; research/final_integration/RESEARCH_D_FINAL_REAUDIT.md; research/external_validation/semisynthetic_final/final_public_execution_manifest.json; research/external_validation/semisynthetic_final/final_independent_analysis_comparison.json | 실측 물리 검증은 보류로 유지. 단일 외부 DRF DGP 조건부 강건성 결과를 최종 발표에 제한된 주장 범위로 반영 |
 | FINAL-INTEGRATION | Research C–D 과학적 통합 및 저장소 종료 | VERIFIED | PR #41 scientific integration merged; PR #42 closeout merged; main fc863182efd4ee721a7f5250c871d46afe9bf244; Actions 45656538612 SUCCESS; research/final_integration/ | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 |
 | TEAM-PRESENTATION | 최종 발표자료 및 팀 인수인계 | PROPOSED | research/final_integration/FINAL_PRESENTATION_EVIDENCE_GUIDE.md; research/final_integration/TEAM_CONTRIBUTION_AND_HANDOFF.md | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 |
+| RESEARCH-E | Research E budget-adaptive graph repair post-hoc extension | PARTIAL | research/budget_adaptive_repair/RESEARCH_E_CONTRACT.md; E1–E3 analyses in progress; original C ledgers read-only verified | Rerun locked E1–E3 analyses on committed code, complete artifact integrity review, CI, and open the authorized PR; no main merge |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.
