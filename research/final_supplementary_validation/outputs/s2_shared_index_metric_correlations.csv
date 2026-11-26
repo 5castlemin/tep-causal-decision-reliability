@@ -1,0 +1,17 @@
+cohort,metric,n_scm,spearman_scm_balanced,ci95_low,ci95_high,bootstrap_replicates_valid,bootstrap_seed,shared_index_set,interval
+C_DEVELOPMENT,skeleton_f1,64,-0.2139550740661474,-0.37680059835849344,-0.03859467366218034,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_DEVELOPMENT,directed_f1,64,-0.4275772092999004,-0.5343579615262974,-0.3010500835009117,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_DEVELOPMENT,directed_shd,64,0.30786846452222455,0.16728624700272365,0.4333666527844716,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_DEVELOPMENT,atomic_error_count,64,0.30786846452222455,0.16728624700272365,0.4333666527844716,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_DEVELOPMENT,task_error_count,64,0.5694997429574438,0.39561259325786496,0.7108605797490141,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_DEVELOPMENT,task_error_rate,64,0.6296725975782782,0.46040585362848263,0.7596920977594539,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_DEVELOPMENT,xy_path,64,-0.9019519096135299,-0.9891849504853347,-0.7818950786862782,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_DEVELOPMENT,abs_effect_magnitude_error,64,0.16442965453481523,-0.05075742625587327,0.3559302363974098,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_HELDOUT,skeleton_f1,200,-0.2618263492525368,-0.356044437428859,-0.16498041126025081,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_HELDOUT,directed_f1,200,-0.38729762756045055,-0.4542676456630329,-0.3163222723725375,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_HELDOUT,directed_shd,200,0.3328467115577189,0.2603144069458959,0.40282373041964337,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_HELDOUT,atomic_error_count,200,0.3328467115577189,0.2603144069458959,0.40282373041964337,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_HELDOUT,task_error_count,200,0.6434763584287087,0.5762772169146442,0.7060693339660403,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_HELDOUT,task_error_rate,200,0.7104748926382162,0.6427200456684323,0.7683757775357282,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_HELDOUT,xy_path,200,-0.9242090741170841,-0.971844780496732,-0.8663749003420327,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson
+C_HELDOUT,abs_effect_magnitude_error,200,0.024928848681127123,-0.07784638100975352,0.1336726280288218,10000,2026112602,cohort-level; all metrics,pointwise SCM bootstrap; weighted midrank Pearson

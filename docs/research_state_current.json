@@ -540,9 +540,19 @@
       "next_action": "추가 실험 없음; 최종 보고서 검토 및 발표 준비",
       "acceptance": "저장자료 hash 감사, 공통-index bootstrap 재집계, pending replay, PR/main CI 및 merge 후 상태 검증 완료; Research C–E frozen 유지; 제한사항 문서화",
       "depends_on": []
+    },
+    {
+      "id": "SUPP-01",
+      "title": "Decision-objective robustness and structural-metric validation",
+      "status": "PARTIAL",
+      "evidence": "PR #48 open at base audit head 786baae6dec166f44406822b26bb30add7170795; saved-result correction audit in progress; Full Greedy/CANONICAL_ORACLE mapping corrected; C source hashes unchanged",
+      "next_action": "Complete required tests, frozen/protected asset checks, update PR #48 and verify its new CI; merge only if permissions/rules allow",
+      "acceptance": "S1 corrected contrasts use M1+M2+M3+M4 and common SCM bootstrap; S2 nested model/AP definitions validated; saved inputs preserved; new PR CI must pass before integration",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "SUPP-01",
     "TEAM-PRESENTATION",
     "F-LITE-01",
     "RESEARCH-E",

@@ -27,4 +27,6 @@
 - F-Lite held-out policy comparison separating query count, edit count, discovery yield and regret.
 - Claim–evidence matrix as supplement.
 
+- Supplementary S1/S2 post-hoc section: distinguish Full Greedy (`M1+M2+M3+M4`) from Canonical Oracle; show gamma-dependent policy ranking and the corrected nested B/E/F saved-feature comparison. Explicitly label the empty-DAG learner and Research F association baseline separately.
+
 Do not place C regret, D tracking loss, E post-hoc contrasts and F query-policy outcomes on one common numeric scale.

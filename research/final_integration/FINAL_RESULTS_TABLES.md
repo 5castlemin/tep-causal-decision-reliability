@@ -13,9 +13,9 @@
 | 개선 / 악화 / 동률 | 14 / 1 / 49 | 45 / 1 / 154 |
 | Full Greedy 평균 atomic edit count (B=2) | 1.453 | 1.435 |
 | M4 평균 atomic edit count (B=2) | 0.656 | 0.695 |
-| M4와 Full Greedy 동일 추천 행동 | 46/64 | 193/200 |
+| M4와 Full Greedy 동일 추천 행동 | 61/64 | 193/200 |
 
-Research C Primary는 계약대로 B=2의 Full Greedy 대 S0다. M4는 Development를 본 뒤 지정한 Secondary이며 Held-out M4−Full Greedy 결과를 확증적 우월성으로 해석하지 않는다. 정책×예산 행은 반복 측정이지 독립 표본이 아니다.
+Research C Primary는 계약대로 B=2의 Full Greedy 대 S0다. M4는 Development를 본 뒤 지정한 Secondary이며 Held-out M4−Full Greedy 결과를 확증적 우월성으로 해석하지 않는다. 정책×예산 행은 반복 측정이지 독립 표본이 아니다. Development의 원본 Ledger `selected_k` 대조에서 M4와 실제 Full Greedy (`M1+M2+M3+M4`)는 61/64 SCM에서 같은 행동을 추천했고 3/64에서 달랐다. 이전 46/64 표기는 정정한다.
 
 ## Research C mechanism analysis — post-hoc
 
@@ -101,6 +101,14 @@ For `Jλ=mean regret+λ×mean edit count`, observed lower-envelope switches occu
 
 At D B2 only, graph-free association baseline has mean loss .789362 and 0 graph edits, equal loss to Full Greedy. D raw per-G0 artifacts were unavailable in this closeout, so there is no extended D frontier or Adaptive analysis. C regret and D target-tracking loss are not pooled.
 
+## Supplementary S1/S2 — post-hoc objective and metric validation
+
+S1's original target, gamma=.2, B=2 Held-out mean regrets are S0 `.11795863`, Full Greedy (`M1+M2+M3+M4`) `.09223511`, M4 `.08725290`, M2+M4 `.09031225`, and reference-graph learner `.08635285`. The latter uses reference structure and is a diagnostic, not a deployable oracle. Shared-index paired SCM-bootstrap pointwise 95% intervals: Full Greedy−S0 `−.02572 [−.03798,−.01463]`; M4−Full Greedy `−.00498 [−.01077,−.00038]`. `CANONICAL_ORACLE` is a separate diagnostic, not Full Greedy. At gamma=.5 Full Greedy mean regret `.08216346` is below M4 `.08359752`; gamma=1 policies select the same action `k=0` in all saved units. These are post-hoc objective sensitivities, not changes to C's frozen primary.
+
+The S1 `GRAPH_FREE` rows are now named `EMPTY_DAG_LEARNER`: they are predictions from the existing learner supplied an empty graph. They are not Research F's X–Y association learner. The latter's already-saved gamma-zero regret is `.02939` Development and `.03873` Held-out; it was not evaluated on the additional S1 objectives.
+
+S2's corrected nested saved-feature comparison reports Held-out SCM-balanced MAE `.06966` for B_original, `.06153` for E_nested, and `.03768` for F_nested. Paired B−E MAE difference `.00813` (pointwise 95% SCM bootstrap `[.00209,.01390]`); E−F `.02386` `[.01674,.03116]`. This post-hoc refit uses common Development SCM-grouped folds and does not tune on Held-out.
+
 ## Research F-Lite final audit corrections
 
 | Audit item | Development | Held-out | Definition |
@@ -110,4 +118,4 @@ At D B2 only, graph-free association baseline has mean loss .789362 and 0 graph 
 | Fit-based B3/B4 same action | 63/64 | 200/200 | Unit-level action comparison |
 | Final pending rows, four deterministic query policies at B4 | 2/256 | 4/800 | Stored answers replayed; individually DAG-feasible on final graph: 0 in both cohorts |
 
-The historical graph-free `mean_remaining_errors=9.52` is a raw diagnostic only. Structural residual error is `n/a` for a learner with no repair graph. Shared-index 10,000-resample pointwise intervals and saved-input/hash checks are in [`RESEARCH_F_FINAL_AUDIT.md`](../decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md). The 46/64 Development M4–Full Greedy action agreement is separate from the mechanism report's 46 Held-out off-task selections (including three score ties); these describe different comparisons.
+The historical graph-free `mean_remaining_errors=9.52` is a raw diagnostic only. Structural residual error is `n/a` for a learner with no repair graph. Shared-index 10,000-resample pointwise intervals and saved-input/hash checks are in [`RESEARCH_F_FINAL_AUDIT.md`](../decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md). The verified Development M4–Full Greedy action agreement is 61/64 (3/64 differ); this is distinct from the mechanism report's 46 Held-out off-task selections (including three score ties).

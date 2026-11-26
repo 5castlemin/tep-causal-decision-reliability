@@ -1,0 +1,33 @@
+cohort,metric,n_scm,n_unique_graph,spearman_scm_balanced,ci95_low,ci95_high,bootstrap_replicates_valid,interval,analysis
+C_DEVELOPMENT,skeleton_f1,64,336,-0.2139550740661474,-0.37680059835849344,-0.03859467366218034,10000,cluster bootstrap by SCM; pointwise,
+C_DEVELOPMENT,directed_f1,64,336,-0.4275772092999004,-0.5361328268336295,-0.30218911251065483,10000,cluster bootstrap by SCM; pointwise,
+C_DEVELOPMENT,directed_shd,64,336,0.30786846452222455,0.16727796652788238,0.4339614447592791,10000,cluster bootstrap by SCM; pointwise,
+C_DEVELOPMENT,atomic_error_count,64,336,0.30786846452222455,0.16168824168245072,0.43520969149781924,10000,cluster bootstrap by SCM; pointwise,
+C_DEVELOPMENT,task_error_count,64,336,0.5694997429574438,0.39377505819727576,0.7156184365705076,10000,cluster bootstrap by SCM; pointwise,
+C_DEVELOPMENT,task_error_rate,64,336,0.6296725975782782,0.4633719199325594,0.7582164128548818,10000,cluster bootstrap by SCM; pointwise,
+C_DEVELOPMENT,xy_path,64,336,-0.9019519096135299,-0.9890896397029862,-0.7843153751389773,10000,cluster bootstrap by SCM; pointwise,
+C_DEVELOPMENT,abs_effect_magnitude_error,64,336,0.16442965453481523,-0.0465347062905572,0.3572184056849646,10000,cluster bootstrap by SCM; pointwise,
+C_HELDOUT,skeleton_f1,200,997,-0.2618263492525368,-0.35670242095577376,-0.1664850349577942,10000,cluster bootstrap by SCM; pointwise,
+C_HELDOUT,directed_f1,200,997,-0.38729762756045055,-0.45603871280233077,-0.3152898520736229,10000,cluster bootstrap by SCM; pointwise,
+C_HELDOUT,directed_shd,200,997,0.3328467115577189,0.2619519464582534,0.400416320504565,10000,cluster bootstrap by SCM; pointwise,
+C_HELDOUT,atomic_error_count,200,997,0.3328467115577189,0.26246346660029585,0.4029836662303177,10000,cluster bootstrap by SCM; pointwise,
+C_HELDOUT,task_error_count,200,997,0.6434763584287087,0.5778459146392632,0.7075793486071801,10000,cluster bootstrap by SCM; pointwise,
+C_HELDOUT,task_error_rate,200,997,0.7104748926382162,0.6436699395233793,0.7687553189729524,10000,cluster bootstrap by SCM; pointwise,
+C_HELDOUT,xy_path,200,997,-0.9242090741170841,-0.9722266156032771,-0.8646518372719451,10000,cluster bootstrap by SCM; pointwise,
+C_HELDOUT,abs_effect_magnitude_error,200,997,0.024928848681127123,-0.07756075600595681,0.13217938745299343,10000,cluster bootstrap by SCM; pointwise,
+C_DEVELOPMENT,skeleton_f1,64,64,-0.19535812547835457,,,0,descriptive; initial-G0 row only,initial_G0
+C_DEVELOPMENT,directed_f1,64,64,-0.47559772211560764,,,0,descriptive; initial-G0 row only,initial_G0
+C_DEVELOPMENT,directed_shd,64,64,0.3578895448481728,,,0,descriptive; initial-G0 row only,initial_G0
+C_DEVELOPMENT,atomic_error_count,64,64,0.3578895448481728,,,0,descriptive; initial-G0 row only,initial_G0
+C_DEVELOPMENT,task_error_count,64,64,0.5639642417454364,,,0,descriptive; initial-G0 row only,initial_G0
+C_DEVELOPMENT,task_error_rate,64,64,0.6185236808262757,,,0,descriptive; initial-G0 row only,initial_G0
+C_DEVELOPMENT,xy_path,64,64,-0.8775549010199051,,,0,descriptive; initial-G0 row only,initial_G0
+C_DEVELOPMENT,abs_effect_magnitude_error,64,64,0.24875657795284628,,,0,descriptive; initial-G0 row only,initial_G0
+C_HELDOUT,skeleton_f1,200,200,-0.21989078791014444,,,0,descriptive; initial-G0 row only,initial_G0
+C_HELDOUT,directed_f1,200,200,-0.3350705084784087,,,0,descriptive; initial-G0 row only,initial_G0
+C_HELDOUT,directed_shd,200,200,0.26862921356875813,,,0,descriptive; initial-G0 row only,initial_G0
+C_HELDOUT,atomic_error_count,200,200,0.26862921356875813,,,0,descriptive; initial-G0 row only,initial_G0
+C_HELDOUT,task_error_count,200,200,0.5961365987528363,,,0,descriptive; initial-G0 row only,initial_G0
+C_HELDOUT,task_error_rate,200,200,0.6991604928337605,,,0,descriptive; initial-G0 row only,initial_G0
+C_HELDOUT,xy_path,200,200,-0.907477987458081,,,0,descriptive; initial-G0 row only,initial_G0
+C_HELDOUT,abs_effect_magnitude_error,200,200,0.07444880541361516,,,0,descriptive; initial-G0 row only,initial_G0

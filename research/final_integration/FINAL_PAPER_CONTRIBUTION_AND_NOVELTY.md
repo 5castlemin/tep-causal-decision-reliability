@@ -24,3 +24,4 @@ The repository's related-work review identifies overlap with targeted causal eli
 - D: conditional external semisynthetic robustness, one fitted DGP.
 - E: post-hoc budget/cost/adaptive/target extension.
 - F-Lite: post-hoc reference-blind query-policy prototype on reused C units.
+- S1/S2: post-hoc supplementary objective and structural-metric analysis on saved C results; corrected Full Greedy mapping, nested feature comparison, and shared-index descriptive associations. This does not change C's confirmatory status or demonstrate a universal policy.

@@ -1,0 +1,244 @@
+"""Supplementary diagnostics from saved units; no policy or response resampling."""
+from __future__ import annotations
+import csv, json, math
+from collections import defaultdict, Counter
+from pathlib import Path
+import numpy as np
+from research.final_supplementary_validation.analyze_supplementary import (
+    ROOT, OUT, GAMMAS, DELTAS, K, read_cohorts, run_predictive_s2, save_csv,
+    grouped_folds, weights_by_scm, model_features,
+)
+
+BOOT=10_000
+SEED=2026112602
+
+def read_csv(name):
+    numeric={"budget","regret","selected_k","estimated_effect_slope","true_effect_slope","abs_effect_magnitude_error","effect_sign_error","skeleton_precision","skeleton_recall","skeleton_f1","directed_precision","directed_recall","directed_f1","directed_shd","atomic_error_count","task_error_count","task_error_rate","task_fn","task_fp","task_rev","task_unres","task_support","offtask_error_count","xy_path","n_nodes","n_truth_edges","n_estimated_adjacencies","unresolved_count"}
+    with (OUT/name).open(encoding="utf-8-sig",newline="") as f:
+        rows=list(csv.DictReader(f))
+    for row in rows:
+        for key in numeric & row.keys():
+            if row[key]=="":row[key]=None
+            else:row[key]=float(row[key])
+    return rows
+
+def ranks(x):
+    x=np.asarray(x); order=np.argsort(x,kind="mergesort"); out=np.empty(len(x),float); i=0
+    while i<len(x):
+        j=i+1
+        while j<len(x) and x[order[j]]==x[order[i]]:j+=1
+        out[order[i:j]]=(i+j-1)/2+1;i=j
+    return out
+
+def weighted_spearman(x,y,w):
+    x=np.asarray(x,float);y=np.asarray(y,float);w=np.asarray(w,float)
+    ok=np.isfinite(x)&np.isfinite(y)&np.isfinite(w)&(w>0)
+    if ok.sum()<3:return None
+    rx,ry=ranks(x[ok]),ranks(y[ok]); ww=w[ok]; mx=np.average(rx,weights=ww);my=np.average(ry,weights=ww)
+    dx=rx-mx;dy=ry-my; den=math.sqrt(float(np.sum(ww*dx*dx)*np.sum(ww*dy*dy)))
+    return float(np.sum(ww*dx*dy)/den) if den else None
+
+def correlation_audit(rows):
+    metric_names=["skeleton_f1","directed_f1","directed_shd","atomic_error_count","task_error_count","task_error_rate","xy_path","abs_effect_magnitude_error"]
+    result=[]; rng=np.random.default_rng(SEED)
+    for cohort in ("C_DEVELOPMENT","C_HELDOUT"):
+        rr=[r for r in rows if r["cohort"]==cohort]
+        by=defaultdict(list)
+        for r in rr:by[r["scm_id"]].append(r)
+        ids=sorted(by)
+        # Share identical cluster-bootstrap draws across all metrics in this cohort.
+        shared_draws=rng.integers(0,len(ids),size=(BOOT,len(ids)))
+        for metric in metric_names:
+            x=[float(r[metric]) if r[metric] not in (None,"") else float("nan") for r in rr]; y=[float(r["regret"]) for r in rr]
+            w=[1/len(by[r["scm_id"]]) for r in rr]
+            point=weighted_spearman(x,y,w); vals=[]
+            for draw in shared_draws:
+                bx=[];byy=[];bw=[]
+                for j in draw:
+                    cluster=by[ids[j]]; wt=1/len(cluster)
+                    for r in cluster:
+                        bx.append(float(r[metric]) if r[metric] not in (None,"") else float("nan"));byy.append(float(r["regret"]));bw.append(wt)
+                corr=weighted_spearman(bx,byy,bw)
+                if corr is not None: vals.append(corr)
+            result.append({"cohort":cohort,"metric":metric,"n_scm":len(ids),"n_unique_graph":len(rr),"spearman_scm_balanced":point,"ci95_low":float(np.quantile(vals,.025)) if vals else None,"ci95_high":float(np.quantile(vals,.975)) if vals else None,"bootstrap_replicates_valid":len(vals),"interval":"cluster bootstrap by SCM; pointwise"})
+    # Initial G0 one row per SCM, separately, avoids policy/budget pseudoreplication.
+    for cohort in ("C_DEVELOPMENT","C_HELDOUT"):
+        rr=[r for r in rows if r["cohort"]==cohort and r["policy"]=="S0" and int(r["budget"])==0]
+        for metric in metric_names:
+            valsx=[float(r[metric]) if r[metric] not in (None,"") else float("nan") for r in rr];valsy=[float(r["regret"]) for r in rr]
+            result.append({"cohort":cohort,"analysis":"initial_G0","metric":metric,"n_scm":len(rr),"n_unique_graph":len(rr),"spearman_scm_balanced":weighted_spearman(valsx,valsy,[1]*len(rr)),"ci95_low":None,"ci95_high":None,"bootstrap_replicates_valid":0,"interval":"descriptive; initial-G0 row only"})
+    return result
+
+def same_scm_ranges(rows):
+    out=[]
+    for cohort in ("C_DEVELOPMENT","C_HELDOUT"):
+        rr=[r for r in rows if r["cohort"]==cohort]; groups=defaultdict(list)
+        for r in rr:groups[(r["scm_id"],r["directed_shd"])].append(float(r["regret"]))
+        ranges=[max(v)-min(v) for v in groups.values() if len(v)>1]
+        out.append({"cohort":cohort,"metric":"directed_shd","scm_metric_tie_groups":len(ranges),"within_scm_tie_group_regret_range_mean":float(np.mean(ranges)) if ranges else None,"median":float(np.median(ranges)) if ranges else None,"p90":float(np.quantile(ranges,.9)) if ranges else None,"max":float(np.max(ranges)) if ranges else None,"interpretation":"among distinct structural graphs within SCM sharing the same directed SHD"})
+        groups=defaultdict(list)
+        for r in rr:groups[(r["scm_id"],r["skeleton_f1"])].append(float(r["regret"]))
+        ranges=[max(v)-min(v) for v in groups.values() if len(v)>1]
+        out.append({"cohort":cohort,"metric":"skeleton_f1","scm_metric_tie_groups":len(ranges),"within_scm_tie_group_regret_range_mean":float(np.mean(ranges)) if ranges else None,"median":float(np.median(ranges)) if ranges else None,"p90":float(np.quantile(ranges,.9)) if ranges else None,"max":float(np.max(ranges)) if ranges else None,"interpretation":"among distinct structural graphs within SCM sharing the same skeleton F1"})
+    return out
+
+def prediction_bootstrap(graph_rows):
+    models,unique,preds=run_predictive_s2(graph_rows)
+    by_model={m: {(r["scm_id"],r["structural_graph_hash"]):(r["y"],r["prediction"]) for r in ps["rows"]} for m,ps in preds.items()}
+    held=[r for r in graph_rows if r["cohort"]=="C_HELDOUT"]
+    groups=defaultdict(list)
+    for r in held:groups[r["scm_id"]].append(r)
+    ids=sorted(groups); rng=np.random.default_rng(SEED+100)
+    # The same paired SCM draws are used for every model contrast.
+    shared_draws=rng.integers(0,len(ids),size=(BOOT,len(ids)))
+    out=[]
+    pairs=[("B_GENERAL_STRUCTURE","E_GENERAL_PLUS_TASK"),("B_GENERAL_STRUCTURE","F_STRUCTURE_PLUS_PATH"),("E_GENERAL_PLUS_TASK","F_STRUCTURE_PLUS_PATH"),("F_STRUCTURE_PLUS_PATH","G_ORACLE_EFFECT_DIAGNOSTICS")]
+    for ma,mb in pairs:
+        scm_delta=[]
+        for sid in ids:
+            ea=[];eb=[]
+            for r in groups[sid]:
+                key=(sid,r["structural_graph_hash"]); y,pa=by_model[ma][key];_,pb=by_model[mb][key]
+                ea.append(abs(y-pa));eb.append(abs(y-pb))
+            scm_delta.append(float(np.mean(ea)-np.mean(eb)))
+        arr=np.asarray(scm_delta); boot=arr[shared_draws].mean(axis=1)
+        out.append({"contrast":f"MAE({ma})-MAE({mb})","mean_scm_balanced_delta_mae":float(arr.mean()),"ci95_low":float(np.quantile(boot,.025)),"ci95_high":float(np.quantile(boot,.975)),"better":int((arr>1e-12).sum()),"worse":int((arr< -1e-12).sum()),"tie":int((np.abs(arr)<=1e-12).sum()),"n_heldout_scm":len(arr),"interval":"paired SCM bootstrap; pointwise"})
+    save_csv(OUT/"s2_prediction_bootstrap.csv",out)
+    pred_rows=[]
+    for model,ps in preds.items():
+        for r in ps["rows"]:pred_rows.append({"model":model,**r})
+    save_csv(OUT/"s2_predictions_local.csv",pred_rows)
+    return out
+
+def fit_logistic(x,y,w,alpha):
+    x=np.asarray(x,float);y=np.asarray(y,float);w=np.asarray(w,float)
+    mu=np.average(x,axis=0,weights=w);sd=np.sqrt(np.average((x-mu)**2,axis=0,weights=w));sd[sd<1e-12]=1
+    z=np.column_stack([np.ones(len(x)),(x-mu)/sd]);pen=np.eye(z.shape[1])*alpha;pen[0,0]=0
+    beta=np.zeros(z.shape[1])
+    for _ in range(80):
+        eta=np.clip(z@beta,-30,30);p=1/(1+np.exp(-eta));v=np.maximum(p*(1-p),1e-8)
+        grad=z.T@(w*(y-p))-pen@beta
+        hess=(z.T*(w*v))@z+pen
+        step=np.linalg.solve(hess,grad);beta+=step
+        if np.max(np.abs(step))<1e-8:break
+    return lambda xx:1/(1+np.exp(-np.clip(np.column_stack([np.ones(len(xx)),(np.asarray(xx,float)-mu)/sd])@beta,-30,30)))
+
+def classification_metrics(y,p,w):
+    y=np.asarray(y,int);p=np.asarray(p,float);w=np.asarray(w,float);prev=float(np.average(y,weights=w));brier=float(np.average((p-y)**2,weights=w))
+    pos=y==1;neg=~pos
+    if not pos.any() or not neg.any():return {"positive_prevalence":prev,"brier":brier,"auroc":None,"average_precision":None,"n_positive":int(pos.sum()),"n":len(y)}
+    # Weighted AUROC as P(score+ > score-) + 0.5 P(tie), using only negative
+    # mass below/tied with each positive score. This remains in [0, 1].
+    order=np.argsort(p,kind="mergesort");auc_num=0.0;negative_below=0.0;i=0
+    while i<len(order):
+        j=i+1
+        while j<len(order) and p[order[j]]==p[order[i]]:j+=1
+        group=order[i:j];positive_mass=float(w[group[pos[group]]].sum());negative_mass=float(w[group[neg[group]]].sum())
+        auc_num+=positive_mass*(negative_below+0.5*negative_mass)
+        negative_below+=negative_mass;i=j
+    wp=w[pos].sum();wn=w[neg].sum();auc=float(auc_num/(wp*wn))
+    order=np.argsort(-p,kind="mergesort");tp=fp=0.0;last_recall=0.0;ap=0.0;i=0
+    total_pos=float(w[pos].sum())
+    # Weighted average precision accumulates whole tied-score groups at once,
+    # so AP is invariant to row ordering within a score tie.
+    while i<len(order):
+        j=i+1
+        while j<len(order) and p[order[j]]==p[order[i]]:j+=1
+        group=order[i:j]
+        tp+=float(w[group[y[group]==1]].sum())
+        fp+=float(w[group[y[group]==0]].sum())
+        recall=tp/total_pos;precision=tp/(tp+fp) if tp+fp else 0
+        ap+=(recall-last_recall)*precision;last_recall=recall;i=j
+    return {"positive_prevalence":prev,"brier":brier,"auroc":auc,"average_precision":float(ap),"n_positive":int(pos.sum()),"n":len(y)}
+
+def zero_regret_classification(dev,held,models=("B_GENERAL_STRUCTURE","E_GENERAL_PLUS_TASK","F_STRUCTURE_PLUS_PATH")):
+    tol=1e-12;rows=[]
+    for model in models:
+        scores={a:[] for a in (.01,.1,1,10,100)}
+        for tr,va in grouped_folds(dev):
+            yt=np.array([int(float(r["regret"])>tol) for r in tr]);yv=np.array([int(float(r["regret"])>tol) for r in va]);wt=weights_by_scm(tr);wv=weights_by_scm(va)
+            if model=="A_NULL":
+                pp=np.full(len(va),np.average(yt,weights=wt))
+                for a in scores:scores[a].append(float(np.average((pp-yv)**2,weights=wv)))
+            else:
+                x=np.vstack([model_features(r,model) for r in tr]);xv=np.vstack([model_features(r,model) for r in va]);med=np.nanmedian(x,axis=0);med=np.where(np.isfinite(med),med,0);x=np.where(np.isfinite(x),x,med);xv=np.where(np.isfinite(xv),xv,med)
+                for a in scores:
+                    pp=fit_logistic(x,yt,wt,a)(xv);scores[a].append(float(np.average((pp-yv)**2,weights=wv)))
+        alpha=min(scores,key=lambda a:np.mean(scores[a]))
+        yd=np.array([int(float(r["regret"])>tol) for r in dev]);yh=np.array([int(float(r["regret"])>tol) for r in held]);wd=weights_by_scm(dev);wh=weights_by_scm(held)
+        if model=="A_NULL":ph=np.full(len(held),np.average(yd,weights=wd))
+        else:
+            x=np.vstack([model_features(r,model) for r in dev]);xh=np.vstack([model_features(r,model) for r in held]);med=np.nanmedian(x,axis=0);med=np.where(np.isfinite(med),med,0);x=np.where(np.isfinite(x),x,med);xh=np.where(np.isfinite(xh),xh,med);ph=fit_logistic(x,yd,wd,alpha)(xh)
+        m=classification_metrics(yh,ph,wh)
+        rows.append({"model":model,"selected_alpha":alpha,"development_positive_rate":float(np.average(yd,weights=wd)),"development_cv_brier":float(np.mean(scores[alpha])),"heldout_scm_balanced_positive_rate":m["positive_prevalence"],"heldout_brier":m["brier"],"heldout_auroc":m["auroc"],"heldout_average_precision":m["average_precision"],"heldout_positive_graphs":m["n_positive"],"heldout_graph_rows":m["n"],"threshold":tol,"status":"post-hoc historical Held-out classification; grouped Development CV"})
+    return rows
+
+def optimum_diagnostics(cohorts):
+    rows=[]
+    for cohort,units in cohorts.items():
+        for u in units:
+            p=u["payload"]; nodes=tuple(u["proposal"]["nodes"]); y=p["input_binding"]["target"]
+            # Here target is the outcome node; action-response means are stored in the original evaluator rows.
+            base_item=p["e2e_result"]["budgets"][0]["policies"][0]
+            truth_by_k={float(q["k"]):float(q["mean"]) for q in base_item["evaluation"]["truth"]}
+            yi=nodes.index(y); sd=float(u["data"].std(axis=0,ddof=1)[yi]); mean=float(u["data"].mean(axis=0)[yi]); orig=mean+int(p["input_binding"]["delta"])*sd
+            for delta in DELTAS:
+                target=orig if delta=="original" else mean+float(delta)*sd
+                for gamma in GAMMAS:
+                    losses={k:((v-target)/sd)**2+gamma*k*k for k,v in truth_by_k.items()}
+                    minimum=min(losses.values()); opt=sorted(k for k,v in losses.items() if abs(v-minimum)<=1e-12)
+                    category="multiple" if len(opt)>1 else "endpoint" if abs(opt[0])==1 else "zero" if opt[0]==0 else "nonzero_interior"
+                    rows.append({"cohort":cohort,"scm_id":u["scm_id"],"target_delta":delta,"gamma":gamma,"optimal_k_set":";".join(map(str,opt)),"argmin_set_size":len(opt),"category":category,"mean_y_train":mean,"sd_y_train":sd,"target":target})
+    agg=[]
+    keys=sorted({(r["cohort"],r["target_delta"],r["gamma"]) for r in rows},key=str)
+    for key in keys:
+        rr=[r for r in rows if (r["cohort"],r["target_delta"],r["gamma"])==key]; c=Counter(r["category"] for r in rr)
+        agg.append({"cohort":key[0],"target_delta":key[1],"gamma":key[2],"n_scm":len(rr),"endpoint":c["endpoint"],"zero":c["zero"],"nonzero_interior":c["nonzero_interior"],"multiple_optimum":c["multiple"],"endpoint_fraction":c["endpoint"]/len(rr),"zero_fraction":c["zero"]/len(rr),"nonzero_interior_fraction":c["nonzero_interior"]/len(rr),"multiple_fraction":c["multiple"]/len(rr)})
+    save_csv(OUT/"s1_optimum_distribution.csv",agg)
+    # Local unit-level details carry target values and are deliberately ignored by git.
+    save_csv(OUT/"s1_optimum_diagnostics_local.csv",rows)
+    return agg
+
+def integrated(rows_s1,graphs):
+    gmap={(r["cohort"],r["scm_id"],r["structural_graph_hash"]):r for r in graphs}
+    selected={}
+    for r in rows_s1:
+        if r["target_delta"] not in ("original","-0.25","0.25") or float(r["gamma"])!=.2:continue
+        if r["policy"] not in ("S0","CANONICAL_ORACLE","M4","M2+M4"):continue
+        key=(r["cohort"],r["scm_id"],r["graph_hash"],r["target_delta"],r["gamma"])
+        selected[key]=r
+    out=[]
+    for cohort in ("C_DEVELOPMENT","C_HELDOUT"):
+      for delta in ("original","-0.25","0.25"):
+        metrics=[]; losses=[]
+        for (c,sid,gh,d,g),r in selected.items():
+            if c!=cohort or d!=delta:continue
+            gr=gmap.get((c,sid,gh))
+            if gr: metrics.append(gr);losses.append(float(r["regret"]))
+        for metric in ("directed_shd","task_error_count","skeleton_f1","xy_path"):
+            corr=weighted_spearman([float(r[metric]) for r in metrics],losses,[1]*len(metrics)) if metrics else None
+            out.append({"cohort":cohort,"target_delta":delta,"gamma":.2,"metric":metric,"n_graph_task_rows":len(metrics),"spearman":corr,"interpretation":"post-hoc association; repeated graphs/tasks are clustered within SCM and not independent"})
+    save_csv(OUT/"s1_s2_integrated_associations.csv",out)
+    return out
+
+def main():
+    rows=read_csv("s2_unique_graph_metrics.csv"); s1=read_csv("s1_unit_metrics.csv")
+    cohorts,hashes=read_cohorts()
+    if (OUT/"s2_metric_correlations.csv").is_file():
+        corr=read_csv("s2_metric_correlations.csv")
+    else:
+        corr=correlation_audit(rows);save_csv(OUT/"s2_metric_correlations.csv",corr)
+    if (OUT/"s2_same_scm_metric_ties.csv").is_file():
+        ties=read_csv("s2_same_scm_metric_ties.csv")
+    else:
+        ties=same_scm_ranges(rows);save_csv(OUT/"s2_same_scm_metric_ties.csv",ties)
+    pred=prediction_bootstrap(rows)
+    dev=[r for r in rows if r["cohort"]=="C_DEVELOPMENT"]; held=[r for r in rows if r["cohort"]=="C_HELDOUT"]
+    cls=zero_regret_classification(dev,held);save_csv(OUT/"s2_zero_regret_classification.csv",cls)
+    opt=optimum_diagnostics(cohorts)
+    integ=integrated(s1,rows)
+    report={"source_sha256":hashes,"s2_metric_correlations":corr,"s2_same_scm_metric_ties":ties,"s2_prediction_bootstrap":pred,"s2_zero_regret_classification":cls,"s1_optimum_distribution":opt,"s1_s2_integrated":integ,"bootstrap_replicates":BOOT,"no_new_scm_or_g0":True,"no_new_intervention_samples":True}
+    (OUT/"supplementary_audit_summary.json").write_text(json.dumps(report,indent=2,allow_nan=False),encoding="utf-8")
+    print(json.dumps({"s2_metric_correlations":corr,"s2_same_scm_metric_ties":ties,"s2_prediction_bootstrap":pred,"s1_optimum_distribution":opt,"input_hashes":hashes},indent=2,allow_nan=False))
+
+if __name__=="__main__":main()

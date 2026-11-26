@@ -1,0 +1,29 @@
+{
+  "schema": "supplementary-validation-contract-v1",
+  "classification": "POST_HOC_SUPPLEMENTARY_DECISION_ROBUSTNESS_AND_METRIC_VALIDATION",
+  "status": "LOCKED_BEFORE_COHORT_ANALYSIS",
+  "cohorts": {"development_scm": 64, "heldout_scm": 200, "research_d": "excluded_missing_private_unit_material"},
+  "no_new_data_generation": true,
+  "S1": {
+    "action_grid_k": [-1.0, -0.5, 0.0, 0.5, 1.0],
+    "gamma": [0.0, 0.05, 0.2, 0.5, 1.0],
+    "target_delta": ["original", -0.25, 0.25],
+    "primary": {"target": "original", "gamma": 0.2, "budget": 2, "contrasts": [["S0", "FULL_GREEDY"], ["M4", "FULL_GREEDY"], ["M4", "S0"]]},
+    "policies": ["all_17_stored_C_policies_including_CANONICAL_ORACLE_as_Full_Greedy", "ADAPTIVE_M4_BLOCKER_AWARE_saved_trajectory", "REFERENCE_GRAPH", "GRAPH_FREE"],
+    "tie_break": ["minimum_loss", "minimum_abs_k", "minimum_k"],
+    "bootstrap": {"replicates": 10000, "seed": 2026112601, "unit": "SCM", "paired_common_indices": true, "interval": "pointwise_percentile"},
+    "regret_negative_tolerance": 1e-12
+  },
+  "S2": {
+    "primary_unit": "unique_scm_structural_graph_hash",
+    "scm_balanced_weighting": true,
+    "directed_shd_reversal_cost": 1,
+    "unresolved_vs_known_direction_cost": 1,
+    "models": ["A_NULL", "B_GENERAL_STRUCTURE", "C_OFF_TASK", "D_TASK_RELATED", "E_GENERAL_PLUS_TASK", "F_STRUCTURE_PLUS_PATH", "G_ORACLE_EFFECT_DIAGNOSTICS"],
+    "grouped_cv": {"folds": 5, "group": "SCM_ID", "ridge_alpha": [0.01, 0.1, 1.0, 10.0, 100.0], "selection": "Development SCM-balanced MAE"},
+    "heldout_bootstrap": {"replicates": 10000, "seed": 2026112602, "unit": "SCM", "paired_common_indices": true},
+    "sid_aid": "optional_verified_implementation_only"
+  },
+  "protected": ["Research C-D-E-F contracts and frozen assets", "original ledgers", "requirements.txt"],
+  "execution_revision": null
+}
