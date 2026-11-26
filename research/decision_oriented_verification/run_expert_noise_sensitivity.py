@@ -8,8 +8,8 @@ import psutil
 ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/"src"))
 from research.decision_oriented_verification.run_f_lite import SOURCES,restore_cohort,stable_seed,make_policy_view,_selection
 from research.decision_oriented_verification.policy import (NO_EDGE,U_TO_V,V_TO_U,VerificationState,query_once)
-from research.budget_adaptive_repair.step3_adapter import evaluate
-from research.budget_adaptive_repair.step4c1_gt import analytic_response
+from research.budget_aware_refinement.step3_adapter import evaluate
+from research.budget_aware_refinement.step4c1_gt import analytic_response
 from research.original_objective import policy_engine as pe
 from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
