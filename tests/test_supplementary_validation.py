@@ -55,7 +55,8 @@ class SupplementaryValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "audit.csv"
             save_csv(path, [{"cohort": "dev", "metric": "a"}, {"cohort": "held", "analysis": "G0"}])
-            rows = list(csv.DictReader(path.open(encoding="utf-8", newline="")))
+            with path.open(encoding="utf-8", newline="") as handle:
+                rows = list(csv.DictReader(handle))
             self.assertEqual(rows[0]["analysis"], "")
             self.assertEqual(rows[1]["analysis"], "G0")
 
