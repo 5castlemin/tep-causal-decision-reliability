@@ -14,6 +14,8 @@
 6. **E6 saturation** — distinguish structural completion, policy candidate exhaustion, DAG feasibility and unchanged action/loss.
 7. **E7 Adaptive M4** — show sparse Held-out blocker evidence, paired uncertainty and counterexamples.
 8. **E8 target sensitivity** — action set fixed; changing target changes the task.
+9. **E9 expanded Pareto** — C Development/Held-out separately; original 17 plus Adaptive M4; ties retained; costs are edit counts.
+10. **E10 lambda lower envelope** — display only the C observed optimal regions; exact breakpoint ties are in the CSV. Lambda is not money.
 
 Every chart is exploratory/descriptive, uses original SCM units for C, and uses aggregate-only fixed-DGP evidence for D where applicable. Pointwise intervals are not simultaneous. Match each SVG under `figures/` with the corresponding aggregate CSV under `outputs/`.
 
@@ -39,3 +41,6 @@ Every chart is exploratory/descriptive, uses original SCM units for C, and uses 
 ## Claims to avoid
 
 Do not claim that M4 is always best, all off-task errors are harmless, more edits necessarily improve decisions, a Pareto point is statistically superior, Adaptive M4 is general, graph-based recommendations beat graph-free learning, or the findings establish factory deployment or monetary savings.
+
+
+E9/E10 vector figures live at `research/final_integration/research_e_audit/figures/`; their generator reads existing public aggregate CSVs only. Exact supported/tied breakpoint labels and resampling scope are linked in the final audit.

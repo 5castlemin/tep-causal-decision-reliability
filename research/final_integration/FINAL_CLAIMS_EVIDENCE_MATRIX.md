@@ -12,3 +12,17 @@
 | 현장 제조 효과 또는 배포 안전성이 입증됐다 | `UNSUPPORTED` | 실측 개입이 아닌 반합성 DGP. | 장치·공정·운영비·안전성 미평가. | 사용 금지. |
 
 세부 출처, 재계산 상태와 통계 단위는 `ORIGINAL_LEDGER_MECHANISM_AUDIT.md`, `RESEARCH_D_FINAL_REAUDIT.md`, `FINAL_RESULTS_TABLES.md`를 참조한다.
+
+
+## Research E extension claims (post-hoc only)
+
+| Claim | Evidence grade | Evidence/unit/estimate | Counterexample or limit | Allowed wording |
+|---|---|---|---|---|
+| Budget gains can continue beyond a flat step | `DESCRIPTIVE_ONLY` | C Held-out M4 mean regret B3=.00143536, B4=.00143536, B5–9=.00129902; original 200 SCMs | Cohort mean; post-hoc extension; unit outcomes nonmonotone | “In this cohort, the M4 average improved again at B5 after no mean change from B3 to B4.” |
+| Complete graph restoration equals decision saturation | `UNSUPPORTED` | M4 complete restoration 80/200 Held-out; Bmax action matches Reference learner 199/200 | M2+M4 retains mean 0.655 errors but matches Reference learner action 200/200 | “Structural restoration and action agreement are distinct.” |
+| Adaptive M4 generally improves M4 | `UNSUPPORTED` | C Held-out B3 delta −.000471447; interval [−.001414341,0], better/worse/tie=1/0/199, cost +.020 | one-blocker heuristic; sparse differences; Development no blocker edits | “Adaptive M4 changed two blocker edges in two Held-out cases; only one unit had lower regret at B3.” |
+| An edit-count preference can change the observed policy | `DESCRIPTIVE_ONLY` | C Held-out lower-envelope transitions at λ≈.0045445, .0235724, .0392675, .1287068 | λ is hypothetical; one previously inspected cohort; tied policies and post-hoc choice | “Under this constructed edit penalty, the sample mean lower envelope changed among listed policies.” |
+| Target definition changes repair value | `DESCRIPTIVE_ONLY` | δ=0 M4/B2 k=0 in 264/264, optimum interior 243/264 | mean-target is a special task; not a broad outcome family | “The preferred action and regret depend on the chosen target rule.” |
+| E confirms C on a new population | `UNSUPPORTED` | E reuses original C SCMs and adds budgets/policies only | post-hoc, no new independent SCMs | Do not claim. |
+
+Research E does not alter Claim 1’s C confirmatory grade or D conditional robustness grade. It contributes post-hoc budget/cost evidence only.

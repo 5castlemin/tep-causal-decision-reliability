@@ -21,3 +21,12 @@ D's graph-free point uses its saved aggregate baseline result. No unit-level fro
 For `J_lambda = mean loss + lambda × mean edits`, the common lambda grid is a sensitivity display. `lambda=0` chooses minimum observed mean loss; increasing lambda favors fewer edits. Exact pairwise intersections and supported-optimum intervals are saved in `lambda_exact_intervals.csv`. The same numeric lambda across Research C regret and Research D standardized tracking loss is not the same economic preference. A convex weighted objective can skip non-supported Pareto points; the Pareto set and lambda-optimal set need not coincide.
 
 This is post-hoc selection on already observed cohorts, including held-out evidence. It is descriptive policy choice, not a newly validated decision rule.
+
+
+## Final audit extension — C Bmax and Adaptive M4
+
+The final closeout recomputed cross-budget and fixed-Bmax frontiers with the original 17 repair policies plus the 18th post-hoc `ADAPTIVE_M4_BLOCKER_AWARE` policy. C Held-out cross-budget mean frontier points after preserving all zero-edit ties are S0/no-edit, M3 B1, M4 B1–3, Adaptive M4 B3, and Adaptive M4 B5–9. At fixed Bmax=9, the frontier consists of S0, M3, M4 and Adaptive M4. Full Greedy is not on the observed mean frontier. C Development outputs are separately recorded. No C and D losses are pooled.
+
+The exact lower envelope now includes transition-only breakpoint ties, including supported collinear points; pairwise intersections between candidates that are not optimal at the crossing are not presented as policy transitions. C Held-out transitions are λ≈.0045445, .0235724, .0392675, and .1287068. The exact tied candidate labels are in `research/final_integration/research_e_audit/expanded_lambda_breakpoints.csv`; region winners are in `expanded_lambda_lower_envelope.csv`. A 2,000-resample paired-unit stability table is descriptive frontier inclusion, not inferential superiority.
+
+Research D’s graph-free point is only verified at its saved B2 aggregate: zero graph edits and the same .789362 mean loss as Full Greedy. D lacks unit-level rows here, so it is not extended over budgets.

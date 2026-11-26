@@ -2,7 +2,7 @@
 
 팀: 닦고조이고기름치자
 
-상태: Research C 실험·감사 완료, Research C 메커니즘 분석 원본 Ledger 대조 완료, Research D 외부 반합성 평가 완료. 본 문서는 새 실험을 보고하지 않고 기존 증거를 종합한다.
+상태: Research C 실험·감사, 원본 Ledger 메커니즘 재검증, Research D 외부 반합성 평가, Research E 사후 예산·비용 확장 감사 완료. Research D/E 일부 자료 접근 제한을 아래에 구분한다. 본 문서는 새 실험을 보고하지 않는다.
 
 ## 1. 연구 배경
 
@@ -100,3 +100,22 @@ Research C는 독립 synthetic SCM population에서 정해진 구조 수리 절�
 - [원본 Ledger 감사](ORIGINAL_LEDGER_MECHANISM_AUDIT.md)
 - [Research D 재감사](RESEARCH_D_FINAL_REAUDIT.md)
 - [발표 증거 가이드](FINAL_PRESENTATION_EVIDENCE_GUIDE.md)
+
+
+## 11. Research E — 사후 예산·비용 효율 확장
+
+Research E는 기존 C Development 64 및 Held-out 200 SCM을 동일 입력에 조건부로 사용해 B=5–7/9까지 추가 예산을 살펴본 post-hoc extension이다. 추가 독립 SCM이나 G0는 만들지 않았다. 원래 B0–4 22,440 unit rows의 graph, edit sequence, action 및 analytic regret 재생은 기존 코드의 `1e-12` regret tolerance 아래 일치했다. E 확장 실행 코드는 G0 자체 hash를 별도로 비교하지 않고, 저장 초기 graph로 B0 결과 graph hash·edit/action을 재생해 간접 확인한 점을 provenance 한계로 남긴다.
+
+예산의 평균 효과는 단조 감소하지 않았다. Held-out M4 regret은 B=3과 4에서 0.00143536으로 같았지만 B=5–9에서 0.00129902가 됐다. M2+M4는 B=4에서 Full Greedy와 같은 평균 regret .00096391을 1.440 대 2.005 edits로 냈지만, Adaptive M4는 B=3에서 평균 regret .00096391에 0.780 edits였다. Full Greedy B=3 비용은 1.790이며, 과거 문서의 1.325는 Research D 수치 혼입으로 바로잡았다. 이 평균 비교는 사후 기술 통계다.
+
+Bmax에서 M4가 완전히 복원한 비율은 Dev 18/64, Held-out 80/200이며 나머지는 잔여 구조 오류가 있다. M2+M4는 27/64, 109/200이었다. DAG constraint saturation도 M1 계열 등 여러 policy/cohort에서 드물게 발생해 full table로 정정했다. Reference learner는 평균 regret .002560 (Dev), .000828 (Held-out)였고 grid optimum과 63/64, 198/200에서 일치했다. Bmax의 Full Greedy/Canonical Oracle는 reference learner action과 264/264 일치했으나 잔여 오류가 있는 M2+M4도 264/264 일치했다. 구조 복원과 추천 일치는 다르다.
+
+Adaptive M4 B3의 Held-out paired 차이는 −.000471447이며 구간은 [−.001414341, 0]; 단 1/200 개선, 0 악화, 199 동률이고 평균 edit 수는 M4보다 .020 높았다. 따라서 두 blocker edit가 두 결정 개선을 만든 것으로 표현하지 않는다. C Held-out expanded cross-budget frontier에는 Adaptive M4 B3 및 B5–9가 포함됐고 Full Greedy는 평균 좌표에서 frontier가 아니었다. `Jλ` lower envelope는 λ≈.0045445, .0235724, .0392675, .1287068에서 순차적으로 Adaptive B5–9, Adaptive B3, M4 B3, M4 B2 및 no-edit 동률로 바뀐다. λ는 가상의 edit penalty다.
+
+δ=0 공통 target 민감도는 평균 회귀 과제의 특수 조건이다. M4 B2는 모두 k=0을 추천했으며 grid-optimal action은 Dev 58/64, Held-out 185/200에서 내부 action이었다. 이 결과는 목표값 의존성의 증거지 다양한 제조 목표의 강건성 증거가 아니다. D 원시 evaluator vectors는 이번 E 종료 작업의 지정 저장소에서 발견되지 않아 앞선 27-check D audit 요약만 확인했다. 새 D unit-level 재분석은 없다. 전체 교정·Pareto·입력 hash는 [Research E 최종 감사](RESEARCH_E_FINAL_AUDIT.md)와 `research_e_audit/`에 있다. 확장 Pareto 및 λ 구간 그림은 [E9](research_e_audit/figures/E9_expanded_pareto.svg), [E10](research_e_audit/figures/E10_lambda_lower_envelope.svg)이다.
+
+Research E는 이미 C Held-out 결과를 본 뒤 수행한 사후 extension이다. 예산 민감도와 적응형 규칙의 적용 조건을 설명하는 자료이며 C의 confirmatory Primary를 바꾸지 않는다.
+
+## 12. 프로젝트 종료 및 후속 연구
+
+현재 프로젝트는 Research C, mechanism analysis, Research D, Research E의 문서화된 한계를 보존한 상태로 종료한다. 추가 데이터셋 탐색이나 실험은 계획하지 않는다. Research F (uncertainty-aware graph verification), Research G (안전한 물리 테스트베드 개입), Research H (기업 현장·경제성 검증)는 향후 연구 제안으로만 기록하며 이번 작업에서 설계하거나 실행하지 않았다.

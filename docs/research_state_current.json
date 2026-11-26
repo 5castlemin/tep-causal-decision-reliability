@@ -525,9 +525,9 @@
       "id": "RESEARCH-E",
       "title": "Research E budget-adaptive graph repair post-hoc extension",
       "status": "VERIFIED",
-      "evidence": "research/budget_adaptive_repair/RESEARCH_E_FINAL_RESULTS.md; integrity manifest; PR #44; Actions 45753646125 SUCCESS (408 tests: 407 passed, 1 skipped)",
-      "next_action": "Use the verified E1–E3 summaries and figures in the final report/presentation; keep Research E post-hoc and D aggregate-only. PR #44 awaits owner review; no main merge in this task",
-      "acceptance": "C read-only source hashes and SQLite integrity PASS; exact 264-input restoration and all 22,440 B0–4 replay matches; E1/E2/E3 C analyses, D limitations explicit; 19 aggregate and 19 figure hashes verified; CI SUCCESS; protected Research C assets unchanged",
+      "evidence": "research/final_integration/RESEARCH_E_FINAL_AUDIT.md; research/final_integration/research_e_audit/research_e_final_audit_manifest.json; PR #44",
+      "next_action": "Closeout audit and E corrections prepared; update PR #44 and await required CI/review/merge controls. No further experiments; F/G/H remain future work.",
+      "acceptance": "E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; local full suite 408/410 with 2 environment/data availability failures; protected assets untouched.",
       "depends_on": [
         "FINAL-INTEGRATION"
       ]
@@ -608,7 +608,8 @@
     "2026-11-26: Research D external final outputs were re-audited read-only from the retained local response vectors and recommendation artifact: 27/27 checks PASS; independent primary delta 0.03422489689372574 agrees with the published analysis. No DRF refit, recommendation generation, or intervention sampling was run for this re-audit. Hash of local audit summary: 6fa458199ea814a61248a1088bbe5a3b96a586916516c02a1dd6b54c0331292b. Raw vectors remain outside the public repository.",
     "2026-11-26: Final Research C–D report and evidence matrix prepared from frozen C results, read-only original-ledger mechanism audit, and read-only Research D artifact audit. Research C contract/ledger/code and frozen files remain unchanged; Research D remains conditional external semisynthetic evidence, not manufacturing validation. Final operational step is team presentation preparation, not additional experiments.",
     "2026-11-26: Final Research C–D integration PR #41 merged as 4564e4d28fea62a0caebbad0ed6dd415d7f29cda; post-merge Actions 45654187713 SUCCESS. No new experiment or response sampling.",
-    "2026-11-26: PR #42 merged as fc863182efd4ee721a7f5250c871d46afe9bf244 to record FINAL-INTEGRATION VERIFIED; post-merge main Actions 45656538612 SUCCESS. No experiment or response sampling."
+    "2026-11-26: PR #42 merged as fc863182efd4ee721a7f5250c871d46afe9bf244 to record FINAL-INTEGRATION VERIFIED; post-merge main Actions 45656538612 SUCCESS. No experiment or response sampling.",
+    "2026-11-26: Research E closeout audit added as post-hoc evidence. Corrected full restoration versus residual error fractions, C Held-out Adaptive M4 B3 Full Greedy cost (1.790), and nonzero DAG constraint saturation cells. Reaggregated existing E unit outputs only; generated no SCM/G0/DRF/training/intervention samples. Research D raw evaluator vectors were not found in the designated store; prior 27-check audit summary/hash was confirmed, but no new raw-vector independent analysis was claimed. Local full test suite: 410 run, 408 pass, 1 frozen runtime fingerprint error and 1 missing local frozen dataset failure; Research E focused tests pass. PR #44 closeout/merge pending."
   ],
   "integration_review": {
     "user_approved": true,

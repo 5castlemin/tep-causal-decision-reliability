@@ -1,0 +1,400 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="660" viewBox="0 0 1180 660"><rect width="100%" height="100%" fill="white"/><text x="590" y="34" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">Research E — expanded C cost–performance frontier</text><text x="590" y="58" text-anchor="middle" font-family="Arial" font-size="13">Original 17 policies + Adaptive M4 · post-hoc unit-cost analysis · regret is C analytic Decision Regret</text>
+<text x="330.0" y="86" text-anchor="middle" font-family="Arial" font-size="17" font-weight="bold">Development · n=64 · Bmax=7</text>
+<line x1="90" y1="545" x2="570" y2="545" stroke="#333"/><line x1="90" y1="105" x2="90" y2="545" stroke="#333"/>
+<line x1="90.0" y1="105" x2="90.0" y2="545" stroke="#e5e7eb"/><text x="90.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">0.00</text>
+<line x1="90" y1="545.0" x2="570" y2="545.0" stroke="#e5e7eb"/><text x="82" y="549.0" text-anchor="end" font-family="Arial" font-size="11">0.000</text>
+<line x1="186.0" y1="105" x2="186.0" y2="545" stroke="#e5e7eb"/><text x="186.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">0.46</text>
+<line x1="90" y1="457.0" x2="570" y2="457.0" stroke="#e5e7eb"/><text x="82" y="461.0" text-anchor="end" font-family="Arial" font-size="11">0.022</text>
+<line x1="282.0" y1="105" x2="282.0" y2="545" stroke="#e5e7eb"/><text x="282.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">0.92</text>
+<line x1="90" y1="369.0" x2="570" y2="369.0" stroke="#e5e7eb"/><text x="82" y="373.0" text-anchor="end" font-family="Arial" font-size="11">0.044</text>
+<line x1="378.0" y1="105" x2="378.0" y2="545" stroke="#e5e7eb"/><text x="378.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">1.39</text>
+<line x1="90" y1="281.0" x2="570" y2="281.0" stroke="#e5e7eb"/><text x="82" y="285.0" text-anchor="end" font-family="Arial" font-size="11">0.065</text>
+<line x1="474.0" y1="105" x2="474.0" y2="545" stroke="#e5e7eb"/><text x="474.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">1.85</text>
+<line x1="90" y1="193.00000000000006" x2="570" y2="193.00000000000006" stroke="#e5e7eb"/><text x="82" y="197.00000000000006" text-anchor="end" font-family="Arial" font-size="11">0.087</text>
+<line x1="570.0" y1="105" x2="570.0" y2="545" stroke="#e5e7eb"/><text x="570.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">2.31</text>
+<line x1="90" y1="105.0" x2="570" y2="105.0" stroke="#e5e7eb"/><text x="82" y="109.0" text-anchor="end" font-family="Arial" font-size="11">0.109</text>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>CANONICAL_ORACLE B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="274.91" cy="166.11" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=1; edit count=0.8906; regret=0.0937928; frontier=False</title></circle>
+<circle cx="391.70" cy="318.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=2; edit count=1.4531; regret=0.0560470; frontier=False</title></circle>
+<circle cx="466.32" cy="442.94" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=3; edit count=1.8125; regret=0.0252653; frontier=False</title></circle>
+<circle cx="498.76" cy="497.48" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=4; edit count=1.9688; regret=0.0117622; frontier=False</title></circle>
+<circle cx="518.22" cy="514.25" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=5; edit count=2.0625; regret=0.0076125; frontier=False</title></circle>
+<circle cx="531.20" cy="514.25" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=6; edit count=2.1250; regret=0.0076125; frontier=False</title></circle>
+<circle cx="534.44" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=7; edit count=2.1406; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M1 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="154.88" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=1; edit count=0.3125; regret=0.1008517; frontier=False</title></circle>
+<circle cx="161.37" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=2; edit count=0.3438; regret=0.1008517; frontier=False</title></circle>
+<circle cx="161.37" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=3; edit count=0.3438; regret=0.1008517; frontier=False</title></circle>
+<circle cx="161.37" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=4; edit count=0.3438; regret=0.1008517; frontier=False</title></circle>
+<circle cx="161.37" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=5; edit count=0.3438; regret=0.1008517; frontier=False</title></circle>
+<circle cx="161.37" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=6; edit count=0.3438; regret=0.1008517; frontier=False</title></circle>
+<circle cx="161.37" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=7; edit count=0.3438; regret=0.1008517; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M1+M2 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="210.03" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=1; edit count=0.5781; regret=0.1008517; frontier=False</title></circle>
+<circle cx="261.94" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=2; edit count=0.8281; regret=0.1008517; frontier=False</title></circle>
+<circle cx="294.38" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=3; edit count=0.9844; regret=0.1008517; frontier=False</title></circle>
+<circle cx="307.36" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=4; edit count=1.0469; regret=0.1008517; frontier=False</title></circle>
+<circle cx="310.60" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=5; edit count=1.0625; regret=0.1008517; frontier=False</title></circle>
+<circle cx="310.60" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=6; edit count=1.0625; regret=0.1008517; frontier=False</title></circle>
+<circle cx="310.60" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=7; edit count=1.0625; regret=0.1008517; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M1+M2+M3 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="239.23" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=1; edit count=0.7188; regret=0.1008517; frontier=False</title></circle>
+<circle cx="317.09" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=2; edit count=1.0938; regret=0.1008517; frontier=False</title></circle>
+<circle cx="352.77" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=3; edit count=1.2656; regret=0.1008517; frontier=False</title></circle>
+<circle cx="372.24" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=4; edit count=1.3594; regret=0.1008517; frontier=False</title></circle>
+<circle cx="381.97" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=5; edit count=1.4062; regret=0.1008517; frontier=False</title></circle>
+<circle cx="385.21" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=6; edit count=1.4219; regret=0.1008517; frontier=False</title></circle>
+<circle cx="385.21" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=7; edit count=1.4219; regret=0.1008517; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M1+M2+M3+M4 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="274.91" cy="326.02" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=1; edit count=0.8906; regret=0.0542086; frontier=False</title></circle>
+<circle cx="391.70" cy="441.42" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=2; edit count=1.4531; regret=0.0256408; frontier=False</title></circle>
+<circle cx="466.32" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=3; edit count=1.8125; regret=0.0025599; frontier=False</title></circle>
+<circle cx="498.76" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=4; edit count=1.9688; regret=0.0025599; frontier=False</title></circle>
+<circle cx="518.22" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=5; edit count=2.0625; regret=0.0025599; frontier=False</title></circle>
+<circle cx="531.20" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=6; edit count=2.1250; regret=0.0025599; frontier=False</title></circle>
+<circle cx="534.44" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=7; edit count=2.1406; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M1+M2+M4 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="258.69" cy="363.28" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=1; edit count=0.8125; regret=0.0449839; frontier=False</title></circle>
+<circle cx="356.02" cy="515.89" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=2; edit count=1.2812; regret=0.0072062; frontier=False</title></circle>
+<circle cx="411.17" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=3; edit count=1.5469; regret=0.0025599; frontier=False</title></circle>
+<circle cx="437.12" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=4; edit count=1.6719; regret=0.0025599; frontier=False</title></circle>
+<circle cx="450.10" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=5; edit count=1.7344; regret=0.0025599; frontier=False</title></circle>
+<circle cx="459.83" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=6; edit count=1.7812; regret=0.0025599; frontier=False</title></circle>
+<circle cx="459.83" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=7; edit count=1.7812; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M1+M3 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="206.79" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=1; edit count=0.5625; regret=0.1008517; frontier=False</title></circle>
+<circle cx="229.50" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=2; edit count=0.6719; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=3; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=4; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=5; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=6; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=7; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M1+M3+M4 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="255.45" cy="343.25" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=1; edit count=0.7969; regret=0.0499428; frontier=False</title></circle>
+<circle cx="339.80" cy="458.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=2; edit count=1.2031; regret=0.0213625; frontier=False</title></circle>
+<circle cx="375.48" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=3; edit count=1.3750; regret=0.0025599; frontier=False</title></circle>
+<circle cx="385.21" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=4; edit count=1.4219; regret=0.0025599; frontier=False</title></circle>
+<circle cx="385.21" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=5; edit count=1.4219; regret=0.0025599; frontier=False</title></circle>
+<circle cx="385.21" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=6; edit count=1.4219; regret=0.0025599; frontier=False</title></circle>
+<circle cx="385.21" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=7; edit count=1.4219; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M1+M4 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="232.74" cy="380.51" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=1; edit count=0.6875; regret=0.0407180; frontier=False</title></circle>
+<circle cx="284.65" cy="533.17" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=2; edit count=0.9375; regret=0.0029278; frontier=False</title></circle>
+<circle cx="304.11" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=3; edit count=1.0312; regret=0.0025599; frontier=False</title></circle>
+<circle cx="310.60" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=4; edit count=1.0625; regret=0.0025599; frontier=False</title></circle>
+<circle cx="310.60" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=5; edit count=1.0625; regret=0.0025599; frontier=False</title></circle>
+<circle cx="310.60" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=6; edit count=1.0625; regret=0.0025599; frontier=False</title></circle>
+<circle cx="310.60" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=7; edit count=1.0625; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M2 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="193.81" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=1; edit count=0.5000; regret=0.1008517; frontier=False</title></circle>
+<circle cx="226.25" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=2; edit count=0.6562; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=3; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=4; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=5; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=6; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="235.99" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=7; edit count=0.7031; regret=0.1008517; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M2+M3 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="226.25" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=1; edit count=0.6562; regret=0.1008517; frontier=False</title></circle>
+<circle cx="281.40" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=2; edit count=0.9219; regret=0.1008517; frontier=False</title></circle>
+<circle cx="304.11" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=3; edit count=1.0312; regret=0.1008517; frontier=False</title></circle>
+<circle cx="307.36" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=4; edit count=1.0469; regret=0.1008517; frontier=False</title></circle>
+<circle cx="310.60" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=5; edit count=1.0625; regret=0.1008517; frontier=False</title></circle>
+<circle cx="310.60" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=6; edit count=1.0625; regret=0.1008517; frontier=False</title></circle>
+<circle cx="310.60" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=7; edit count=1.0625; regret=0.1008517; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M2+M3+M4 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="265.18" cy="377.26" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=1; edit count=0.8438; regret=0.0415220; frontier=False</title></circle>
+<circle cx="368.99" cy="458.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=2; edit count=1.3438; regret=0.0213625; frontier=False</title></circle>
+<circle cx="427.39" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=3; edit count=1.6250; regret=0.0025599; frontier=False</title></circle>
+<circle cx="446.85" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=4; edit count=1.7188; regret=0.0025599; frontier=False</title></circle>
+<circle cx="456.59" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=5; edit count=1.7656; regret=0.0025599; frontier=False</title></circle>
+<circle cx="459.83" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=6; edit count=1.7812; regret=0.0025599; frontier=False</title></circle>
+<circle cx="459.83" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=7; edit count=1.7812; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M2+M4 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="245.72" cy="414.53" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=1; edit count=0.7500; regret=0.0322973; frontier=False</title></circle>
+<circle cx="333.31" cy="533.17" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=2; edit count=1.1719; regret=0.0029278; frontier=False</title></circle>
+<circle cx="365.75" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=3; edit count=1.3281; regret=0.0025599; frontier=False</title></circle>
+<circle cx="378.73" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=4; edit count=1.3906; regret=0.0025599; frontier=False</title></circle>
+<circle cx="385.21" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=5; edit count=1.4219; regret=0.0025599; frontier=False</title></circle>
+<circle cx="385.21" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=6; edit count=1.4219; regret=0.0025599; frontier=False</title></circle>
+<circle cx="385.21" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=7; edit count=1.4219; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M3 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="158.13" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=1; edit count=0.3281; regret=0.1008517; frontier=False</title></circle>
+<circle cx="164.61" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=2; edit count=0.3594; regret=0.1008517; frontier=False</title></circle>
+<circle cx="164.61" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=3; edit count=0.3594; regret=0.1008517; frontier=False</title></circle>
+<circle cx="164.61" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=4; edit count=0.3594; regret=0.1008517; frontier=False</title></circle>
+<circle cx="164.61" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=5; edit count=0.3594; regret=0.1008517; frontier=False</title></circle>
+<circle cx="164.61" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=6; edit count=0.3594; regret=0.1008517; frontier=False</title></circle>
+<circle cx="164.61" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=7; edit count=0.3594; regret=0.1008517; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M3+M4 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="223.01" cy="411.78" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=1; edit count=0.6406; regret=0.0329778; frontier=False</title></circle>
+<circle cx="291.14" cy="458.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=2; edit count=0.9688; regret=0.0213625; frontier=False</title></circle>
+<circle cx="310.60" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=3; edit count=1.0625; regret=0.0025599; frontier=False</title></circle>
+<circle cx="313.84" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=4; edit count=1.0781; regret=0.0025599; frontier=False</title></circle>
+<circle cx="313.84" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=5; edit count=1.0781; regret=0.0025599; frontier=False</title></circle>
+<circle cx="313.84" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=6; edit count=1.0781; regret=0.0025599; frontier=False</title></circle>
+<circle cx="313.84" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=7; edit count=1.0781; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>M4 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="190.57" cy="449.05" r="5" fill="#1565c0" opacity="0.9"><title>M4 B=1; edit count=0.4844; regret=0.0237530; frontier=True</title></circle>
+<circle cx="226.25" cy="533.17" r="5" fill="#1565c0" opacity="0.9"><title>M4 B=2; edit count=0.6562; regret=0.0029278; frontier=True</title></circle>
+<circle cx="235.99" cy="534.66" r="5" fill="#1565c0" opacity="0.9"><title>M4 B=3; edit count=0.7031; regret=0.0025599; frontier=True</title></circle>
+<circle cx="239.23" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=4; edit count=0.7188; regret=0.0025599; frontier=False</title></circle>
+<circle cx="239.23" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=5; edit count=0.7188; regret=0.0025599; frontier=False</title></circle>
+<circle cx="239.23" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=6; edit count=0.7188; regret=0.0025599; frontier=False</title></circle>
+<circle cx="239.23" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=7; edit count=0.7188; regret=0.0025599; frontier=False</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>S0 B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>S0 B=1; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>S0 B=2; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>S0 B=3; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>S0 B=4; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>S0 B=5; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>S0 B=6; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>S0 B=7; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="90.00" cy="137.59" r="5" fill="#1565c0" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=0; edit count=0.0000; regret=0.1008517; frontier=True</title></circle>
+<circle cx="190.57" cy="449.05" r="5" fill="#1565c0" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=1; edit count=0.4844; regret=0.0237530; frontier=True</title></circle>
+<circle cx="226.25" cy="533.17" r="5" fill="#1565c0" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=2; edit count=0.6562; regret=0.0029278; frontier=True</title></circle>
+<circle cx="235.99" cy="534.66" r="5" fill="#1565c0" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=3; edit count=0.7031; regret=0.0025599; frontier=True</title></circle>
+<circle cx="239.23" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>ADAPTIVE_M4_BLOCKER_AWARE B=4; edit count=0.7188; regret=0.0025599; frontier=False</title></circle>
+<circle cx="239.23" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>ADAPTIVE_M4_BLOCKER_AWARE B=5; edit count=0.7188; regret=0.0025599; frontier=False</title></circle>
+<circle cx="239.23" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>ADAPTIVE_M4_BLOCKER_AWARE B=6; edit count=0.7188; regret=0.0025599; frontier=False</title></circle>
+<circle cx="239.23" cy="534.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>ADAPTIVE_M4_BLOCKER_AWARE B=7; edit count=0.7188; regret=0.0025599; frontier=False</title></circle>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">M3 B0</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">M4 B0</text>
+<text x="197.57" y="442.05" font-family="Arial" font-size="10" fill="#1565c0">M4 B1</text>
+<text x="233.25" y="526.17" font-family="Arial" font-size="10" fill="#1565c0">M4 B2</text>
+<text x="242.99" y="527.66" font-family="Arial" font-size="10" fill="#1565c0">M4 B3</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">S0 B0</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">S0 B1</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">S0 B2</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">S0 B3</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">S0 B4</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">S0 B5</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">S0 B6</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">S0 B7</text>
+<text x="97.00" y="130.59" font-family="Arial" font-size="10" fill="#1565c0">ADAPTIVE_M4_BLOCKER_AWARE B0</text>
+<text x="197.57" y="442.05" font-family="Arial" font-size="10" fill="#1565c0">ADAPTIVE_M4_BLOCKER_AWARE B1</text>
+<text x="233.25" y="526.17" font-family="Arial" font-size="10" fill="#1565c0">ADAPTIVE_M4_BLOCKER_AWARE B2</text>
+<text x="242.99" y="527.66" font-family="Arial" font-size="10" fill="#1565c0">ADAPTIVE_M4_BLOCKER_AWARE B3</text>
+<text x="330.0" y="593" text-anchor="middle" font-family="Arial" font-size="13">Mean atomic edit count (cost proxy)</text>
+<text transform="translate(35,325.0) rotate(-90)" text-anchor="middle" font-family="Arial" font-size="13">Mean C Regret</text>
+<text x="900.0" y="86" text-anchor="middle" font-family="Arial" font-size="17" font-weight="bold">Held-out · n=200 · Bmax=9</text>
+<line x1="660" y1="545" x2="1140" y2="545" stroke="#333"/><line x1="660" y1="105" x2="660" y2="545" stroke="#333"/>
+<line x1="660.0" y1="105" x2="660.0" y2="545" stroke="#e5e7eb"/><text x="660.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">0.00</text>
+<line x1="660" y1="545.0" x2="1140" y2="545.0" stroke="#e5e7eb"/><text x="652" y="549.0" text-anchor="end" font-family="Arial" font-size="11">0.000</text>
+<line x1="756.0" y1="105" x2="756.0" y2="545" stroke="#e5e7eb"/><text x="756.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">0.47</text>
+<line x1="660" y1="457.0" x2="1140" y2="457.0" stroke="#e5e7eb"/><text x="652" y="461.0" text-anchor="end" font-family="Arial" font-size="11">0.022</text>
+<line x1="852.0" y1="105" x2="852.0" y2="545" stroke="#e5e7eb"/><text x="852.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">0.94</text>
+<line x1="660" y1="369.0" x2="1140" y2="369.0" stroke="#e5e7eb"/><text x="652" y="373.0" text-anchor="end" font-family="Arial" font-size="11">0.044</text>
+<line x1="948.0" y1="105" x2="948.0" y2="545" stroke="#e5e7eb"/><text x="948.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">1.41</text>
+<line x1="660" y1="281.0" x2="1140" y2="281.0" stroke="#e5e7eb"/><text x="652" y="285.0" text-anchor="end" font-family="Arial" font-size="11">0.065</text>
+<line x1="1044.0" y1="105" x2="1044.0" y2="545" stroke="#e5e7eb"/><text x="1044.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">1.87</text>
+<line x1="660" y1="193.0" x2="1140" y2="193.0" stroke="#e5e7eb"/><text x="652" y="197.0" text-anchor="end" font-family="Arial" font-size="11">0.087</text>
+<line x1="1140.0" y1="105" x2="1140.0" y2="545" stroke="#e5e7eb"/><text x="1140.0" y="565" text-anchor="middle" font-family="Arial" font-size="11">2.34</text>
+<line x1="660" y1="104.99999999999989" x2="1140" y2="104.99999999999989" stroke="#e5e7eb"/><text x="652" y="108.99999999999989" text-anchor="end" font-family="Arial" font-size="11">0.109</text>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>CANONICAL_ORACLE B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="829.99" cy="227.78" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=1; edit count=0.8300; regret=0.0785601; frontier=False</title></circle>
+<circle cx="953.91" cy="321.30" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=2; edit count=1.4350; regret=0.0553985; frontier=False</title></circle>
+<circle cx="1026.62" cy="379.29" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=3; edit count=1.7900; regret=0.0410390; frontier=False</title></circle>
+<circle cx="1070.65" cy="468.56" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=4; edit count=2.0050; regret=0.0189316; frontier=False</title></circle>
+<circle cx="1093.18" cy="511.54" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=5; edit count=2.1150; regret=0.0082866; frontier=False</title></circle>
+<circle cx="1099.32" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=6; edit count=2.1450; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1102.40" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=7; edit count=2.1600; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1103.42" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=8; edit count=2.1650; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1104.44" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>CANONICAL_ORACLE B=9; edit count=2.1700; regret=0.0008276; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M1 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="697.89" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=1; edit count=0.1850; regret=0.0934390; frontier=False</title></circle>
+<circle cx="703.01" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=2; edit count=0.2100; regret=0.0934390; frontier=False</title></circle>
+<circle cx="705.06" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=3; edit count=0.2200; regret=0.0934390; frontier=False</title></circle>
+<circle cx="705.06" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=4; edit count=0.2200; regret=0.0934390; frontier=False</title></circle>
+<circle cx="705.06" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=5; edit count=0.2200; regret=0.0934390; frontier=False</title></circle>
+<circle cx="705.06" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=6; edit count=0.2200; regret=0.0934390; frontier=False</title></circle>
+<circle cx="705.06" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=7; edit count=0.2200; regret=0.0934390; frontier=False</title></circle>
+<circle cx="705.06" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=8; edit count=0.2200; regret=0.0934390; frontier=False</title></circle>
+<circle cx="705.06" cy="167.70" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1 B=9; edit count=0.2200; regret=0.0934390; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M1+M2 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="761.38" cy="148.22" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=1; edit count=0.4950; regret=0.0982618; frontier=False</title></circle>
+<circle cx="814.63" cy="139.30" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=2; edit count=0.7550; regret=0.1004717; frontier=False</title></circle>
+<circle cx="841.26" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=3; edit count=0.8850; regret=0.1008948; frontier=False</title></circle>
+<circle cx="851.50" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=4; edit count=0.9350; regret=0.1008948; frontier=False</title></circle>
+<circle cx="852.52" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=5; edit count=0.9400; regret=0.1008948; frontier=False</title></circle>
+<circle cx="852.52" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=6; edit count=0.9400; regret=0.1008948; frontier=False</title></circle>
+<circle cx="852.52" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=7; edit count=0.9400; regret=0.1008948; frontier=False</title></circle>
+<circle cx="852.52" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=8; edit count=0.9400; regret=0.1008948; frontier=False</title></circle>
+<circle cx="852.52" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2 B=9; edit count=0.9400; regret=0.1008948; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M1+M2+M3 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="782.89" cy="163.25" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=1; edit count=0.6000; regret=0.0945406; frontier=False</title></circle>
+<circle cx="863.79" cy="163.25" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=2; edit count=0.9950; regret=0.0945406; frontier=False</title></circle>
+<circle cx="909.87" cy="139.30" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=3; edit count=1.2200; regret=0.1004717; frontier=False</title></circle>
+<circle cx="931.38" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=4; edit count=1.3250; regret=0.1008948; frontier=False</title></circle>
+<circle cx="938.55" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=5; edit count=1.3600; regret=0.1008948; frontier=False</title></circle>
+<circle cx="940.59" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=6; edit count=1.3700; regret=0.1008948; frontier=False</title></circle>
+<circle cx="940.59" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=7; edit count=1.3700; regret=0.1008948; frontier=False</title></circle>
+<circle cx="940.59" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=8; edit count=1.3700; regret=0.1008948; frontier=False</title></circle>
+<circle cx="940.59" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3 B=9; edit count=1.3700; regret=0.1008948; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M1+M2+M3+M4 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="829.99" cy="359.04" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=1; edit count=0.8300; regret=0.0460526; frontier=False</title></circle>
+<circle cx="953.91" cy="469.88" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=2; edit count=1.4350; regret=0.0186026; frontier=False</title></circle>
+<circle cx="1026.62" cy="512.02" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=3; edit count=1.7900; regret=0.0081665; frontier=False</title></circle>
+<circle cx="1070.65" cy="541.11" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=4; edit count=2.0050; regret=0.0009639; frontier=False</title></circle>
+<circle cx="1093.18" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=5; edit count=2.1150; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1099.32" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=6; edit count=2.1450; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1102.40" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=7; edit count=2.1600; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1103.42" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=8; edit count=2.1650; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1104.44" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M3+M4 B=9; edit count=2.1700; regret=0.0008276; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M1+M2+M4 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="817.71" cy="388.39" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=1; edit count=0.7700; regret=0.0387856; frontier=False</title></circle>
+<circle cx="917.04" cy="493.82" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=2; edit count=1.2550; regret=0.0126740; frontier=False</title></circle>
+<circle cx="970.29" cy="512.02" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=3; edit count=1.5150; regret=0.0081665; frontier=False</title></circle>
+<circle cx="998.97" cy="541.11" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=4; edit count=1.6550; regret=0.0009639; frontier=False</title></circle>
+<circle cx="1011.25" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=5; edit count=1.7150; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1014.33" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=6; edit count=1.7300; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1015.35" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=7; edit count=1.7350; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1016.37" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=8; edit count=1.7400; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1016.37" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M2+M4 B=9; edit count=1.7400; regret=0.0008276; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M1+M3 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="752.17" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=1; edit count=0.4500; regret=0.0924770; frontier=False</title></circle>
+<circle cx="779.82" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=2; edit count=0.5850; regret=0.0924770; frontier=False</title></circle>
+<circle cx="790.06" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=3; edit count=0.6350; regret=0.0924770; frontier=False</title></circle>
+<circle cx="791.08" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=4; edit count=0.6400; regret=0.0924770; frontier=False</title></circle>
+<circle cx="792.10" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=5; edit count=0.6450; regret=0.0924770; frontier=False</title></circle>
+<circle cx="792.10" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=6; edit count=0.6450; regret=0.0924770; frontier=False</title></circle>
+<circle cx="792.10" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=7; edit count=0.6450; regret=0.0924770; frontier=False</title></circle>
+<circle cx="792.10" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=8; edit count=0.6450; regret=0.0924770; frontier=False</title></circle>
+<circle cx="792.10" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3 B=9; edit count=0.6450; regret=0.0924770; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M1+M3+M4 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="816.68" cy="382.21" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=1; edit count=0.7650; regret=0.0403160; frontier=False</title></circle>
+<circle cx="903.73" cy="511.72" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=2; edit count=1.1900; regret=0.0082412; frontier=False</title></circle>
+<circle cx="938.55" cy="539.20" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=3; edit count=1.3600; regret=0.0014354; frontier=False</title></circle>
+<circle cx="948.79" cy="539.20" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=4; edit count=1.4100; regret=0.0014354; frontier=False</title></circle>
+<circle cx="952.88" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=5; edit count=1.4300; regret=0.0012990; frontier=False</title></circle>
+<circle cx="953.91" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=6; edit count=1.4350; regret=0.0012990; frontier=False</title></circle>
+<circle cx="953.91" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=7; edit count=1.4350; regret=0.0012990; frontier=False</title></circle>
+<circle cx="953.91" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=8; edit count=1.4350; regret=0.0012990; frontier=False</title></circle>
+<circle cx="953.91" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M3+M4 B=9; edit count=1.4350; regret=0.0012990; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M1+M4 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="789.03" cy="426.24" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=1; edit count=0.6300; regret=0.0294117; frontier=False</title></circle>
+<circle cx="840.24" cy="520.98" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=2; edit count=0.8800; regret=0.0059498; frontier=False</title></circle>
+<circle cx="860.72" cy="539.20" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=3; edit count=0.9800; regret=0.0014354; frontier=False</title></circle>
+<circle cx="864.81" cy="539.20" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=4; edit count=1.0000; regret=0.0014354; frontier=False</title></circle>
+<circle cx="866.86" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=5; edit count=1.0100; regret=0.0012990; frontier=False</title></circle>
+<circle cx="866.86" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=6; edit count=1.0100; regret=0.0012990; frontier=False</title></circle>
+<circle cx="866.86" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=7; edit count=1.0100; regret=0.0012990; frontier=False</title></circle>
+<circle cx="866.86" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=8; edit count=1.0100; regret=0.0012990; frontier=False</title></circle>
+<circle cx="866.86" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M1+M4 B=9; edit count=1.0100; regret=0.0012990; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M2 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="748.07" cy="148.22" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=1; edit count=0.4300; regret=0.0982618; frontier=False</title></circle>
+<circle cx="786.98" cy="139.30" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=2; edit count=0.6200; regret=0.1004717; frontier=False</title></circle>
+<circle cx="801.32" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=3; edit count=0.6900; regret=0.1008948; frontier=False</title></circle>
+<circle cx="805.42" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=4; edit count=0.7100; regret=0.1008948; frontier=False</title></circle>
+<circle cx="806.44" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=5; edit count=0.7150; regret=0.1008948; frontier=False</title></circle>
+<circle cx="806.44" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=6; edit count=0.7150; regret=0.1008948; frontier=False</title></circle>
+<circle cx="806.44" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=7; edit count=0.7150; regret=0.1008948; frontier=False</title></circle>
+<circle cx="806.44" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=8; edit count=0.7150; regret=0.1008948; frontier=False</title></circle>
+<circle cx="806.44" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2 B=9; edit count=0.7150; regret=0.1008948; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M2+M3 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="774.70" cy="163.25" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=1; edit count=0.5600; regret=0.0945406; frontier=False</title></circle>
+<circle cx="844.33" cy="163.25" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=2; edit count=0.9000; regret=0.0945406; frontier=False</title></circle>
+<circle cx="879.15" cy="139.30" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=3; edit count=1.0700; regret=0.1004717; frontier=False</title></circle>
+<circle cx="889.39" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=4; edit count=1.1200; regret=0.1008948; frontier=False</title></circle>
+<circle cx="894.51" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=5; edit count=1.1450; regret=0.1008948; frontier=False</title></circle>
+<circle cx="894.51" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=6; edit count=1.1450; regret=0.1008948; frontier=False</title></circle>
+<circle cx="894.51" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=7; edit count=1.1450; regret=0.1008948; frontier=False</title></circle>
+<circle cx="894.51" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=8; edit count=1.1450; regret=0.1008948; frontier=False</title></circle>
+<circle cx="894.51" cy="137.59" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3 B=9; edit count=1.1450; regret=0.1008948; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M2+M3+M4 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="827.95" cy="359.38" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=1; edit count=0.8200; regret=0.0459680; frontier=False</title></circle>
+<circle cx="937.52" cy="469.88" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=2; edit count=1.3550; regret=0.0186026; frontier=False</title></circle>
+<circle cx="1001.01" cy="526.29" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=3; edit count=1.6650; regret=0.0046347; frontier=False</title></circle>
+<circle cx="1033.78" cy="541.11" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=4; edit count=1.8250; regret=0.0009639; frontier=False</title></circle>
+<circle cx="1050.17" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=5; edit count=1.9050; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1054.27" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=6; edit count=1.9250; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1056.31" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=7; edit count=1.9350; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1057.34" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=8; edit count=1.9400; regret=0.0008276; frontier=False</title></circle>
+<circle cx="1058.36" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M3+M4 B=9; edit count=1.9450; regret=0.0008276; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M2+M4 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="810.54" cy="388.73" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=1; edit count=0.7350; regret=0.0387010; frontier=False</title></circle>
+<circle cx="895.54" cy="493.82" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=2; edit count=1.1500; regret=0.0126740; frontier=False</title></circle>
+<circle cx="936.50" cy="526.29" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=3; edit count=1.3500; regret=0.0046347; frontier=False</title></circle>
+<circle cx="954.93" cy="541.11" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=4; edit count=1.4400; regret=0.0009639; frontier=False</title></circle>
+<circle cx="966.20" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=5; edit count=1.4950; regret=0.0008276; frontier=False</title></circle>
+<circle cx="968.24" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=6; edit count=1.5050; regret=0.0008276; frontier=False</title></circle>
+<circle cx="969.27" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=7; edit count=1.5100; regret=0.0008276; frontier=False</title></circle>
+<circle cx="970.29" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=8; edit count=1.5150; regret=0.0008276; frontier=False</title></circle>
+<circle cx="970.29" cy="541.66" r="2.6" fill="#9ca3af" opacity="0.45"><title>M2+M4 B=9; edit count=1.5150; regret=0.0008276; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M3 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="731.68" cy="171.58" r="5" fill="#c62828" opacity="0.9"><title>M3 B=1; edit count=0.3500; regret=0.0924770; frontier=True</title></circle>
+<circle cx="743.97" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=2; edit count=0.4100; regret=0.0924770; frontier=False</title></circle>
+<circle cx="747.05" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=3; edit count=0.4250; regret=0.0924770; frontier=False</title></circle>
+<circle cx="747.05" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=4; edit count=0.4250; regret=0.0924770; frontier=False</title></circle>
+<circle cx="747.05" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=5; edit count=0.4250; regret=0.0924770; frontier=False</title></circle>
+<circle cx="747.05" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=6; edit count=0.4250; regret=0.0924770; frontier=False</title></circle>
+<circle cx="747.05" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=7; edit count=0.4250; regret=0.0924770; frontier=False</title></circle>
+<circle cx="747.05" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=8; edit count=0.4250; regret=0.0924770; frontier=False</title></circle>
+<circle cx="747.05" cy="171.58" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3 B=9; edit count=0.4250; regret=0.0924770; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M3+M4 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="805.42" cy="382.55" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=1; edit count=0.7100; regret=0.0402314; frontier=False</title></circle>
+<circle cx="875.05" cy="519.65" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=2; edit count=1.0500; regret=0.0062791; frontier=False</title></circle>
+<circle cx="898.61" cy="539.20" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=3; edit count=1.1650; regret=0.0014354; frontier=False</title></circle>
+<circle cx="904.75" cy="539.20" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=4; edit count=1.1950; regret=0.0014354; frontier=False</title></circle>
+<circle cx="907.82" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=5; edit count=1.2100; regret=0.0012990; frontier=False</title></circle>
+<circle cx="908.85" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=6; edit count=1.2150; regret=0.0012990; frontier=False</title></circle>
+<circle cx="908.85" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=7; edit count=1.2150; regret=0.0012990; frontier=False</title></circle>
+<circle cx="908.85" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=8; edit count=1.2150; regret=0.0012990; frontier=False</title></circle>
+<circle cx="908.85" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M3+M4 B=9; edit count=1.2150; regret=0.0012990; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>M4 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="765.48" cy="426.58" r="5" fill="#c62828" opacity="0.9"><title>M4 B=1; edit count=0.5150; regret=0.0293271; frontier=True</title></circle>
+<circle cx="802.35" cy="528.90" r="5" fill="#c62828" opacity="0.9"><title>M4 B=2; edit count=0.6950; regret=0.0039877; frontier=True</title></circle>
+<circle cx="815.66" cy="539.20" r="5" fill="#c62828" opacity="0.9"><title>M4 B=3; edit count=0.7600; regret=0.0014354; frontier=True</title></circle>
+<circle cx="819.75" cy="539.20" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=4; edit count=0.7800; regret=0.0014354; frontier=False</title></circle>
+<circle cx="821.80" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=5; edit count=0.7900; regret=0.0012990; frontier=False</title></circle>
+<circle cx="821.80" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=6; edit count=0.7900; regret=0.0012990; frontier=False</title></circle>
+<circle cx="821.80" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=7; edit count=0.7900; regret=0.0012990; frontier=False</title></circle>
+<circle cx="821.80" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=8; edit count=0.7900; regret=0.0012990; frontier=False</title></circle>
+<circle cx="821.80" cy="539.75" r="2.6" fill="#9ca3af" opacity="0.45"><title>M4 B=9; edit count=0.7900; regret=0.0012990; frontier=False</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=1; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=2; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=3; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=4; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=5; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=6; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=7; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=8; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>S0 B=9; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="660.00" cy="167.70" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=0; edit count=0.0000; regret=0.0934390; frontier=True</title></circle>
+<circle cx="765.48" cy="426.58" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=1; edit count=0.5150; regret=0.0293271; frontier=True</title></circle>
+<circle cx="802.35" cy="528.90" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=2; edit count=0.6950; regret=0.0039877; frontier=True</title></circle>
+<circle cx="819.75" cy="541.11" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=3; edit count=0.7800; regret=0.0009639; frontier=True</title></circle>
+<circle cx="823.85" cy="541.11" r="2.6" fill="#9ca3af" opacity="0.45"><title>ADAPTIVE_M4_BLOCKER_AWARE B=4; edit count=0.8000; regret=0.0009639; frontier=False</title></circle>
+<circle cx="825.90" cy="541.66" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=5; edit count=0.8100; regret=0.0008276; frontier=True</title></circle>
+<circle cx="825.90" cy="541.66" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=6; edit count=0.8100; regret=0.0008276; frontier=True</title></circle>
+<circle cx="825.90" cy="541.66" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=7; edit count=0.8100; regret=0.0008276; frontier=True</title></circle>
+<circle cx="825.90" cy="541.66" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=8; edit count=0.8100; regret=0.0008276; frontier=True</title></circle>
+<circle cx="825.90" cy="541.66" r="5" fill="#c62828" opacity="0.9"><title>ADAPTIVE_M4_BLOCKER_AWARE B=9; edit count=0.8100; regret=0.0008276; frontier=True</title></circle>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">M3 B0</text>
+<text x="738.68" y="164.58" font-family="Arial" font-size="10" fill="#c62828">M3 B1</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">M4 B0</text>
+<text x="772.48" y="419.58" font-family="Arial" font-size="10" fill="#c62828">M4 B1</text>
+<text x="809.35" y="521.90" font-family="Arial" font-size="10" fill="#c62828">M4 B2</text>
+<text x="822.66" y="532.20" font-family="Arial" font-size="10" fill="#c62828">M4 B3</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B0</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B1</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B2</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B3</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B4</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B5</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B6</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B7</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B8</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">S0 B9</text>
+<text x="667.00" y="160.70" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B0</text>
+<text x="772.48" y="419.58" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B1</text>
+<text x="809.35" y="521.90" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B2</text>
+<text x="826.75" y="534.11" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B3</text>
+<text x="832.90" y="534.66" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B5</text>
+<text x="832.90" y="534.66" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B6</text>
+<text x="832.90" y="534.66" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B7</text>
+<text x="832.90" y="534.66" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B8</text>
+<text x="832.90" y="534.66" font-family="Arial" font-size="10" fill="#c62828">ADAPTIVE_M4_BLOCKER_AWARE B9</text>
+<text x="900.0" y="593" text-anchor="middle" font-family="Arial" font-size="13">Mean atomic edit count (cost proxy)</text>
+<text transform="translate(605,325.0) rotate(-90)" text-anchor="middle" font-family="Arial" font-size="13">Mean C Regret</text>
+<text x="590" y="640" text-anchor="middle" font-family="Arial" font-size="12">Frontier membership is descriptive; ties are retained. Costs are edit counts, not labor or money.</text></svg>

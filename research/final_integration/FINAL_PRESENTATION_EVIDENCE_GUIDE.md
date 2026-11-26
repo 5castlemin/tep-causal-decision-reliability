@@ -31,3 +31,15 @@
 - **메커니즘은 확증됐나?** 아니다. 원본 ledger로 검증한 사후 탐색 설명이다.
 
 각 슬라이드의 주장 강도는 `FINAL_CLAIMS_EVIDENCE_MATRIX.md`를 따른다. 새 분석 결과나 확인되지 않은 팀 기여를 추가하지 않는다.
+
+
+## Research E: 사후 예산·비용 확장 슬라이드
+
+그림으로는 [확장 Pareto (E9)](research_e_audit/figures/E9_expanded_pareto.svg) 및 [λ 선택 구간 (E10)](research_e_audit/figures/E10_lambda_lower_envelope.svg)을 사용할 수 있다.
+
+8. **예산 포화와 비단조 편익:** B3→4에서 M4 평균이 그대로였지만 B5에서 다시 낮아짐. 정책 후보 소진·완전 구조 복원·DAG 제약·decision saturation을 분리. 근거: `RESEARCH_E_FINAL_AUDIT.md`, `corrected_saturation_rates.csv`.
+9. **비용–성능 선택:** C Held-out expanded frontier 및 λ lower envelope. Adaptive B3와 B5–9 포함, Full Greedy가 mean frontier에 없다는 사실과 no-edit tie 보존. λ는 가상 edit penalty. 근거: `expanded_pareto_frontiers.csv`, `expanded_lambda_lower_envelope.csv`.
+10. **Adaptive M4의 희소성:** B3에서 1/200만 개선, 199 동률, 평균 비용은 M4보다 .020 높음. 근거: `e3_adaptive_paired_comparisons.csv`, `adaptive_blocker_counts.csv`.
+11. **Reference learner 및 target 의존성:** reference graph learner를 최적 oracle로 부르지 않는다. δ=0은 특수한 평균 편차 목표. 근거: `reference_learner_summary.csv`, `target_sensitivity_unit_results.csv`(로컬 전용; 공개 요약만 사용).
+
+E는 이미 Held-out을 본 뒤의 탐색 분석이므로 C Primary 대체나 신규 확증 결과로 발표하지 않는다. Research D의 원시 response는 이번 closeout에서 다시 열 수 없었고 기존 audit summary와 공개 집계까지만 인용한다.

@@ -177,3 +177,12 @@ M4 평균 Regret은 Held-out에서 Full Greedy보다 낮았지만 이는 Develop
 팀 역할은 확인된 범위로 기록한다. 오성민은 연구 설계·실험·통합 및 Research D를 수행하고 최종 보고·발표를 조율한다. 정창민은 메커니즘 분석과 PR #40을 작성했다. 황주희의 과거 연구 기여는 기록으로 확인되지 않아 만들지 않는다. 발표 이후 선택적 피드백은 가독성 및 예상 질문 검토로 제한한다.
 
 새 실험은 승인되지 않았다. 후속 업무는 최종 보고서 검토, 발표 자료 제작, 주장 범위 점검 및 최종 제출 준비다. Research C와 D를 실제 제조라인의 현장 효능·안전성·배포 준비성으로 표현하지 않는다.
+
+
+## Part 9. Research E 및 최종 종료 인수인계
+
+Research E는 기존 C Development/Held-out cohort를 재사용한 post-hoc budget/cost/adaptive/target extension이다. C 표본 수는 64/200으로 유지하며 새로운 SCM/G0를 추가하지 않았다. Research E gate는 `RESEARCH_E_CORE_COMPLETED_WITH_LIMITATIONS`로 보존한다. 보고서에는 Bmax 완전 복원과 residual error를 정정해 병기하고, M4 B3→4의 평탄 구간 뒤 B5 개선, Full Greedy 비용 1.790 (C Held-out B3), constraint saturation 비영점 셀, Adaptive M4의 1/200 improvement를 반영한다. D raw audit inputs는 이 종료 작업에서 재접근하지 못했고 이전 27-check 결과는 historical audit record로 남긴다.
+
+C–D–E 통합 보고 및 감사는 `research/final_integration/FINAL_RESEARCH_REPORT.md`, `RESEARCH_E_FINAL_AUDIT.md`, `FINAL_RESULTS_TABLES.md`, `FINAL_CLAIMS_EVIDENCE_MATRIX.md`, `FINAL_PRESENTATION_EVIDENCE_GUIDE.md`를 시작점으로 한다. E의 machine-readable 집계는 `research/final_integration/research_e_audit/`에 있다. E는 confirmatory 연구가 아니라 post-hoc extension이다.
+
+최종 연구 질문은 제한된 수정 예산을 어떤 구조 오류와 의사결정 목표에 배분할 때 손실/수정 횟수가 달라지는가다. Research F(불확실성 인지 구조 검증), G(안전한 물리 테스트베드), H(기업 현장·경제성)는 향후 제안으로만 기록한다. 현재 남은 팀 업무는 검증 문구와 발표/Q&A 준비, 최종 제출이다. 기존 역할 기록만 사용하며 확인되지 않은 기여를 추가하지 않는다.
