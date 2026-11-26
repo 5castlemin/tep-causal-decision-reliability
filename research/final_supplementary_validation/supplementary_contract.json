@@ -9,7 +9,7 @@
     "gamma": [0.0, 0.05, 0.2, 0.5, 1.0],
     "target_delta": ["original", -0.25, 0.25],
     "primary": {"target": "original", "gamma": 0.2, "budget": 2, "contrasts": [["S0", "FULL_GREEDY"], ["M4", "FULL_GREEDY"], ["M4", "S0"]]},
-    "policies": ["S0", "FULL_GREEDY", "M4", "M2+M4", "ADAPTIVE_M4_BLOCKER_AWARE", "REFERENCE_GRAPH", "GRAPH_FREE"],
+    "policies": ["all_17_stored_C_policies_including_CANONICAL_ORACLE_as_Full_Greedy", "ADAPTIVE_M4_BLOCKER_AWARE_saved_trajectory", "REFERENCE_GRAPH", "GRAPH_FREE"],
     "tie_break": ["minimum_loss", "minimum_abs_k", "minimum_k"],
     "bootstrap": {"replicates": 10000, "seed": 2026112601, "unit": "SCM", "paired_common_indices": true, "interval": "pointwise_percentile"},
     "regret_negative_tolerance": 1e-12
