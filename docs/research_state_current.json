@@ -540,6 +540,15 @@
       "next_action": "추가 실험 없음; 최종 보고서 검토 및 발표 준비",
       "acceptance": "저장자료 hash 감사, 공통-index bootstrap 재집계, pending replay, PR/main CI 및 merge 후 상태 검증 완료; Research C–E frozen 유지; 제한사항 문서화",
       "depends_on": []
+    },
+    {
+      "id": "SUPP-01",
+      "title": "Decision-objective robustness and structural-metric validation",
+      "status": "PARTIAL",
+      "evidence": "research/final_supplementary_validation/SUPPLEMENTARY_FINAL_AUDIT.md; branch research/final-supplementary-robustness-metric-validation (PR/CI pending)",
+      "next_action": "Complete repository tests, protected-asset check, publish branch, and verify PR CI; keep C–F frozen results unchanged",
+      "acceptance": "Stored-only S1/S2 audit passes; no new research samples; reports and public aggregate hashes checked",
+      "depends_on": []
     }
   ],
   "priority_order": [
