@@ -9,6 +9,7 @@ import sqlite3
 import sys
 import time
 import csv
+import subprocess
 
 import numpy as np
 
@@ -44,6 +45,7 @@ SOURCES = [
 ]
 DETERMINISTIC = ("FIT_BASED_VERIFICATION", "SUSPICION_ONLY", "DECISION_IMPACT_ONLY", "DECISION_WEIGHTED_VERIFICATION")
 RANDOM_REPEATS = 32
+EXECUTION_LOCK = ROOT / "research/decision_oriented_verification/execution_lock.json"
 
 
 def sha256_file(path: Path) -> str:
@@ -52,6 +54,28 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: f.read(1024 * 1024), b""):
             h.update(block)
     return h.hexdigest()
+
+
+def verify_execution_lock() -> dict:
+    lock = json.loads(EXECUTION_LOCK.read_text(encoding="utf-8"))
+    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    tree = subprocess.check_output(["git", "rev-parse", f"{lock['code_commit']}^{{tree}}"], cwd=ROOT, text=True).strip()
+    if tree != lock["code_tree"]:
+        raise ValueError("execution lock's code tree is inconsistent")
+    ancestor = subprocess.run(["git", "merge-base", "--is-ancestor", lock["code_commit"], head], cwd=ROOT)
+    if ancestor.returncode != 0:
+        raise ValueError("locked code commit is not an ancestor of current HEAD")
+    branch = subprocess.check_output(["git", "branch", "--show-current"], cwd=ROOT, text=True).strip()
+    if branch != "research/research-f-lite-verification":
+        raise ValueError("unexpected execution branch")
+    for path, expected in lock["runtime_files"].items():
+        local = ROOT / path
+        if sha256_file(local) != expected["raw_sha256"]:
+            raise ValueError(f"runtime bytes changed after lock: {path}")
+        blob = subprocess.check_output(["git", "rev-parse", f"HEAD:{path}"], cwd=ROOT, text=True).strip()
+        if blob != expected["git_blob"]:
+            raise ValueError(f"Git blob changed after lock: {path}")
+    return lock
 
 
 def stable_seed(*parts) -> int:
@@ -417,6 +441,7 @@ def aggregate_cohort(evaluated, cohort, out_dir):
 
 
 def main():
+    lock = verify_execution_lock()
     PRIVATE_ROOT.mkdir(parents=True, exist_ok=True)
     all_public = {"status": "RUNNING", "inputs": {}, "cohorts": {}}
     for source in SOURCES:
@@ -435,6 +460,10 @@ def main():
                                          "evaluator_rows": len(evaluated), "recommendation_path_external": True,
                                          "aggregate_rows": len(agg), "paired_contrasts": contrasts}
     all_public["status"] = "COMPLETED"
+    verify_execution_lock()
+    all_public["execution_lock_sha256"] = sha256_file(EXECUTION_LOCK)
+    all_public["code_commit"] = lock["code_commit"]
+    all_public["code_tree"] = lock["code_tree"]
     (ROOT / "research/decision_oriented_verification/run_summary_private_redacted.json").write_text(json.dumps(all_public, indent=2), encoding="utf-8")
     print(json.dumps(all_public, indent=2))
 
