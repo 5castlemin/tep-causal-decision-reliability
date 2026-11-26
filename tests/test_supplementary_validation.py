@@ -1,9 +1,12 @@
 import unittest
+import csv
+import tempfile
+from pathlib import Path
 
 import numpy as np
 
 from research.final_supplementary_validation.analyze_supplementary import (
-    K, apply_saved_edits, choose, gamma_loss, grouped_folds, pe, structural_features,
+    K, apply_saved_edits, choose, gamma_loss, grouped_folds, pe, save_csv, structural_features,
 )
 
 
@@ -47,6 +50,14 @@ class SupplementaryValidationTests(unittest.TestCase):
             train_ids = {r["scm_id"] for r in train}
             valid_ids = {r["scm_id"] for r in valid}
             self.assertFalse(train_ids & valid_ids)
+
+    def test_csv_writer_preserves_union_of_heterogeneous_audit_fields(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "audit.csv"
+            save_csv(path, [{"cohort": "dev", "metric": "a"}, {"cohort": "held", "analysis": "G0"}])
+            rows = list(csv.DictReader(path.open(encoding="utf-8", newline="")))
+            self.assertEqual(rows[0]["analysis"], "")
+            self.assertEqual(rows[1]["analysis"], "G0")
 
 
 if __name__ == "__main__":

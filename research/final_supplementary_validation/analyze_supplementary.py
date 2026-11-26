@@ -178,7 +178,7 @@ def read_cohorts():
 def save_csv(path,rows):
     path.parent.mkdir(parents=True,exist_ok=True)
     if not rows: path.write_text("",encoding="utf-8"); return
-    fields=list(rows[0])
+    fields=list(dict.fromkeys(key for row in rows for key in row))
     with path.open("w",newline="",encoding="utf-8") as f:
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
 
