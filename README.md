@@ -53,6 +53,8 @@ Research C와 D는 모두 reference DAG를 활용한 oracle-assisted 구조 수�
 
 세부 인수인계와 발표 준비는 [팀 인수인계](RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md), [기여·발표 체크리스트](research/final_integration/TEAM_CONTRIBUTION_AND_HANDOFF.md)를 참조한다.
 
+F-Lite 최종 저장자료 감사 및 지표 정정은 [감사 보고서](research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md)와 [집계 JSON](research/decision_oriented_verification/outputs/final_audit_aggregate.json)에 기록한다. Random B4 Held-out 평균 반복별 행동 변경률은 4.09%이며 기존 27%는 32회 중 한 번이라도 변경된 SCM 비율이다.
+
 ## 과거 연구 및 실측 검증 상태
 
 프로젝트는 TEP 구조 탐색과 인과발견 비교에서 출발했다. TEP 및 CausalMan 환경은 연구 계약에 필요한 reference/intervention 조건을 충족하지 못해 보류되었고, Causal Chambers의 Mk2/Wind Tunnel도 현재 연구 질문에 적합한 실측 정책 비교로 채택되지 않았다. 해당 이력은 제거하지 않고 `docs/research_design/`과 `research/external_validation/`에 보존한다. 이번 최종 연구는 실측 제조 검증이 아니다.

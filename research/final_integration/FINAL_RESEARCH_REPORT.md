@@ -119,3 +119,11 @@ Research E는 이미 C Held-out 결과를 본 뒤 수행한 사후 extension이�
 ## 12. 프로젝트 종료 및 후속 연구
 
 현재 프로젝트는 Research C, mechanism analysis, Research D, Research E의 문서화된 한계를 보존한 상태로 종료한다. 추가 데이터셋 탐색이나 실험은 계획하지 않는다. Research F (uncertainty-aware graph verification), Research G (안전한 물리 테스트베드 개입), Research H (기업 현장·경제성 검증)는 향후 연구 제안으로만 기록하며 이번 작업에서 설계하거나 실행하지 않았다.
+
+## Research F-Lite final audit addendum
+
+Research F-Lite는 C의 기존 Development/Held-out SCM을 재사용한 post-hoc reference-blind query-policy prototype이다. 저장 결과를 재감사한 결과, B=4 Held-out에서 Decision-weighted Regret `.016281`은 Random `.081223`보다 낮았지만 Fit-based `.003770` 및 Suspicion-only `.006061`보다 높고 Impact-only `.017270`과 거의 같았다. 이는 제안 결합 점수의 일반적 우월성을 지지하지 않는다.
+
+Random의 action-change 지표는 두 정의로 분리했다. Held-out B=4에서 평균적인 32회 반복 변경 비율은 4.09%이고, 최소 한 번 변경된 SCM 비율은 27.0%다. 저장 답변을 G0에서 replay했을 때 B=4 pending 6개 policy–SCM 사례 모두 최종 DAG에서 개별 적용이 불가능했고, 저장된 최종 graph와 replay가 일치했다. 공통 SCM bootstrap index를 공유한 추가 pointwise 재집계는 기존 순차-RNG comparator별 구간과 별도로 보존했다.
+
+F-Lite의 policy input은 allow-list 기반 인터페이스 경계이며 같은 Python process 안에서 실행된다. simulated expert는 참조 구조를 알고 있으며 OS sandbox는 없다. 검증 질의 수와 허용된 간선 수정 수는 서로 다른 비용이다. 실제 전문가 시간, 금전 비용, 공장 성능 또는 안전성은 측정하지 않았다. 연구별 증거 등급과 주장 범위는 [`FINAL_CLAIMS_EVIDENCE_MATRIX.md`](FINAL_CLAIMS_EVIDENCE_MATRIX.md), F 감사는 [`RESEARCH_F_FINAL_AUDIT.md`](../decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md), 논문 구조는 [`FINAL_PAPER_OUTLINE.md`](FINAL_PAPER_OUTLINE.md)를 참조한다.

@@ -36,3 +36,7 @@ Targeted Causal Elicitation already connects expert queries to a fixed downstrea
 **Is this validated for manufacturing?** No. C and F are synthetic SCM analyses; D is semisynthetic and conditional on one fitted DGP.
 
 **What does expert-noise sensitivity mean?** Only a predeclared hypothetical error process, not measured human accuracy.
+
+## Final audit addendum
+
+At B=4 Held-out, Random action change is 4.09% when averaged as the within-SCM share of 32 repeats; the historical 27.0% is the share of SCMs with at least one changed repeat. Query response count and accepted edge-edit count are separate resources. Six pending deterministic policy–SCM rows remained across the two cohorts; none was individually DAG-feasible against the final graph. See `RESEARCH_F_FINAL_AUDIT.md` and `outputs/final_audit_aggregate.json`.

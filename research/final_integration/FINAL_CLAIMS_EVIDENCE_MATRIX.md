@@ -26,3 +26,15 @@
 | E confirms C on a new population | `UNSUPPORTED` | E reuses original C SCMs and adds budgets/policies only | post-hoc, no new independent SCMs | Do not claim. |
 
 Research E does not alter Claim 1’s C confirmatory grade or D conditional robustness grade. It contributes post-hoc budget/cost evidence only.
+
+## Research F-Lite final-audit claims (post-hoc)
+
+| Claim | Evidence grade | Evidence/unit/estimate | Counterexample or limit | Allowed wording |
+|---|---|---|---|---|
+| Decision-weighted reference-blind querying is superior to simpler verification policies | `UNSUPPORTED` | Reused C Held-out, B4: proposed mean regret .016281; Fit .003770; Suspicion .006061; Impact .017270 | 10 and 9 SCMs respectively favored Fit/Suspicion; mostly ties; no new cohort | “The combined heuristic beat Random but did not improve on Fit-based or Suspicion-only in this reused cohort.” |
+| Random action-change rate is 27% | `DESCRIPTIVE_ONLY` | Held-out B4: 27.0% ever-changed SCM; 4.09% average share of 32 repeats | Two denominators and meanings | Always name which definition is used. |
+| A pending expert answer remained applicable but unapplied | `UNSUPPORTED` | Six pending policy–SCM rows across B4 deterministic query policies; zero individually DAG-feasible on final saved graphs | One-step sorted retry behavior audited only on stored responses | “No residual pending relation was individually DAG-feasible at the saved final graphs.” |
+| Query count equals correction cost | `UNSUPPORTED` | Held-out B4: all query policies use 4 responses; accepted edits range .305–1.905 on average | Query response and accepted edge edit are distinct | Report both quantities separately. |
+| F-Lite is oracle-free and securely isolated | `UNSUPPORTED` | Allow-listed in-process interface; simulated expert answers from reference; no OS sandbox | Reference graph remains available to expert; same Python process | “Reference-blind at the policy interface, with a reference-informed simulated expert.” |
+
+The exact saved-input audit, shared-index pointwise intervals, and limits are documented in `research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md` and `outputs/final_audit_aggregate.json`.

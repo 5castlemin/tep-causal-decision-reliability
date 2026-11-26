@@ -15,3 +15,7 @@ The program asks how limited resources should be allocated to improve decisions 
 The evidence supports a conditional principle: graph repair can improve decisions in controlled settings, but graph accuracy, decision value, query value, edit count and evaluator performance are distinct. C gives the strongest confirmatory evidence within its synthetic contract. D offers bounded robustness evidence for one semisynthetic generator. E and F-Lite are exploratory post-hoc analyses. F-Lite weakens any claim that a decision-weighted query heuristic automatically allocates expert attention better than simpler structural heuristics.
 
 No phase demonstrates a field deployment, measured economic savings, safety improvement, expert reliability distribution, or oracle-free discovery of causal truth. The query policy was blind at the interface, while the simulated expert had access to the reference.
+
+## F-Lite final audit note
+
+Read-only final audit corrected the interpretation of Random action changes: at B4 Held-out the average within-SCM share of 32 repeats that changed action was 4.09%, while 27% of SCMs changed at least once. A shared-index bootstrap was added as a pointwise sensitivity analysis; historical intervals were preserved. Stored final pending relations were replayed, with none individually DAG-feasible on the final graph. These corrections do not improve the proposed policy's relative result or change F-Lite's post-hoc status. See `RESEARCH_F_FINAL_AUDIT.md` and `outputs/final_audit_manifest.json`.

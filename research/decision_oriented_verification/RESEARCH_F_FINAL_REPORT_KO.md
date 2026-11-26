@@ -35,3 +35,11 @@ F-Lite는 기존 SCM을 이용해 reference-blind-at-the-interface query prototy
 ## 제출 자료
 
 정책·정보 경계·실행 감사·결과·주장 매트릭스·발표 그림은 이 디렉터리의 계약 및 보고서 파일에 있다. 공개 저장소에는 집계자료, 코드, hash와 SVG만 포함하며 per-SCM 응답·추천 파일은 로컬에 보존한다. Research C–D–E 동결 자산과 기존 종료 상태는 변경하지 않았다.
+
+## 최종 저장결과 감사 추가
+
+후속 read-only 감사는 원본 C DB의 payload와 저장된 F-Lite recommendation/evaluator/query-score 파일을 직접 읽었다. C SCM 및 관측 배열을 seed로 재생성하는 `restore_cohort()`는 이번 감사에서 호출하지 않았다. 4개 C DB 해시와 저장 F 입력 해시가 기대값과 일치했고, 감사 전후 C DB hash도 동일했다. 상세 비교와 범위는 [최종 감사](RESEARCH_F_FINAL_AUDIT.md), 기계 결과는 `outputs/final_audit_aggregate.json`이다.
+
+기존 Random `action_change_rate`는 32회 중 한 번이라도 변경된 SCM 비율이었다. Held-out B=4에서 그 값은 27.0%이며, SCM별 32회 중 평균 변경 비율은 4.09%다. 두 값은 별도 지표다. 공통 SCM bootstrap index를 사용해 재집계한 Held-out pointwise 95% 구간은 Random−제안 `[0.045611,0.086164]`, Fit−제안 `[-0.023466,-0.004040]`, Suspicion−제안 `[-0.020108,-0.002814]`, Impact−제안 `[0,0.002881]`이다. 기존 comparator별 순차 RNG 구간은 역사 결과로 보존했다.
+
+저장 answer를 재생한 B=4 pending audit에서는 deterministic policy–SCM 1,056행 중 6행에 pending relation이 남았고, 최종 DAG에서 개별적으로 적용 가능한 pending은 0건이었다. 재생 결과는 저장 graph/pending 수와 모두 일치했다. Graph-free 9.52는 원 aggregate에 남은 historical diagnostic이며, 구조 수리 비교에서 잔여 오류 수는 `n/a`로 해석한다. Oracle-assisted M4와 query policy의 질의 비용은 같은 자원이 아니다.

@@ -18,3 +18,7 @@
 Research C 원본 SQLite와 Research D evaluator response vectors는 공개 저장소에 포함하지 않는다. C SQLite digest는 최종 E 감사에서 원 manifest와 재대조했다. D의 직전 27-check audit summary는 별도 로컬 경로에 있었으나 raw response/recommendation/training artifacts는 이번 감사의 지정 경로에서 찾지 못했다. 공개 문서에는 hash와 집계만 남기며 공개 브랜치만으로 원자료 전체를 재실행할 수 있다고 주장하지 않는다.
 
 현재 상태는 `docs/research_state_current.json`과 `docs/current/`에서 확인한다. 과거 frozen state는 수정하지 않는다. Research E는 기존 C 표본으로 수행한 post-hoc 예산·비용·Adaptive M4·target sensitivity 확장이다. Research D unit-level 재확인은 접근 자료 한계로 추가하지 않았다. 새 연구 실험은 종료되었으며 남은 업무는 최종 보고 검토·발표·제출뿐이다. Research F/G/H는 후속 아이디어이며 이번 프로젝트에서 설계·실행하지 않는다.
+
+## Research F-Lite closeout handoff
+
+F-Lite final audit reaggregated saved artifacts only. The audit script deliberately does not call the historical `restore_cohort()` helper because that helper regenerates SCM parameters and observations. The corrected Random rates, common-index bootstrap and pending replay are summarized in `research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md`. Presentation preparation should retain the post-hoc grade, explain that query counts differ from edit counts, and avoid describing the simulated expert as a real participant or the in-process interface as secure isolation. Draft paper structure and defense questions are in `FINAL_PAPER_OUTLINE.md` and `FINAL_DEFENSE_QA.md`.
