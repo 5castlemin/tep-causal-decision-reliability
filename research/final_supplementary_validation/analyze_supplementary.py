@@ -223,7 +223,7 @@ def s1_and_s2(cohorts):
             # The separately saved adaptive trajectory is consumed as-is; it is not rerun.
             if adaptive_rows:
                 expected_adaptive=len(units)*5
-                actual_adaptive=sum(k[0]==cohort for k in adaptive_rows)
+                actual_adaptive=sum(k[0]==cohort and k[2] in range(5) for k in adaptive_rows)
                 if actual_adaptive!=expected_adaptive: raise ValueError(f"adaptive saved-row count mismatch for {cohort}")
                 for budget in range(5):
                     ar=adaptive_rows[(cohort,u["scm_id"],budget)]
