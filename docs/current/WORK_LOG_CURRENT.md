@@ -487,3 +487,5 @@ Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단�
 
 
 2026-11-26: Supplementary S1/S2 post-hoc robustness and metric validation completed on saved Research C Development/Held-out inputs; 64/200 original SCMs, no new samples. Research D unit-level material unavailable; SID/AID not run without a verified compatible implementation. Corrected a supplementary weighted-AUROC calculation after range checks and added regression tests. Branch CI/publishing pending; C–F contracts and outputs remain frozen.
+
+2026-11-26: PR #48 final head 06549f6b1116c80242cfc4748df2c79f25076372 passed GitHub Actions run 45825256872 (437 tests and all workflow validators). The initial PR run failed only the required current-priority-document check; commit 06549f6 added the generated priority entry and the rerun passed. PR remains open; no merge performed.
