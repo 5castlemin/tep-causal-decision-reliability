@@ -32,6 +32,18 @@ No. A query is an expert response; an edit is an accepted graph change. A cycle-
 
 For C/D/E repair policies, it is atomic edge-edit count. In F-Lite the response-query budget is separate. Neither is actual staff time, money, or verification effort.
 
+### Is the supplemental S1 Full Greedy result the same as Canonical Oracle?
+
+No. Full Greedy is the all-metrics policy `M1+M2+M3+M4`; Canonical Oracle is a separate structural-only diagnostic. The correction uses saved SCM-level results and shared-index pointwise bootstrap intervals. The original contract/output is retained as historical and the corrected analysis is separately versioned.
+
+### Does the blank-DAG S1 result represent F's graph-free association model?
+
+No. It runs the existing graph learner with an empty DAG, now labeled `EMPTY_DAG_LEARNER`. The F association baseline is a different observational X–Y regression and was only available here at the original gamma-zero objective.
+
+### Are S1/S2 new confirmatory evidence?
+
+No. They are post-hoc analyses of saved C cohorts. S2's nested B/E/F comparison is a corrected saved-feature refit, and its Held-out metrics do not establish causal effects or performance on a new cohort.
+
 ### What is the central practical lesson?
 
 Treat graph repair and verification as task- and budget-dependent resource allocation problems, and evaluate the resulting action. The evidence does not identify one universally optimal policy.

@@ -8,11 +8,11 @@ There were 23,760 saved policy-budget graph rows and 1,333 unique `(SCM, structu
 
 | Metric | SCM-balanced Spearman | 95% SCM-cluster interval |
 |---|---:|---:|
-| directed_f1 | -0.387 | [-0.456, -0.315] |
-| directed_shd | +0.333 | [+0.262, +0.400] |
-| task_error_rate | +0.710 | [+0.644, +0.769] |
-| xy_path | -0.924 | [-0.972, -0.865] |
-| abs_effect_magnitude_error | +0.025 | [-0.078, +0.132] |
+| directed_f1 | -0.387 | [-0.454, -0.316] |
+| directed_shd | +0.333 | [+0.260, +0.403] |
+| task_error_rate | +0.710 | [+0.643, +0.768] |
+| xy_path | -0.924 | [-0.972, -0.866] |
+| abs_signed_total_effect_slope_error | +0.025 | [-0.078, +0.134] |
 
 Task-related error rate and X→Y path presence show stronger association with decision regret than global directed F1/SHD in these stored C graphs. Absolute effect-magnitude error has no clear association (the interval includes zero in both cohorts). This is cohort- and task-specific, not a universal ranking of graph metrics. In same-SCM groups with identical SHD or skeleton F1, regret can still vary materially, showing that aggregate structure scores do not uniquely determine downstream performance.
 
@@ -20,25 +20,21 @@ Task-related error rate and X→Y path presence show stronger association with d
 
 | Feature model | Held-out SCM-balanced MAE | OOS R² | Unique Held-out graphs |
 |---|---:|---:|---:|
-| A_NULL | 0.08802 | -0.000 | 997 |
-| B_GENERAL_STRUCTURE | 0.06966 | 0.123 | 997 |
-| C_OFF_TASK | 0.08826 | -0.001 | 997 |
-| D_TASK_RELATED | 0.05763 | 0.301 | 997 |
-| E_GENERAL_PLUS_TASK | 0.06047 | 0.284 | 997 |
-| F_STRUCTURE_PLUS_PATH | 0.03749 | 0.548 | 997 |
-| G_ORACLE_EFFECT_DIAGNOSTICS | 0.03769 | 0.706 | 997 |
+| B_original | 0.06966 | 0.123 | 200 |
+| E_nested | 0.06153 | 0.242 | 200 |
+| F_nested | 0.03768 | 0.544 | 200 |
 
-Task-only D has lower Held-out MAE than general-plus-task E (.05763 vs .06047), so task and general features are not simply additive. Adding the X→Y path indicator in F lowers MAE further to .03749. G includes oracle effect diagnostics and is non-deployable; it improves R² but does not improve MAE over F. These regressions predict observed historical regret from saved graph-level features; they do not validate a deployable causal repair policy.
+Historical B and E were not nested. This corrected post-hoc comparison refits `B_original`, `E_nested = B_original + task features`, and `F_nested = E_nested + X→Y path` from the same saved graph features with the same Development grouped folds, SCM weighting, alpha candidates, and preprocessing. Results and common-index paired intervals are in `outputs/s2_nested_model_validation.csv` and `outputs/s2_nested_prediction_bootstrap.csv`. No held-out tuning or data generation occurred; historical non-nested B/E results remain separate.
 
 ## Zero-regret classification (secondary)
 
-| Feature model | Brier | AUROC | PR-AUC | Positive-regret graphs / rows |
+| Feature model | Brier | AUROC | Weighted Average Precision (AP) | Positive-regret graphs / rows |
 |---|---:|---:|---:|---:|
-| B_GENERAL_STRUCTURE | 0.1138 | 0.856 | 0.482 | 227/997 |
-| E_GENERAL_PLUS_TASK | 0.0833 | 0.905 | 0.651 | 227/997 |
+| B_GENERAL_STRUCTURE | 0.1138 | 0.856 | 0.481 | 227/997 |
+| E_GENERAL_PLUS_TASK | 0.0833 | 0.905 | 0.650 | 227/997 |
 | F_STRUCTURE_PLUS_PATH | 0.0224 | 0.961 | 0.941 | 227/997 |
 
-Held-out folds were not used to choose features or alpha; alpha was selected using grouped Development CV. Classification is post-hoc and SCM-balanced. The target is whether stored graph regret exceeds `1e-12`; it is not an independent outcome.
+Held-out folds were not used to choose features or alpha; alpha was selected using grouped Development CV. Classification is post-hoc and SCM-balanced. The target is whether stored graph regret exceeds `1e-12`; it is not an independent outcome. The reported PR metric is weighted Average Precision: tied score blocks are processed together. It is not trapezoidal PR-AUC.
 
 ## Metric limits
 

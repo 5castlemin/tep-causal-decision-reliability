@@ -252,7 +252,9 @@ def s1_and_s2(cohorts):
             diag=[]
             diag.append(("REFERENCE_GRAPH",u["truth"],"reference"))
             empty=pe.state((),())
-            diag.append(("GRAPH_FREE",empty,"graphfree"))
+            # This diagnostic passes an empty graph to the same graph learner;
+            # it is not the separate X-Y association learner from Research F.
+            diag.append(("EMPTY_DAG_LEARNER",empty,"empty_dag"))
             for pid,graph,_ in diag:
                 pred,gt,_,_=predictions_and_truth(data,nodes,graph,action,target,u["truth_spec"],original_target,scale)
                 for delta in DELTAS:
@@ -292,11 +294,24 @@ def summarize_s1(rows):
         ids=sorted({r["scm_id"] for r in rows if r["cohort"]==cohort})
         subset=[r for r in rows if r["cohort"]==cohort and r["target_delta"]=="original" and r["gamma"]==.2 and r["budget"]==2]
         by={(r["scm_id"],r["policy"]):r["regret"] for r in subset}
-        for a,b in (("CANONICAL_ORACLE","S0"),("M4","CANONICAL_ORACLE"),("M4","S0")):
+        # One resampling matrix is shared across all policy contrasts in this cohort.
+        # Full Greedy is the all-metrics policy, not CANONICAL_ORACLE.
+        rng=np.random.default_rng(SEED_S1)
+        shared_indices=rng.integers(0,len(ids),size=(BOOTSTRAPS,len(ids)))
+        primary=(
+            ("M1+M2+M3+M4","S0","FullGreedy-S0"),
+            ("M4","M1+M2+M3+M4","M4-FullGreedy"),
+            ("M4","S0","M4-S0"),
+        )
+        diagnostics=(
+            ("CANONICAL_ORACLE","S0","CanonicalOracle-S0"),
+            ("M4","CANONICAL_ORACLE","M4-CanonicalOracle"),
+        )
+        for a,b,label in primary+diagnostics:
             vals=[by[(i,a)]-by[(i,b)] for i in ids]
-            mean,lo,hi,better,worse,tie=bootstrap_paired(vals,np.zeros(len(vals)),SEED_S1+len(contrasts))
-            label="FullGreedy-S0" if a=="CANONICAL_ORACLE" else "M4-FullGreedy" if b=="CANONICAL_ORACLE" else "M4-S0"
-            contrasts.append(dict(cohort=cohort,condition="original_target_gamma_0.2_B2",contrast=label,source_policy_a=a,source_policy_b=b,mean_difference=mean,ci95_low=lo,ci95_high=hi,better=better,worse=worse,tie=tie,n=len(ids),interval="pointwise paired SCM percentile bootstrap"))
+            d=np.asarray(vals,float)
+            boot=d[shared_indices].mean(axis=1)
+            contrasts.append(dict(cohort=cohort,condition="original_target_gamma_0.2_B2",contrast=label,source_policy_a=a,source_policy_b=b,mean_difference=float(d.mean()),median_difference=float(np.median(d)),ci95_low=float(np.quantile(boot,.025)),ci95_high=float(np.quantile(boot,.975)),better=int(np.sum(d< -TOL)),worse=int(np.sum(d>TOL)),tie=int(np.sum(np.abs(d)<=TOL)),n=len(ids),bootstrap_seed=SEED_S1,bootstrap_replicates=BOOTSTRAPS,shared_index_set="cohort-level; all contrasts",interval="pointwise paired SCM percentile bootstrap"))
     return agg,contrasts
 
 

@@ -46,12 +46,14 @@ def correlation_audit(rows):
         by=defaultdict(list)
         for r in rr:by[r["scm_id"]].append(r)
         ids=sorted(by)
+        # Share identical cluster-bootstrap draws across all metrics in this cohort.
+        shared_draws=rng.integers(0,len(ids),size=(BOOT,len(ids)))
         for metric in metric_names:
             x=[float(r[metric]) if r[metric] not in (None,"") else float("nan") for r in rr]; y=[float(r["regret"]) for r in rr]
             w=[1/len(by[r["scm_id"]]) for r in rr]
             point=weighted_spearman(x,y,w); vals=[]
-            for _ in range(BOOT):
-                draw=rng.integers(0,len(ids),size=len(ids)); bx=[];byy=[];bw=[]
+            for draw in shared_draws:
+                bx=[];byy=[];bw=[]
                 for j in draw:
                     cluster=by[ids[j]]; wt=1/len(cluster)
                     for r in cluster:
@@ -87,6 +89,8 @@ def prediction_bootstrap(graph_rows):
     groups=defaultdict(list)
     for r in held:groups[r["scm_id"]].append(r)
     ids=sorted(groups); rng=np.random.default_rng(SEED+100)
+    # The same paired SCM draws are used for every model contrast.
+    shared_draws=rng.integers(0,len(ids),size=(BOOT,len(ids)))
     out=[]
     pairs=[("B_GENERAL_STRUCTURE","E_GENERAL_PLUS_TASK"),("B_GENERAL_STRUCTURE","F_STRUCTURE_PLUS_PATH"),("E_GENERAL_PLUS_TASK","F_STRUCTURE_PLUS_PATH"),("F_STRUCTURE_PLUS_PATH","G_ORACLE_EFFECT_DIAGNOSTICS")]
     for ma,mb in pairs:
@@ -97,7 +101,7 @@ def prediction_bootstrap(graph_rows):
                 key=(sid,r["structural_graph_hash"]); y,pa=by_model[ma][key];_,pb=by_model[mb][key]
                 ea.append(abs(y-pa));eb.append(abs(y-pb))
             scm_delta.append(float(np.mean(ea)-np.mean(eb)))
-        arr=np.asarray(scm_delta); draws=rng.integers(0,len(arr),size=(BOOT,len(arr))); boot=arr[draws].mean(axis=1)
+        arr=np.asarray(scm_delta); boot=arr[shared_draws].mean(axis=1)
         out.append({"contrast":f"MAE({ma})-MAE({mb})","mean_scm_balanced_delta_mae":float(arr.mean()),"ci95_low":float(np.quantile(boot,.025)),"ci95_high":float(np.quantile(boot,.975)),"better":int((arr>1e-12).sum()),"worse":int((arr< -1e-12).sum()),"tie":int((np.abs(arr)<=1e-12).sum()),"n_heldout_scm":len(arr),"interval":"paired SCM bootstrap; pointwise"})
     save_csv(OUT/"s2_prediction_bootstrap.csv",out)
     pred_rows=[]
@@ -122,7 +126,7 @@ def fit_logistic(x,y,w,alpha):
 def classification_metrics(y,p,w):
     y=np.asarray(y,int);p=np.asarray(p,float);w=np.asarray(w,float);prev=float(np.average(y,weights=w));brier=float(np.average((p-y)**2,weights=w))
     pos=y==1;neg=~pos
-    if not pos.any() or not neg.any():return {"positive_prevalence":prev,"brier":brier,"auroc":None,"pr_auc":None,"n_positive":int(pos.sum()),"n":len(y)}
+    if not pos.any() or not neg.any():return {"positive_prevalence":prev,"brier":brier,"auroc":None,"average_precision":None,"n_positive":int(pos.sum()),"n":len(y)}
     # Weighted AUROC as P(score+ > score-) + 0.5 P(tie), using only negative
     # mass below/tied with each positive score. This remains in [0, 1].
     order=np.argsort(p,kind="mergesort");auc_num=0.0;negative_below=0.0;i=0
@@ -133,14 +137,19 @@ def classification_metrics(y,p,w):
         auc_num+=positive_mass*(negative_below+0.5*negative_mass)
         negative_below+=negative_mass;i=j
     wp=w[pos].sum();wn=w[neg].sum();auc=float(auc_num/(wp*wn))
-    order=np.argsort(-p,kind="mergesort");tp=fp=0.0;last_recall=0.0;ap=0.0
+    order=np.argsort(-p,kind="mergesort");tp=fp=0.0;last_recall=0.0;ap=0.0;i=0
     total_pos=float(w[pos].sum())
-    for idx in order:
-        if y[idx]:tp+=w[idx]
-        else:fp+=w[idx]
+    # Weighted average precision accumulates whole tied-score groups at once,
+    # so AP is invariant to row ordering within a score tie.
+    while i<len(order):
+        j=i+1
+        while j<len(order) and p[order[j]]==p[order[i]]:j+=1
+        group=order[i:j]
+        tp+=float(w[group[y[group]==1]].sum())
+        fp+=float(w[group[y[group]==0]].sum())
         recall=tp/total_pos;precision=tp/(tp+fp) if tp+fp else 0
-        ap+=(recall-last_recall)*precision;last_recall=recall
-    return {"positive_prevalence":prev,"brier":brier,"auroc":auc,"pr_auc":float(ap),"n_positive":int(pos.sum()),"n":len(y)}
+        ap+=(recall-last_recall)*precision;last_recall=recall;i=j
+    return {"positive_prevalence":prev,"brier":brier,"auroc":auc,"average_precision":float(ap),"n_positive":int(pos.sum()),"n":len(y)}
 
 def zero_regret_classification(dev,held,models=("B_GENERAL_STRUCTURE","E_GENERAL_PLUS_TASK","F_STRUCTURE_PLUS_PATH")):
     tol=1e-12;rows=[]
@@ -161,7 +170,7 @@ def zero_regret_classification(dev,held,models=("B_GENERAL_STRUCTURE","E_GENERAL
         else:
             x=np.vstack([model_features(r,model) for r in dev]);xh=np.vstack([model_features(r,model) for r in held]);med=np.nanmedian(x,axis=0);med=np.where(np.isfinite(med),med,0);x=np.where(np.isfinite(x),x,med);xh=np.where(np.isfinite(xh),xh,med);ph=fit_logistic(x,yd,wd,alpha)(xh)
         m=classification_metrics(yh,ph,wh)
-        rows.append({"model":model,"selected_alpha":alpha,"development_positive_rate":float(np.average(yd,weights=wd)),"development_cv_brier":float(np.mean(scores[alpha])),"heldout_scm_balanced_positive_rate":m["positive_prevalence"],"heldout_brier":m["brier"],"heldout_auroc":m["auroc"],"heldout_pr_auc":m["pr_auc"],"heldout_positive_graphs":m["n_positive"],"heldout_graph_rows":m["n"],"threshold":tol,"status":"post-hoc historical Held-out classification; grouped Development CV"})
+        rows.append({"model":model,"selected_alpha":alpha,"development_positive_rate":float(np.average(yd,weights=wd)),"development_cv_brier":float(np.mean(scores[alpha])),"heldout_scm_balanced_positive_rate":m["positive_prevalence"],"heldout_brier":m["brier"],"heldout_auroc":m["auroc"],"heldout_average_precision":m["average_precision"],"heldout_positive_graphs":m["n_positive"],"heldout_graph_rows":m["n"],"threshold":tol,"status":"post-hoc historical Held-out classification; grouped Development CV"})
     return rows
 
 def optimum_diagnostics(cohorts):

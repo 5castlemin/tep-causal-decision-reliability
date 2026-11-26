@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 
 from research.final_supplementary_validation.analyze_supplementary import (
-    K, apply_saved_edits, choose, gamma_loss, grouped_folds, pe, save_csv, structural_features,
+    K, apply_saved_edits, choose, gamma_loss, grouped_folds, pe, save_csv, structural_features, summarize_s1,
 )
 from research.final_supplementary_validation.audit_supplementary import classification_metrics
 
@@ -69,6 +69,57 @@ class SupplementaryValidationTests(unittest.TestCase):
         self.assertEqual(reversed_order["auroc"], 0.0)
         self.assertEqual(tied["auroc"], 0.5)
         self.assertTrue(0.0 <= tied["auroc"] <= 1.0)
+
+    def test_average_precision_is_invariant_to_permutation_inside_score_ties(self):
+        a = classification_metrics([1, 0, 1, 0], [.8, .8, .2, .2], [3, 1, 2, 4])
+        b = classification_metrics([0, 1, 0, 1], [.8, .8, .2, .2], [1, 3, 4, 2])
+        self.assertEqual(a["average_precision"], b["average_precision"])
+        self.assertTrue(0 <= a["average_precision"] <= 1)
+
+    def test_average_precision_perfect_reversed_all_tied_and_weighted(self):
+        perfect = classification_metrics([1, 1, 0, 0], [.9, .8, .2, .1], [3, 2, 7, 1])
+        reversed_scores = classification_metrics([1, 1, 0, 0], [.1, .2, .8, .9], [3, 2, 7, 1])
+        all_tied = classification_metrics([1, 0, 1, 0], [.5, .5, .5, .5], [3, 1, 2, 4])
+        self.assertEqual(perfect["average_precision"], 1.0)
+        self.assertAlmostEqual(reversed_scores["average_precision"], .4 * (2 / 10) + .6 * (5 / 13))
+        self.assertAlmostEqual(all_tied["average_precision"], 5 / 10)
+
+    def test_primary_policy_mapping_uses_full_greedy_not_canonical_oracle(self):
+        rows = []
+        values = {
+            "S0": [0.30, 0.20, 0.10],
+            "M1+M2+M3+M4": [0.20, 0.10, 0.00],
+            "M4": [0.10, 0.10, 0.10],
+            "CANONICAL_ORACLE": [0.00, 0.20, 0.30],
+        }
+        for cohort in ("C_DEVELOPMENT", "C_HELDOUT"):
+            for policy, regrets in values.items():
+                for i, regret in enumerate(regrets):
+                    rows.append({"cohort": cohort, "scm_id": f"s{i}", "policy": policy,
+                                 "budget": 2, "target_delta": "original", "gamma": .2, "regret": regret,
+                                 "true_optimal_k": 0.0, "predicted_k": 0.0, "edit_count": 0,
+                                 "estimated_slope": 0.0, "true_slope": 0.0})
+        out = summarize_s1(rows)[1]
+        by = {r["contrast"]: r for r in out}
+        self.assertEqual(by["FullGreedy-S0"]["source_policy_a"], "M1+M2+M3+M4")
+        self.assertEqual(by["FullGreedy-S0"]["source_policy_b"], "S0")
+        self.assertAlmostEqual(by["FullGreedy-S0"]["mean_difference"], -.10)
+        self.assertEqual(by["M4-FullGreedy"]["source_policy_b"], "M1+M2+M3+M4")
+        self.assertAlmostEqual(by["CanonicalOracle-S0"]["mean_difference"], -.03333333333333333)
+
+    def test_gamma_zero_policy_means_match_frozen_c_heldout_aggregate(self):
+        path = Path(__file__).resolve().parents[1] / "research/final_supplementary_validation/outputs/s1_aggregate.csv"
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        expected = {"S0": .0934389768, "M1+M2+M3+M4": .0186026193,
+                    "M4": .0039877460, "M2+M4": .0126739700}
+        observed = {r["policy"]: float(r["mean_regret"]) for r in rows
+                    if r["cohort"] == "C_HELDOUT" and r["target_delta"] == "original"
+                    and float(r["gamma"]) == 0.0 and int(r["budget"]) == 2
+                    and r["policy"] in expected}
+        self.assertEqual(set(observed), set(expected))
+        for policy, value in expected.items():
+            self.assertAlmostEqual(observed[policy], value, places=7)
 
 
 if __name__ == "__main__":

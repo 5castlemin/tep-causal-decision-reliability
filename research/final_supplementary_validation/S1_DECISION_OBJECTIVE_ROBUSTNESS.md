@@ -10,16 +10,32 @@ Original target, `gamma=.2`, `B=2`; intervals are paired SCM percentile-bootstra
 
 | Cohort | Contrast | Mean difference | 95% interval | Better / worse / tie |
 |---|---|---:|---:|---:|
-| C_DEVELOPMENT | FullGreedy-S0 | -0.00797 | [-0.02294, +0.00296] | 3/1/60 |
-| C_DEVELOPMENT | M4-FullGreedy | -0.00849 | [-0.02191, +0.00235] | 4/2/58 |
-| C_DEVELOPMENT | M4-S0 | -0.01646 | [-0.03567, -0.00052] | 6/2/56 |
-| C_HELDOUT | FullGreedy-S0 | -0.01188 | [-0.02066, -0.00428] | 11/2/187 |
-| C_HELDOUT | M4-FullGreedy | -0.01883 | [-0.02919, -0.00936] | 17/1/182 |
-| C_HELDOUT | M4-S0 | -0.03071 | [-0.04404, -0.01885] | 27/2/171 |
+| C_DEVELOPMENT | FullGreedy-S0 | -0.01133 | [-0.02796, +0.00218] | 5/2/57 |
+| C_DEVELOPMENT | M4-FullGreedy | -0.00513 | [-0.01674, +0.00291] | 2/1/61 |
+| C_DEVELOPMENT | M4-S0 | -0.01646 | [-0.03569, -0.00059] | 6/2/56 |
+| C_DEVELOPMENT | CanonicalOracle-S0 | -0.00797 | [-0.02294, +0.00296] | 3/1/60 |
+| C_DEVELOPMENT | M4-CanonicalOracle | -0.00849 | [-0.02192, +0.00266] | 4/2/58 |
+| C_HELDOUT | FullGreedy-S0 | -0.02572 | [-0.03798, -0.01463] | 22/2/176 |
+| C_HELDOUT | M4-FullGreedy | -0.00498 | [-0.01077, -0.00038] | 6/1/193 |
+| C_HELDOUT | M4-S0 | -0.03071 | [-0.04385, -0.01865] | 27/2/171 |
+| C_HELDOUT | CanonicalOracle-S0 | -0.01188 | [-0.02093, -0.00424] | 11/2/187 |
+| C_HELDOUT | M4-CanonicalOracle | -0.01883 | [-0.02931, -0.00964] | 17/1/182 |
 
-Held-out, the primary direction remains favorable to Full Greedy versus S0 (difference −.01188) and M4 versus Full Greedy (−.01883). Development point estimates have the same direction, but the Full Greedy–S0 and M4–Full Greedy intervals include zero. M4–S0 is negative in both cohorts. These exploratory intervals do not alter the frozen Research C primary or M4's Development-selected secondary status.
+The corrected Full Greedy contrast uses policy ID `M1+M2+M3+M4`; `CANONICAL_ORACLE` is a distinct structural-only diagnostic. Held-out Full Greedy−S0 is -0.02572 (-0.03798, -0.01463); M4−Full Greedy is -0.00498 (-0.01077, -0.00038). The earlier contrast used Canonical Oracle under the Full Greedy label; the original contract snapshot is retained and this correction is separately versioned. These exploratory intervals do not alter the frozen Research C primary or M4's Development-selected secondary status.
 
 ## Objective support
+
+Original target, Held-out mean regret at B=2:
+
+| gamma | S0 | Full Greedy | M4 | M2+M4 |
+|---:|---:|---:|---:|---:|
+| 0 | 0.09343898 | 0.01860262 | 0.00398775 | 0.01267397 |
+| 0.05 | 0.10301599 | 0.04686117 | 0.03476873 | 0.04043910 |
+| 0.2 | 0.11795863 | 0.09223511 | 0.08725290 | 0.09031225 |
+| 0.5 | 0.08546025 | 0.08216346 | 0.08359752 | 0.08359752 |
+| 1 | 0.02836961 | 0.02836961 | 0.02836961 | 0.02836961 |
+
+The named Full Greedy column is policy `M1+M2+M3+M4`; Canonical Oracle is a different diagnostic policy.
 
 Held-out analytic-GT optimum category by original target:
 
@@ -35,6 +51,8 @@ At gamma 0, all SCMs select endpoints, reproducing the boundary-action limitatio
 
 ## Mechanism diagnostics
 
-At gamma .2/B2, Held-out total-effect sign accuracy is .725 for S0, .870 for Full Greedy, .970 for M4, .955 for M2+M4, and .970 for Adaptive M4. Mean absolute magnitude errors are .1823, .1758, .1685, and .1704 respectively for S0, Full Greedy, M4, and M2+M4. Sign accuracy is a post-hoc diagnostic and zero effects form a separate category. It is not a causal mediation analysis.
+At gamma .2/B2, corrected Held-out total-effect sign accuracy is S0 0.725, Full Greedy 0.945, M4 0.970, M2+M4 0.955, and Adaptive M4 0.970. The stored `abs_effect_magnitude_error` is `abs(estimated_slope - true_slope)`, an absolute signed-total-effect slope error, not `abs(abs(estimated_slope)-abs(true_slope))`; numeric values are preserved under this corrected label. Sign accuracy keeps zero effects separate. The unit table contains slope but not intercept estimates, and per-action predictions were not saved, so intercept-error and oracle intercept/slope substitution diagnostics could not be run.
 
-See `outputs/s1_aggregate.csv`, `outputs/s1_primary_contrasts.csv`, and `outputs/s1_optimum_distribution.csv`.
+For Full Greedy, sign was correct but the canonical grid action was wrong in 171/200 Held-out SCMs; only 2/65 nonzero-interior-optimum SCMs had the canonical action match. The reference-graph learner's mean absolute signed slope error was .16799 (Held-out) and .15283 (Development); its optimum-action agreement was 99% at gamma=0 and 11% at gamma=.2 in Held-out. Intercept error cannot be computed because intercept values were not saved. Multiple-optimum agreement is not separately available in the local optimum artifact; these rates use the saved canonical optimum action.
+
+See `outputs/s1_corrected_primary_contrasts.csv`, `outputs/s1_corrected_objective_policy_summary.csv`, `outputs/s1_corrected_effect_diagnostics.csv`, and `outputs/s1_optimum_distribution.csv`. The earlier `s1_primary_contrasts.csv` is retained as a historical, superseded output.

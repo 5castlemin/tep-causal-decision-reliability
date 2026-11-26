@@ -38,3 +38,13 @@ Research E does not alter Claim 1’s C confirmatory grade or D conditional robu
 | F-Lite is oracle-free and securely isolated | `UNSUPPORTED` | Allow-listed in-process interface; simulated expert answers from reference; no OS sandbox | Reference graph remains available to expert; same Python process | “Reference-blind at the policy interface, with a reference-informed simulated expert.” |
 
 The exact saved-input audit, shared-index pointwise intervals, and limits are documented in `research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md` and `outputs/final_audit_aggregate.json`.
+
+## Supplementary S1/S2 evidence (post-hoc)
+
+| Claim | Evidence grade | Evidence | Limitation / allowed wording |
+|---|---|---|---|
+| Objective changes the S1 policy ranking and optimum support | `DESCRIPTIVE_ONLY` | Saved C Held-out B2: gamma .5 Full Greedy .082163 vs M4 .083598; gamma 1 all four compared policies select k=0 in 200/200 units | Post-hoc fixed SCMs, training frames and action grid; does not change C primary |
+| Correct Full Greedy comparison is favorable at gamma .2 | `DESCRIPTIVE_ONLY` | Full Greedy=`M1+M2+M3+M4`; paired mean Full−S0 −.025724 [−.037982,−.014632]; M4−Full −.004982 [−.010773,−.000377] | Pointwise shared-index SCM bootstrap; not confirmatory; Canonical Oracle is a separate policy |
+| Path feature adds predictive information beyond nested structure/task features | `DESCRIPTIVE_ONLY` | Saved-row nested validation: B .06966, E .06153, F .03768 MAE; paired B−E .00813 [.00209,.01390], E−F .02386 [.01674,.03116] | Post-hoc model refit, one fixed historical Held-out cohort; no causal interpretation |
+| The empty-graph learner is the F association baseline | `UNSUPPORTED` | Empty graph uses existing SCM learner; F association results .02939 Dev/.03873 Held-out at gamma zero are separately saved | Do not conflate; F baseline was not rescored across S1 objectives |
+| Supplementary evidence validates Research D again | `UNSUPPORTED` | D unit-level files unavailable for this supplement | Previous D audit remains historical; no new D unit-level audit here |

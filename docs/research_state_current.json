@@ -545,9 +545,9 @@
       "id": "SUPP-01",
       "title": "Decision-objective robustness and structural-metric validation",
       "status": "PARTIAL",
-      "evidence": "PR #48 open at head 06549f6b1116c80242cfc4748df2c79f25076372; GitHub Actions PR run 45825256872 SUCCESS (437 tests, all workflow checks)",
-      "next_action": "Await maintainer review and integration decision; do not add new experiments or modify C–F frozen assets",
-      "acceptance": "Stored-only S1/S2 audit passed; no new research samples; PR CI passed; private outputs remain untracked; main integration remains pending",
+      "evidence": "PR #48 open at base audit head 786baae6dec166f44406822b26bb30add7170795; saved-result correction audit in progress; Full Greedy/CANONICAL_ORACLE mapping corrected; C source hashes unchanged",
+      "next_action": "Complete required tests, frozen/protected asset checks, update PR #48 and verify its new CI; merge only if permissions/rules allow",
+      "acceptance": "S1 corrected contrasts use M1+M2+M3+M4 and common SCM bootstrap; S2 nested model/AP definitions validated; saved inputs preserved; new PR CI must pass before integration",
       "depends_on": []
     }
   ],
