@@ -12,7 +12,14 @@ BOOT=10_000
 SEED=2026112602
 
 def read_csv(name):
-    with (OUT/name).open(encoding="utf-8-sig",newline="") as f:return list(csv.DictReader(f))
+    numeric={"budget","regret","selected_k","estimated_effect_slope","true_effect_slope","abs_effect_magnitude_error","effect_sign_error","skeleton_precision","skeleton_recall","skeleton_f1","directed_precision","directed_recall","directed_f1","directed_shd","atomic_error_count","task_error_count","task_error_rate","task_fn","task_fp","task_rev","task_unres","task_support","offtask_error_count","xy_path","n_nodes","n_truth_edges","n_estimated_adjacencies","unresolved_count"}
+    with (OUT/name).open(encoding="utf-8-sig",newline="") as f:
+        rows=list(csv.DictReader(f))
+    for row in rows:
+        for key in numeric & row.keys():
+            if row[key]=="":row[key]=None
+            else:row[key]=float(row[key])
+    return rows
 
 def ranks(x):
     x=np.asarray(x); order=np.argsort(x,kind="mergesort"); out=np.empty(len(x),float); i=0
@@ -149,8 +156,14 @@ def integrated(rows_s1,graphs):
 def main():
     rows=read_csv("s2_unique_graph_metrics.csv"); s1=read_csv("s1_unit_metrics.csv")
     cohorts,hashes=read_cohorts()
-    corr=correlation_audit(rows);save_csv(OUT/"s2_metric_correlations.csv",corr)
-    ties=same_scm_ranges(rows);save_csv(OUT/"s2_same_scm_metric_ties.csv",ties)
+    if (OUT/"s2_metric_correlations.csv").is_file():
+        corr=read_csv("s2_metric_correlations.csv")
+    else:
+        corr=correlation_audit(rows);save_csv(OUT/"s2_metric_correlations.csv",corr)
+    if (OUT/"s2_same_scm_metric_ties.csv").is_file():
+        ties=read_csv("s2_same_scm_metric_ties.csv")
+    else:
+        ties=same_scm_ranges(rows);save_csv(OUT/"s2_same_scm_metric_ties.csv",ties)
     pred=prediction_bootstrap(rows)
     opt=optimum_diagnostics(cohorts)
     integ=integrated(s1,rows)
