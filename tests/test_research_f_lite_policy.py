@@ -1,9 +1,15 @@
 import inspect
+from pathlib import Path
+import sys
 import unittest
 
 import numpy as np
 
 from research.decision_oriented_verification import policy as f
+from research.decision_oriented_verification.run_f_lite import make_policy_view
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from integrated_pilot import fit_model
+from decision_mvp import static_mean_response
 
 
 class ResearchFLitePolicyTests(unittest.TestCase):
@@ -72,6 +78,43 @@ class ResearchFLitePolicyTests(unittest.TestCase):
         self.assertNotIn("truth", params)
         self.assertNotIn("reference", params)
         self.assertNotIn("evaluator", params)
+
+    def test_score_components_and_decision_weighted_ablation(self):
+        rng = np.random.default_rng(19)
+        x = rng.normal(size=160)
+        m = .8 * x + rng.normal(size=160) * .2
+        y = .9 * m + rng.normal(size=160) * .2
+        data = np.column_stack((x, m, y))
+        nodes = ("X", "M", "Y")
+        relations = {("M", "X"): ("X", "M")}
+        kwargs = dict(data=data, nodes=nodes, action="X", target="Y",
+                      action_values=(-1., -.5, 0., .5, 1.), target_value=1., scale=1.,
+                      fit_model=fit_model, response=static_mean_response)
+        rows = f.score_pairs("DECISION_WEIGHTED_VERIFICATION", relations=relations, **kwargs)
+        self.assertEqual(len(rows), 3)
+        for row in rows:
+            self.assertGreaterEqual(row["suspicion"], 0.)
+            self.assertLessEqual(row["suspicion"], 1.)
+            self.assertGreaterEqual(row["decision_impact"], 0.)
+            self.assertAlmostEqual(row["score"], row["suspicion"] * row["decision_impact"])
+
+    def test_policy_api_excludes_hidden_reference_and_outcomes(self):
+        params = inspect.signature(f.query_once).parameters
+        self.assertEqual(set(params), {"state", "policy", "budget", "expert", "score_context", "rng"})
+        self.assertNotIn("truth", params)
+        self.assertNotIn("gt_loss", params)
+        self.assertNotIn("reference_graph", params)
+
+    def test_policy_view_is_allow_listed(self):
+        record = {k: k for k in ("cohort", "scm_id", "nodes", "data", "initial", "action", "target",
+                                  "actions", "target_value", "scale", "delta")}
+        record.update({"truth": "secret", "truth_spec": "secret", "payload": "secret",
+                       "reference": "secret", "gt_loss": 123, "corruption_log": "secret"})
+        view = make_policy_view(record)
+        self.assertEqual(set(view), {"cohort", "scm_id", "nodes", "data", "initial", "action", "target",
+                                     "actions", "target_value", "scale", "delta"})
+        self.assertNotIn("truth", view)
+        self.assertNotIn("gt_loss", view)
 
     def test_zero_score_still_queries_deterministically(self):
         nodes = ("X", "Y")

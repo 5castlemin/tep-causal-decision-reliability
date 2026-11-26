@@ -18,6 +18,7 @@ UNRESOLVED = "UNRESOLVED"
 U_TO_V = "U_TO_V"
 V_TO_U = "V_TO_U"
 STATES = (NO_EDGE, U_TO_V, V_TO_U)
+K_GRID = (-1.0, -0.5, 0.0, 0.5, 1.0)
 
 
 def pair_order(nodes: Sequence[str]) -> list[tuple[str, str]]:
@@ -121,44 +122,63 @@ def predict_loss(data: np.ndarray, nodes: Sequence[str], relations: Mapping[tupl
         losses[float(a)] = ((mu - target_value) / scale) ** 2
     if not all(math.isfinite(x) for x in losses.values()):
         raise ValueError("nonfinite prediction loss")
-    chosen = min(losses, key=lambda a: (losses[a], abs(action_values.index(a)), action_values.index(a)))
+    chosen = min(losses, key=lambda a: (losses[a], abs(K_GRID[action_values.index(a)]), K_GRID[action_values.index(a)]))
     return float(chosen), float(losses[chosen]), losses
 
 
 def score_pairs(policy: str, data: np.ndarray, nodes: Sequence[str],
                 relations: Mapping[tuple[str, str], object], action: str, target: str,
                 action_values: Sequence[float], target_value: float, scale: float,
-                fit_model: Callable, response: Callable) -> list[dict]:
+                fit_model: Callable, response: Callable,
+                model_cache: dict | None = None) -> list[dict]:
     if policy not in {"FIT_BASED_VERIFICATION", "SUSPICION_ONLY", "DECISION_IMPACT_ONLY", "DECISION_WEIGHTED_VERIFICATION"}:
         raise ValueError("unsupported scoring policy")
     current_rel = effective_relations(relations)
-    current_action, _current_minloss, _current_losses = predict_loss(data, nodes, relations, action, target,
-                                                                     action_values, target_value, scale, fit_model, response)
+    model_cache = {} if model_cache is None else model_cache
+    def predicted(g):
+        key = tuple(sorted((p, r) for p, r in effective_relations(g).items()))
+        if key not in model_cache:
+            model_cache[key] = predict_loss(data, nodes, g, action, target, action_values,
+                                            target_value, scale, fit_model, response)
+        return model_cache[key]
+    current_action, _current_minloss, _current_losses = predicted(relations)
+
+    def pair_local_bic(g, pair_):
+        rels = effective_relations(g)
+        total = 0.0
+        for node in pair_:
+            parents = sorted(a for edge in rels.values() if isinstance(edge, tuple)
+                             for a, b in (edge,) if b == node)
+            total += bic_for_target(data, nodes, node, parents)
+        return total
+
+    current_bic = {p: pair_local_bic(relations, p) for p in pair_order(nodes)}
     records = []
     for p in pair_order(nodes):
         current = relations.get(p, NO_EDGE)
         states = local_states(nodes, relations, p)
-        bics = [(s, g, graph_bic(data, nodes, g)) for s, g, _ in states]
+        base_pair_bic = current_bic[p]
+        bics = [(s, g, pair_local_bic(g, p)) for s, g, _ in states]
         if not bics:
             continue
         min_bic = min(b for _, _, b in bics)
         weights_raw = [math.exp(-0.5 * (b - min_bic)) for _, _, b in bics]
         denom = sum(weights_raw)
         weights = {s: w / denom for (s, _, _), w in zip(bics, weights_raw)}
-        current_state = UNRESOLVED if current == UNRESOLVED else (NO_EDGE if current == NO_EDGE else (U_TO_V if current == p else V_TO_U))
+        effective_state = NO_EDGE if current in (UNRESOLVED, NO_EDGE) else (U_TO_V if current == p else V_TO_U)
+        current_state = UNRESOLVED if current == UNRESOLVED else effective_state
         suspicion = 1.0 if current_state == UNRESOLVED else 1.0 - weights.get(current_state, 0.0)
         impacts = []
         for state, trial, _bic in bics:
-            if state == current_state:
+            if state == effective_state:
                 continue
-            trial_action, _trial_min, trial_losses = predict_loss(data, nodes, trial, action, target,
-                                                                  action_values, target_value, scale, fit_model, response)
+            trial_action, _trial_min, trial_losses = predicted(trial)
             gain = trial_losses[current_action] - trial_losses[trial_action]
             if gain < -1e-10:
                 raise ArithmeticError("alternative's selected action does not minimize its predicted loss")
             impacts.append(max(0.0, gain) if gain >= -1e-10 else gain)
         impact = float(np.mean(impacts)) if impacts else 0.0
-        fit_gain = min((graph_bic(data, nodes, relations) - b for s, _, b in bics if s != current_state), default=0.0)
+        fit_gain = max((base_pair_bic - b for s, _, b in bics if s != effective_state), default=0.0)
         score = {"FIT_BASED_VERIFICATION": fit_gain,
                  "SUSPICION_ONLY": suspicion,
                  "DECISION_IMPACT_ONLY": impact,
@@ -191,7 +211,8 @@ class VerificationState:
         desired = NO_EDGE if answer == NO_EDGE else edge_pair if answer == U_TO_V else (edge_pair[1], edge_pair[0])
         self._try_apply(edge_pair, desired)
         self.history.append({"pair": edge_pair, "answer": answer, "before": before.get(edge_pair, NO_EDGE),
-                             "desired": desired, "pending": edge_pair in self.pending})
+                             "desired": desired, "error_discovered_at_query": before.get(edge_pair, NO_EDGE) != desired,
+                             "pending": edge_pair in self.pending})
         self.retry_pending()
 
     def _try_apply(self, p: tuple[str, str], desired: object) -> bool:
