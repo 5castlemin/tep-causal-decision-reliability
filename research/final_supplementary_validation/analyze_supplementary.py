@@ -400,7 +400,8 @@ def run_predictive_s2(graph_rows):
         dm=regression_metrics(np.array([z[1] for z in oof]),np.array([z[2] for z in oof]),oof_weights)
         hm=regression_metrics(yh,ph,wh)
         results.append({"model":name,"selected_alpha":alpha,"development_grouped_cv_mae":dm["mae"],"development_grouped_cv_rmse":dm["rmse"],"development_grouped_cv_r2":dm["r2"],"heldout_scm_balanced_mae":hm["mae"],"heldout_scm_balanced_rmse":hm["rmse"],"heldout_oos_r2":hm["r2"],"heldout_spearman_approx":hm["rank_corr_approx"],"n_development_scm":len({r['scm_id'] for r in dev}),"n_heldout_scm":len({r['scm_id'] for r in held}),"n_dev_graphs":len(dev),"n_heldout_graphs":len(held),"status":"post-hoc grouped prediction; fixed historical heldout"})
-        prediction_store[name]=dict(y=yh.tolist(),pred=ph.tolist(),ids=[r["scm_id"] for r in held])
+        prediction_store[name]=dict(y=yh.tolist(),pred=ph.tolist(),ids=[r["scm_id"] for r in held],
+            rows=[{"cohort":r["cohort"],"scm_id":r["scm_id"],"structural_graph_hash":r["structural_graph_hash"],"y":float(yy),"prediction":float(pp)} for r,yy,pp in zip(held,yh,ph)])
     return results,unique,prediction_store
 
 
