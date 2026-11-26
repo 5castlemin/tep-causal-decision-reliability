@@ -1,0 +1,96 @@
+{
+  "study": "Research F-Lite",
+  "mode": "CORE_EVALUATION",
+  "base_commit": "56ae849df106e47066e976d5153f96b416fecbb6",
+  "code_commit": "936af283834c16a494c10ec0aa93dc0d21b913c8",
+  "code_tree": "10531e0e4519c24110e57faea1e191fe347b5a0f",
+  "runtime_files": {
+    "research/decision_oriented_verification/RESEARCH_F_LITE_CONTRACT.md": {
+      "git_blob": "55b452faa8260075390b8e869c26978e53e35307",
+      "raw_sha256": "4eabe881912932a090b01d89badbb5a39a1e09c2b95f5baccecd8e907be80570"
+    },
+    "research/decision_oriented_verification/contract.json": {
+      "git_blob": "071fc0c280c65561dc798f73e441f0932b99006b",
+      "raw_sha256": "03d322c350e4503435ec0709ad85a33f5bb6467b20c046d97dc2f3f0ec2e17ed"
+    },
+    "research/decision_oriented_verification/policy.py": {
+      "git_blob": "e9d988dc6857c991f8a774944c3c90ba2fc4e9a3",
+      "raw_sha256": "a7c4ca4f9c766a76f51a292f676d3ac2b9d3fabc8e7579fce6b1e0fe05581079"
+    },
+    "research/decision_oriented_verification/run_f_lite.py": {
+      "git_blob": "8808bddd727ff3089b06c0f1ebacf43a04d958fa",
+      "raw_sha256": "e46e0b77da0ada8852621b5f8ab2266f1ca7406054fe2a63b6f2796489dbae7f"
+    },
+    "research/budget_aware_refinement/step3_adapter.py": {
+      "git_blob": "a559484884448619646f3e62041113a175eaca86",
+      "raw_sha256": "054f13d709764e0b6eba505175e529769e5549bf2e21f20dc3515fe3a2aa733d"
+    },
+    "research/budget_aware_refinement/step4c1_scm.py": {
+      "git_blob": "fa24102775077b2215c56b059c6cf192f4580071",
+      "raw_sha256": "3ac7f71e21167e65df85db06c75cd414ada41c1c9faf745c8c7ade3ca36c89a3"
+    },
+    "research/budget_aware_refinement/step4_rng.py": {
+      "git_blob": "fc184bdf2dd6dabf8a4c3bcb06f9e7009d3db0bf",
+      "raw_sha256": "4396ef5743689f4b21602f3244a0175bf6798c05bc8a693381c0648f70a5e13b"
+    },
+    "research/budget_aware_refinement/step4c1_gt.py": {
+      "git_blob": "4bf3c8ddb939c77b5a68e78f4b22495dcee7c6c8",
+      "raw_sha256": "f56a7febc59e685e10611200c4d10098917c105430f8d6f1afb9824193ceb4e2"
+    },
+    "research/original_objective/policy_engine.py": {
+      "git_blob": "e8f3877d23383a66f56cc747e684b568bdab5800",
+      "raw_sha256": "eeab5fa8f565f01970c610a356c57bbdbd05ed247e53d8c033ce06e56642e7ef"
+    },
+    "src/integrated_pilot.py": {
+      "git_blob": "df50f529f68fa7ea83618b629b2f47e1e1e8d09f",
+      "raw_sha256": "c2ff4d1bf0cb91f5206c285cf7b107c519aaa5598b2dc03e3d5c08327162d176"
+    },
+    "src/pilot_fit.py": {
+      "git_blob": "0173b7f13a5ea77b15039c37f0a77efc6afe7472",
+      "raw_sha256": "a02bedd4befe7f3627a2d709822267961a2cfc593b9e783d8b23ed3744f08a96"
+    },
+    "src/decision_mvp.py": {
+      "git_blob": "992f68de960c0a2ce62ce900549b186c9468bf1e",
+      "raw_sha256": "18a6dcc144368895e781272d3f83f731620533333633bce975ebedb27a55225a"
+    }
+  },
+  "inputs": {
+    "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "C_DEVELOPMENT:proposal": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "C_HELDOUT:cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "C_HELDOUT:proposal": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+  },
+  "environment": {
+    "python": "3.11.15 (main, Jun 23 2026, 15:20:37) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "platform": "win32",
+    "runtime_line_endings": "raw SHA-256 records bind actual checkout bytes"
+  },
+  "contract": {
+    "budgets": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "random_repeats_per_scm": 32,
+    "bootstrap_replicates": 10000,
+    "expert_accuracy": 1.0,
+    "new_scms": 0,
+    "new_g0": 0,
+    "new_observations": 0,
+    "new_intervention_rows": 0
+  },
+  "prelock_technical_exposure": {
+    "units": 1,
+    "cohort": "C_DEVELOPMENT",
+    "scm_id": "dev-scm-development-proposal-000001-a0000",
+    "policy": "DECISION_WEIGHTED_VERIFICATION",
+    "queries": 4,
+    "evaluator_called": false,
+    "artifact_persisted": false,
+    "classification": "UNLOCKED_SINGLE_UNIT_POLICY_TECHNICAL_SMOKE; exploratory exposure, not counted as verified core evidence; no result-based design changes or unit replacement"
+  }
+}
