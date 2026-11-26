@@ -52,13 +52,59 @@ def rec_content(rows):
                       {"action":a,"selected_k":float(s["selected_k"]),"predicted_losses":[float(x["predicted_loss"]) for x in s["candidates"]]})
     return output
 
+def wrong_count(history, truth):
+    wrong=0
+    for q in history:
+        pair=tuple(q["pair"]);rel=truth.get(pair)
+        correct=NO_EDGE if rel is None else U_TO_V if rel==pair else V_TO_U
+        wrong += q["answer"] != correct
+    return int(wrong)
+
+def aggregate_rows(records,evaluated,cohort):
+    expected=len(records)*len(ACCURACIES)*REPEATS*len(POLICIES)
+    keys=[(x["scm_id"],x["accuracy"],x["repeat"],x["policy"],x["budget"]) for x in evaluated]
+    if len(evaluated)!=expected or len(set(keys))!=expected:raise ValueError("incomplete/duplicate F3 evaluator keys")
+    by_id={r["scm_id"]:r for r in records}
+    if any(x["cohort"]!=cohort or x["budget"]!=BUDGET or x["scm_id"] not in by_id for x in evaluated):
+        raise ValueError("F3 evaluator binding mismatch")
+    aggregates=[]
+    for accuracy in ACCURACIES:
+        for policy in POLICIES:
+            per_scm=[]
+            for rec in records:
+                rs=[x for x in evaluated if x["scm_id"]==rec["scm_id"] and x["accuracy"]==accuracy and x["policy"]==policy]
+                if len(rs)!=REPEATS:raise ValueError("F3 repeat count mismatch")
+                per_scm.append({"regret":float(np.mean([x["regret"] for x in rs])),"edit_count":float(np.mean([x["edit_count"] for x in rs])),
+                                "query_count":float(np.mean([x["query_count"] for x in rs])),
+                                "wrong_responses":float(np.mean([wrong_count(x["query_history"],rec["truth"]) for x in rs]))})
+            aggregates.append({"cohort":cohort,"accuracy":accuracy,"policy":policy,"n_scm":len(per_scm),
+                               "mean_regret":float(np.mean([x["regret"] for x in per_scm])),"sd_scm_mean_regret":float(np.std([x["regret"] for x in per_scm],ddof=1)),
+                               "mean_edit_count":float(np.mean([x["edit_count"] for x in per_scm])),"mean_query_count":float(np.mean([x["query_count"] for x in per_scm])),
+                               "mean_wrong_responses_per_trajectory":float(np.mean([x["wrong_responses"] for x in per_scm]))})
+    return aggregates
+
 def main():
     PRIVATE.mkdir(parents=True,exist_ok=True);OUT.mkdir(parents=True,exist_ok=True)
     started=time.perf_counter();process=psutil.Process();peak=process.memory_info().rss
     summary={"status":"RUNNING","accuracies":ACCURACIES,"repeats_per_scm":REPEATS,"budget":BUDGET,"policies":POLICIES,"cohorts":{}}
     for source in SOURCES:
         cohort=source[0];records,_=restore_cohort(source);rec_file=PRIVATE/f"{cohort.lower()}_recommendations.json";ev_file=PRIVATE/f"{cohort.lower()}_evaluator.jsonl"
-        if rec_file.exists() or ev_file.exists():raise FileExistsError(f"Refusing to overwrite F3 artifact for {cohort}")
+        if rec_file.exists() and ev_file.exists():
+            saved=json.loads(rec_file.read_text(encoding="utf-8"));serial=saved["records"];lock=saved["lock"]
+            digest=hashlib.sha256(json.dumps(serial,sort_keys=True,separators=(",",":"),allow_nan=False).encode()).hexdigest()
+            if len(serial)!=len(records)*2*REPEATS*len(POLICIES) or digest!=lock["content_sha256"]:
+                raise ValueError("saved F3 recommendation binding mismatch")
+            evaluated=[json.loads(line) for line in ev_file.read_text(encoding="utf-8").splitlines() if line]
+            aggregates=aggregate_rows(records,evaluated,cohort)
+            summary["cohorts"][cohort]={"n_scm":len(records),"recommendation_rows":len(serial),"recommendation_sha256":digest,
+                                         "recommendation_file_sha256":hashlib.sha256(rec_file.read_bytes()).hexdigest(),
+                                         "evaluator_rows":len(evaluated),"evaluator_sha256":hashlib.sha256(ev_file.read_bytes()).hexdigest(),
+                                         "classification":"RECOVERED_FROM_COMPLETED_ATTEMPT; no resampling", "aggregates":aggregates}
+            with (OUT/f"{cohort.lower()}_noise_sensitivity.csv").open("w",newline="",encoding="utf-8") as f:
+                w=csv.DictWriter(f,fieldnames=list(aggregates[0]));w.writeheader();w.writerows(aggregates)
+            print(f"F3 recovered saved {cohort} results without sampling",flush=True)
+            continue
+        if rec_file.exists() or ev_file.exists():raise FileExistsError(f"Incomplete F3 artifact pair for {cohort}; refusing overwrite")
         all_rec=[]
         for i,record in enumerate(records,1):
             for accuracy in ACCURACIES:
@@ -85,22 +131,7 @@ def main():
                               "action":float(next(x["action"] for x in r["selection"]["candidates"] if x["k"]==r["selection"]["selected_k"])),
                               "regret":float(result["regret"]),"query_history":r["history"]})
         ev_file.write_text("\n".join(json.dumps(x,sort_keys=True) for x in evaluated),encoding="utf-8")
-        grouped={}
-        for accuracy in ACCURACIES:
-            for policy in POLICIES:
-                per_scm=[]
-                for rec in records:
-                    rs=[x for x in evaluated if x["scm_id"]==rec["scm_id"] and x["accuracy"]==accuracy and x["policy"]==policy]
-                    per_scm.append({"regret":float(np.mean([x["regret"] for x in rs])),"edit_count":float(np.mean([x["edit_count"] for x in rs])),
-                                    "query_count":float(np.mean([x["query_count"] for x in rs])),
-                                    "wrong_responses":float(np.mean([sum(not q["correct"] for q in x["query_history"]) for x in rs]))})
-                grouped[(accuracy,policy)]=per_scm
-        aggregates=[]
-        for (accuracy,policy),rs in grouped.items():
-            aggregates.append({"cohort":cohort,"accuracy":accuracy,"policy":policy,"n_scm":len(rs),
-                               "mean_regret":float(np.mean([x["regret"] for x in rs])),"sd_scm_mean_regret":float(np.std([x["regret"] for x in rs],ddof=1)),
-                               "mean_edit_count":float(np.mean([x["edit_count"] for x in rs])),"mean_query_count":float(np.mean([x["query_count"] for x in rs])),
-                               "mean_wrong_responses_per_trajectory":float(np.mean([x["wrong_responses"] for x in rs]))})
+        aggregates=aggregate_rows(records,evaluated,cohort)
         summary["cohorts"][cohort]={"n_scm":len(records),"recommendation_rows":len(serial),"recommendation_sha256":content_hash,
                                      "recommendation_file_sha256":hashlib.sha256(rec_file.read_bytes()).hexdigest(),
                                      "evaluator_rows":len(evaluated),"evaluator_sha256":hashlib.sha256(ev_file.read_bytes()).hexdigest(),
