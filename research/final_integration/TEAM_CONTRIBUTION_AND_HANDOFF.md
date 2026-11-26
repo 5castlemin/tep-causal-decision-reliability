@@ -15,6 +15,6 @@
 
 ## 데이터 및 재현성 인계
 
-Research C 원본 SQLite와 Research D evaluator response vectors는 공개 저장소에 포함하지 않는다. 감사 때 확인한 원본 데이터는 접근 권한이 있는 별도 로컬 연구 저장소에 남아 있으며 공개 문서에는 식별 해시와 집계만 기록한다. 이 공개 브랜치만으로 원자료 전체를 재실행할 수 있다고 주장하지 않는다.
+Research C 원본 SQLite와 Research D evaluator response vectors는 공개 저장소에 포함하지 않는다. C SQLite digest는 최종 E 감사에서 원 manifest와 재대조했다. D의 직전 27-check audit summary는 별도 로컬 경로에 있었으나 raw response/recommendation/training artifacts는 이번 감사의 지정 경로에서 찾지 못했다. 공개 문서에는 hash와 집계만 남기며 공개 브랜치만으로 원자료 전체를 재실행할 수 있다고 주장하지 않는다.
 
-현재 상태는 `docs/research_state_current.json`과 `docs/current/`에서 확인한다. 과거 frozen state는 수정하지 않는다. 새 연구 실험 승인은 종료되었으며 남은 업무는 결과 검토·발표·최종 제출 준비다.
+현재 상태는 `docs/research_state_current.json`과 `docs/current/`에서 확인한다. 과거 frozen state는 수정하지 않는다. Research E는 기존 C 표본으로 수행한 post-hoc 예산·비용·Adaptive M4·target sensitivity 확장이다. Research D unit-level 재확인은 접근 자료 한계로 추가하지 않았다. 새 연구 실험은 종료되었으며 남은 업무는 최종 보고 검토·발표·제출뿐이다. Research F/G/H는 후속 아이디어이며 이번 프로젝트에서 설계·실행하지 않는다.

@@ -52,3 +52,51 @@ Research C Primary는 계약대로 B=2의 Full Greedy 대 S0다. M4는 Developme
 ## C와 D 사이의 직접 수치 비교 금지
 
 Research C는 독립 synthetic SCM 단위의 analytic GT regret, Research D는 하나의 DRF DGP·고정 학습 frame 아래 G0 corruption draws를 공유 action-level Monte Carlo tracking loss로 평가했다. 서로 다른 task, 구조, loss, 표본 단위 및 생성 메커니즘이므로 두 Primary의 절대 크기 차이를 특정 모델 요소의 효과로 해석하지 않는다.
+
+
+## Research E — 사후 예산·비용 확장
+
+### C Held-out의 주요 policy budget curve
+
+| B | Full Greedy regret | M4 regret | M2+M4 regret | Adaptive M4 regret |
+|---:|---:|---:|---:|---:|
+| 0 | .09343898 | .09343898 | .09343898 | .09343898 |
+| 1 | .04605265 | .02932712 | .03870103 | .02932712 |
+| 2 | .01860262 | .00398775 | .01267397 | .00398775 |
+| 3 | .00816650 | .00143536 | .00463471 | .00096391 |
+| 4 | .00096391 | .00143536 | .00096391 | .00096391 |
+| 5–9 | .00082758 | .00129902 | .00082758 | .00082758 |
+
+### Held-out B=3 cost correction and sparse Adaptive contrast
+
+| Policy | Mean regret | Mean edit count |
+|---|---:|---:|
+| M4 | .00143536 | .760 |
+| Adaptive M4 | .00096391 | .780 |
+| M2+M4 | .00463471 | 1.350 |
+| Full Greedy | .00816650 | 1.790 |
+
+Adaptive−M4 paired difference −.000471447; SCM bootstrap 95% interval [−.001414341, 0]; better/worse/tie 1/0/199. The Full Greedy cost is Research C’s 1.790; 1.325 was a Research D value.
+
+### Bmax restoration, reference learner, and target sensitivity
+
+| Quantity | Development (64) | Held-out (200) |
+|---|---:|---:|
+| M4 fully restored / residual cases | 18 / 46 | 80 / 120 |
+| M2+M4 fully restored / residual cases | 27 / 37 | 109 / 91 |
+| Reference learner mean regret (median 0 in both) | .00255992 | .00082758 |
+| Reference learner selected grid optimum | 63/64 | 198/200 |
+| δ=0; M4/B2 recommends k=0 | 64/64 | 200/200 |
+| δ=0; true grid optimum interior | 58/64 | 185/200 |
+
+At Bmax, Full Greedy and Canonical Oracle actions agreed with the reference-DAG learner in 264/264 units; M2+M4 also agreed in 264/264 despite residual graph errors, and M4 in 263/264. The reference learner is not a decision oracle.
+
+### C Held-out observed Pareto and lambda envelope
+
+Cross-budget mean-coordinate frontier (ties at no-edit coordinates retained): S0/no-edit at (0, .093439), M3 B1 at (.350, .092477), M4 B1/B2/B3 at (.515, .029327)/(.695, .003988)/(.760, .001435), Adaptive M4 B3 at (.780, .000964), and Adaptive M4 B5–9 at (.810, .000828). Full Greedy is not on the observed frontier. Fixed Bmax frontier is S0 B9, M3 B9, M4 B9, and Adaptive M4 B9. Frontier status is descriptive, not inferential.
+
+For `Jλ=mean regret+λ×mean edit count`, observed lower-envelope switches occur near λ=.0045445, .0235724, .0392675, and .1287068. The winning sequence is Adaptive M4 B5–9, Adaptive M4 B3, M4 B3, M4 B2, then tied zero-edit candidates. λ represents hypothetical edit-count penalty, not money. Exact boundaries and ties: `research_e_audit/expanded_lambda_lower_envelope.csv`. A joint paired unit bootstrap (2,000 resamples, seed 2026112699) gives empirical frontier inclusion frequencies, not probabilities of superiority.
+
+### D boundary
+
+At D B2 only, graph-free association baseline has mean loss .789362 and 0 graph edits, equal loss to Full Greedy. D raw per-G0 artifacts were unavailable in this closeout, so there is no extended D frontier or Adaptive analysis. C regret and D target-tracking loss are not pooled.

@@ -1,0 +1,49 @@
+{
+  "schema": "research-e-contract-v1",
+  "classification": "POST_HOC_BUDGET_AND_COST_EFFECTIVENESS_EXTENSION",
+  "research_question": "How does efficient causal graph repair change as maximum edit budget and edit-cost preference vary?",
+  "immutable_research": {
+    "research_c_contract_changed": false,
+    "research_d_contract_changed": false,
+    "new_independent_scm_count": 0,
+    "new_g0_draw_count": 0,
+    "new_drf_fit_count": 0,
+    "new_d_intervention_rows": 0,
+    "physical_experiment": false
+  },
+  "cohorts": [
+    {"id": "C_DEVELOPMENT", "n": 64, "unit": "original synthetic SCM", "role": "Development"},
+    {"id": "C_HELDOUT", "n": 200, "unit": "original independent synthetic SCM", "role": "Held-out"},
+    {"id": "D_FINAL", "n": 200, "unit": "graph-corruption draw conditional on one fixed DRF DGP and training frame", "role": "conditional external semisynthetic; aggregate-only E1"}
+  ],
+  "e1": {
+    "budgets": [0, 1, 2, 3, 4],
+    "policies": 17,
+    "c_bootstrap_replicates": 10000,
+    "c_bootstrap_seed": 2026112601,
+    "d_unit_level_uncertainty": "NOT_RECOMPUTED: per-G0 rows and raw response vectors were unavailable",
+    "pareto_dominance": "no greater mean atomic edge edits and no greater mean loss/regret, with at least one strict improvement; retain exact ties",
+    "hypothetical_lambda": [0, 0.0001, 0.001, 0.005, 0.01, 0.02, 0.05, 0.1, 0.25]
+  },
+  "e2": {
+    "budget_cap_rule": "max(4, maximum initial FN+FP+REV+UNRES burden within the original cohort)",
+    "budget_caps": {"C_DEVELOPMENT": 7, "C_HELDOUT": 9},
+    "b0_b4_replay_match": "all 22,440 original SCM-policy-budget results: graph hash, edits, action and analytic regret",
+    "input_restoration": "hash-identical deterministic restoration checked against original truth, observations, task and G0 bindings"
+  },
+  "e3": {
+    "adaptive_policy": "ADAPTIVE_M4_BLOCKER_AWARE",
+    "scope": "C cohorts only; exploratory",
+    "target_delta_grid": [-1, -0.5, 0, 0.5, 1],
+    "target_rule": "mean(Y_train)+delta*SD(Y_train)",
+    "action_grid": "unchanged five original C training-derived actions",
+    "d_extension": "NOT_RUN: unit-level D data unavailable"
+  },
+  "analysis_limits": [
+    "Research E is post-hoc and does not replace any frozen Research C or Research D primary or secondary analysis.",
+    "Research C regret and Research D standardized tracking loss are never pooled.",
+    "Research D 200 units are not independent SCMs.",
+    "Atomic edge-edit count is not labor, time, money, deployment or safety cost.",
+    "No claim of manufacturing intervention validation or deployment efficacy."
+  ]
+}

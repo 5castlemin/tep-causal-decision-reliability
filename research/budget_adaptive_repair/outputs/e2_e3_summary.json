@@ -1,0 +1,35 @@
+{
+  "status": "POSTPROCESS_COMPLETE",
+  "figures": [
+    "E1_policy_budget_heatmap.svg",
+    "E2_curves_C_DEVELOPMENT.svg",
+    "E2_curves_C_HELDOUT.svg",
+    "E2_key_policy_curves_C_DEVELOPMENT.svg",
+    "E2_key_policy_curves_C_HELDOUT.svg",
+    "E3_marginal_benefit_C_DEVELOPMENT.svg",
+    "E3_marginal_benefit_C_HELDOUT.svg",
+    "E4_pareto_C_DEVELOPMENT.svg",
+    "E4_pareto_C_HELDOUT.svg",
+    "E4_pareto_D_FINAL.svg",
+    "E5_lambda_choices_C_DEVELOPMENT.svg",
+    "E5_lambda_choices_C_HELDOUT.svg",
+    "E5_lambda_choices_D_FINAL.svg",
+    "E6_saturation_C_DEVELOPMENT.svg",
+    "E6_saturation_C_HELDOUT.svg",
+    "E7_adaptive_M4_C_DEVELOPMENT.svg",
+    "E7_adaptive_M4_C_HELDOUT.svg",
+    "E8_target_sensitivity_C_DEVELOPMENT.svg",
+    "E8_target_sensitivity_C_HELDOUT.svg"
+  ],
+  "aggregate_rows": 392,
+  "marginal_rows": 272,
+  "saturation_rows": 34,
+  "frontier_rows": 530,
+  "adaptive_comparison_rows": 54,
+  "decision_saturation_rows": 34,
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 2026112604,
+    "unit": "paired original SCM"
+  }
+}

@@ -1,0 +1,14 @@
+# Unit-level records include reconstructed SCM/training-derived outputs; retain locally only.
+c_development_unit_results.csv
+c_heldout_unit_results.csv
+c_extended_budget_results.csv
+adaptive_m4_unit_results.csv
+target_sensitivity_unit_results.csv
+reference_graph_learner_diagnostic.csv
+
+# Runtime and private local artifacts.
+__pycache__/
+*.npy
+*.npz
+*.sqlite
+*.db
