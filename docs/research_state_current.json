@@ -544,16 +544,16 @@
     {
       "id": "SUPP-01",
       "title": "Decision-objective robustness and structural-metric validation",
-      "status": "PARTIAL",
-      "evidence": "PR #48 open at base audit head 786baae6dec166f44406822b26bb30add7170795; saved-result correction audit in progress; Full Greedy/CANONICAL_ORACLE mapping corrected; C source hashes unchanged",
-      "next_action": "Complete required tests, frozen/protected asset checks, update PR #48 and verify its new CI; merge only if permissions/rules allow",
-      "acceptance": "S1 corrected contrasts use M1+M2+M3+M4 and common SCM bootstrap; S2 nested model/AP definitions validated; saved inputs preserved; new PR CI must pass before integration",
+      "status": "VERIFIED",
+      "evidence": "PR #48 merged as d55baebaea341ef39263b8a62ba313795ce31ef3; PR Actions 45835101426 SUCCESS; post-merge main Actions 45835806361 SUCCESS; supplementary gate SUPPLEMENTARY_ANALYSIS_COMPLETED_WITH_LIMITATIONS; no new samples generated",
+      "next_action": "No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation",
+      "acceptance": "S1 policy identity and shared-index contrasts corrected; S2 nested models and metric definitions audited; saved inputs and C–F frozen assets preserved; post-merge CI passed; limitations remain documented",
       "depends_on": []
     }
   ],
   "priority_order": [
-    "SUPP-01",
     "TEAM-PRESENTATION",
+    "SUPP-01",
     "F-LITE-01",
     "RESEARCH-E",
     "FINAL-INTEGRATION",
@@ -1409,5 +1409,20 @@
     "old_protected_files_unchanged": 5218,
     "pr": 25,
     "acceptance_commit": "c6b3e386cc9838e245fd226f50ccd809af479fc7"
+  },
+  "supplementary_closeout": {
+    "project_gate": "PROJECT_RESEARCH_C_D_E_F_AND_SUPPLEMENTARY_CLOSED_WITH_DOCUMENTED_LIMITATIONS",
+    "supplementary_gate": "SUPPLEMENTARY_ANALYSIS_COMPLETED_WITH_LIMITATIONS",
+    "pr": 48,
+    "merge_commit": "d55baebaea341ef39263b8a62ba313795ce31ef3",
+    "pr_ci_run": 45835101426,
+    "main_ci_run": 45835806361,
+    "new_scm_g0_observational_intervention_or_expert_rows": 0,
+    "research_d_unit_level_audit": "NOT_RUN_PRIVATE_ARTIFACTS_UNAVAILABLE",
+    "limitations": [
+      "post-hoc S1/S2 analysis",
+      "Research D unit-level artifacts unavailable",
+      "S1/S2 do not alter the frozen Research C primary"
+    ]
   }
 }

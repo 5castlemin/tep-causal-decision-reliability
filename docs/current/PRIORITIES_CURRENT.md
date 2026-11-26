@@ -4,16 +4,16 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **SUPP-01 — Decision-objective robustness and structural-metric validation**: Complete required tests, frozen/protected asset checks, update PR #48 and verify its new CI; merge only if permissions/rules allow (PARTIAL)
-2. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
+1. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
+2. **SUPP-01 — Decision-objective robustness and structural-metric validation**: No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation (VERIFIED)
 3. **F-LITE-01 — Research F-Lite reference-blind query policy post-hoc evaluation**: 추가 실험 없음; 최종 보고서 검토 및 발표 준비 (VERIFIED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| SUPP-01 | PARTIAL | 없음 | Complete required tests, frozen/protected asset checks, update PR #48 and verify its new CI; merge only if permissions/rules allow / S1 corrected contrasts use M1+M2+M3+M4 and common SCM bootstrap; S2 nested model/AP definitions validated; saved inputs preserved; new PR CI must pass before integration |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
+| SUPP-01 | VERIFIED | 없음 | No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation / S1 policy identity and shared-index contrasts corrected; S2 nested models and metric definitions audited; saved inputs and C–F frozen assets preserved; post-merge CI passed; limitations remain documented |
 | F-LITE-01 | VERIFIED | 없음 | 추가 실험 없음; 최종 보고서 검토 및 발표 준비 / 저장자료 hash 감사, 공통-index bootstrap 재집계, pending replay, PR/main CI 및 merge 후 상태 검증 완료; Research C–E frozen 유지; 제한사항 문서화 |
 | RESEARCH-E | VERIFIED | FINAL-INTEGRATION | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. / E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; Research E remains post-hoc CORE_COMPLETED_WITH_LIMITATIONS; protected assets untouched. |
 | FINAL-INTEGRATION | VERIFIED | 없음 | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 / 원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료 |
