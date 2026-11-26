@@ -531,9 +531,19 @@
       "depends_on": [
         "FINAL-INTEGRATION"
       ]
+    },
+    {
+      "id": "F-LITE-01",
+      "title": "Research F-Lite reference-blind query policy post-hoc evaluation",
+      "status": "VERIFIED",
+      "evidence": "research/decision_oriented_verification/RESEARCH_F_FINAL_REPORT_KO.md; research_f_summary.json; PR pending",
+      "next_action": "보고서·발표자료로 전환; 추가 연구 실험 없음",
+      "acceptance": "저장 산출물 감사, 단위 테스트, CI 및 제한사항 공개; 기존 C–E 동결 유지",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "F-LITE-01",
     "TEAM-PRESENTATION",
     "RESEARCH-E",
     "FINAL-INTEGRATION",
@@ -610,7 +620,8 @@
     "2026-11-26: Final Research C–D integration PR #41 merged as 4564e4d28fea62a0caebbad0ed6dd415d7f29cda; post-merge Actions 45654187713 SUCCESS. No new experiment or response sampling.",
     "2026-11-26: PR #42 merged as fc863182efd4ee721a7f5250c871d46afe9bf244 to record FINAL-INTEGRATION VERIFIED; post-merge main Actions 45656538612 SUCCESS. No experiment or response sampling.",
     "2026-11-26: Research E closeout audit added as post-hoc evidence. Corrected full restoration versus residual error fractions, C Held-out Adaptive M4 B3 Full Greedy cost (1.790), and nonzero DAG constraint saturation cells. Reaggregated existing E unit outputs only; generated no SCM/G0/DRF/training/intervention samples. Research D raw evaluator vectors were not found in the designated store; prior 27-check audit summary/hash was confirmed, but no new raw-vector independent analysis was claimed. Local full test suite: 410 run, 408 pass, 1 frozen runtime fingerprint error and 1 missing local frozen dataset failure; Research E focused tests pass. PR #44 closeout/merge pending.",
-    "2026-11-26: PR #44 merged as 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; Actions 45760776088 SUCCESS. Research C–D–E closeout is integrated. No new experimental data were generated; move to report/presentation preparation."
+    "2026-11-26: PR #44 merged as 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; Actions 45760776088 SUCCESS. Research C–D–E closeout is integrated. No new experimental data were generated; move to report/presentation preparation.",
+    "2026-11-26 — F-LITE-01 added as completed post-hoc verification-policy evidence; no new experiments planned"
   ],
   "integration_review": {
     "user_approved": true,

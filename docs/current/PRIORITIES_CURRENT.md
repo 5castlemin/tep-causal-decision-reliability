@@ -4,14 +4,15 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
-2. **RESEARCH-E — Research E budget-adaptive graph repair post-hoc extension**: Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. (VERIFIED)
-3. **FINAL-INTEGRATION — Research C–D 과학적 통합 및 저장소 종료**: 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 (VERIFIED)
+1. **F-LITE-01 — Research F-Lite reference-blind query policy post-hoc evaluation**: 보고서·발표자료로 전환; 추가 연구 실험 없음 (VERIFIED)
+2. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
+3. **RESEARCH-E — Research E budget-adaptive graph repair post-hoc extension**: Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. (VERIFIED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| F-LITE-01 | VERIFIED | 없음 | 보고서·발표자료로 전환; 추가 연구 실험 없음 / 저장 산출물 감사, 단위 테스트, CI 및 제한사항 공개; 기존 C–E 동결 유지 |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
 | RESEARCH-E | VERIFIED | FINAL-INTEGRATION | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. / E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; Research E remains post-hoc CORE_COMPLETED_WITH_LIMITATIONS; protected assets untouched. |
 | FINAL-INTEGRATION | VERIFIED | 없음 | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 / 원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료 |
@@ -90,5 +91,6 @@
 - 2026-11-26: PR #42 merged as fc863182efd4ee721a7f5250c871d46afe9bf244 to record FINAL-INTEGRATION VERIFIED; post-merge main Actions 45656538612 SUCCESS. No experiment or response sampling.
 - 2026-11-26: Research E closeout audit added as post-hoc evidence. Corrected full restoration versus residual error fractions, C Held-out Adaptive M4 B3 Full Greedy cost (1.790), and nonzero DAG constraint saturation cells. Reaggregated existing E unit outputs only; generated no SCM/G0/DRF/training/intervention samples. Research D raw evaluator vectors were not found in the designated store; prior 27-check audit summary/hash was confirmed, but no new raw-vector independent analysis was claimed. Local full test suite: 410 run, 408 pass, 1 frozen runtime fingerprint error and 1 missing local frozen dataset failure; Research E focused tests pass. PR #44 closeout/merge pending.
 - 2026-11-26: PR #44 merged as 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; Actions 45760776088 SUCCESS. Research C–D–E closeout is integrated. No new experimental data were generated; move to report/presentation preparation.
+- 2026-11-26 — F-LITE-01 added as completed post-hoc verification-policy evidence; no new experiments planned
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

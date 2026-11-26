@@ -1,0 +1,218 @@
+{
+  "status": "COMPLETED",
+  "accuracies": [
+    0.9,
+    0.8
+  ],
+  "repeats_per_scm": 16,
+  "budget": 4,
+  "policies": [
+    "RANDOM_VERIFICATION",
+    "SUSPICION_ONLY",
+    "DECISION_IMPACT_ONLY",
+    "DECISION_WEIGHTED_VERIFICATION"
+  ],
+  "cohorts": {
+    "C_DEVELOPMENT": {
+      "n_scm": 64,
+      "recommendation_rows": 8192,
+      "recommendation_sha256": "1a2dfa0d8079c8a4080dfbffab45f6d687715368c06e1938e3a6c2a50b52fe7b",
+      "recommendation_file_sha256": "31cf1c97c52282d51f188098620141cf5b8045075499a1d45152bd9542993b23",
+      "evaluator_rows": 8192,
+      "evaluator_sha256": "f0e0ff902cac16eb6b2860234d68348d4d5e8a89b9e82bc7e30cffa1a328796b",
+      "classification": "RECOVERED_FROM_COMPLETED_ATTEMPT; no resampling",
+      "aggregates": [
+        {
+          "cohort": "C_DEVELOPMENT",
+          "accuracy": 0.9,
+          "policy": "RANDOM_VERIFICATION",
+          "n_scm": 64,
+          "mean_regret": 0.09338699501874265,
+          "sd_scm_mean_regret": 0.15998963219439624,
+          "mean_edit_count": 0.6005859375,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.400390625
+        },
+        {
+          "cohort": "C_DEVELOPMENT",
+          "accuracy": 0.9,
+          "policy": "SUSPICION_ONLY",
+          "n_scm": 64,
+          "mean_regret": 0.020613968980380346,
+          "sd_scm_mean_regret": 0.04287035439240524,
+          "mean_edit_count": 1.8623046875,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.4091796875
+        },
+        {
+          "cohort": "C_DEVELOPMENT",
+          "accuracy": 0.9,
+          "policy": "DECISION_IMPACT_ONLY",
+          "n_scm": 64,
+          "mean_regret": 0.042868189411120534,
+          "sd_scm_mean_regret": 0.06946589597548587,
+          "mean_edit_count": 0.7099609375,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.4052734375
+        },
+        {
+          "cohort": "C_DEVELOPMENT",
+          "accuracy": 0.9,
+          "policy": "DECISION_WEIGHTED_VERIFICATION",
+          "n_scm": 64,
+          "mean_regret": 0.03828241933250415,
+          "sd_scm_mean_regret": 0.06438062812147233,
+          "mean_edit_count": 0.7109375,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.4072265625
+        },
+        {
+          "cohort": "C_DEVELOPMENT",
+          "accuracy": 0.8,
+          "policy": "RANDOM_VERIFICATION",
+          "n_scm": 64,
+          "mean_regret": 0.1093570228891398,
+          "sd_scm_mean_regret": 0.17933345547101556,
+          "mean_edit_count": 0.9296875,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.84375
+        },
+        {
+          "cohort": "C_DEVELOPMENT",
+          "accuracy": 0.8,
+          "policy": "SUSPICION_ONLY",
+          "n_scm": 64,
+          "mean_regret": 0.041393368606019984,
+          "sd_scm_mean_regret": 0.06125895072596849,
+          "mean_edit_count": 1.9775390625,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.7880859375
+        },
+        {
+          "cohort": "C_DEVELOPMENT",
+          "accuracy": 0.8,
+          "policy": "DECISION_IMPACT_ONLY",
+          "n_scm": 64,
+          "mean_regret": 0.06245485735571136,
+          "sd_scm_mean_regret": 0.08513392255433437,
+          "mean_edit_count": 0.966796875,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.791015625
+        },
+        {
+          "cohort": "C_DEVELOPMENT",
+          "accuracy": 0.8,
+          "policy": "DECISION_WEIGHTED_VERIFICATION",
+          "n_scm": 64,
+          "mean_regret": 0.05350113604495088,
+          "sd_scm_mean_regret": 0.07478620288205838,
+          "mean_edit_count": 0.98046875,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.7998046875
+        }
+      ]
+    },
+    "C_HELDOUT": {
+      "n_scm": 200,
+      "recommendation_rows": 25600,
+      "recommendation_sha256": "113029410788b85b63e974e786161ba24536f91db3f0abdc32aa7f585a763575",
+      "recommendation_file_sha256": "78bb79b49d33f09860a48edac5324136c1df528ee26eb2a178f1bc1be1a82a4d",
+      "evaluator_rows": 25600,
+      "evaluator_sha256": "670b794236c9bdbfeb5673a89ea6efe5b39e50cf317ce431550b9a96b281d41c",
+      "elapsed_seconds": 2342.914816400036,
+      "peak_process_rss_bytes_observed": 467914752,
+      "aggregates": [
+        {
+          "cohort": "C_HELDOUT",
+          "accuracy": 0.9,
+          "policy": "RANDOM_VERIFICATION",
+          "n_scm": 200,
+          "mean_regret": 0.09254624639480166,
+          "sd_scm_mean_regret": 0.15909108548379872,
+          "mean_edit_count": 0.6103125,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.3896875
+        },
+        {
+          "cohort": "C_HELDOUT",
+          "accuracy": 0.9,
+          "policy": "SUSPICION_ONLY",
+          "n_scm": 200,
+          "mean_regret": 0.02161998252113301,
+          "sd_scm_mean_regret": 0.04712143371619639,
+          "mean_edit_count": 1.9478125,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.3853125
+        },
+        {
+          "cohort": "C_HELDOUT",
+          "accuracy": 0.9,
+          "policy": "DECISION_IMPACT_ONLY",
+          "n_scm": 200,
+          "mean_regret": 0.039613545339176735,
+          "sd_scm_mean_regret": 0.07948145819615005,
+          "mean_edit_count": 0.681875,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.3846875
+        },
+        {
+          "cohort": "C_HELDOUT",
+          "accuracy": 0.9,
+          "policy": "DECISION_WEIGHTED_VERIFICATION",
+          "n_scm": 200,
+          "mean_regret": 0.03808733548210197,
+          "sd_scm_mean_regret": 0.07922949601211442,
+          "mean_edit_count": 0.7,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.3834375
+        },
+        {
+          "cohort": "C_HELDOUT",
+          "accuracy": 0.8,
+          "policy": "RANDOM_VERIFICATION",
+          "n_scm": 200,
+          "mean_regret": 0.09562447557870285,
+          "sd_scm_mean_regret": 0.1518725339035597,
+          "mean_edit_count": 0.91125,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.7996875
+        },
+        {
+          "cohort": "C_HELDOUT",
+          "accuracy": 0.8,
+          "policy": "SUSPICION_ONLY",
+          "n_scm": 200,
+          "mean_regret": 0.03924008951801251,
+          "sd_scm_mean_regret": 0.06374947505530983,
+          "mean_edit_count": 2.0446875,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.7990625
+        },
+        {
+          "cohort": "C_HELDOUT",
+          "accuracy": 0.8,
+          "policy": "DECISION_IMPACT_ONLY",
+          "n_scm": 200,
+          "mean_regret": 0.06556498830697798,
+          "sd_scm_mean_regret": 0.0923865840885707,
+          "mean_edit_count": 1.001875,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.82875
+        },
+        {
+          "cohort": "C_HELDOUT",
+          "accuracy": 0.8,
+          "policy": "DECISION_WEIGHTED_VERIFICATION",
+          "n_scm": 200,
+          "mean_regret": 0.060055921262811424,
+          "sd_scm_mean_regret": 0.08782640270713939,
+          "mean_edit_count": 1.0196875,
+          "mean_query_count": 4.0,
+          "mean_wrong_responses_per_trajectory": 0.8278125
+        }
+      ]
+    }
+  },
+  "total_elapsed_seconds": 2342.915499499999,
+  "peak_process_rss_bytes_observed": 467914752
+}

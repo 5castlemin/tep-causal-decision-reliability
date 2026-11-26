@@ -185,4 +185,4 @@ Research E는 기존 C Development/Held-out cohort를 재사용한 post-hoc budg
 
 C–D–E 통합 보고 및 감사는 `research/final_integration/FINAL_RESEARCH_REPORT.md`, `RESEARCH_E_FINAL_AUDIT.md`, `FINAL_RESULTS_TABLES.md`, `FINAL_CLAIMS_EVIDENCE_MATRIX.md`, `FINAL_PRESENTATION_EVIDENCE_GUIDE.md`를 시작점으로 한다. E의 machine-readable 집계는 `research/final_integration/research_e_audit/`에 있다. E는 confirmatory 연구가 아니라 post-hoc extension이다.
 
-최종 연구 질문은 제한된 수정 예산을 어떤 구조 오류와 의사결정 목표에 배분할 때 손실/수정 횟수가 달라지는가다. Research F(불확실성 인지 구조 검증), G(안전한 물리 테스트베드), H(기업 현장·경제성)는 향후 제안으로만 기록한다. 현재 남은 팀 업무는 검증 문구와 발표/Q&A 준비, 최종 제출이다. 기존 역할 기록만 사용하며 확인되지 않은 기여를 추가하지 않는다.
+최종 연구 질문은 제한된 수정·검증 자원을 어떤 구조 오류와 의사결정 목표에 배분할 때 손실과 작업량이 달라지는가다. Research F-Lite는 기존 C Development/Held-out SCM을 재사용한 사후 reference-blind query-policy prototype이다. 결합한 decision-weighted 점수는 Held-out에서 Random보다 나았지만 fit-based와 suspicion-only보다 regret이 높았고 impact-only와 거의 같았다. 이는 새 독립 검증이나 사람 전문가 실험이 아니다. Research G(안전한 물리 테스트베드)와 H(기업 현장·경제성)는 향후 제안으로만 기록하고 수행하지 않는다. 현재 남은 팀 업무는 검증 문구와 발표/Q&A 준비, 최종 제출이다. 기존 역할 기록만 사용하며 확인되지 않은 기여를 추가하지 않는다. F-Lite 보고서와 증거 가이드는 `research/decision_oriented_verification/`에 있다.

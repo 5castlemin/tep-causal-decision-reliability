@@ -98,12 +98,67 @@ class ResearchFLitePolicyTests(unittest.TestCase):
             self.assertGreaterEqual(row["decision_impact"], 0.)
             self.assertAlmostEqual(row["score"], row["suspicion"] * row["decision_impact"])
 
+    def test_two_edge_path_synergy_is_missed_by_single_edge_impact(self):
+        rng = np.random.default_rng(123)
+        x = rng.normal(size=500)
+        m = .8 * x + .1 * rng.normal(size=500)
+        y = .9 * m + .1 * rng.normal(size=500)
+        data = np.column_stack((x, m, y))
+        args = (data, ("X", "M", "Y"), "X", "Y", (-1., 0., 1.), 0., 1., fit_model, static_mean_response)
+        _, _, empty = f.predict_loss(*args[:2], {}, *args[2:])
+        _, _, x_to_m = f.predict_loss(*args[:2], {("X", "M"): ("X", "M")}, *args[2:])
+        _, _, m_to_y = f.predict_loss(*args[:2], {("M", "Y"): ("M", "Y")}, *args[2:])
+        _, _, complete = f.predict_loss(*args[:2], {("X", "M"): ("X", "M"), ("M", "Y"): ("M", "Y")}, *args[2:])
+        self.assertEqual(len(set(empty.values())), 1)
+        self.assertEqual(empty, x_to_m)
+        self.assertEqual(empty, m_to_y)
+        self.assertGreater(max(complete.values()) - min(complete.values()), .01)
+
+    def test_zero_impact_tie_still_queries_same_lexical_pair(self):
+        rng = np.random.default_rng(222)
+        x = rng.normal(size=120)
+        m = rng.normal(size=120)
+        y = rng.normal(size=120)
+        data = np.column_stack((x, m, y))
+        context = dict(data=data, nodes=("X", "M", "Y"), action="X", target="Y",
+                       action_values=(-1., 0., 1.), target_value=0., scale=1.,
+                       fit_model=fit_model, response=static_mean_response)
+        first=[]
+        for _ in range(2):
+            state=f.VerificationState(("X","M","Y"),{})
+            trace=f.query_once(state,"DECISION_IMPACT_ONLY",1,lambda p:f.NO_EDGE,score_context=context)
+            first.append(trace[0]["pair"])
+        self.assertEqual(first[0], ("M","X"))
+        self.assertEqual(first[0], first[1])
+
     def test_policy_api_excludes_hidden_reference_and_outcomes(self):
         params = inspect.signature(f.query_once).parameters
         self.assertEqual(set(params), {"state", "policy", "budget", "expert", "score_context", "rng"})
         self.assertNotIn("truth", params)
         self.assertNotIn("gt_loss", params)
         self.assertNotIn("reference_graph", params)
+
+    def test_same_visible_input_and_expert_transcript_ignore_hidden_truth(self):
+        rng = np.random.default_rng(25)
+        x = rng.normal(size=100)
+        m = .5 * x + rng.normal(size=100)
+        y = .7 * m + rng.normal(size=100)
+        data = np.column_stack((x, m, y))
+        nodes = ("X", "M", "Y")
+        context = dict(data=data, nodes=nodes, action="X", target="Y",
+                       action_values=(-1., 0., 1.), target_value=0., scale=1.,
+                       fit_model=fit_model, response=static_mean_response)
+        visible = {"nodes": nodes, "initial": {("M", "X"): ("M", "X")}}
+        hidden_truth_a = {("M", "X"): ("M", "X")}
+        hidden_truth_b = {("M", "X"): ("X", "M"), ("X", "Y"): ("X", "Y")}
+        selected = []
+        for hidden_truth in (hidden_truth_a, hidden_truth_b):
+            state = f.VerificationState(visible["nodes"], dict(visible["initial"]))
+            # The callback transcript is fixed and reveals only the queried pair's answer.
+            trace = f.query_once(state, "SUSPICION_ONLY", 1,
+                                 lambda pair: f.NO_EDGE, score_context=context)
+            selected.append(trace[0]["pair"])
+        self.assertEqual(selected[0], selected[1])
 
     def test_policy_view_is_allow_listed(self):
         record = {k: k for k in ("cohort", "scm_id", "nodes", "data", "initial", "action", "target",
