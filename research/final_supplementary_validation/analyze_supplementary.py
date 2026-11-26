@@ -14,7 +14,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).resolve().parent / "outputs"
-DATA_ROOT = Path(os.environ.get("DAT_RESEARCH_ROOT", "C:/DAT_RESEARCH"))
+# Private source data stay outside the repository; callers may set this variable
+# to their authorized local data root. A relative default keeps imports/test
+# discovery safe without embedding a workstation-specific absolute path.
+DATA_ROOT = Path(os.environ.get("DAT_RESEARCH_ROOT", "data/local"))
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "src"))
 
