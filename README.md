@@ -59,4 +59,4 @@ F-Lite 최종 저장자료 감사 및 지표 정정은 [감사 보고서](resear
 
 프로젝트는 TEP 구조 탐색과 인과발견 비교에서 출발했다. TEP 및 CausalMan 환경은 연구 계약에 필요한 reference/intervention 조건을 충족하지 못해 보류되었고, Causal Chambers의 Mk2/Wind Tunnel도 현재 연구 질문에 적합한 실측 정책 비교로 채택되지 않았다. 해당 이력은 제거하지 않고 `docs/research_design/`과 `research/external_validation/`에 보존한다. 이번 최종 연구는 실측 제조 검증이 아니다.
 
-> Research C–D–E 최종 감사는 PR #44로 main에 병합됐다(merge commit 5e2b7fd). Actions run 45760776088이 통과했다. Research E와 Research F-Lite는 기존 자료 기반 사후 확장이다. F-Lite의 결합 질의 점수는 Held-out에서 Random보다 나았지만 fit-based/suspicion-only보다 regret이 높았고 impact-only와 거의 같았다. 따라서 추가 가치는 확인되지 않았다. Research D 원시 응답 자료 재감사에는 접근 제한이 남아 있다. 추가 실험은 계획하지 않으며 보고서·발표 준비로 전환한다.
+> Research C–D–E–F-Lite closeout은 PR #46 merge commit `b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9`으로 main에 통합됐고 PR Actions 45798376385 및 main Actions 45798944410이 통과했다. 프로젝트 최종 상태는 `PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS`다. Research E와 F-Lite는 기존 자료 기반 사후 확장이다. F-Lite의 결합 질의 점수는 Held-out에서 Random보다 나았지만 fit-based/suspicion-only보다 regret이 높았고 impact-only와 거의 같았다. 따라서 추가 가치는 확인되지 않았다. Research D 원시 응답 자료 재감사에는 접근 제한이 남아 있다. 추가 실험은 계획하지 않으며 보고서·발표 준비로 전환한다.
