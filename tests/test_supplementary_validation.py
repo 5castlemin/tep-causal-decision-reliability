@@ -8,6 +8,7 @@ import numpy as np
 from research.final_supplementary_validation.analyze_supplementary import (
     K, apply_saved_edits, choose, gamma_loss, grouped_folds, pe, save_csv, structural_features,
 )
+from research.final_supplementary_validation.audit_supplementary import classification_metrics
 
 
 class SupplementaryValidationTests(unittest.TestCase):
@@ -59,6 +60,15 @@ class SupplementaryValidationTests(unittest.TestCase):
                 rows = list(csv.DictReader(handle))
             self.assertEqual(rows[0]["analysis"], "")
             self.assertEqual(rows[1]["analysis"], "G0")
+
+    def test_weighted_auc_is_a_probability_and_handles_ties(self):
+        perfect = classification_metrics([0, 1], [0.1, 0.9], [1, 1])
+        reversed_order = classification_metrics([0, 1], [0.9, 0.1], [1, 1])
+        tied = classification_metrics([0, 1], [0.5, 0.5], [1, 1])
+        self.assertEqual(perfect["auroc"], 1.0)
+        self.assertEqual(reversed_order["auroc"], 0.0)
+        self.assertEqual(tied["auroc"], 0.5)
+        self.assertTrue(0.0 <= tied["auroc"] <= 1.0)
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ from pathlib import Path
 import numpy as np
 from research.final_supplementary_validation.analyze_supplementary import (
     ROOT, OUT, GAMMAS, DELTAS, K, read_cohorts, run_predictive_s2, save_csv,
+    grouped_folds, weights_by_scm, model_features,
 )
 
 BOOT=10_000
@@ -105,6 +106,64 @@ def prediction_bootstrap(graph_rows):
     save_csv(OUT/"s2_predictions_local.csv",pred_rows)
     return out
 
+def fit_logistic(x,y,w,alpha):
+    x=np.asarray(x,float);y=np.asarray(y,float);w=np.asarray(w,float)
+    mu=np.average(x,axis=0,weights=w);sd=np.sqrt(np.average((x-mu)**2,axis=0,weights=w));sd[sd<1e-12]=1
+    z=np.column_stack([np.ones(len(x)),(x-mu)/sd]);pen=np.eye(z.shape[1])*alpha;pen[0,0]=0
+    beta=np.zeros(z.shape[1])
+    for _ in range(80):
+        eta=np.clip(z@beta,-30,30);p=1/(1+np.exp(-eta));v=np.maximum(p*(1-p),1e-8)
+        grad=z.T@(w*(y-p))-pen@beta
+        hess=(z.T*(w*v))@z+pen
+        step=np.linalg.solve(hess,grad);beta+=step
+        if np.max(np.abs(step))<1e-8:break
+    return lambda xx:1/(1+np.exp(-np.clip(np.column_stack([np.ones(len(xx)),(np.asarray(xx,float)-mu)/sd])@beta,-30,30)))
+
+def classification_metrics(y,p,w):
+    y=np.asarray(y,int);p=np.asarray(p,float);w=np.asarray(w,float);prev=float(np.average(y,weights=w));brier=float(np.average((p-y)**2,weights=w))
+    pos=y==1;neg=~pos
+    if not pos.any() or not neg.any():return {"positive_prevalence":prev,"brier":brier,"auroc":None,"pr_auc":None,"n_positive":int(pos.sum()),"n":len(y)}
+    # Weighted AUROC as P(score+ > score-) + 0.5 P(tie), using only negative
+    # mass below/tied with each positive score. This remains in [0, 1].
+    order=np.argsort(p,kind="mergesort");auc_num=0.0;negative_below=0.0;i=0
+    while i<len(order):
+        j=i+1
+        while j<len(order) and p[order[j]]==p[order[i]]:j+=1
+        group=order[i:j];positive_mass=float(w[group[pos[group]]].sum());negative_mass=float(w[group[neg[group]]].sum())
+        auc_num+=positive_mass*(negative_below+0.5*negative_mass)
+        negative_below+=negative_mass;i=j
+    wp=w[pos].sum();wn=w[neg].sum();auc=float(auc_num/(wp*wn))
+    order=np.argsort(-p,kind="mergesort");tp=fp=0.0;last_recall=0.0;ap=0.0
+    total_pos=float(w[pos].sum())
+    for idx in order:
+        if y[idx]:tp+=w[idx]
+        else:fp+=w[idx]
+        recall=tp/total_pos;precision=tp/(tp+fp) if tp+fp else 0
+        ap+=(recall-last_recall)*precision;last_recall=recall
+    return {"positive_prevalence":prev,"brier":brier,"auroc":auc,"pr_auc":float(ap),"n_positive":int(pos.sum()),"n":len(y)}
+
+def zero_regret_classification(dev,held,models=("B_GENERAL_STRUCTURE","E_GENERAL_PLUS_TASK","F_STRUCTURE_PLUS_PATH")):
+    tol=1e-12;rows=[]
+    for model in models:
+        scores={a:[] for a in (.01,.1,1,10,100)}
+        for tr,va in grouped_folds(dev):
+            yt=np.array([int(float(r["regret"])>tol) for r in tr]);yv=np.array([int(float(r["regret"])>tol) for r in va]);wt=weights_by_scm(tr);wv=weights_by_scm(va)
+            if model=="A_NULL":
+                pp=np.full(len(va),np.average(yt,weights=wt))
+                for a in scores:scores[a].append(float(np.average((pp-yv)**2,weights=wv)))
+            else:
+                x=np.vstack([model_features(r,model) for r in tr]);xv=np.vstack([model_features(r,model) for r in va]);med=np.nanmedian(x,axis=0);med=np.where(np.isfinite(med),med,0);x=np.where(np.isfinite(x),x,med);xv=np.where(np.isfinite(xv),xv,med)
+                for a in scores:
+                    pp=fit_logistic(x,yt,wt,a)(xv);scores[a].append(float(np.average((pp-yv)**2,weights=wv)))
+        alpha=min(scores,key=lambda a:np.mean(scores[a]))
+        yd=np.array([int(float(r["regret"])>tol) for r in dev]);yh=np.array([int(float(r["regret"])>tol) for r in held]);wd=weights_by_scm(dev);wh=weights_by_scm(held)
+        if model=="A_NULL":ph=np.full(len(held),np.average(yd,weights=wd))
+        else:
+            x=np.vstack([model_features(r,model) for r in dev]);xh=np.vstack([model_features(r,model) for r in held]);med=np.nanmedian(x,axis=0);med=np.where(np.isfinite(med),med,0);x=np.where(np.isfinite(x),x,med);xh=np.where(np.isfinite(xh),xh,med);ph=fit_logistic(x,yd,wd,alpha)(xh)
+        m=classification_metrics(yh,ph,wh)
+        rows.append({"model":model,"selected_alpha":alpha,"development_positive_rate":float(np.average(yd,weights=wd)),"development_cv_brier":float(np.mean(scores[alpha])),"heldout_scm_balanced_positive_rate":m["positive_prevalence"],"heldout_brier":m["brier"],"heldout_auroc":m["auroc"],"heldout_pr_auc":m["pr_auc"],"heldout_positive_graphs":m["n_positive"],"heldout_graph_rows":m["n"],"threshold":tol,"status":"post-hoc historical Held-out classification; grouped Development CV"})
+    return rows
+
 def optimum_diagnostics(cohorts):
     rows=[]
     for cohort,units in cohorts.items():
@@ -165,9 +224,11 @@ def main():
     else:
         ties=same_scm_ranges(rows);save_csv(OUT/"s2_same_scm_metric_ties.csv",ties)
     pred=prediction_bootstrap(rows)
+    dev=[r for r in rows if r["cohort"]=="C_DEVELOPMENT"]; held=[r for r in rows if r["cohort"]=="C_HELDOUT"]
+    cls=zero_regret_classification(dev,held);save_csv(OUT/"s2_zero_regret_classification.csv",cls)
     opt=optimum_diagnostics(cohorts)
     integ=integrated(s1,rows)
-    report={"source_sha256":hashes,"s2_metric_correlations":corr,"s2_same_scm_metric_ties":ties,"s2_prediction_bootstrap":pred,"s1_optimum_distribution":opt,"s1_s2_integrated":integ,"bootstrap_replicates":BOOT,"no_new_scm_or_g0":True,"no_new_intervention_samples":True}
+    report={"source_sha256":hashes,"s2_metric_correlations":corr,"s2_same_scm_metric_ties":ties,"s2_prediction_bootstrap":pred,"s2_zero_regret_classification":cls,"s1_optimum_distribution":opt,"s1_s2_integrated":integ,"bootstrap_replicates":BOOT,"no_new_scm_or_g0":True,"no_new_intervention_samples":True}
     (OUT/"supplementary_audit_summary.json").write_text(json.dumps(report,indent=2,allow_nan=False),encoding="utf-8")
     print(json.dumps({"s2_metric_correlations":corr,"s2_same_scm_metric_ties":ties,"s2_prediction_bootstrap":pred,"s1_optimum_distribution":opt,"input_hashes":hashes},indent=2,allow_nan=False))
 
