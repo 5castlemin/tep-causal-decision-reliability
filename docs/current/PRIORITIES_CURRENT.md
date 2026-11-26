@@ -4,7 +4,7 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **F-LITE-01 — Research F-Lite reference-blind query policy post-hoc evaluation**: PR #46 review; then report and presentation handoff; no further experiments (VERIFIED)
+1. **F-LITE-01 — Research F-Lite reference-blind query policy post-hoc evaluation**: 보고서 및 발표 자료로 전환; 추가 연구 실험 없음 (VERIFIED)
 2. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
 3. **RESEARCH-E — Research E budget-adaptive graph repair post-hoc extension**: Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. (VERIFIED)
 
@@ -12,7 +12,7 @@
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| F-LITE-01 | VERIFIED | 없음 | PR #46 review; then report and presentation handoff; no further experiments / 저장 산출물 감사, 단위 테스트, CI 및 제한사항 공개; 기존 C–E 동결 유지 |
+| F-LITE-01 | VERIFIED | 없음 | 보고서 및 발표 자료로 전환; 추가 연구 실험 없음 / 저장 산출물 감사, 단위 테스트, CI 및 제한사항 공개; 기존 C–E 동결 유지 |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
 | RESEARCH-E | VERIFIED | FINAL-INTEGRATION | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. / E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; Research E remains post-hoc CORE_COMPLETED_WITH_LIMITATIONS; protected assets untouched. |
 | FINAL-INTEGRATION | VERIFIED | 없음 | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 / 원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료 |
