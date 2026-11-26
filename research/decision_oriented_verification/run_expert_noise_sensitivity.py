@@ -3,7 +3,6 @@ from __future__ import annotations
 import csv, hashlib, json, os, sys, time
 from pathlib import Path
 import numpy as np
-import psutil
 
 ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/"src"))
 from research.decision_oriented_verification.run_f_lite import SOURCES,restore_cohort,stable_seed,make_policy_view,_selection
@@ -83,9 +82,17 @@ def aggregate_rows(records,evaluated,cohort):
                                "mean_wrong_responses_per_trajectory":float(np.mean([x["wrong_responses"] for x in per_scm]))})
     return aggregates
 
+def process_rss_bytes():
+    """Require the optional process monitor only when the bounded runner executes."""
+    try:
+        import psutil
+    except ImportError as exc:
+        raise RuntimeError("F3 execution requires psutil for the mandatory RSS cap") from exc
+    return psutil.Process().memory_info().rss
+
 def main():
     PRIVATE.mkdir(parents=True,exist_ok=True);OUT.mkdir(parents=True,exist_ok=True)
-    started=time.perf_counter();process=psutil.Process();peak=process.memory_info().rss
+    started=time.perf_counter();peak=process_rss_bytes()
     summary={"status":"RUNNING","accuracies":ACCURACIES,"repeats_per_scm":REPEATS,"budget":BUDGET,"policies":POLICIES,"cohorts":{}}
     for source in SOURCES:
         cohort=source[0];records,_=restore_cohort(source);rec_file=PRIVATE/f"{cohort.lower()}_recommendations.json";ev_file=PRIVATE/f"{cohort.lower()}_evaluator.jsonl"
@@ -110,7 +117,7 @@ def main():
             for accuracy in ACCURACIES:
                 for repeat in range(REPEATS):
                     for policy in POLICIES:all_rec.append(run_unit(record,accuracy,repeat,policy))
-            peak=max(peak,process.memory_info().rss)
+            peak=max(peak,process_rss_bytes())
             if i%8==0:print(f"F3 recommendations {cohort}: {i}/{len(records)}; {time.perf_counter()-started:.1f}s",flush=True)
             limit=7200
             if time.perf_counter()-started>limit:raise TimeoutError("F3 two-hour wall cap exceeded")
