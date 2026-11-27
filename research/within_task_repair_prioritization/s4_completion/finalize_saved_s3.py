@@ -8,7 +8,7 @@ import numpy as np
 
 HERE=Path(__file__).resolve().parent
 SRC=HERE/'outputs_v13'
-DEST=HERE/'tables'/'completion_v2'
+DEST=HERE/'tables'/'completion_v3'
 GAMMAS=(0.0,0.2,0.5); METRICS=tuple(f'T{i}' for i in range(1,7)); TOL=1e-12; NBOOT=10000; SEED=2026112703
 
 def read(name):
@@ -135,6 +135,42 @@ def main():
                 rrng=np.random.default_rng(SEED+100+list(expected).index(c)*10+GAMMAS.index(g));ix=rrng.integers(0,n,size=(NBOOT,n));boots=scmmeans[ix].mean(axis=1)
                 pairagg.append({'cohort':c,'gamma':g,'scm_with_legal_pairs':n,'ordered_sequences':sum(map(len,byscm.values())),'mean_scm_mean_interaction':float(scmmeans.mean()),'ci95_low_scm_bootstrap':float(np.quantile(boots,.025)),'ci95_high_scm_bootstrap':float(np.quantile(boots,.975)),'scm_mean_synergy_positive':int((scmmeans>TOL).sum()),'scm_mean_additive_tie':int((np.abs(scmmeans)<=TOL).sum()),'scm_mean_substitution_negative':int((scmmeans< -TOL).sum())})
     write('two_edit_interaction_cluster_aggregate.csv',pairagg)
+    # Ex-post Regret Greedy chooses the best realized single gain, then best conditional second gain.
+    candidate_map=defaultdict(dict)
+    for r in candidates:
+        eid=json.dumps([ast.literal_eval(r['pair']),r['operation']])
+        for g in GAMMAS:candidate_map[(r['cohort'],r['scm'],g)][eid]=num(r[f'regret_gain_g{g}'])
+    sequence_map=defaultdict(list)
+    order_map=defaultdict(set)
+    for r in pairs:
+        for g in GAMMAS:sequence_map[(r['cohort'],r['scm'],g,r['edit1'])].append(r)
+        order_map[(r['cohort'],r['scm'],tuple(sorted((r['edit1'],r['edit2']))))].add((r['edit1'],r['edit2']))
+    greedy_rows=[]
+    for r in ex:
+        c,sid,g=r['cohort'],r['scm'],float(r['gamma']); util=candidate_map[(c,sid,g)];base=num(r['base_regret'])
+        opts=[(v,k) for k,v in util.items() if v>TOL]
+        if not opts: total=0.0;cost=0
+        else:
+            gain1,e1=sorted(opts,key=lambda z:(-z[0],z[1]))[0];total=gain1;cost=1
+            seqs=sequence_map.get((c,sid,g,e1),[])
+            second=[(num(x[f'V12_g{g}']),x['edit2']) for x in seqs if num(x[f'V12_g{g}'])-gain1>TOL]
+            if second: total,e2=sorted(second,key=lambda z:(-z[0],z[1]))[0];cost=2
+        greedy_rows.append({'cohort':c,'scm':sid,'gamma':g,'regret_greedy':base-total,'cost':cost})
+    greedy_summary=[];greedy_ci=[]
+    for c,n in expected.items():
+        for g in GAMMAS:
+            gr=sorted([x for x in greedy_rows if x['cohort']==c and x['gamma']==g],key=lambda x:x['scm'])
+            op=sorted([x for x in ex if x['cohort']==c and float(x['gamma'])==g],key=lambda x:x['scm'])
+            d=np.array([num(x['regret_greedy'])-num(y['best_two_or_fewer_regret']) for x,y in zip(gr,op)])
+            greedy_summary.append({'cohort':c,'gamma':g,'mean_regret_greedy':float(np.mean([x['regret_greedy'] for x in gr])),'mean_regret_expost_optimal':float(np.mean([num(x['best_two_or_fewer_regret']) for x in op])),'mean_search_gap':float(d.mean()),'mean_greedy_cost':float(np.mean([x['cost'] for x in gr])),'gap_zero_scm':int((np.abs(d)<=TOL).sum()),'n_scm':n})
+            rng=np.random.default_rng(SEED+200+list(expected).index(c)*10+GAMMAS.index(g));ix=rng.integers(0,n,size=(NBOOT,n));b=d[ix].mean(axis=1)
+            greedy_ci.append({'cohort':c,'gamma':g,'mean_greedy_minus_optimal':float(d.mean()),'ci95_low':float(np.quantile(b,.025)),'ci95_high':float(np.quantile(b,.975)),'n_scm':n,'replicates':NBOOT})
+    write('expost_regret_greedy_vs_optimal.csv',greedy_summary);write('expost_search_gap_bootstrap.csv',greedy_ci)
+    # Assess whether each initially feasible pair is feasible in one order or both.
+    order_counts=defaultdict(lambda:{'both':0,'one_way':0})
+    for (c,sid,pair),directions in order_map.items():
+        order_counts[c]['both' if len(directions)==2 else 'one_way']+=1
+    write('sequence_order_feasibility.csv',[{'cohort':c,'unordered_edit_pairs_with_at_least_one_legal_order':v['both']+v['one_way'],'both_orders_legal':v['both'],'only_one_order_legal':v['one_way']} for c,v in order_counts.items()])
     # Holm correction for a transparently bounded family of post-hoc B=2 gamma-zero contrasts.
     family=[]
     chosen=[('S0','M4_ORIGINAL'),('S0','FULL_GREEDY'),('M4_ORIGINAL','FULL_GREEDY')]
