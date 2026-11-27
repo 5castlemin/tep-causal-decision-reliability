@@ -75,11 +75,11 @@
   "run_id": "s4-independent-pilot-20261127-v1",
   "status": "EXPLORATORY_PILOT_EXECUTED_WITH_LIMITATIONS",
   "verification": {
-    "asset_manifest_check": "failed locally at frozen config hash due checkout byte mode; no frozen file modified",
+    "asset_manifest_check": "failed locally at frozen config hash under Windows checkout; no frozen source or manifest changed",
     "focused_s4_tests": "7 passed",
-    "full_local_suite": "468 discovered; 467 passed; 1 failed on protected LF blob vs Windows CRLF working-tree bytes",
+    "full_local_suite": "469 discovered; 468 passed; 1 failed on protected JSONL Git LF blob vs Windows CRLF working-tree bytes",
     "git_diff_check": "passed",
-    "remote_ci": "not yet run for this revision",
+    "remote_ci": "no PR-triggered workflow run exists for this pushed feature commit; repository policy leaves PR creation to owner",
     "research_state_check": "passed"
   }
 }
