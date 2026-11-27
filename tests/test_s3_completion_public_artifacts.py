@@ -39,8 +39,10 @@ class S3CompletionPublicArtifactTests(unittest.TestCase):
         self.assertTrue(manifest["public_outputs_aggregate_only"])
         self.assertFalse(manifest["private_row_level_output_committed"])
         self.assertFalse(any("outputs_" in path for path in manifest["files"]))
+        self.assertEqual(manifest["file_hash_basis"], "UTF-8 text bytes with CRLF normalized to LF")
         for relative, expected in manifest["files"].items():
-            actual = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
+            raw = (ROOT / relative).read_bytes()
+            actual = hashlib.sha256(raw.replace(b"\r\n", b"\n")).hexdigest()
             self.assertEqual(actual, expected, relative)
         contract = json.loads((folder / "research_s4_contract.json").read_text(encoding="utf-8"))
         self.assertEqual(contract["status"], "PROPOSED_NOT_EXECUTED")
