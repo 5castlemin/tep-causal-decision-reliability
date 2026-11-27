@@ -635,9 +635,19 @@
       "depends_on": [
         "S5-ENV"
       ]
+    },
+    {
+      "id": "E-EXTENSION-CLOSEOUT",
+      "title": "Final Research E budget extension and C–D–E/S4/S5 integration",
+      "status": "PARTIAL",
+      "evidence": "research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md; FINAL_RESEARCH_FRAMEWORK.md; saved S4/S5 unit results aggregated for B=0..4; awaiting final remote CI",
+      "next_action": "Complete focused/full CI on the pushed final documentation and aggregation revision; retain S4/S5 B=5..9 as NOT_RUN",
+      "acceptance": "16,560 saved unit rows reaggregated without new samples; cohorts/scales remain separate; scientific claims, limits, figures, final report/presentation plan and public hashes recorded; final remote CI passes",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "E-EXTENSION-CLOSEOUT",
     "S5-RUN",
     "S4S5-RECON",
     "TEAM-PRESENTATION",
@@ -728,7 +738,8 @@
     "2026-11-27: S3-01 added as a separate post-hoc extension; Research C-F closeout gates and frozen results remain unchanged.",
     "2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked.",
     "S4S5-RECON: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.",
-    "S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates."
+    "S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.",
+    "2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run."
   ],
   "integration_review": {
     "user_approved": true,

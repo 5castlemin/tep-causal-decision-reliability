@@ -61,6 +61,14 @@ F-Lite 최종 저장자료 감사 및 지표 정정은 [감사 보고서](resear
 
 > Research C–D–E–F-Lite closeout은 PR #46 merge commit `b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9`으로 main에 통합됐고 PR Actions 45798376385 및 main Actions 45798944410이 통과했다. 프로젝트 최종 상태는 `PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS`다. Research E와 F-Lite는 기존 자료 기반 사후 확장이다. F-Lite의 결합 질의 점수는 Held-out에서 Random보다 나았지만 fit-based/suspicion-only보다 regret이 높았고 impact-only와 거의 같았다. 따라서 추가 가치는 확인되지 않았다. Research D 원시 응답 자료 재감사에는 접근 제한이 남아 있다. 추가 실험은 계획하지 않으며 보고서·발표 준비로 전환한다.
 
+## 최종 통합 업데이트 — S4/S5 및 Research E extension
+
+2026-11-28 기준 후속 S4 재구축(Development 80, 별도 replication 160)과 S5 conditional external semisynthetic reconstruction(단일 DRF DGP, 200 G0 draws)이 별도 cohort로 완료되어 있다. 기존 Research E C 예산 확장에 더해 이번 최종 extension은 저장된 S4/S5 B=0–4 unit results 16,560행을 재집계했다. 신규 SCM/G0/관측·개입표본은 만들지 않았다. S4/S5 B=5–9는 저장된 sealed results가 없어 실행하지 않았으며 외삽하지 않는다.
+
+최종 연구의 연구 질문·Study mapping·결과·한계·최종보고서 및 발표 구성은 [FINAL_RESEARCH_FRAMEWORK.md](FINAL_RESEARCH_FRAMEWORK.md)에서 확인한다. [증거 행렬](FINAL_RESEARCH_EVIDENCE_MATRIX.md), [팀 가이드](FINAL_RESEARCH_TEAM_GUIDE.md), [무결성 검토](FINAL_SCIENTIFIC_INTEGRITY_REVIEW.md), [주장과 한계](FINAL_RESEARCH_CLAIMS_AND_LIMITATIONS.md)도 함께 읽는다. Research C의 frozen primary는 유지되고, S4/S5 및 E extension은 각자의 조건과 post-hoc/conditional 증거 수준으로 구분한다. S5의 action-MC 및 two-source interval은 0을 포함하며 graph-free baseline은 M4와 경쟁했다. T5 우월성은 입증되지 않았다.
+
+Research E extension 결과와 집계는 [E extension report](research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md), [marginal benefit](research/budget_adaptive_repair/RESEARCH_E_MARGINAL_BENEFIT_REPORT.md), [cost-weighted analysis](research/budget_adaptive_repair/RESEARCH_E_COST_WEIGHTED_POLICY_REPORT.md), [S5 budget analysis](research/budget_adaptive_repair/RESEARCH_E_EXTERNAL_BUDGET_ANALYSIS.md), `research/budget_adaptive_repair/outputs/final_extension_v1/`에 있다. C regret과 S5 standardized tracking loss는 통합하거나 같은 척도로 비교하지 않는다. Same-device private archive는 외부 장치 백업이 완료되지 않았다.
+
 ## Supplementary S1/S2 audit correction
 
 PR #48 보강 감사에서는 S1 Full Greedy를 실제 정책 `M1+M2+M3+M4`로 재식별하고 `CANONICAL_ORACLE`과 분리했다. Original target, gamma=.2, B=2 Held-out에서 S0/Full Greedy/M4/M2+M4 평균 Regret은 .117959/.092235/.087253/.090312이며, Full−S0와 M4−Full의 공유 SCM bootstrap pointwise 95% 구간은 각각 [−.03798,−.01463], [−.01077,−.00038]이다. gamma=.5에서는 Full Greedy가 M4보다 낮고 gamma=1에서는 네 비교 정책 모두 k=0을 선택한다. S2 nested B/E/F 모델의 Held-out MAE는 .06966/.06153/.03768이다. 이 모든 보강은 post-hoc이며 C의 frozen primary를 변경하지 않는다. 자세한 정정, 지표 정의와 한계는 [보강 최종 결과](research/final_supplementary_validation/SUPPLEMENTARY_FINAL_RESULTS.md), [계약 정정 V2](research/final_supplementary_validation/SUPPLEMENTARY_CONTRACT_CORRECTION_V2.md), [S1/S2 보고서](research/final_supplementary_validation/S1_DECISION_OBJECTIVE_ROBUSTNESS.md)에서 확인한다.

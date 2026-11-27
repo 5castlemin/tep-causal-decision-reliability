@@ -1,0 +1,28 @@
+{
+  "schema": "RESEARCH_E_EXTENSION_SAVED_DATA_ANALYSIS_LOCK_V1",
+  "status": "LOCKED_BEFORE_ANALYSIS",
+  "classification": "POST_HOC_DECISION_ECONOMIC_ANALYSIS",
+  "source_commit": "0c9236d7f8981d879d1fd47b517ef5dc0c19a7b1",
+  "analysis_script": "research/budget_adaptive_repair/extend_final_e.py",
+  "analysis_script_sha256": "20de25d1a441535f461868f1805deccf47e39a3a0e45df3891ea7079e4b5970d",
+  "cohorts": {
+    "S4_DEVELOPMENT_80": {"units": 80, "available_budgets": [0, 1, 2, 3, 4]},
+    "S4_INDEPENDENT_REPLICATION_160": {"units": 160, "available_budgets": [0, 1, 2, 3, 4]},
+    "S5_EXTERNAL_G0": {"units": 200, "available_budgets": [0, 1, 2, 3, 4], "unit_type": "G0 corruption draw conditional on one DGP"}
+  },
+  "private_input_sha256": {
+    "s4_development_policy_results": "e899c927ad452394f0c03af03911f77f2c8d332f4891ee24b0c0c88de7040a0f",
+    "s4_confirmation_policy_results": "a9e9c6109ba0ce75974cd7be120f69cb2deae43bbfa419cc5cc1d7de2c568b0f",
+    "s5_unit_policy_losses": "6332af831d25bc487bb3026a3f506ae6a10ab8c58efb55d66f4a6224a53c7242"
+  },
+  "analysis": {
+    "policies": ["S0", "M1", "M2", "M3", "M4", "FULL_GREEDY", "M2+M4", "RANDOM_M4", "T5_GUIDED_M4", "FULL_T1_T6", "GRAPH_FREE_ASSOCIATION", "REFERENCE_GRAPH_LEARNER"],
+    "statistics": ["mean", "median", "sample_sd", "marginal_mean_loss_change", "mean_edit_cost", "fixed_and_cross_budget_pareto", "lambda_lower_envelope_breakpoints"],
+    "cohort_resampling": "No cohort combination; unit records remain grouped by original SCM/G0 cohort.",
+    "loss_scales": "Research C/S4 regret and S5 tracking loss reported separately; never pooled.",
+    "budget_extension": "No B=5..9 extension unless source unit recommendation/evaluator records are available; do not extrapolate.",
+    "new_data_generation": {"SCM": 0, "G0": 0, "observations": 0, "DRF_fits": 0, "intervention_rows": 0}
+  },
+  "resource_limits": {"wall_seconds": 7200, "process_tree_rss_bytes": 4294967296},
+  "output_policy": "Public aggregates only; no private records copied into repository."
+}

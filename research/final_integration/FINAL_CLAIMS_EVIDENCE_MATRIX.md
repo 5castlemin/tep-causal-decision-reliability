@@ -48,3 +48,7 @@ The exact saved-input audit, shared-index pointwise intervals, and limits are do
 | Path feature adds predictive information beyond nested structure/task features | `DESCRIPTIVE_ONLY` | Saved-row nested validation: B .06966, E .06153, F .03768 MAE; paired B−E .00813 [.00209,.01390], E−F .02386 [.01674,.03116] | Post-hoc model refit, one fixed historical Held-out cohort; no causal interpretation |
 | The empty-graph learner is the F association baseline | `UNSUPPORTED` | Empty graph uses existing SCM learner; F association results .02939 Dev/.03873 Held-out at gamma zero are separately saved | Do not conflate; F baseline was not rescored across S1 objectives |
 | Supplementary evidence validates Research D again | `UNSUPPORTED` | D unit-level files unavailable for this supplement | Previous D audit remains historical; no new D unit-level audit here |
+
+## Final E extension evidence addendum
+
+S4/S5 saved B=0–4 aggregation is post-hoc. S4 Development and replication remain separate SCM cohorts; S5 is 200 G0 corruption draws conditional on one DRF DGP. No B=5–9 replay or inference was performed for S4/S5. The C legacy B=0–9 E results remain separate. See [`FINAL_RESEARCH_EVIDENCE_MATRIX.md`](../../FINAL_RESEARCH_EVIDENCE_MATRIX.md) for updated estimands, denominators and evidence grades.

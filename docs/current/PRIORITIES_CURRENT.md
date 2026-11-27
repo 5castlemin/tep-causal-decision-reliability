@@ -4,14 +4,15 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **S5-RUN — S5 conditional external semisynthetic reconstruction**: Preserve the conditional result and limitations; do not expand into further experiments in this task (VERIFIED)
-2. **S4S5-RECON — S4 최소 재구축 및 독립 T5 재현**: Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified (VERIFIED)
-3. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
+1. **E-EXTENSION-CLOSEOUT — Final Research E budget extension and C–D–E/S4/S5 integration**: Complete focused/full CI on the pushed final documentation and aggregation revision; retain S4/S5 B=5..9 as NOT_RUN (PARTIAL)
+2. **S5-RUN — S5 conditional external semisynthetic reconstruction**: Preserve the conditional result and limitations; do not expand into further experiments in this task (VERIFIED)
+3. **S4S5-RECON — S4 최소 재구축 및 독립 T5 재현**: Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified (VERIFIED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| E-EXTENSION-CLOSEOUT | PARTIAL | 없음 | Complete focused/full CI on the pushed final documentation and aggregation revision; retain S4/S5 B=5..9 as NOT_RUN / 16,560 saved unit rows reaggregated without new samples; cohorts/scales remain separate; scientific claims, limits, figures, final report/presentation plan and public hashes recorded; final remote CI passes |
 | S5-RUN | VERIFIED | S5-ENV | Preserve the conditional result and limitations; do not expand into further experiments in this task / Locked run completed within resource caps, independent saved-response analysis agrees, hashes recorded, raw vectors remain private |
 | S4S5-RECON | VERIFIED | 없음 | Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified / Separate cohorts and historical claims; primary and CI reported; private unit records remain outside Git |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
@@ -104,5 +105,6 @@
 - 2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked.
 - S4S5-RECON: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.
 - S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.
+- 2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

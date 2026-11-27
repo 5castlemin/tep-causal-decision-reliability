@@ -53,3 +53,7 @@ E는 이미 Held-out을 본 뒤의 탐색 분석이므로 C Primary 대체나 �
 근거: `research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md`, `outputs/final_audit_aggregate.json`, `outputs/random_action_change_audit.csv`. C/D/E/F-Lite의 서로 다른 loss와 분석 단위를 하나의 축으로 직접 비교하지 않는다.
 
 15. **보강 S1/S2:** Full Greedy (`M1+M2+M3+M4`)와 Canonical Oracle을 분리하고 gamma=.5 순위 역전 및 gamma=1의 동일 `k=0`을 제시한다. S2 nested MAE는 B_original .06966, E_nested .06153, F_nested .03768이다. 근거: `research/final_supplementary_validation/SUPPLEMENTARY_FINAL_RESULTS.md`, `outputs/s1_corrected_primary_contrasts.csv`, `outputs/s2_nested_model_validation.csv`. 반드시 post-hoc, saved C rows, pointwise uncertainty라고 표시한다.
+
+## Final framework and slide story update
+
+Use [`FINAL_RESEARCH_FRAMEWORK.md`](../../FINAL_RESEARCH_FRAMEWORK.md) as the current narrative blueprint. It includes the final-report chapter plan, slide-by-slide messages, evidence files, counterexamples and defense Q&A. The main story is problem limitation → decision-focused question → WHERE → WHAT & WHY → conditional GENERALIZATION → HOW MUCH → bounded conclusion; do not list runs chronologically. S4 T5 evidence is inconclusive, S5 uncertainty includes zero in the two-source interval, and the S5 graph-free baseline is competitive.

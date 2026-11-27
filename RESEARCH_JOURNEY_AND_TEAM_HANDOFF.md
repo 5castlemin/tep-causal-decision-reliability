@@ -1,5 +1,7 @@
 # DAT 제조공정 — 예산 제약 인과그래프 오류 수정 연구와 팀 인수인계
 
+> 최신 연구 통합(2026-11-28): 기존 아래 역사적 시점 서술은 보존한다. 현재의 연구 질문·Study 1–4 연결·검증된 결과와 최종보고서/발표 구성은 저장소 root의 [FINAL_RESEARCH_FRAMEWORK.md](FINAL_RESEARCH_FRAMEWORK.md), [FINAL_RESEARCH_EVIDENCE_MATRIX.md](FINAL_RESEARCH_EVIDENCE_MATRIX.md), [FINAL_RESEARCH_TEAM_GUIDE.md](FINAL_RESEARCH_TEAM_GUIDE.md)를 기준으로 한다. S4/S5 및 Research E extension의 cohort와 evidence grade를 합산하지 않는다. S4/S5 새 예산 분석은 저장된 B=0–4만 재집계했고 B=5–9 replay는 실행하지 않았다.
+
 > 역사적 본문 기준: 2026-11-23의 로컬 연구 브랜치 `docs/research-journey-team-handoff-20261123`. 당시의 상태 표현은 해당 날짜의 기록이며 현재 main 상태를 뜻하지 않는다. 2026-11-26 최종 인수인계는 Part 8에 추가했다. 이 통합에서 새 실험은 실행하지 않았다.
 
 ## Part 1. 5분 만에 이해하는 연구

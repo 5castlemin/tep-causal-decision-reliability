@@ -163,3 +163,7 @@ Step0의 전체 후보 위치 정렬과 유형 우선 정렬을 공통 seed 회�
 ## 2026-11-16 — Step 4 protocol/execution freeze
 
 Q-common strict indirect-only, B=1/gamma=1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within-SCM weighting, alternating delta, 64/200 eligible-admission targets with 386/1,104 caps, and Option B descriptive estimation are frozen as the Step 4 protocol and execution contract. Production runtime/resource controls and content hashes are pinned in `research/budget_aware_refinement/step4c2_operational_settings.json` and `step4c2_final_freeze_manifest.json`. This does not constitute a study cohort or authorize Step 5/6 execution; PR #38 remains Draft/unmerged. Fixed-fixture qualification is software evidence only, with six template×node-count strata unavailable in the preserved strict-Q fixture source. Reconsider only via a new versioned protocol and freeze review.
+
+## 2026-11-28 — Final Research E extension scope
+
+Re-aggregate only preserved unit-level S4/S5 records for available budgets B=0–4. Keep S4 Development, S4 replication and conditional S5 G0 cohorts separate; never pool analytic regret with standardized external tracking loss. Do not infer S4/S5 B=5–9, as their sealed recommendations/evaluations do not cover that range. New samples, DRF refits, and intervention responses are outside this extension. Pareto/lambda results are in-sample descriptive measures using graph edit count as a proxy, not actual economic cost. This is a post-hoc extension and cannot alter frozen Research C primary evidence or promote T5 to a confirmatory winner.

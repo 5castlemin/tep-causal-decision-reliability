@@ -119,3 +119,7 @@ S2's corrected nested saved-feature comparison reports Held-out SCM-balanced MAE
 | Final pending rows, four deterministic query policies at B4 | 2/256 | 4/800 | Stored answers replayed; individually DAG-feasible on final graph: 0 in both cohorts |
 
 The historical graph-free `mean_remaining_errors=9.52` is a raw diagnostic only. Structural residual error is `n/a` for a learner with no repair graph. Shared-index 10,000-resample pointwise intervals and saved-input/hash checks are in [`RESEARCH_F_FINAL_AUDIT.md`](../decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md). The verified Development M4–Full Greedy action agreement is 61/64 (3/64 differ); this is distinct from the mechanism report's 46 Held-out off-task selections (including three score ties).
+
+## Final S4/S5 and Research E extension addendum
+
+The last E extension re-aggregated saved S4 Development 80 SCM, S4 replication 160 SCM and S5 200 conditional G0 unit results for B=0–4. It added no generated research units. Data: `research/budget_adaptive_repair/outputs/final_extension_v1/budget_policy_aggregate.csv`; uncertainty: `paired_bootstrap_uncertainty.csv`. Research C retains the only inherited B=0–9 curve. S4/S5 B=5–9 is not run. S5 uncertainty and graph-free baseline remain explicit; all loss scales stay separate. For the complete verified table and report/presentation layout, see [`FINAL_RESEARCH_FRAMEWORK.md`](../../FINAL_RESEARCH_FRAMEWORK.md) and [`FINAL_RESEARCH_EVIDENCE_MATRIX.md`](../../FINAL_RESEARCH_EVIDENCE_MATRIX.md).
