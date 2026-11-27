@@ -6,8 +6,8 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 CONTRACT = json.loads((HERE / "retrospective_contract.json").read_text(encoding="utf-8-sig"))
-ROOT = Path(os.environ.get("S4_PILOT_INPUT", CONTRACT["input_root"]))
-OUT = HERE / "outputs_attempt4"
+ROOT = Path(os.environ["S4_PILOT_INPUT"])
+OUT = HERE / "outputs_attempt5"
 PRIVATE_OUT = Path(os.environ.get("S4_RETROSPECTIVE_PRIVATE_OUT", r"C:\\DAT_RESEARCH\\research-s4\\s4-1b-retrospective-20261127-v1"))
 T = tuple(f"T{i}" for i in range(1, 7))
 SETS = tuple(s for n in range(1, 7) for s in itertools.combinations(T, n))
