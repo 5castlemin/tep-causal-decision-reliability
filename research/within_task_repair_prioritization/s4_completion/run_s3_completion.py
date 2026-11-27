@@ -16,12 +16,13 @@ from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
 
 GAMMAS=(0.0,0.2,0.5); T=s3.T; SETS=s3.SETS; BOOT=10_000; BOOT_SEED=2026112703; TOL=1e-12
-OUT=HERE/'outputs_completion_v1'
+OUT=HERE/'outputs_v13'
 
 def csvout(name,rows):
     if not rows:return
     with (OUT/name).open('w',newline='',encoding='utf-8') as f:
-        w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+        fields=sorted({key for row in rows for key in row})
+        w=csv.DictWriter(f,fieldnames=fields,extrasaction='raise');w.writeheader();w.writerows(rows)
 
 def main():
     if OUT.exists() and any(OUT.iterdir()): raise FileExistsError(f'refusing overwrite: {OUT}')
