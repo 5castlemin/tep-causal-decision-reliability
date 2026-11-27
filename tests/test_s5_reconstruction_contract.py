@@ -9,7 +9,7 @@ from research.external_validation.semisynthetic_evaluation.reproducibility impor
 import hashlib
 import numpy as np
 import pandas as pd
-import pytest
+import unittest
 
 
 HERE = Path(__file__).resolve().parents[1] / "research" / "within_task_repair_prioritization" / "s4_reconstruction"
@@ -48,5 +48,5 @@ def test_resume_reuses_exact_locked_training_bytes_and_numeric_values(tmp_path):
     numeric = hashlib.sha256(values.tobytes(order="C")).hexdigest()
     recovered = load_resumed_training(path, ["X", "Y"], hashlib.sha256(raw).hexdigest(), numeric)
     assert recovered.to_numpy(dtype=np.float64).tobytes(order="C") == values.tobytes(order="C")
-    with pytest.raises(ValueError, match="raw hash"):
+    with unittest.TestCase().assertRaisesRegex(ValueError, "raw hash"):
         load_resumed_training(path, ["X", "Y"], "0" * 64, numeric)
