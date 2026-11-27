@@ -16,7 +16,7 @@ from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
 
 DATA = Path(os.environ.get("DAT_RESEARCH_ROOT", "C:/DAT_RESEARCH"))
-OUT = Path(__file__).resolve().parent / "outputs_v8"
+OUT = Path(__file__).resolve().parent / "outputs_v9"
 EXPECTED = {
  "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
  "C_DEVELOPMENT:proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
@@ -277,12 +277,13 @@ def main():
     unit_private.append({'cohort':cohort,'scm':sid,'policy':'+'.join(combo)+'_LOOKAHEAD2','budget':2,'loss':lloss,'cost':len(llog),'action':lact,'same_as_s0':lact==base_action,'graph_hash':pe.graph_hash(lg),'edits':len(llog),'first_edit':json.dumps([list(llog[0].pair),llog[0].operation]) if llog else None,'fallbacks':0})
     unit_private.append({'cohort':cohort,'scm':sid,'policy':'+'.join(combo)+'_GREEDY2','budget':2,'loss':gloss,'cost':len(grlog),'action':gact,'same_as_s0':gact==base_action,'graph_hash':pe.graph_hash(g1),'edits':len(grlog),'first_edit':json.dumps([grlog[0]['pair'],grlog[0]['operation']]) if grlog else None,'fallbacks':sum(x['fallback'] for x in grlog)})
    # One-edit value heterogeneity. Per-candidate rows remain in memory; public file is cohort-level aggregate only.
-   vals=[]; _,zone,pedges,bdes=structural_sets(truth,proposal['action'],proposal['target'],cfg)
+    vals=[]; _,zone,pedges,bdes=structural_sets(truth,proposal['action'],proposal['target'],cfg)
+   q0=q_metrics(g0,ctx)
    for e in feasible:
-    trial=pe.apply(g0,e); rr,aa=get_loss(trial); vals.append({'kind':e.kind,'pair':list(e.pair),'regret_gain':base_loss-rr,'action_changed':aa!=base_action,'metric':e.metric})
+    trial=pe.apply(g0,e); rr,aa=get_loss(trial); q1=q_metrics(trial,ctx); tg={m:q1[m]-q0[m] for m in T}; vals.append({'kind':e.kind,'pair':list(e.pair),'regret_gain':base_loss-rr,'action_changed':aa!=base_action,'metric':e.metric,'t_gains':tg})
     pair=pe.pair(*e.pair); onpath=pair in {pe.pair(*x) for x in pedges}; onbd=pair in {pe.pair(*x) for x in bdes}
     role=('path_and_backdoor' if onpath and onbd else 'path' if onpath else 'backdoor' if onbd else 'other_task_fp' if e.kind=='FP' else 'other_task')
-    candidate_private.append({'cohort':cohort,'scm':sid,'kind':e.kind,'role':role,'pair':list(pair),'m4_gain':m4_gain(e,truth,g0,initial,proposal['action'],proposal['target'],cfg),'regret_gain':base_loss-rr,'action_changed':aa!=base_action})
+    candidate_private.append({'cohort':cohort,'scm':sid,'kind':e.kind,'role':role,'pair':list(pair),'m4_gain':m4_gain(e,truth,g0,initial,proposal['action'],proposal['target'],cfg),'regret_gain':base_loss-rr,'action_changed':aa!=base_action,**{f'{m}_gain':v for m,v in tg.items()}})
     role_counts.append({'cohort':cohort,'scm':sid,'kind':e.kind,'role':role})
    if feasible:
     single=[get_loss(pe.apply(g0,e)) for e in feasible]
@@ -336,6 +337,44 @@ def main():
     else: lo=hi=mean=None
     candidate_rows.append({'cohort':cohort,'kind':kind,'role':role,'candidate_count':len(rs),'scm_count':len(scms),'mean_within_scm_regret_gain':mean,'scm_cluster_bootstrap95_low':lo,'scm_cluster_bootstrap95_high':hi})
  write_csv(OUT/'s3_candidate_value_aggregates.csv',candidate_rows)
+ # Per-SCM rank diagnostics: candidates are never treated as independent units.
+ def midranks(values):
+  order=sorted(range(len(values)),key=lambda i:values[i]); ranks=[0.0]*len(values); i=0
+  while i<len(order):
+   j=i+1
+   while j<len(order) and values[order[j]]==values[order[i]]: j+=1
+   rank=(i+j-1)/2+1
+   for k in range(i,j): ranks[order[k]]=rank
+   i=j
+  return np.asarray(ranks,dtype=float)
+ rank_rows=[]
+ for cohort,_,_ in SOURCES:
+  scm_groups={}
+  for row in candidate_private:
+   if row['cohort']==cohort: scm_groups.setdefault(row['scm'],[]).append(row)
+  for metric in T+('M4',):
+   pair_acc=[]; hit=[]; spearman=[]; n_candidates=0; n_scms=0; positive_struct_negative_actual=0; zero_score_actual=[]
+   for group in scm_groups.values():
+    if len(group)<2: continue
+    n_scms+=1; n_candidates+=len(group)
+    utility=np.asarray([r['regret_gain'] for r in group],dtype=float)
+    score=np.asarray([r['m4_gain'] if metric=='M4' else r[f'{metric}_gain'] for r in group],dtype=float)
+    best=np.max(utility); bestscore=np.max(score)
+    hit.append(float(np.any((score==bestscore)&(utility==best))))
+    rs,ru=midranks(score),midranks(utility)
+    if np.std(rs)>0 and np.std(ru)>0: spearman.append(float(np.corrcoef(rs,ru)[0,1]))
+    wins=ties=0
+    for i in range(len(group)):
+     for j in range(i+1,len(group)):
+      if utility[i]==utility[j]: continue
+      wins += (1.0 if (score[i]-score[j])*(utility[i]-utility[j])>0 else 0.5 if score[i]==score[j] else 0.0)
+      ties += 1
+    if ties: pair_acc.append(wins/ties)
+    if metric!='M4':
+     positive_struct_negative_actual += sum(score[i]>GAIN_TOL and utility[i]<-GAIN_TOL for i in range(len(group)))
+     zero_score_actual.extend(utility[i] for i in range(len(group)) if abs(score[i])<=GAIN_TOL)
+   rank_rows.append({'cohort':cohort,'metric':metric,'scm_count_with_multiple_candidates':n_scms,'candidate_count_within_these_scms':n_candidates,'mean_scm_pairwise_rank_accuracy':float(np.mean(pair_acc)) if pair_acc else None,'mean_scm_spearman':float(np.mean(spearman)) if spearman else None,'mean_scm_best_candidate_hit_rate':float(np.mean(hit)) if hit else None,'positive_metric_gain_but_regret_worsened_candidate_count':positive_struct_negative_actual if metric!='M4' else None,'zero_metric_gain_candidate_count':len(zero_score_actual) if metric!='M4' else None,'zero_metric_gain_mean_regret_gain':float(np.mean(zero_score_actual)) if zero_score_actual else None})
+ write_csv(OUT/'s3_metric_gain_validation.csv',rank_rows)
  write_csv(OUT/'s3_error_role_counts.csv',[{'kind':k,'role':r,'candidate_count':sum(x['kind']==k and x['role']==r for x in role_counts),'scm_count':len({x['scm'] for x in role_counts if x['kind']==k and x['role']==r})} for k in ('FN','FP','REV','UNRES') for r in ('path_and_backdoor','path','backdoor','other_task_fp','other_task')])
  write_csv(OUT/'s3_m4_opportunity_summary.csv',phase1)
  write_csv(OUT/'s3_primary_paired_intervals.csv',intervals)
@@ -349,7 +388,7 @@ def main():
   for p in ('T3','T1+T2+T3+T4+T5+T6'):
    differing=sum(unit_lookup[(c,i,p,1)]['first_edit']!=unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] for i in ids if unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None)
    feasibility[c][f'{p}_different_first_edit_count']={'n_with_two_edits':sum(unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None for i in ids),'different_first_edit':differing}
- (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'62fe50cbb7ae244281e5d20b8541c95cf7e8fe37','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
+ (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'pending-lock-commit','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'metric_gain_rank_diagnostics':'SCM-balanced candidate pair ranking and best-hit summaries; exploratory only','new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
  print((OUT/'s3_summary.json').read_text(encoding='utf-8'))
 
 if __name__=='__main__': main()

@@ -1,6 +1,6 @@
 import unittest
 
-from research.within_task_repair_prioritization.s3_analysis import GAIN_TOL, SETS, ancestors, path_edges, q_metrics, select_greedy_option, structural_sets
+from research.within_task_repair_prioritization.s3_analysis import GAIN_TOL, SETS, ancestors, greedy, path_edges, q_metrics, select_greedy_option, sequence2, structural_sets
 from research.original_objective import policy_engine as pe
 
 
@@ -84,6 +84,19 @@ class S3MetricTests(unittest.TestCase):
         self.assertIs(chosen[0], e_m1)
         self.assertTrue(fallback)
         self.assertEqual(select_greedy_option([(e_m1, {}, 0.0, 0.0)], costs), (None, True))
+
+    def test_lookahead_without_two_step_sequence_uses_same_one_step_greedy(self):
+        truth = pe.state([("X", "M"), ("M", "Y")])
+        g0 = pe.state([("X", "M")])
+        cfg = pe.Config()
+        for subset in (("T1",), ("T3", "T4"), ("T1", "T2", "T3", "T4", "T5", "T6")):
+            g1, log = greedy(truth, g0, "X", "Y", cfg, subset, 1)
+            looked = sequence2(truth, g0, "X", "Y", cfg, subset)
+            self.assertIsNotNone(looked)
+            _, e1, e2, _, final = looked
+            self.assertIsNone(e2)
+            self.assertEqual(e1.pair, tuple(log[0]["pair"]))
+            self.assertEqual(pe.graph_hash(final), pe.graph_hash(g1))
 
 
 if __name__ == "__main__":
