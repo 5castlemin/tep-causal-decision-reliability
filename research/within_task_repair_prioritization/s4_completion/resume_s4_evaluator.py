@@ -20,7 +20,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT / "src")]
 import run_s4_pilot as pilot
-from research.budget_aware_refinement import policy_engine as pe
+from research.original_objective import policy_engine as pe
 
 OUT = Path(os.environ.get("S4_PILOT_OUTPUT", r"C:\DAT_RESEARCH\research-s4\pilot-20261127-v1"))
 CHECKPOINT = OUT / "evaluator_resume_lock.json"
