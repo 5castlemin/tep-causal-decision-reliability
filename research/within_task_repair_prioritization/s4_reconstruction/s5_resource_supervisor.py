@@ -41,7 +41,7 @@ def run_stage(command, start, wall_cap, rss_cap):
         time.sleep(2)
     return {'returncode':proc.returncode,'peak_rss_bytes':peak,'elapsed_seconds':time.monotonic()-start,'stopped_for':None}
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('--python',required=True); p.add_argument('--script',required=True); p.add_argument('--attempt-id',required=True); p.add_argument('--recommendation-lock',required=True); p.add_argument('--recommendation-lock-sha256',required=True); p.add_argument('--evaluation-lock',required=True); p.add_argument('--evaluation-lock-sha256',required=True); p.add_argument('--resume-training-csv'); p.add_argument('--private-root',required=True); p.add_argument('--source-root',required=True); p.add_argument('--data-root',required=True); p.add_argument('--evaluator-output',required=True); p.add_argument('--public-summary',required=True); p.add_argument('--report',required=True); a=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument('--python',required=True); p.add_argument('--script',required=True); p.add_argument('--attempt-id',required=True); p.add_argument('--recommendation-lock',required=True); p.add_argument('--recommendation-lock-sha256',required=True); p.add_argument('--evaluation-lock',required=True); p.add_argument('--evaluation-lock-sha256',required=True); p.add_argument('--resume-training-csv'); p.add_argument('--resume-g0-records'); p.add_argument('--private-root',required=True); p.add_argument('--source-root',required=True); p.add_argument('--data-root',required=True); p.add_argument('--evaluator-output',required=True); p.add_argument('--public-summary',required=True); p.add_argument('--report',required=True); a=p.parse_args()
     root=Path(a.private_root); root.mkdir(parents=True,exist_ok=True); Path(a.report).parent.mkdir(parents=True,exist_ok=True)
     if Path(a.report).exists(): raise FileExistsError('resource report exists')
     started=time.monotonic(); stages=[]; wall=14400; rsscap=4*1024**3
@@ -49,7 +49,8 @@ def main():
     env=os.environ.copy()
     rec_command=base+['--stage','recommendation','--run-lock',a.recommendation_lock,'--run-lock-sha256',a.recommendation_lock_sha256]
     if a.resume_training_csv: rec_command+=['--resume-training-csv',a.resume_training_csv]
-    rec=run_stage(rec_command,started,wall,rsscap); stages.append({'stage':'recommendation','attempt_id':a.attempt_id,'resumed_training_sample':bool(a.resume_training_csv),'resume_training_raw_sha256':hashlib.sha256(Path(a.resume_training_csv).read_bytes()).hexdigest() if a.resume_training_csv else None,**rec})
+    if a.resume_g0_records: rec_command+=['--resume-g0-records',a.resume_g0_records]
+    rec=run_stage(rec_command,started,wall,rsscap); stages.append({'stage':'recommendation','attempt_id':a.attempt_id,'resumed_training_sample':bool(a.resume_training_csv),'resume_training_raw_sha256':hashlib.sha256(Path(a.resume_training_csv).read_bytes()).hexdigest() if a.resume_training_csv else None,'resumed_g0_checkpoint':bool(a.resume_g0_records),'resume_g0_sha256':hashlib.sha256(Path(a.resume_g0_records).read_bytes()).hexdigest() if a.resume_g0_records else None,**rec})
     if rec['returncode']!=0 or rec['stopped_for']:
         result={'schema':'S5_RESOURCE_SUPERVISION_V1','attempt_id':a.attempt_id,'status':'STOPPED_BEFORE_EVALUATION','stages':stages,'peak_process_tree_rss_bytes':max(x['peak_rss_bytes'] for x in stages),'wall_seconds':time.monotonic()-started,'limits':{'wall_seconds':wall,'aggregate_process_tree_rss_bytes':rsscap},'monitor':'psutil recursive process tree, sampled every 2 seconds; not an OS-enforced sandbox'}
         Path(a.report).write_text(json.dumps(result,indent=2,sort_keys=True)+'\n',encoding='utf-8'); raise SystemExit(rec['returncode'] or 124)

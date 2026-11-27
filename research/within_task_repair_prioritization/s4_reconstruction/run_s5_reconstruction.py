@@ -60,6 +60,35 @@ def graph_edges(g):
 def as_graph(edges,unresolved=()):
     from research.original_objective import policy_engine as pe
     return pe.state([tuple(e) for e in edges],unresolved=[tuple(p) for p in unresolved])
+def truth_graph_digest(graph):
+    payload=repr(sorted((p,e) for p,e in graph.items())).encode()
+    return hashlib.sha256(payload).hexdigest()
+def public_g0_rows(rows):
+    return [{'seed_id':r['seed_id'],'master_seed':r['master_seed'],'record':r['record'],'graph_sha256':r['graph_hash']} for r in rows]
+def load_g0_checkpoint(path,truth,nodes,c):
+    from research.original_objective import policy_engine as pe
+    from research.original_objective.g0_candidate import corrupt_graph_candidate
+    path=Path(path); payload=json.loads(path.read_text(encoding='utf-8'))
+    digest_body={k:v for k,v in payload.items() if k!='file_sha256'}
+    if payload.get('schema')!='S5_G0_CHECKPOINT_V1' or hashlib.sha256(canon(digest_body)).hexdigest()!=payload.get('file_sha256'):
+        raise ValueError('S5 G0 checkpoint schema or file hash mismatch')
+    rows=payload.get('rows',[]); expected=list(range(c['g0']['id_start'],c['g0']['id_start']+c['g0']['count']))
+    if [r.get('seed_id') for r in rows]!=expected: raise ValueError('S5 G0 checkpoint ID grid mismatch')
+    digest=truth_graph_digest(truth)
+    for r in rows:
+        sid=r['seed_id']; master=seed(c['g0']['namespace'],f'g0|{sid}')
+        if r.get('master_seed')!=master: raise ValueError('S5 G0 checkpoint seed mismatch')
+        regenerated=corrupt_graph_candidate(truth,nodes=list(nodes),action=X,target=Y,master_seed=master,task_id=f"{c['run_id']}:{sid}",true_corruption_rate=.15,false_adjacency_rate=.05)
+        if regenerated!=r['record']: raise ValueError(f'S5 G0 checkpoint deterministic provenance mismatch: {sid}')
+        graph=as_graph(regenerated['initial_graph']['edges'],regenerated['initial_graph']['unresolved'])
+        if pe.graph_hash(graph)!=r.get('graph_sha256'): raise ValueError(f'S5 G0 checkpoint graph hash mismatch: {sid}')
+        if regenerated.get('truth_graph_sha256')!=digest: raise ValueError(f'S5 G0 checkpoint truth binding mismatch: {sid}')
+        r['graph_hash']=r['graph_sha256']; r['graph']=graph
+    return rows
+def write_g0_checkpoint(path,rows):
+    body={'schema':'S5_G0_CHECKPOINT_V1','rows':public_g0_rows(rows)}
+    body['file_sha256']=hashlib.sha256(canon(body)).hexdigest()
+    write(path,body)
 def recommend_stage(args):
     from research.original_objective import policy_engine as pe
     from research.within_task_repair_prioritization import s3_analysis as s3
@@ -88,13 +117,19 @@ def recommend_stage(args):
         stream.flush(); os.fsync(stream.fileno())
     train_sha=sha(training_path); numeric_sha=hashlib.sha256(vals.tobytes(order='C')).hexdigest()
     truth=pe.state([tuple(e) for e in model.graph.edges]); cfg=pe.Config(fp_rule='A',normalization='fixed_opportunity')
-    g0_rows=[]; attempts=[]
-    for sid in range(c['g0']['id_start'],c['g0']['id_start']+c['g0']['count']):
-        master=seed(c['g0']['namespace'],f'g0|{sid}')
-        rec=__import__('research.original_objective.g0_candidate',fromlist=['corrupt_graph_candidate']).corrupt_graph_candidate(truth,nodes=list(model.nodes),action=X,target=Y,master_seed=master,task_id=f"{c['run_id']}:{sid}",true_corruption_rate=.15,false_adjacency_rate=.05)
-        g=as_graph(rec['initial_graph']['edges'],rec['initial_graph']['unresolved'])
-        g0_rows.append({'seed_id':sid,'master_seed':master,'record':rec,'graph_hash':pe.graph_hash(g),'graph':g})
-        attempts.append({'seed_id':sid,'g0_hash':pe.graph_hash(g),'accepted_events':sum(e['acceptance_status']=='accepted' for e in rec['attempted_events'])})
+    if args.resume_g0_records is not None:
+        g0_rows=load_g0_checkpoint(args.resume_g0_records,truth,list(model.nodes),c)
+        checkpoint_source_sha=sha(args.resume_g0_records)
+    else:
+        from research.original_objective.g0_candidate import corrupt_graph_candidate
+        g0_rows=[]
+        for sid in range(c['g0']['id_start'],c['g0']['id_start']+c['g0']['count']):
+            master=seed(c['g0']['namespace'],f'g0|{sid}')
+            rec=corrupt_graph_candidate(truth,nodes=list(model.nodes),action=X,target=Y,master_seed=master,task_id=f"{c['run_id']}:{sid}",true_corruption_rate=.15,false_adjacency_rate=.05)
+            g=as_graph(rec['initial_graph']['edges'],rec['initial_graph']['unresolved'])
+            g0_rows.append({'seed_id':sid,'master_seed':master,'record':rec,'graph_hash':pe.graph_hash(g),'graph':g})
+        write_g0_checkpoint(out/'g0_checkpoint.json',g0_rows)
+        checkpoint_source_sha=None
     if len(g0_rows)!=200 or len({r['seed_id'] for r in g0_rows})!=200: raise ValueError('incomplete or duplicate S5 G0 grid')
     action_seeds=[seed(c['g0']['namespace'],f"action|{i}|{repr(float(v))}") for i,v in enumerate(actions)]
     random_policy_seeds=[seed(c['g0']['namespace'],f'random-m4|{sid}') for sid in range(c['g0']['id_start'],c['g0']['id_start']+c['g0']['count'])]
@@ -142,7 +177,7 @@ def recommend_stage(args):
             if pid=='GRAPH_FREE_ASSOCIATION': action,_=d.graph_free_recommendation(train,actions,target,scale)
             else:
                 ed=graph_edges(g)
-                action,_=d.learner_recommendation(train,list(model.nodes),ed,actions,target,scale)
+                action,_=d.learner_recommendation(train,list(model.nodes),{tuple(e) for e in ed},actions,target,scale)
             cache[h]=float(action)
         # Graph-free has graph-free prediction but its graph hash is the no-repair graph.
     rec_rows=[]
@@ -154,9 +189,9 @@ def recommend_stage(args):
     if len({r['recommended_action'] for r in rec_rows})>5: raise ValueError('invalid S5 action value')
     rec_path=out/'recommendation_manifest.json'; rec_obj={'schema':'S5_RECOMMENDATION_LOCK_V1','run_id':c['run_id'],'contract_sha256':sha(CONTRACT),'training_csv_sha256':train_sha,'training_numeric_sha256':numeric_sha,'task':{'action':X,'target':Y,'target_value':target,'scale':scale},'actions':actions,'g0_seed_ids':[r['seed_id'] for r in g0_rows],'g0_hashes':{str(r['seed_id']):r['graph_hash'] for r in g0_rows},'recommendation_rows':len(rec_rows),'policies_per_budget':22,'rows':rec_rows,'truth_or_evaluator_outcomes_accessed':False}
     digest=hashlib.sha256(canon(rec_obj)).hexdigest(); rec_obj['content_sha256']=digest; write(rec_path,rec_obj)
-    execution={'schema':'S5_RECOMMENDATION_EXECUTION_MANIFEST_V1','run_id':c['run_id'],'attempt_id':lock.get('attempt_id','attempt-01'),'classification':c['classification'],'contract_sha256':sha(CONTRACT),'run_lock_sha256':args.run_lock_sha256,'source_verification':verify,'imported_causalAssembly':str(mpath),'fit':fitinfo,'runtime':fp.expected_env(),'training':{'rows':512,'raw_sha256':train_sha,'numeric_sha256':numeric_sha,'target':target,'scale':scale,'sample_seed':c['training']['seed'],'reused_existing_sample':training_reused,'resume_source_sha256':training_source_sha},'task':{'action':X,'target':Y,'actions':actions},'g0_count':200,'g0_seed_ids':[r['seed_id'] for r in g0_rows],'g0_hashes':{str(r['seed_id']):r['graph_hash'] for r in g0_rows},'rng_streams':{'g0_master_seeds':[r['master_seed'] for r in g0_rows],'action_seeds':action_seeds,'random_m4_seeds':random_policy_seeds,'bootstrap_seeds':[c['evaluation'][x] for x in ('bootstrap_seed_g0_only','bootstrap_seed_action_mc_only','bootstrap_seed_two_source')],'within_run_collision_count':0},'recommendation_rows':len(rec_rows),'recommendation_sha256':sha(rec_path),'recommendations_sealed_before_evaluator':True,'new_intervention_rows':0,'source_commit':lock['execution_commit'],'source_tree':lock['execution_tree']}
+    execution={'schema':'S5_RECOMMENDATION_EXECUTION_MANIFEST_V1','run_id':c['run_id'],'attempt_id':lock.get('attempt_id','attempt-01'),'classification':c['classification'],'contract_sha256':sha(CONTRACT),'run_lock_sha256':args.run_lock_sha256,'source_verification':verify,'imported_causalAssembly':str(mpath),'fit':fitinfo,'runtime':fp.expected_env(),'training':{'rows':512,'raw_sha256':train_sha,'numeric_sha256':numeric_sha,'target':target,'scale':scale,'sample_seed':c['training']['seed'],'reused_existing_sample':training_reused,'resume_source_sha256':training_source_sha},'task':{'action':X,'target':Y,'actions':actions},'g0_count':200,'g0_checkpoint_sha256':sha(out/'g0_checkpoint.json'),'g0_checkpoint_reused':args.resume_g0_records is not None,'g0_checkpoint_source_sha256':checkpoint_source_sha,'g0_seed_ids':[r['seed_id'] for r in g0_rows],'g0_hashes':{str(r['seed_id']):r['graph_hash'] for r in g0_rows},'rng_streams':{'g0_master_seeds':[r['master_seed'] for r in g0_rows],'action_seeds':action_seeds,'random_m4_seeds':random_policy_seeds,'bootstrap_seeds':[c['evaluation'][x] for x in ('bootstrap_seed_g0_only','bootstrap_seed_action_mc_only','bootstrap_seed_two_source')],'within_run_collision_count':0},'recommendation_rows':len(rec_rows),'recommendation_sha256':sha(rec_path),'recommendations_sealed_before_evaluator':True,'new_intervention_rows':0,'source_commit':lock['execution_commit'],'source_tree':lock['execution_tree']}
     write(out/'execution_manifest.json',execution); write(out/'g0_manifest.json',{'count':200,'rows':[{'seed_id':r['seed_id'],'master_seed':r['master_seed'],'graph_sha256':r['graph_hash']} for r in g0_rows]})
-    write(out/'g0_records_private.json',[{'seed_id':r['seed_id'],'master_seed':r['master_seed'],'record':r['record'],'graph_sha256':r['graph_hash']} for r in g0_rows])
+    write(out/'g0_records_private.json',public_g0_rows(g0_rows))
     print(json.dumps({'stage':'recommendation','status':'PASS_SEALED','g0_count':200,'recommendation_rows':len(rec_rows),'recommendation_sha256':sha(rec_path),'training_sha256':train_sha,'target':target,'scale':scale,'actions':actions},sort_keys=True))
 
 def evaluation_stage(args):
@@ -222,7 +257,7 @@ def primary_result(by,rec,c):
     return {'contrast':'loss(No-repair)-loss(Frozen M4), B=2, gamma=0','mean_difference':float(dlt.mean()),'median_difference':float(np.median(dlt)),'ci95_low':float(np.quantile(boots,.025)),'ci95_high':float(np.quantile(boots,.975)),'better_m4':int((dlt>1e-12).sum()),'worse_m4':int((dlt< -1e-12).sum()),'tie':int((np.abs(dlt)<=1e-12).sum()),'n_g0':n,'bootstrap_replicates':len(boots),'bootstrap_seed':c['evaluation']['bootstrap_seed_g0_only'],'unit':'paired G0 draw within one fixed fitted DGP'}
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('--stage',choices=['recommendation','evaluation'],required=True); p.add_argument('--run-lock',type=Path,required=True); p.add_argument('--run-lock-sha256',required=True); p.add_argument('--private-root',type=Path,required=True); p.add_argument('--source-root',type=Path,required=True); p.add_argument('--data-root',type=Path,required=True); p.add_argument('--resume-training-csv',type=Path); p.add_argument('--evaluator-output',type=Path); p.add_argument('--public-summary',type=Path)
+    p=argparse.ArgumentParser(); p.add_argument('--stage',choices=['recommendation','evaluation'],required=True); p.add_argument('--run-lock',type=Path,required=True); p.add_argument('--run-lock-sha256',required=True); p.add_argument('--private-root',type=Path,required=True); p.add_argument('--source-root',type=Path,required=True); p.add_argument('--data-root',type=Path,required=True); p.add_argument('--resume-training-csv',type=Path); p.add_argument('--resume-g0-records',type=Path); p.add_argument('--evaluator-output',type=Path); p.add_argument('--public-summary',type=Path)
     a=p.parse_args()
     if a.stage=='recommendation': recommend_stage(a)
     else:

@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 from research.within_task_repair_prioritization.s4_reconstruction.analyze_s5_results import loss
-from research.within_task_repair_prioritization.s4_reconstruction.run_s5_reconstruction import load_resumed_training
+from research.within_task_repair_prioritization.s4_reconstruction.run_s5_reconstruction import load_resumed_training, write_g0_checkpoint, load_g0_checkpoint, seed
 from research.external_validation.semisynthetic_evaluation.reproducibility import serialize_training_frame
 import hashlib
 import numpy as np
@@ -50,3 +50,32 @@ def test_resume_reuses_exact_locked_training_bytes_and_numeric_values(tmp_path):
     assert recovered.to_numpy(dtype=np.float64).tobytes(order="C") == values.tobytes(order="C")
     with unittest.TestCase().assertRaisesRegex(ValueError, "raw hash"):
         load_resumed_training(path, ["X", "Y"], "0" * 64, numeric)
+
+
+def test_g0_checkpoint_round_trip_revalidates_locked_seed_and_graph(tmp_path):
+    from research.original_objective import policy_engine as pe
+    from research.original_objective.g0_candidate import corrupt_graph_candidate
+
+    contract = json.loads((HERE / "s5_reconstruction_contract.json").read_text())
+    contract["g0"].update({"count": 1, "id_start": 811001, "namespace": "checkpoint-test"})
+    nodes = [f"Station1_mp_{i}" for i in range(6)]
+    truth = pe.state([(nodes[0], nodes[1]), (nodes[1], nodes[4]), (nodes[1], nodes[2]), (nodes[2], nodes[3]), (nodes[3], nodes[5])])
+    sid = contract["g0"]["id_start"]
+    master = seed(contract["g0"]["namespace"], f"g0|{sid}")
+    record = corrupt_graph_candidate(truth, nodes=nodes, action="Station1_mp_0", target="Station1_mp_4", master_seed=master, task_id=f"{contract['run_id']}:{sid}", true_corruption_rate=0.15, false_adjacency_rate=0.05)
+    graph = __import__("research.within_task_repair_prioritization.s4_reconstruction.run_s5_reconstruction", fromlist=["as_graph"]).as_graph(record["initial_graph"]["edges"], record["initial_graph"]["unresolved"])
+    rows = [{"seed_id": sid, "master_seed": master, "record": record, "graph_hash": pe.graph_hash(graph)}]
+    path = tmp_path / "g0_checkpoint.json"
+    write_g0_checkpoint(path, rows)
+    resumed = load_g0_checkpoint(path, truth, nodes, contract)
+    assert resumed[0]["graph_hash"] == pe.graph_hash(graph)
+    assert resumed[0]["graph"] == graph
+
+
+def test_g0_checkpoint_rejects_modified_bytes(tmp_path):
+    path = tmp_path / "g0_checkpoint.json"
+    path.write_text('{"schema":"S5_G0_CHECKPOINT_V1","rows":[],"file_sha256":"bad"}')
+    from research.original_objective import policy_engine as pe
+    contract = json.loads((HERE / "s5_reconstruction_contract.json").read_text())
+    with unittest.TestCase().assertRaisesRegex(ValueError, "checkpoint schema or file hash"):
+        load_g0_checkpoint(path, pe.state([]), [], contract)
