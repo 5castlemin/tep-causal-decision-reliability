@@ -7,7 +7,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 CONTRACT = json.loads((HERE / "retrospective_contract.json").read_text(encoding="utf-8-sig"))
 ROOT = Path(os.environ.get("S4_PILOT_INPUT", CONTRACT["input_root"]))
-OUT = HERE / "outputs"
+OUT = HERE / "outputs_attempt2"
 T = tuple(f"T{i}" for i in range(1, 7))
 SETS = tuple(s for n in range(1, 7) for s in itertools.combinations(T, n))
 TOL = 1e-12
@@ -23,7 +23,8 @@ def load(name):
 def write_csv(path, rows):
     if not rows: path.write_text("", encoding="utf-8"); return
     with path.open("w", newline="", encoding="utf-8") as f:
-        w=csv.DictWriter(f,fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
+        fields=list(dict.fromkeys(key for row in rows for key in row))
+        w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(rows)
 def boot_summary(values, ix):
     a=np.asarray(values,dtype=float)
     boot=a[ix].mean(axis=1)
