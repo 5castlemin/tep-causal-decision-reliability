@@ -16,7 +16,7 @@ from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
 
 DATA = Path(os.environ.get("DAT_RESEARCH_ROOT", "C:/DAT_RESEARCH"))
-OUT = Path(__file__).resolve().parent / "outputs_v6"
+OUT = Path(__file__).resolve().parent / "outputs_v7"
 EXPECTED = {
  "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
  "C_DEVELOPMENT:proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
@@ -293,6 +293,14 @@ def main():
    m4={x['scm']:x for x in unit_private if x['cohort']==cohort and x['policy']=='M4_ORIGINAL' and x['budget']==b}
    comparable=[x for x in rs if x.get('first_edit') is not None and x['scm'] in m4 and m4[x['scm']].get('first_edit') is not None]
    aggregate.append({'cohort':cohort,'policy':pid,'budget':b,'n':len(rs),'mean_regret':float(np.mean([x['loss'] for x in rs])),'median_regret':float(np.median([x['loss'] for x in rs])),'mean_edit_count':float(np.mean([x['cost'] for x in rs])),'action_change_rate':float(1-np.mean([x['same_as_s0'] for x in rs])),'first_edit_diff_vs_m4_rate':float(np.mean([x['first_edit']!=m4[x['scm']]['first_edit'] for x in comparable])) if comparable else None,'unique_final_graphs':len({x['graph_hash'] for x in rs}),'mean_fallbacks':float(np.mean([x['fallbacks'] for x in rs]))})
+ # Independently re-hash every source at the end of all analysis, rather than
+ # treating the per-cohort load-time digest as an after-analysis check.
+ final_sources={}
+ for cohort,cp,pp in SOURCES:
+  final_sources[cohort]={'cohort':sha(cp),'proposals':sha(pp)}
+  assert final_sources[cohort]['cohort']==EXPECTED[f'{cohort}:cohort']
+  assert final_sources[cohort]['proposals']==EXPECTED[f'{cohort}:proposals']
+ assert final_sources==provenance
  # Common-index paired SCM bootstrap over the primary cohort-specific rows.
  rng=np.random.default_rng(BOOT_SEED); intervals=[]
  for cohort,_,_ in SOURCES:
@@ -335,7 +343,7 @@ def main():
   for p in ('T3','T1+T2+T3+T4+T5+T6'):
    differing=sum(unit_lookup[(c,i,p,1)]['first_edit']!=unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] for i in ids if unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None)
    feasibility[c][f'{p}_different_first_edit_count']={'n_with_two_edits':sum(unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None for i in ids),'different_first_edit':differing}
- (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_GREEDY_AND_LOOKAHEAD_COMPLETED_WITH_LIMITATIONS','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':provenance,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; definitions and runner were not committed before the first S3 exploratory calculation; no confirmatory interpretation'},indent=2),encoding='utf-8')
+ (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'e48ef76223b5da1c25fb5fc20dfaac2838ac6417','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
  print((OUT/'s3_summary.json').read_text(encoding='utf-8'))
 
 if __name__=='__main__': main()
