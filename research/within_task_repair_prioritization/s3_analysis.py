@@ -16,7 +16,7 @@ from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
 
 DATA = Path(os.environ.get("DAT_RESEARCH_ROOT", "C:/DAT_RESEARCH"))
-OUT = Path(__file__).resolve().parent / "outputs_v7"
+OUT = Path(__file__).resolve().parent / "outputs_v8"
 EXPECTED = {
  "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
  "C_DEVELOPMENT:proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
@@ -349,7 +349,7 @@ def main():
   for p in ('T3','T1+T2+T3+T4+T5+T6'):
    differing=sum(unit_lookup[(c,i,p,1)]['first_edit']!=unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] for i in ids if unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None)
    feasibility[c][f'{p}_different_first_edit_count']={'n_with_two_edits':sum(unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None for i in ids),'different_first_edit':differing}
- (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'e48ef76223b5da1c25fb5fc20dfaac2838ac6417','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
+ (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'62fe50cbb7ae244281e5d20b8541c95cf7e8fe37','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
  print((OUT/'s3_summary.json').read_text(encoding='utf-8'))
 
 if __name__=='__main__': main()
