@@ -1,0 +1,19 @@
+# S5 Runtime Setup Report
+
+Status: targeted runtime smoke tests passed; external S5 scientific run not yet started at this revision.
+
+## Runtime and source
+
+S5 uses a dedicated external package target, R installation and R library so the existing Research C/D environment and `requirements.txt` remain unchanged. The verified interpreter is Python 3.11.15. The targeted stack reports NumPy 2.2.6, pandas 2.3.1, NetworkX 3.4.2, rpy2 3.6.2, R 4.5.3 and R `drf` 1.3.1. causalAssembly 1.2.1 is checked out at pinned source commit `8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9`; public sample and Station1 reference hashes match the existing Research D manifest after LF normalization.
+
+Windows Application Control blocked launching a generated virtual-environment Python executable. The S5-only packages are therefore isolated in an external `--target` directory and loaded by the verified Python interpreter. This is package-path isolation, not a separate OS sandbox. The process emits a pre-existing missing-`sh` message and R locale warnings under Windows; Python/R initialization, the DRF fit and sampling call completed successfully. An early smoke import resolved causalAssembly from the PyPI target; the import path was corrected and the successful smoke used the pinned source checkout. The final execution lock must require and record that source path.
+
+## Targeted smoke evidence
+
+The pinned Station1 source and data passed `verify_sources`; the official reference has six nodes and seven edges and includes the locked strict-indirect path. DRF fitting completed in 36.43 seconds. The derived five actions exactly matched the existing fixed action values; checked conditional parent support covered the two mechanisms receiving the action as a parent. A seeded 8-row observational sample had the expected six-column schema. The float hard-do adapter returned a finite one-row, six-column sample and set `Station1_mp_0` exactly to the requested action.
+
+The 8 observational smoke rows and one hard-do smoke row are technical validation draws, not S5 outcome data. They are recorded in the external runtime log and are not pooled into the final evaluation.
+
+## Limits
+
+This report does not establish a complete historical environment reconstruction, identical DRF fit to the prior Research D run, or S5 resource eligibility. The actual S5 run still requires an immutable run contract, fixed seeds, separate recommendation seal, response generation under the locked cap, a process-tree resource monitor and independent analysis.

@@ -47,3 +47,16 @@ def test_private_input_serialization_does_not_publish_live_tuple_key_graph():
     serialized = runner.serializable_unit(unit)
     assert serialized["initial_graph"] == {"directed_edges": [["X", "Y"]], "unresolved_pairs": []}
     assert isinstance(serialized["config"], dict)
+
+
+def test_development_public_outputs_are_aggregate_only_and_complete():
+    out = HERE / "outputs" / "development_v1"
+    summary = json.loads((out / "analysis_summary.json").read_text())
+    manifest = json.loads((out / "integrity_manifest.json").read_text())
+    assert summary["n_scm"] == 80
+    assert summary["unique_scm_ids"] == 80
+    assert summary["t_subset_policy_count_b1"] == 63
+    assert summary["t_subset_policy_count_b2"] == 63
+    assert summary["initial_m4_candidate_count"]["n_ge_2"] == 23
+    assert manifest["raw_unit_records_public"] is False
+    assert all("private" not in name for name in manifest["files_sha256"])
