@@ -22,3 +22,9 @@ M4 at B=2 matched the saved ex-post no/one/two-edit optimum in 31/32 units in ea
 | Opportunity-rich | `s4-opportunity_rich_diagnostic-022` | 2 | 2 | .0293325 |
 
 These are isolated diagnostics from small conditional cohorts, not population failure rates. The pilot’s <=2-edit ex-post benchmark enumerates a limited feasible universe and is outcome-aware; it is not a deployable policy or unrestricted optimum.
+
+## B=1 redundancy by initial K
+
+An additional locked, aggregate-only table stratifies the B=1 T-subset versus saved M4 comparison by exact initial K. In General, all 63 subsets were tied with M4 for K=0 (16 SCMs) and K=1 (10 SCMs); differences occurred for 8/63 subsets at K=2 (4 SCMs) and 56/63 at K=4 (1 SCM). At K=3, the sole SCM was tied. In the selected opportunity-rich cohort, 60/63 subsets had at least one non-tied unit at K=2 (26 SCMs), while K=3 (3 SCMs) and K=6 (1 SCM) were tied for every subset; only 1/63 subsets had a non-tied unit at K=4 (2 SCMs).
+
+This shows that B=1 policy separation was concentrated in some higher-opportunity units, especially the selected K=2 group, but is not a monotone relation with K and is not an estimate of a causal K effect. Tiny cells, one SCM at General K=4, structural selection into the opportunity-rich group, and the 63 highly redundant subsets limit interpretation. The full table is `k_stratified_outputs/b1_policy_differences_by_initial_K.csv`; its input hashes and no-generation status are recorded in `k_stratified_outputs/summary.json` and the retrospective manifest.

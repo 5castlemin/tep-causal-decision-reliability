@@ -2,7 +2,7 @@
 
 ## Provenance and checks
 
-The private pilot run is `s4-independent-pilot-20261127-v1`, rooted at the approved local artifact directory approved local S4 artifact root. The pilot artifact manifest's 12 file entries and evaluator continuation lock's 9 checkpoint/result entries were compared byte-for-byte by SHA-256; there were no missing files or mismatches. Key bindings include:
+The private pilot run is `s4-independent-pilot-20261127-v1`, rooted at the approved local S4 artifact root. The pilot artifact manifest's 12 file entries and evaluator continuation lock's 9 checkpoint/result entries were compared byte-for-byte by SHA-256; there were no missing files or mismatches. Key bindings include:
 
 - Inputs: `pilot_inputs_private.json` SHA-256 `34334f07b19d8b42691461e51b4865bd51878ed14f68cdf9d10dadde2bf54bf4`.
 - Recommendations: `recommendation_manifest_private.json` SHA-256 `f93a560019b4c4b2d1592572d6d30fc5b91d63b099f5c9c2d00f7872dd3925cb`.
@@ -33,4 +33,4 @@ The source selector in `s3_analysis.py` implements its M4 secondary tie-break. `
 
 ## Execution history
 
-The first retrospective output attempt failed on heterogeneous CSV row fields before writing a complete result set; it generated no samples. A follow-up fix paired each policy against M4 at the same budget, instead of mixing B=2 T outcomes with B=1 M4. The final run used the already committed fixed analysis contract and private inputs only. Earlier partial output is not used as evidence. No SCM, G0, observational sample, evaluator call or intervention response was generated in this reaggregation.
+The first retrospective output attempt failed on heterogeneous CSV row fields before writing a complete result set; it generated no samples. The second run fixed CSV field union and same-budget pairing. A final source review then aligned the no-positive-T-gain branch with `s3_analysis.select_greedy_option()`: positive T gain is primary, M4 is the documented fallback, and no edit is selected if neither has positive gain. The final aggregate run at source commit `5dae72c34e61d89f9364c1acf8b8738ee83f7a0b` used the committed lock and saved private inputs. The cohort-policy regret aggregates were unchanged; graph/action redundancy was recomputed under the exact fallback. Earlier partial drafts are not evidence. No SCM, G0, observational sample, evaluator call or intervention response was generated in this reaggregation.

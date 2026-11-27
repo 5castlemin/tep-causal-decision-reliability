@@ -566,9 +566,9 @@
       "id": "S3-S4-01",
       "title": "S3 completion and independent exploratory S4 pilot",
       "status": "PARTIAL",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/S4_PREFLIGHT_AUDIT.md; S4_PILOT_EXECUTION_REPORT.md; S4S5_GATE_CLOSEOUT.md; pilot run s4-independent-pilot-20261127-v1; branch research/s4-s5-independent-pilot",
-      "next_action": "Keep confirmation protocol proposed pending a separately approved comparator/estimand/precision lock; do not generate confirmation SCMs. Research D replay remains blocked until private unit artifacts are available.",
-      "acceptance": "S3 remains post-hoc; S4 exploratory pilot completed with 32 general + 32 structurally selected units and documented code-recovery/resource telemetry limitations; S5 not assessable from available unit-level artifacts.",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/S4_PREFLIGHT_AUDIT.md; research/within_task_repair_prioritization/s4_completion/s4_1b_retrospective/; analysis commit 5b64b9ec77f6aeaac56c140624962b3e8541789e",
+      "next_action": "S4-2 matched corruption and objective analyses remain proposed; obtain a separate frozen execution contract and approval before generating any SCM/G0/observations. Preserve pilot as exploratory and report the Q-common admission mismatch.",
+      "acceptance": "Existing S4 pilot artifacts hash-verified; B=1 retrospective over 64 saved units completed; no new research samples; General cohort is Q-common-conditioned and not representative of Research C admission.",
       "depends_on": [
         "S3-01"
       ]
@@ -577,9 +577,9 @@
       "id": "S4-PILOT-01",
       "title": "S4 independent exploratory pilot and mechanism feasibility",
       "status": "PARTIAL",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/RESEARCH_S4_PILOT_EXECUTION_REPORT.md; outputs_pilot_v2/; external checkpoint lock SHA-256 d7446ab164250af8f64f101bc6ffc5f8829444470186a47785b792b7e3d113ac",
-      "next_action": "Close out with documented limitations; write any independent confirmation protocol and obtain explicit approval before generating a confirmation cohort.",
-      "acceptance": "64 pilot units evaluated; original samples and recommendations preserved; only aggregate outputs public; pilot classified exploratory; no Research D/final cohort generation.",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/s4_1b_retrospective/S4_PILOT_V1_LIMITATIONS_AUDIT.md; S4_PILOT_CORRECTION_REPORT.md; outputs_attempt7/; retrospective_manifest.json",
+      "next_action": "No confirmation generation until separately approved. Future S4-2 must use matched structural variants, structural-only admission, frozen budget/objective conditions and SCM-clustered inference.",
+      "acceptance": "Pilot plus retrospective B=1 reaggregation verified with limitations; preserve Q-common-conditioned General cohort, selected opportunity-rich cohort, gamma=0 and single signed-linear Gaussian family constraints.",
       "depends_on": [
         "S3-S4-01"
       ]
@@ -588,8 +588,8 @@
       "id": "S5-FEAS-01",
       "title": "Research D unit-level historical replay feasibility",
       "status": "BLOCKED",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/S5_CAUSALASSEMBLY_FEASIBILITY_REPORT.md; approved local root contains only historical reaudit summary",
-      "next_action": "No replay until private G0/recommendation/training-frame/response-vector artifacts are restored with matching hashes and separately frozen replay authorization.",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/s4_1b_retrospective/S5_ARTIFACT_RECOVERY_REPORT.md; approved local artifact root contains historical reaudit summary only",
+      "next_action": "No Research D unit-level replay or new DRF reconstruction until private artifacts are restored with matching hashes and separately authorized.",
       "acceptance": "No substitute D data generated; no station search; no new DRF fit or intervention response.",
       "depends_on": [
         "S4-PILOT-01"
@@ -1473,5 +1473,22 @@
       "Research D unit-level artifacts unavailable",
       "S1/S2 do not alter the frozen Research C primary"
     ]
+  },
+  "s4_1b_retrospective_closeout": {
+    "status": "RETROSPECTIVE_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
+    "analysis_commit": "5dae72c34e61d89f9364c1acf8b8738ee83f7a0b",
+    "k_stratified_analysis_commit": "e9f77f15a27b22b162542d896377d4eb8a6b13e4",
+    "k_stratified_status": "COMPLETED_DESCRIPTIVE_WITH_LIMITATIONS",
+    "k_stratified_rows": 567,
+    "k_stratified_public_hashes_recorded": true,
+    "new_samples": 0,
+    "b1_policy_rows": 4032,
+    "pilot_artifacts_pre_and_post_hash_verified": true,
+    "s4_2_matched_corruption": "PROPOSED_NOT_RUN",
+    "objective_sensitivity": "PROPOSED_NOT_RUN",
+    "research_d_unit_artifacts": "UNAVAILABLE_IN_APPROVED_ROOT",
+    "focused_tests": "new S4 retrospective tests 4/4 PASS; prior focused S4/S3 set 19/19 PASS",
+    "full_tests": "473 discovered; 471 passed; 1 failed (protected raw JSONL SHA mismatch in Windows checkout); 1 errored (local frozen dependency fingerprint NumPy 2.4.6/Pandas 3.0.3/NetworkX 3.6.1 differs from lock)",
+    "frozen_checks": "not weakened; both local failures retained and explicitly reported"
   }
 }
