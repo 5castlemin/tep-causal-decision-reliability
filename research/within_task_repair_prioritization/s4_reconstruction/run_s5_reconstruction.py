@@ -16,6 +16,10 @@ CONTRACT=HERE/'s5_reconstruction_contract.json'; X=d.TASK_X; Y=d.TASK_Y
 def sha(p): return d.file_sha256(Path(p))
 def canon(x): return json.dumps(x,sort_keys=True,separators=(',',':'),allow_nan=False).encode()
 def seed(ns,label): return int.from_bytes(hashlib.sha256(f'{ns}|{label}'.encode()).digest()[:4],'big')
+def load_resumed_training(path,node_order,expected_raw_sha256,expected_numeric_sha256):
+    path=Path(path)
+    if sha(path)!=expected_raw_sha256: raise ValueError('resumed S5 training CSV raw hash mismatch')
+    return repro.read_training_frame(path,node_order=list(node_order),rows=512,expected_numeric_sha256=expected_numeric_sha256)
 def write(path,obj):
     path=Path(path); path.parent.mkdir(parents=True,exist_ok=True)
     if path.exists(): raise FileExistsError(f'refusing overwrite: {path.name}')
@@ -50,8 +54,12 @@ def training_actions(train,model):
         if xtrain is not None and X in xtrain:
             if min(actions)<float(xtrain[X].min()) or max(actions)>float(xtrain[X].max()): raise ValueError(f'action outside fitted support for {node}')
     return actions
-def graph_edges(g): return sorted([list(e) for e in g.values() if e!=pe.UNRES])
-def as_graph(edges,unresolved=()): return pe.state([tuple(e) for e in edges],unresolved=[tuple(p) for p in unresolved])
+def graph_edges(g):
+    from research.original_objective import policy_engine as pe
+    return sorted([list(e) for e in g.values() if e!=pe.UNRES])
+def as_graph(edges,unresolved=()):
+    from research.original_objective import policy_engine as pe
+    return pe.state([tuple(e) for e in edges],unresolved=[tuple(p) for p in unresolved])
 def recommend_stage(args):
     from research.original_objective import policy_engine as pe
     from research.within_task_repair_prioritization import s3_analysis as s3
@@ -62,11 +70,22 @@ def recommend_stage(args):
     try: mpath.relative_to(sr)
     except ValueError as e: raise ValueError('causalAssembly did not import from pinned checkout') from e
     model,source,fitinfo=d.load_fit_station1(sr,dr,c['generator']['fit_seed'])
-    model.random_state=np.random.default_rng(c['training']['seed']); train=model.sample_from_drf(size=512,smoothed=True).loc[:,list(model.nodes)]
+    if args.resume_training_csv is not None:
+        expected=lock.get('reused_training',{})
+        src=Path(args.resume_training_csv).resolve()
+        if not expected: raise ValueError('missing S5 training resume binding')
+        train=load_resumed_training(src,list(model.nodes),expected['raw_sha256'],expected['numeric_sha256'])
+        training_reused=True; training_source_sha=sha(src)
+    else:
+        model.random_state=np.random.default_rng(c['training']['seed']); train=model.sample_from_drf(size=512,smoothed=True).loc[:,list(model.nodes)]
+        training_reused=False; training_source_sha=None
     vals=train.to_numpy(dtype=np.float64)
     if train.shape!=(512,6) or list(train.columns)!=list(model.nodes) or not np.isfinite(vals).all(): raise ValueError('S5 training sample schema/finite check failed')
     target=float(train[Y].mean()+train[Y].std(ddof=1)); scale=float(train[Y].std(ddof=1)); actions=training_actions(train,model)
-    training_path=out/'training.csv'; training_path.write_bytes(repro.serialize_training_frame(train))
+    training_path=out/'training.csv'
+    with training_path.open('xb') as stream:
+        stream.write(src.read_bytes() if training_reused else repro.serialize_training_frame(train))
+        stream.flush(); os.fsync(stream.fileno())
     train_sha=sha(training_path); numeric_sha=hashlib.sha256(vals.tobytes(order='C')).hexdigest()
     truth=pe.state([tuple(e) for e in model.graph.edges]); cfg=pe.Config(fp_rule='A',normalization='fixed_opportunity')
     g0_rows=[]; attempts=[]
@@ -135,7 +154,7 @@ def recommend_stage(args):
     if len({r['recommended_action'] for r in rec_rows})>5: raise ValueError('invalid S5 action value')
     rec_path=out/'recommendation_manifest.json'; rec_obj={'schema':'S5_RECOMMENDATION_LOCK_V1','run_id':c['run_id'],'contract_sha256':sha(CONTRACT),'training_csv_sha256':train_sha,'training_numeric_sha256':numeric_sha,'task':{'action':X,'target':Y,'target_value':target,'scale':scale},'actions':actions,'g0_seed_ids':[r['seed_id'] for r in g0_rows],'g0_hashes':{str(r['seed_id']):r['graph_hash'] for r in g0_rows},'recommendation_rows':len(rec_rows),'policies_per_budget':22,'rows':rec_rows,'truth_or_evaluator_outcomes_accessed':False}
     digest=hashlib.sha256(canon(rec_obj)).hexdigest(); rec_obj['content_sha256']=digest; write(rec_path,rec_obj)
-    execution={'schema':'S5_RECOMMENDATION_EXECUTION_MANIFEST_V1','run_id':c['run_id'],'classification':c['classification'],'contract_sha256':sha(CONTRACT),'run_lock_sha256':args.run_lock_sha256,'source_verification':verify,'imported_causalAssembly':str(mpath),'fit':fitinfo,'runtime':fp.expected_env(),'training':{'rows':512,'raw_sha256':train_sha,'numeric_sha256':numeric_sha,'target':target,'scale':scale,'sample_seed':c['training']['seed']},'task':{'action':X,'target':Y,'actions':actions},'g0_count':200,'g0_seed_ids':[r['seed_id'] for r in g0_rows],'g0_hashes':{str(r['seed_id']):r['graph_hash'] for r in g0_rows},'rng_streams':{'g0_master_seeds':[r['master_seed'] for r in g0_rows],'action_seeds':action_seeds,'bootstrap_seeds':[c['evaluation'][x] for x in ('bootstrap_seed_g0_only','bootstrap_seed_action_mc_only','bootstrap_seed_two_source')],'within_run_collision_count':0},'recommendation_rows':len(rec_rows),'recommendation_sha256':sha(rec_path),'recommendations_sealed_before_evaluator':True,'new_intervention_rows':0,'source_commit':lock['execution_commit'],'source_tree':lock['execution_tree']}
+    execution={'schema':'S5_RECOMMENDATION_EXECUTION_MANIFEST_V1','run_id':c['run_id'],'attempt_id':lock.get('attempt_id','attempt-01'),'classification':c['classification'],'contract_sha256':sha(CONTRACT),'run_lock_sha256':args.run_lock_sha256,'source_verification':verify,'imported_causalAssembly':str(mpath),'fit':fitinfo,'runtime':fp.expected_env(),'training':{'rows':512,'raw_sha256':train_sha,'numeric_sha256':numeric_sha,'target':target,'scale':scale,'sample_seed':c['training']['seed'],'reused_existing_sample':training_reused,'resume_source_sha256':training_source_sha},'task':{'action':X,'target':Y,'actions':actions},'g0_count':200,'g0_seed_ids':[r['seed_id'] for r in g0_rows],'g0_hashes':{str(r['seed_id']):r['graph_hash'] for r in g0_rows},'rng_streams':{'g0_master_seeds':[r['master_seed'] for r in g0_rows],'action_seeds':action_seeds,'random_m4_seeds':random_policy_seeds,'bootstrap_seeds':[c['evaluation'][x] for x in ('bootstrap_seed_g0_only','bootstrap_seed_action_mc_only','bootstrap_seed_two_source')],'within_run_collision_count':0},'recommendation_rows':len(rec_rows),'recommendation_sha256':sha(rec_path),'recommendations_sealed_before_evaluator':True,'new_intervention_rows':0,'source_commit':lock['execution_commit'],'source_tree':lock['execution_tree']}
     write(out/'execution_manifest.json',execution); write(out/'g0_manifest.json',{'count':200,'rows':[{'seed_id':r['seed_id'],'master_seed':r['master_seed'],'graph_sha256':r['graph_hash']} for r in g0_rows]})
     write(out/'g0_records_private.json',[{'seed_id':r['seed_id'],'master_seed':r['master_seed'],'record':r['record'],'graph_sha256':r['graph_hash']} for r in g0_rows])
     print(json.dumps({'stage':'recommendation','status':'PASS_SEALED','g0_count':200,'recommendation_rows':len(rec_rows),'recommendation_sha256':sha(rec_path),'training_sha256':train_sha,'target':target,'scale':scale,'actions':actions},sort_keys=True))
@@ -203,7 +222,7 @@ def primary_result(by,rec,c):
     return {'contrast':'loss(No-repair)-loss(Frozen M4), B=2, gamma=0','mean_difference':float(dlt.mean()),'median_difference':float(np.median(dlt)),'ci95_low':float(np.quantile(boots,.025)),'ci95_high':float(np.quantile(boots,.975)),'better_m4':int((dlt>1e-12).sum()),'worse_m4':int((dlt< -1e-12).sum()),'tie':int((np.abs(dlt)<=1e-12).sum()),'n_g0':n,'bootstrap_replicates':len(boots),'bootstrap_seed':c['evaluation']['bootstrap_seed_g0_only'],'unit':'paired G0 draw within one fixed fitted DGP'}
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('--stage',choices=['recommendation','evaluation'],required=True); p.add_argument('--run-lock',type=Path,required=True); p.add_argument('--run-lock-sha256',required=True); p.add_argument('--private-root',type=Path,required=True); p.add_argument('--source-root',type=Path,required=True); p.add_argument('--data-root',type=Path,required=True); p.add_argument('--evaluator-output',type=Path); p.add_argument('--public-summary',type=Path)
+    p=argparse.ArgumentParser(); p.add_argument('--stage',choices=['recommendation','evaluation'],required=True); p.add_argument('--run-lock',type=Path,required=True); p.add_argument('--run-lock-sha256',required=True); p.add_argument('--private-root',type=Path,required=True); p.add_argument('--source-root',type=Path,required=True); p.add_argument('--data-root',type=Path,required=True); p.add_argument('--resume-training-csv',type=Path); p.add_argument('--evaluator-output',type=Path); p.add_argument('--public-summary',type=Path)
     a=p.parse_args()
     if a.stage=='recommendation': recommend_stage(a)
     else:
