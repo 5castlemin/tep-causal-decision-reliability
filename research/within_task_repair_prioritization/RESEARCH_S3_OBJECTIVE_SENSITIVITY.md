@@ -1,3 +1,3 @@
-# Objective sensitivity — not run
+# Objective sensitivity — not run in correction replay
 
-Research C's original gamma=0 results were used for S3 outcomes. The requested gamma=.2/.5 recomputation of new S3 graph trajectories and action choices was not run. Existing S1 results are prior supplementary evidence, not a substitute for applying those objectives to S3 policies. No claim is made that S3 metric rankings are stable across objectives.
+The corrected S3 recomputation retains the original Research C target-tracking objective (gamma=0). It does not apply gamma=.2 or gamma=.5 to corrected S3 recommendations and regret. Existing S1 sensitivity results are not substitutes. No claim is made that S3 ranking persists under penalized movement objectives. No additional observations or interventions were generated.

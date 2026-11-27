@@ -1,3 +1,5 @@
+> **Historical: first S3 exploratory implementation (superseded for corrected graph/Regret results). Preserve as executed at the time. See `RESEARCH_S3_CORRECTION_AUDIT.md` and `RESEARCH_S3_CORRECTED_RESULTS.md`.**
+
 # S3 final results
 
 The exploratory feasibility gate passed: 11/64 Development and 35/200 Held-out SCMs had at least two initially legal M4 candidates, and T3/full-six policies differed from M4 in first edit among some comparable SCMs. All 63 greedy combinations were calculated for B=1–4; 13 lookahead combinations for B=2. New independent data generation remained zero.

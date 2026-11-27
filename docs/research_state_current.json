@@ -554,8 +554,8 @@
       "id": "S3-01",
       "title": "Within-task causal graph repair prioritization (post-hoc)",
       "status": "PARTIAL",
-      "evidence": "research/within_task_repair_prioritization/RESEARCH_S3_FINAL_REPORT_KO.md; s3_integrity_manifest.json",
-      "next_action": "No further exploratory search; any independent confirmation requires a separately frozen protocol and approval.",
+      "evidence": "PR #50, head 616ec21499eb4cd4b43139423240cd380a643d86; corrected source replay and 63 Greedy + 63 B=2 Lookahead subsets; research/within_task_repair_prioritization/RESEARCH_S3_CORRECTION_AUDIT.md; tables/correction_v1/; source cohort/proposal hashes revalidated after run.",
+      "next_action": "No further S3 exploration in this closeout; preserve ex-post sequence, gamma sensitivity, Holm and Research D unit-level analyses as NOT_RUN. PR #50 remains unmerged.",
       "acceptance": "Maintain exploratory status and documented limits; no new cohort or intervention generation in S3.",
       "depends_on": [
         "SUPP-01",
