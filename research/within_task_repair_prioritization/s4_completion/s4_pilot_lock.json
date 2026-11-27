@@ -1,0 +1,33 @@
+{
+  "study": "Research S4 independent development pilot",
+  "contract_status": "LOCKED_BEFORE_GENERATION",
+  "classification": "exploratory_development_pilot",
+  "source_branch": "research/s4-s5-independent-pilot",
+  "source_base": "ce25e8dacca5be38aaeac8276dc343711fbbcd2a",
+  "cohorts": {
+    "general": {"target_scm": 32, "master_seed": 6419173201, "eligibility": "existing outcome-blind indirect task and Q-common proposal admission"},
+    "opportunity_rich_diagnostic": {"target_scm": 32, "master_seed": 6419173202, "eligibility": "same proposal admission plus at least two initially DAG-feasible M4 edits; structure only"}
+  },
+  "max_proposal_g0_screening_attempts_per_cohort": 2048,
+  "proposal_attempt_index": 0,
+  "proposal_id_prefixes": {"general": "s4pilot-general", "opportunity_rich_diagnostic": "s4pilot-opportunity"},
+  "seed_namespace": "research-s4-pilot-v1",
+  "delta_assignment": "sha256(namespace|cohort|scm_id) low bit maps to -1/+1",
+  "generator": "Research C step4_topology_generator + step4c1_proposal + step4c1_scm; 6-10 nodes; linear signed coefficients; Gaussian exogenous noise",
+  "observational_rows_per_scm": 512,
+  "g0_corruption": {"q": 0.15, "r": 0.05, "conditional_true_error_mix": {"FN": 0.3333333333333333, "REV": 0.3333333333333333, "UNRES": 0.3333333333333333}, "fp_orientation": "fair", "dag_invalid": "reject_without_redraw"},
+  "repair_config": {"fp_rule": "A", "normalization": "fixed_opportunity", "atomic_edit_cost": 1},
+  "task": "strict indirect-only task from frozen proposal builder",
+  "target": "training mean(Y) + delta * training sample SD(Y), ddof=1",
+  "action_grid_k": [-1.0, -0.5, 0.0, 0.5, 1.0],
+  "learner": "Research C Ridge alpha=1.0",
+  "objective": "gamma=0 standardized squared target-tracking loss; analytic SCM intervention means",
+  "policies": {"baselines": ["S0", "M4 B=0..4", "Full Greedy B=0..4"], "structural": "all 63 T1-T6 nonempty equal-weight subsets, Greedy B=2", "diagnostics": ["all initially feasible single M4 edits", "all feasible ordered M4 sequences of length <=2, including early stop"]},
+  "bootstrap": {"replicates": 2000, "seed": 6419173299, "unit": "SCM", "common_indices_within_cohort": true, "interval": "pointwise percentile"},
+  "resource_limits": {"wall_seconds": 7200, "process_tree_memory_bytes": 4294967296, "parallelism": 1},
+  "failure_rules": ["No replacement after outcome access", "No overwrite", "Stop on source/hash/schema/DAG/nonfinite/lock/resource failure"],
+  "new_confirmation_scm": 0,
+  "new_causalassembly_g0": 0,
+  "research_d_replay": "not authorized; requires existing private unit-level artifacts",
+  "execution_commit": "set after locked source commit"
+}
