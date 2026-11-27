@@ -7,7 +7,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 CONTRACT = json.loads((HERE / "retrospective_contract.json").read_text(encoding="utf-8-sig"))
 ROOT = Path(os.environ.get("S4_PILOT_INPUT", CONTRACT["input_root"]))
-OUT = HERE / "outputs_attempt2"
+OUT = HERE / "outputs_attempt3"
 T = tuple(f"T{i}" for i in range(1, 7))
 SETS = tuple(s for n in range(1, 7) for s in itertools.combinations(T, n))
 TOL = 1e-12
@@ -81,12 +81,15 @@ def main():
         for p in b1:
             if p['cohort']==cohort: policies.append(p)
         for p in saved_policies:
-            if p['cohort']==cohort and (p['budget']==1 and p['policy'] in ('S0','M4','FULL_GREEDY') or p['budget']==2 and p['policy'].startswith('T_GREEDY:')):
+            if p['cohort']==cohort and (p['budget'] in (1,2) and p['policy'] in ('M4','FULL_GREEDY') or p['budget']==2 and p['policy'].startswith('T_GREEDY:')):
                 policies.append(p)
         bypol={}
         for p in policies: bypol.setdefault((p['policy'],int(p['budget'])),{})[p['scm_id']]=p
-        ref=bypol[('M4',1)]
         for (pol,budget),pr in sorted(bypol.items()):
+            if (pol,budget)==('M4',budget):
+                continue
+            ref=bypol.get(('M4',budget))
+            if ref is None: continue
             d=[float(pr[s]['regret'])-float(ref[s]['regret']) for s in sids]
             sm=boot_summary(d,ix)
             costs=[float(pr[s]['cost']) for s in sids]
