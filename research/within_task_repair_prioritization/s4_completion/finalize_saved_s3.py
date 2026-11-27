@@ -1,9 +1,9 @@
 """Independent aggregate-only analyzer for completed ignored S3 replay rows."""
 import ast,csv,json
 from collections import defaultdict
+import math
 from pathlib import Path
 import numpy as np
-from scipy.stats import ttest_1samp
 
 HERE=Path(__file__).resolve().parent
 SRC=HERE/'outputs_v13'
@@ -23,6 +23,32 @@ def holm(pvalues):
     for rank,idx in enumerate(order):
         running=max(running,(m-rank)*pvalues[idx]);adj[idx]=min(1.0,running)
     return adj
+def _betacf(a,b,x):
+    qab=a+b; qap=a+1.0; qam=a-1.0; c=1.0; d=1.0-qab*x/qap
+    if abs(d)<1e-300:d=1e-300
+    d=1.0/d; h=d
+    for m in range(1,301):
+        m2=2*m; aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1.0+aa*d
+        if abs(d)<1e-300:d=1e-300
+        c=1.0+aa/c
+        if abs(c)<1e-300:c=1e-300
+        d=1.0/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1.0+aa*d
+        if abs(d)<1e-300:d=1e-300
+        c=1.0+aa/c
+        if abs(c)<1e-300:c=1e-300
+        d=1.0/d;delta=d*c;h*=delta
+        if abs(delta-1.0)<3e-14:break
+    return h
+def _ibeta(a,b,x):
+    if x<=0:return 0.0
+    if x>=1:return 1.0
+    bt=math.exp(math.lgamma(a+b)-math.lgamma(a)-math.lgamma(b)+a*math.log(x)+b*math.log1p(-x))
+    return bt*_betacf(a,b,x)/a if x<(a+1)/(a+b+2) else 1-bt*_betacf(b,a,1-x)/b
+def paired_t_pvalue(d):
+    d=np.asarray(d,dtype=float);n=len(d);sd=float(d.std(ddof=1))
+    if sd==0:return 1.0 if abs(float(d.mean()))<1e-15 else 0.0
+    t=abs(float(d.mean()))/(sd/math.sqrt(n));x=(n-1)/((n-1)+t*t)
+    return float(_ibeta((n-1)/2.0,0.5,x))
 
 def main():
     if DEST.exists() and any(DEST.iterdir()):raise FileExistsError(DEST)
@@ -114,7 +140,7 @@ def main():
         rows={(r['cohort'],r['scm'],r['policy'],int(r['budget'])):num(r['regret_g0']) for r in pol if r['cohort']==c and r['gamma']=='all'}
         for a,b in chosen:
             d=np.array([rows[(c,s,a,2)]-rows[(c,s,b,2)] for s in sorted({r['scm'] for r in pol if r['cohort']==c})])
-            p=float(ttest_1samp(d,0).pvalue) if len(d)>1 else 1.0
+            p=paired_t_pvalue(d) if len(d)>1 else 1.0
             family.append({'cohort':c,'gamma':0,'budget':2,'contrast':f'{a} - {b}','mean_difference':float(d.mean()),'paired_t_p_raw':p,'n_scm':len(d),'test':'two-sided paired t test; SCM differences assumed iid within named C cohort'})
         pv=np.array([r['paired_t_p_raw'] for r in family if r['cohort']==c]);adj=holm(pv);k=0
         for r in family:
