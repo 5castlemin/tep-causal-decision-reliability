@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 
 HERE=Path(__file__).resolve().parent
-ROOT=HERE.parents[3]
+ROOT=HERE.parents[2]
 import sys
 sys.path[:0]=[str(ROOT),str(ROOT/'src')]
 from research.within_task_repair_prioritization import s3_analysis as s3
