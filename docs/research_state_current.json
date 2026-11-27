@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-27",
+  "checked_at": "2026-11-28",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -577,9 +577,9 @@
       "id": "S4-PILOT-01",
       "title": "S4 independent exploratory pilot and mechanism feasibility",
       "status": "PARTIAL",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/s4_1b_retrospective/S4_PILOT_V1_LIMITATIONS_AUDIT.md; S4_PILOT_CORRECTION_REPORT.md; outputs_attempt7/; retrospective_manifest.json",
-      "next_action": "No confirmation generation until separately approved. Future S4-2 must use matched structural variants, structural-only admission, frozen budget/objective conditions and SCM-clustered inference.",
-      "acceptance": "Pilot plus retrospective B=1 reaggregation verified with limitations; preserve Q-common-conditioned General cohort, selected opportunity-rich cohort, gamma=0 and single signed-linear Gaussian family constraints.",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/original_pc_continuation_20261128/S4_STUDY2_CLOSEOUT.md; original-PC private pilot manifest/hash checks; other-PC S4-3 commits and archive unavailable",
+      "next_action": "Study 2 pilot closeout is limited to saved exploratory 64-unit pilot; do not claim S4-3 confirmation until its commits and private archive are transferred.",
+      "acceptance": "Saved pilot remains exploratory; outside-task zero-value interpretation corrected to not directly evaluated; confirmation remains NOT_VERIFIABLE.",
       "depends_on": [
         "S3-S4-01"
       ]
@@ -588,11 +588,23 @@
       "id": "S5-FEAS-01",
       "title": "Research D unit-level historical replay feasibility",
       "status": "BLOCKED",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/s4_1b_retrospective/S5_ARTIFACT_RECOVERY_REPORT.md; approved local artifact root contains historical reaudit summary only",
-      "next_action": "No Research D unit-level replay or new DRF reconstruction until private artifacts are restored with matching hashes and separately authorized.",
-      "acceptance": "No substitute D data generated; no station search; no new DRF fit or intervention response.",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/original_pc_continuation_20261128/S5_ARTIFACT_AVAILABILITY_REPORT.md; historical audit JSON SHA verified, private unit inputs absent, R/rpy2 runtime unavailable",
+      "next_action": "S5 reconstruction is authorized but blocked in this environment; resume only when the pinned R 4.5.3/drf 1.3.1 runtime and data/source inputs are available, then freeze a new pre-outcome execution lock.",
+      "acceptance": "No S5 observations, G0, recommendations, intervention responses or DRF refit generated; historical D run not represented as reproduced.",
       "depends_on": [
         "S4-PILOT-01"
+      ]
+    },
+    {
+      "id": "S5-ORIGINAL-PC-01",
+      "title": "Original-PC S4 closeout and S5 execution feasibility",
+      "status": "BLOCKED",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/original_pc_continuation_20261128/ORIGINAL_PC_RESEARCH_CONTINUATION_STATUS.md; S4_STUDY2_CLOSEOUT.md; S5_ARTIFACT_AVAILABILITY_REPORT.md",
+      "next_action": "Transfer other-PC S4-3 commits/archive and restore access to the pinned R/DRF runtime and authorized S5 inputs; no generation until a new exact run lock is committed.",
+      "acceptance": "S4 historical pilot audited only; S4-3 not independently verified; S5 execution did not start and generated zero study rows.",
+      "depends_on": [
+        "S4-PILOT-01",
+        "S5-FEAS-01"
       ]
     }
   ],

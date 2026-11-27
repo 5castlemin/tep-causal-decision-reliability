@@ -1,6 +1,6 @@
 # 연구 우선순위
 
-기준일: 2026-11-27. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-11-28. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
@@ -48,8 +48,8 @@
 | MFG-EFFECT-SCOPE | BLOCKED | DYNAMIC-SCOPE | STOP-TEP-EFFECT-TRACK:현재경로동결. 추가TEP시험·패치·후속검토문서권고없음. SYNTH-FINAL로현재우선순위이동 / 최대2후보비교/1선택. 출처있는정책집합·비자명한목표/H·실패포함선택손실을정당화못함; API반응성/GT부재와구분 |
 | DYNAMIC-SCOPE | BLOCKED | VALVE-TRANSITION, REF-B | B축약계약판정2·미채택초안보존. 이후효과중심검토도STOP이므로추가TEP설계확대중단 / 4node/12미채점후보·부모폐쇄/비간선/발견대상/비자명선택/독립평가의 미충족조건 명시. 공식연구설계변경 아님 |
 | SYNTH-FINAL | VERIFIED | ERROR-DIAG, PILOT-CONFIRM | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 / A/D/E범위내지지,C/B1부분지지,B2추가정보미확립,F제조미검증.162쌍93/4/65·114경로유지48/3/63;새학습/do0 |
-| S4-PILOT-01 | PARTIAL | S3-S4-01 | No confirmation generation until separately approved. Future S4-2 must use matched structural variants, structural-only admission, frozen budget/objective conditions and SCM-clustered inference. / Pilot plus retrospective B=1 reaggregation verified with limitations; preserve Q-common-conditioned General cohort, selected opportunity-rich cohort, gamma=0 and single signed-linear Gaussian family constraints. |
-| S5-FEAS-01 | BLOCKED | S4-PILOT-01 | No Research D unit-level replay or new DRF reconstruction until private artifacts are restored with matching hashes and separately authorized. / No substitute D data generated; no station search; no new DRF fit or intervention response. |
+| S4-PILOT-01 | PARTIAL | S3-S4-01 | Study 2 pilot closeout is limited to saved exploratory 64-unit pilot; do not claim S4-3 confirmation until its commits and private archive are transferred. / Saved pilot remains exploratory; outside-task zero-value interpretation corrected to not directly evaluated; confirmation remains NOT_VERIFIABLE. |
+| S5-FEAS-01 | BLOCKED | S4-PILOT-01 | S5 reconstruction is authorized but blocked in this environment; resume only when the pinned R 4.5.3/drf 1.3.1 runtime and data/source inputs are available, then freeze a new pre-outcome execution lock. / No S5 observations, G0, recommendations, intervention responses or DRF refit generated; historical D run not represented as reproduced. |
 
 ## ID 이력
 

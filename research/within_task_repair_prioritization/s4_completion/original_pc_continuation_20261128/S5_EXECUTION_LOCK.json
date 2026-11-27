@@ -1,0 +1,34 @@
+{
+  "schema": "S5_EXECUTION_PREFLIGHT_V1",
+  "status": "BLOCKED_PRECONDITIONS_MISSING",
+  "created_date": "2026-11-28",
+  "study_type_if_resumed": "NEW_CONDITIONAL_EXTERNAL_SEMISYNTHETIC_RECONSTRUCTION",
+  "authorized_run_not_started": true,
+  "historical_run_id": "rd-external-final-20261125-01",
+  "historical_artifact_reuse": "NOT_POSSIBLE_FROM_AVAILABLE_LOCAL_ROOT",
+  "blocking_preconditions": [
+    "Private historical training, G0, recommendation, execution-lock, evaluation-manifest, response-vector and fitted-DRF files are unavailable in the approved local Research D artifact root.",
+    "R/Rscript, rpy2, and drf runtime were not found in the observed execution environment; historical package fingerprint does not match."
+  ],
+  "no_data_generated": true,
+  "counts": {
+    "new_dgp": 0,
+    "new_training_rows": 0,
+    "new_g0": 0,
+    "recommendations": 0,
+    "intervention_rows": 0
+  },
+  "caps_if_reauthorized_run_resumes": {
+    "new_dgp_max": 1,
+    "g0_max": 200,
+    "training_rows": 512,
+    "actions": 5,
+    "rows_per_action_max": 5000,
+    "total_intervention_rows_max": 25000,
+    "bootstrap_replicates_max": 10000,
+    "wall_seconds_max": 14400,
+    "process_tree_rss_bytes_max": 4294967296
+  },
+  "note": "This is a blocked preflight record, not an execution lock authorizing sampling. Exact seeds, sample count, complete policy contract and runtime/data digests must be frozen before any future generation."
+}
+
