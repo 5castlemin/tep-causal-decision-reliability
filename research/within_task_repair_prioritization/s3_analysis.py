@@ -30,6 +30,7 @@ SOURCES = [
 T = tuple(f"T{i}" for i in range(1, 7))
 SETS = tuple(s for n in range(1, 7) for s in itertools.combinations(T, n))
 BOOT_N, BOOT_SEED = 10_000, 2026112701
+GAIN_TOL = 1e-12
 LOOKAHEAD_SETS = tuple((t,) for t in T) + (T,) + tuple((a,b) for a,b in (("T3","T4"),("T3","T5"),("T3","T6"),("T4","T5"),("T4","T6"),("T5","T6")))
 
 def sha(path: Path) -> str:
@@ -44,13 +45,16 @@ def cfg_from(payload):
 def ancestors(g, nodes):
  edges=[e for e in g.values() if e != pe.UNRES]; out={n:set() for n in (set(nodes)|{z for e in edges for z in e})}
  for a,b in edges:
-  if a in out and b in out: out[a].add(b)
- changed=True
- while changed:
-  changed=False
-  for a in nodes:
-   more=set().union(*(out[b] for b in tuple(out[a]))) if out[a] else set()
-   if not more <= out[a]: out[a]|=more; changed=True
+  out[a].add(b)
+ # Compute reachability over every directed graph node. The `nodes` argument
+ # only adds isolated task nodes; it never truncates traversal intermediates.
+ for source in out:
+  frontier=list(out[source])
+  while frontier:
+   nxt=frontier.pop()
+   for child in out[nxt]:
+    if child not in out[source]:
+     out[source].add(child); frontier.append(child)
  return out
 
 def path_edges(g, x, y):
@@ -116,6 +120,20 @@ def m4_gain(e, truth,g,initial,action,target,config):
  before=pe.metrics(truth,g,action,target,config); after=pe.metrics(truth,pe.apply(g,e),action,target,config)
  return pe.burden(before,initial,('M4',),config)-pe.burden(after,initial,('M4',),config)
 
+def select_greedy_option(options, costs):
+ """Select by T gain/cost, then M4 gain/cost, then canonical IDs.
+
+ `options` rows are (edit, resulting_graph, T_gain, M4_gain). Tolerance is
+ absolute in normalized gain-per-cost units and fixed by GAIN_TOL.
+ """
+ eligible=[r for r in options if r[2]>GAIN_TOL or r[3]>GAIN_TOL]
+ if not eligible: return None
+ best_t=max(r[2]/costs[r[0].operation] for r in eligible)
+ tied=[r for r in eligible if abs(r[2]/costs[r[0].operation]-best_t)<=GAIN_TOL]
+ best_m=max(r[3]/costs[r[0].operation] for r in tied)
+ tied=[r for r in tied if abs(r[3]/costs[r[0].operation]-best_m)<=GAIN_TOL]
+ return min(tied,key=lambda r:(pe.METRICS.index(r[0].metric),r[0].pair,r[0].operation))
+
 def greedy(truth,g0,action,target,config,metric_set,budget,initial=None):
  initial=initial or pe.metrics(truth,g0,action,target,config); g=dict(g0); pool=[e for e in pe.candidates(truth,g0,action,target,config) if e.metric=='M4']; log=[]
  for _ in range(budget):
@@ -130,13 +148,10 @@ def greedy(truth,g0,action,target,config,metric_set,budget,initial=None):
    mgain=m4_gain(e,truth,g,initial,action,target,config)
    options.append((e,trial,qgain,mgain))
   if not options: break
-  positive=[r for r in options if r[2]>1e-12]
-  fallback=not positive
-  eligible=positive if positive else [r for r in options if r[3]>1e-12]
-  if not eligible: break
-  eligible.sort(key=lambda r:(-((r[3] if fallback else r[2])/dict(config.costs)[r[0].operation]), pe.METRICS.index(r[0].metric),r[0].pair,r[0].operation))
-  e,trial,qgain,mgain=eligible[0]
-  log.append({'kind':e.kind,'pair':list(e.pair),'operation':e.operation,'q_gain':qgain,'m4_gain':mgain,'fallback':fallback,'before_hash':pe.graph_hash(g),'after_hash':pe.graph_hash(trial)})
+  selected=select_greedy_option(options,dict(config.costs))
+  if selected is None: break
+  e,trial,qgain,mgain=selected
+  log.append({'kind':e.kind,'pair':list(e.pair),'operation':e.operation,'q_gain':qgain,'m4_gain':mgain,'fallback':False,'before_hash':pe.graph_hash(g),'after_hash':pe.graph_hash(trial)})
   g=trial; pool=[x for x in pool if x.key!=e.key]
  return g,log
 
@@ -153,22 +168,28 @@ def sequence2(truth,g0,action,target,config,metric_set):
    gain=(q2-q0)/2
    seqs.append((gain,e1,e2,g1,g2))
  if not seqs:
-  singles=[]
-  for e in pool:
-   if not direct_task_edit(e,truth,g0,action,target,config): continue
-   g1=pe.apply(g0,e)
-   if pe.dag(g1): singles.append((e,g1,m4_gain(e,truth,g0,initial,action,target,config)))
-  if not singles: return None
-  singles.sort(key=lambda r:(-r[2],r[0].pair,r[0].operation))
-  e,g1,_=singles[0]
-  return (0.0,e,None,g1,g1)
+  # No legal two-edit sequence: use the exact same one-step T/M4/canonical
+  # selector as greedy for this metric subset.
+  sg,slog=greedy(truth,g0,action,target,config,metric_set,1,initial)
+  if not slog: return None
+  pair=tuple(slog[0]['pair']); operation=slog[0]['operation']
+  e=next(e for e in pool if e.pair==pair and e.operation==operation)
+  return (0.0,e,None,sg,sg)
  # If no two-step sequence improves the selected structural potential, fallback ranks the full sequence by the frozen M4 gain before canonical IDs.
- fallback=not any(r[0]>1e-12 for r in seqs)
+ fallback=not any(r[0]>GAIN_TOL for r in seqs)
  def key(r):
   mg1=m4_gain(r[1],truth,g0,initial,action,target,config)
   mg2=m4_gain(r[2],truth,r[3],initial,action,target,config)
   return (-(mg1+mg2 if fallback else r[0]),-mg1,r[1].pair,r[2].pair)
  seqs.sort(key=key)
+ # Prefer the shortest improving sequence, then its per-edit T gain, existing
+ # M4 gain, and canonical sequence order. A positive two-step sequence may
+ # start with a zero-gain edit when the cumulative gain is positive.
+ improving=[r for r in seqs if r[0]>GAIN_TOL]
+ if improving:
+  improving.sort(key=lambda r:(-2,-r[0],-(m4_gain(r[1],truth,g0,initial,action,target,config)+m4_gain(r[2],truth,r[3],initial,action,target,config)),r[1].pair,r[1].operation,r[2].pair,r[2].operation))
+  return improving[0]
+ seqs.sort(key=lambda r:(-2,-(m4_gain(r[1],truth,g0,initial,action,target,config)+m4_gain(r[2],truth,r[3],initial,action,target,config)),-m4_gain(r[1],truth,g0,initial,action,target,config),r[1].pair,r[1].operation,r[2].pair,r[2].operation))
  return seqs[0]
 
 def load_cohort(cohort, cp, pp):
