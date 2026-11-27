@@ -1,9 +1,11 @@
 import json
+import unittest
 from pathlib import Path
 
 from research.original_objective import policy_engine as pe
 from research.within_task_repair_prioritization.s4_reconstruction import run_s4_reconstruction as runner
 from research.within_task_repair_prioritization.s4_completion import run_s4_pilot as pilot
+from research.within_task_repair_prioritization.s4_reconstruction.analyze_s4_metric_candidates import choose
 
 
 HERE = Path(__file__).resolve().parents[1] / "research" / "within_task_repair_prioritization" / "s4_reconstruction"
@@ -60,3 +62,33 @@ def test_development_public_outputs_are_aggregate_only_and_complete():
     assert summary["initial_m4_candidate_count"]["n_ge_2"] == 23
     assert manifest["raw_unit_records_public"] is False
     assert all("private" not in name for name in manifest["files_sha256"])
+class TestRetrospectiveMetricSelector(unittest.TestCase):
+    def test_metric_then_m4_then_canonical_order(self):
+        rows = [
+            {"pair": ["A", "B"], "operation": "delete", "T1_gain": 0.2, "M4_gain": 0.1},
+            {"pair": ["C", "D"], "operation": "delete", "T1_gain": 0.1, "M4_gain": 0.9},
+        ]
+        chosen, fallback, _ = choose(rows, ("T1",))
+        self.assertEqual(chosen, 0)
+        self.assertFalse(fallback)
+        rows[1]["T1_gain"] = 0.2
+        chosen, fallback, _ = choose(rows, ("T1",))
+        self.assertEqual(chosen, 1)  # M4 secondary tie-break
+        self.assertFalse(fallback)
+        rows[0]["M4_gain"] = rows[1]["M4_gain"]
+        chosen, _, _ = choose(rows, ("T1",))
+        self.assertEqual(chosen, 0)  # canonical pair order
+
+    def test_m4_fallback_and_noop(self):
+        rows = [
+            {"pair": ["A", "B"], "operation": "delete", "T1_gain": 0.0, "M4_gain": 0.3},
+            {"pair": ["C", "D"], "operation": "delete", "T1_gain": -0.1, "M4_gain": 0.1},
+        ]
+        chosen, fallback, _ = choose(rows, ("T1",))
+        self.assertEqual(chosen, 0)
+        self.assertTrue(fallback)
+        rows[0]["M4_gain"] = 0.0
+        rows[1]["M4_gain"] = -0.1
+        chosen, fallback, _ = choose(rows, ("T1",))
+        self.assertIsNone(chosen)
+        self.assertTrue(fallback)
