@@ -16,7 +16,7 @@ from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
 
 DATA = Path(os.environ.get("DAT_RESEARCH_ROOT", "C:/DAT_RESEARCH"))
-OUT = Path(__file__).resolve().parent / "outputs_v11"
+OUT = Path(__file__).resolve().parent / "outputs_v12"
 EXPECTED = {
  "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
  "C_DEVELOPMENT:proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
@@ -198,6 +198,51 @@ def sequence2(truth,g0,action,target,config,metric_set):
  seqs.sort(key=lambda r:(-2,-(m4_gain(r[1],truth,g0,initial,action,target,config)+m4_gain(r[2],truth,r[3],initial,action,target,config)),-m4_gain(r[1],truth,g0,initial,action,target,config),r[1].pair,r[1].operation,r[2].pair,r[2].operation))
  return (*seqs[0],True)
 
+def greedy_error_type_first(truth,g0,action,target,config,budget,priority_kind):
+ """M4-only policy: prefer one error type; otherwise frozen M4 gain/canonical."""
+ initial=pe.metrics(truth,g0,action,target,config); g=dict(g0)
+ pool=[e for e in pe.candidates(truth,g0,action,target,config) if e.metric=='M4']; log=[]
+ for _ in range(budget):
+  legal=[]
+  for e in pool:
+   if not direct_task_edit(e,truth,g,action,target,config):continue
+   trial=pe.apply(g,e)
+   if pe.dag(trial):
+    gain=m4_gain(e,truth,g,initial,action,target,config)
+    if gain>GAIN_TOL:legal.append((e,trial,gain))
+  if not legal:break
+  preferred=[r for r in legal if r[0].kind==priority_kind]
+  choices=preferred if preferred else legal
+  best=max(r[2]/dict(config.costs)[r[0].operation] for r in choices)
+  tied=[r for r in choices if abs(r[2]/dict(config.costs)[r[0].operation]-best)<=GAIN_TOL]
+  e,trial,gain=min(tied,key=lambda r:(pe.METRICS.index(r[0].metric),r[0].pair,r[0].operation))
+  log.append({'kind':e.kind,'pair':list(e.pair),'operation':e.operation,'m4_gain':gain,'type_fallback':not bool(preferred)})
+  g=trial;pool=[x for x in pool if x.key!=e.key]
+ return g,log
+
+def exact_random_m4_expectation(truth,g0,action,target,config,budget,outcome):
+ """Exact depth<=2 expectation under uniform choice among currently legal M4 edits."""
+ pool=[e for e in pe.candidates(truth,g0,action,target,config) if e.metric=='M4']
+ memo={}
+ def visit(g,remaining,steps):
+  key=(pe.graph_hash(g),tuple(sorted(e.key for e in remaining)),steps)
+  if key in memo:return memo[key]
+  legal=[]
+  if steps>0:
+   for e in remaining:
+    if direct_task_edit(e,truth,g,action,target,config):
+     trial=pe.apply(g,e)
+     if pe.dag(trial):legal.append((e,trial))
+  if not legal or steps==0:
+   regret,action_value=outcome(g)
+   result=(regret,0.0,float(action_value==outcome(g0)[1]))
+  else:
+   branches=[visit(trial,[x for x in remaining if x.key!=e.key],steps-1) for e,trial in legal]
+   n=len(branches)
+   result=(sum(x[0] for x in branches)/n,1+sum(x[1] for x in branches)/n,sum(x[2] for x in branches)/n)
+  memo[key]=result;return result
+ return visit(dict(g0),pool,budget)
+
 def load_cohort(cohort, cp, pp):
  actual={'cohort':sha(cp),'proposals':sha(pp)}
  assert actual['cohort']==EXPECTED[f'{cohort}:cohort'] and actual['proposals']==EXPECTED[f'{cohort}:proposals'],(cohort,actual)
@@ -251,6 +296,16 @@ def main():
      cache[h]=(float(ev['regret']),selected)
     return cache[h]
    base_loss,base_action=get_loss(g0)
+   # Deterministic baseline policies and error-type-first M4 variants.
+   for b0 in range(5):
+    base_rows=[('S0',(),False),('FULL_GREEDY',pe.METRICS,False),('CANONICAL_ORACLE',pe.METRICS,True)]
+    for pid,subset,canonical in base_rows:
+     rr=pe.run(truth,g0,proposal['action'],proposal['target'],b0,subset,cfg,canonical=canonical)
+     gg=pe.state(rr['final_edges'],unresolved=rr['final_unresolved']); loss,act=get_loss(gg)
+     unit_private.append({'cohort':cohort,'scm':sid,'policy':pid,'budget':b0,'loss':loss,'cost':rr['total_cost'],'action':act,'same_as_s0':act==base_action,'graph_hash':rr['final_hash'],'edits':len(rr['edits']),'first_edit':json.dumps([rr['edits'][0]['pair'],rr['edits'][0]['operation']]) if rr['edits'] else None,'fallbacks':0})
+    for kind,suffix in (('FN','FN_FIRST'),('FP','FP_FIRST'),('REV','REV_FIRST'),('UNRES','UNRES_FIRST')):
+     gg,ll=greedy_error_type_first(truth,g0,proposal['action'],proposal['target'],cfg,b0,kind); loss,act=get_loss(gg)
+     unit_private.append({'cohort':cohort,'scm':sid,'policy':'M4_'+suffix,'budget':b0,'loss':loss,'cost':len(ll),'action':act,'same_as_s0':act==base_action,'graph_hash':pe.graph_hash(gg),'edits':len(ll),'first_edit':json.dumps([ll[0]['pair'],ll[0]['operation']]) if ll else None,'fallbacks':sum(x['type_fallback'] for x in ll)})
    for b in (0,2):
     for pid,subset in [('S0',()),('M4',('M4',)),('M1+M2+M3+M4',pe.METRICS)]:
      rr=pe.run(truth,g0,proposal['action'],proposal['target'],b,subset,cfg)
@@ -286,12 +341,9 @@ def main():
     role=('path_and_backdoor' if onpath and onbd else 'path' if onpath else 'backdoor' if onbd else 'other_task_fp' if e.kind=='FP' else 'other_task')
     candidate_private.append({'cohort':cohort,'scm':sid,'kind':e.kind,'role':role,'pair':list(pair),'m4_gain':m4_gain(e,truth,g0,initial,proposal['action'],proposal['target'],cfg),'regret_gain':base_loss-rr,'action_changed':aa!=base_action,**{f'{m}_gain':v for m,v in tg.items()}})
     role_counts.append({'cohort':cohort,'scm':sid,'kind':e.kind,'role':role})
-   if feasible:
-    single=[get_loss(pe.apply(g0,e)) for e in feasible]
-    exp_loss=float(np.mean([x[0] for x in single])); stay=float(np.mean([x[1]==base_action for x in single]))
-    unit_private.append({'cohort':cohort,'scm':sid,'policy':'M4_RANDOM_EXPECTATION','budget':1,'loss':exp_loss,'cost':1.0,'action':float('nan'),'same_as_s0':stay,'graph_hash':'expected_over_single_edit_candidates','edits':1,'fallbacks':0})
-   else:
-    unit_private.append({'cohort':cohort,'scm':sid,'policy':'M4_RANDOM_EXPECTATION','budget':1,'loss':base_loss,'cost':0.0,'action':base_action,'same_as_s0':1.0,'graph_hash':pe.graph_hash(g0),'edits':0,'fallbacks':0})
+   for rb in (1,2):
+    er,ec,stay=exact_random_m4_expectation(truth,g0,proposal['action'],proposal['target'],cfg,rb,get_loss)
+    unit_private.append({'cohort':cohort,'scm':sid,'policy':'M4_RANDOM_EXPECTATION','budget':rb,'loss':er,'cost':ec,'action':float('nan'),'same_as_s0':stay,'graph_hash':f'exact_expectation_over_M4_legal_sequences_depth_{rb}','edits':ec,'fallbacks':0})
    phase1[-1]['loss_gain_min']=min((v['regret_gain'] for v in vals),default=None); phase1[-1]['loss_gain_max']=max((v['regret_gain'] for v in vals),default=None)
    phase1[-1]['positive_candidate_count']=sum(v['regret_gain']>1e-12 for v in vals); phase1[-1]['negative_candidate_count']=sum(v['regret_gain']<-1e-12 for v in vals)
   # aggregate completed rows; no unit-level data are written publicly.
@@ -315,7 +367,7 @@ def main():
   ids=sorted({x['scm'] for x in unit_private if x['cohort']==cohort})
   index=rng.integers(0,len(ids),size=(BOOT_N,len(ids)))
   lookup={(x['policy'],x['budget'],x['scm']):x for x in unit_private if x['cohort']==cohort}
-  contrasts=[('M4_ORIGINAL','M4_RANDOM_EXPECTATION',1),('T3','M4_ORIGINAL',1),('T1+T2+T3+T4+T5+T6','M4_ORIGINAL',1)]+[('+'.join(s)+'_LOOKAHEAD2','+'.join(s)+'_GREEDY2',2) for s in LOOKAHEAD_SETS]
+  contrasts=[('M4_ORIGINAL','M4_RANDOM_EXPECTATION',1),('M4_ORIGINAL','M4_RANDOM_EXPECTATION',2),('T3','M4_ORIGINAL',1),('T1+T2+T3+T4+T5+T6','M4_ORIGINAL',1),('FULL_GREEDY','S0',2),('CANONICAL_ORACLE','S0',2),('M4_FN_FIRST','M4_ORIGINAL',2),('M4_FP_FIRST','M4_ORIGINAL',2),('M4_REV_FIRST','M4_ORIGINAL',2),('M4_UNRES_FIRST','M4_ORIGINAL',2)]+[('+'.join(s)+'_LOOKAHEAD2','+'.join(s)+'_GREEDY2',2) for s in LOOKAHEAD_SETS]
   for a,b,bdgt in contrasts:
    av=np.array([lookup[(a,bdgt,i)]['loss'] for i in ids]); bv=np.array([lookup[(b,bdgt,i)]['loss'] for i in ids]); d=av-bv
    draws=d[index].mean(axis=1); intervals.append({'cohort':cohort,'contrast':f'{a} - {b}','budget':bdgt,'mean_difference':float(d.mean()),'ci95_low':float(np.quantile(draws,.025)),'ci95_high':float(np.quantile(draws,.975)),'better':int(np.sum(d< -1e-12)),'worse':int(np.sum(d>1e-12)),'tie':int(np.sum(np.abs(d)<=1e-12)),'n':len(ids)})
@@ -389,7 +441,7 @@ def main():
   for p in ('T3','T1+T2+T3+T4+T5+T6'):
    differing=sum(unit_lookup[(c,i,p,1)]['first_edit']!=unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] for i in ids if unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None)
    feasibility[c][f'{p}_different_first_edit_count']={'n_with_two_edits':sum(unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None for i in ids),'different_first_edit':differing}
- (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'19a62a8b5c072a69f20e79ad05806d74c3daa699','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'lookahead_fallbacks_by_cohort':{c:{'+'.join(s):sum(x['fallbacks'] for x in unit_private if x['cohort']==c and x['policy']=='+'.join(s)+'_LOOKAHEAD2') for s in LOOKAHEAD_SETS} for c,_,_ in SOURCES},'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'metric_gain_rank_diagnostics':'SCM-balanced candidate pair ranking and best-hit summaries; exploratory only','new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
+ (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'19a62a8b5c072a69f20e79ad05806d74c3daa699','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'baseline_policies':['S0','FULL_GREEDY','CANONICAL_ORACLE','M4_FN_FIRST','M4_FP_FIRST','M4_REV_FIRST','M4_UNRES_FIRST','M4_RANDOM_EXPECTATION'],'budget_scope':[0,1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'lookahead_fallbacks_by_cohort':{c:{'+'.join(s):sum(x['fallbacks'] for x in unit_private if x['cohort']==c and x['policy']=='+'.join(s)+'_LOOKAHEAD2') for s in LOOKAHEAD_SETS} for c,_,_ in SOURCES},'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'metric_gain_rank_diagnostics':'SCM-balanced candidate pair ranking and best-hit summaries; exploratory only','new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
  print((OUT/'s3_summary.json').read_text(encoding='utf-8'))
 
 if __name__=='__main__': main()

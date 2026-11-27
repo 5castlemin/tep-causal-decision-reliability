@@ -5,6 +5,7 @@
   "cohorts": ["C_DEVELOPMENT_64", "C_HELDOUT_200"],
   "metric_subsets": 63,
   "greedy_budgets": [0, 1, 2, 3, 4],
+  "comparison_policies": ["S0", "FULL_GREEDY", "CANONICAL_ORACLE", "M4_ORIGINAL", "M4_FN_FIRST", "M4_FP_FIRST", "M4_REV_FIRST", "M4_UNRES_FIRST", "M4_RANDOM_EXPECTATION_B1_B2"],
   "lookahead_budget": 2,
   "lookahead_scope": "all_63_nonempty_subsets_at_B2",
   "lookahead_feasibility_basis": "13-subset pilot took 98.2 seconds; linear extrapolation about 7.9 minutes before overhead",

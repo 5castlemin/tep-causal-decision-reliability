@@ -1,6 +1,6 @@
 import unittest
 
-from research.within_task_repair_prioritization.s3_analysis import GAIN_TOL, SETS, ancestors, greedy, path_edges, q_metrics, select_greedy_option, sequence2, structural_sets
+from research.within_task_repair_prioritization.s3_analysis import GAIN_TOL, SETS, ancestors, exact_random_m4_expectation, greedy, greedy_error_type_first, path_edges, q_metrics, select_greedy_option, sequence2, structural_sets
 from research.original_objective import policy_engine as pe
 
 
@@ -98,6 +98,21 @@ class S3MetricTests(unittest.TestCase):
             self.assertTrue(fallback)
             self.assertEqual(e1.pair, tuple(log[0]["pair"]))
             self.assertEqual(pe.graph_hash(final), pe.graph_hash(g1))
+
+    def test_error_type_priority_uses_requested_legal_type_and_random_expectation_is_bounded(self):
+        truth = pe.state([("X", "M"), ("M", "Y")])
+        g0 = pe.state([("X", "M"), ("X", "Y")])
+        cfg = pe.Config()
+        repaired, log = greedy_error_type_first(truth, g0, "X", "Y", cfg, 1, "FP")
+        self.assertEqual(log[0]["kind"], "FP")
+        self.assertTrue(pe.dag(repaired))
+        def outcome(g):
+            return (0.25 if pe.graph_hash(g) == pe.graph_hash(g0) else 0.0, 0.0)
+        for budget in (1, 2):
+            regret, expected_edits, _ = exact_random_m4_expectation(truth, g0, "X", "Y", cfg, budget, outcome)
+            self.assertGreaterEqual(regret, 0.0)
+            self.assertGreaterEqual(expected_edits, 0.0)
+            self.assertLessEqual(expected_edits, budget)
 
 
 if __name__ == "__main__":
