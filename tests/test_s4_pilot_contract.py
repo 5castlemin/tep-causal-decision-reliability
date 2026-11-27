@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -53,10 +54,14 @@ class S4PilotContractTests(unittest.TestCase):
         self.assertEqual(set(index), {("X", "M"), ("M", "Y")})
         self.assertEqual(index[("X", "M")]["value"], 1)
 
-    def test_resource_monitor_reports_current_process_on_windows(self):
-        value = pilot.process_rss_bytes()
-        self.assertIs(type(value), int)
-        self.assertGreater(value, 0)
+    def test_resource_monitor_is_windows_only_and_fails_closed_elsewhere(self):
+        if os.name == "nt":
+            value = pilot.process_rss_bytes()
+            self.assertIs(type(value), int)
+            self.assertGreater(value, 0)
+        else:
+            with self.assertRaisesRegex(RuntimeError, "requires Windows GetProcessMemoryInfo"):
+                pilot.process_rss_bytes()
 
     def test_existing_ridge_recommendation_path_accepts_fixture_and_returns_finite_grid(self):
         x = np.linspace(-2.0, 2.0, 32)

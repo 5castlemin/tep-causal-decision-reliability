@@ -12,8 +12,8 @@ OUT = BASE / "outputs_attempt7"
 class S4RetrospectiveArtifactTests(unittest.TestCase):
     def test_public_output_hashes_match_manifest(self):
         manifest = json.loads((BASE / "retrospective_manifest.json").read_text(encoding="utf-8"))
-        for name, expected in manifest["public_outputs_sha256"].items():
-            actual = hashlib.sha256((OUT / name).read_bytes()).hexdigest()
+        for name, expected in manifest["public_output_canonical_lf_sha256"].items():
+            actual = hashlib.sha256((OUT / name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
             self.assertEqual(actual, expected, name)
 
     def test_b1_has_all_63_subsets_for_both_cohorts(self):
@@ -40,8 +40,9 @@ class S4RetrospectiveArtifactTests(unittest.TestCase):
         manifest = json.loads((BASE / "retrospective_manifest.json").read_text(encoding="utf-8"))
         info = manifest["k_stratified_analysis"]
         stratified = BASE / "k_stratified_outputs"
-        for name, expected in info["public_outputs_sha256"].items():
-            self.assertEqual(hashlib.sha256((stratified / name).read_bytes()).hexdigest(), expected)
+        for name, expected in info["public_output_canonical_lf_sha256"].items():
+            actual = hashlib.sha256((stratified / name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+            self.assertEqual(actual, expected)
         with (stratified / "b1_policy_differences_by_initial_K.csv").open(encoding="utf-8", newline="") as f:
             rows = list(csv.DictReader(f))
         self.assertEqual(len(rows), 567)

@@ -25,20 +25,31 @@
       "opportunity_budget_unit_diagnostics.csv": "8a7c3eb27c06072caf05b35f3221da8531838543d05eefc53c0214f190fcb332",
       "policy_results_private.json": "347cc564358c76cc422a8e01ea001b33a7b4d7c091074a06a6ab93026cbf5904"
     },
-    "public_outputs_sha256": {
+    "public_output_canonical_lf_sha256": {
+      "b1_policy_differences_by_initial_K.csv": "f5b01c452628a582661e5c09ef6f2f8fa1cbf3b5f9002c044978d6f73e37a46b",
+      "summary.json": "736b284dc976608a24ddfec8862ed38182313391ce68a6cd3873eebd67b30e8e"
+    },
+    "public_output_sha256_windows_execution_bytes": {
       "b1_policy_differences_by_initial_K.csv": "9c018d2a36e5e9d950d2e1fd2d437dfd07f6c8b7824387ae01b592c64e8da53e",
       "summary.json": "f38163276f5bd187617aa5ddeefbd31ff72eac9db995f0c4f1a9855110b86863"
     },
     "rows": 567,
     "status": "COMPLETED_DESCRIPTIVE"
   },
+  "line_ending_hash_semantics": "Windows raw output SHA-256 values are preserved as execution provenance; canonical LF content SHA-256 is used for cross-platform checkout verification. No numeric values or CSV fields are normalized.",
   "original_pilot_manifest_post_analysis_match": true,
   "private_unit_output_sha256": {
     "b1_all_63_unit_recommendations.csv": "8a5ce1a063d013f959690a2ca5078977ad9f8048e74399a12daaea89d86650b8",
     "opportunity_budget_unit_diagnostics.csv": "8a7c3eb27c06072caf05b35f3221da8531838543d05eefc53c0214f190fcb332"
   },
   "private_unit_outputs_committed": false,
-  "public_outputs_sha256": {
+  "public_output_canonical_lf_sha256": {
+    "b1_all_63_policy_aggregates.csv": "fbbe17018aff91af2800cb7fdb66fa824867e62bb504822a3d90e8577347bb4c",
+    "opportunity_budget_summary.csv": "3039cddafab836b19c10fb1567c09679bde28a59fa52bd3fd9cafaf55f0e6b50",
+    "policy_redundancy_b1_b2.csv": "ada9069b48f2a353feb31f6580b5325a6ec9477cdf4bab4498ef594741bdabdc",
+    "retrospective_summary.json": "e5a98195b318533ea4db20ce30a763c5c9ba21da66daaf06b71cafb39bc1b779"
+  },
+  "public_output_sha256_windows_execution_bytes": {
     "b1_all_63_policy_aggregates.csv": "6848bc865b0d7cb549c31fde6458014e8ab4d69ffa677105bf39e1190f6a5d16",
     "opportunity_budget_summary.csv": "54e95963180de83c86d1ce0ea12880065b4becaeec2d2de43513dcb0cb3c61f7",
     "policy_redundancy_b1_b2.csv": "2851d08d2926656b8b28bf1a9eafd8ebd1390f7d80879997ec56edd3dd0fe6e0",
