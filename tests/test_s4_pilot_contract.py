@@ -3,6 +3,8 @@ import sys
 import unittest
 from pathlib import Path
 
+import numpy as np
+
 ROOT = Path(__file__).resolve().parents[1]
 S4 = ROOT / "research" / "within_task_repair_prioritization" / "s4_completion"
 sys.path.insert(0, str(ROOT))
@@ -45,6 +47,18 @@ class S4PilotContractTests(unittest.TestCase):
         value = pilot.process_rss_bytes()
         self.assertIs(type(value), int)
         self.assertGreater(value, 0)
+
+    def test_existing_ridge_recommendation_path_accepts_fixture_and_returns_finite_grid(self):
+        x = np.linspace(-2.0, 2.0, 32)
+        data = np.column_stack((x, 1.4*x + np.sin(x), 0.7*(1.4*x + np.sin(x)) + np.cos(x)))
+        schema = ["X", "M", "Y"]
+        request = {"node_ids": schema, "action": "X", "target": "Y"}
+        _, selection = pilot.prepare(request, data, schema, schema, 1,
+            pilot.fit_model, pilot.static_mean_response,
+            graph_result={"final_graph": [["X", "M"], ["M", "Y"]]})
+        self.assertEqual(len(selection["candidates"]), 5)
+        self.assertTrue(np.isfinite([row["predicted_y"] for row in selection["candidates"]]).all())
+        self.assertIn(selection["selected_k"], (-1.0, -0.5, 0.0, 0.5, 1.0))
 
 
 if __name__ == "__main__":

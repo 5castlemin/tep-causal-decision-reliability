@@ -128,7 +128,8 @@ def verify_lock(lock: dict) -> dict:
             raise ValueError(f"locked source mismatch: {relative}")
     if not sha_file(HERE / "S4_PILOT_SCIENTIFIC_CONTRACT.md") == lock.get("contract_sha256"):
         raise ValueError("scientific contract digest mismatch")
-    env = {"python": platform.python_version(), "numpy": np.__version__}
+    from importlib.metadata import version
+    env = {"python": platform.python_version(), "numpy": np.__version__, "pandas": version("pandas")}
     if env != lock.get("environment"):
         raise ValueError(f"environment fingerprint mismatch: {env}")
     return {"git_commit": commit, "execution_source_commit": source_commit,
@@ -179,6 +180,7 @@ def make_units(lock: dict, started: float, journal: Path) -> tuple[list[dict], l
             stream.flush()
             os.fsync(stream.fileno())
     for name in ("general", "opportunity_rich_diagnostic"):
+        cohort_attempt_start = len(attempt_rows)
         spec = lock["cohorts"][name]
         master = int(spec["master_seed"])
         prefix = lock["proposal_id_prefixes"][name]
@@ -245,9 +247,10 @@ def make_units(lock: dict, started: float, journal: Path) -> tuple[list[dict], l
             append_event(item)
             if len(selected) >= int(spec["target_scm"]):
                 break
+        cohort_attempts = attempt_rows[cohort_attempt_start:]
         cohort_meta[name] = {"target": int(spec["target_scm"]), "retained": len(selected),
-                             "screening_attempts": len(attempt_rows), "proposal_admitted": admitted,
-                             "g0_screening_draws": sum(bool(row.get("g0_generated")) for row in attempt_rows),
+                             "screening_attempts": len(cohort_attempts), "proposal_admitted": admitted,
+                             "g0_screening_draws": sum(bool(row.get("g0_generated")) for row in cohort_attempts),
                              "structural_eligibility": spec["eligibility"],
                              "shortfall": max(0, int(spec["target_scm"]) - len(selected))}
     return units, attempt_rows, cohort_meta
@@ -514,6 +517,15 @@ def main():
     write_json(OUT / "pilot_summary_private.json", result)
     write_json(OUT / "attempts_summary.json", {"rows": len(attempts), "cohorts": cohort_meta,
                                                "proposal_attempts": sum(x["screening_attempts"] for x in cohort_meta.values())})
+    write_json(OUT / "pilot_artifact_manifest.json", {
+        "run_id": lock["run_id"], "git_commit": provenance["git_commit"],
+        "git_tree": provenance["git_tree"], "execution_source_commit": provenance["execution_source_commit"],
+        "execution_source_tree": provenance["execution_source_tree"],
+        "files_sha256": {path.name: sha_file(path) for path in sorted(OUT.iterdir()) if path.is_file()
+                         and path.name != "pilot_artifact_manifest.json"},
+        "recommendation_manifest_sha256": binding["recommendation_manifest_sha256"],
+        "new_scm": len(units), "new_g0_screening_draws": result["new_g0_screening_draws"],
+        "new_observation_rows": result["new_observation_rows"], "new_intervention_rows": 0})
     print(json.dumps({k:v for k,v in result.items() if k not in ("policy_aggregates", "paired_bootstrap")}, indent=2))
 
 
