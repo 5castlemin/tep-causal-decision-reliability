@@ -1,13 +1,14 @@
 """Independent aggregate-only analyzer for completed ignored S3 replay rows."""
 import ast,csv,json
 from collections import defaultdict
+from itertools import combinations
 import math
 from pathlib import Path
 import numpy as np
 
 HERE=Path(__file__).resolve().parent
 SRC=HERE/'outputs_v13'
-DEST=HERE/'tables'/'completion_v1'
+DEST=HERE/'tables'/'completion_v2'
 GAMMAS=(0.0,0.2,0.5); METRICS=tuple(f'T{i}' for i in range(1,7)); TOL=1e-12; NBOOT=10000; SEED=2026112703
 
 def read(name):
@@ -92,7 +93,9 @@ def main():
     candgroups=defaultdict(list)
     for r in candidates:candgroups[(r['cohort'],r['scm'])].append(r)
     ranking=[]
-    for metric in METRICS+('M4',)+('+'.join(METRICS),):
+    metricsets=[tuple(s) for n in range(1,7) for s in combinations(METRICS,n)]
+    for metric_set in metricsets+ [('M4',)]:
+        metric='+'.join(metric_set)
         for g in GAMMAS:
             for cohort in expected:
                 sg=[]
@@ -100,8 +103,7 @@ def main():
                     if c!=cohort or len(rs)<2:continue
                     u=np.array([num(r[f'regret_gain_g{g}']) for r in rs])
                     if metric=='M4':score=np.array([num(r['M4_structural_gain']) for r in rs])
-                    elif metric=='T1+T2+T3+T4+T5+T6':score=np.mean([[num(r[f'{m}_gain']) for m in METRICS] for r in rs],axis=1)
-                    else:score=np.array([num(r[f'{metric}_gain']) for r in rs])
+                    else:score=np.mean([[num(r[f'{m}_gain']) for m in metric_set] for r in rs],axis=1)
                     if metric=='M4':eligible=(score>TOL)
                     else:eligible=(score>TOL)
                     if eligible.any(): candidates_idx=np.where(eligible)[0]; order=sorted(candidates_idx,key=lambda i:(-score[i],ast.literal_eval(rs[i]['pair']),rs[i]['operation']))
