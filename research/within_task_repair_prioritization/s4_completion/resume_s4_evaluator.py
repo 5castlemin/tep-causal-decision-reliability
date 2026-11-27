@@ -45,6 +45,10 @@ def verify(checkpoint: dict) -> dict:
         path = OUT / name
         if not path.is_file() or sha(path) != digest:
             raise ValueError(f"preserved checkpoint digest mismatch: {name}")
+    for name, digest in checkpoint.get("evaluator_result_files", {}).items():
+        path = OUT / name
+        if not path.is_file() or sha(path) != digest:
+            raise ValueError(f"preserved evaluator result digest mismatch: {name}")
     expected_runner = checkpoint["runner_sha256"]
     if sha(HERE / "run_s4_pilot.py") != expected_runner:
         raise ValueError("corrected evaluator source digest mismatch")
@@ -63,11 +67,10 @@ def main() -> None:
     checkpoint = json.loads(CHECKPOINT.read_text(encoding="utf-8"))
     provenance = verify(checkpoint)
     outputs = ("unit_results_private.json", "candidate_values_private.json",
-               "interaction_values_private.json", "policy_results_private.json",
-               "public_policy_aggregates.csv", "pilot_summary_private.json",
-               "attempts_summary.json", "pilot_artifact_manifest.json")
-    if any((OUT / name).exists() for name in outputs):
-        raise FileExistsError("refusing to overwrite any evaluator continuation output")
+               "interaction_values_private.json", "policy_results_private.json")
+    present = [ (OUT / name).is_file() for name in outputs ]
+    if any(present) and not all(present):
+        raise FileExistsError("partial evaluator result set; refusing to recompute or overwrite")
     manifest = json.loads(RECOMMENDATIONS.read_text(encoding="utf-8"))
     binding = checkpoint["recommendation_binding"]
     if len(manifest) != binding["rows"]:
@@ -95,13 +98,14 @@ def main() -> None:
         unit_states.append({"unit": unit, "states": states, "policies": policies,
                             "diagnostics": diagnostics[0], "recommendations": recs})
     started = time.perf_counter()
-    unit_rows, candidate_rows, interactions, policy_rows = pilot.evaluator_stage(
-        unit_states, binding, OUT, started)
-    for name, rows in (("unit_results_private.json", unit_rows),
-                       ("candidate_values_private.json", candidate_rows),
-                       ("interaction_values_private.json", interactions),
-                       ("policy_results_private.json", policy_rows)):
-        pilot.write_json(OUT / name, rows)
+    if all(present):
+        unit_rows, candidate_rows, interactions, policy_rows = [
+            json.loads((OUT / name).read_text(encoding="utf-8")) for name in outputs]
+    else:
+        unit_rows, candidate_rows, interactions, policy_rows = pilot.evaluator_stage(
+            unit_states, binding, OUT, started)
+        for name, rows in zip(outputs, (unit_rows, candidate_rows, interactions, policy_rows)):
+            pilot.write_json(OUT / name, rows)
     cohort_meta = json.loads((OUT / "cohort_generation_summary.json").read_text(encoding="utf-8"))
     pilot.write_csv(OUT / "public_policy_aggregates.csv", pilot.summarize(
         unit_rows, candidate_rows, interactions, policy_rows, cohort_meta, binding,
