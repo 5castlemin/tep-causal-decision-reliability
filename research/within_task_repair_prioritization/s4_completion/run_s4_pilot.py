@@ -397,7 +397,7 @@ def evaluator_stage(unit_states: list[dict], binding: dict, out: Path, started: 
             row.update({f"{metric}_gain": q1[metric] - q0[metric] for metric in s3.T})
             candidate_rows.append(row)
         # Distinct initially feasible edit pair interactions; outcomes are revealed only here.
-        single_by_key = {json.loads(r["pair"]): r for r in candidate_rows if r["scm_id"] == unit["scm_id"] and r["cohort"] == unit["cohort"]}
+        single_by_key = {tuple(json.loads(r["pair"])): r for r in candidate_rows if r["scm_id"] == unit["scm_id"] and r["cohort"] == unit["cohort"]}
         feasible_by_key = {edit.key: graph for edit, graph in candidate_info}
         for e1, e2 in itertools.combinations([x[0] for x in candidate_info], 2):
             pair_order = []
