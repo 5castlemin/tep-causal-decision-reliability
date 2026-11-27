@@ -12,13 +12,31 @@
     "unit_results_private.json": "ab88bab2fef3d84ffe17e4af6fff40fe857742902b0b9e5240f323ccdd604370"
   },
   "analysis": {
-    "T_metrics": ["T1", "T2", "T3", "T4", "T5", "T6"],
+    "T_metrics": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6"
+    ],
     "subsets": "all 63 nonempty combinations; score = unweighted mean of member gains",
-    "selection": "maximize T gain per unit cost; tie by M4 gain per unit cost; then canonical M4 pair/operation order; absolute gain tolerance 1e-12",
+    "selection": "Match s3_analysis.select_greedy_option exactly: if any T gain > 1e-12, maximize T gain/cost, then M4 gain/cost, then canonical pair/operation; otherwise use positive M4 gain/cost fallback, then canonical order; no edit if neither T nor M4 has positive gain. All costs are unit.",
     "B1_outcomes": "reuse saved single-edit candidate outcomes and saved recommendation manifest; no evaluator calls",
     "B2_outcomes": "reuse locked saved policy_results_private.json",
-    "bootstrap": {"replicates": 10000, "seed": 2026112702, "unit": "SCM within cohort", "shared_indices_per_cohort": true, "interval": "pointwise percentile 95%"},
-    "no_generation": {"SCM": 0, "G0": 0, "observations": 0, "intervention_rows": 0},
+    "bootstrap": {
+      "replicates": 10000,
+      "seed": 2026112702,
+      "unit": "SCM within cohort",
+      "shared_indices_per_cohort": true,
+      "interval": "pointwise percentile 95%"
+    },
+    "no_generation": {
+      "SCM": 0,
+      "G0": 0,
+      "observations": 0,
+      "intervention_rows": 0
+    },
     "output": "aggregate-only public CSV/JSON"
   }
 }

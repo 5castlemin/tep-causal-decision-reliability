@@ -7,7 +7,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 CONTRACT = json.loads((HERE / "retrospective_contract.json").read_text(encoding="utf-8-sig"))
 ROOT = Path(os.environ["S4_PILOT_INPUT"])
-OUT = HERE / "outputs_attempt6"
+OUT = HERE / "outputs_attempt7"
 PRIVATE_OUT = Path(os.environ.get("S4_RETROSPECTIVE_PRIVATE_OUT", r"C:\\DAT_RESEARCH\\research-s4\\s4-1b-retrospective-20261127-v1"))
 T = tuple(f"T{i}" for i in range(1, 7))
 SETS = tuple(s for n in range(1, 7) for s in itertools.combinations(T, n))
@@ -62,16 +62,29 @@ def main():
                 b1.append({"cohort":cohort,"scm_id":sid,"policy":"T_GREEDY:"+'+'.join(subset),"budget":1,
                     "graph_hash":base['graph_hash'],"cost":0,"regret":base['regret'],"selected_k":base['selected_k'],"action_changed_from_s0":False,"n_initial_m4_candidates":0})
                 continue
-            best_t=max(x[0] for x in ranked)
-            tied=[x for x in ranked if abs(x[0]-best_t)<=TOL]
-            best_m=max(x[1] for x in tied)
-            tied=[x for x in tied if abs(x[1]-best_m)<=TOL]
+            positive_t=[x for x in ranked if x[0]>TOL]
+            fallback=not positive_t
+            eligible=positive_t if positive_t else [x for x in ranked if x[1]>TOL]
+            if not eligible:
+                base=policy_map[(cohort,sid,'S0',0)]
+                b1.append({"cohort":cohort,"scm_id":sid,"policy":"T_GREEDY:"+'+'.join(subset),"budget":1,
+                    "graph_hash":base['graph_hash'],"cost":0,"regret":base['regret'],"selected_k":base['selected_k'],
+                    "action_changed_from_s0":False,"n_initial_m4_candidates":len(rows)})
+                continue
+            if fallback:
+                best_m=max(x[1] for x in eligible)
+                tied=[x for x in eligible if abs(x[1]-best_m)<=TOL]
+            else:
+                best_t=max(x[0] for x in eligible)
+                tied=[x for x in eligible if abs(x[0]-best_t)<=TOL]
+                best_m=max(x[1] for x in tied)
+                tied=[x for x in tied if abs(x[1]-best_m)<=TOL]
             _,_,r=min(tied,key=lambda x:(json.loads(x[2]['pair']),x[2]['operation']))
             out=recmap[(cohort,sid,r['graph_hash'])]
             b1.append({"cohort":cohort,"scm_id":sid,"policy":"T_GREEDY:"+'+'.join(subset),"budget":1,
                 "graph_hash":r['graph_hash'],"cost":1,"regret":float(unitmap[(cohort,sid)]['s0_regret'])-float(r['regret_gain']),
                 "selected_k":out['selected_k'],"action_changed_from_s0":bool(r['action_changed']),"n_initial_m4_candidates":len(rows),
-                "selected_pair":r['pair'],"selected_operation":r['operation']})
+                "selected_pair":r['pair'],"selected_operation":r['operation'],"m4_fallback":fallback})
     # Add saved M4, S0, Full Greedy and B2 T outcomes for redundancy and benchmarks.
     compare=[]
     for cohort in ('general','opportunity_rich_diagnostic'):
