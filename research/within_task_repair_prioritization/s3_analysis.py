@@ -16,7 +16,7 @@ from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
 
 DATA = Path(os.environ.get("DAT_RESEARCH_ROOT", "C:/DAT_RESEARCH"))
-OUT = Path(__file__).resolve().parent / "outputs_v10"
+OUT = Path(__file__).resolve().parent / "outputs_v11"
 EXPECTED = {
  "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
  "C_DEVELOPMENT:proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
@@ -31,7 +31,7 @@ T = tuple(f"T{i}" for i in range(1, 7))
 SETS = tuple(s for n in range(1, 7) for s in itertools.combinations(T, n))
 BOOT_N, BOOT_SEED = 10_000, 2026112701
 GAIN_TOL = 1e-12
-LOOKAHEAD_SETS = tuple((t,) for t in T) + (T,) + tuple((a,b) for a,b in (("T3","T4"),("T3","T5"),("T3","T6"),("T4","T5"),("T4","T6"),("T5","T6")))
+LOOKAHEAD_SETS = SETS
 
 def sha(path: Path) -> str:
  h=hashlib.sha256()
