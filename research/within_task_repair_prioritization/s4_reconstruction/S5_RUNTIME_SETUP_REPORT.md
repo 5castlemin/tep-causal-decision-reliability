@@ -17,3 +17,9 @@ The 8 observational smoke rows and one hard-do smoke row are technical validatio
 ## Limits
 
 This report does not establish a complete historical environment reconstruction, identical DRF fit to the prior Research D run, or S5 resource eligibility. The actual S5 run still requires an immutable run contract, fixed seeds, separate recommendation seal, response generation under the locked cap, a process-tree resource monitor and independent analysis.
+
+## Final execution preflight
+
+The S5 implementation separates recommendation and evaluation processes. Each stage requires a distinct immutable lock bound to the exact commit, Git tree, contract digest and source-file digests. The recommendation stage seals all 22,000 G0×budget×policy rows before intervention sampling. The evaluation stage checks the recommendation digest and imports no repair policy module. A supervisor monitors the complete process tree every two seconds against the cumulative 14,400-second and 4-GiB caps; this is telemetry and process termination, not an OS sandbox. The isolated run must be clean-checkout and all raw outputs remain outside the repository.
+
+Focused S4/S5 contract suite passed 15 tests on the verified Python 3.11.15 runtime. S5 outcome generation has not started at this document revision.
