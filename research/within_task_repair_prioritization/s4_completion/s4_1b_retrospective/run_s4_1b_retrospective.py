@@ -7,7 +7,8 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 CONTRACT = json.loads((HERE / "retrospective_contract.json").read_text(encoding="utf-8-sig"))
 ROOT = Path(os.environ.get("S4_PILOT_INPUT", CONTRACT["input_root"]))
-OUT = HERE / "outputs_attempt3"
+OUT = HERE / "outputs_attempt4"
+PRIVATE_OUT = Path(os.environ.get("S4_RETROSPECTIVE_PRIVATE_OUT", r"C:\\DAT_RESEARCH\\research-s4\\s4-1b-retrospective-20261127-v1"))
 T = tuple(f"T{i}" for i in range(1, 7))
 SETS = tuple(s for n in range(1, 7) for s in itertools.combinations(T, n))
 TOL = 1e-12
@@ -115,10 +116,17 @@ def main():
           "zero_regret_fraction":float(np.mean(np.abs(vals)<=TOL)),"mean_edit_cost":float(np.mean([r['cost'] for r in rows])),
           "action_change_rate":float(np.mean([r['action_changed_from_s0'] for r in rows]))})
     OUT.mkdir(exist_ok=False)
-    write_csv(OUT/'b1_all_63_unit_recommendations.csv',b1)
+    PRIVATE_OUT.mkdir(parents=True, exist_ok=False)
+    write_csv(PRIVATE_OUT/'b1_all_63_unit_recommendations.csv',b1)
+    write_csv(PRIVATE_OUT/'opportunity_budget_unit_diagnostics.csv',krows)
     write_csv(OUT/'b1_all_63_policy_aggregates.csv',aggregate)
     write_csv(OUT/'policy_redundancy_b1_b2.csv',compare)
-    write_csv(OUT/'opportunity_budget_unit_diagnostics.csv',krows)
+    opportunity=[]
+    for cohort in ('general','opportunity_rich_diagnostic'):
+        rr=[r for r in krows if r['cohort']==cohort]
+        for b in (1,2,3,4):
+            opportunity.append({'cohort':cohort,'n_scm':len(rr),'budget':b,'K_gt_B_count':sum(r['K_initial']>b for r in rr),'K_gt_B_fraction':sum(r['K_initial']>b for r in rr)/len(rr)})
+    write_csv(OUT/'opportunity_budget_summary.csv',opportunity)
     summary={"analysis_id":CONTRACT['analysis_id'],"classification":"post_hoc_exploratory","n_units":64,"new_scm":0,"new_g0":0,"new_observation_rows":0,"new_intervention_rows":0,
       "B1_policy_rows":len(b1),"expected_B1_policy_rows":64*63,"input_hashes":{n:sha(ROOT/n) for n in names},"contracts":CONTRACT['analysis'],
       "cohorts":{}}
