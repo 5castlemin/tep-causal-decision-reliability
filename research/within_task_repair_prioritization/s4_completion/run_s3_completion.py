@@ -44,7 +44,8 @@ def main():
                 _,sel=prepare(request,data,proposal['nodes'],proposal['nodes'],delta,fit_model,static_mean_response,graph_result=graph_result)
                 target_value=sel['target']; scale=sel['sd_y']
                 predicted={float(x['k']):float(x['predicted_loss']) for x in sel['candidates']}
-                truth_loss={float(x['k']):((float(analytic_response(truth,action,float(x['action']))[proposal['target']])-target_value)/scale)**2 for x in sel['candidates']}
+                truth_spec=scm['truth_spec']
+                truth_loss={float(x['k']):((float(analytic_response(truth_spec,action,float(x['action']))[proposal['target']])-target_value)/scale)**2 for x in sel['candidates']}
                 out={}
                 for gamma in GAMMAS:
                     pred_obj={k:v+gamma*k*k for k,v in predicted.items()}
