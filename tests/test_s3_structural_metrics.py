@@ -93,8 +93,9 @@ class S3MetricTests(unittest.TestCase):
             g1, log = greedy(truth, g0, "X", "Y", cfg, subset, 1)
             looked = sequence2(truth, g0, "X", "Y", cfg, subset)
             self.assertIsNotNone(looked)
-            _, e1, e2, _, final = looked
+            _, e1, e2, _, final, fallback = looked
             self.assertIsNone(e2)
+            self.assertTrue(fallback)
             self.assertEqual(e1.pair, tuple(log[0]["pair"]))
             self.assertEqual(pe.graph_hash(final), pe.graph_hash(g1))
 

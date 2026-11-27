@@ -16,7 +16,7 @@ from integrated_pilot import fit_model
 from decision_mvp import static_mean_response
 
 DATA = Path(os.environ.get("DAT_RESEARCH_ROOT", "C:/DAT_RESEARCH"))
-OUT = Path(__file__).resolve().parent / "outputs_v9"
+OUT = Path(__file__).resolve().parent / "outputs_v10"
 EXPECTED = {
  "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
  "C_DEVELOPMENT:proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
@@ -180,7 +180,7 @@ def sequence2(truth,g0,action,target,config,metric_set):
   if not slog: return None
   pair=tuple(slog[0]['pair']); operation=slog[0]['operation']
   e=next(e for e in pool if e.pair==pair and e.operation==operation)
-  return (0.0,e,None,sg,sg)
+  return (0.0,e,None,sg,sg,True)
  # If no two-step sequence improves the selected structural potential, fallback ranks the full sequence by the frozen M4 gain before canonical IDs.
  fallback=not any(r[0]>GAIN_TOL for r in seqs)
  def key(r):
@@ -194,9 +194,9 @@ def sequence2(truth,g0,action,target,config,metric_set):
  improving=[r for r in seqs if r[0]>GAIN_TOL]
  if improving:
   improving.sort(key=lambda r:(-2,-r[0],-(m4_gain(r[1],truth,g0,initial,action,target,config)+m4_gain(r[2],truth,r[3],initial,action,target,config)),r[1].pair,r[1].operation,r[2].pair,r[2].operation))
-  return improving[0]
+  return (*improving[0],False)
  seqs.sort(key=lambda r:(-2,-(m4_gain(r[1],truth,g0,initial,action,target,config)+m4_gain(r[2],truth,r[3],initial,action,target,config)),-m4_gain(r[1],truth,g0,initial,action,target,config),r[1].pair,r[1].operation,r[2].pair,r[2].operation))
- return seqs[0]
+ return (*seqs[0],True)
 
 def load_cohort(cohort, cp, pp):
  actual={'cohort':sha(cp),'proposals':sha(pp)}
@@ -270,11 +270,12 @@ def main():
     choice=sequence2(truth,g0,proposal['action'],proposal['target'],cfg,combo)
     if choice is None: lg=g0; llog=[]
     else:
-     _,e1,e2,g1,g2=choice; lg=g2; llog=[e1]+([e2] if e2 is not None else [])
+     _,e1,e2,g1,g2,la_fallback=choice; lg=g2; llog=[e1]+([e2] if e2 is not None else [])
     lloss,lact=get_loss(lg)
     g1,grlog=greedy(truth,g0,proposal['action'],proposal['target'],cfg,combo,2)
     gloss,gact=get_loss(g1)
-    unit_private.append({'cohort':cohort,'scm':sid,'policy':'+'.join(combo)+'_LOOKAHEAD2','budget':2,'loss':lloss,'cost':len(llog),'action':lact,'same_as_s0':lact==base_action,'graph_hash':pe.graph_hash(lg),'edits':len(llog),'first_edit':json.dumps([list(llog[0].pair),llog[0].operation]) if llog else None,'fallbacks':0})
+    if choice is None: la_fallback=False
+    unit_private.append({'cohort':cohort,'scm':sid,'policy':'+'.join(combo)+'_LOOKAHEAD2','budget':2,'loss':lloss,'cost':len(llog),'action':lact,'same_as_s0':lact==base_action,'graph_hash':pe.graph_hash(lg),'edits':len(llog),'first_edit':json.dumps([list(llog[0].pair),llog[0].operation]) if llog else None,'fallbacks':int(la_fallback)})
     unit_private.append({'cohort':cohort,'scm':sid,'policy':'+'.join(combo)+'_GREEDY2','budget':2,'loss':gloss,'cost':len(grlog),'action':gact,'same_as_s0':gact==base_action,'graph_hash':pe.graph_hash(g1),'edits':len(grlog),'first_edit':json.dumps([grlog[0]['pair'],grlog[0]['operation']]) if grlog else None,'fallbacks':sum(x['fallback'] for x in grlog)})
    # One-edit value heterogeneity. Per-candidate rows remain in memory; public file is cohort-level aggregate only.
     vals=[]; _,zone,pedges,bdes=structural_sets(truth,proposal['action'],proposal['target'],cfg)
@@ -388,7 +389,7 @@ def main():
   for p in ('T3','T1+T2+T3+T4+T5+T6'):
    differing=sum(unit_lookup[(c,i,p,1)]['first_edit']!=unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] for i in ids if unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None)
    feasibility[c][f'{p}_different_first_edit_count']={'n_with_two_edits':sum(unit_lookup[(c,i,p,1)]['first_edit'] is not None and unit_lookup[(c,i,'M4_ORIGINAL',1)]['first_edit'] is not None for i in ids),'different_first_edit':differing}
- (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'1d31fbe417abee5191eea4fc0ebdc0b860de8280','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'metric_gain_rank_diagnostics':'SCM-balanced candidate pair ranking and best-hit summaries; exploratory only','new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
+ (OUT/'s3_summary.json').write_text(json.dumps({'gate':'S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS','correction_lock_commit':'1d31fbe417abee5191eea4fc0ebdc0b860de8280','cohorts':provenance,'m4_opportunity':feasibility,'policy_count':63,'budget_scope':[1,2,3,4],'lookahead_sets':['+'.join(s) for s in LOOKAHEAD_SETS],'lookahead_fallbacks_by_cohort':{c:{'+'.join(s):sum(x['fallbacks'] for x in unit_private if x['cohort']==c and x['policy']=='+'.join(s)+'_LOOKAHEAD2') for s in LOOKAHEAD_SETS} for c,_,_ in SOURCES},'bootstrap_replicates':BOOT_N,'bootstrap_seed':BOOT_SEED,'candidate_bootstrap_seed':2026112702,'metric_gain_rank_diagnostics':'SCM-balanced candidate pair ranking and best-hit summaries; exploratory only','new_scm':0,'new_g0':0,'deterministic_original_observation_matrices_reconstructed_in_memory':264,'new_independent_observational_draws':0,'new_intervention_rows':0,'source_integrity_after':final_sources,'elapsed_seconds':time.perf_counter()-start,'unit_rows_written_publicly':False,'analysis_status':'post-hoc exploratory; correction rules committed before corrected result calculation; earlier S3 results remain historical and superseded, not overwritten'},indent=2),encoding='utf-8')
  print((OUT/'s3_summary.json').read_text(encoding='utf-8'))
 
 if __name__=='__main__': main()
