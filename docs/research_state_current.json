@@ -577,9 +577,9 @@
       "id": "S4-PILOT-01",
       "title": "S4 independent exploratory pilot and mechanism feasibility",
       "status": "PARTIAL",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/original_pc_continuation_20261128/S4_STUDY2_CLOSEOUT.md; original-PC private pilot manifest/hash checks; other-PC S4-3 commits and archive unavailable",
-      "next_action": "Study 2 pilot closeout is limited to saved exploratory 64-unit pilot; do not claim S4-3 confirmation until its commits and private archive are transferred.",
-      "acceptance": "Saved pilot remains exploratory; outside-task zero-value interpretation corrected to not directly evaluated; confirmation remains NOT_VERIFIABLE.",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S4_PILOT_AND_REPLICATION_CLOSEOUT.md; saved pilot audited and local new 160-SCM replication completed; other-PC historical run unavailable",
+      "next_action": "Use local reconstruction evidence with conditional population and exploratory limitations; no claim of recovering other-PC runs",
+      "acceptance": "Pilot, development, and replication cohorts remain distinct; no raw private records published",
       "depends_on": [
         "S3-S4-01"
       ]
@@ -588,9 +588,9 @@
       "id": "S5-FEAS-01",
       "title": "Research D unit-level historical replay feasibility",
       "status": "BLOCKED",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/original_pc_continuation_20261128/S5_ARTIFACT_AVAILABILITY_REPORT.md; historical audit JSON SHA verified, private unit inputs absent, R/rpy2 runtime unavailable",
-      "next_action": "S5 reconstruction is authorized but blocked in this environment; resume only when the pinned R 4.5.3/drf 1.3.1 runtime and data/source inputs are available, then freeze a new pre-outcome execution lock.",
-      "acceptance": "No S5 observations, G0, recommendations, intervention responses or DRF refit generated; historical D run not represented as reproduced.",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S5_ARTIFACT_AVAILABILITY_REPORT.md; historical Research D private unit-level vectors were not available",
+      "next_action": "No D replay is claimed; S5 is a new conditional external semisynthetic reconstruction and is complete under its own contract",
+      "acceptance": "Separate historical D from S5; do not treat public D aggregates as raw-vector uncertainty or exact reproduction",
       "depends_on": [
         "S4-PILOT-01"
       ]
@@ -598,10 +598,10 @@
     {
       "id": "S5-ORIGINAL-PC-01",
       "title": "Original-PC S4 closeout and S5 execution feasibility",
-      "status": "BLOCKED",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/original_pc_continuation_20261128/ORIGINAL_PC_RESEARCH_CONTINUATION_STATUS.md; S4_STUDY2_CLOSEOUT.md; S5_ARTIFACT_AVAILABILITY_REPORT.md",
-      "next_action": "Transfer other-PC S4-3 commits/archive and restore access to the pinned R/DRF runtime and authorized S5 inputs; no generation until a new exact run lock is committed.",
-      "acceptance": "S4 historical pilot audited only; S4-3 not independently verified; S5 execution did not start and generated zero study rows.",
+      "status": "PARTIAL",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/ORIGINAL_PC_RESEARCH_CONTINUATION_STATUS.md; local S4 reconstruction and S5 completed; other-PC commits/private artifacts remain unavailable",
+      "next_action": "Do not block local closeout on missing other-PC artifacts; report those historical results as unverified",
+      "acceptance": "Local Study 2 reconstruction and Study 3 S5 execution reported; missing external handoff remains explicit",
       "depends_on": [
         "S4-PILOT-01",
         "S5-FEAS-01"
@@ -610,29 +610,41 @@
     {
       "id": "S4S5-RECON",
       "title": "S4 최소 재구축 및 독립 T5 재현",
-      "status": "PARTIAL",
-      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S4_MINIMAL_RECONSTRUCTION_CONTRACT.md",
-      "next_action": "커밋된 실행 lock 후 개발 80 SCM 및 독립 확인 160 SCM 실행; private outputs와 seed/provenance 봉인",
-      "acceptance": "단계별 lock, manifest, paired 결과, private archive hash, 검증된 CI",
+      "status": "VERIFIED",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S4_PILOT_AND_REPLICATION_CLOSEOUT.md; reconstructed development 80 SCM + new replication 160 SCM; primary paired interval includes zero; other-PC data remains unavailable",
+      "next_action": "Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified",
+      "acceptance": "Separate cohorts and historical claims; primary and CI reported; private unit records remain outside Git",
       "depends_on": []
     },
     {
       "id": "S5-ENV",
       "title": "S5 전용 외부 반합성 실행환경",
-      "status": "PARTIAL",
-      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S5_RUNTIME_SETUP_REPORT.md",
-      "next_action": "R/DRF 설치 후 Python-R/causalAssembly smoke tests, 결과 확인 뒤 신규 S5 lock 작성",
-      "acceptance": "실제 버전 및 import source 검증, hard-do sampling API와 자원 감시 통과",
+      "status": "VERIFIED",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S5_RUNTIME_SETUP_REPORT.md; S5_TARGETED_SMOKE_TEST_RESULTS.json; pinned causalAssembly/Station1 source and hashes verified",
+      "next_action": "No further runtime restoration; preserve dedicated environment fingerprint and private archive manifest",
+      "acceptance": "Python/R/DRF integration, pinned source, Station1 graph and numeric hard-do smoke passed; observed resource monitor recorded",
       "depends_on": []
+    },
+    {
+      "id": "S5-RUN",
+      "title": "S5 conditional external semisynthetic reconstruction",
+      "status": "VERIFIED",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S5_EXTERNAL_PRIMARY_RESULTS.md; S5_UNCERTAINTY_REPORT.md; outputs/s5_reconstruction_v1/; 200 G0, 22000 recommendations, 24995 response rows",
+      "next_action": "Preserve the conditional result and limitations; do not expand into further experiments in this task",
+      "acceptance": "Locked run completed within resource caps, independent saved-response analysis agrees, hashes recorded, raw vectors remain private",
+      "depends_on": [
+        "S5-ENV"
+      ]
     }
   ],
   "priority_order": [
-    "S5-ENV",
+    "S5-RUN",
     "S4S5-RECON",
     "TEAM-PRESENTATION",
+    "RESEARCH-E",
     "SUPP-01",
     "F-LITE-01",
-    "RESEARCH-E",
+    "S5-ENV",
     "FINAL-INTEGRATION",
     "BUDGET-REFINEMENT",
     "MFG-MICRO",

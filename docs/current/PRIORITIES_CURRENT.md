@@ -4,20 +4,21 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **S5-ENV — S5 전용 외부 반합성 실행환경**: R/DRF 설치 후 Python-R/causalAssembly smoke tests, 결과 확인 뒤 신규 S5 lock 작성 (PARTIAL)
-2. **S4S5-RECON — S4 최소 재구축 및 독립 T5 재현**: 커밋된 실행 lock 후 개발 80 SCM 및 독립 확인 160 SCM 실행; private outputs와 seed/provenance 봉인 (PARTIAL)
+1. **S5-RUN — S5 conditional external semisynthetic reconstruction**: Preserve the conditional result and limitations; do not expand into further experiments in this task (VERIFIED)
+2. **S4S5-RECON — S4 최소 재구축 및 독립 T5 재현**: Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified (VERIFIED)
 3. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| S5-ENV | PARTIAL | 없음 | R/DRF 설치 후 Python-R/causalAssembly smoke tests, 결과 확인 뒤 신규 S5 lock 작성 / 실제 버전 및 import source 검증, hard-do sampling API와 자원 감시 통과 |
-| S4S5-RECON | PARTIAL | 없음 | 커밋된 실행 lock 후 개발 80 SCM 및 독립 확인 160 SCM 실행; private outputs와 seed/provenance 봉인 / 단계별 lock, manifest, paired 결과, private archive hash, 검증된 CI |
+| S5-RUN | VERIFIED | S5-ENV | Preserve the conditional result and limitations; do not expand into further experiments in this task / Locked run completed within resource caps, independent saved-response analysis agrees, hashes recorded, raw vectors remain private |
+| S4S5-RECON | VERIFIED | 없음 | Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified / Separate cohorts and historical claims; primary and CI reported; private unit records remain outside Git |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
+| RESEARCH-E | VERIFIED | FINAL-INTEGRATION | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. / E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; Research E remains post-hoc CORE_COMPLETED_WITH_LIMITATIONS; protected assets untouched. |
 | SUPP-01 | VERIFIED | 없음 | No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation / S1 policy identity and shared-index contrasts corrected; S2 nested models and metric definitions audited; saved inputs and C–F frozen assets preserved; post-merge CI passed; limitations remain documented |
 | F-LITE-01 | VERIFIED | 없음 | 추가 실험 없음; 최종 보고서 검토 및 발표 준비 / 저장자료 hash 감사, 공통-index bootstrap 재집계, pending replay, PR/main CI 및 merge 후 상태 검증 완료; Research C–E frozen 유지; 제한사항 문서화 |
-| RESEARCH-E | VERIFIED | FINAL-INTEGRATION | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. / E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; Research E remains post-hoc CORE_COMPLETED_WITH_LIMITATIONS; protected assets untouched. |
+| S5-ENV | VERIFIED | 없음 | No further runtime restoration; preserve dedicated environment fingerprint and private archive manifest / Python/R/DRF integration, pinned source, Station1 graph and numeric hard-do smoke passed; observed resource monitor recorded |
 | FINAL-INTEGRATION | VERIFIED | 없음 | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 / 원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료 |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |
 | MFG-MICRO | PARTIAL | MFG-INTEGRATED | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 / hard-do 그래프 부모 삭제 결함과 참조/효과 식별 계약이 남음.외부 import·관측1/do16000 1완료,do30000중단·replay미실행;공식채택아님 |
@@ -50,8 +51,8 @@
 | MFG-EFFECT-SCOPE | BLOCKED | DYNAMIC-SCOPE | STOP-TEP-EFFECT-TRACK:현재경로동결. 추가TEP시험·패치·후속검토문서권고없음. SYNTH-FINAL로현재우선순위이동 / 최대2후보비교/1선택. 출처있는정책집합·비자명한목표/H·실패포함선택손실을정당화못함; API반응성/GT부재와구분 |
 | DYNAMIC-SCOPE | BLOCKED | VALVE-TRANSITION, REF-B | B축약계약판정2·미채택초안보존. 이후효과중심검토도STOP이므로추가TEP설계확대중단 / 4node/12미채점후보·부모폐쇄/비간선/발견대상/비자명선택/독립평가의 미충족조건 명시. 공식연구설계변경 아님 |
 | SYNTH-FINAL | VERIFIED | ERROR-DIAG, PILOT-CONFIRM | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 / A/D/E범위내지지,C/B1부분지지,B2추가정보미확립,F제조미검증.162쌍93/4/65·114경로유지48/3/63;새학습/do0 |
-| S4-PILOT-01 | PARTIAL | S3-S4-01 | Study 2 pilot closeout is limited to saved exploratory 64-unit pilot; do not claim S4-3 confirmation until its commits and private archive are transferred. / Saved pilot remains exploratory; outside-task zero-value interpretation corrected to not directly evaluated; confirmation remains NOT_VERIFIABLE. |
-| S5-FEAS-01 | BLOCKED | S4-PILOT-01 | S5 reconstruction is authorized but blocked in this environment; resume only when the pinned R 4.5.3/drf 1.3.1 runtime and data/source inputs are available, then freeze a new pre-outcome execution lock. / No S5 observations, G0, recommendations, intervention responses or DRF refit generated; historical D run not represented as reproduced. |
+| S4-PILOT-01 | PARTIAL | S3-S4-01 | Use local reconstruction evidence with conditional population and exploratory limitations; no claim of recovering other-PC runs / Pilot, development, and replication cohorts remain distinct; no raw private records published |
+| S5-FEAS-01 | BLOCKED | S4-PILOT-01 | No D replay is claimed; S5 is a new conditional external semisynthetic reconstruction and is complete under its own contract / Separate historical D from S5; do not treat public D aggregates as raw-vector uncertainty or exact reproduction |
 
 ## ID 이력
 
