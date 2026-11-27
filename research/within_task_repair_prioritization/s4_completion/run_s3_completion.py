@@ -42,7 +42,6 @@ def main():
                 if h in graph_cache:return graph_cache[h]
                 graph_result={'final_graph':[list(e) for e in sorted(e for e in g.values() if e!=pe.UNRES)]}
                 _,sel=prepare(request,data,proposal['nodes'],proposal['nodes'],delta,fit_model,static_mean_response,graph_result=graph_result)
-                truth_rows=analytic_response(truth,action,0.0)
                 target_value=sel['target']; scale=sel['sd_y']
                 predicted={float(x['k']):float(x['predicted_loss']) for x in sel['candidates']}
                 truth_loss={float(x['k']):((float(analytic_response(truth,action,float(x['action']))[proposal['target']])-target_value)/scale)**2 for x in sel['candidates']}
