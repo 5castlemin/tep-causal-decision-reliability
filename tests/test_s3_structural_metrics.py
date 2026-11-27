@@ -68,17 +68,22 @@ class S3MetricTests(unittest.TestCase):
         e_m1 = pe.Edit("M1", "FN", ("A", "B"), "add", ("A", "B"))
         e_m4 = pe.Edit("M4", "FN", ("C", "D"), "add", ("C", "D"))
         costs = {"add": 1.0}
-        chosen = select_greedy_option([
+        chosen, fallback = select_greedy_option([
             (e_m1, {}, 0.5, 0.1),
             (e_m4, {}, 0.5 + GAIN_TOL / 2, 0.8),
         ], costs)
         self.assertIs(chosen[0], e_m4)
-        chosen = select_greedy_option([
+        self.assertFalse(fallback)
+        chosen, fallback = select_greedy_option([
             (e_m4, {}, 0.5, 0.2),
             (e_m1, {}, 0.5, 0.2),
         ], costs)
         self.assertIs(chosen[0], e_m1)
-        self.assertIsNone(select_greedy_option([(e_m1, {}, 0.0, 0.0)], costs))
+        self.assertFalse(fallback)
+        chosen, fallback = select_greedy_option([(e_m1, {}, 0.0, 0.5)], costs)
+        self.assertIs(chosen[0], e_m1)
+        self.assertTrue(fallback)
+        self.assertEqual(select_greedy_option([(e_m1, {}, 0.0, 0.0)], costs), (None, True))
 
 
 if __name__ == "__main__":

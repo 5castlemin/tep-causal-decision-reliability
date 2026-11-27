@@ -9,7 +9,7 @@
   "lookahead_scope": "all_63_if_pre-outcome_feasibility_passes_else_historical_13_set",
   "bootstrap": {"replicates": 10000, "seed": 2026112701, "unit": "SCM", "common_indices_within_cohort": true, "interval": "pointwise_percentile"},
   "gain_tolerance": 1e-12,
-  "greedy_order": ["T_subset_gain_per_cost", "frozen_M4_gain_per_cost_within_tolerance", "canonical_metric_pair_operation"],
+  "greedy_order": ["positive_T_subset_gain_per_cost", "frozen_M4_gain_per_cost_as_tie_break_within_tolerance", "canonical_metric_pair_operation", "frozen_M4_gain_per_cost_fallback_if_no_positive_T_gain"],
   "lookahead_fallback": "exact_one_step_greedy_for_same_metric_subset",
   "t5_closure": "all_directed_learner_graph_nodes_then_restrict_scored_pairs_to_fixed_task_zone",
   "random_m4": "exact_uniform_expectation_over_currently_legal_initial_M4_candidates",
@@ -21,3 +21,4 @@
   "existing_outputs_overwrite": false,
   "confirmatory": false
 }
+

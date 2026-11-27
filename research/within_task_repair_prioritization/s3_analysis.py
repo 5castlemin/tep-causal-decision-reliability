@@ -126,13 +126,19 @@ def select_greedy_option(options, costs):
  `options` rows are (edit, resulting_graph, T_gain, M4_gain). Tolerance is
  absolute in normalized gain-per-cost units and fixed by GAIN_TOL.
  """
- eligible=[r for r in options if r[2]>GAIN_TOL or r[3]>GAIN_TOL]
- if not eligible: return None
- best_t=max(r[2]/costs[r[0].operation] for r in eligible)
- tied=[r for r in eligible if abs(r[2]/costs[r[0].operation]-best_t)<=GAIN_TOL]
- best_m=max(r[3]/costs[r[0].operation] for r in tied)
- tied=[r for r in tied if abs(r[3]/costs[r[0].operation]-best_m)<=GAIN_TOL]
- return min(tied,key=lambda r:(pe.METRICS.index(r[0].metric),r[0].pair,r[0].operation))
+ t_positive=[r for r in options if r[2]>GAIN_TOL]
+ fallback=not t_positive
+ eligible=t_positive if t_positive else [r for r in options if r[3]>GAIN_TOL]
+ if not eligible: return None, fallback
+ if fallback:
+  best_m=max(r[3]/costs[r[0].operation] for r in eligible)
+  tied=[r for r in eligible if abs(r[3]/costs[r[0].operation]-best_m)<=GAIN_TOL]
+ else:
+  best_t=max(r[2]/costs[r[0].operation] for r in eligible)
+  tied=[r for r in eligible if abs(r[2]/costs[r[0].operation]-best_t)<=GAIN_TOL]
+  best_m=max(r[3]/costs[r[0].operation] for r in tied)
+  tied=[r for r in tied if abs(r[3]/costs[r[0].operation]-best_m)<=GAIN_TOL]
+ return min(tied,key=lambda r:(pe.METRICS.index(r[0].metric),r[0].pair,r[0].operation)), fallback
 
 def greedy(truth,g0,action,target,config,metric_set,budget,initial=None):
  initial=initial or pe.metrics(truth,g0,action,target,config); g=dict(g0); pool=[e for e in pe.candidates(truth,g0,action,target,config) if e.metric=='M4']; log=[]
@@ -148,10 +154,10 @@ def greedy(truth,g0,action,target,config,metric_set,budget,initial=None):
    mgain=m4_gain(e,truth,g,initial,action,target,config)
    options.append((e,trial,qgain,mgain))
   if not options: break
-  selected=select_greedy_option(options,dict(config.costs))
+  selected,fallback=select_greedy_option(options,dict(config.costs))
   if selected is None: break
   e,trial,qgain,mgain=selected
-  log.append({'kind':e.kind,'pair':list(e.pair),'operation':e.operation,'q_gain':qgain,'m4_gain':mgain,'fallback':False,'before_hash':pe.graph_hash(g),'after_hash':pe.graph_hash(trial)})
+  log.append({'kind':e.kind,'pair':list(e.pair),'operation':e.operation,'q_gain':qgain,'m4_gain':mgain,'fallback':fallback,'before_hash':pe.graph_hash(g),'after_hash':pe.graph_hash(trial)})
   g=trial; pool=[x for x in pool if x.key!=e.key]
  return g,log
 
