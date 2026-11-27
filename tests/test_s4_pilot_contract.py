@@ -43,6 +43,16 @@ class S4PilotContractTests(unittest.TestCase):
         self.assertEqual(config.normalization, "fixed_opportunity")
         self.assertEqual(set(dict(config.costs).values()), {1})
 
+    def test_serialized_candidate_pairs_are_hashable_and_scoped_to_scm(self):
+        rows = [
+            {"cohort": "general", "scm_id": "u1", "pair": '["X", "M"]', "value": 1},
+            {"cohort": "general", "scm_id": "u1", "pair": '["M", "Y"]', "value": 2},
+            {"cohort": "general", "scm_id": "u2", "pair": '["X", "M"]', "value": 3},
+        ]
+        index = pilot.candidate_pair_index(rows, "u1", "general")
+        self.assertEqual(set(index), {("X", "M"), ("M", "Y")})
+        self.assertEqual(index[("X", "M")]["value"], 1)
+
     def test_resource_monitor_reports_current_process_on_windows(self):
         value = pilot.process_rss_bytes()
         self.assertIs(type(value), int)

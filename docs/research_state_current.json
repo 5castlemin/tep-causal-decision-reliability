@@ -564,13 +564,35 @@
     },
     {
       "id": "S3-S4-01",
-      "title": "S3 completion and proposed independent S4 prioritization study",
+      "title": "S3 completion and independent exploratory S4 pilot",
       "status": "PARTIAL",
-      "evidence": "research/within_task_repair_prioritization/s4_completion/RESEARCH_S3_COMPLETION_REPORT.md; tables/completion_v3/; S3_COMPLETION_ANALYSIS_LOCK.json; S4 contract is design-only",
-      "next_action": "No new cohort execution; review proposed S4 estimand, independent pilot variance and precision target before separate authorization",
-      "acceptance": "Existing C cohort-only reanalysis, original SQLite hashes and aggregate-only publication verified; S3 remains post-hoc; S4 not executed; no Research D unit-level extension",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/S4_PREFLIGHT_AUDIT.md; S4_PILOT_EXECUTION_REPORT.md; S4S5_GATE_CLOSEOUT.md; pilot run s4-independent-pilot-20261127-v1; branch research/s4-s5-independent-pilot",
+      "next_action": "Keep confirmation protocol proposed pending a separately approved comparator/estimand/precision lock; do not generate confirmation SCMs. Research D replay remains blocked until private unit artifacts are available.",
+      "acceptance": "S3 remains post-hoc; S4 exploratory pilot completed with 32 general + 32 structurally selected units and documented code-recovery/resource telemetry limitations; S5 not assessable from available unit-level artifacts.",
       "depends_on": [
         "S3-01"
+      ]
+    },
+    {
+      "id": "S4-PILOT-01",
+      "title": "S4 independent exploratory pilot and mechanism feasibility",
+      "status": "PARTIAL",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/RESEARCH_S4_PILOT_EXECUTION_REPORT.md; outputs_pilot_v2/; external checkpoint lock SHA-256 d7446ab164250af8f64f101bc6ffc5f8829444470186a47785b792b7e3d113ac",
+      "next_action": "Close out with documented limitations; write any independent confirmation protocol and obtain explicit approval before generating a confirmation cohort.",
+      "acceptance": "64 pilot units evaluated; original samples and recommendations preserved; only aggregate outputs public; pilot classified exploratory; no Research D/final cohort generation.",
+      "depends_on": [
+        "S3-S4-01"
+      ]
+    },
+    {
+      "id": "S5-FEAS-01",
+      "title": "Research D unit-level historical replay feasibility",
+      "status": "BLOCKED",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/S5_CAUSALASSEMBLY_FEASIBILITY_REPORT.md; approved local root contains only historical reaudit summary",
+      "next_action": "No replay until private G0/recommendation/training-frame/response-vector artifacts are restored with matching hashes and separately frozen replay authorization.",
+      "acceptance": "No substitute D data generated; no station search; no new DRF fit or intervention response.",
+      "depends_on": [
+        "S4-PILOT-01"
       ]
     }
   ],
@@ -610,7 +632,9 @@
     "VALVE-TRANSITION",
     "MFG-EFFECT-SCOPE",
     "DYNAMIC-SCOPE",
-    "SYNTH-FINAL"
+    "SYNTH-FINAL",
+    "S4-PILOT-01",
+    "S5-FEAS-01"
   ],
   "id_history": [
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",
@@ -657,7 +681,8 @@
     "2026-11-26 — F-LITE-01 added as completed post-hoc verification-policy evidence; no new experiments planned",
     "2026-11-26 — F-Lite final audit reaggregated saved rows only; corrected Random action-change interpretation, recomputed shared-index pointwise bootstrap, replayed pending states, and verified original C/F artifact hashes; no research samples generated; PR #46 update and merge verification pending",
     "2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only.",
-    "2026-11-27: S3-01 added as a separate post-hoc extension; Research C-F closeout gates and frozen results remain unchanged."
+    "2026-11-27: S3-01 added as a separate post-hoc extension; Research C-F closeout gates and frozen results remain unchanged.",
+    "2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked."
   ],
   "integration_review": {
     "user_approved": true,

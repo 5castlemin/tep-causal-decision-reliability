@@ -261,6 +261,12 @@ def state_record(graph, edit_sequence=(), policy="diagnostic", budget=0):
             "edit_sequence": list(edit_sequence), "policy": policy, "budget": budget}
 
 
+def candidate_pair_index(rows: list[dict], scm_id: str, cohort: str) -> dict[tuple, dict]:
+    """Build a hashable canonical pair index for one SCM's serialized candidates."""
+    return {tuple(json.loads(row["pair"])): row for row in rows
+            if row["scm_id"] == scm_id and row["cohort"] == cohort}
+
+
 def build_states(unit: dict, cohort: str) -> tuple[dict[str, dict], list[dict], list[dict]]:
     truth, g0 = pe.state(unit["proposal"]["topology_edges"]), unit["initial_graph"]
     action, target, cfg = unit["proposal"]["action"], unit["proposal"]["target"], unit["config"]
@@ -397,7 +403,7 @@ def evaluator_stage(unit_states: list[dict], binding: dict, out: Path, started: 
             row.update({f"{metric}_gain": q1[metric] - q0[metric] for metric in s3.T})
             candidate_rows.append(row)
         # Distinct initially feasible edit pair interactions; outcomes are revealed only here.
-        single_by_key = {tuple(json.loads(r["pair"])): r for r in candidate_rows if r["scm_id"] == unit["scm_id"] and r["cohort"] == unit["cohort"]}
+        single_by_key = candidate_pair_index(candidate_rows, unit["scm_id"], unit["cohort"])
         feasible_by_key = {edit.key: graph for edit, graph in candidate_info}
         for e1, e2 in itertools.combinations([x[0] for x in candidate_info], 2):
             pair_order = []
