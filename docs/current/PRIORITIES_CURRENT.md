@@ -4,14 +4,16 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
-2. **SUPP-01 — Decision-objective robustness and structural-metric validation**: No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation (VERIFIED)
-3. **F-LITE-01 — Research F-Lite reference-blind query policy post-hoc evaluation**: 추가 실험 없음; 최종 보고서 검토 및 발표 준비 (VERIFIED)
+1. **S5-ENV — S5 전용 외부 반합성 실행환경**: R/DRF 설치 후 Python-R/causalAssembly smoke tests, 결과 확인 뒤 신규 S5 lock 작성 (PARTIAL)
+2. **S4S5-RECON — S4 최소 재구축 및 독립 T5 재현**: 커밋된 실행 lock 후 개발 80 SCM 및 독립 확인 160 SCM 실행; private outputs와 seed/provenance 봉인 (PARTIAL)
+3. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| S5-ENV | PARTIAL | 없음 | R/DRF 설치 후 Python-R/causalAssembly smoke tests, 결과 확인 뒤 신규 S5 lock 작성 / 실제 버전 및 import source 검증, hard-do sampling API와 자원 감시 통과 |
+| S4S5-RECON | PARTIAL | 없음 | 커밋된 실행 lock 후 개발 80 SCM 및 독립 확인 160 SCM 실행; private outputs와 seed/provenance 봉인 / 단계별 lock, manifest, paired 결과, private archive hash, 검증된 CI |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
 | SUPP-01 | VERIFIED | 없음 | No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation / S1 policy identity and shared-index contrasts corrected; S2 nested models and metric definitions audited; saved inputs and C–F frozen assets preserved; post-merge CI passed; limitations remain documented |
 | F-LITE-01 | VERIFIED | 없음 | 추가 실험 없음; 최종 보고서 검토 및 발표 준비 / 저장자료 hash 감사, 공통-index bootstrap 재집계, pending replay, PR/main CI 및 merge 후 상태 검증 완료; Research C–E frozen 유지; 제한사항 문서화 |
@@ -99,5 +101,7 @@
 - 2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only.
 - 2026-11-27: S3-01 added as a separate post-hoc extension; Research C-F closeout gates and frozen results remain unchanged.
 - 2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked.
+- S4S5-RECON: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.
+- S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

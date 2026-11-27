@@ -1,0 +1,52 @@
+{
+  "schema": "S4_MINIMAL_RECONSTRUCTION_CONTRACT_V1",
+  "status": "CONTRACT_LOCKED_BEFORE_GENERATION",
+  "classification": "post_hoc_development_and_new_independent_replication",
+  "target_population": "outcome_blind accepted strict-indirect proposals under the existing Q-common-admitted proposal builder; not unconditional Research C population",
+  "generator": "committed Research C step4c1 proposal, SCM, observation, and G0 corruption functions",
+  "task": "outcome-blind strict indirect task from accepted proposal",
+  "learner": "existing Ridge alpha=1.0 and fixed k grid {-1,-0.5,0,0.5,1}",
+  "training_rows_per_scm": 512,
+  "objective_primary": "gamma=0 standardized analytic true-SCM decision regret",
+  "other_objectives": [0.2, 0.5],
+  "atomic_edit_cost": 1,
+  "random_intervention_rows": 0,
+  "policy_set": ["S0", "M1", "M2", "M3", "Frozen M4", "Full Greedy", "all 63 T1-T6 nonempty equal-weight subsets", "T5-guided M4"],
+  "development": {
+    "phase": "development",
+    "run_id": "s4-minimal-development-20261128-v1",
+    "seed_namespace": "research-s4-minimal-development-20261128-v1",
+    "master_seed": 7385120911,
+    "target_scm": 80,
+    "proposal_cap": 8192,
+    "proposal_prefix": "s4min-dev",
+    "cohort": "qcommon_general",
+    "selection": "all admitted strict-indirect proposals; no outcome-based selection",
+    "bootstrap_seed": 5847092341
+  },
+  "confirmation": {
+    "phase": "confirmation",
+    "run_id": "s4-t5-independent-replication-20261128-v1",
+    "seed_namespace": "research-s4-independent-confirmation-20261128-v1",
+    "master_seed": 15802476119,
+    "target_scm": 160,
+    "proposal_cap": 16384,
+    "proposal_prefix": "s4rep-conf",
+    "cohort": "qcommon_general",
+    "primary": "T5_GUIDED_M4 minus FROZEN_M4 regret, B=1, gamma=0; negative favors T5",
+    "bootstrap_seed": 3694021587,
+    "bootstrap_replicates": 10000,
+    "interval": "SCM-level paired percentile interval",
+    "precision_target": 0.01,
+    "sesoi": null,
+    "sample_size_rule": "fixed maximum 160; no outcome-dependent expansion or replacement"
+  },
+  "resources": {
+    "wall_seconds_per_phase": 7200,
+    "process_rss_bytes": 4294967296,
+    "parallelism": 1,
+    "resume": "no replacement; preserve completed generated units and state; do not retry generation after outcome access"
+  },
+  "information_boundary": "Recommendation and graph manifests are sealed before analytic truth response is queried; repair policy has no truth-outcome input.",
+  "public_data": "aggregate only; unit inputs, recommendations, evaluation rows and fitted objects remain outside Git"
+}

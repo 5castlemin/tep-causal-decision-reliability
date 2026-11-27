@@ -606,9 +606,29 @@
         "S4-PILOT-01",
         "S5-FEAS-01"
       ]
+    },
+    {
+      "id": "S4S5-RECON",
+      "title": "S4 최소 재구축 및 독립 T5 재현",
+      "status": "PARTIAL",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S4_MINIMAL_RECONSTRUCTION_CONTRACT.md",
+      "next_action": "커밋된 실행 lock 후 개발 80 SCM 및 독립 확인 160 SCM 실행; private outputs와 seed/provenance 봉인",
+      "acceptance": "단계별 lock, manifest, paired 결과, private archive hash, 검증된 CI",
+      "depends_on": []
+    },
+    {
+      "id": "S5-ENV",
+      "title": "S5 전용 외부 반합성 실행환경",
+      "status": "PARTIAL",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S5_RUNTIME_SETUP_REPORT.md",
+      "next_action": "R/DRF 설치 후 Python-R/causalAssembly smoke tests, 결과 확인 뒤 신규 S5 lock 작성",
+      "acceptance": "실제 버전 및 import source 검증, hard-do sampling API와 자원 감시 통과",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "S5-ENV",
+    "S4S5-RECON",
     "TEAM-PRESENTATION",
     "SUPP-01",
     "F-LITE-01",
@@ -694,7 +714,9 @@
     "2026-11-26 — F-Lite final audit reaggregated saved rows only; corrected Random action-change interpretation, recomputed shared-index pointwise bootstrap, replayed pending states, and verified original C/F artifact hashes; no research samples generated; PR #46 update and merge verification pending",
     "2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only.",
     "2026-11-27: S3-01 added as a separate post-hoc extension; Research C-F closeout gates and frozen results remain unchanged.",
-    "2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked."
+    "2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked.",
+    "S4S5-RECON: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.",
+    "S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates."
   ],
   "integration_review": {
     "user_approved": true,
