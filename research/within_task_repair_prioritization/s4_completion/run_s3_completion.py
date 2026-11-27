@@ -147,13 +147,16 @@ def main():
             public_inter.append({'cohort':c,'gamma':ga,'ordered_pair_rows':len(rr),'mean_interaction':float(np.mean(vv)) if vv else None,'median_interaction':float(np.median(vv)) if vv else None,'positive_complementarity_fraction':float(np.mean(np.array(vv)>TOL)) if vv else None,'negative_substitution_fraction':float(np.mean(np.array(vv)<-TOL)) if vv else None})
     csvout('two_edit_interactions_aggregate.csv',public_inter)
     # Common-index paired bootstrap for selected ex-post contrasts (all paired per SCM).
-    paired=[]; rng=np.random.default_rng(BOOT_SEED)
+    paired=[]
     for c in ('C_DEVELOPMENT','C_HELDOUT'):
         base_rows=[r for r in all_units if r.get('gamma') in GAMMAS and r['cohort']==c]
+        rng=np.random.default_rng(BOOT_SEED + (0 if c=='C_DEVELOPMENT' else 1))
+        n=len([r for r in base_rows if r['gamma']==GAMMAS[0]])
+        ix=rng.integers(0,n,size=(BOOT,n))
         for ga in GAMMAS:
-            vals=[r for r in base_rows if r['gamma']==ga]; n=len(vals); ix=rng.integers(0,n,size=(BOOT,n))
-            for label,col in [('base_minus_expost','base_regret','best_two_or_fewer_regret'),('base_minus_single','base_regret','best_single_regret')]:
-                d=np.array([r[col[0]]-r[col[1]] for r in vals])
+            vals=[r for r in base_rows if r['gamma']==ga]
+            for label,left,right in [('base_minus_expost','base_regret','best_two_or_fewer_regret'),('base_minus_single','base_regret','best_single_regret')]:
+                d=np.array([float(r[left])-float(r[right]) for r in vals])
                 boot=d[ix].mean(axis=1)
                 paired.append({'cohort':c,'gamma':ga,'contrast':label,'mean':float(d.mean()),'ci95_low':float(np.quantile(boot,.025)),'ci95_high':float(np.quantile(boot,.975)),'better':int(np.sum(d>TOL)),'worse':int(np.sum(d< -TOL)),'tie':int(np.sum(np.abs(d)<=TOL)),'n':n,'bootstrap_seed':BOOT_SEED,'replicates':BOOT})
     csvout('expost_paired_bootstrap.csv',paired)
