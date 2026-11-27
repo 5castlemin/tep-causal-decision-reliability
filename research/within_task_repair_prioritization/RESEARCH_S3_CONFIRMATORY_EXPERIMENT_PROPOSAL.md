@@ -1,0 +1,5 @@
+# Prospective confirmation proposal (not executed)
+
+Question: among a pre-defined conditionally eligible population with at least two initially DAG-feasible M4 candidates, does a locked task-structure prioritization policy improve decision regret versus frozen M4 at B=1 or B=2?
+
+Use a new independent SCM cohort from the original C generation distribution and a separately reported conditional multi-opportunity cohort. Select policy using Development only, freeze a single primary contrast, metric, tie rules, budget and analysis before outcomes, use SCM-cluster paired inference with precision-driven N planning, and preserve every eligible draw. The Held-out S3 exploration cannot serve as independent validation. No sample size is specified without a prospective variance/power and feasibility analysis. This proposal does not authorize generation.

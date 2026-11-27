@@ -1,0 +1,3 @@
+# Research D extension feasibility proposal (not executed)
+
+Before any extension, obtain the private Research D G0-level recommendation and response-vector artifacts with verified hashes. Without those files, T1–T6 opportunity counts and paired decision outcomes cannot be reanalyzed. If the artifacts become available, first run a read-only feasibility audit on the single fixed Station1 DGP, quantify eligible multiple-M4-opportunity G0s and check metric supports. Do not refit the DRF, generate intervention samples or combine C regret with D tracking loss. Separate approval would be required for execution.

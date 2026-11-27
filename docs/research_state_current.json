@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-26",
+  "checked_at": "2026-11-27",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -549,6 +549,18 @@
       "next_action": "No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation",
       "acceptance": "S1 policy identity and shared-index contrasts corrected; S2 nested models and metric definitions audited; saved inputs and C–F frozen assets preserved; post-merge CI passed; limitations remain documented",
       "depends_on": []
+    },
+    {
+      "id": "S3-01",
+      "title": "Within-task causal graph repair prioritization (post-hoc)",
+      "status": "PARTIAL",
+      "evidence": "research/within_task_repair_prioritization/RESEARCH_S3_FINAL_REPORT_KO.md; s3_integrity_manifest.json",
+      "next_action": "No further exploratory search; any independent confirmation requires a separately frozen protocol and approval.",
+      "acceptance": "Maintain exploratory status and documented limits; no new cohort or intervention generation in S3.",
+      "depends_on": [
+        "SUPP-01",
+        "F-LITE-01"
+      ]
     }
   ],
   "priority_order": [
@@ -633,7 +645,8 @@
     "2026-11-26: PR #44 merged as 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; Actions 45760776088 SUCCESS. Research C–D–E closeout is integrated. No new experimental data were generated; move to report/presentation preparation.",
     "2026-11-26 — F-LITE-01 added as completed post-hoc verification-policy evidence; no new experiments planned",
     "2026-11-26 — F-Lite final audit reaggregated saved rows only; corrected Random action-change interpretation, recomputed shared-index pointwise bootstrap, replayed pending states, and verified original C/F artifact hashes; no research samples generated; PR #46 update and merge verification pending",
-    "2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only."
+    "2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only.",
+    "2026-11-27: S3-01 added as a separate post-hoc extension; Research C-F closeout gates and frozen results remain unchanged."
   ],
   "integration_review": {
     "user_approved": true,

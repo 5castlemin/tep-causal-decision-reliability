@@ -1,0 +1,86 @@
+{
+  "gate": "S3_GREEDY_AND_LOOKAHEAD_COMPLETED_WITH_LIMITATIONS",
+  "cohorts": {
+    "C_DEVELOPMENT": {
+      "cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+      "proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584"
+    },
+    "C_HELDOUT": {
+      "cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+      "proposals": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+    }
+  },
+  "m4_opportunity": {
+    "C_DEVELOPMENT": {
+      "n": 64,
+      "two_or_more_feasible": 11,
+      "any_feasible": 31,
+      "candidate_opportunity_pass_threshold": true,
+      "T3_different_first_edit_count": {
+        "n_with_two_edits": 31,
+        "different_first_edit": 4
+      },
+      "T1+T2+T3+T4+T5+T6_different_first_edit_count": {
+        "n_with_two_edits": 31,
+        "different_first_edit": 3
+      }
+    },
+    "C_HELDOUT": {
+      "n": 200,
+      "two_or_more_feasible": 35,
+      "any_feasible": 103,
+      "candidate_opportunity_pass_threshold": true,
+      "T3_different_first_edit_count": {
+        "n_with_two_edits": 103,
+        "different_first_edit": 16
+      },
+      "T1+T2+T3+T4+T5+T6_different_first_edit_count": {
+        "n_with_two_edits": 103,
+        "different_first_edit": 15
+      }
+    }
+  },
+  "policy_count": 63,
+  "budget_scope": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "lookahead_sets": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T1+T2+T3+T4+T5+T6",
+    "T3+T4",
+    "T3+T5",
+    "T3+T6",
+    "T4+T5",
+    "T4+T6",
+    "T5+T6"
+  ],
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 2026112701,
+  "candidate_bootstrap_seed": 2026112702,
+  "new_scm": 0,
+  "new_g0": 0,
+  "deterministic_original_observation_matrices_reconstructed_in_memory": 264,
+  "new_independent_observational_draws": 0,
+  "new_intervention_rows": 0,
+  "source_integrity_after": {
+    "C_DEVELOPMENT": {
+      "cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+      "proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584"
+    },
+    "C_HELDOUT": {
+      "cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+      "proposals": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+    }
+  },
+  "elapsed_seconds": 67.90354369999841,
+  "unit_rows_written_publicly": false,
+  "analysis_status": "post-hoc exploratory; definitions and runner were not committed before the first S3 exploratory calculation; no confirmatory interpretation"
+}

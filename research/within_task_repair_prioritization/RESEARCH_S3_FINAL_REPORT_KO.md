@@ -1,0 +1,27 @@
+# Research S3 최종 보고서
+
+## 핵심 판정
+
+Gate는 `S3_GREEDY_AND_LOOKAHEAD_COMPLETED_WITH_LIMITATIONS`입니다. 264개의 기존 Research C SCM 입력을 해시 검증 후 결정론적으로 복원했습니다. 신규 SCM, G0, 독립 관측표본 및 개입표본 생성은 0입니다. 결과는 모두 post-hoc 탐색입니다.
+
+## 질문과 설계
+
+M4로 분류된 과제 관련 구조 오류 안에서도 어떤 단일 수정이 decision regret에 더 큰 차이를 만드는지, T1–T6 구조 점수와 제한적인 2-step lookahead가 수정 우선순위를 설명하는지 살폈습니다. T1 skeleton F1, T2 direction F1, T3 X→Y 경로 간선 recall, T4 reachability, T5 task-zone ancestor F1, T6 open backdoor 간선 recall을 사용했습니다. 모든 수식과 zero-support 규칙은 `RESEARCH_S3_METRIC_DEFINITIONS.md`에 있습니다.
+
+## 복수 수정 기회와 재현
+
+Development에서 11/64, Held-out에서 35/200 SCM에 초기 합법적 M4 후보가 두 개 이상 있었습니다. T3는 후보가 있는 SCM 가운데 Development 4/31, Held-out 16/103에서 M4와 첫 수정이 달랐습니다. 전체 여섯 지표 조합은 각각 3/31, 15/103에서 달랐습니다. 원본 graph/edit replay와 저장된 행동·Regret 대조가 통과했습니다.
+
+## 결과
+
+M4 대 Random-M4 기대치의 paired 평균차(M4−Random)는 Development -0.001068, 95% pointwise 구간 [-0.019703, 0.019316], Held-out -0.000745, [-0.010052, 0.008663]였습니다. 명확한 우열을 보이지 않습니다. B=1 여섯 지표 Greedy 평균 Regret은 Development .002560, Held-out .021573이며 M4는 각각 .023753, .029327입니다. 이는 63개 조합을 살펴본 사후 비교이므로 정책 우월성 증거가 아닙니다. B=2 Held-out에서는 T4+T5/T5가 평균 .002790으로 가장 낮았고, 결과를 본 뒤 선택된 최소값입니다.
+
+2-step T3+T4의 Held-out 평균 Regret은 .002790, Greedy counterpart는 .003717이며 차이 -0.000928, 95% 구간 [-0.002783, 0], better/worse/tie는 1/0/199였습니다. 드문 차이 하나에 집중되어 있으며 보편적 이득을 뒷받침하지 않습니다. T4 lookahead는 greedy와 200개 모두 같았습니다.
+
+단일 수정 효과는 유형·경로 역할에 따라 달랐고, 동일 오류 유형 내에서도 편익이 다를 수 있음을 보여줍니다. 그러나 오류 후보는 무작위 배정이 아니며 sparse subgroup과 cluster 구성이 결과를 제한합니다. FN·path 역할의 높은 평균을 보편 우선순위로 해석하지 않습니다.
+
+## 한계와 미수행
+
+첫 S3 계산 전에 코드와 계약을 커밋하지 못했으므로 모든 비교는 사후 탐색입니다. 63개 lookahead, 완전한 B=2 편익 상호작용, ex-post best-feasible 수정 기준선, 지표별 순위 상관/한계기여의 완전 factorial 분석, γ 목적함수 민감도, D 확장은 수행하지 않았습니다. Holm 보정 및 자원 메모리 측정도 없습니다. 이러한 분석은 결과 문서에 수행 완료로 표현하지 않았습니다.
+
+Research C의 원래 confirmatory Primary는 변경되지 않았습니다. C는 자체 설계 합성 SCM에 대한 근거이고, S3는 동일 코호트를 재사용한 post-hoc 해석입니다. Research D의 새 표본이나 실제 제조 환경 일반화 근거가 아닙니다. 신규 독립 확인 코호트가 필요한 주장은 새 정책이 M4보다 일반적으로 효율적이라는 주장입니다.

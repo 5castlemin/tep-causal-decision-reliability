@@ -1,0 +1,234 @@
+{
+  "classification": "POST_HOC_S3_EXPLORATORY",
+  "gate": "S3_GREEDY_AND_LOOKAHEAD_COMPLETED_WITH_LIMITATIONS",
+  "base_revision": "ad11afceb60a22958175b5a971f869869beac3e3",
+  "base_tree": "8c2e1926a3a70a409ea8b6a0ecc7fdb3aa79133a",
+  "source_code_sha256": {
+    "s3_analysis.py": "dada46ab34aadb20de468a29db22cf0f4030627482155bfb227ffd105aec3e0d",
+    "write_reports.py": "5be7d65c4f9d2a19131f4c21b5ae38e9f1de4f5011ec61cf11b6dac6a3961e3c",
+    "render_s3_figures.py": "920554cd02b87e1fa6419ea374f9627e6689d4afcce0f118064edaa6c5d70131"
+  },
+  "test_code_sha256": {
+    "tests/test_s3_public_artifacts.py": "4c285658eb3ab0797a3873f2fe93bde626a1ec9a48bd04e5e438db7c35d0e7e2",
+    "tests/test_s3_structural_metrics.py": "569cf4f55667176d7ceab97af3490558ae82fb84ca80d57cbc2007eb7d058249"
+  },
+  "files": [
+    {
+      "path": "research/within_task_repair_prioritization/.gitignore",
+      "sha256": "a7c22109c8d613c3d90667ba274fc80958077765bb4af963d40f16ec1a4a89c3",
+      "bytes": 36
+    },
+    {
+      "path": "research/within_task_repair_prioritization/build_integrity_manifest.py",
+      "sha256": "018697367e2c66fb8156e628aa926cc3218be5eb0c076226adfb4c9cf134fe87",
+      "bytes": 2150
+    },
+    {
+      "path": "research/within_task_repair_prioritization/figures/S3_LOOKAHEAD_PAIRED.svg",
+      "sha256": "be0ee6078a9bb008707e8cbdfcc4560131907a83ac84b587866e1f3cc23299e5",
+      "bytes": 6506
+    },
+    {
+      "path": "research/within_task_repair_prioritization/figures/S3_POLICY_HEATMAP.svg",
+      "sha256": "294a65612bae843c2293f096d1ea68d70308a5668c829f15a0105540f56c8c0e",
+      "bytes": 42891
+    },
+    {
+      "path": "research/within_task_repair_prioritization/render_s3_figures.py",
+      "sha256": "920554cd02b87e1fa6419ea374f9627e6689d4afcce0f118064edaa6c5d70131",
+      "bytes": 4397
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_ALL_SUBSET_GREEDY_RESULTS.md",
+      "sha256": "a22d13912bf93fbf8a8f39a68167040378adab0d6ca3ac9ddf86155fe15880c0",
+      "bytes": 2183
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_ANALYSIS_LOCK.md",
+      "sha256": "e43f85080fb5f874205f3eb833507714855d8b406b1a21191fdae4a2d3c3c001",
+      "bytes": 1110
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_CLAIMS_EVIDENCE_MATRIX.md",
+      "sha256": "cf4bfb448cd751b04a065b76e9a42e04c47d6d95602335bf5d7ac3c45ffeeee1",
+      "bytes": 1176
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_CONFIRMATORY_EXPERIMENT_PROPOSAL.md",
+      "sha256": "dac3fcac6637d42e44757b67d439a8eda367371237a8d4bac6d4a1eaeb2cfc08",
+      "bytes": 853
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_CONTRACT.md",
+      "sha256": "70171278a9330fef0271ba80d3ae2ee6b3eef1bdd745d7f18351bc9f8ae783d2",
+      "bytes": 2138
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_CRITICAL_REVIEW.md",
+      "sha256": "d506fd42cfb7cb7928800c6702ab9f38820968ffba790072b0a9db84e6a306d2",
+      "bytes": 988
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_ERROR_TYPE_ROLE_INTERACTION.md",
+      "sha256": "5b0cf5237b97c4099c2682a2e1ddc51cf8b524f4eea27f8c6562010af4ecaae8",
+      "bytes": 790
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_EXTERNAL_VALIDATION_PROPOSAL.md",
+      "sha256": "40f4e39418c402ea334082d1ef329e1dbf558fb1b0bcd5d9d2b44fd84be0dc8f",
+      "bytes": 613
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_FEASIBILITY.md",
+      "sha256": "9d9fbcee8d5aca3e7ee45586cd677b84a531a62a24dd5482ba3420c0f94dbe9c",
+      "bytes": 1157
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_FINAL_REPORT_KO.md",
+      "sha256": "affe5dff8f96ce8610a52b36b70f7e296ab0fe3168795747d4e4a4e9eb294625",
+      "bytes": 3465
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_FINAL_RESULTS.md",
+      "sha256": "054937a7ede07eb783977e11ed26e218537d158d5153c2e9d4871856602304c4",
+      "bytes": 992
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_INTEGRITY_AUDIT.md",
+      "sha256": "114f66297610b74abc299357a872c580098f66b74dab704ae8d6003298cdc591",
+      "bytes": 1598
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_LOOKAHEAD_RESULTS.md",
+      "sha256": "da4b169a69ff266b56865c44d40b515d6239a4e27ceb1c2da19ec575dec7bd6a",
+      "bytes": 802
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_MECHANISM_ANALYSIS.md",
+      "sha256": "79d04e4ba6855a0317509b7911a57146ede89ec045b937401c186cf5b34caf44",
+      "bytes": 2355
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_METRIC_COMPLEMENTARITY.md",
+      "sha256": "04be332ab3379dadd4b41fae22098f4bcf3607b49bd031e7d7954b8c0b23a0de",
+      "bytes": 708
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_METRIC_DEFINITIONS.md",
+      "sha256": "581e5ae96023a3879743ad2b0d4cb3b331df4e5d3082db5953f0223751293851",
+      "bytes": 1756
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_MULTI_EDIT_INTERACTION.md",
+      "sha256": "d6890b3da1839d3e1b0cf76e0a7cbb7e8b35cf298ee5cc327f2688cfa8473941",
+      "bytes": 509
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_OBJECTIVE_SENSITIVITY.md",
+      "sha256": "4ec2a64e2c0661cd538b81ee310003c692443e043ddd4afb48a91f3a9239675f",
+      "bytes": 390
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_PAPER_CONTRIBUTION_GUIDE.md",
+      "sha256": "2a3e70b066b4e075125bae2da47d4d1fa1dbc6d1644e6142b70e9968a122260d",
+      "bytes": 655
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_POLICY_CATALOG.md",
+      "sha256": "bc7abee3a22ee7cc54cd0b1ece3062ac28bbd229523ee99344017df9ad634654",
+      "bytes": 1450
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_PRESENTATION_EVIDENCE_GUIDE.md",
+      "sha256": "af765f40d3c58616d264b30d8fd8c89f8205e9f6a8faa3a878deaaefe70bf23b",
+      "bytes": 837
+    },
+    {
+      "path": "research/within_task_repair_prioritization/RESEARCH_S3_SINGLE_EDIT_ANALYSIS.md",
+      "sha256": "65d724a912f85758fd37ac384384be3937167665893420eeb578f62e618197fd",
+      "bytes": 942
+    },
+    {
+      "path": "research/within_task_repair_prioritization/s3_analysis.py",
+      "sha256": "dada46ab34aadb20de468a29db22cf0f4030627482155bfb227ffd105aec3e0d",
+      "bytes": 23008
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_candidate_value_aggregates.csv",
+      "sha256": "b190faea2e2c133fa6d8c11cddcfd1bcd0317863667d7ce981d9110487b9f380",
+      "bytes": 2245
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_error_role_counts.csv",
+      "sha256": "3837ff445c227650fc38172e3383c75cc7fefcfc66222d26067936ea5256f375",
+      "bytes": 1354
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_policy_aggregates.csv",
+      "sha256": "5212c0fcd81a2859479707699b527c27c10c99ca03f3b5ab82b5d87557427a08",
+      "bytes": 54629
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_primary_paired_intervals.csv",
+      "sha256": "b9e7c698dbb01a7cc6b4f25e37cbdbd3956bb65ca236b0253dcf8ef25f8de6c0",
+      "bytes": 2820
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_summary.json",
+      "sha256": "3d8217e45e8d73f47cc287a2b7aae47177b3e80a5b6bb1c4bcfa3ffbd9ee4164",
+      "bytes": 2626
+    },
+    {
+      "path": "research/within_task_repair_prioritization/write_reports.py",
+      "sha256": "5be7d65c4f9d2a19131f4c21b5ae38e9f1de4f5011ec61cf11b6dac6a3961e3c",
+      "bytes": 29718
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_candidate_value_aggregates.csv",
+      "sha256": "b190faea2e2c133fa6d8c11cddcfd1bcd0317863667d7ce981d9110487b9f380",
+      "bytes": 2245
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_error_role_counts.csv",
+      "sha256": "3837ff445c227650fc38172e3383c75cc7fefcfc66222d26067936ea5256f375",
+      "bytes": 1354
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_policy_aggregates.csv",
+      "sha256": "5212c0fcd81a2859479707699b527c27c10c99ca03f3b5ab82b5d87557427a08",
+      "bytes": 54629
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_primary_paired_intervals.csv",
+      "sha256": "b9e7c698dbb01a7cc6b4f25e37cbdbd3956bb65ca236b0253dcf8ef25f8de6c0",
+      "bytes": 2820
+    },
+    {
+      "path": "research/within_task_repair_prioritization/tables/s3_summary.json",
+      "sha256": "3d8217e45e8d73f47cc287a2b7aae47177b3e80a5b6bb1c4bcfa3ffbd9ee4164",
+      "bytes": 2626
+    },
+    {
+      "path": "research/within_task_repair_prioritization/figures/S3_LOOKAHEAD_PAIRED.svg",
+      "sha256": "be0ee6078a9bb008707e8cbdfcc4560131907a83ac84b587866e1f3cc23299e5",
+      "bytes": 6506
+    },
+    {
+      "path": "research/within_task_repair_prioritization/figures/S3_POLICY_HEATMAP.svg",
+      "sha256": "294a65612bae843c2293f096d1ea68d70308a5668c829f15a0105540f56c8c0e",
+      "bytes": 42891
+    }
+  ],
+  "data_hashes": {
+    "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "C_DEVELOPMENT:proposal": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "C_HELDOUT:cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "C_HELDOUT:proposal": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+  },
+  "limitations": [
+    "The first exploratory calculation preceded a committed analysis revision; this cannot be represented as preregistered.",
+    "Private SCM-keyed intermediate diagnostics remain local and are ignored by Git.",
+    "No process memory monitor was active.",
+    "No new independent cohort or Research D unit-level analysis."
+  ]
+}
