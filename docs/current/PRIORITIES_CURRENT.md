@@ -54,6 +54,8 @@
 | SYNTH-FINAL | VERIFIED | ERROR-DIAG, PILOT-CONFIRM | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 / A/D/E범위내지지,C/B1부분지지,B2추가정보미확립,F제조미검증.162쌍93/4/65·114경로유지48/3/63;새학습/do0 |
 | S4-PILOT-01 | PARTIAL | S3-S4-01 | Use local reconstruction evidence with conditional population and exploratory limitations; no claim of recovering other-PC runs / Pilot, development, and replication cohorts remain distinct; no raw private records published |
 | S5-FEAS-01 | BLOCKED | S4-PILOT-01 | No D replay is claimed; S5 is a new conditional external semisynthetic reconstruction and is complete under its own contract / Separate historical D from S5; do not treat public D aggregates as raw-vector uncertainty or exact reproduction |
+| S6-POSTHOC | VERIFIED | 없음 | Use as post-hoc evidence only; do not call candidate edits independent SCMs or error-type differences causal. / Saved S4 unit records audited and reaggregated; no new SCM/G0 generated; post-hoc and clustered-unit limits documented. |
+| S7-EXTERNAL | PARTIAL | 없음 | Allow locked worker to reach its 14,400-second cap; preserve checkpoint and resource report; do not evaluate before all recommendations are sealed. / At 2026-11-28 14:42 KST: first G0 still active; 0/400 G0 and 0/24,000 recommendations; evaluator not started; wall/RSS caps not reached. Mark PARTIAL if cap stops run. |
 
 ## ID 이력
 
@@ -106,5 +108,7 @@
 - S4S5-RECON: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.
 - S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.
 - 2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run.
+- 2026-11-28: S6 saved-record reaggregation completed; candidate edits remain nested within SCM and evidence is post-hoc.
+- 2026-11-28: S7 locked recommendation run is active but has no completed G0/recommendation at 14:42 KST; evaluator remains gated on a sealed recommendation manifest.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

@@ -644,6 +644,24 @@
       "next_action": "Prepare final written report and presentation from verified artifacts; retain S4/S5 B=5..9 as NOT_RUN",
       "acceptance": "16,560 saved unit rows reaggregated without new samples; cohorts/scales remain separate; scientific claims, limits, figures, final report/presentation plan and public hashes recorded; final remote CI passes. S4/S5 B=5..9 remain NOT_RUN.",
       "depends_on": []
+    },
+    {
+      "id": "S6-POSTHOC",
+      "title": "S6 saved S4 error-value and policy reaggregation",
+      "status": "VERIFIED",
+      "evidence": "research/supplementary_validation/s6/RESEARCH_S6_FINAL_CONCLUSION.md; outputs/saved_candidates_v4/; 80 development SCM and 160 replication SCM records reaggregated",
+      "next_action": "Use as post-hoc evidence only; do not call candidate edits independent SCMs or error-type differences causal.",
+      "acceptance": "Saved S4 unit records audited and reaggregated; no new SCM/G0 generated; post-hoc and clustered-unit limits documented.",
+      "depends_on": []
+    },
+    {
+      "id": "S7-EXTERNAL",
+      "title": "S7 two-task external semisynthetic validation",
+      "status": "PARTIAL",
+      "evidence": "research/supplementary_validation/s7/RESEARCH_S7_EXECUTION_LOCK.json; RESEARCH_S7_LIVE_PROGRESS_REPORT.md; S6_S7_CURRENT_CLOSEOUT.md",
+      "next_action": "Allow locked worker to reach its 14,400-second cap; preserve checkpoint and resource report; do not evaluate before all recommendations are sealed.",
+      "acceptance": "At 2026-11-28 14:42 KST: first G0 still active; 0/400 G0 and 0/24,000 recommendations; evaluator not started; wall/RSS caps not reached. Mark PARTIAL if cap stops run.",
+      "depends_on": []
     }
   ],
   "priority_order": [
@@ -688,7 +706,9 @@
     "DYNAMIC-SCOPE",
     "SYNTH-FINAL",
     "S4-PILOT-01",
-    "S5-FEAS-01"
+    "S5-FEAS-01",
+    "S6-POSTHOC",
+    "S7-EXTERNAL"
   ],
   "id_history": [
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",
@@ -739,7 +759,9 @@
     "2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked.",
     "S4S5-RECON: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.",
     "S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.",
-    "2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run."
+    "2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run.",
+    "2026-11-28: S6 saved-record reaggregation completed; candidate edits remain nested within SCM and evidence is post-hoc.",
+    "2026-11-28: S7 locked recommendation run is active but has no completed G0/recommendation at 14:42 KST; evaluator remains gated on a sealed recommendation manifest."
   ],
   "integration_review": {
     "user_approved": true,
@@ -1548,5 +1570,22 @@
     "full_tests": "GitHub Actions run 45964027681 on d0867aebcd57099652c16a54f1ac9068458c1965: 473 discovered, 472 passed, 1 skipped, 0 failed",
     "full_tests_local": "473 discovered; 471 passed; 1 failed (protected raw JSONL SHA mismatch in Windows checkout); 1 errored (local frozen dependency fingerprint NumPy 2.4.6/Pandas 3.0.3/NetworkX 3.6.1 differs from lock)",
     "frozen_checks": "not weakened; both local failures retained and explicitly reported"
+  },
+  "s6_s7_closeout": {
+    "checked_at": "2026-11-28 14:42 KST",
+    "s6_status": "POST_HOC_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
+    "s7_status": "RECOMMENDATION_STAGE_ACTIVE_ZERO_COMPLETED_UNITS",
+    "s7_completed_g0": 0,
+    "s7_planned_g0": 400,
+    "s7_completed_recommendations": 0,
+    "s7_planned_recommendations": 24000,
+    "s7_recent_10m_completed_units": 0,
+    "s7_intervention_evaluator": "NOT_STARTED",
+    "s7_elapsed_wall_seconds": 10575,
+    "s7_wall_cap_seconds": 14400,
+    "s7_rss_bytes_observed": 101326848,
+    "s7_rss_cap_bytes": 4294967296,
+    "project_closeout": "PARTIAL_PENDING_S7_CAP_AND_FINAL_REMOTE_VALIDATION",
+    "details": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md"
   }
 }
