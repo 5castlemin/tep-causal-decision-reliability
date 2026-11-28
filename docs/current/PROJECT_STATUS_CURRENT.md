@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-11-28 15:05 KST. 현재 상태는 이 표와 `docs/research_state_current.json`에만 정의한다.
+기준일: 2026-11-28 17:20 KST. 현재 상태는 이 표와 `docs/research_state_current.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |
@@ -68,7 +68,7 @@
 | S5-RUN | S5 conditional external semisynthetic reconstruction | VERIFIED | research/within_task_repair_prioritization/s4_reconstruction/S5_EXTERNAL_PRIMARY_RESULTS.md; S5_UNCERTAINTY_REPORT.md; outputs/s5_reconstruction_v1/; 200 G0, 22000 recommendations, 24995 response rows | Preserve the conditional result and limitations; do not expand into further experiments in this task |
 | E-EXTENSION-CLOSEOUT | Final Research E budget extension and C–D–E/S4/S5 integration | PARTIAL | research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md; FINAL_RESEARCH_FRAMEWORK.md; 16,560 saved S4/S5 unit rows reaggregated; GitHub Actions 46051744319 PASS at 65a49c0592ef915c6886e5821cefe7a196cdca2a; final integration draft PR #51 created; d057fe1 checks 46113812900 and 46113889243 SUCCESS; S7 remains PARTIAL and is not blocking S6/E documentation; latest live status 15:05 KST | Keep S4/S5 B5–9 NOT_RUN; finish final integration with S7 PARTIAL if its locked cap expires before a unit completes. |
 | S6-POSTHOC | S6 saved S4 error-value and policy reaggregation | VERIFIED | research/supplementary_validation/s6/RESEARCH_S6_FINAL_CONCLUSION.md; outputs/saved_candidates_v4/; 80 development SCM and 160 replication SCM records reaggregated | Use as post-hoc evidence only; do not call candidate edits independent SCMs or error-type differences causal. |
-| S7-EXTERNAL | S7 two-task external semisynthetic validation | PARTIAL | research/supplementary_validation/s7/RESEARCH_S7_EXECUTION_LOCK.json; RESEARCH_S7_LIVE_PROGRESS_REPORT.md; S6_S7_CURRENT_CLOSEOUT.md | Allow locked worker to reach its 14,400-second cap; preserve checkpoint and resource report; do not evaluate before all recommendations are sealed. |
+| S7-EXTERNAL | S7 two-task external semisynthetic validation | PARTIAL | research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md; persisted 0/400 G0 and 0/24,000 recommendations; evaluator not started; final attempt report missing; exact task-zone feasibility separately passed | Do not restart the original run or infer external performance; retain S7 as computationally incomplete. |
 
 실행 코드 회수, frozen 산출물 검사, 인과발견 재실행, 관측 적합, 독립 개입 검증을 서로 다른 완료 단계로 취급한다.
 이 표의 일관성 검사가 연구 결과의 진실성을 보증하지는 않는다.

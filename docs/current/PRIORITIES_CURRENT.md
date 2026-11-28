@@ -1,6 +1,6 @@
 # 연구 우선순위
 
-기준일: 2026-11-28 15:05 KST. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-11-28 17:20 KST. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
@@ -55,7 +55,7 @@
 | S4-PILOT-01 | PARTIAL | S3-S4-01 | Use local reconstruction evidence with conditional population and exploratory limitations; no claim of recovering other-PC runs / Pilot, development, and replication cohorts remain distinct; no raw private records published |
 | S5-FEAS-01 | BLOCKED | S4-PILOT-01 | No D replay is claimed; S5 is a new conditional external semisynthetic reconstruction and is complete under its own contract / Separate historical D from S5; do not treat public D aggregates as raw-vector uncertainty or exact reproduction |
 | S6-POSTHOC | VERIFIED | 없음 | Use as post-hoc evidence only; do not call candidate edits independent SCMs or error-type differences causal. / Saved S4 unit records audited and reaggregated; no new SCM/G0 generated; post-hoc and clustered-unit limits documented. |
-| S7-EXTERNAL | PARTIAL | 없음 | Allow locked worker to reach its 14,400-second cap; preserve checkpoint and resource report; do not evaluate before all recommendations are sealed. / At 2026-11-28 15:05 KST: read-only stack remains in first task_zone traversal; 0/400 persisted G0 and 0/24,000 recommendations; last reliable in-memory snapshot at 14:58 was also zero; evaluator not started; elapsed 11,927/14,400 seconds; RSS 86,867,968/4,294,967,296 bytes. Preserve and classify PARTIAL at cap. |
+| S7-EXTERNAL | PARTIAL | 없음 | Do not restart the original run or infer external performance; retain S7 as computationally incomplete. / Attempt 02 remains preserved; zero completed units and missing final telemetry are explicit; separate implementation-only feasibility is documented. |
 
 ## ID 이력
 
