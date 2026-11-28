@@ -41,6 +41,13 @@ def verify_lock(lock_path,lock_digest,contract_path,source_root):
  for rel,digest in lock['source_sha256'].items():
   if sha(src/rel)!=digest:raise ValueError(f'S7 pinned source asset changed: {rel}')
  return c,lock,commit
+def runtime_config(c):
+ g=c['generator'];e=c['evaluation']
+ return {**c,'fit_seed':g['fit_seed'],'training_seed':g['training_seed'],
+  'g0_count':g['g0_count_per_task_stratum'],'g0_seed_start':g['g0_id_start'],
+  'seed_namespace':g['seed_namespace'],'training_rows':g['training_rows'],
+  'response_rows_per_action':e['response_rows_per_action'],
+  'bootstrap_replicates':e['bootstrap_replicates'],'bootstrap_seed':e['bootstrap_seed']}
 def load_source(source_root):
  root=Path(source_root).resolve()
  sys.path.insert(0,str(root))
@@ -257,7 +264,7 @@ def bootstrap(c,rec,unit,base_losses,outdir,contrasts,unc):
     unc.append({'station':station,'budget':b,'contrast':label,'action_mc_ci95_low':float(np.quantile(mc,.025)),'action_mc_ci95_high':float(np.quantile(mc,.975)),'two_source_ci95_low':float(np.quantile(two,.025)),'two_source_ci95_high':float(np.quantile(two,.975)),'bootstrap_replicates':B,'bootstrap_seed':c['bootstrap_seed'],'interval_type':'pointwise','shared_action_table_per_replicate':True,'common_g0_and_action_indices_across_contrasts':True})
 def main():
  p=argparse.ArgumentParser();p.add_argument('--stage',choices=['recommendation','evaluation'],required=True);p.add_argument('--lock-sha256',required=True);p.add_argument('--source-root',type=Path,required=True);p.add_argument('--private-root',type=Path,required=True);p.add_argument('--public-output',type=Path,required=True);a=p.parse_args()
- c,lock,_=verify_lock(LOCK,a.lock_sha256,CONTRACT,a.source_root)
+ c,lock,_=verify_lock(LOCK,a.lock_sha256,CONTRACT,a.source_root);c=runtime_config(c)
  if a.stage=='recommendation':recommendation_stage(a,c,lock)
  else:evaluation_stage(a,c,lock)
 if __name__=='__main__':main()
