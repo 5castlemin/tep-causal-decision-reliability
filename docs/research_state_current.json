@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-28 17:20 KST",
+  "checked_at": "2026-11-28 19:00 KST",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -503,11 +503,11 @@
     },
     {
       "id": "FINAL-INTEGRATION",
-      "title": "Research C–D 과학적 통합 및 저장소 종료",
-      "status": "VERIFIED",
-      "evidence": "PR #41 scientific integration merged; PR #42 closeout merged; main fc863182efd4ee721a7f5250c871d46afe9bf244; Actions 45656538612 SUCCESS; research/final_integration/",
-      "next_action": "새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지",
-      "acceptance": "원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료",
+      "title": "Final S6/S7 scientific integration and repository closeout",
+      "status": "PARTIAL",
+      "evidence": "PR #51 draft at 5eced12d; prior PR checks 46125787331/46125792972 SUCCESS; docs corrected for D contrast, S6 v6, S7 zero outputs, telemetry limits, timing discrepancy and confirmed learner edge-orientation defect; review list empty; branch-protection read denied (403)",
+      "next_action": "Wait for required independent review and current-head CI; only then merge under repository rules. Defer PR/branch cleanup until merge and main verification.",
+      "acceptance": "Final documents and branch inventory staged; merge and destructive cleanup not performed because reviewer approval and protection state are not verified.",
       "depends_on": []
     },
     {
@@ -639,41 +639,43 @@
     {
       "id": "E-EXTENSION-CLOSEOUT",
       "title": "Final Research E budget extension and C–D–E/S4/S5 integration",
-      "status": "PARTIAL",
-      "evidence": "research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md; FINAL_RESEARCH_FRAMEWORK.md; 16,560 saved S4/S5 unit rows reaggregated; GitHub Actions 46051744319 PASS at 65a49c0592ef915c6886e5821cefe7a196cdca2a; final integration draft PR #51 created; d057fe1 checks 46113812900 and 46113889243 SUCCESS; S7 remains PARTIAL and is not blocking S6/E documentation; latest live status 15:05 KST",
-      "next_action": "Keep S4/S5 B5–9 NOT_RUN; finish final integration with S7 PARTIAL if its locked cap expires before a unit completes.",
-      "acceptance": "16,560 saved unit rows reaggregated without new samples; cohorts/scales remain separate; scientific claims, limits, figures, final report/presentation plan and public hashes recorded; final remote CI passes. S4/S5 B=5..9 remain NOT_RUN.",
+      "status": "VERIFIED",
+      "evidence": "research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md; FINAL_RESEARCH_FRAMEWORK.md; 16,560 saved S4/S5 unit rows reaggregated; B5–9 NOT_RUN; no new data",
+      "next_action": "Use completed, limited post-hoc results in the final report; do not start further experiments.",
+      "acceptance": "Saved S4/S5 B0–4 only; cohorts/scales separate; B5–9 remain NOT_RUN.",
       "depends_on": []
     },
     {
       "id": "S6-POSTHOC",
       "title": "S6 saved S4 error-value and policy reaggregation",
       "status": "VERIFIED",
-      "evidence": "research/supplementary_validation/s6/RESEARCH_S6_FINAL_CONCLUSION.md; outputs/saved_candidates_v4/; 80 development SCM and 160 replication SCM records reaggregated",
-      "next_action": "Use as post-hoc evidence only; do not call candidate edits independent SCMs or error-type differences causal.",
-      "acceptance": "Saved S4 unit records audited and reaggregated; no new SCM/G0 generated; post-hoc and clustered-unit limits documented.",
+      "evidence": "research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md; outputs/saved_candidates_v6; Development 80/replication 160; T5−M4 −.008664 CI [−.020398,0], 4/1/155, Holm p=1.0; type-ranked−M4 −.002204 CI [−.009283,.003545], 2/1/157",
+      "next_action": "Report as retrospective post-hoc evidence; superiority, equivalence and noninferiority not established.",
+      "acceptance": "v6 validated from saved candidates; no new SCM/G0/observations.",
       "depends_on": []
     },
     {
       "id": "S7-EXTERNAL",
       "title": "S7 two-task external semisynthetic validation",
       "status": "PARTIAL",
-      "evidence": "research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md; persisted 0/400 G0 and 0/24,000 recommendations; evaluator not started; final attempt report missing; exact task-zone feasibility separately passed",
-      "next_action": "Do not restart the original run or infer external performance; retain S7 as computationally incomplete.",
-      "acceptance": "Attempt 02 remains preserved; zero completed units and missing final telemetry are explicit; separate implementation-only feasibility is documented.",
+      "evidence": "S7_COMPUTATIONAL_CLOSEOUT.md; 0/400 G0, 0/24,000 recs, no seal/evaluator; final supervisor report missing; static runner review found directed-edge orientation defect; task-zone time .7613s JSON vs 1.474s prose",
+      "next_action": "Do not restart; classify as no external result and preserve computational limitation.",
+      "acceptance": "Implementation-only feasibility; runner defect/time discrepancy and missing exit telemetry documented.",
       "depends_on": []
     }
   ],
   "priority_order": [
+    "FINAL-INTEGRATION",
     "E-EXTENSION-CLOSEOUT",
+    "TEAM-PRESENTATION",
+    "S6-POSTHOC",
+    "S7-EXTERNAL",
     "S5-RUN",
     "S4S5-RECON",
-    "TEAM-PRESENTATION",
     "RESEARCH-E",
     "SUPP-01",
     "F-LITE-01",
     "S5-ENV",
-    "FINAL-INTEGRATION",
     "BUDGET-REFINEMENT",
     "MFG-MICRO",
     "ERROR-CONFIRM",
@@ -706,9 +708,7 @@
     "DYNAMIC-SCOPE",
     "SYNTH-FINAL",
     "S4-PILOT-01",
-    "S5-FEAS-01",
-    "S6-POSTHOC",
-    "S7-EXTERNAL"
+    "S5-FEAS-01"
   ],
   "id_history": [
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",
@@ -1579,9 +1579,9 @@
     "frozen_checks": "not weakened; both local failures retained and explicitly reported"
   },
   "s6_s7_closeout": {
-    "checked_at": "2026-11-28 17:10 KST",
+    "checked_at": "2026-11-28 19:00 KST",
     "s6_status": "POST_HOC_B1_POLICY_MATRIX_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
-    "s7_status": "RESOURCE_LIMITATION_EXIT_TELEMETRY_UNVERIFIED",
+    "s7_status": "RESOURCE_LIMITATION_EXIT_TELEMETRY_UNVERIFIED_WITH_RUNNER_EDGE_ORIENTATION_DEFECT",
     "s7_completed_g0": 0,
     "s7_planned_g0": 400,
     "s7_completed_recommendations": 0,
@@ -1592,20 +1592,20 @@
     "s7_wall_cap_seconds": 14400,
     "s7_rss_bytes_observed": 86867968,
     "s7_rss_cap_bytes": 4294967296,
-    "project_closeout": "PARTIAL_S7_RESOURCE_LIMITATION",
+    "project_closeout": "PROJECT_FINALIZED_WITH_CLEANUP_LIMITATIONS_PENDING_PR51_REVIEW_AND_MERGE",
     "details": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md; research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md",
     "s7_wall_remaining_seconds": null,
-    "latest_commit": "fccf2e9c9dc661a7d6f20443cb8fe9c74e6945d5",
+    "latest_commit": "5eced12d1847868b7b6a9fb9433d92169bf7c5ba",
     "draft_pr": 51,
     "ci_runs": [
       46125340291,
       46125346890
     ],
-    "ci_status": "SUCCESS",
+    "ci_status": "SUCCESS_FOR_5eced12d",
     "s7_termination_reason": "NOT_VERIFIABLE_FINAL_SUPERVISOR_REPORT_MISSING",
-    "s7_task_zone_feasibility": "PASS_EXACTNESS_SMALL_DAGS_AND_FULL_GRAPH; 1.474 seconds; no outcome/evaluator access",
+    "s7_task_zone_feasibility": "PASS_EXACTNESS; runtime discrepancy .7613s JSON vs 1.474s prose; no outcome access",
     "validated_revision": "ebcb457ef59700da26d063413aff25c242cdd2a5",
-    "pr_status": "OPEN_DRAFT",
+    "pr_status": "OPEN_DRAFT_NO_REVIEW_SUBMISSIONS",
     "local_full_suite": "488 discovered; 480 passed; 1 skipped; 4 failures; 4 errors",
     "focused_tests": "7 passed",
     "research_state_check": "PASS",

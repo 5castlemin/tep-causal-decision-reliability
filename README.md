@@ -1,5 +1,20 @@
 # DAT 제조공정 인과그래프 수리 연구
 
+> **현재 최종 상태 (2026-11-28):** 연구 문서는 PR #51에서 최종 통합 검토 중입니다. S6 저장 결과 사후 재집계가 완료됐고, S7 full-line 작업은 recommendation 0/24,000으로 외부 성능 결과가 없습니다. S7 종료 telemetry와 task-zone 시간 기록에는 미해결 한계가 있습니다. main 기준 최종 통합 여부는 PR #51 병합 뒤 갱신합니다. 이 저장소는 실제 제조설비 개입 효능이나 경제성을 입증하지 않습니다.
+
+## 최종보고서 및 발표자료 작성 가이드
+
+권장 순서:
+
+1. [팀 가이드](FINAL_RESEARCH_TEAM_GUIDE.md): 연구 동기, 개념, 연구 흐름을 빠르게 파악합니다.
+2. [최종 연구 framework](FINAL_RESEARCH_FRAMEWORK.md): Study 구성, 수식, 결과, 보고서 목차와 발표 스토리라인을 확인합니다.
+3. [Evidence Matrix](FINAL_RESEARCH_EVIDENCE_MATRIX.md): 각 주장에 연결된 단위, 추정량, 불확실성 및 근거 파일을 인용합니다.
+4. [최종 연구 보고서 참고본](research/final_integration/FINAL_RESEARCH_REPORT.md)과 [결과표](research/final_integration/FINAL_RESULTS_TABLES.md)를 사용합니다.
+5. [발표 증거 가이드](research/final_integration/FINAL_PRESENTATION_EVIDENCE_GUIDE.md), [주장 및 한계](FINAL_RESEARCH_CLAIMS_AND_LIMITATIONS.md), [무결성 검토](FINAL_SCIENTIFIC_INTEGRITY_REVIEW.md)로 슬라이드와 결론을 교차 점검합니다.
+6. 저장소 상태 및 연구 브랜치 복구는 [Repository final closeout](REPOSITORY_FINAL_CLOSEOUT.md), [archive index](archive/ARCHIVE_INDEX.md), [pre-cleanup inventory](archive/REPOSITORY_PRE_CLEANUP_INVENTORY.json), [branch decisions](archive/BRANCH_CLEANUP_DECISIONS.csv)을 확인합니다.
+
+위 자료는 보고서와 발표자료 제작을 위한 근거 문서이며, 확정되지 않은 정책 우월성·현장 효능·실제 경제효과를 주장하지 않습니다. S6/S7의 최종 상태는 아래 요약과 linked closeout에서 확인하십시오.
+
 ## 문제와 최종 연구 질문
 
 이 프로젝트는 불완전한 인과그래프를 제한된 수정 예산으로 수리할 때, 어떤 구조 오류를 우선 고쳐야 downstream 의사결정 손실을 줄일 수 있는지 연구한다. 핵심은 그래프 정확도를 높이는 일과 실제 결정 품질을 높이는 일을 구분하는 것이다.
@@ -16,8 +31,8 @@
 - **메커니즘 분석:** Research C 저장 Ledger를 이번 통합에서 read-only로 재검증한 사후 탐색 분석. 정창민의 PR #40 기여 및 커밋 이력을 보존한다. 재생성본의 SCM별 전체 결과는 원본과 완전 대조할 수 없었다.
 - **Research D:** 공개 반합성 자료에 재적합한 단일 DRF DGP, 고정 학습 프레임, 200 graph-corruption draws에 조건부인 평가. 실측 개입/독립 외부 SCM 검증이 아니다.
 - **Research E:** 같은 C cohorts의 예산 B 확장, edit-count Pareto/lambda 분석, 제한적 Adaptive M4 및 target sensitivity. 이미 본 C 결과의 post-hoc 확장이고 새 SCM cohort가 아니다. [최종 감사](research/final_integration/RESEARCH_E_FINAL_AUDIT.md) · [E9 Pareto](research/final_integration/research_e_audit/figures/E9_expanded_pareto.svg) · [E10 λ](research/final_integration/research_e_audit/figures/E10_lambda_lower_envelope.svg)
-- **S6:** 저장된 S4 Development/replication candidate records를 이용한 B=1 정책행렬의 post-hoc 재집계를 완료했다. Replication에서 T5−Frozen M4는 −.008664 (95% common-index SCM bootstrap CI [−.020398, 0]); Holm-adjusted paired-t p=1.0이며 우월성은 확립되지 않았다. [S6 closeout](research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md)
-- **S7:** 원래 98-node/485-edge full-line recommendation attempt는 저장 완료 0/400 G0, 0/24,000 recommendations였고 evaluator는 시작하지 않았다. 마지막 supervisor report가 없어 종료 원인/cap 적용 여부는 확인할 수 없다. 별도 계산 최적화 feasibility는 통과했지만 전체 S7 평가는 미완료다. [S7 closeout](research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md)
+- **S6:** 저장된 S4 Development 80/replication 160 candidate records를 이용해 B=1 정책행렬 v6를 사후 재집계했다. Replication의 T5−Frozen M4는 −.008664 (common-index SCM bootstrap 95% pointwise CI [−.020398, 0], better/worse/tie 4/1/155; Holm-adjusted paired-t p=1.0)였고 우월성은 확립되지 않았다. Type-ranked M4−Frozen M4는 −.002204 (CI [−.009283, .003545], 2/1/157; Holm p=1.0)였다. [S6 closeout](research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md)
+- **S7:** 98-node/485-edge full-line recommendation run에서 저장 완료 0/400 G0, 0/24,000 recommendations였고 evaluator는 시작하지 않았다. 마지막 supervisor report가 없어 종료 원인/cap 적용 여부는 확인할 수 없다. 별도 계산 최적화 feasibility는 통과했지만 JSON과 closeout에 기재된 수행시간(.761초와 1.474초)이 달라 해소되지 않았다. 전체 S7 평가는 미완료다. [S7 closeout](research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md)
 
 ## 결과 요약
 
@@ -61,7 +76,7 @@ F-Lite 최종 저장자료 감사 및 지표 정정은 [감사 보고서](resear
 
 프로젝트는 TEP 구조 탐색과 인과발견 비교에서 출발했다. TEP 및 CausalMan 환경은 연구 계약에 필요한 reference/intervention 조건을 충족하지 못해 보류되었고, Causal Chambers의 Mk2/Wind Tunnel도 현재 연구 질문에 적합한 실측 정책 비교로 채택되지 않았다. 해당 이력은 제거하지 않고 `docs/research_design/`과 `research/external_validation/`에 보존한다. 이번 최종 연구는 실측 제조 검증이 아니다.
 
-> Research C–D–E–F-Lite closeout은 PR #46 merge commit `b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9`으로 main에 통합됐고 PR Actions 45798376385 및 main Actions 45798944410이 통과했다. 프로젝트 최종 상태는 `PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS`다. Research E와 F-Lite는 기존 자료 기반 사후 확장이다. F-Lite의 결합 질의 점수는 Held-out에서 Random보다 나았지만 fit-based/suspicion-only보다 regret이 높았고 impact-only와 거의 같았다. 따라서 추가 가치는 확인되지 않았다. Research D 원시 응답 자료 재감사에는 접근 제한이 남아 있다. 추가 실험은 계획하지 않으며 보고서·발표 준비로 전환한다.
+> Historical status snapshot (2026-11-26): the C–D–E–F-Lite closeout was then recorded at PR #46. It is retained as project history; the current status is the S6/S7 and final integration summary above.
 
 ## 최종 통합 업데이트 — S4/S5 및 Research E extension
 

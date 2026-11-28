@@ -32,6 +32,10 @@ C는 여러 독립 synthetic SCM에서 analytic true-SCM regret을 비교한 fro
 
 동결된 C 실험에서는 제한된 수정이 무수정보다 평균 regret을 낮췄다. task 중심 구조 수정은 적은 수정으로 유용할 수 있지만, 오류 가치와 budget 편익은 비단조·목표 의존적이며 M4나 T5의 보편적 우월성은 확인되지 않았다. 외부 반합성 S5에서는 M4의 point estimate가 유리했지만 two-source uncertainty는 0을 포함했고 graph-free 기준선이 경쟁했다.
 
+S6는 기존 S4의 Development/replication candidate 기록을 재사용한 사후 B=1 비교다. Replication에서 T5의 평균 regret은 .030152, Frozen M4는 .038817이었고 paired 차이 −.008664의 95% 구간은 [−.020398, 0]이었다(4/1/155; Holm-adjusted p=1.0). Type-ranked 정책도 Frozen M4 대비 차이 −.002204, 95% 구간 [−.009283,.003545]으로 불확실했다. 이 결과는 같은 160-SCM replication 자료의 재집계이며 신규 독립 확인 실험이 아니다.
+
+S7 full-line recommendation 계산은 예정 400 G0·24,000 recommendations 중 저장 완료가 0이었다. Seal과 evaluator 결과가 없으며 종료 telemetry도 누락됐다. 또한 정적 코드 검토에서 학습기 입력에 방향이 제거된 canonical pair를 넘기는 경로를 확인했다. 따라서 S7은 external performance study를 완료하지 못했고 그 결과를 추정하거나 일반화 증거로 사용하지 않는다. 자세한 판정은 [S6/S7 closeout](research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md)에서 확인한다.
+
 ## 무엇을 입증하지 못했나?
 
 - 참 구조를 모르는 실제 현장에서 어떤 오류를 발견할지.

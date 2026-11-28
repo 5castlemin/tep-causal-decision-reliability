@@ -57,3 +57,9 @@ E는 이미 Held-out을 본 뒤의 탐색 분석이므로 C Primary 대체나 �
 ## Final framework and slide story update
 
 Use [`FINAL_RESEARCH_FRAMEWORK.md`](../../FINAL_RESEARCH_FRAMEWORK.md) as the current narrative blueprint. It includes the final-report chapter plan, slide-by-slide messages, evidence files, counterexamples and defense Q&A. The main story is problem limitation → decision-focused question → WHERE → WHAT & WHY → conditional GENERALIZATION → HOW MUCH → bounded conclusion; do not list runs chronologically. S4 T5 evidence is inconclusive, S5 uncertainty includes zero in the two-source interval, and the S5 graph-free baseline is competitive.
+
+## S6/S7 closeout use
+
+Keep S6 in the Study 2 appendix or a compact main-text qualification slide: the saved-data B=1 replication matrix gives T5−Frozen M4 `−.008664`, common-index pointwise SCM-bootstrap 95% CI `[−.020398,0]`, better/worse/tie `4/1/155`; Type-ranked M4−Frozen M4 is `−.002204`, CI `[−.009283,.003545]`, `2/1/157`. Both are retrospective on reused S4 data and neither establishes superiority. Keep the outcome-privileged ex-post oracle separate from implementable policies.
+
+State S7 as a computationally limited, incomplete external evaluation: 0/400 persisted G0, 0/24,000 recommendations, no seal/evaluator, and unverifiable termination telemetry. The separate task-zone feasibility has inconsistent reported elapsed time (`.7613 s` JSON vs `1.474 s` prose). Static review confirmed the runner passes unordered canonical pair keys into a learner expecting directed edges; no recommendation outcome exists, and the frozen code was not changed. Cite the [S7 closeout](../supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md); do not show S7 as external validation evidence.

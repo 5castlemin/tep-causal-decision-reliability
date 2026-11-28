@@ -3,7 +3,7 @@
   "as_of": "2026-11-28",
   "base_revision": "0c9236d7f8981d879d1fd47b517ef5dc0c19a7b1",
   "commit_binding": "This manifest is included in the same Git commit as the listed public files; the resulting commit SHA is the final revision binding.",
-  "project_gate": "PROJECT_FINAL_INTEGRATION_PARTIAL_S7_RESOURCE_LIMITATION",
+  "project_gate": "PROJECT_FINALIZED_WITH_CLEANUP_LIMITATIONS",
   "research_e_extension": {
     "classification": "POST_HOC_DECISION_ECONOMIC_ANALYSIS",
     "saved_unit_rows_reaggregated": 16560,
@@ -37,6 +37,17 @@
   },
   "s6_s7_status": {
     "s6": "POST_HOC_B1_POLICY_MATRIX_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
+    "s6_replication_scm": 160,
+    "s6_t5_minus_m4": -0.008664396007484304,
+    "s6_t5_ci": [
+      -0.020398204896984618,
+      0.0
+    ],
+    "s6_type_ranked_minus_m4": -0.0022039139792761437,
+    "s6_type_ranked_ci": [
+      -0.009282565057009523,
+      0.0035454308386396855
+    ],
     "s7": "RESOURCE_LIMITATION_EXIT_TELEMETRY_UNVERIFIED",
     "s7_last_active_elapsed_wall_seconds": 12275,
     "s7_wall_cap_seconds": 14400,
@@ -49,7 +60,10 @@
     "s7_recommendations_sealed": 0,
     "s7_evaluator": "NOT_STARTED",
     "s7_checkpoint": "training.csv only; no safe unit-boundary resume checkpoint",
-    "s7_task_zone_feasibility": "PASS; 98 nodes/485 edges; 1.474 seconds; evaluator/outcome access false",
+    "s7_task_zone_feasibility_json_seconds": 0.7613125999923795,
+    "s7_task_zone_feasibility_closeout_seconds": 1.474,
+    "s7_task_zone_timing": "UNRESOLVED_MEASUREMENT_DISCREPANCY",
+    "s7_runner_edge_orientation": "CONFIRMED_STATIC_DEFECT: canonical unordered pair key passed to learner expecting directed parent edges; no persisted recommendation outcome",
     "s7_execution_lock": "research/supplementary_validation/s7/RESEARCH_S7_EXECUTION_LOCK.json",
     "s7_computational_closeout": "research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md",
     "s6_policy_closeout": "research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md",
@@ -57,21 +71,39 @@
   },
   "github_validation": {
     "branch": "feature/final-s6-s7-validation",
-    "commit": "TO_BE_SET_AFTER_PUSH",
-    "draft_pr": 51,
-    "draft_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/51",
-    "pr_ci_runs": [],
-    "pr_ci": "PENDING",
-    "main_merge": "NOT_PERFORMED"
+    "commit": "this manifest commit",
+    "pr": 51,
+    "pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/51",
+    "pr_ci_runs": [
+      "46125787331",
+      "46125792972"
+    ],
+    "pr_ci_for_prior_head": "SUCCESS; new documentation commit requires fresh CI",
+    "main_merge": "NOT_PERFORMED_PENDING_FINAL_PR_CHECKS"
   },
   "private_data_policy": "Raw ledgers, unit records, training data, recommendation rows, response vectors, fitted objects and private archives excluded from GitHub.",
   "backup_status": "S5 private archive is same-device only; no off-device backup is claimed.",
-  "main_merge": "NOT_PERFORMED",
-  "pr_50": "UNCHANGED",
+  "main_merge": "NOT_PERFORMED_PENDING_REVIEW_AND_CHECKS",
+  "pr_50": "OPEN_NOT_CHANGED; verify and supersede only after PR 51 merge",
   "public_file_sha256": {
-    "docs/current/PRIORITIES_CURRENT.md": "7698af633be6eced1a1d8179a56c5991a71ef6cf0f9ddf49e2946402052dfeb6",
-    "docs/current/PROJECT_STATUS_CURRENT.md": "e71dc319d388a24bad91afe9e78a714da367c755309ac5e04456a2f08d2bb1d5",
-    "docs/research_state_current.json": "8f937495f024a0b0a03dfb7b3154b4e435cafdbbe0f519618490d8cdace8715e",
-    "research/budget_adaptive_repair/build_final_integration_manifest.py": "89567ab26d0c593d926d1cea1680705fb8cbd13de233d1fc334a8a579d47951e"
+    "FINAL_RESEARCH_CLAIMS_AND_LIMITATIONS.md": "771f4d6356f7c702c3ee14ad42b63f6484ae7b2566655de0d0b3c211c0f08c78",
+    "FINAL_RESEARCH_EVIDENCE_MATRIX.md": "a2871507aa4e6a374be95fa90ff2c9eb3ad6a8c431c738432e012797ea0e1d70",
+    "FINAL_RESEARCH_FRAMEWORK.md": "d0298b2479efa79bb6608d07b6ca4d63a17375f5e4f709ef87739f91fbc1ae9b",
+    "FINAL_RESEARCH_TEAM_GUIDE.md": "6211be1bf4db8057968931f62868c4be20f0f2fe34c68c4a08233f9e19467931",
+    "FINAL_SCIENTIFIC_INTEGRITY_REVIEW.md": "39cae9ba7f03e7406226fd95e5e2a80cec357f6a5915edcb644bdab23d796cbc",
+    "README.md": "0854755f2af63cc7ddbe2b267e01192c0496c78a3f5ffba3e105bf1c0cd1f8ff",
+    "REPOSITORY_FINAL_CLOSEOUT.md": "52e25339f3ef6d642d0d55f9130f28e9a99224e67b58fd943fc59c867e65de55",
+    "RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md": "b0212280476886b2ede713f6994a9b1a8cb3ad1816f22b378fe46dc867b0772b",
+    "archive/ARCHIVE_INDEX.md": "f733c912574212cf278e15350249e5e444becd90def4401d9524ab2a6cfe5f24",
+    "archive/BRANCH_CLEANUP_DECISIONS.csv": "b9cae349d4221910588949f1b643fe9d4a49885639b990de5049c1e9bb278b01",
+    "archive/REPOSITORY_PRE_CLEANUP_INVENTORY.json": "d9d6f9302bfdebdc1bc2c84d80b655b1c6b7c1ca2c0a297b378e42b326972dae",
+    "docs/current/PRIORITIES_CURRENT.md": "22ddb767216a53de8c73c843b79b2a5d7101b27c5227892a641287d2739bd8df",
+    "docs/current/PROJECT_STATUS_CURRENT.md": "1553811739aa2c22198c2e143e062e3a8d484c83e57e60f3d4f7697a7f148f8d",
+    "docs/research_state_current.json": "1d2c4a75f394d0fe3aa60ce00646e7dec8b973d8e8cf54c2f48c6dc63460b1dc",
+    "research/budget_adaptive_repair/build_final_integration_manifest.py": "a2b600fc12cbcefbd38a0e3631719779fa2e5436d4ab56d10cd26619e55f0c11",
+    "research/final_integration/FINAL_PRESENTATION_EVIDENCE_GUIDE.md": "8e6e36031cd3a411e1f2e47126e2b1918ddb411293119e8a60174d157ab99e9f",
+    "research/final_integration/FINAL_RESEARCH_REPORT.md": "eeb08338159b4a136383d77bdfba39ce1f0709100752cf735d1c541dd7dca460",
+    "research/final_integration/FINAL_RESULTS_TABLES.md": "971184eb2e48460373315903894a4f9a1396db362b44777aa87672df7019d2e7",
+    "research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md": "907d6611b98a938ac7e3105670af316ad26770019cad68634579cdd3967be348"
   }
 }

@@ -49,6 +49,22 @@ Research C Primary는 계약대로 B=2의 Full Greedy 대 S0다. M4는 Developme
 
 다섯 action의 평가표본 평균은 각각 14.0688, 14.0112, 13.9644, 14.0040, 13.9980이고 고정 target은 15.4600이었다. 이는 2,500-row/action finite sample 요약이다. 모집단 목표 불가능성이나 제조 제어 한계를 입증하지 않는다.
 
+## S6/S7 — supplementary closeout
+
+S6는 기존 S4 저장 candidate artifacts의 B=1 post-hoc 재집계다. SCM이 분석 단위이고 후보행은 SCM 내에 중첩된다.
+
+| S6 replication 정책 | Mean regret (160 SCM) | Paired 차이 대 Frozen M4 | 95% pointwise paired SCM bootstrap | Better / worse / tie | Holm-adjusted paired-t p |
+|---|---:|---:|---:|---:|---:|
+| Frozen M4 | .038817 | reference | — | — | — |
+| Type-ranked M4 (Development-selected) | .036613 | −.002204 | [−.009283,.003545] | 2 / 1 / 157 | 1.0 |
+| T5-guided M4 | .030152 | −.008664 | [−.020398,0] | 4 / 1 / 155 | 1.0 |
+| Full T1–T6 | .031391 | −.007426 | [−.019693,.002789] | 4 / 1 / 155 | 1.0 |
+| Ex-post single-edit oracle | .012907 | −.025910 | [−.044657,−.010495] | 10 / 0 / 150 | .053712 |
+
+S6는 신규 독립 확인 실험이 아니다. Oracle은 realized regret을 이용하는 비실행 가능 진단이다. T5의 평균은 가장 낮았지만 우월성·동등성·비열등성은 확립되지 않았다.
+
+S7에는 98-node/485-edge full-line 그래프와 하나의 shared DRF DGP에서 Station2/Station3 task strata가 있었다. 계획 400 G0·24,000 recommendation 중 persisted 0·0, recommendation seal 없음, evaluator 미실행이다. 종료 telemetry가 없어 cap 준수와 종료 사유를 확인할 수 없다. task-zone feasibility 시간은 JSON `.7613s`, closeout prose `1.474s`로 다르며 정합이 미해결이다. 정적 검토에서 frozen runner가 canonical unordered pair key를 directed-edge learner 입력에 전달하는 방향 손실 경로가 확인됐다. 실제 recommendation이 없어 성능 결과는 없다. 전체 세부사항은 [S6 closeout](../supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md) 및 [S7 closeout](../supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md)에 있다.
+
 ## C와 D 사이의 직접 수치 비교 금지
 
 Research C는 독립 synthetic SCM 단위의 analytic GT regret, Research D는 하나의 DRF DGP·고정 학습 frame 아래 G0 corruption draws를 공유 action-level Monte Carlo tracking loss로 평가했다. 서로 다른 task, 구조, loss, 표본 단위 및 생성 메커니즘이므로 두 Primary의 절대 크기 차이를 특정 모델 요소의 효과로 해석하지 않는다.
