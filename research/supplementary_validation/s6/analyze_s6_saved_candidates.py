@@ -45,22 +45,32 @@ def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--development',type=Path,required=True); ap.add_argument('--development-units',type=Path,required=True); ap.add_argument('--confirmation',type=Path,required=True); ap.add_argument('--confirmation-units',type=Path,required=True); ap.add_argument('--output',type=Path,required=True); a=ap.parse_args()
     if a.output.exists() and any(a.output.iterdir()): raise FileExistsError(f"refusing overwrite: {a.output}")
     cohorts=[("development80",load(a.development,a.development_units),a.development,80),("replication160",load(a.confirmation,a.confirmation_units),a.confirmation,160)]
-    order=None; errors=[]; aggregates=[]; contrasts=[]; redundancy=[]
+    order=None; errors=[]; within_type=[]; aggregates=[]; contrasts=[]; redundancy=[]
     for label,units,src,expected in cohorts:
         sids=sorted(units)
         if len(sids)!=expected: raise ValueError(f"{label}: expected {expected} SCMs, got {len(sids)}")
-        scm_type={t:[] for t in TYPES}; candidate_type={t:[] for t in TYPES}
+        scm_type={t:[] for t in TYPES}; candidate_type={t:[] for t in TYPES}; by_scm_type={}
         for sid in sids:
             by=defaultdict(list)
             for r in units[sid]: by[r.get('error_type',r.get('kind'))].append(r)
             for t,rr in by.items():
                 if t in scm_type:
                     vals=[float(r.get('regret_gain',0)) for r in rr]; scm_type[t].append(float(np.mean(vals))); candidate_type[t].extend(vals)
+                    by_scm_type.setdefault(sid,{})[t]=float(np.mean(vals))
         if label=='development80':
             order=sorted(TYPES,key=lambda t:(-float(np.mean(scm_type[t])) if scm_type[t] else float('inf'),t))
         for t in TYPES:
             cv=np.asarray(candidate_type[t],float); sv=np.asarray(scm_type[t],float)
-            errors.append({'cohort':label,'error_type':t,'candidate_count':len(cv),'scm_support':len(sv),'candidate_weighted_mean_regret_reduction':float(cv.mean()) if len(cv) else None,'scm_balanced_mean_regret_reduction':float(sv.mean()) if len(sv) else None,'scm_balanced_median':float(np.median(sv)) if len(sv) else None,'positive_candidate_fraction':float((cv>TOL).mean()) if len(cv) else None,'negative_candidate_fraction':float((cv< -TOL).mean()) if len(cv) else None,'zero_candidate_fraction':float((np.abs(cv)<=TOL).mean()) if len(cv) else None,'type_rank_from_development':order.index(t)+1})
+            support_ids=[s for s in sids if t in by_scm_type.get(s,{})]; sv=np.asarray([by_scm_type[s][t] for s in support_ids])
+            rng=np.random.default_rng(SEED); ix=rng.integers(0,len(sv),size=(BOOT,len(sv))) if len(sv) else np.empty((0,0),dtype=int)
+            ci=np.quantile(sv[ix].mean(axis=1),[.025,.975]) if len(sv) else [None,None]
+            act=[bool(r.get('action_changed',False)) for s in sids for r in units[s] if r.get('error_type',r.get('kind'))==t]
+            errors.append({'cohort':label,'error_type':t,'candidate_count':len(cv),'scm_support':len(sv),'candidate_weighted_mean_regret_reduction':float(cv.mean()) if len(cv) else None,'scm_balanced_mean_regret_reduction':float(sv.mean()) if len(sv) else None,'scm_clustered_ci95_low':float(ci[0]) if len(sv) else None,'scm_clustered_ci95_high':float(ci[1]) if len(sv) else None,'scm_balanced_median':float(np.median(sv)) if len(sv) else None,'positive_candidate_fraction':float((cv>TOL).mean()) if len(cv) else None,'negative_candidate_fraction':float((cv< -TOL).mean()) if len(cv) else None,'zero_candidate_fraction':float((np.abs(cv)<=TOL).mean()) if len(cv) else None,'action_change_candidate_rate':float(np.mean(act)) if act else None,'type_rank_from_development':order.index(t)+1})
+        for left,right in itertools.combinations(TYPES,2):
+            shared=[s for s in sids if left in by_scm_type.get(s,{}) and right in by_scm_type.get(s,{})]
+            if not shared: continue
+            d=np.asarray([by_scm_type[s][left]-by_scm_type[s][right] for s in shared]); rng=np.random.default_rng(SEED); ix=rng.integers(0,len(d),size=(BOOT,len(d))); b=d[ix].mean(axis=1)
+            within_type.append({'cohort':label,'left_type':left,'right_type':right,'n_shared_scms':len(d),'mean_within_scm_regret_reduction_difference':float(d.mean()),'ci95_pointwise_low':float(np.quantile(b,.025)),'ci95_pointwise_high':float(np.quantile(b,.975)),'left_higher_count':int((d>TOL).sum()),'left_lower_count':int((d< -TOL).sum()),'tie_count':int((np.abs(d)<=TOL).sum())})
         policies={'S0':'S0','FROZEN_M4_B1':'M4','TYPE_RANKED_M4_B1':'TYPE','T5_GUIDED_M4_B1':'T5','REGRET_ORACLE_B1':'ORACLE'}
         chosen={p:{} for p in policies}; deltas={p:{} for p in policies}
         for sid in sids:
@@ -80,7 +90,7 @@ def main():
             same=sum((chosen[left][s] is None and chosen[right][s] is None) or (chosen[left][s] is not None and chosen[right][s] is not None and canon(chosen[left][s])==canon(chosen[right][s])) for s in sids)
             redundancy.append({'cohort':label,'left_policy':left,'right_policy':right,'n_scm':expected,'same_selected_edit_count':same,'same_selected_edit_rate':same/expected,'both_noop_count':sum(chosen[left][s] is None and chosen[right][s] is None for s in sids)})
     a.output.mkdir(parents=True,exist_ok=True)
-    write(a.output/'error_type_summary.csv',errors); write(a.output/'policy_budget_aggregates.csv',aggregates); write(a.output/'paired_policy_contrasts.csv',contrasts); write(a.output/'policy_redundancy.csv',redundancy)
+    write(a.output/'error_type_summary.csv',errors); write(a.output/'within_scm_type_contrasts.csv',within_type); write(a.output/'policy_budget_aggregates.csv',aggregates); write(a.output/'paired_policy_contrasts.csv',contrasts); write(a.output/'policy_redundancy.csv',redundancy)
     (a.output/'execution_manifest.json').write_text(json.dumps({'schema':'S6_SAVED_CANDIDATE_MANIFEST_V1','cohorts':{k:len(v) for k,v,_,_ in cohorts},'bootstrap_replicates':BOOT,'bootstrap_seed':SEED,'type_priority_development_only':order,'input_sha256':{'development_candidates':sha(a.development),'development_unit_inputs':sha(a.development_units),'replication_candidates':sha(a.confirmation),'replication_unit_inputs':sha(a.confirmation_units)},'scope':'retrospective B=1 replay from saved initial legal single-edit values; units without candidates retained as no-op; no new samples; intervals pointwise'},sort_keys=True,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'type_priority':order,'aggregate_rows':len(aggregates),'paired_contrasts':len(contrasts),'output':str(a.output)},sort_keys=True))
 if __name__=='__main__': main()
