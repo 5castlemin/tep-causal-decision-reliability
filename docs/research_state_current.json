@@ -640,8 +640,8 @@
       "id": "E-EXTENSION-CLOSEOUT",
       "title": "Final Research E budget extension and C–D–E/S4/S5 integration",
       "status": "PARTIAL",
-      "evidence": "research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md; FINAL_RESEARCH_FRAMEWORK.md; 16,560 saved S4/S5 unit rows reaggregated; GitHub Actions 46051744319 PASS at 65a49c0592ef915c6886e5821cefe7a196cdca2a",
-      "next_action": "Prepare final written report and presentation from verified artifacts; retain S4/S5 B=5..9 as NOT_RUN",
+      "evidence": "research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md; FINAL_RESEARCH_FRAMEWORK.md; 16,560 saved S4/S5 unit rows reaggregated; GitHub Actions 46051744319 PASS at 65a49c0592ef915c6886e5821cefe7a196cdca2a; final integration draft PR #51 created; d057fe1 checks 46113812900 and 46113889243 SUCCESS",
+      "next_action": "Keep S4/S5 B5–9 NOT_RUN; finish final integration with S7 PARTIAL if its locked cap expires before a unit completes.",
       "acceptance": "16,560 saved unit rows reaggregated without new samples; cohorts/scales remain separate; scientific claims, limits, figures, final report/presentation plan and public hashes recorded; final remote CI passes. S4/S5 B=5..9 remain NOT_RUN.",
       "depends_on": []
     },
@@ -660,7 +660,7 @@
       "status": "PARTIAL",
       "evidence": "research/supplementary_validation/s7/RESEARCH_S7_EXECUTION_LOCK.json; RESEARCH_S7_LIVE_PROGRESS_REPORT.md; S6_S7_CURRENT_CLOSEOUT.md",
       "next_action": "Allow locked worker to reach its 14,400-second cap; preserve checkpoint and resource report; do not evaluate before all recommendations are sealed.",
-      "acceptance": "At 2026-11-28 14:42 KST: first G0 still active; 0/400 G0 and 0/24,000 recommendations; evaluator not started; wall/RSS caps not reached. Mark PARTIAL if cap stops run.",
+      "acceptance": "At 2026-11-28 14:53 KST: first G0 task-zone traversal active; 0/400 G0 and 0/24,000 recommendations; evaluator not started; elapsed 11,195/14,400 seconds; RSS 86,867,968/4,294,967,296 bytes. Preserve and classify PARTIAL at cap.",
       "depends_on": []
     }
   ],
@@ -830,7 +830,7 @@
     "pr11_head": "6d37d095998bf45bc532606fe8113fedd1b8f913",
     "pr11_merge_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
     "main_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
-    "current_feature": "feature/causalman-micro-acceptance",
+    "current_feature": "feature/final-s6-s7-validation",
     "pr12_status": "MERGED",
     "pr12_head": "23d19f56cd6510783398cfa95f66f1d1d8194937",
     "pr12_ci": 40097602131,
@@ -845,9 +845,9 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 25,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/25",
-    "current_pr_base": "feature/integrated-manufacturing-benchmark-search",
+    "current_pr": 51,
+    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/51",
+    "current_pr_base": "main",
     "pr16_status": "OPEN",
     "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab",
     "pr17_status": "OPEN",
@@ -868,7 +868,14 @@
     "pr24_review_commit": "d14155dc3133e1522e1b87f76cdd3ab6a7150c65",
     "pr24_head": "bc46dc924f2cf5171144c6e73e7a48373d83dc34",
     "pr25_status": "OPEN",
-    "pr25_acceptance_commit": "c6b3e386cc9838e245fd226f50ccd809af479fc7"
+    "pr25_acceptance_commit": "c6b3e386cc9838e245fd226f50ccd809af479fc7",
+    "current_pr_status": "OPEN_DRAFT_NOT_MERGED",
+    "current_pr_head": "d057fe15c70420e0e651e36a3f58e74ce1664eae",
+    "current_pr_ci_runs": [
+      46113812900,
+      46113889243
+    ],
+    "current_pr_ci": "SUCCESS"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -1572,7 +1579,7 @@
     "frozen_checks": "not weakened; both local failures retained and explicitly reported"
   },
   "s6_s7_closeout": {
-    "checked_at": "2026-11-28 14:42 KST",
+    "checked_at": "2026-11-28 14:53 KST",
     "s6_status": "POST_HOC_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
     "s7_status": "RECOMMENDATION_STAGE_ACTIVE_ZERO_COMPLETED_UNITS",
     "s7_completed_g0": 0,
@@ -1581,11 +1588,19 @@
     "s7_planned_recommendations": 24000,
     "s7_recent_10m_completed_units": 0,
     "s7_intervention_evaluator": "NOT_STARTED",
-    "s7_elapsed_wall_seconds": 10575,
+    "s7_elapsed_wall_seconds": 11195,
     "s7_wall_cap_seconds": 14400,
-    "s7_rss_bytes_observed": 101326848,
+    "s7_rss_bytes_observed": 86867968,
     "s7_rss_cap_bytes": 4294967296,
     "project_closeout": "PARTIAL_PENDING_S7_CAP_AND_FINAL_REMOTE_VALIDATION",
-    "details": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md"
+    "details": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md",
+    "s7_wall_remaining_seconds": 3205,
+    "latest_commit": "d057fe15c70420e0e651e36a3f58e74ce1664eae",
+    "draft_pr": 51,
+    "ci_runs": [
+      46113812900,
+      46113889243
+    ],
+    "ci_status": "SUCCESS"
   }
 }

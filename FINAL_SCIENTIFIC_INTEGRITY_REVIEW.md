@@ -2,7 +2,7 @@
 
 ## S6/S7 supplementary status (2026-11-28)
 
-S6 reaggregates saved S4 candidate results; it is post-hoc and candidate observations are clustered within SCM. S7 recommendation was still in its first Station2 G0 construction at the latest live check: 0/400 G0 and 0/24,000 recommendations, with intervention evaluation not started. The locked wall cap is 14,400 seconds and process-tree RSS cap 4 GiB; at the observed check elapsed time was about 10,575 seconds and RSS about 0.094 GiB. No external result is inferred from this incomplete run. See `research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md` for the live calculation audit.
+S6 reaggregates saved S4 candidate results; it is post-hoc and candidate observations are clustered within SCM. S7 recommendation was still in its first Station2 G0 construction at the latest live check: 0/400 G0 and 0/24,000 recommendations, with intervention evaluation not started. The locked wall cap is 14,400 seconds and process-tree RSS cap 4 GiB; at the observed check elapsed time was 11,195 seconds and RSS 86,867,968 bytes. No external result is inferred from this incomplete run. See `research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md` for the live calculation audit.
 
 Date: 2026-11-28. Scope: existing published research outputs plus saved S4/S5 unit-level results for post-hoc E budget/cost aggregation. No new study data were generated.
 

@@ -4,7 +4,7 @@
 
 ## 다음 가장 중요한 작업 3개
 
-1. **E-EXTENSION-CLOSEOUT — Final Research E budget extension and C–D–E/S4/S5 integration**: Prepare final written report and presentation from verified artifacts; retain S4/S5 B=5..9 as NOT_RUN (PARTIAL)
+1. **E-EXTENSION-CLOSEOUT — Final Research E budget extension and C–D–E/S4/S5 integration**: Keep S4/S5 B5–9 NOT_RUN; finish final integration with S7 PARTIAL if its locked cap expires before a unit completes. (PARTIAL)
 2. **S5-RUN — S5 conditional external semisynthetic reconstruction**: Preserve the conditional result and limitations; do not expand into further experiments in this task (VERIFIED)
 3. **S4S5-RECON — S4 최소 재구축 및 독립 T5 재현**: Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified (VERIFIED)
 
@@ -12,7 +12,7 @@
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
-| E-EXTENSION-CLOSEOUT | PARTIAL | 없음 | Prepare final written report and presentation from verified artifacts; retain S4/S5 B=5..9 as NOT_RUN / 16,560 saved unit rows reaggregated without new samples; cohorts/scales remain separate; scientific claims, limits, figures, final report/presentation plan and public hashes recorded; final remote CI passes. S4/S5 B=5..9 remain NOT_RUN. |
+| E-EXTENSION-CLOSEOUT | PARTIAL | 없음 | Keep S4/S5 B5–9 NOT_RUN; finish final integration with S7 PARTIAL if its locked cap expires before a unit completes. / 16,560 saved unit rows reaggregated without new samples; cohorts/scales remain separate; scientific claims, limits, figures, final report/presentation plan and public hashes recorded; final remote CI passes. S4/S5 B=5..9 remain NOT_RUN. |
 | S5-RUN | VERIFIED | S5-ENV | Preserve the conditional result and limitations; do not expand into further experiments in this task / Locked run completed within resource caps, independent saved-response analysis agrees, hashes recorded, raw vectors remain private |
 | S4S5-RECON | VERIFIED | 없음 | Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified / Separate cohorts and historical claims; primary and CI reported; private unit records remain outside Git |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
@@ -55,7 +55,7 @@
 | S4-PILOT-01 | PARTIAL | S3-S4-01 | Use local reconstruction evidence with conditional population and exploratory limitations; no claim of recovering other-PC runs / Pilot, development, and replication cohorts remain distinct; no raw private records published |
 | S5-FEAS-01 | BLOCKED | S4-PILOT-01 | No D replay is claimed; S5 is a new conditional external semisynthetic reconstruction and is complete under its own contract / Separate historical D from S5; do not treat public D aggregates as raw-vector uncertainty or exact reproduction |
 | S6-POSTHOC | VERIFIED | 없음 | Use as post-hoc evidence only; do not call candidate edits independent SCMs or error-type differences causal. / Saved S4 unit records audited and reaggregated; no new SCM/G0 generated; post-hoc and clustered-unit limits documented. |
-| S7-EXTERNAL | PARTIAL | 없음 | Allow locked worker to reach its 14,400-second cap; preserve checkpoint and resource report; do not evaluate before all recommendations are sealed. / At 2026-11-28 14:42 KST: first G0 still active; 0/400 G0 and 0/24,000 recommendations; evaluator not started; wall/RSS caps not reached. Mark PARTIAL if cap stops run. |
+| S7-EXTERNAL | PARTIAL | 없음 | Allow locked worker to reach its 14,400-second cap; preserve checkpoint and resource report; do not evaluate before all recommendations are sealed. / At 2026-11-28 14:53 KST: first G0 task-zone traversal active; 0/400 G0 and 0/24,000 recommendations; evaluator not started; elapsed 11,195/14,400 seconds; RSS 86,867,968/4,294,967,296 bytes. Preserve and classify PARTIAL at cap. |
 
 ## ID 이력
 

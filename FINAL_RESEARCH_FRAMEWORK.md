@@ -4,7 +4,7 @@
 
 영문 제목 후보: **Beyond Structural Accuracy: Decision-Oriented Repair Prioritization in Imperfect Causal Graphs**  
 팀: 닦고조이고기름치자  
-상태: C–D–E, S4/S5 및 저장 결과에 대한 S6 사후 재분석을 통합했다. S7은 2026-11-28 14:42 KST에 recommendation 0/24,000으로 실행 중이었으며 외부 결과가 아직 없다. 전체 S6/S7 실행 상태는 [S6–S7 closeout](research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md)에 기록한다.
+상태: C–D–E, S4/S5 및 저장 결과에 대한 S6 사후 재분석을 통합했다. S7은 2026-11-28 14:53 KST에 G0 0/400, recommendation 0/24,000으로 실행 중이었으며 외부 결과가 아직 없다. 전체 S6/S7 실행 상태는 [S6–S7 closeout](research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md)에 기록한다.
 
 ## 1. Executive Summary
 
@@ -181,4 +181,4 @@ Pareto frontier와 (J_\lambda=\bar L+\lambda\bar C) lower envelope는 관측 표
 
 S6는 기존 S4 Development 80 및 independent replication 160의 저장 후보별 결과를 다시 집계했다. Replication에서 single-edit 평균 regret 감소량은 FN .08915, FP −.03782, REV .11401, UNRES .04956이었다. 이 값은 후보가 존재한 SCM들에 조건부이고 오류 유형의 인과효과가 아니다. Type-ranked M4와 Frozen M4의 B1 차이는 −.00220 (95% paired SCM bootstrap [−.00928, .00337], better/worse/tie 1/0/159)로 불확실했다. 후보는 SCM 안에 중첩되어 있고 S6는 post-hoc evidence다.
 
-S7은 Station2/Station3 task strata에서 동일 98-node, 485-edge full-line causalAssembly DRF DGP를 사용한다. Lock은 G0 400개와 recommendation 24,000건을 예정했으나 2026-11-28 14:42 KST 확인에서는 첫 G0 생성 중이고 완료는 각각 0이었다. 누적 wall cap은 14,400초, process-tree RSS cap은 4 GiB이며 관측 당시 둘 다 미도달이었다. Evaluator는 실행되지 않았다. S7은 현재 외부 강건성 근거가 아니며 결과를 추정하지 않는다.
+S7은 Station2/Station3 task strata에서 동일 98-node, 485-edge full-line causalAssembly DRF DGP를 사용한다. Lock은 G0 400개와 recommendation 24,000건을 예정했으나 2026-11-28 14:53 KST 확인에서는 첫 G0 생성 중이고 완료는 각각 0이었다. 누적 wall cap은 14,400초, process-tree RSS cap은 4 GiB이며 관측 당시 둘 다 미도달이었다. Evaluator는 실행되지 않았다. S7은 현재 외부 강건성 근거가 아니며 결과를 추정하지 않는다.

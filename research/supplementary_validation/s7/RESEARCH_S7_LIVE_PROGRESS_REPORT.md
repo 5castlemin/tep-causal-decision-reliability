@@ -1,6 +1,6 @@
 # S7 Live Progress and Resource Check
 
-**Observed:** 2026-11-28 14:42 KST  
+**Observed:** 2026-11-28 14:53 KST
 **Run:** `s7-causalassembly-two-station-tasks-20261128-v1`, attempt 02  
 **State:** `RECOMMENDATION_STAGE_ACTIVE`; no intervention evaluation started.
 
@@ -14,13 +14,13 @@
 
 ## Observed completion
 
-The private run directory contains the validated `training.csv` only (643,985 bytes; SHA-256 `833c7dbac00a29f896d1fb433d90ff971c412702fe90495a2de5f5e535917245`). It contains no persisted G0 records, recommendation rows, or sealed recommendation manifest. The public output directory is empty. The most recent read-only live-local snapshot (14:39 KST), confirmed against the still-running process and unchanged run-directory contents at 14:42, showed the first Station2 G0 at `i=0`, with `rows=[]`, `g0_public=[]`, `recs=[]`, and `learner_cache={}`. Thus the latest verified count is 0/400 G0 and 0/24,000 recommendations, persisted or in memory. No completed-unit artifact appeared during the ten-minute observation window: 0 completed G0 and 0 recommendations.
+The private run directory contains the validated `training.csv` only (643,985 bytes; SHA-256 `833c7dbac00a29f896d1fb433d90ff971c412702fe90495a2de5f5e535917245`). It contains no persisted G0 records, recommendation rows, or sealed recommendation manifest. The public output directory is empty. A read-only live-local snapshot at 14:53 showed the first Station2 G0 at `i=0`, with `rows=[]`, `g0_public=[]`, `recs=[]`, and `learner_cache={}`. Thus the latest verified count is 0/400 G0 and 0/24,000 recommendations, persisted or in memory. No completed-unit artifact appeared in the preceding ten minutes: 0 completed G0 and 0 recommendations.
 
 No G0 or recommendation artifacts were observed to be written during the ten-minute observation window. This is a persisted-output count, not a claim that no in-memory work completed.
 
 ## Current bottleneck and duplicate work
 
-A read-only `py-spy dump --json -l` at 14:39 located the active stack in the first `make_g0 → corrupt_graph_candidate → policy_engine.task_zone → task_zone.<locals>.visit` call for the first locked Station2 G0 (`Station2_mp_13 → Station2_mp_33`). At 14:42 the process remained alive and had produced no G0/recommendation artifact. The frozen `task_zone` implementation recursively enumerates simple undirected paths in the 98-node, 485-edge truth graph. It had not returned after approximately 2 h 40 min of the run. It is called again for each G0 and again by policy metrics, despite identical truth/task inputs. This is the observed bottleneck; CPU accumulation alone was not used as a progress measure.
+A read-only `py-spy dump --json -l` at 14:53 located the active stack at `policy_engine.py:93`, `task_zone.<locals>.visit`, with stack depth 76, inside the first `make_g0 → corrupt_graph_candidate → task_zone` call for the first locked Station2 G0 (`Station2_mp_13 → Station2_mp_33`). The process had been active since 11:46:36 and had produced no G0/recommendation artifact. The frozen `task_zone` implementation recursively enumerates simple undirected paths in the 98-node, 485-edge truth graph. The first call had not returned after approximately 2 h 53 min of the run. It is called again for each G0 and again by policy metrics, despite identical truth/task inputs. This is the observed bottleneck; CPU accumulation alone was not used as a progress measure.
 
 The S7 runner caches Ridge action fits by `(station, recommended_graph_hash)`, preventing repeated fits for the same graph within one station. The key includes station, so a graph shared across stations may be fit twice. The runner also recomputes policy repair trajectories separately for each budget and recomputes the same graph-free association fit for each G0. These are duplicate calculation paths, but unit-level duplication counts are unavailable because no recommendation checkpoint exists.
 
@@ -32,7 +32,7 @@ After recommendations are complete and sealed, the contract still requires an ev
 
 ## Resource status
 
-The locked cumulative cap is 14,400 seconds and aggregate process-tree RSS cap is 4 GiB. At 14:42, elapsed wall time from supervisor start (11:46:36) was about 10,575 seconds (2 h 56 min), leaving about 3,825 seconds (1 h 04 min). The recommendation process RSS was about 0.094 GiB. The wall cap had not been reached; observed RSS was below the cap. The supervisor samples process-tree RSS every two seconds and will terminate the child at either cap. Its final resource report is written only when the supervisor exits.
+The locked cumulative cap is 14,400 seconds and aggregate process-tree RSS cap is 4 GiB. At 14:53:11, elapsed wall time from supervisor start (11:46:36) was 11,195 seconds (3 h 06 min), leaving 3,205 seconds (53 min 25 sec). The recommendation process RSS was 86,867,968 bytes (about 0.081 GiB). The wall cap had not been reached; observed RSS was below the cap. The supervisor samples process-tree RSS every two seconds and will terminate the child at either cap. Its final resource report is written only when the supervisor exits.
 
 ## Result
 

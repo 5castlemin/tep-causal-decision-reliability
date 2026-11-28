@@ -1,6 +1,6 @@
 # S6–S7 진행 현황 및 과학적 종료 기록
 
-관측 기준: 2026-11-28 14:42 KST. S7 recommendation worker는 이 기록 시점에 계속 실행 중이었다. 이 문서는 S6 결과를 별도로 닫고 S7 상태를 실제 완료 단위로 기록한다.
+관측 기준: 2026-11-28 14:53 KST. S7 recommendation worker는 이 기록 시점에 계속 실행 중이었다. 이 문서는 S6 결과를 별도로 닫고 S7 상태를 실제 완료 단위로 기록한다.
 
 ## S6 — 저장 결과 재집계
 
@@ -17,14 +17,14 @@ B=1 replication에서 type-ranked M4−Frozen M4 차이는 −0.002204 (95% 공�
 실행 ID `s7-causalassembly-two-station-tasks-20261128-v1`, attempt 02. Lock/contract는 변경하지 않았다.
 
 1. 외부환경 기준 그래프: causalAssembly Station1/공식 전체 benchmark가 아니라 고정된 Station2·Station3 task를 뽑은 동일 causalAssembly full-line graph, 98 nodes 및 485 directed edges. 두 task는 동일한 한 full-line DRF DGP를 공유한다.
-2. 전체/완료 G0: 400 예정(Station2 200, Station3 200); 최신 검증에서 0 persisted, 첫 Station2 G0가 진행 중이다.
+2. 전체/완료 G0: 400 예정(Station2 200, Station3 200); 14:53 KST 검증에서 0 persisted, 첫 Station2 G0가 진행 중이다.
 3. 전체/완료 recommendation: 24,000 예정(12 policies × 5 budgets × 400); 0 완료·봉인. 공개 결과 경로도 비어 있다.
 4. 최근 10분의 실제 완료 단위: 0 G0 및 0 recommendation. 실행 로그/저장 artifact 변화로 판단했으며 CPU 시간 증가를 진행으로 계산하지 않았다.
-5. 마지막 read-only stack sample(14:39)은 첫 `make_g0 → corrupt_graph_candidate → policy_engine.task_zone → visit`에서 멈춰 있었다. 전체 98-node truth graph의 simple-path 탐색이 병목이다. DRF fitting은 이미 완료됐고 관측 기록상 약 832.90초였다. 14:42에도 프로세스가 살아 있었고 신규 산출물은 없었다.
+5. 마지막 read-only stack sample(14:53)은 `policy_engine.py:93`, stack depth 76의 `task_zone.<locals>.visit`에서 첫 `make_g0 → corrupt_graph_candidate → policy_engine.task_zone` 호출 안에 있었다. 전체 98-node truth graph의 simple-path 탐색이 병목이다. DRF fitting은 이미 완료됐고 관측 기록상 약 832.90초였다.
 6. 반복 계산 경로는 코드에 존재한다: 동일 task/truth의 `task_zone` 반복, budget별 repair trajectory 재계산, G0마다 graph-free fit 재계산. Ridge action fit은 station+graph hash로 캐시되므로 station 내 동일 그래프 적합을 막지만, station 간 공유 그래프는 중복 적합 가능성이 있다. 첫 G0가 미완료라 실제 duplicate fit/recommendation 횟수는 0이며 중복 recommendation도 0이다. active run에 캐시 최적화는 넣지 않았다.
 7. `training.csv`(643,985 bytes; SHA-256 `833c7dbac00a29f896d1fb433d90ff971c412702fe90495a2de5f5e535917245`)만 checkpoint다. G0/recommendation checkpoint와 sealed manifest는 없으므로 단위 경계에서 안전 재개할 수 없다. 저장 training frame만으로는 첫 G0의 부분 진행을 resume할 수 없다.
 8. 봉인된 recommendation 이후에도 evaluation-stage DRF fit/input hash 확인, 50,000 intervention response rows(2 strata × 5 actions × 5,000), shared action-loss table, unit/aggregate contrasts 및 G0-only/action-MC/two-source bootstrap (각 잠금 분석 최대 10,000 replicates)이 예정되어 있다. recommendation이 0/24,000이므로 evaluator는 시작하지 않았으며 시작해서도 안 된다.
-9. S7 execution lock의 cumulative wall cap 14,400초 및 process-tree RSS cap 4 GiB. 14:42 기준 실행 시작 11:46:36부터 약 10,575초 경과, 약 3,825초 남음. worker RSS 약 0.094 GiB로 관측상 cap 이내. 감독 프로세스가 2초 간격으로 process-tree RSS를 샘플링하고 cap 초과 또는 wall cap 도달 시 worker를 종료하도록 잠겨 있다. 최종 resource report는 supervisor 종료 후에만 생성된다.
+9. S7 execution lock의 cumulative wall cap 14,400초 및 process-tree RSS cap 4 GiB. 14:53:11 기준 실행 시작 11:46:36부터 11,195초 경과, 3,205초(53분 25초) 남음. worker RSS 86,867,968 bytes(약 0.081 GiB)로 관측상 cap 이내. 감독 프로세스가 2초 간격으로 process-tree RSS를 샘플링하고 cap 초과 또는 wall cap 도달 시 worker를 종료하도록 잠겨 있다. 최종 resource report는 supervisor 종료 후에만 생성된다.
 
 따라서 S7은 `RECOMMENDATION_STAGE_ACTIVE_WITH_ZERO_COMPLETED_UNITS`이며 연구 Gate는 완료가 아니다. 프로세스를 14:42 현재 임의 중단하지 않았고, 사전 cap 전에 표본/정책/evaluator를 바꾸지 않는다. cap 종료 시 존재하는 checkpoint와 resource log를 보존하고 `PARTIAL`로 닫는다. 이후 신규 실행은 별도 잠금과 정확성 테스트 없이는 재개하지 않는다. S7은 S6 결과의 상태나 해석을 바꾸지 않는다.
 
