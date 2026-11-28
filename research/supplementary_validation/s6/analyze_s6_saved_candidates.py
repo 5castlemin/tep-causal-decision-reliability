@@ -30,18 +30,21 @@ def pick(rows,rule,order):
     best=max(score(r) for r in pool)
     if rule!="ORACLE" and best<=TOL: return None
     return min((r for r in pool if best-score(r)<=TOL),key=canon)
-def load(path):
+def load(path, unit_path):
     groups=defaultdict(list)
     for r in json.loads(path.read_text(encoding="utf-8")): groups[str(r["scm_id"])].append(r)
-    return {s:sorted(v,key=canon) for s,v in groups.items()}
+    unit_ids=[str(r["scm_id"]) for r in json.loads(unit_path.read_text(encoding="utf-8"))]
+    if len(unit_ids)!=len(set(unit_ids)): raise ValueError("duplicate unit IDs in cohort inputs")
+    if set(groups)-set(unit_ids): raise ValueError("candidate SCM key absent from cohort inputs")
+    return {s:sorted(groups.get(s,[]),key=canon) for s in unit_ids}
 def write(path,rows):
     if not rows: raise ValueError(f"empty output {path}")
     with path.open("w",newline="",encoding="utf-8") as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('--development',type=Path,required=True); ap.add_argument('--confirmation',type=Path,required=True); ap.add_argument('--output',type=Path,required=True); a=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument('--development',type=Path,required=True); ap.add_argument('--development-units',type=Path,required=True); ap.add_argument('--confirmation',type=Path,required=True); ap.add_argument('--confirmation-units',type=Path,required=True); ap.add_argument('--output',type=Path,required=True); a=ap.parse_args()
     if a.output.exists() and any(a.output.iterdir()): raise FileExistsError(f"refusing overwrite: {a.output}")
-    cohorts=[("development80",load(a.development),a.development,80),("replication160",load(a.confirmation),a.confirmation,160)]
+    cohorts=[("development80",load(a.development,a.development_units),a.development,80),("replication160",load(a.confirmation,a.confirmation_units),a.confirmation,160)]
     order=None; errors=[]; aggregates=[]; contrasts=[]; redundancy=[]
     for label,units,src,expected in cohorts:
         sids=sorted(units)
@@ -78,6 +81,6 @@ def main():
             redundancy.append({'cohort':label,'left_policy':left,'right_policy':right,'n_scm':expected,'same_selected_edit_count':same,'same_selected_edit_rate':same/expected,'both_noop_count':sum(chosen[left][s] is None and chosen[right][s] is None for s in sids)})
     a.output.mkdir(parents=True,exist_ok=True)
     write(a.output/'error_type_summary.csv',errors); write(a.output/'policy_budget_aggregates.csv',aggregates); write(a.output/'paired_policy_contrasts.csv',contrasts); write(a.output/'policy_redundancy.csv',redundancy)
-    (a.output/'execution_manifest.json').write_text(json.dumps({'schema':'S6_SAVED_CANDIDATE_MANIFEST_V1','cohorts':{k:len(v) for k,v,_,_ in cohorts},'bootstrap_replicates':BOOT,'bootstrap_seed':SEED,'type_priority_development_only':order,'input_sha256':{'development_candidates':sha(a.development),'replication_candidates':sha(a.confirmation)},'scope':'retrospective B=1 replay from saved initial legal single-edit values; no new samples; intervals pointwise'},sort_keys=True,indent=2)+'\n',encoding='utf-8')
+    (a.output/'execution_manifest.json').write_text(json.dumps({'schema':'S6_SAVED_CANDIDATE_MANIFEST_V1','cohorts':{k:len(v) for k,v,_,_ in cohorts},'bootstrap_replicates':BOOT,'bootstrap_seed':SEED,'type_priority_development_only':order,'input_sha256':{'development_candidates':sha(a.development),'development_unit_inputs':sha(a.development_units),'replication_candidates':sha(a.confirmation),'replication_unit_inputs':sha(a.confirmation_units)},'scope':'retrospective B=1 replay from saved initial legal single-edit values; units without candidates retained as no-op; no new samples; intervals pointwise'},sort_keys=True,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'type_priority':order,'aggregate_rows':len(aggregates),'paired_contrasts':len(contrasts),'output':str(a.output)},sort_keys=True))
 if __name__=='__main__': main()
