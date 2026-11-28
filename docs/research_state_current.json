@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-26",
+  "checked_at": "2026-11-28 20:00 KST",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -503,11 +503,11 @@
     },
     {
       "id": "FINAL-INTEGRATION",
-      "title": "Research C–D 과학적 통합 및 저장소 종료",
-      "status": "VERIFIED",
-      "evidence": "PR #41 scientific integration merged; PR #42 closeout merged; main fc863182efd4ee721a7f5250c871d46afe9bf244; Actions 45656538612 SUCCESS; research/final_integration/",
-      "next_action": "새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지",
-      "acceptance": "원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료",
+      "title": "Final S6/S7 scientific integration and repository closeout",
+      "status": "PARTIAL",
+      "evidence": "PR #51 draft at 5eced12d; prior PR checks 46125787331/46125792972 SUCCESS; docs corrected for D contrast, S6 v6, S7 zero outputs, telemetry limits, timing discrepancy and confirmed learner edge-orientation defect; review list empty; branch-protection read denied (403)",
+      "next_action": "Wait for required independent review and current-head CI; only then merge under repository rules. Defer PR/branch cleanup until merge and main verification.",
+      "acceptance": "Final documents and branch inventory staged; merge and destructive cleanup not performed because reviewer approval and protection state are not verified.",
       "depends_on": []
     },
     {
@@ -549,14 +549,133 @@
       "next_action": "No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation",
       "acceptance": "S1 policy identity and shared-index contrasts corrected; S2 nested models and metric definitions audited; saved inputs and C–F frozen assets preserved; post-merge CI passed; limitations remain documented",
       "depends_on": []
+    },
+    {
+      "id": "S3-01",
+      "title": "Within-task causal graph repair prioritization (post-hoc)",
+      "status": "PARTIAL",
+      "evidence": "PR #50, head 616ec21499eb4cd4b43139423240cd380a643d86; corrected source replay and 63 Greedy + 63 B=2 Lookahead subsets; research/within_task_repair_prioritization/RESEARCH_S3_CORRECTION_AUDIT.md; tables/correction_v1/; source cohort/proposal hashes revalidated after run.",
+      "next_action": "No further S3 exploration in this closeout; preserve ex-post sequence, gamma sensitivity, Holm and Research D unit-level analyses as NOT_RUN. PR #50 remains unmerged.",
+      "acceptance": "Maintain exploratory status and documented limits; no new cohort or intervention generation in S3.",
+      "depends_on": [
+        "SUPP-01",
+        "F-LITE-01"
+      ]
+    },
+    {
+      "id": "S3-S4-01",
+      "title": "S3 completion and independent exploratory S4 pilot",
+      "status": "PARTIAL",
+      "evidence": "research/within_task_repair_prioritization/s4_completion/S4_PREFLIGHT_AUDIT.md; research/within_task_repair_prioritization/s4_completion/s4_1b_retrospective/; analysis commit 5b64b9ec77f6aeaac56c140624962b3e8541789e",
+      "next_action": "S4-2 matched corruption and objective analyses remain proposed; obtain a separate frozen execution contract and approval before generating any SCM/G0/observations. Preserve pilot as exploratory and report the Q-common admission mismatch.",
+      "acceptance": "Existing S4 pilot artifacts hash-verified; B=1 retrospective over 64 saved units completed; no new research samples; General cohort is Q-common-conditioned and not representative of Research C admission.",
+      "depends_on": [
+        "S3-01"
+      ]
+    },
+    {
+      "id": "S4-PILOT-01",
+      "title": "S4 independent exploratory pilot and mechanism feasibility",
+      "status": "PARTIAL",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S4_PILOT_AND_REPLICATION_CLOSEOUT.md; saved pilot audited and local new 160-SCM replication completed; other-PC historical run unavailable",
+      "next_action": "Use local reconstruction evidence with conditional population and exploratory limitations; no claim of recovering other-PC runs",
+      "acceptance": "Pilot, development, and replication cohorts remain distinct; no raw private records published",
+      "depends_on": [
+        "S3-S4-01"
+      ]
+    },
+    {
+      "id": "S5-FEAS-01",
+      "title": "Research D unit-level historical replay feasibility",
+      "status": "BLOCKED",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S5_ARTIFACT_AVAILABILITY_REPORT.md; historical Research D private unit-level vectors were not available",
+      "next_action": "No D replay is claimed; S5 is a new conditional external semisynthetic reconstruction and is complete under its own contract",
+      "acceptance": "Separate historical D from S5; do not treat public D aggregates as raw-vector uncertainty or exact reproduction",
+      "depends_on": [
+        "S4-PILOT-01"
+      ]
+    },
+    {
+      "id": "S5-ORIGINAL-PC-01",
+      "title": "Original-PC S4 closeout and S5 execution feasibility",
+      "status": "PARTIAL",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/ORIGINAL_PC_RESEARCH_CONTINUATION_STATUS.md; local S4 reconstruction and S5 completed; other-PC commits/private artifacts remain unavailable",
+      "next_action": "Do not block local closeout on missing other-PC artifacts; report those historical results as unverified",
+      "acceptance": "Local Study 2 reconstruction and Study 3 S5 execution reported; missing external handoff remains explicit",
+      "depends_on": [
+        "S4-PILOT-01",
+        "S5-FEAS-01"
+      ]
+    },
+    {
+      "id": "S4S5-RECON",
+      "title": "S4 최소 재구축 및 독립 T5 재현",
+      "status": "VERIFIED",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S4_PILOT_AND_REPLICATION_CLOSEOUT.md; reconstructed development 80 SCM + new replication 160 SCM; primary paired interval includes zero; other-PC data remains unavailable",
+      "next_action": "Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified",
+      "acceptance": "Separate cohorts and historical claims; primary and CI reported; private unit records remain outside Git",
+      "depends_on": []
+    },
+    {
+      "id": "S5-ENV",
+      "title": "S5 전용 외부 반합성 실행환경",
+      "status": "VERIFIED",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S5_RUNTIME_SETUP_REPORT.md; S5_TARGETED_SMOKE_TEST_RESULTS.json; pinned causalAssembly/Station1 source and hashes verified",
+      "next_action": "No further runtime restoration; preserve dedicated environment fingerprint and private archive manifest",
+      "acceptance": "Python/R/DRF integration, pinned source, Station1 graph and numeric hard-do smoke passed; observed resource monitor recorded",
+      "depends_on": []
+    },
+    {
+      "id": "S5-RUN",
+      "title": "S5 conditional external semisynthetic reconstruction",
+      "status": "VERIFIED",
+      "evidence": "research/within_task_repair_prioritization/s4_reconstruction/S5_EXTERNAL_PRIMARY_RESULTS.md; S5_UNCERTAINTY_REPORT.md; outputs/s5_reconstruction_v1/; 200 G0, 22000 recommendations, 24995 response rows",
+      "next_action": "Preserve the conditional result and limitations; do not expand into further experiments in this task",
+      "acceptance": "Locked run completed within resource caps, independent saved-response analysis agrees, hashes recorded, raw vectors remain private",
+      "depends_on": [
+        "S5-ENV"
+      ]
+    },
+    {
+      "id": "E-EXTENSION-CLOSEOUT",
+      "title": "Final Research E budget extension and C–D–E/S4/S5 integration",
+      "status": "VERIFIED",
+      "evidence": "research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md; FINAL_RESEARCH_FRAMEWORK.md; 16,560 saved S4/S5 unit rows reaggregated; B5–9 NOT_RUN; no new data",
+      "next_action": "Use completed, limited post-hoc results in the final report; do not start further experiments.",
+      "acceptance": "Saved S4/S5 B0–4 only; cohorts/scales separate; B5–9 remain NOT_RUN.",
+      "depends_on": []
+    },
+    {
+      "id": "S6-POSTHOC",
+      "title": "S6 saved S4 error-value and policy reaggregation",
+      "status": "VERIFIED",
+      "evidence": "research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md; outputs/saved_candidates_v6; Development 80/replication 160; T5−M4 −.008664 CI [−.020398,0], 4/1/155, Holm p=1.0; type-ranked−M4 −.002204 CI [−.009283,.003545], 2/1/157",
+      "next_action": "Report as retrospective post-hoc evidence; superiority, equivalence and noninferiority not established.",
+      "acceptance": "v6 validated from saved candidates; no new SCM/G0/observations.",
+      "depends_on": []
+    },
+    {
+      "id": "S7-EXTERNAL",
+      "title": "S7 two-task external semisynthetic validation",
+      "status": "PARTIAL",
+      "evidence": "S7_COMPUTATIONAL_CLOSEOUT.md; 0/400 G0, 0/24,000 recs, no seal/evaluator; final supervisor report missing; static runner review found directed-edge orientation defect; task-zone time .7613s JSON vs 1.474s prose",
+      "next_action": "Do not restart; classify as no external result and preserve computational limitation.",
+      "acceptance": "Implementation-only feasibility; runner defect/time discrepancy and missing exit telemetry documented.",
+      "depends_on": []
     }
   ],
   "priority_order": [
+    "FINAL-INTEGRATION",
+    "E-EXTENSION-CLOSEOUT",
     "TEAM-PRESENTATION",
+    "S6-POSTHOC",
+    "S7-EXTERNAL",
+    "S5-RUN",
+    "S4S5-RECON",
+    "RESEARCH-E",
     "SUPP-01",
     "F-LITE-01",
-    "RESEARCH-E",
-    "FINAL-INTEGRATION",
+    "S5-ENV",
     "BUDGET-REFINEMENT",
     "MFG-MICRO",
     "ERROR-CONFIRM",
@@ -587,7 +706,9 @@
     "VALVE-TRANSITION",
     "MFG-EFFECT-SCOPE",
     "DYNAMIC-SCOPE",
-    "SYNTH-FINAL"
+    "SYNTH-FINAL",
+    "S4-PILOT-01",
+    "S5-FEAS-01"
   ],
   "id_history": [
     "SIM-01은 기존 8월 구현 복구에만 사용한다.",
@@ -633,7 +754,15 @@
     "2026-11-26: PR #44 merged as 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; Actions 45760776088 SUCCESS. Research C–D–E closeout is integrated. No new experimental data were generated; move to report/presentation preparation.",
     "2026-11-26 — F-LITE-01 added as completed post-hoc verification-policy evidence; no new experiments planned",
     "2026-11-26 — F-Lite final audit reaggregated saved rows only; corrected Random action-change interpretation, recomputed shared-index pointwise bootstrap, replayed pending states, and verified original C/F artifact hashes; no research samples generated; PR #46 update and merge verification pending",
-    "2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only."
+    "2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only.",
+    "2026-11-27: S3-01 added as a separate post-hoc extension; Research C-F closeout gates and frozen results remain unchanged.",
+    "2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked.",
+    "S4S5-RECON: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.",
+    "S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.",
+    "2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run.",
+    "2026-11-28: S6 saved-record reaggregation completed; candidate edits remain nested within SCM and evidence is post-hoc.",
+    "2026-11-28: S7 locked recommendation run is active but has no completed G0/recommendation at 14:42 KST; evaluator remains gated on a sealed recommendation manifest.",
+    "Canonical research narrative: Research 0–4; legacy experiment IDs and frozen source paths remain unchanged. See docs/RESEARCH_NAMING_MAP.md and research/README.md."
   ],
   "integration_review": {
     "user_approved": true,
@@ -702,7 +831,7 @@
     "pr11_head": "6d37d095998bf45bc532606fe8113fedd1b8f913",
     "pr11_merge_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
     "main_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
-    "current_feature": "feature/causalman-micro-acceptance",
+    "current_feature": "feature/final-s6-s7-validation",
     "pr12_status": "MERGED",
     "pr12_head": "23d19f56cd6510783398cfa95f66f1d1d8194937",
     "pr12_ci": 40097602131,
@@ -717,9 +846,9 @@
     "pr15_status": "OPEN",
     "pr15_head": "e769ef58b015d31f3b3eef27e83c52ccd3017175",
     "pr15_ci": 40158875287,
-    "current_pr": 25,
-    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/25",
-    "current_pr_base": "feature/integrated-manufacturing-benchmark-search",
+    "current_pr": 51,
+    "current_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/51",
+    "current_pr_base": "main",
     "pr16_status": "OPEN",
     "pr16_head": "d12c6be1bb4956e87392276509950065dc9295ab",
     "pr17_status": "OPEN",
@@ -740,7 +869,14 @@
     "pr24_review_commit": "d14155dc3133e1522e1b87f76cdd3ab6a7150c65",
     "pr24_head": "bc46dc924f2cf5171144c6e73e7a48373d83dc34",
     "pr25_status": "OPEN",
-    "pr25_acceptance_commit": "c6b3e386cc9838e245fd226f50ccd809af479fc7"
+    "pr25_acceptance_commit": "c6b3e386cc9838e245fd226f50ccd809af479fc7",
+    "current_pr_status": "OPEN_DRAFT_NOT_MERGED",
+    "current_pr_head": "d057fe15c70420e0e651e36a3f58e74ce1664eae",
+    "current_pr_ci_runs": [
+      46113812900,
+      46113889243
+    ],
+    "current_pr_ci": "SUCCESS"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -1424,5 +1560,57 @@
       "Research D unit-level artifacts unavailable",
       "S1/S2 do not alter the frozen Research C primary"
     ]
-  }
+  },
+  "s4_1b_retrospective_closeout": {
+    "status": "RETROSPECTIVE_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
+    "analysis_commit": "5dae72c34e61d89f9364c1acf8b8738ee83f7a0b",
+    "k_stratified_analysis_commit": "e9f77f15a27b22b162542d896377d4eb8a6b13e4",
+    "k_stratified_status": "COMPLETED_DESCRIPTIVE_WITH_LIMITATIONS",
+    "k_stratified_rows": 567,
+    "k_stratified_public_hashes_recorded": true,
+    "new_samples": 0,
+    "b1_policy_rows": 4032,
+    "pilot_artifacts_pre_and_post_hash_verified": true,
+    "s4_2_matched_corruption": "PROPOSED_NOT_RUN",
+    "objective_sensitivity": "PROPOSED_NOT_RUN",
+    "research_d_unit_artifacts": "UNAVAILABLE_IN_APPROVED_ROOT",
+    "focused_tests": "new S4 retrospective tests 4/4 PASS; prior focused S4/S3 set 19/19 PASS",
+    "full_tests": "GitHub Actions run 45964027681 on d0867aebcd57099652c16a54f1ac9068458c1965: 473 discovered, 472 passed, 1 skipped, 0 failed",
+    "full_tests_local": "473 discovered; 471 passed; 1 failed (protected raw JSONL SHA mismatch in Windows checkout); 1 errored (local frozen dependency fingerprint NumPy 2.4.6/Pandas 3.0.3/NetworkX 3.6.1 differs from lock)",
+    "frozen_checks": "not weakened; both local failures retained and explicitly reported"
+  },
+  "s6_s7_closeout": {
+    "checked_at": "2026-11-28 19:00 KST",
+    "s6_status": "POST_HOC_B1_POLICY_MATRIX_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
+    "s7_status": "RESOURCE_LIMITATION_EXIT_TELEMETRY_UNVERIFIED_WITH_RUNNER_EDGE_ORIENTATION_DEFECT",
+    "s7_completed_g0": 0,
+    "s7_planned_g0": 400,
+    "s7_completed_recommendations": 0,
+    "s7_planned_recommendations": 24000,
+    "s7_recent_10m_completed_units": 0,
+    "s7_intervention_evaluator": "NOT_STARTED",
+    "s7_elapsed_wall_seconds": null,
+    "s7_wall_cap_seconds": 14400,
+    "s7_rss_bytes_observed": 86867968,
+    "s7_rss_cap_bytes": 4294967296,
+    "project_closeout": "PROJECT_FINALIZED_WITH_CLEANUP_LIMITATIONS_PENDING_PR51_REVIEW_AND_MERGE",
+    "details": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md; research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md",
+    "s7_wall_remaining_seconds": null,
+    "latest_commit": "5eced12d1847868b7b6a9fb9433d92169bf7c5ba",
+    "draft_pr": 51,
+    "ci_runs": [
+      46125340291,
+      46125346890
+    ],
+    "ci_status": "SUCCESS_FOR_5eced12d",
+    "s7_termination_reason": "NOT_VERIFIABLE_FINAL_SUPERVISOR_REPORT_MISSING",
+    "s7_task_zone_feasibility": "PASS_EXACTNESS; runtime discrepancy .7613s JSON vs 1.474s prose; no outcome access",
+    "validated_revision": "ebcb457ef59700da26d063413aff25c242cdd2a5",
+    "pr_status": "OPEN_DRAFT_NO_REVIEW_SUBMISSIONS",
+    "local_full_suite": "488 discovered; 480 passed; 1 skipped; 4 failures; 4 errors",
+    "focused_tests": "7 passed",
+    "research_state_check": "PASS",
+    "diff_check": "PASS"
+  },
+  "history": []
 }

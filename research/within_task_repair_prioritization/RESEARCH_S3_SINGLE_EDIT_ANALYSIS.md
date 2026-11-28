@@ -1,0 +1,5 @@
+# Single-edit analysis
+
+For every legal initial M4 candidate, the existing learner/evaluator was applied to the one-edit graph using the restored original observation matrix and analytic Research C evaluator. Per-SCM outcomes were kept in memory only; public results are aggregated within SCM before cohort summaries. Positive regret gain means the edit reduced regret. The aggregate table reports candidate and SCM counts and SCM-cluster percentile intervals by cohort, error type and structural role.
+
+The gain distribution is heterogeneous: candidate categories have both positive, near-zero and negative averages; structural role appears to matter within error type. Candidate types are not randomized and are not independent observations. Sparse cells, especially overlapping path/backdoor roles, have wide or degenerate intervals and do not establish causal effects of error type or role. See `tables/s3_candidate_value_aggregates.csv`.

@@ -1,0 +1,117 @@
+{
+  "action_grid_k": [
+    -1.0,
+    -0.5,
+    0.0,
+    0.5,
+    1.0
+  ],
+  "bootstrap": {
+    "common_indices_within_cohort": true,
+    "interval": "pointwise percentile",
+    "replicates": 2000,
+    "seed": 6419173299,
+    "unit": "SCM"
+  },
+  "classification": "exploratory_development_pilot",
+  "cohorts": {
+    "general": {
+      "eligibility": "existing outcome-blind indirect task and Q-common proposal admission",
+      "master_seed": 6419173201,
+      "target_scm": 32
+    },
+    "opportunity_rich_diagnostic": {
+      "eligibility": "same proposal admission plus at least two initially DAG-feasible M4 edits; structure only",
+      "master_seed": 6419173202,
+      "target_scm": 32
+    }
+  },
+  "contract_sha256": "95bd022617cfce21efb08f4283f1bf4ec9246a82f796fdfc062c011aa0da1b6d",
+  "contract_status": "LOCKED_BEFORE_GENERATION",
+  "delta_assignment": "sha256(namespace|cohort|scm_id) low bit maps to -1/+1",
+  "environment": {
+    "numpy": "2.4.3",
+    "pandas": "3.0.1",
+    "python": "3.11.15"
+  },
+  "execution_commit": "5bf2bf7f77efc278a0cd0abbbb581f2f8f2aca80",
+  "execution_tree": "cb31b86d590e0d1a92d2e2dc4c8204a07360e020",
+  "failure_rules": [
+    "No replacement after outcome access",
+    "No overwrite",
+    "Stop on source/hash/schema/DAG/nonfinite/lock/resource failure"
+  ],
+  "g0_corruption": {
+    "conditional_true_error_mix": {
+      "FN": 0.3333333333333333,
+      "REV": 0.3333333333333333,
+      "UNRES": 0.3333333333333333
+    },
+    "dag_invalid": "reject_without_redraw",
+    "fp_orientation": "fair",
+    "q": 0.15,
+    "r": 0.05
+  },
+  "generator": "Research C step4_topology_generator + step4c1_proposal + step4c1_scm; 6-10 nodes; linear signed coefficients; Gaussian exogenous noise",
+  "learner": "Research C Ridge alpha=1.0",
+  "max_proposal_g0_screening_attempts_per_cohort": 2048,
+  "new_causalassembly_g0": 0,
+  "new_confirmation_scm": 0,
+  "objective": "gamma=0 standardized squared target-tracking loss; analytic SCM intervention means",
+  "observational_rows_per_scm": 512,
+  "policies": {
+    "baselines": [
+      "S0",
+      "M4 B=0..4",
+      "Full Greedy B=0..4"
+    ],
+    "diagnostics": [
+      "all initially feasible single M4 edits",
+      "all feasible ordered M4 sequences of length <=2, including early stop"
+    ],
+    "structural": "all 63 T1-T6 nonempty equal-weight subsets, Greedy B=2"
+  },
+  "proposal_attempt_index": 0,
+  "proposal_id_prefixes": {
+    "general": "s4pilot-general",
+    "opportunity_rich_diagnostic": "s4pilot-opportunity"
+  },
+  "repair_config": {
+    "atomic_edit_cost": 1,
+    "fp_rule": "A",
+    "normalization": "fixed_opportunity"
+  },
+  "research_d_replay": "not authorized; requires existing private unit-level artifacts",
+  "resource_limits": {
+    "parallelism": 1,
+    "process_tree_memory_bytes": 4294967296,
+    "wall_seconds": 7200
+  },
+  "run_id": "s4-independent-pilot-20261127-v1",
+  "runner_sha256": "e7b4505210b3216ac00c431916018e06d18d1a550ff5604f712c1440330478df",
+  "seed_namespace": "research-s4-pilot-v1",
+  "source_base": "ce25e8dacca5be38aaeac8276dc343711fbbcd2a",
+  "source_branch": "research/s4-s5-independent-pilot",
+  "source_hashes": {
+    "research/budget_aware_refinement/graph_adapter.py": "c99b45c99a6475cebcd23521e05e7ffcae11cc13ed2cdceb6541f38a56bf4096",
+    "research/budget_aware_refinement/step3_adapter.py": "054f13d709764e0b6eba505175e529769e5549bf2e21f20dc3515fe3a2aa733d",
+    "research/budget_aware_refinement/step4_error_injection.py": "44b761a0d31bde0ef87f5eb3e1a6811746c8ef002d04bcbc9a774dcb6710da92",
+    "research/budget_aware_refinement/step4_rng.py": "4396ef5743689f4b21602f3244a0175bf6798c05bc8a693381c0648f70a5e13b",
+    "research/budget_aware_refinement/step4_topology_generator.py": "b07ac6755b7beb1967ac53823337204253531d5743c9e97d07e2cd2ad8805f33",
+    "research/budget_aware_refinement/step4b2_population.py": "ba38c7b46275c1edf9fe74bd365021383190f19e68bbd5788aee333814ca696e",
+    "research/budget_aware_refinement/step4b_task_budget.py": "d9227150f413b0b4bbac926f95ee2e020cc3ad419c5a547b882f024173d09f89",
+    "research/budget_aware_refinement/step4c1_gt.py": "f56a7febc59e685e10611200c4d10098917c105430f8d6f1afb9824193ceb4e2",
+    "research/budget_aware_refinement/step4c1_proposal.py": "1c3dadfbae41bcda4fda5e66a2ec78906a50d86a50e9b637c4f6896c2318bf79",
+    "research/budget_aware_refinement/step4c1_scm.py": "3ac7f71e21167e65df85db06c75cd414ada41c1c9faf745c8c7ade3ca36c89a3",
+    "research/original_objective/g0_candidate.py": "357ee60f8cdb6903f05967252a8f3462a403932c4a5bc9a24870c34beec19560",
+    "research/original_objective/policy_engine.py": "eeab5fa8f565f01970c610a356c57bbdbd05ed247e53d8c033ce06e56642e7ef",
+    "research/within_task_repair_prioritization/s3_analysis.py": "debf98bf9e48ff852201e25315f4ac90645e998820a8015a87623128deed8227",
+    "src/decision_mvp.py": "18a6dcc144368895e781272d3f83f731620533333633bce975ebedb27a55225a",
+    "src/fcm_acceptance_adapter.py": "b310bbdfd22daebbbd15cca232d365f78090151da3e7ab9aa3d926500aced4d7",
+    "src/integrated_pilot.py": "c2ff4d1bf0cb91f5206c285cf7b107c519aaa5598b2dc03e3d5c08327162d176",
+    "src/pilot_fit.py": "a02bedd4befe7f3627a2d709822267961a2cfc593b9e783d8b23ed3744f08a96"
+  },
+  "study": "Research S4 independent development pilot",
+  "target": "training mean(Y) + delta * training sample SD(Y), ddof=1",
+  "task": "strict indirect-only task from frozen proposal builder"
+}

@@ -1,5 +1,7 @@
 # 최종 검증 결과표
 
+> 표의 legacy ID는 결과 원본을 식별하기 위한 것입니다. 최종 연구 흐름에서의 canonical 위치는 [Research Naming Map](../../docs/RESEARCH_NAMING_MAP.md) 및 [Research Index](../README.md)를 참조하십시오.
+
 ## Research C — frozen synthetic SCM study
 
 | 결과 | Development V1 | Held-out V1 |
@@ -48,6 +50,22 @@ Research C Primary는 계약대로 B=2의 Full Greedy 대 S0다. M4는 Developme
 | MC-only / two-source 반폭 목표 | 0.02817 / 0.02959 | 목표 0.020 / 0.025 모두 미충족 |
 
 다섯 action의 평가표본 평균은 각각 14.0688, 14.0112, 13.9644, 14.0040, 13.9980이고 고정 target은 15.4600이었다. 이는 2,500-row/action finite sample 요약이다. 모집단 목표 불가능성이나 제조 제어 한계를 입증하지 않는다.
+
+## S6/S7 — supplementary closeout
+
+S6는 기존 S4 저장 candidate artifacts의 B=1 post-hoc 재집계다. SCM이 분석 단위이고 후보행은 SCM 내에 중첩된다.
+
+| S6 replication 정책 | Mean regret (160 SCM) | Paired 차이 대 Frozen M4 | 95% pointwise paired SCM bootstrap | Better / worse / tie | Holm-adjusted paired-t p |
+|---|---:|---:|---:|---:|---:|
+| Frozen M4 | .038817 | reference | — | — | — |
+| Type-ranked M4 (Development-selected) | .036613 | −.002204 | [−.009283,.003545] | 2 / 1 / 157 | 1.0 |
+| T5-guided M4 | .030152 | −.008664 | [−.020398,0] | 4 / 1 / 155 | 1.0 |
+| Full T1–T6 | .031391 | −.007426 | [−.019693,.002789] | 4 / 1 / 155 | 1.0 |
+| Ex-post single-edit oracle | .012907 | −.025910 | [−.044657,−.010495] | 10 / 0 / 150 | .053712 |
+
+S6는 신규 독립 확인 실험이 아니다. Oracle은 realized regret을 이용하는 비실행 가능 진단이다. T5의 평균은 가장 낮았지만 우월성·동등성·비열등성은 확립되지 않았다.
+
+S7에는 98-node/485-edge full-line 그래프와 하나의 shared DRF DGP에서 Station2/Station3 task strata가 있었다. 계획 400 G0·24,000 recommendation 중 persisted 0·0, recommendation seal 없음, evaluator 미실행이다. 종료 telemetry가 없어 cap 준수와 종료 사유를 확인할 수 없다. task-zone feasibility 시간은 JSON `.7613s`, closeout prose `1.474s`로 다르며 정합이 미해결이다. 정적 검토에서 frozen runner가 canonical unordered pair key를 directed-edge learner 입력에 전달하는 방향 손실 경로가 확인됐다. 실제 recommendation이 없어 성능 결과는 없다. 전체 세부사항은 [S6 closeout](../supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md) 및 [S7 closeout](../supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md)에 있다.
 
 ## C와 D 사이의 직접 수치 비교 금지
 
@@ -119,3 +137,7 @@ S2's corrected nested saved-feature comparison reports Held-out SCM-balanced MAE
 | Final pending rows, four deterministic query policies at B4 | 2/256 | 4/800 | Stored answers replayed; individually DAG-feasible on final graph: 0 in both cohorts |
 
 The historical graph-free `mean_remaining_errors=9.52` is a raw diagnostic only. Structural residual error is `n/a` for a learner with no repair graph. Shared-index 10,000-resample pointwise intervals and saved-input/hash checks are in [`RESEARCH_F_FINAL_AUDIT.md`](../decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md). The verified Development M4–Full Greedy action agreement is 61/64 (3/64 differ); this is distinct from the mechanism report's 46 Held-out off-task selections (including three score ties).
+
+## Final S4/S5 and Research E extension addendum
+
+The last E extension re-aggregated saved S4 Development 80 SCM, S4 replication 160 SCM and S5 200 conditional G0 unit results for B=0–4. It added no generated research units. Data: `research/budget_adaptive_repair/outputs/final_extension_v1/budget_policy_aggregate.csv`; uncertainty: `paired_bootstrap_uncertainty.csv`. Research C retains the only inherited B=0–9 curve. S4/S5 B=5–9 is not run. S5 uncertainty and graph-free baseline remain explicit; all loss scales stay separate. For the complete verified table and report/presentation layout, see [`FINAL_RESEARCH_FRAMEWORK.md`](../../FINAL_RESEARCH_FRAMEWORK.md) and [`FINAL_RESEARCH_EVIDENCE_MATRIX.md`](../../FINAL_RESEARCH_EVIDENCE_MATRIX.md).

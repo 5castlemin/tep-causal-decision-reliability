@@ -1,0 +1,3 @@
+# Multi-edit interaction — not run
+
+The specified exhaustive B=2 decomposition of isolated edit effects, joint interaction, order-dependent feasibility, no-action-unchanged cases and ex-post best feasible sequence was not executed. No claim about synergy or antagonism between pairs of edits is made. The lookahead analysis ranks structure-only sequences and is not a substitute for this ex-post interaction analysis. This omission is included in the final limitations and independent-confirmation proposal.

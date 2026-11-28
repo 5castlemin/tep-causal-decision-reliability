@@ -1,0 +1,5 @@
+# Independent confirmation proposal — design not yet powered
+
+The S3 correction remains exploratory. A future independent confirmation would compare one Development-selected T policy with frozen M4 on a new SCM cohort; a separate structural stratum could be defined by at least two initially DAG-feasible M4 edits, without using regret for eligibility. Freeze task, target, metric, budget, tie/fallback rules, estimand, and SCM-cluster analysis before outcomes. The old Held-out cohort cannot serve as confirmation after it has been inspected in S3.
+
+A defensible sample size cannot be specified from the corrected summaries alone because policy selection was post-hoc, many metrics were searched, and the proposed primary contrast and minimum relevant difference have not been frozen. A future protocol must set a precision target or relevant effect and use an independent pilot variance; do not use the most favorable corrected metric contrast as the planning effect. No new SCM generation is authorized by this proposal.

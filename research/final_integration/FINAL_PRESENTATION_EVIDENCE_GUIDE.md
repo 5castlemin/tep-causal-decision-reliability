@@ -1,5 +1,7 @@
 # 최종 발표 증거 가이드
 
+> 슬라이드의 공식 흐름은 Research 0 → Research 1 (WHERE) → Research 2 (WHAT & WHY) → Research 3 (GENERALIZATION) → Research 4 (HOW MUCH)입니다. 원래 실행 이름은 근거 경로 추적에만 사용합니다. [Research Index](../README.md) · [Naming Map](../../docs/RESEARCH_NAMING_MAP.md).
+
 ## 발표 중심축
 
 질문은 “한정된 그래프 수정 예산을 어떤 오류에 배분해야 의사결정 성능을 효율적으로 개선할 수 있는가?”로 둔다. 현장 적용 성과가 아니라, oracle-assisted 구조 수리 정책을 통제된 synthetic/semisynthetic 조건에서 비교한 연구다.
@@ -53,3 +55,13 @@ E는 이미 Held-out을 본 뒤의 탐색 분석이므로 C Primary 대체나 �
 근거: `research/decision_oriented_verification/RESEARCH_F_FINAL_AUDIT.md`, `outputs/final_audit_aggregate.json`, `outputs/random_action_change_audit.csv`. C/D/E/F-Lite의 서로 다른 loss와 분석 단위를 하나의 축으로 직접 비교하지 않는다.
 
 15. **보강 S1/S2:** Full Greedy (`M1+M2+M3+M4`)와 Canonical Oracle을 분리하고 gamma=.5 순위 역전 및 gamma=1의 동일 `k=0`을 제시한다. S2 nested MAE는 B_original .06966, E_nested .06153, F_nested .03768이다. 근거: `research/final_supplementary_validation/SUPPLEMENTARY_FINAL_RESULTS.md`, `outputs/s1_corrected_primary_contrasts.csv`, `outputs/s2_nested_model_validation.csv`. 반드시 post-hoc, saved C rows, pointwise uncertainty라고 표시한다.
+
+## Final framework and slide story update
+
+Use [`FINAL_RESEARCH_FRAMEWORK.md`](../../FINAL_RESEARCH_FRAMEWORK.md) as the current narrative blueprint. It includes the final-report chapter plan, slide-by-slide messages, evidence files, counterexamples and defense Q&A. The main story is problem limitation → decision-focused question → WHERE → WHAT & WHY → conditional GENERALIZATION → HOW MUCH → bounded conclusion; do not list runs chronologically. S4 T5 evidence is inconclusive, S5 uncertainty includes zero in the two-source interval, and the S5 graph-free baseline is competitive.
+
+## S6/S7 closeout use
+
+Keep S6 in the Study 2 appendix or a compact main-text qualification slide: the saved-data B=1 replication matrix gives T5−Frozen M4 `−.008664`, common-index pointwise SCM-bootstrap 95% CI `[−.020398,0]`, better/worse/tie `4/1/155`; Type-ranked M4−Frozen M4 is `−.002204`, CI `[−.009283,.003545]`, `2/1/157`. Both are retrospective on reused S4 data and neither establishes superiority. Keep the outcome-privileged ex-post oracle separate from implementable policies.
+
+State S7 as a computationally limited, incomplete external evaluation: 0/400 persisted G0, 0/24,000 recommendations, no seal/evaluator, and unverifiable termination telemetry. The separate task-zone feasibility has inconsistent reported elapsed time (`.7613 s` JSON vs `1.474 s` prose). Static review confirmed the runner passes unordered canonical pair keys into a learner expecting directed edges; no recommendation outcome exists, and the frozen code was not changed. Cite the [S7 closeout](../supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md); do not show S7 as external validation evidence.

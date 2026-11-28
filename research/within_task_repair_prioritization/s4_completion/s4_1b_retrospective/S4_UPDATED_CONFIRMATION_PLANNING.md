@@ -1,0 +1,7 @@
+# S4 confirmation planning update
+
+Status: `PROPOSED_NOT_LOCKED`; no confirmation SCMs generated.
+
+The previous pilot calculation used `Regret(S0)-Regret(M4)` variance. That is not the correct variance for a future M4-versus-selected-T comparison. The relevant paired outcome is `D_i = Regret(T_selected,i) - Regret(M4,i)`, with negative values favoring T. Its variance, zero mass, and eligible structural-unit yield must be estimated from the chosen pilot population and design. Existing retrospective B=1 rows provide exploratory estimates only; the T policy must be selected using Development data and frozen before the independent cohort.
+
+A future sample-size plan must specify: (1) a minimum practically relevant paired effect or precision half-width, (2) power and two-sided alpha, (3) the paired-D variance and point mass at zero, (4) opportunity-rich structural eligibility rate, (5) SCM-level clustering of matched corruption variants, (6) multiplicity family, (7) proposal failures and attrition allowance, and (8) compute cost. The nominal normal approximation is only a sensitivity calculation and must be checked with a cluster-level simulation or conservative interval-width method. No confirmatory N can be justified until these choices and an independent structural pilot are locked. Research C Held-out and S4 units have already been used exploratorily and cannot serve as confirmation.

@@ -1,22 +1,28 @@
 # 연구 우선순위
 
-기준일: 2026-11-26. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-11-28 20:00 KST. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
-1. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
-2. **SUPP-01 — Decision-objective robustness and structural-metric validation**: No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation (VERIFIED)
-3. **F-LITE-01 — Research F-Lite reference-blind query policy post-hoc evaluation**: 추가 실험 없음; 최종 보고서 검토 및 발표 준비 (VERIFIED)
+1. **FINAL-INTEGRATION — Final S6/S7 scientific integration and repository closeout**: Wait for required independent review and current-head CI; only then merge under repository rules. Defer PR/branch cleanup until merge and main verification. (PARTIAL)
+2. **E-EXTENSION-CLOSEOUT — Final Research E budget extension and C–D–E/S4/S5 integration**: Use completed, limited post-hoc results in the final report; do not start further experiments. (VERIFIED)
+3. **TEAM-PRESENTATION — 최종 발표자료 및 팀 인수인계**: 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 (PROPOSED)
 
 ## 전체 실행 대기열
 
 | ID | 상태 | 선행 조건 | 다음 행동·완료 증거 |
 |---|---|---|---|
+| FINAL-INTEGRATION | PARTIAL | 없음 | Wait for required independent review and current-head CI; only then merge under repository rules. Defer PR/branch cleanup until merge and main verification. / Final documents and branch inventory staged; merge and destructive cleanup not performed because reviewer approval and protection state are not verified. |
+| E-EXTENSION-CLOSEOUT | VERIFIED | 없음 | Use completed, limited post-hoc results in the final report; do not start further experiments. / Saved S4/S5 B0–4 only; cohorts/scales separate; B5–9 remain NOT_RUN. |
 | TEAM-PRESENTATION | PROPOSED | FINAL-INTEGRATION | 연구 실험은 추가하지 않고 발표 슬라이드, 결과 시각화, 예상 질문 답변을 준비; 오성민은 통합·발표 검토, 정창민은 원본 Ledger 기반 메커니즘 설명 검토, 황주희는 확인된 기여와 발표 준비 범위에 따라 참여 / 모든 발표 주장이 Evidence Matrix와 연결되고 연구 한계 및 반례가 발표 자료에 포함 |
+| S6-POSTHOC | VERIFIED | 없음 | Report as retrospective post-hoc evidence; superiority, equivalence and noninferiority not established. / v6 validated from saved candidates; no new SCM/G0/observations. |
+| S7-EXTERNAL | PARTIAL | 없음 | Do not restart; classify as no external result and preserve computational limitation. / Implementation-only feasibility; runner defect/time discrepancy and missing exit telemetry documented. |
+| S5-RUN | VERIFIED | S5-ENV | Preserve the conditional result and limitations; do not expand into further experiments in this task / Locked run completed within resource caps, independent saved-response analysis agrees, hashes recorded, raw vectors remain private |
+| S4S5-RECON | VERIFIED | 없음 | Study 2 local reconstruction and replication are closed with documented limitations; retain missing other-PC execution as unverified / Separate cohorts and historical claims; primary and CI reported; private unit records remain outside Git |
+| RESEARCH-E | VERIFIED | FINAL-INTEGRATION | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. / E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; Research E remains post-hoc CORE_COMPLETED_WITH_LIMITATIONS; protected assets untouched. |
 | SUPP-01 | VERIFIED | 없음 | No further supplementary analysis; use the corrected evidence and limitations in final writing and presentation / S1 policy identity and shared-index contrasts corrected; S2 nested models and metric definitions audited; saved inputs and C–F frozen assets preserved; post-merge CI passed; limitations remain documented |
 | F-LITE-01 | VERIFIED | 없음 | 추가 실험 없음; 최종 보고서 검토 및 발표 준비 / 저장자료 hash 감사, 공통-index bootstrap 재집계, pending replay, PR/main CI 및 merge 후 상태 검증 완료; Research C–E frozen 유지; 제한사항 문서화 |
-| RESEARCH-E | VERIFIED | FINAL-INTEGRATION | Research C–D–E closeout integrated. Shift to final report and presentation preparation; no further experiments. Research F/G/H remain future work. / E source/aggregate/figure hashes verified; C unit-level E reaggregation and corrections completed; D raw vectors unavailable in designated storage, prior 27-check audit retained as historical evidence; Research E remains post-hoc CORE_COMPLETED_WITH_LIMITATIONS; protected assets untouched. |
-| FINAL-INTEGRATION | VERIFIED | 없음 | 새 실험 없이 최종 보고서와 발표 자료를 검토·제출하고, 연구 한계와 증거 수준을 발표에서 유지 / 원본 Ledger·Research D 저장 산출물 read-only 감사, 과학적 해석 정정, 보호 자산 보존, 통합 PR 및 병합 후 CI 검증 완료 |
+| S5-ENV | VERIFIED | 없음 | No further runtime restoration; preserve dedicated environment fingerprint and private archive manifest / Python/R/DRF integration, pinned source, Station1 graph and numeric hard-do smoke passed; observed resource monitor recorded |
 | BUDGET-REFINEMENT | PARTIAL | 없음 | ARCHIVED CONTRACT / NO NEW RUN: PR #38 merged; preserve frozen Step 4 artifacts and recorded Step 5/6 outcomes. Research C Held-out is separate and complete; do not restart old cohorts / Active contract frozen: P|strict Q-common, indirect-only, B1/gamma1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within SCM, delta alternating by admission ordinal, targets 64/200 and caps 386/1104, Option B descriptive estimation with no confirmatory superiority/equivalence claim; no study cohort or Step5/6 result |
 | MFG-MICRO | PARTIAL | MFG-INTEGRATED | CONDITIONAL_NOT_ACCEPTED:관측-only 점효과 식별 조건 유지 여부를 결정.현재 고정 micro를 학습/추천에 연결하지 않으며 자동 패치·재실행 없음 / hard-do 그래프 부모 삭제 결함과 참조/효과 식별 계약이 남음.외부 import·관측1/do16000 1완료,do30000중단·replay미실행;공식채택아님 |
 | ERROR-CONFIRM | PARTIAL | ERROR-DIAG | REDESIGN_REQUIRED:반폭0.1의독립SCM자원확대여부또는확인확대종료를결정. 신규실행/자동검사·문서루프없음 / 대응손실계약고정;미해결2개는정밀도-구조예산및종단실행비용근거.30개반폭0.446/유지15개0.742;구조단위598/유지총1650근사. 신규SCM/적합/do0 |
@@ -48,6 +54,8 @@
 | MFG-EFFECT-SCOPE | BLOCKED | DYNAMIC-SCOPE | STOP-TEP-EFFECT-TRACK:현재경로동결. 추가TEP시험·패치·후속검토문서권고없음. SYNTH-FINAL로현재우선순위이동 / 최대2후보비교/1선택. 출처있는정책집합·비자명한목표/H·실패포함선택손실을정당화못함; API반응성/GT부재와구분 |
 | DYNAMIC-SCOPE | BLOCKED | VALVE-TRANSITION, REF-B | B축약계약판정2·미채택초안보존. 이후효과중심검토도STOP이므로추가TEP설계확대중단 / 4node/12미채점후보·부모폐쇄/비간선/발견대상/비자명선택/독립평가의 미충족조건 명시. 공식연구설계변경 아님 |
 | SYNTH-FINAL | VERIFIED | ERROR-DIAG, PILOT-CONFIRM | 분모/모형버전/확인당시와재사용개발을구분한최종Results·Discussion보존. 다음은ERROR-CONFIRM의독립오류대조계약/예산결정;실행승인아님 / A/D/E범위내지지,C/B1부분지지,B2추가정보미확립,F제조미검증.162쌍93/4/65·114경로유지48/3/63;새학습/do0 |
+| S4-PILOT-01 | PARTIAL | S3-S4-01 | Use local reconstruction evidence with conditional population and exploratory limitations; no claim of recovering other-PC runs / Pilot, development, and replication cohorts remain distinct; no raw private records published |
+| S5-FEAS-01 | BLOCKED | S4-PILOT-01 | No D replay is claimed; S5 is a new conditional external semisynthetic reconstruction and is complete under its own contract / Separate historical D from S5; do not treat public D aggregates as raw-vector uncertainty or exact reproduction |
 
 ## ID 이력
 
@@ -95,5 +103,13 @@
 - 2026-11-26 — F-LITE-01 added as completed post-hoc verification-policy evidence; no new experiments planned
 - 2026-11-26 — F-Lite final audit reaggregated saved rows only; corrected Random action-change interpretation, recomputed shared-index pointwise bootstrap, replayed pending states, and verified original C/F artifact hashes; no research samples generated; PR #46 update and merge verification pending
 - 2026-11-26: PR #46 merged as b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9; PR Actions 45798376385 and main Actions 45798944410 SUCCESS. Project closeout gate PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS. No new research samples generated; report and presentation preparation remain. Research G/H are future work only.
+- 2026-11-27: S3-01 added as a separate post-hoc extension; Research C-F closeout gates and frozen results remain unchanged.
+- 2026-11-27: Added S4 independent pilot and S5 private-artifact feasibility audit; confirmation remains proposed and external replay blocked.
+- S4S5-RECON: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.
+- S5-ENV: New workstream for authorized S4/S5 continuation on 2026-11-28; independent of frozen manufacturing simulator gates.
+- 2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run.
+- 2026-11-28: S6 saved-record reaggregation completed; candidate edits remain nested within SCM and evidence is post-hoc.
+- 2026-11-28: S7 locked recommendation run is active but has no completed G0/recommendation at 14:42 KST; evaluator remains gated on a sealed recommendation manifest.
+- Canonical research narrative: Research 0–4; legacy experiment IDs and frozen source paths remain unchanged. See docs/RESEARCH_NAMING_MAP.md and research/README.md.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

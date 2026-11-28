@@ -1,0 +1,112 @@
+{
+  "schema": "S6_POLICY_MATRIX_V1",
+  "status": "EXECUTED",
+  "classification": "POST_HOC_RETROSPECTIVE_POLICY_EVALUATION",
+  "analysis_revision": "s6-policy-matrix-v1",
+  "cohorts": {
+    "development80": 80,
+    "replication160": 160
+  },
+  "unit": "SCM",
+  "budget": 1,
+  "objective": "gamma=0 analytic regret",
+  "candidate_universe": "same saved initial legal M4 candidates for every policy",
+  "policies": [
+    "FROZEN_M4",
+    "FN_FIRST_M4",
+    "FP_FIRST_M4",
+    "REV_FIRST_M4",
+    "UNRES_FIRST_M4",
+    "TYPE_RANKED_M4",
+    "T1_GUIDED_M4",
+    "T2_GUIDED_M4",
+    "T3_GUIDED_M4",
+    "T4_GUIDED_M4",
+    "T5_GUIDED_M4",
+    "T6_GUIDED_M4",
+    "FULL_T_GUIDED_M4",
+    "RANDOM_M4",
+    "EXPOST_SINGLE_EDIT_ORACLE"
+  ],
+  "development_type_priority": [
+    "REV",
+    "FN",
+    "UNRES",
+    "FP"
+  ],
+  "development_type_mean_regret_gain": {
+    "FN": 0.04242506771585198,
+    "FP": -0.04568440454785528,
+    "REV": 0.07416652276825639,
+    "UNRES": 0.02772063511662614
+  },
+  "positive_gain_tolerance": 1e-12,
+  "fallback": "T-guided policies use frozen M4 if no positive T gain; type-first policies use frozen M4 if preferred type has no positive M4 gain",
+  "tie_break": "maximum primary gain; T policies use M4 gain as secondary within absolute 1e-12; canonical pair and operation",
+  "random_policy": "exact expected outcome for uniform draw from saved legal initial candidates",
+  "oracle": "ex-post best saved regret reduction, no-op allowed; privileged diagnostic only",
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 2026112810,
+    "common_indices_within_cohort": true,
+    "interval": "pointwise percentile 95%"
+  },
+  "holm": "two-sided paired t-tests vs Frozen M4, Holm adjusted within cohort across other policies; supplementary only",
+  "inputs_sha256": {
+    "development-candidates": "b6bad271d0b7154b873ebb081e31187969280dd53ac340bfa42039ab0cc5a477",
+    "development-inputs": "a6fe959b5d7fadd05a02321bd107e9265ff69dfe004a1e4c92a5e8847b6ee3cc",
+    "replication-candidates": "2005a1d16c9e740b2970a6d5b04f2aea0a30ebd72dbc6f9b78bc54a7a5be4b7b",
+    "replication-inputs": "65dbdc2befa7df610cb71912db6a94c6fb77542bdc3f45f10ae4641e5d0e8fe0"
+  },
+  "frozen_t5_consistency": [
+    {
+      "cohort": "development80",
+      "policy": "FROZEN_M4",
+      "new_mean_regret_reduction": 0.017627555523681303,
+      "old_v4_mean_regret_reduction": 0.017627555523681303,
+      "absolute_difference": 0.0,
+      "matches_within_1e-12": true
+    },
+    {
+      "cohort": "development80",
+      "policy": "TYPE_RANKED_M4",
+      "new_mean_regret_reduction": 0.021594411771916663,
+      "old_v4_mean_regret_reduction": 0.021594411771916663,
+      "absolute_difference": 0.0,
+      "matches_within_1e-12": true
+    },
+    {
+      "cohort": "development80",
+      "policy": "T5_GUIDED_M4",
+      "new_mean_regret_reduction": 0.021594411771916663,
+      "old_v4_mean_regret_reduction": 0.021594411771916663,
+      "absolute_difference": 0.0,
+      "matches_within_1e-12": true
+    },
+    {
+      "cohort": "replication160",
+      "policy": "FROZEN_M4",
+      "new_mean_regret_reduction": 0.04764512604213518,
+      "old_v4_mean_regret_reduction": 0.04764512604213518,
+      "absolute_difference": 0.0,
+      "matches_within_1e-12": true
+    },
+    {
+      "cohort": "replication160",
+      "policy": "TYPE_RANKED_M4",
+      "new_mean_regret_reduction": 0.04984904002141132,
+      "old_v4_mean_regret_reduction": 0.04984904002141132,
+      "absolute_difference": 0.0,
+      "matches_within_1e-12": true
+    },
+    {
+      "cohort": "replication160",
+      "policy": "T5_GUIDED_M4",
+      "new_mean_regret_reduction": 0.056309522049619476,
+      "old_v4_mean_regret_reduction": 0.056309522049619476,
+      "absolute_difference": 0.0,
+      "matches_within_1e-12": true
+    }
+  ],
+  "private_raw_inputs_excluded": true
+}

@@ -1,0 +1,42 @@
+{
+  "analysis_id": "s4-1b-retrospective-20261127-v1",
+  "classification": "post_hoc_retrospective_analysis",
+  "status": "LOCKED_BEFORE_REAGGREGATION",
+  "input_run_id": "s4-independent-pilot-20261127-v1",
+  "input_root_env": "S4_PILOT_INPUT",
+  "input_sha256": {
+    "candidate_values_private.json": "92cbe755033df446e0ea39088e24b6e4bc44ab501c60e609e6a0826df1e154fb",
+    "pilot_inputs_private.json": "34334f07b19d8b42691461e51b4865bd51878ed14f68cdf9d10dadde2bf54bf4",
+    "policy_results_private.json": "347cc564358c76cc422a8e01ea001b33a7b4d7c091074a06a6ab93026cbf5904",
+    "recommendation_manifest_private.json": "f93a560019b4c4b2d1592572d6d30fc5b91d63b099f5c9c2d00f7872dd3925cb",
+    "unit_results_private.json": "ab88bab2fef3d84ffe17e4af6fff40fe857742902b0b9e5240f323ccdd604370"
+  },
+  "analysis": {
+    "T_metrics": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6"
+    ],
+    "subsets": "all 63 nonempty combinations; score = unweighted mean of member gains",
+    "selection": "Match s3_analysis.select_greedy_option exactly: if any T gain > 1e-12, maximize T gain/cost, then M4 gain/cost, then canonical pair/operation; otherwise use positive M4 gain/cost fallback, then canonical order; no edit if neither T nor M4 has positive gain. All costs are unit.",
+    "B1_outcomes": "reuse saved single-edit candidate outcomes and saved recommendation manifest; no evaluator calls",
+    "B2_outcomes": "reuse locked saved policy_results_private.json",
+    "bootstrap": {
+      "replicates": 10000,
+      "seed": 2026112702,
+      "unit": "SCM within cohort",
+      "shared_indices_per_cohort": true,
+      "interval": "pointwise percentile 95%"
+    },
+    "no_generation": {
+      "SCM": 0,
+      "G0": 0,
+      "observations": 0,
+      "intervention_rows": 0
+    },
+    "output": "aggregate-only public CSV/JSON"
+  }
+}

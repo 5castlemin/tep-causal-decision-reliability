@@ -1,0 +1,119 @@
+{
+  "schema": "S5_EXTERNAL_EXECUTION_LOCK_PUBLIC_V1",
+  "status": "EXECUTED_LOCKED_RUN",
+  "run_id": "s5-station1-reconstruction-20261128-v1",
+  "classification": "NEW_CONDITIONAL_EXTERNAL_SEMISYNTHETIC_RECONSTRUCTION",
+  "execution_code_commit": "c571d2a58fcc09d7799eb4a8965217e7ab997401",
+  "execution_code_tree": "3501161088d345bb8ef547c3ba367d7ff2fbe2e4",
+  "source": {
+    "package": "causalAssembly",
+    "version": "1.2.1",
+    "commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+    "sample_sha256": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e",
+    "reference_sha256": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8"
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "R": "4.5.3",
+    "drf": "1.3.1",
+    "rpy2": "3.6.2",
+    "numpy": "2.2.6",
+    "pandas": "2.3.1",
+    "networkx": "3.4.2"
+  },
+  "design": {
+    "fitted_dgp_count": 1,
+    "training_rows": 512,
+    "g0_draws": 200,
+    "g0_seed_ids": {
+      "start": 811001,
+      "end_inclusive": 811200,
+      "count": 200,
+      "namespace": "research-s5-external-reconstruction-20261128-v1"
+    },
+    "action_values": [
+      0.0001536204520229542,
+      0.0001707759405579811,
+      0.0001851040332851703,
+      0.00020299616621312808,
+      0.00022546041168541468
+    ],
+    "target": 15.596075539548263,
+    "scale": 1.6156067895482622,
+    "budgets": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "policies_per_g0_budget": 22,
+    "recommendation_rows": 22000,
+    "response_rows_per_action": 4999,
+    "response_rows_total": 24995,
+    "smoke_response_rows_counted_toward_cap": 1,
+    "bootstrap_replicates": 10000,
+    "bootstrap_seeds": {
+      "g0_only": 221704811,
+      "action_mc_only": 221704812,
+      "two_source": 221704813
+    }
+  },
+  "primary": {
+    "contrast": "loss(No-repair)-loss(Frozen M4)",
+    "budget": 2,
+    "gamma": 0,
+    "positive_favors_m4": true
+  },
+  "integrity": {
+    "recommendation_sha256": "052d83a1b8e6e83d015d225c2494706d09dada8f78a03eb7cca6e0353e56ac57",
+    "response_vector_sha256": [
+      "74966f3fe19d646060a3284b1a2c526a477360f8e95f6ed194db810181fba1e1",
+      "500c3cf7147d9b3bfb66b70f7e3f45e5b2e5cc29a4b6df4734f0e75519fbb25",
+      "95954eb1c7d142478d667bc88cffaeaca837c258d9244770955850e30d94978f",
+      "69a9731093fedd6e9d7ba5a77e807da7d47781c784c7da90984e6d70b0872672",
+      "a4217a36747f45b7e65c6f6023e14a3eec02753ad38e7b74b9bb6829474a5c06"
+    ],
+    "raw_private_artifacts_public": false
+  },
+  "resource_limits": {
+    "wall_seconds": 14400,
+    "process_tree_rss_bytes": 4294967296,
+    "sampling_parallelism": 1
+  },
+  "resource_observed": {
+    "wall_seconds": 373.297,
+    "peak_process_tree_rss_bytes": 1056018432,
+    "sampling_seconds": 315.094
+  },
+  "attempt_history": [
+    {
+      "attempt": "01",
+      "status": "pre-sample technical failure",
+      "research_samples": 0
+    },
+    {
+      "attempt": "02",
+      "status": "training frame generated and preserved; helper import failed before G0",
+      "training_rows_created": 512,
+      "research_g0": 0
+    },
+    {
+      "attempt": "03",
+      "status": "failed before durable G0 checkpoint; no responses",
+      "research_response_rows": 0
+    },
+    {
+      "attempt": "04",
+      "status": "failed pre-data due to path resolution",
+      "research_samples": 0
+    },
+    {
+      "attempt": "05",
+      "status": "completed using preserved training frame and locked deterministic G0 IDs",
+      "replacement_cohort": false
+    }
+  ],
+  "scope": "One fitted Station1 DRF DGP and 200 graph-corruption draws; not 200 independent SCMs, not exact Research D reproduction, and not physical manufacturing validation.",
+  "contract_file_sha256": "669153f35305ce82e37c9f4815ef9cee9710ac1f170ceff436473da1e52c9833"
+}

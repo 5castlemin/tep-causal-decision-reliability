@@ -1,0 +1,23 @@
+{
+  "classification": "POST_HOC_EXPLORATORY_REANALYSIS",
+  "scope": "S3 completion on original Research C Development and Held-out cohorts only",
+  "input_cohorts": ["C_DEVELOPMENT_64", "C_HELDOUT_200"],
+  "source_sqlite_sha256": {
+    "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "C_DEVELOPMENT:proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "C_HELDOUT:cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "C_HELDOUT:proposals": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+  },
+  "data_generation": {"new_scm": 0, "new_g0": 0, "new_observation_draws": 0, "new_intervention_rows": 0, "restoration": "deterministic reconstruction of original observations with exact stored digest assertion"},
+  "metrics": ["T1", "T2", "T3", "T4", "T5", "T6"],
+  "metric_subsets": 63,
+  "policy_budgets": [1, 2, 3, 4],
+  "lookahead_budgets": [2],
+  "objectives": {"gamma": [0.0, 0.2, 0.5], "formula": "((mu(k)-target)/scale)^2 + gamma*k^2", "action_grid": [-1.0, -0.5, 0.0, 0.5, 1.0]},
+  "ex_post_benchmarks": {"single_edit": "minimum realized regret over no-edit and all initially feasible M4 single edits", "two_edit": "minimum realized regret over no-edit, all feasible one-edit and all ordered feasible two-edit paths; intermediate candidate re-evaluation; DAG checked after every edit", "interaction": "V(e1,e2)-V(e1)-V(e2), only when both edits and sequence are feasible from G0"},
+  "bootstrap": {"replicates": 10000, "seed": 2026112703, "unit": "SCM", "paired_common_indices_per_cohort": true, "interval": "pointwise percentile"},
+  "tie_tolerance": 1e-12,
+  "analysis_outputs": "aggregate-only; no SCM-keyed public rows",
+  "contract_parent_commit": "f837c4445f84fd28d1d9a79cd19c2334f60d1730",
+  "execution_source_revision": "The commit containing this lock and run_s3_completion.py; recorded in the resulting summary after commit, before execution"
+}

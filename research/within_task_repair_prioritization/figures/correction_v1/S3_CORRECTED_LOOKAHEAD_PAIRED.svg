@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;font-size:11px}.title{font-size:20px;font-weight:bold}.head{font-size:14px;font-weight:bold}</style>
+<text x="25" y="32" class="title">Corrected S3: 2-step lookahead − one-step Greedy at B=2</text>
+<text x="25" y="53">All 63 metric subsets; paired SCM regret differences; pointwise 95% bootstrap intervals; post-hoc.</text>
+<text x="25" y="80" class="head">C_DEVELOPMENT</text>
+<line x1="705.0" y1="90" x2="705.0" y2="422.6" stroke="#333"/>
+<text x="25" y="99.0">T1+T2+T3+T4+T5+T6 − T1+T2+T3+T4+T5+T6_GREE</text>
+<line x1="705.0" y1="95.0" x2="705.0" y2="95.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="95.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="100.2" x2="705.0" y2="100.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="100.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="105.4" x2="705.0" y2="105.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="105.4" r="2.3" fill="#d04a35"/>
+<text x="25" y="114.6">T1+T2+T3+T4 − T1+T2+T3+T4_GREEDY2</text>
+<line x1="705.0" y1="110.6" x2="705.0" y2="110.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="110.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="115.8" x2="705.0" y2="115.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="115.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="121.0" x2="705.0" y2="121.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="121.0" r="2.3" fill="#d04a35"/>
+<text x="25" y="130.2">T1+T2+T3+T6 − T1+T2+T3+T6_GREEDY2</text>
+<line x1="705.0" y1="126.2" x2="705.0" y2="126.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="126.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="131.4" x2="705.0" y2="131.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="131.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="136.6" x2="705.0" y2="136.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="136.6" r="2.3" fill="#d04a35"/>
+<text x="25" y="145.8">T1+T2+T4+T5 − T1+T2+T4+T5_GREEDY2</text>
+<line x1="705.0" y1="141.8" x2="705.0" y2="141.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="141.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="147.0" x2="705.0" y2="147.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="147.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="152.2" x2="705.0" y2="152.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="152.2" r="2.3" fill="#d04a35"/>
+<text x="25" y="161.4">T1+T2+T5+T6 − T1+T2+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="157.4" x2="705.0" y2="157.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="157.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="162.60000000000002" x2="705.0" y2="162.60000000000002" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="162.60000000000002" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="167.8" x2="705.0" y2="167.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="167.8" r="2.3" fill="#d04a35"/>
+<text x="25" y="177.0">T1+T2 − T1+T2_GREEDY2</text>
+<line x1="705.0" y1="173.0" x2="705.0" y2="173.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="173.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="178.2" x2="705.0" y2="178.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="178.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="183.4" x2="705.0" y2="183.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="183.4" r="2.3" fill="#d04a35"/>
+<text x="25" y="192.60000000000002">T1+T3+T4+T6 − T1+T3+T4+T6_GREEDY2</text>
+<line x1="705.0" y1="188.60000000000002" x2="705.0" y2="188.60000000000002" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="188.60000000000002" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="193.8" x2="705.0" y2="193.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="193.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="199.0" x2="705.0" y2="199.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="199.0" r="2.3" fill="#d04a35"/>
+<text x="25" y="208.2">T1+T3+T5 − T1+T3+T5_GREEDY2</text>
+<line x1="705.0" y1="204.2" x2="705.0" y2="204.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="204.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="209.4" x2="705.0" y2="209.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="209.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="214.60000000000002" x2="705.0" y2="214.60000000000002" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="214.60000000000002" r="2.3" fill="#d04a35"/>
+<text x="25" y="223.8">T1+T4+T5+T6 − T1+T4+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="219.8" x2="705.0" y2="219.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="219.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="225.0" x2="705.0" y2="225.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="225.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="230.20000000000002" x2="705.0" y2="230.20000000000002" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="230.20000000000002" r="2.3" fill="#d04a35"/>
+<text x="25" y="239.4">T1+T4 − T1+T4_GREEDY2</text>
+<line x1="705.0" y1="235.4" x2="705.0" y2="235.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="235.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="240.6" x2="705.0" y2="240.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="240.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="245.8" x2="705.0" y2="245.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="245.8" r="2.3" fill="#d04a35"/>
+<text x="25" y="255.0">T1+T6 − T1+T6_GREEDY2</text>
+<line x1="705.0" y1="251.0" x2="705.0" y2="251.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="251.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="256.20000000000005" x2="705.0" y2="256.20000000000005" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="256.20000000000005" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="261.4" x2="705.0" y2="261.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="261.4" r="2.3" fill="#d04a35"/>
+<text x="25" y="270.6">T2+T3+T4+T5 − T2+T3+T4+T5_GREEDY2</text>
+<line x1="705.0" y1="266.6" x2="705.0" y2="266.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="266.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="271.8" x2="705.0" y2="271.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="271.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="277.0" x2="705.0" y2="277.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="277.0" r="2.3" fill="#d04a35"/>
+<text x="25" y="286.20000000000005">T2+T3+T5+T6 − T2+T3+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="282.20000000000005" x2="705.0" y2="282.20000000000005" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="282.20000000000005" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="287.4" x2="705.0" y2="287.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="287.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="292.6" x2="705.0" y2="292.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="292.6" r="2.3" fill="#d04a35"/>
+<text x="25" y="301.8">T2+T3 − T2+T3_GREEDY2</text>
+<line x1="705.0" y1="297.8" x2="705.0" y2="297.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="297.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="303.0" x2="705.0" y2="303.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="303.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="308.20000000000005" x2="705.0" y2="308.20000000000005" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="308.20000000000005" r="2.3" fill="#d04a35"/>
+<text x="25" y="317.4">T2+T4+T6 − T2+T4+T6_GREEDY2</text>
+<line x1="705.0" y1="313.4" x2="705.0" y2="313.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="313.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="318.6" x2="705.0" y2="318.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="318.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="323.8" x2="705.0" y2="323.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="323.8" r="2.3" fill="#d04a35"/>
+<text x="25" y="333.0">T2+T5 − T2+T5_GREEDY2</text>
+<line x1="705.0" y1="329.0" x2="705.0" y2="329.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="329.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="334.20000000000005" x2="705.0" y2="334.20000000000005" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="334.20000000000005" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="339.4" x2="705.0" y2="339.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="339.4" r="2.3" fill="#d04a35"/>
+<text x="25" y="348.6">T3+T4+T5+T6 − T3+T4+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="344.6" x2="705.0" y2="344.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="344.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="349.8" x2="705.0" y2="349.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="349.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="355.0" x2="705.0" y2="355.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="355.0" r="2.3" fill="#d04a35"/>
+<text x="25" y="364.2">T3+T4 − T3+T4_GREEDY2</text>
+<line x1="705.0" y1="360.2" x2="705.0" y2="360.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="360.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="365.40000000000003" x2="705.0" y2="365.40000000000003" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="365.40000000000003" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="370.6" x2="705.0" y2="370.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="370.6" r="2.3" fill="#d04a35"/>
+<text x="25" y="379.8">T3+T6 − T3+T6_GREEDY2</text>
+<line x1="705.0" y1="375.8" x2="705.0" y2="375.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="375.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="381.0" x2="705.0" y2="381.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="381.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="386.2" x2="705.0" y2="386.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="386.2" r="2.3" fill="#d04a35"/>
+<text x="25" y="395.40000000000003">T4+T5 − T4+T5_GREEDY2</text>
+<line x1="705.0" y1="391.40000000000003" x2="705.0" y2="391.40000000000003" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="391.40000000000003" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="396.6" x2="705.0" y2="396.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="396.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="401.8" x2="705.0" y2="401.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="401.8" r="2.3" fill="#d04a35"/>
+<text x="25" y="411.0">T5+T6 − T5+T6_GREEDY2</text>
+<line x1="705.0" y1="407.0" x2="705.0" y2="407.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="407.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="412.2" x2="705.0" y2="412.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="412.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="417.40000000000003" x2="705.0" y2="417.40000000000003" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="417.40000000000003" r="2.3" fill="#d04a35"/>
+<text x="25" y="480" class="head">C_HELDOUT</text>
+<line x1="705.0" y1="490" x2="705.0" y2="822.6" stroke="#333"/>
+<text x="25" y="499.0">T4+T6 − T4+T6_GREEDY2</text>
+<line x1="280.0" y1="495.0" x2="705.0" y2="495.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="563.3333333333333" cy="495.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="500.2" x2="705.0" y2="500.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="500.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="505.4" x2="705.0" y2="505.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="505.4" r="2.3" fill="#d04a35"/>
+<text x="25" y="514.6">T1+T2+T3+T4+T6 − T1+T2+T3+T4+T6_GREEDY2</text>
+<line x1="705.0" y1="510.6" x2="705.0" y2="510.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="510.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="515.8" x2="705.0" y2="515.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="515.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="521.0" x2="705.0" y2="521.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="521.0" r="2.3" fill="#d04a35"/>
+<text x="25" y="530.2">T1+T2+T3+T5 − T1+T2+T3+T5_GREEDY2</text>
+<line x1="705.0" y1="526.2" x2="705.0" y2="526.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="526.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="531.4" x2="705.0" y2="531.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="531.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="536.6" x2="705.0" y2="536.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="536.6" r="2.3" fill="#d04a35"/>
+<text x="25" y="545.8">T1+T2+T4+T5+T6 − T1+T2+T4+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="541.8" x2="705.0" y2="541.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="541.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="547.0" x2="705.0" y2="547.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="547.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="552.2" x2="705.0" y2="552.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="552.2" r="2.3" fill="#d04a35"/>
+<text x="25" y="561.4">T1+T2+T4 − T1+T2+T4_GREEDY2</text>
+<line x1="705.0" y1="557.4" x2="705.0" y2="557.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="557.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="562.6" x2="705.0" y2="562.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="562.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="567.8" x2="705.0" y2="567.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="567.8" r="2.3" fill="#d04a35"/>
+<text x="25" y="577.0">T1+T2+T6 − T1+T2+T6_GREEDY2</text>
+<line x1="705.0" y1="573.0" x2="705.0" y2="573.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="573.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="578.2" x2="705.0" y2="578.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="578.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="583.4" x2="705.0" y2="583.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="583.4" r="2.3" fill="#d04a35"/>
+<text x="25" y="592.6">T1+T3+T4+T5 − T1+T3+T4+T5_GREEDY2</text>
+<line x1="705.0" y1="588.6" x2="705.0" y2="588.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="588.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="593.8" x2="705.0" y2="593.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="593.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="599.0" x2="705.0" y2="599.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="599.0" r="2.3" fill="#d04a35"/>
+<text x="25" y="608.2">T1+T3+T5+T6 − T1+T3+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="604.2" x2="705.0" y2="604.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="604.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="609.4" x2="705.0" y2="609.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="609.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="614.6" x2="705.0" y2="614.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="614.6" r="2.3" fill="#d04a35"/>
+<text x="25" y="623.8">T1+T3 − T1+T3_GREEDY2</text>
+<line x1="705.0" y1="619.8" x2="705.0" y2="619.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="619.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="625.0" x2="705.0" y2="625.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="625.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="630.2" x2="705.0" y2="630.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="630.2" r="2.3" fill="#d04a35"/>
+<text x="25" y="639.4">T1+T4+T6 − T1+T4+T6_GREEDY2</text>
+<line x1="705.0" y1="635.4" x2="705.0" y2="635.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="635.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="640.6" x2="705.0" y2="640.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="640.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="645.8" x2="705.0" y2="645.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="645.8" r="2.3" fill="#d04a35"/>
+<text x="25" y="655.0">T1+T5 − T1+T5_GREEDY2</text>
+<line x1="705.0" y1="651.0" x2="705.0" y2="651.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="651.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="656.2" x2="705.0" y2="656.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="656.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="661.4" x2="705.0" y2="661.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="661.4" r="2.3" fill="#d04a35"/>
+<text x="25" y="670.6">T2+T3+T4+T5+T6 − T2+T3+T4+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="666.6" x2="705.0" y2="666.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="666.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="671.8" x2="705.0" y2="671.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="671.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="677.0" x2="705.0" y2="677.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="677.0" r="2.3" fill="#d04a35"/>
+<text x="25" y="686.2">T2+T3+T4 − T2+T3+T4_GREEDY2</text>
+<line x1="705.0" y1="682.2" x2="705.0" y2="682.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="682.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="687.4" x2="705.0" y2="687.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="687.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="692.6" x2="705.0" y2="692.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="692.6" r="2.3" fill="#d04a35"/>
+<text x="25" y="701.8">T2+T3+T6 − T2+T3+T6_GREEDY2</text>
+<line x1="705.0" y1="697.8" x2="705.0" y2="697.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="697.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="703.0" x2="705.0" y2="703.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="703.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="708.2" x2="705.0" y2="708.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="708.2" r="2.3" fill="#d04a35"/>
+<text x="25" y="717.4">T2+T4+T5 − T2+T4+T5_GREEDY2</text>
+<line x1="705.0" y1="713.4" x2="705.0" y2="713.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="713.4" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="718.6" x2="705.0" y2="718.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="718.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="723.8" x2="705.0" y2="723.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="723.8" r="2.3" fill="#d04a35"/>
+<text x="25" y="733.0">T2+T5+T6 − T2+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="729.0" x2="705.0" y2="729.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="729.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="734.2" x2="705.0" y2="734.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="734.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="739.4" x2="705.0" y2="739.4" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="739.4" r="2.3" fill="#d04a35"/>
+<text x="25" y="748.6">T2 − T2_GREEDY2</text>
+<line x1="705.0" y1="744.6" x2="705.0" y2="744.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="744.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="749.8" x2="705.0" y2="749.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="749.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="755.0" x2="705.0" y2="755.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="755.0" r="2.3" fill="#d04a35"/>
+<text x="25" y="764.2">T3+T4+T6 − T3+T4+T6_GREEDY2</text>
+<line x1="705.0" y1="760.2" x2="705.0" y2="760.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="760.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="765.4000000000001" x2="705.0" y2="765.4000000000001" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="765.4000000000001" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="770.6" x2="705.0" y2="770.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="770.6" r="2.3" fill="#d04a35"/>
+<text x="25" y="779.8">T3+T5 − T3+T5_GREEDY2</text>
+<line x1="705.0" y1="775.8" x2="705.0" y2="775.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="775.8" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="781.0" x2="705.0" y2="781.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="781.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="786.2" x2="705.0" y2="786.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="786.2" r="2.3" fill="#d04a35"/>
+<text x="25" y="795.4000000000001">T4+T5+T6 − T4+T5+T6_GREEDY2</text>
+<line x1="705.0" y1="791.4000000000001" x2="705.0" y2="791.4000000000001" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="791.4000000000001" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="796.6" x2="705.0" y2="796.6" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="796.6" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="801.8" x2="705.0" y2="801.8" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="801.8" r="2.3" fill="#d04a35"/>
+<text x="25" y="811.0">T5+T6 − T5+T6_GREEDY2</text>
+<line x1="705.0" y1="807.0" x2="705.0" y2="807.0" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="807.0" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="812.2" x2="705.0" y2="812.2" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="812.2" r="2.3" fill="#d04a35"/>
+<line x1="705.0" y1="817.4000000000001" x2="705.0" y2="817.4000000000001" stroke="#3973ac" stroke-width="1.4"/><circle cx="705.0" cy="817.4000000000001" r="2.3" fill="#d04a35"/>
+</svg>

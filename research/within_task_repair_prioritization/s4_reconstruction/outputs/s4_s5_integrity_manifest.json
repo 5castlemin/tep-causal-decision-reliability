@@ -1,0 +1,64 @@
+{
+  "protected_research_c_sqlite_hashes_audit_start": {
+    "development_cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "development_proposal": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "heldout_cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "heldout_proposal": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+  },
+  "public_files_sha256": {
+    "S5_EXTERNAL_EXECUTION_LOCK.json": "77b9f900618cc93344f006d51ff7d95e96dda2587a444184ef9bc320b41af4b1",
+    "S5_RESOURCE_REPORT.md": "1c56bbdb6304f5c22e08f4256081c0ed932404d68c30a430d1da648415628c63",
+    "S5_TARGETED_SMOKE_TEST_RESULTS.json": "658cad45ffe1a74be825d6140d411fe63ff39ba23f6e5b7be041a48a215c0ee3",
+    "outputs\\metric_selection_v1\\metric_subset_candidate_selection.csv": "60770b4907e1f72fefa991a6bc9d898275f40ff5fed0df6a26f79b1af4126bf8",
+    "outputs\\s5_reconstruction_v1\\policy_budget_aggregates.csv": "917399ed5a7d22368828360ab8405fb3d2b8212e823afb4dfdc869935f39537a",
+    "outputs\\s5_reconstruction_v1\\summary.json": "746aa2c9bc51fa7b2eda786637b0c1e77747ffc6ba3cdd462a1d50d0102e1968"
+  },
+  "raw_private_unit_records_or_response_vectors_in_repository": false,
+  "s4_metric_analysis": {
+    "aggregate_csv_sha256": "60770b4907e1f72fefa991a6bc9d898275f40ff5fed0df6a26f79b1af4126bf8",
+    "aggregate_rows": 189,
+    "analysis_commit": "22816b636ffd8857e62d517fcb3efcb148ad1b6a",
+    "cohort_input_hashes": {
+      "confirmation160": {
+        "candidate_values_sha256": "2005a1d16c9e740b2970a6d5b04f2aea0a30ebd72dbc6f9b78bc54a7a5be4b7b",
+        "inputs_sha256": "65dbdc2befa7df610cb71912db6a94c6fb77542bdc3f45f10ae4641e5d0e8fe0",
+        "unit_results_sha256": "e2e3032ece0012946fafc1acfb77afc6f748a273c133539225031aa52d57c020"
+      },
+      "development80": {
+        "candidate_values_sha256": "b6bad271d0b7154b873ebb081e31187969280dd53ac340bfa42039ab0cc5a477",
+        "inputs_sha256": "a6fe959b5d7fadd05a02321bd107e9265ff69dfe004a1e4c92a5e8847b6ee3cc",
+        "unit_results_sha256": "8a20e4a61c96fa3312dd22a811ddbddb8556f602dca409dbf608c1ea978fb253"
+      },
+      "pilot64": {
+        "candidate_values_sha256": "92cbe755033df446e0ea39088e24b6e4bc44ab501c60e609e6a0826df1e154fb",
+        "inputs_sha256": "34334f07b19d8b42691461e51b4865bd51878ed14f68cdf9d10dadde2bf54bf4",
+        "unit_results_sha256": "ab88bab2fef3d84ffe17e4af6fff40fe857742902b0b9e5240f323ccdd604370"
+      }
+    },
+    "independent_recalculation_sha256": "60770b4907e1f72fefa991a6bc9d898275f40ff5fed0df6a26f79b1af4126bf8",
+    "private_unit_rows_retained_outside_repository": 6426,
+    "recalculation_match": true,
+    "script": "research/within_task_repair_prioritization/s4_reconstruction/analyze_s4_metric_candidates.py"
+  },
+  "s5": {
+    "classification": "NEW_CONDITIONAL_EXTERNAL_SEMISYNTHETIC_RECONSTRUCTION",
+    "contract_sha256": "669153f35305ce82e37c9f4815ef9cee9710ac1f170ceff436473da1e52c9833",
+    "execution_commit": "c571d2a58fcc09d7799eb4a8965217e7ab997401",
+    "execution_tree": "3501161088d345bb8ef547c3ba367d7ff2fbe2e4",
+    "off_device_backup_completed": false,
+    "private_archive_location_class": "same-device only",
+    "private_archive_sha256": "920100143648f97b01a4529ebf761e5232fc8e2a4efad0d1e9e8a3477bb59f27",
+    "private_execution_hashes": {
+      "evaluation_lock_sha256": "1948293a1fae067ecff8ea222b5e073d1fcb8e908a71147d950de3bfa11ac77c",
+      "evaluation_manifest_sha256": "ed4dbcd1f78bae62f8b9005fddcc8feb962505b80cdb82ca53dbdbce28f634f7",
+      "execution_manifest_sha256": "0bda87120f0d1135438917c5e7f3a92296cccfff8c27caa73fc50da577c93b5a",
+      "g0_checkpoint_sha256": "56bace1691e35a799fc52a61d3b89fa94e918da0500cfa814753221ce4f22539",
+      "recommendation_lock_sha256": "b4e33d811d404146678736ce2abc5ce31f3bb3c43e8484dd024d9c73230cd2bf",
+      "recommendation_manifest_sha256": "052d83a1b8e6e83d015d225c2494706d09dada8f78a03eb7cca6e0353e56ac57",
+      "training_csv_sha256": "1362a55c49fa765b7ddb7b2c6da12b67e829a77fe94a83de6dcac64137ce74fd",
+      "unit_policy_losses_sha256": "6332af831d25bc487bb3026a3f506ae6a10ab8c58efb55d66f4a6224a53c7242"
+    },
+    "run_id": "s5-station1-reconstruction-20261128-v1"
+  },
+  "schema": "S4_S5_PUBLIC_INTEGRITY_MANIFEST_V1"
+}

@@ -1,0 +1,132 @@
+{
+  "schema": "FINAL_RESEARCH_INTEGRATION_MANIFEST_V1",
+  "as_of": "2026-11-28",
+  "base_revision": "0c9236d7f8981d879d1fd47b517ef5dc0c19a7b1",
+  "commit_binding": "This manifest is included in the same Git commit as the listed public files; the resulting commit SHA is the final revision binding.",
+  "project_gate": "PROJECT_FINALIZED_WITH_CLEANUP_LIMITATIONS",
+  "canonical_research_taxonomy": {
+    "ids": [
+      "Research 0",
+      "Research 1",
+      "Research 2",
+      "Research 3",
+      "Research 4"
+    ],
+    "mapping": "docs/RESEARCH_NAMING_MAP.md",
+    "machine_readable": "docs/RESEARCH_TAXONOMY.json",
+    "research_index": "research/README.md",
+    "markdown_inventory": "docs/MARKDOWN_DOCUMENT_INVENTORY.json",
+    "note": "Legacy IDs and frozen evidence paths are preserved; taxonomy changes current narrative and navigation only."
+  },
+  "research_e_extension": {
+    "classification": "POST_HOC_DECISION_ECONOMIC_ANALYSIS",
+    "saved_unit_rows_reaggregated": 16560,
+    "new_scm": 0,
+    "new_g0": 0,
+    "new_observations": 0,
+    "new_drf_fits": 0,
+    "new_intervention_rows": 0,
+    "s4_s5_budgets_available": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "s4_s5_b5_to_b9": "NOT_RUN_NO_SEALED_UNIT_LEVEL_RESULTS",
+    "execution_lock": "research/budget_adaptive_repair/RESEARCH_E_EXTENSION_EXECUTION_LOCK.json",
+    "execution_manifest": "research/budget_adaptive_repair/outputs/final_extension_v1/execution_manifest.json"
+  },
+  "study_status": {
+    "preliminary": "historical exploratory problem discovery, not manufacturing intervention validation",
+    "research_c": "frozen-contract confirmatory synthetic primary preserved",
+    "s1_s2": "post-hoc supplementary analyses",
+    "s3": "corrected exploratory historical analysis",
+    "s4": "80-SCM development and 160-SCM independent replication under stated Q-common population; limitations retained",
+    "research_d": "historical conditional semisynthetic; private unit-level artifacts unavailable to this extension",
+    "s5": "new conditional external semisynthetic reconstruction; one DGP and 200 G0 draws",
+    "research_e": "original C B0-9 extension retained; saved S4/S5 reaggregation B0-4; new B5-9 replay NOT_RUN",
+    "s6": "saved S4 unit-level candidate results reaggregated; B=1 policy matrix v6 added; post-hoc and SCM-clustered",
+    "s7": "partial/resource-limited: 0/400 persisted G0 and 0/24,000 recommendations; evaluator not started; final attempt telemetry unavailable; isolated task-zone feasibility passed but is not an external result"
+  },
+  "s6_s7_status": {
+    "s6": "POST_HOC_B1_POLICY_MATRIX_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
+    "s6_replication_scm": 160,
+    "s6_t5_minus_m4": -0.008664396007484304,
+    "s6_t5_ci": [
+      -0.020398204896984618,
+      0.0
+    ],
+    "s6_type_ranked_minus_m4": -0.0022039139792761437,
+    "s6_type_ranked_ci": [
+      -0.009282565057009523,
+      0.0035454308386396855
+    ],
+    "s7": "RESOURCE_LIMITATION_EXIT_TELEMETRY_UNVERIFIED",
+    "s7_last_active_elapsed_wall_seconds": 12275,
+    "s7_wall_cap_seconds": 14400,
+    "s7_last_observed_rss_bytes": 86867968,
+    "s7_rss_cap_bytes": 4294967296,
+    "s7_last_10m_completed_units": 0,
+    "s7_last_active_observation": "2026-11-28 15:11:11 KST",
+    "s7_final_supervisor_report": "MISSING; cap enforcement, termination reason and final telemetry unverifiable",
+    "s7_persisted_g0": 0,
+    "s7_recommendations_sealed": 0,
+    "s7_evaluator": "NOT_STARTED",
+    "s7_checkpoint": "training.csv only; no safe unit-boundary resume checkpoint",
+    "s7_task_zone_feasibility_json_seconds": 0.7613125999923795,
+    "s7_task_zone_feasibility_closeout_seconds": 1.474,
+    "s7_task_zone_timing": "UNRESOLVED_MEASUREMENT_DISCREPANCY",
+    "s7_runner_edge_orientation": "CONFIRMED_STATIC_DEFECT: canonical unordered pair key passed to learner expecting directed parent edges; no persisted recommendation outcome",
+    "s7_execution_lock": "research/supplementary_validation/s7/RESEARCH_S7_EXECUTION_LOCK.json",
+    "s7_computational_closeout": "research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md",
+    "s6_policy_closeout": "research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md",
+    "s6_s7_closeout": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md"
+  },
+  "github_validation": {
+    "branch": "feature/final-s6-s7-validation",
+    "commit": "this manifest commit",
+    "pr": 51,
+    "pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/51",
+    "pr_ci_runs": [
+      "46125787331",
+      "46125792972"
+    ],
+    "pr_ci_for_prior_head": "SUCCESS; new documentation commit requires fresh CI",
+    "main_merge": "NOT_PERFORMED_PENDING_FINAL_PR_CHECKS"
+  },
+  "private_data_policy": "Raw ledgers, unit records, training data, recommendation rows, response vectors, fitted objects and private archives excluded from GitHub.",
+  "backup_status": "S5 private archive is same-device only; no off-device backup is claimed.",
+  "main_merge": "NOT_PERFORMED_PENDING_REVIEW_AND_CHECKS",
+  "pr_50": "OPEN_NOT_CHANGED; verify and supersede only after PR 51 merge",
+  "public_file_sha256": {
+    "FINAL_RESEARCH_CLAIMS_AND_LIMITATIONS.md": "f80f55b299e9f5c5afcd61c49a35708740f69b58f08fdfe0b015ff6d9a244820",
+    "FINAL_RESEARCH_EVIDENCE_MATRIX.md": "11d30f15ddf6d13741383ae64e1653a06d1131f423a1b1f9aba38a1b7cb8fe95",
+    "FINAL_RESEARCH_FRAMEWORK.md": "f944b699a14b800653279f7f381ca3fd2b182c957e8025fdb58e6df2e355b10a",
+    "FINAL_RESEARCH_TEAM_GUIDE.md": "6e8a63453cb89099fb9f89eda2aa28c44e5c5ceb90707bb17bf1c7762aa439ee",
+    "FINAL_SCIENTIFIC_INTEGRITY_REVIEW.md": "408bfd6d70b14bb06fd041a7d91bde7596283b75b604e1e8c8d16b0fc2c13c53",
+    "README.md": "6a8d8c4ced1fdd34562332b22c65d404e1e2e01f9b22cc21a176c829a1ee631b",
+    "REPOSITORY_FINAL_CLOSEOUT.md": "9d8772a0464889f9953bbcdd39b9646243c20a1cb6e76debaa5ace72af40e14d",
+    "RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md": "b0212280476886b2ede713f6994a9b1a8cb3ad1816f22b378fe46dc867b0772b",
+    "archive/ARCHIVE_INDEX.md": "7381ae422a27a0473ed3e50c260b6a45612ad0a4015ce021baafe0725db32ddf",
+    "archive/BRANCH_CLEANUP_DECISIONS.csv": "b9cae349d4221910588949f1b643fe9d4a49885639b990de5049c1e9bb278b01",
+    "archive/REPOSITORY_PRE_CLEANUP_INVENTORY.json": "d9d6f9302bfdebdc1bc2c84d80b655b1c6b7c1ca2c0a297b378e42b326972dae",
+    "docs/MARKDOWN_DOCUMENT_INVENTORY.json": "655c883c22c0f7599f28bfc92427d0caaec370f6c592f46d822d691360bfecb3",
+    "docs/RESEARCH_NAMING_MAP.md": "752d3d6192ce16e9dfc3b328a6a5923f414ce958ae8a78e4cc906ac8a9f4fa66",
+    "docs/RESEARCH_TAXONOMY.json": "cd0e7bdfa49c5c328d6fac0d383354fc5eaa08d1d89701e4339bdde8d4796a36",
+    "docs/current/PRIORITIES_CURRENT.md": "e1a4d96571b4ce95f8480463be7e7d6b7aae576b9c2e06df67b989d86553f890",
+    "docs/current/PROJECT_STATUS_CURRENT.md": "3a50f0aede19447317ebb0c6f10c77adf702a554bb84adb2a42d1ac30d9d44ab",
+    "docs/research_state_current.json": "c6ab7bda74f11d7fc1e43e17be3d7d9a1306f17fcd2c73128b4dae525fe14a98",
+    "research/00_problem_identification/README.md": "b20c02234037df48a6cef28bf4a5200e38e89ca3a33c7861e4120a8d7fe0a56d",
+    "research/01_where/README.md": "016089f168f080715415d342f4b2d19ca2e53693b2bd5a90753788cd331ea3be",
+    "research/02_what_and_why/README.md": "0a415f3eeffbcaa677cca8dda1b1d0daccae8ac2cb9ab775f272c1bac7379f09",
+    "research/03_generalization/README.md": "c137d115333bc61d5d58d528d64895413bbbea4158696590b2be112b62d15020",
+    "research/04_how_much/README.md": "95fec81cdacb65ca3d21acf257aa4b61dd79a2ad8989cca47b9babe35cba5986",
+    "research/README.md": "cb5b668a08aaa265649b6cb733619f07aa79f356aadd52a1a579a7d5a8f8762e",
+    "research/budget_adaptive_repair/build_final_integration_manifest.py": "e65a2c6ae5cf280d92bcfaaa0f2bbf47712e44e767d04fe5f1ef01962a6e91dd",
+    "research/final_integration/FINAL_PRESENTATION_EVIDENCE_GUIDE.md": "15442e5c5ba6fd06367da1f3114c8df61a9453c432ab211dc07369ecbbc8a10d",
+    "research/final_integration/FINAL_RESEARCH_REPORT.md": "4a652c53c637f178d0d176d726bdb8fe7a7879fcd4242f2abe0bbea10341fbc8",
+    "research/final_integration/FINAL_RESULTS_TABLES.md": "25b1498c43b177c3dacf28c1eefe365c75450c5d672b02acadc918dadd329cf2",
+    "research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md": "907d6611b98a938ac7e3105670af316ad26770019cad68634579cdd3967be348"
+  }
+}
