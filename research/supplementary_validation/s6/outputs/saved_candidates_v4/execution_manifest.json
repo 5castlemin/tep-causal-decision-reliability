@@ -1,0 +1,25 @@
+{
+  "analysis_script_sha256": "c3df62fe622404747cec183139b9457253507f52308457043b3288a8a79e3c25",
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 2026112806,
+  "cohorts": {
+    "development80": 80,
+    "replication160": 160
+  },
+  "contract_lock_sha256": "3b3ccd7b8a9239b934b6669950242516aca479fa3c446dc140b8d6dd377a582e",
+  "input_sha256": {
+    "confirmation_candidate_values_sha256": "2005a1d16c9e740b2970a6d5b04f2aea0a30ebd72dbc6f9b78bc54a7a5be4b7b",
+    "confirmation_inputs_sha256": "65dbdc2befa7df610cb71912db6a94c6fb77542bdc3f45f10ae4641e5d0e8fe0",
+    "development_candidate_values_sha256": "b6bad271d0b7154b873ebb081e31187969280dd53ac340bfa42039ab0cc5a477",
+    "development_inputs_sha256": "a6fe959b5d7fadd05a02321bd107e9265ff69dfe004a1e4c92a5e8847b6ee3cc"
+  },
+  "schema": "S6_SAVED_CANDIDATE_MANIFEST_V1",
+  "scope": "retrospective B=1 replay from saved initial legal single-edit values; units without candidates retained as no-op; no new samples; intervals pointwise",
+  "status": "EXECUTED",
+  "type_priority_development_only": [
+    "REV",
+    "FN",
+    "UNRES",
+    "FP"
+  ]
+}

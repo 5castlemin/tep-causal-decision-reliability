@@ -42,8 +42,13 @@ def verify_lock(lock_path,lock_digest,contract_path,source_root):
   if sha(src/rel)!=digest:raise ValueError(f'S7 pinned source asset changed: {rel}')
  return c,lock,commit
 def load_source(source_root):
+ root=Path(source_root).resolve()
+ sys.path.insert(0,str(root))
+ sys.modules.pop('causalAssembly',None)
  from causalAssembly import models_dag
- root=Path(source_root); ref=root/'data/ground_truth/ground_truth.json'; data=root/'data/data_sets/n_500_synthdata/assembly_line_500.csv'
+ import causalAssembly
+ if not Path(causalAssembly.__file__).resolve().is_relative_to(root):raise ValueError('causalAssembly import is not from pinned source checkout')
+ ref=root/'data/ground_truth/ground_truth.json'; data=root/'data/data_sets/n_500_synthdata/assembly_line_500.csv'
  class LocalResponse:
   def __init__(self,text):self.text=text
  old_get,old_data=models_dag.requests.get,models_dag.DATA_DATASET
@@ -105,11 +110,11 @@ def graph_free_action(train,x,y,actions,target,scale):
  return float(min(((((intercept+beta[0]*((a-mx)/sx))*sy+my-target)/scale)**2,abs(a-mid),a) for a in actions)[2])
 def custom_m4(pe,truth,g0,x,y,cfg,budget,kind):
  from research.within_task_repair_prioritization import s3_analysis as s3
- state=dict(g0);logs=[];initial=pe.metrics(truth,g0,x,y,cfg)
+ state=dict(g0);logs=[];initial=pe.metrics(truth,g0,x,y,cfg);pool=[e for e in pe.candidates(truth,g0,x,y,cfg) if e.metric=='M4']
  import random
  random_rng=random.Random(int.from_bytes(hashlib.sha256(f'S7-RANDOM-M4-v1|{x}|{y}'.encode()).digest()[:8],'big'))
  for _ in range(budget):
-  edits=[e for e in pe.candidates(truth,state,x,y,cfg) if e.metric=='M4' and pe.dag(pe.apply(state,e))]
+  edits=[e for e in pool if pe.dag(pe.apply(state,e))]
   if not edits:break
   if kind=='type':
    gains={e:s3.m4_gain(e,truth,state,initial,x,y,cfg) for e in edits};edits=[e for e in edits if gains[e]>TOL]
@@ -123,7 +128,7 @@ def custom_m4(pe,truth,g0,x,y,cfg,budget,kind):
     best=max(gains[e] for e in edits);chosen=min([e for e in edits if best-gains[e]<=TOL],key=lambda e:(e.pair,e.operation))
   else:
    chosen=edits[random_rng.randrange(len(edits))]
-  state=pe.apply(state,chosen);logs.append(chosen)
+  state=pe.apply(state,chosen);logs.append(chosen);pool=[e for e in pool if e.key!=chosen.key]
  return state,logs
 def make_g0(pe,truth,nodes,x,y,env,seedid,master):
  from research.original_objective.g0_candidate import corrupt_graph_candidate

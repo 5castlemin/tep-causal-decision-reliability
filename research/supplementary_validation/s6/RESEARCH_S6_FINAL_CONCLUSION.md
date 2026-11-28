@@ -1,0 +1,5 @@
+# Research S6 — Conclusion
+
+Saved M4 edits show heterogeneous single-edit value by error type: REV and FN have positive mean value in both examined cohorts, while FP has a negative point estimate. In the 160-SCM retrospective B=1 replay, a Development-ranked error-type policy had a `−0.002204` regret difference versus Frozen M4 (95% pointwise SCM interval `[−0.009283, 0.003368]`), with 1/0/159 better/worse/ties. T5-guided M4 had a more favorable point estimate than M4 but remained uncertain, and type-ranked M4 did not improve upon T5 in the same cohort. No new confirmation was conducted.
+
+The defensible conclusion is that simple error-type information can describe and prioritize candidate repairs in these saved reference-assisted SCM records, but this analysis does not establish that it adds reliable decision value beyond Frozen M4 or T5. Structural metrics' incremental predictive value, dynamic multi-edit type policies, and generalization of an error-type rule remain unestablished. All S6 results are post-hoc, conditioned on reference-DAG knowledge, saved analytic regret, the S4 learner/task/objective, and limited initial repair opportunities.
