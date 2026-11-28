@@ -1,6 +1,6 @@
 # DAT 제조공정 인과그래프 수리 연구 — Research 0–4
 
-> **현재 최종 상태 (2026-11-28):** Research 0–4 taxonomy와 종료 문서는 PR #51 및 #52를 통해 main에 통합됐습니다. 현재 main은 `54933cb522bc7ec1e64164e1e17e0926cc396d63`, 제출용 기준 태그는 `final-research-v1.0`이며 main CI run `429`와 tag CI run `430`이 성공했습니다. 별도 장치 백업은 완료되지 않았습니다. 저장소에는 원격 브랜치 3개와 열린 PR 0개가 남았습니다. 역사적 Research D/외부 검증과 미완료 S7 한계는 아래와 연결 문서에 기록되어 있습니다. 이 저장소는 실제 제조설비 개입 효능이나 경제성을 입증하지 않습니다.
+> **제출용 연구 스냅샷 (2026-11-28):** `final-research-v1.1`은 최종 문서 QA를 포함한 main 통합 commit `571aa41e1695f3028f8f8d03cb601580cff8405b`를 가리킵니다. PR #53의 main CI run `436`은 성공했습니다. 이 고정 스냅샷에는 Research 0–4 taxonomy, 결과 및 한계가 정리되어 있습니다. 별도 장치 백업은 완료되지 않았습니다. 현재 저장소 상태와 CI는 [Actions](https://github.com/5castlemin/tep-causal-decision-reliability/actions)에서 확인하세요. 역사적 외부 검증 범위와 미완료 S7 한계는 아래 문서에 기록되어 있으며, 본 연구는 실제 제조설비 개입 효능이나 경제성을 입증하지 않습니다.
 
 ## 최종보고서 및 발표자료 작성 가이드
 
