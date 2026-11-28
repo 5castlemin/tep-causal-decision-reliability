@@ -1,7 +1,8 @@
 # Repository final closeout — status report
 
-**As of:** 2026-11-28 (KST)  
-**Target:** `feature/final-s6-s7-validation`, PR #51  
+**As of:** 2026-11-28 (KST)
+
+**Target:** `feature/final-s6-s7-validation`, PR #51
 **Gate:** `PROJECT_FINALIZED_WITH_CLEANUP_LIMITATIONS`
 
 ## Research and documentation

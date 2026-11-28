@@ -14,7 +14,11 @@ def sha(path):
 def main():
     tracked=subprocess.check_output(['git','diff','--name-only','HEAD'],cwd=ROOT,text=True).splitlines()
     untracked=subprocess.check_output(['git','ls-files','--others','--exclude-standard'],cwd=ROOT,text=True).splitlines()
-    paths=sorted(set(tracked+untracked+['research/budget_adaptive_repair/build_final_integration_manifest.py']))
+    # Preserve hashes already bound by the previous manifest when regenerating
+    # after a documentation commit; add only newly changed/untracked paths.
+    previous=json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else {}
+    prior=list(previous.get('public_file_sha256',{}))
+    paths=sorted(set(prior+tracked+untracked+['research/budget_adaptive_repair/build_final_integration_manifest.py']))
     paths=[x for x in paths if x!='FINAL_RESEARCH_INTEGRATION_MANIFEST.json']
     files={p:sha(ROOT/p) for p in paths if (ROOT/p).is_file()}
     doc={
