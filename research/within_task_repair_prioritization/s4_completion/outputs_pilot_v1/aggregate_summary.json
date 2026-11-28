@@ -1,0 +1,208 @@
+{
+  "candidate_aggregate_groups": 8,
+  "candidate_rows_private": 100,
+  "classification": "post-hoc exploratory development pilot",
+  "cohorts": {
+    "general": {
+      "g0_screening_draws": 32,
+      "proposal_admitted": 32,
+      "retained": 32,
+      "screening_attempts": 123,
+      "shortfall": 0,
+      "structural_eligibility": "existing outcome-blind indirect task and Q-common proposal admission",
+      "target": 32
+    },
+    "opportunity_rich_diagnostic": {
+      "g0_screening_draws": 110,
+      "proposal_admitted": 110,
+      "retained": 32,
+      "screening_attempts": 379,
+      "shortfall": 0,
+      "structural_eligibility": "same proposal admission plus at least two initially DAG-feasible M4 edits; structure only",
+      "target": 32
+    }
+  },
+  "generation_counts": {
+    "new_g0_screening_draws": 142,
+    "new_observation_rows": 32768,
+    "new_sampled_intervention_rows": 0,
+    "new_scm": 64,
+    "proposal_attempts": 502
+  },
+  "limitations": [
+    "pilot only, not confirmatory",
+    "opportunity-rich cohort is structurally selected",
+    "single signed-linear Gaussian SCM family",
+    "tasks vary by accepted proposal",
+    "analytic GT means, no intervention response samples",
+    "no matched corruption variants",
+    "candidate rows are nested within SCM and are not independent",
+    "no causal effect of edit type or role identified",
+    "Research D unit artifacts unavailable"
+  ],
+  "ordered_interaction_rows_private": 150,
+  "paired_bootstrap": [
+    {
+      "better_left_count": 3,
+      "ci95_high": 0.115351514268043,
+      "ci95_low": 0.0,
+      "cohort": "general",
+      "contrast": "S0_minus_M4_B2",
+      "mean_difference": 0.04979600767954248,
+      "n_scm": 32,
+      "replicates": 2000,
+      "seed": 6419173299,
+      "tie_count": 29,
+      "worse_left_count": 0
+    },
+    {
+      "better_left_count": 0,
+      "ci95_high": 0.0,
+      "ci95_low": 0.0,
+      "cohort": "general",
+      "contrast": "M4_B2_minus_FULL_GREEDY_B2",
+      "mean_difference": 0.0,
+      "n_scm": 32,
+      "replicates": 2000,
+      "seed": 6419173299,
+      "tie_count": 32,
+      "worse_left_count": 0
+    },
+    {
+      "better_left_count": 1,
+      "ci95_high": 0.02820378059138275,
+      "ci95_low": 0.0,
+      "cohort": "general",
+      "contrast": "M4_B2_minus_EXPOST_LE2",
+      "mean_difference": 0.009401260197127583,
+      "n_scm": 32,
+      "replicates": 2000,
+      "seed": 6419173299,
+      "tie_count": 31,
+      "worse_left_count": 0
+    },
+    {
+      "better_left_count": 10,
+      "ci95_high": 0.2176938410413598,
+      "ci95_low": 0.05088611461490622,
+      "cohort": "opportunity_rich_diagnostic",
+      "contrast": "S0_minus_M4_B2",
+      "mean_difference": 0.13125832074072963,
+      "n_scm": 32,
+      "replicates": 2000,
+      "seed": 6419173299,
+      "tie_count": 21,
+      "worse_left_count": 1
+    },
+    {
+      "better_left_count": 1,
+      "ci95_high": -0.0005891634037245613,
+      "ci95_low": -0.11319606362771015,
+      "cohort": "opportunity_rich_diagnostic",
+      "contrast": "M4_B2_minus_FULL_GREEDY_B2",
+      "mean_difference": -0.04745905123586063,
+      "n_scm": 32,
+      "replicates": 2000,
+      "seed": 6419173299,
+      "tie_count": 27,
+      "worse_left_count": 4
+    },
+    {
+      "better_left_count": 1,
+      "ci95_high": 0.0027499220012957223,
+      "ci95_low": 0.0,
+      "cohort": "opportunity_rich_diagnostic",
+      "contrast": "M4_B2_minus_EXPOST_LE2",
+      "mean_difference": 0.0009166406670985741,
+      "n_scm": 32,
+      "replicates": 2000,
+      "seed": 6419173299,
+      "tie_count": 31,
+      "worse_left_count": 0
+    }
+  ],
+  "policy_rows_private": 4992,
+  "public_artifacts": [
+    "policy_aggregates.csv",
+    "single_edit_aggregates.csv",
+    "two_edit_interaction_aggregates.csv",
+    "all_63_T_subset_aggregates.csv"
+  ],
+  "status": "PILOT_ANALYTIC_EVALUATION_COMPLETED_WITH_LIMITATIONS",
+  "unit_summaries": {
+    "general": {
+      "expost_le2_regret": {
+        "mean": 0.0,
+        "median": 0.0,
+        "n": 32,
+        "q10": 0.0,
+        "q90": 0.0,
+        "sd": 0.0
+      },
+      "feasible_two_edit_orders": {
+        "mean": 0.8125,
+        "median": 0.0,
+        "n": 32,
+        "q10": 0.0,
+        "q90": 2.0,
+        "sd": 2.375106109683958
+      },
+      "initial_m4_candidates": {
+        "mean": 0.78125,
+        "median": 0.5,
+        "n": 32,
+        "q10": 0.0,
+        "q90": 2.0,
+        "sd": 1.0075321174741456
+      },
+      "m4_b2_exactly_matches_le2_optimum_count": 31,
+      "m4_b2_minus_expost_le2_mean": 0.009401260197127583,
+      "m4_b2_regret": {
+        "mean": 0.009401260197127583,
+        "median": 0.0,
+        "n": 32,
+        "q10": 0.0,
+        "q90": 0.0,
+        "sd": 0.053181558696704746
+      },
+      "n_scm": 32
+    },
+    "opportunity_rich_diagnostic": {
+      "expost_le2_regret": {
+        "mean": 0.0,
+        "median": 0.0,
+        "n": 32,
+        "q10": 0.0,
+        "q90": 0.0,
+        "sd": 0.0
+      },
+      "feasible_two_edit_orders": {
+        "mean": 3.96875,
+        "median": 2.0,
+        "n": 32,
+        "q10": 2.0,
+        "q90": 6.0,
+        "sd": 5.426841147362771
+      },
+      "initial_m4_candidates": {
+        "mean": 2.34375,
+        "median": 2.0,
+        "n": 32,
+        "q10": 2.0,
+        "q90": 3.0,
+        "sd": 0.8654432017665117
+      },
+      "m4_b2_exactly_matches_le2_optimum_count": 31,
+      "m4_b2_minus_expost_le2_mean": 0.0009166406670985741,
+      "m4_b2_regret": {
+        "mean": 0.0009166406670985741,
+        "median": 0.0,
+        "n": 32,
+        "q10": 0.0,
+        "q90": 0.0,
+        "sd": 0.005185302652934099
+      },
+      "n_scm": 32
+    }
+  }
+}

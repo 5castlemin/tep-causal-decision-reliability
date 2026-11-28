@@ -1,0 +1,518 @@
+{
+  "audit_type": "saved-output-only; no SCM or observational regeneration",
+  "cohorts": [
+    {
+      "cohort": "C_DEVELOPMENT",
+      "common_index_bootstrap_10k": {
+        "comparisons": {
+          "DECISION_IMPACT_ONLY": {
+            "better_worse_tie": [
+              0,
+              0,
+              64
+            ],
+            "ci95_pointwise_shared_indices": [
+              0.0,
+              0.0
+            ],
+            "mean_comparator_minus_decision_weighted": 0.0
+          },
+          "DECISION_WEIGHTED_VERIFICATION": {
+            "better_worse_tie": [
+              0,
+              0,
+              64
+            ],
+            "ci95_pointwise_shared_indices": [
+              0.0,
+              0.0
+            ],
+            "mean_comparator_minus_decision_weighted": 0.0
+          },
+          "FIT_BASED_VERIFICATION": {
+            "better_worse_tie": [
+              0,
+              1,
+              63
+            ],
+            "ci95_pointwise_shared_indices": [
+              0.0,
+              0.012448979022798366
+            ],
+            "mean_comparator_minus_decision_weighted": 0.004149659674266122
+          },
+          "RANDOM_VERIFICATION": {
+            "better_worse_tie": [
+              0,
+              18,
+              46
+            ],
+            "ci95_pointwise_shared_indices": [
+              0.04612484246208021,
+              0.12611016919201107
+            ],
+            "mean_comparator_minus_decision_weighted": 0.08387356379448672
+          },
+          "SUSPICION_ONLY": {
+            "better_worse_tie": [
+              0,
+              1,
+              63
+            ],
+            "ci95_pointwise_shared_indices": [
+              0.0,
+              0.012448979022798366
+            ],
+            "mean_comparator_minus_decision_weighted": 0.004149659674266122
+          }
+        },
+        "replicates": 10000,
+        "seed": 6907072702589526018
+      },
+      "evaluator_rows": 12480,
+      "fit_b3_b4_same_action": {
+        "n": 64,
+        "same": 63
+      },
+      "n_scm": 64,
+      "pending_final_audit": {
+        "deterministic_policy_scm_rows": 256,
+        "example_keys": [
+          {
+            "final_individually_feasible": [],
+            "pending_pairs": [
+              [
+                "V02",
+                "V07"
+              ]
+            ],
+            "policy": "FIT_BASED_VERIFICATION",
+            "scm_id": "dev-scm-development-proposal-000013-a0012"
+          },
+          {
+            "final_individually_feasible": [],
+            "pending_pairs": [
+              [
+                "V02",
+                "V07"
+              ]
+            ],
+            "policy": "SUSPICION_ONLY",
+            "scm_id": "dev-scm-development-proposal-000013-a0012"
+          }
+        ],
+        "individually_dag_feasible_pending": 0,
+        "pending_relations": 2,
+        "replay_vs_saved_mismatch_count": 0,
+        "rows_with_pending": 2
+      },
+      "private_hashes": {
+        "evaluator": "c054e05de587592f2df51ef25717ab378d128c7df65dc88f8c71df6201374269",
+        "recommendations": "e05855526d6f0ba57f775f1aef9eec2282ce0b4e690f33a72144ad2e7535a538"
+      },
+      "random_action_change": {
+        "0": {
+          "fraction_scm_ever_changed": 0.0,
+          "mean_scm_share_of_32_repeats_changed": 0.0,
+          "n_scm": 64,
+          "repeats_per_scm": [
+            32
+          ]
+        },
+        "1": {
+          "fraction_scm_ever_changed": 0.171875,
+          "mean_scm_share_of_32_repeats_changed": 0.0126953125,
+          "n_scm": 64,
+          "repeats_per_scm": [
+            32
+          ]
+        },
+        "2": {
+          "fraction_scm_ever_changed": 0.25,
+          "mean_scm_share_of_32_repeats_changed": 0.02294921875,
+          "n_scm": 64,
+          "repeats_per_scm": [
+            32
+          ]
+        },
+        "3": {
+          "fraction_scm_ever_changed": 0.265625,
+          "mean_scm_share_of_32_repeats_changed": 0.03662109375,
+          "n_scm": 64,
+          "repeats_per_scm": [
+            32
+          ]
+        },
+        "4": {
+          "fraction_scm_ever_changed": 0.28125,
+          "mean_scm_share_of_32_repeats_changed": 0.05078125,
+          "n_scm": 64,
+          "repeats_per_scm": [
+            32
+          ]
+        }
+      },
+      "recommendation_rows": 12480
+    },
+    {
+      "cohort": "C_HELDOUT",
+      "common_index_bootstrap_10k": {
+        "comparisons": {
+          "DECISION_IMPACT_ONLY": {
+            "better_worse_tie": [
+              0,
+              2,
+              198
+            ],
+            "ci95_pointwise_shared_indices": [
+              0.0,
+              0.0028807454800130732
+            ],
+            "mean_comparator_minus_decision_weighted": 0.0009884513038314834
+          },
+          "DECISION_WEIGHTED_VERIFICATION": {
+            "better_worse_tie": [
+              0,
+              0,
+              200
+            ],
+            "ci95_pointwise_shared_indices": [
+              0.0,
+              0.0
+            ],
+            "mean_comparator_minus_decision_weighted": 0.0
+          },
+          "FIT_BASED_VERIFICATION": {
+            "better_worse_tie": [
+              10,
+              0,
+              190
+            ],
+            "ci95_pointwise_shared_indices": [
+              -0.023466441712641048,
+              -0.004039871749206106
+            ],
+            "mean_comparator_minus_decision_weighted": -0.012511010872346406
+          },
+          "RANDOM_VERIFICATION": {
+            "better_worse_tie": [
+              7,
+              48,
+              145
+            ],
+            "ci95_pointwise_shared_indices": [
+              0.04561085289156007,
+              0.08616424663993238
+            ],
+            "mean_comparator_minus_decision_weighted": 0.06494177973699626
+          },
+          "SUSPICION_ONLY": {
+            "better_worse_tie": [
+              9,
+              0,
+              191
+            ],
+            "ci95_pointwise_shared_indices": [
+              -0.020108389171065867,
+              -0.002813651252184298
+            ],
+            "mean_comparator_minus_decision_weighted": -0.01021962558043543
+          }
+        },
+        "replicates": 10000,
+        "seed": 4543814096456409156
+      },
+      "evaluator_rows": 39000,
+      "fit_b3_b4_same_action": {
+        "n": 200,
+        "same": 200
+      },
+      "n_scm": 200,
+      "pending_final_audit": {
+        "deterministic_policy_scm_rows": 800,
+        "example_keys": [
+          {
+            "final_individually_feasible": [],
+            "pending_pairs": [
+              [
+                "V07",
+                "V09"
+              ]
+            ],
+            "policy": "FIT_BASED_VERIFICATION",
+            "scm_id": "rep-scm-confirmation-proposal-000015-a0014"
+          },
+          {
+            "final_individually_feasible": [],
+            "pending_pairs": [
+              [
+                "V07",
+                "V09"
+              ]
+            ],
+            "policy": "SUSPICION_ONLY",
+            "scm_id": "rep-scm-confirmation-proposal-000015-a0014"
+          },
+          {
+            "final_individually_feasible": [],
+            "pending_pairs": [
+              [
+                "V06",
+                "V08"
+              ]
+            ],
+            "policy": "SUSPICION_ONLY",
+            "scm_id": "rep-scm-confirmation-proposal-000081-a0080"
+          },
+          {
+            "final_individually_feasible": [],
+            "pending_pairs": [
+              [
+                "V00",
+                "V06"
+              ]
+            ],
+            "policy": "FIT_BASED_VERIFICATION",
+            "scm_id": "rep-scm-confirmation-proposal-000158-a0157"
+          }
+        ],
+        "individually_dag_feasible_pending": 0,
+        "pending_relations": 4,
+        "replay_vs_saved_mismatch_count": 0,
+        "rows_with_pending": 4
+      },
+      "private_hashes": {
+        "evaluator": "16d05a2842b13fdde67cdae16ed1d5da3fa3843061090a044192c2c8ba5edaeb",
+        "recommendations": "5b3f7fd54862f8657d8de08da68c7f48bb0ab1d13dcd172f7cb2d7e2cc0f3f83"
+      },
+      "random_action_change": {
+        "0": {
+          "fraction_scm_ever_changed": 0.0,
+          "mean_scm_share_of_32_repeats_changed": 0.0,
+          "n_scm": 200,
+          "repeats_per_scm": [
+            32
+          ]
+        },
+        "1": {
+          "fraction_scm_ever_changed": 0.185,
+          "mean_scm_share_of_32_repeats_changed": 0.01015625,
+          "n_scm": 200,
+          "repeats_per_scm": [
+            32
+          ]
+        },
+        "2": {
+          "fraction_scm_ever_changed": 0.235,
+          "mean_scm_share_of_32_repeats_changed": 0.02015625,
+          "n_scm": 200,
+          "repeats_per_scm": [
+            32
+          ]
+        },
+        "3": {
+          "fraction_scm_ever_changed": 0.26,
+          "mean_scm_share_of_32_repeats_changed": 0.030625,
+          "n_scm": 200,
+          "repeats_per_scm": [
+            32
+          ]
+        },
+        "4": {
+          "fraction_scm_ever_changed": 0.27,
+          "mean_scm_share_of_32_repeats_changed": 0.0409375,
+          "n_scm": 200,
+          "repeats_per_scm": [
+            32
+          ]
+        }
+      },
+      "recommendation_rows": 39000
+    }
+  ],
+  "query_mechanism_audit": [
+    {
+      "cohort": "C_DEVELOPMENT",
+      "decision_weighted_vs_impact_only": {
+        "n_scm": 64,
+        "same_final_action_scm": 64,
+        "same_query_sequence_scm": 52
+      },
+      "error_candidate_score_diagnostics": {
+        "DECISION_IMPACT_ONLY": {
+          "candidate_snapshots": 7132,
+          "error_candidates_nonpositive_fit_gain": 29,
+          "error_candidates_zero_impact": 459,
+          "error_candidates_zero_suspicion": 0,
+          "fraction_error_candidates_zero_impact": 0.9089108910891089,
+          "fraction_error_candidates_zero_suspicion": 0.0,
+          "true_error_candidate_snapshots": 505
+        },
+        "DECISION_WEIGHTED_VERIFICATION": {
+          "candidate_snapshots": 7132,
+          "error_candidates_nonpositive_fit_gain": 28,
+          "error_candidates_zero_impact": 459,
+          "error_candidates_zero_suspicion": 0,
+          "fraction_error_candidates_zero_impact": 0.918,
+          "fraction_error_candidates_zero_suspicion": 0.0,
+          "true_error_candidate_snapshots": 500
+        },
+        "FIT_BASED_VERIFICATION": {
+          "candidate_snapshots": 7132,
+          "error_candidates_nonpositive_fit_gain": 29,
+          "error_candidates_zero_impact": 259,
+          "error_candidates_zero_suspicion": 0,
+          "fraction_error_candidates_zero_impact": 0.8839590443686007,
+          "fraction_error_candidates_zero_suspicion": 0.0,
+          "true_error_candidate_snapshots": 293
+        },
+        "SUSPICION_ONLY": {
+          "candidate_snapshots": 7132,
+          "error_candidates_nonpositive_fit_gain": 30,
+          "error_candidates_zero_impact": 264,
+          "error_candidates_zero_suspicion": 0,
+          "fraction_error_candidates_zero_impact": 0.8599348534201955,
+          "fraction_error_candidates_zero_suspicion": 0.0,
+          "true_error_candidate_snapshots": 307
+        }
+      },
+      "query_metrics_by_policy": {
+        "DECISION_IMPACT_ONLY": {
+          "error_discovery_yield": 0.10546875,
+          "queries": 256,
+          "true_errors_queried": 27,
+          "true_errors_with_nonpositive_fit_gain": 2,
+          "true_errors_with_zero_impact": 10,
+          "true_errors_with_zero_suspicion": 0
+        },
+        "DECISION_WEIGHTED_VERIFICATION": {
+          "error_discovery_yield": 0.10546875,
+          "queries": 256,
+          "true_errors_queried": 27,
+          "true_errors_with_nonpositive_fit_gain": 2,
+          "true_errors_with_zero_impact": 10,
+          "true_errors_with_zero_suspicion": 0
+        },
+        "FIT_BASED_VERIFICATION": {
+          "error_discovery_yield": 0.47265625,
+          "queries": 256,
+          "true_errors_queried": 121,
+          "true_errors_with_nonpositive_fit_gain": 1,
+          "true_errors_with_zero_impact": 105,
+          "true_errors_with_zero_suspicion": 0
+        },
+        "SUSPICION_ONLY": {
+          "error_discovery_yield": 0.453125,
+          "queries": 256,
+          "true_errors_queried": 116,
+          "true_errors_with_nonpositive_fit_gain": 1,
+          "true_errors_with_zero_impact": 98,
+          "true_errors_with_zero_suspicion": 0
+        }
+      },
+      "zero_score_ties": {
+        "all_candidates_zero": 397,
+        "selected_score_zero": 402
+      }
+    },
+    {
+      "cohort": "C_HELDOUT",
+      "decision_weighted_vs_impact_only": {
+        "n_scm": 200,
+        "same_final_action_scm": 198,
+        "same_query_sequence_scm": 168
+      },
+      "error_candidate_score_diagnostics": {
+        "DECISION_IMPACT_ONLY": {
+          "candidate_snapshots": 21364,
+          "error_candidates_nonpositive_fit_gain": 124,
+          "error_candidates_zero_impact": 1465,
+          "error_candidates_zero_suspicion": 12,
+          "fraction_error_candidates_zero_impact": 0.9139114160948222,
+          "fraction_error_candidates_zero_suspicion": 0.007485963817841547,
+          "true_error_candidate_snapshots": 1603
+        },
+        "DECISION_WEIGHTED_VERIFICATION": {
+          "candidate_snapshots": 21364,
+          "error_candidates_nonpositive_fit_gain": 125,
+          "error_candidates_zero_impact": 1464,
+          "error_candidates_zero_suspicion": 12,
+          "fraction_error_candidates_zero_impact": 0.921334172435494,
+          "fraction_error_candidates_zero_suspicion": 0.007551919446192574,
+          "true_error_candidate_snapshots": 1589
+        },
+        "FIT_BASED_VERIFICATION": {
+          "candidate_snapshots": 21364,
+          "error_candidates_nonpositive_fit_gain": 107,
+          "error_candidates_zero_impact": 884,
+          "error_candidates_zero_suspicion": 10,
+          "fraction_error_candidates_zero_impact": 0.911340206185567,
+          "fraction_error_candidates_zero_suspicion": 0.010309278350515464,
+          "true_error_candidate_snapshots": 970
+        },
+        "SUSPICION_ONLY": {
+          "candidate_snapshots": 21364,
+          "error_candidates_nonpositive_fit_gain": 105,
+          "error_candidates_zero_impact": 908,
+          "error_candidates_zero_suspicion": 12,
+          "fraction_error_candidates_zero_impact": 0.9070929070929071,
+          "fraction_error_candidates_zero_suspicion": 0.011988011988011988,
+          "true_error_candidate_snapshots": 1001
+        }
+      },
+      "query_metrics_by_policy": {
+        "DECISION_IMPACT_ONLY": {
+          "error_discovery_yield": 0.10625,
+          "queries": 800,
+          "true_errors_queried": 85,
+          "true_errors_with_nonpositive_fit_gain": 7,
+          "true_errors_with_zero_impact": 40,
+          "true_errors_with_zero_suspicion": 0
+        },
+        "DECISION_WEIGHTED_VERIFICATION": {
+          "error_discovery_yield": 0.1125,
+          "queries": 800,
+          "true_errors_queried": 90,
+          "true_errors_with_nonpositive_fit_gain": 7,
+          "true_errors_with_zero_impact": 43,
+          "true_errors_with_zero_suspicion": 0
+        },
+        "FIT_BASED_VERIFICATION": {
+          "error_discovery_yield": 0.47875,
+          "queries": 800,
+          "true_errors_queried": 383,
+          "true_errors_with_nonpositive_fit_gain": 12,
+          "true_errors_with_zero_impact": 329,
+          "true_errors_with_zero_suspicion": 0
+        },
+        "SUSPICION_ONLY": {
+          "error_discovery_yield": 0.47375,
+          "queries": 800,
+          "true_errors_queried": 379,
+          "true_errors_with_nonpositive_fit_gain": 15,
+          "true_errors_with_zero_impact": 326,
+          "true_errors_with_zero_suspicion": 0
+        }
+      },
+      "zero_score_ties": {
+        "all_candidates_zero": 1211,
+        "selected_score_zero": 1240
+      }
+    }
+  ],
+  "query_score_replay_summary": {
+    "C_DEVELOPMENT": {
+      "all_candidate_scores_zero": 397,
+      "candidate_score_rows": 28528,
+      "saved_selected_queries": 1024,
+      "selected_score_zero": 402
+    },
+    "C_HELDOUT": {
+      "all_candidate_scores_zero": 1211,
+      "candidate_score_rows": 85456,
+      "saved_selected_queries": 3200,
+      "selected_score_zero": 1240
+    }
+  },
+  "source_hashes_unchanged": true
+}

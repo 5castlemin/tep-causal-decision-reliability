@@ -1,0 +1,529 @@
+# 작업 기록
+
+# 2026-11-25 — Research D provenance recovery and reproduction closeout
+
+- Branch `research/research-d-design-resolution`; recovery commit `116e81d48dbeb4ee86ea164be8f1ffd908c03f62` exactly restores the historical pipeline bytes at expected SHA-256 `cbb830bc9421bbde851183868037ddc7681dbbac72c1847feb662cf75ae51291`. The nine remaining source hashes were reconciled against Git blob/runtime bytes and Windows CRLF. Historical artifacts audit in `original_pilot_artifact_audit_v2.json` passes saved bindings/counts/arithmetic (2,720 recommendations, 2,720 policy evaluation rows, 1,280 response rows); raw response rows are unavailable, so bootstrap intervals were not independently recomputed. Historical gate remains incomplete at original closeout.
+- Added immutable source/runtime/data/contract binding, recommendation subprocess boundary, evaluator invocation validation, pre/post source checks, overwrite refusals, and regression tests. Commit `add3a3c344b4dca033abf1086153727a2e85dd36` CI run `45563155664` succeeded, including full unittest discovery. Follow-up commit `16445173224f405c88a32e8856435bbc4290876b` adds fail-closed pre-fit checks.
+- One authorized reproduction runner invocation was attempted at commit `1644517`; it stopped before DRF fit because the runner read the audit status at the wrong JSON level. No DRF sample, 512-row learner frame, recommendation, G0, intervention response, bootstrap draw, run lock or evaluation artifact was generated. The output directory remained empty. No retry was made. The field-path defect was fixed and tested in commit `4007dbf5bdd4b57f7c9df413ec78243706e4a7f6`. Gate remains `DEVELOPMENT_PILOT_INCOMPLETE`; any new reproduction requires explicit authorization and a new run ID/lock. Final evaluation data were not generated.
+- Local Research D focused tests passed (22 in the corrected run). The Windows dirty-worktree full discovery had two unrelated environment failures (clean-worktree guard while files were modified; frozen Step4B4 byte hash under Windows checkout). GitHub Actions at `1644517` passed full discovery; CI run `45563697816` for `4007dbf5bdd4b57f7c9df413ec78243706e4a7f6` succeeded: 389 tests, all passed; remaining workflow validations and frozen asset checks succeeded.
+
+
+기록 원칙: 실질 작업마다 날짜, 브랜치/커밋, 실행 명령, 실제 결과, 미수행/차단 사항을 추가한다. 이 문서는 작업 성공을 추정하지 않는다.
+
+# 2026-11-25 — Research D 최종 실측 판정 및 반합성 preflight
+
+- Step 2 브랜치 `research/research-d-design-resolution`에서 진행. Mk2 `DEFERRED_PENDING_EXTERNAL_EVIDENCE`, Wind Tunnel `PHYSICAL_CASE_REDESIGN_REQUIRED`, 현재 실측 정책 평가 `DEFERRED`로 종료. 별도 causalAssembly 유형 `EXTERNAL_SEMISYNTHETIC_ROBUSTNESS`는 `CONDITIONAL_SEMISYNTHETIC`.
+- 기존 Step 0 graph/sample 파일을 재다운로드 없이 재사용했고 SHA-256을 확인. package checkout commit `8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9`의 공식 loader로 98/485 DAG 및 500×98 sample 스키마 확인. Station1 6/7 official cell에서 strict path `mp_0→mp_1→mp_4`, Rule A false-pair support 1, M1/M2/M3/M4 구조 support 확인. 변수는 virtual do만 가능하며 물리 조작 가능하다고 해석하지 않음.
+- 별도 Python venv와 venv-local `R_LIBS_USER`에 causalAssembly 의존성/CRAN drf 설치. `fit_drf` 6개 station node 모델, 관측표본 생성 및 동일 seed 재현 PASS. in-support float hard intervention은 `intervene_on`이 저장하지만 `sample_from_interventional_drf`가 `NotImplementedError`로 실패; 개입 결과 0행. 25개의 탐색 관측 response row가 smoke 과정에서 생성됐지만 값/평균/성능 계산에 사용하거나 저장하지 않았고, 최종 평가에서 재사용 금지. Full policy/regret/G0 cohort NOT_RUN.
+- `design_resolution/preflight.py`의 스키마 검사를 `random_loads_intake` 대상으로 바로잡고 구별 스키마 회귀 테스트를 추가. Research C 코드·계약·Ledger·frozen manifest·requirements 불변.
+- 재현 명령, 환경, API 결과와 hard-do blocker는 `research/external_validation/semisynthetic_preflight/`에 기록. 다음 단계는 별도 승인 후 numeric float hard-do adapter 한 건만 검증; 실패하면 외부 검증 종료. 이번 판정은 본실험 승인 아님.
+
+# 2026-11-25 — Research D Step 2 설계 적격성 preflight
+
+- Step 1 commit `6483c9b49f1eb388ea862eb9ec20564b4f84cff5` 기반 브랜치 `research/research-d-design-resolution`에서 작업. Step1은 Step0 commit 아래 두 commit으로 이어짐.
+- 기존 `wt_bernoulli_v1.zip` (14,047,460 bytes, SHA-256 `e5d58a67f6307b9099177425e91c449b9e62e7c712f8c6f34d1dc80ce4db01e3`) 재사용. outcome 열을 선택하지 않고 flag, timestamp, command/config metadata만 읽음. 2,000개 100행 block, block당 설정 일관성, seed-42 명령열 전체 일치를 확인함.
+- `wt_standard` 32/42 DAG의 두 후보 `load_in→rpm_in`, `load_in→pressure_intake`는 직접 간선이고 각각 task zone 1 pair, Rule A task-FP opportunity 0. 기존 M1–M4의 실측 결정 유용성 비교에는 구조가 축소되어 OPTION C (`PHYSICAL_CASE_REDESIGN_REQUIRED`) 추천; Mk2는 `DEFERRED_PENDING_EXTERNAL_EVIDENCE` 유지.
+- Step 1 graph 문서의 쌍 수 문구를 바로잡음: 4,005는 전체 unordered pair, 3,863은 reference-absent unordered pair, 7,726은 oriented absent candidates. Step 1→Step0의 실제 커밋은 두 개이며 Step1 최종 commit의 직계 부모는 `7c5bd93...`.
+- 신규 outcome-blind graph/block validator와 deterministic fixture, root unittest discovery 연결을 추가. 실측 반응, policy recommendation, SCM fit, loss/regret 및 stochastic G0 cohort는 실행하지 않음. 외부 개발자 문의 초안은 작성만 하고 보내지 않음.
+- 검증: outcome-blind archive 검사 PASS; Step2 신규 테스트 3개와 Step1 validator root-wrapper 1개 targeted PASS; state generator/check PASS, `git diff --check` PASS. 첫 GitHub Actions run #300에서 root discovery가 새 preflight의 bare `policy_engine` import를 기존 동명 모듈과 충돌시켰다. 절대 package import로 고친 commit `a792406daadc35812c786444296b4c660ec39a82`의 Actions run #301은 `python -X utf8 -m unittest discover -s tests -v` **366개, 1 skipped, 성공**; 네 신규/qualification 테스트명이 실제 로그에 표시됐다. 전체 기존 workflow도 graph verifier, 모든 기존 validators, research state, frozen asset manifest(39파일), PR integration 검사를 통과했다. 최초 local 전체 suite의 환경 fingerprint/CRLF 문제는 Windows working-copy 이슈였고 frozen files/requirements를 바꾸지 않았다.
+
+
+## 2026-11-16 — Step 4C-2 final freeze closure
+
+- Requalified the production-isolated fixed-fixture path on Windows/CPython 3.11.15: 14/14 preserved strict-Q topology fixtures completed with 14/14 identical-ledger replays, no 2-second unit timeout, max stage 1.219 s, full-path max 9.255 s, sampled child RSS max 70,930,432 bytes, shared fixture-root storage 1,730,470 bytes. Six source topology strata had no accepted fixture and remain unavailable; no study SCM was sampled (`independent_scm_n=0`). Evidence: `research/budget_aware_refinement/step4c2_resource_qualification_v2.json`.
+- Separate fixed-key proposal timing covered 20 strata (7 accepted timing fixtures, 13 structural rejections); this is not a yield estimate. Conservative measured-cost extrapolation was ~737 s for 64 admissions/386 proposals and ~2,264 s for 200/1,104, without a worst-case guarantee.
+- Frozen safe-stop settings are 2 s/unit, 1,800 s/SCM active stages, 7,200 s/cohort active stages, sampled 512 MiB RSS, 100 MiB individual ledger and dedicated cohort root, 5 MiB failure reserve, and 1 GiB free-disk floor. The content manifest excludes itself; commit/tree are recorded externally.
+- Python 3.11.15 full local suite: 261 PASS. Research-state and docs checks plus `git diff --check` passed; Git-blob SHA-256 matched all 39 frozen assets. Exact-head GitHub Actions and PR Self-Review remain pending the final commit. No development/held-out cohort, research Decision Regret analysis, Step 5/6 or manufacturing intervention effect was run. PR #38 remains Draft/unmerged; protocol freeze is not cohort authorization.
+
+## 2026-10-23 — Slack 자산 및 연구 운영 정비
+
+- 브랜치: `feature/slack-assets-research-ops` (커밋/PR은 이 작업 완료 시 Git 이력 참조).
+- Slack `#26-2_제조공정` 채널과 주요 thread를 직접 읽고, 파일 링크 및 일부 텍스트 파일 본문을 확인했다. ZIP의 바이트는 Slack connector를 통해 회수하지 않았다.
+- 기존 `TEP_step6_results.zip`, `TEP_final_graphs_v1.zip`, 과제 ZIP과 공개 CPCaD-Bench 입력의 로컬 SHA-256을 기존 목록과 대조했다. 기존 frozen graph는 수정하지 않았다.
+- CPCaD-Bench 소스 커밋의 데이터·GT를 해시 검증하여 `data/local/`에 받는 독립 명령과 문서 동기화 CI를 추가했다. 배포 권리 불명확으로 데이터 바이트를 Git에 추가하지 않았다.
+- 8월 시뮬레이터 보고, 접근 가능한 이전 workspace·Downloads·관련 프로젝트 경로, Git 이력에서 실행 소스/원시 로그를 찾지 못했다. 정상 운전·Fault·XMV 개입은 `NOT_RUN`; Gate A `BLOCKED` 유지.
+- 검증 명령과 결과는 이번 PR 설명 및 CI에 기록한다. 새 인과발견/SCM/Recovery 실험은 수행하지 않았다.
+- 실제 검증: `python -X utf8 src/acquire_reference_data.py --source-git <로컬 CPCaD-Bench>` 데이터·GT 해시 PASS, `python -X utf8 graphs/final/verify_and_load.py` 39파일 PASS, `python -X utf8 src/verify_recovery.py` 7개 Step 6 수치 대조 PASS, `python -X utf8 -m unittest discover -s tests -v` 5개 PASS, `git diff --check` PASS. 문서 동기화 검사는 커밋 뒤 `origin/main...HEAD`로 다시 실행한다.
+- 로컬 PCMCI+ baseline의 실행·축약 코드 두 파일을 발견하고 SHA-256을 확인했다. 현 Final의 재실행 설정과 primary 설정이 다르므로 Final 생성 코드로 반입하지 않았다.
+
+## 2026-10-23 — Simulator feasibility 실제 실행
+
+- 사용자 승인으로 PR #1 병합 (`ceb447d`), main fast-forward 후 `feature/simulator-feasibility` 생성. 기존 동결 그래프 불변.
+- pyTEP·TEP Studio·TEP-Rust·Python TEP 후보의 source/license/interface 검토. Studio 설치는 인코딩 오류 해결 후 MSVC 부재로 실패. Python 후보 commit `9a6c8e5fcef4a2850778704e7793c87b0a187005`를 저장소 밖에서 실행.
+- 명령: `python -X utf8 experiments/simulator/run_feasibility.py --source ../tep-python-candidate --output experiments/simulator/run_20261023_v3`.
+- 정상 운전 2회 exact 동일; 수동 밸브 개입은 1788초 shutdown. IDV4 주입/clear 성공, 같은 객체 reset 관측 복원 실패. 최초 요약은 길이 불일치 오류, 공통 timestamp 비교로 수정; 실패 raw CSV 보존.
+- 결과: 후보 실행 가능성 PARTIAL. 기존 GT 효과 oracle·Recovery·Safety는 미검증. raw CSV와 source/환경/hash 및 재현 검증기를 추가.
+- 검증: `python -X utf8 experiments/simulator/validate_feasibility.py` PASS (실험 gate는 PARTIAL), `python -X utf8 graphs/final/verify_and_load.py` 39파일 PASS, `python -X utf8 -m unittest discover -s tests -v` 5 tests PASS, `git diff --check` PASS. CI에 원시 결과 hash 검증 추가. 실제 simulator source 없이 저장된 증거를 검사하므로 CI 성공이 새 simulator 실행을 뜻하지 않는다.
+- CI 첫 실행에서 CSV SHA 불일치 확인: Windows 원시 CRLF가 Git의 text 정규화로 LF로 저장된 것이 원인. 실험 수치는 수정하지 않고 `.gitattributes`에서 simulator CSV에만 `-text`를 지정해 원본 바이트 보존. 재검증은 최신 CI 참조.
+
+
+## 2026-10-23 — 미완료 연구 자산 복원과 현재 상태 정합성
+
+- 브랜치 `feature/research-asset-recovery`, origin/main `ceb447d`에서 생성. PR #1 병합 확인; PR #2 open/head `e5a0291`/CI success 확인. PR #2 병합·simulator 재실행·코드 변경 없음.
+- Slack 파일 ID 두 개에서 실제 ZIP bytes 회수, 기존 로컬 Step 6/과제 ZIP SHA와 exact 일치. 원본은 저장소 밖 보관; signed URL과 원본 바이너리 반입 없음.
+- `FREEZE.code`에 Final 생성 파일 hash는 있지만 Step6 ZIP에는 algos source가 없음을 확인. 정확한 Colab export가 로그인 HTML을 반환한 것도 기록. 과거 PCMCI+/담당B 문서를 현재 Final 코드로 승격하지 않음.
+- 새 공개 CPCaD clone·clean venv·빈 destination에서 `src/acquire_reference_data.py` 실행. 데이터/GT hash·shape·순서 확인. 이어 `src/reproduce_step6.py --step6-zip <회수 ZIP> --gt <새 GT> --output <새 결과>` 실행하여 원본 evaluator strict 지표 7개 일치. 원본 생성 학습은 NOT_RUN/BLOCKED.
+- `docs/research_state.json`에서 최신 PROJECT_STATUS/PRIORITIES 생성. 과거 본문은 docs/history에 보존하고, 기존 8월 simulator BLOCKED와 PR #2 공개 후보 PARTIAL을 분리. 다음 3개는 SRC-01/SIM-03/SIM-04, 작업 ID 이력 기록.
+- 검증 및 PR 최종 정보는 이번 commit/PR과 validation JSON에서 확인한다. 자동 문서 검사는 사실의 진실성을 보증하지 않는다.
+- 검증 완료: `scripts/check_research_state.py`, `scripts/check_asset_manifest.py` PASS; unit tests 8개 PASS; frozen verifier 39파일/시계열 3개 재변환 PASS; diff 검사 PASS. 새 venv는 NumPy 2.4.6/pandas 3.1.0, 데이터 1499×31·GT 33×33→28간선 확인. 실제 생성 알고리즘 실행 0개, simulator 재실행 0개.
+- GitHub의 이번 feature branch를 새 clone한 경로에서도 전체 가이드 검증 통과 (`validation/team_checkout.json`, 검사 commit `1b63ec7`). 기존 통합 lag converter는 freeze source SHA와 동일함을 확인해 미회수 목록에서 제외했다. 생성 코드 미회수 상태는 그대로다.
+
+## 2026-10-23 — PR #2·#3 임시 통합 검토
+
+- main `ceb447d`, PR #2 `e5a0291`/open/CI success, PR #3 `b2e455f`/open/CI success 확인. 시작 시 사용자 미커밋 변경 없음.
+- `feature/pr2-pr3-integration`에서 두 PR을 시험 병합. PROJECT_STATUS/PRIORITIES/WORK_LOG/workflow 4개 충돌 해결. 상태 JSON 구조와 simulator 기록/검사의 합집합 유지.
+- 원본 graph 46 tracked 파일, simulator 30파일, Step6 결과표·raw CSV hash·양쪽 작업 기록 불변 검사 PASS. unit 8개, graph verifier, state/asset checker, 원본 evaluator strict 재현 PASS.
+- main 병합·기존 PR 종료·기존 PR branch 수정 없음. 검토 보고서 `docs/audit/PR2_PR3_INTEGRATION_REVIEW.md`. 승인 후 #2→#3 순서로 실제 main 통합 및 재검증 예정.
+
+## 2026-10-23 — 사용자 승인에 따른 실제 통합
+
+- PR #2를 사용자 승인 후 merge `0549c4d`로 병합. PR #3에 최신 main을 merge하고 사전검토와 동일한 네 충돌을 해결했다.
+- state JSON 및 생성 MD, README/소개서의 PR #2 병합 상태를 갱신. CI 양쪽 검사와 원본 작업 기록을 모두 유지.
+- simulator/frozen 파일 변경 없음. 검증 unit 8개, graph 39파일, state/asset/raw simulator 검사와 원본 strict evaluator 재현 PASS. 최종 head CI 성공 확인 후 승인 범위 내 PR #3 병합 예정. 실제 병합 여부는 GitHub PR 기록이 기준이다.
+
+## 2026-10-23 — SIM-03/SIM-04/COMPAT-01 실증 진단
+
+- `git fetch origin`, clean 상태·PR #2/#3 병합 확인 후 main `172e84bcafb82dd5074f097fcabfb94f28ff96e3`에 fast-forward 동기화, `feature/simulator-numerical-validation` 생성. main 자동 병합 없음.
+- pinned 외부 source `9a6c8e5fcef4a2850778704e7793c87b0a187005`를 수정하지 않고 Python 3.11.15/NumPy 2.4.6에서 실행.
+- 실제 명령: `python -X utf8 experiments/simulator/diagnostics/run_diagnostics.py --source ../tep-python-candidate --output experiments/simulator/diagnostics/run_20261023`; 기록 시계 보완 후 같은 명령의 출력만 `run_20261023_aligned`로 변경하여 실행. 두 번째는 2시간 폐루프 정상 조건 포함. stdout은 `experiments/simulator/diagnostics/execution_logs/`.
+- 12개 수동 조건: dt=1/.5/.25초, XMV10 600초 +0/+1 pp, 원본 잡음/관측 표준편차 0. 각 모드 fresh/초기화반복/운전후/IDV4후 초기화 등 10경우 실행. 각 plan은 실행 전 저장. 첫 실행의 단일 시계 표본은 보존하고 정렬 분석에서 제외.
+- SIM-03: 기존 1788초 종료 및 모든 공통 manual 측정·조작값 exact 재현. 내부 pressure 3000.574119 kPa 초과, 유한 state/미분. dt=.25 원본 잡음에서는 raw2999.986/관측3000.341의 다른 종료 경로 확인. 잡음 통제 후 dt 축소 시 경로 차이 약 절반 감소. 독립 Fortran 대조 NOT_RUN(backend/compiler 미확보).
+- SIM-04: process yy/XMV/IDV/RNG/controller 복원. cache와 관측 약 1e-12 차이로 같은 객체 bit reset은 미보장. 새 객체 동일 조건의 60초 경로는 수동·폐루프 모두 exact. 공식 계약을 새 객체 반복으로 한정하여 VERIFIED.
+- COMPAT-01: 기존 1499×31 데이터와 새 2시간 정상 기록의 31변수 통계 비교. 온도·압력·level 운전점 차이. 3분 진단 창은 benchmark sliding preprocessing 재현 아님. upstream Dataport 접근 HTTP 오류. 기존 GT를 효과 정답으로 취급하지 않음.
+- 분석 첫 시도는 이름 없는 index 열로 NumPy header 해석 실패. csv.reader로 index를 명시적으로 제외하여 수정하고 v2 성공, v3에 공통 관측 시점 반응 추가. 데이터 수정 없음. `analyze_diagnostics.py --dataset data/local/datasetTE.csv --output experiments/simulator/diagnostics/analysis_20261023_v3` 실제 실행.
+- 판단: 후보 내부 조건부 탐색 CONDITIONAL / 원래 benchmark 효과 정답 직접 활용 NO-GO. Recovery/Safety 계산 및 새 SCM/discovery 학습 없음.
+- `docs/research_state.json` 갱신 후 `python -X utf8 scripts/check_research_state.py --write` 실행. SIM-03/COMPAT-01 PARTIAL, 8월 복구 BLOCKED 유지. 현재 상위 3과제는 COMPAT-01, SIM-03, SRC-01.
+- 원시 SHA·시계·분석 재계산 validator와 시계 혼동 방지 단위 테스트 추가. CI의 외부 source 없는 검사와 실제 로컬 실험을 분리. 최종 검증 명령 및 결과는 같은 작업의 후속 기록에 남긴다.
+
+### 이번 진단 최종 로컬 검증
+
+- `graphs/final/verify_and_load.py`: 39개 hash·변수 순서·시계열3종 재변환 PASS. `src/verify_recovery.py`: 데이터/GT 및 점수 독립 대조 PASS.
+- `src/reproduce_step6.py --step6-zip ../work/asset_recovery/TEP_step6_results_slack.zip --output ../work/asset_recovery/numerical_validation_step6.json`: 원본 평가기의 7 strict 지표 모두 일치. 결과 사본 `experiments/simulator/diagnostics/step6_verification.json`. 인과발견 학습 재실행 아님.
+- 기존 `validate_feasibility.py`, 새 `diagnostics/validate_diagnostics.py`, `check_research_state.py`, `check_asset_manifest.py`, `validate_pr_integration.py`: PASS. 기존 PR2 30파일 및 graph tree 46파일 불변 검증.
+- `python -X utf8 -m unittest discover -s tests -v`: 10개 PASS. `git diff --check`: PASS. 상세 명령/출력은 `experiments/simulator/diagnostics/local_verification.json`.
+- 외부 simulator 실행은 로컬 검증이며 CI는 source 다운로드 없이 저장된 증거 재계산만 수행한다. CI/PR 결과는 GitHub checks를 따른다.
+
+- `scripts/check_research_docs.py --base origin/main` PASS. 검증기의 기존 recovery_validation 기록 재저장은 원래 바이트/내용으로 복원하여 이번 PR에 포함하지 않았다. 원본 simulator source와 이전 실험·Final 결과 변경 없음.
+
+## 2026-10-23 — Benchmark Compatibility & Research Design Decision Gate
+
+- `git fetch origin` 후 clean 상태 확인. main `172e84b`; PR #4는 OPEN/미병합 head `71c5448ed9a82548d86f40f60be842020f69538d`, CI run39947597305 성공. PR #4를 병합하지 않고 그 head에서 `feature/benchmark-compatibility-decision` 생성. 새 PR은 PR #4 브랜치를 base로 하는 의존 PR이다.
+- 기존 source·동결·감사를 재사용. 신규 simulator/discovery/SCM/Recovery/Safety 실행 없음.
+- 작성자 공개 Manca 기술보고서 v1.1의 모델·controller·밸브 정책·timestamp 별도 저장 서술을 읽음(REPORTED). 공식 Dataport 원자료 페이지는 접근 실패, 실제 timestamp/seed/정상 원시 Excel은 여전히 미회수.
+- 대학 공식 URL의 `temexd_mod.zip` 639921B 및 `tecode.zip` 29307B를 urllib.request로 회수하여 저장소 밖 작업 영역에 보존. SHA/멤버 목록은 `docs/research_design/evidence/local_20261023_v2/local_audit.json` 및 별도 retrieval.json. 권리 미확정 ZIP/source/mex 바이너리를 Git에 반입하지 않음. MATLAB PATH 명령 미확인, 두 모델 실행 NOT_RUN.
+- 실제 source의 Constant→TE Plant port→이름 있는 입력을 추적하여 원자로 level65/pressure2800/temperature122.9 확인. 블록 xmv 이름을 MV 번호로 오독하지 않음. archive Ts_base1.8초/Ts_save36초/ode45 기본값은 Manca의 실제 변경 설정과 동일하다고 주장하지 않음.
+- `python -X utf8 scripts/audit_benchmark_compatibility.py --benchmark-git ../work/asset_recovery/fresh-CPCaD-Bench --modified-archive ../work/compat_gate_20261023/temexd_mod.zip --original-archive ../work/compat_gate_20261023/tecode.zip --candidate ../tep-python-candidate --output docs/research_design/evidence/local_20261023_v2` 실제 실행 성공. 고정 CSV/GT byte identity 및 공식 NumPy1499×31 exact 일치 확인. 1500/1499 원인은 미확정.
+- 첫 로컬 감사는 Windows 긴 경로의 git show stat 실패. 명령 단위 `-c core.longpaths=true`로 수정한 뒤 새 출력 v2에서 성공. 전역 Git 설정·사용자 파일 변경 없음. 초벌 NumPy 탐색의 delimiter 누락은 comma 지정으로 수정. 실패를 데이터 손상·simulator 실패로 해석하지 않음.
+- PR4 156변경/145신규/내용16740258B 및 byte중복24그룹(88경로) 확인. 가장 큰 terminal JSON3.81MB. raw/manifest와 반복 증거를 그대로 유지함.
+- 현재 가설 Gate D(증거 부족), 다음 A의 제한적 복원 확인 권고. B/C는 제안이며 채택 미실행. RESEARCH_DESIGN.md 불변. 상태 JSON의 COMPAT-01과 BENCH-ENV 및 PR4 미병합 의존성을 기록하고 dashboard 재생성.
+- `validate_benchmark_decision.py` PASS, 단위 테스트13개 PASS. 배선 이름/port 혼동·모호한 배선 거부 검증 추가. 최종 기존 증거/동결/문서 동기화 검사와 CI 결과는 후속 기록 및 PR checks를 따른다.
+
+### Benchmark Gate 최종 로컬 검사
+
+- `scripts/validate_benchmark_decision.py`: PR4 156개 파일 inventory hash·설계 불변·외부 코드 정적 근거·주장 수준·상태 일치 PASS.
+- 기존 `experiments/simulator/diagnostics/validate_diagnostics.py`: 원시 SHA·시계·reset·분석 재계산 PASS. `graphs/final/verify_and_load.py`: 39개 hash/lag 변환 PASS.
+- `scripts/check_research_state.py`, `scripts/check_asset_manifest.py`, `scripts/validate_pr_integration.py`, `scripts/check_research_docs.py --base origin/feature/simulator-numerical-validation`: PASS.
+- 단위 테스트13개 PASS, `git diff --check` PASS. 명령/출력은 `docs/research_design/evidence/validation_results.json`. 외부 코드 다운로드·정적 분석은 로컬에서만 수행했고 CI는 고정 증거 및 회귀 검사를 수행한다.
+- 기존 `RESEARCH_DESIGN.md`, simulator 원시 tree, 7개 frozen graph, Step6 점수표 불변. 신규 evidence 파일의 byte hash를 Windows checkout에서도 보존하는 속성만 추가했으며 기존 파일의 보존·중복 제거 정책은 변경하지 않았다.
+
+## 2026-10-23 — 승인된 PR4→PR5 병합 준비
+
+사용자의 명시적 승인 후 PR #4 head71c5448을 merge commit 1e4fcc7c91839afd49770fcc8b3380d368e1dea3로 병합했다. PR #5 base를 main으로 조정하고 현재 상태의 미병합 표시를 갱신했다. 작성 당시 decision JSON과 원시 hash는 보존하며 github_current에 실제 상태를 분리했다. 로컬 사용자 변경은 없었다. 선행검토에서 단위 테스트13개와 보존 검사가 통과했으며 CI 재검증 후 PR #5를 병합한다. Track A 신규 조사와 실험은 아직 시작하지 않았다.
+# 2026-10-23 Track A 복원 Gate
+
+- 사용자 승인 후 PR #4 병합(1e4fcc7), PR #5 main 재정렬 및 상태 시점 구분 수정(a2dc2b2, Actions 39960138640 성공), PR #5 병합(7b16638). 최신 main에서 feature/track-a-recovery-gate 생성. 사용자 변경사항 덮어쓰기 없음.
+- 기존 temexd_mod.zip/tecode.zip SHA 재확인. 원본 재다운로드·수정 없음. 공식 DataCite DOI JSON과 IEEE DataPort 목록 HTTP 200 확인. 정상 패키지 3_Normal Steady-State.zip은 로그인 필요, 원본 미회수.
+- 공개 Technical_Report_V1_2.pdf 실제 회수(5,990,722 bytes, SHA 657307d7119538a0c21bdc49933c4ff31de929038a0213f9f4a8dfc3fde9faf0). 오래된 공개 문서 링크 403 후 공개 페이지 갱신 링크에서 200. PDF 12/13/14/42쪽 시각 확인. TOUT.xlsx/random_seed.txt는 문서상 명칭이며 정상 ZIP 실재 검증 아님.
+- PowerShell 읽기 전용 PATH/MathWorks registry/제품 목록/C·D 일반 설치경로/Start Menu/App Paths/프로세스 검사: inspected 범위 MATLAB 미발견. 라이선스·Simulink·.mdl 로딩·MEX NOT_RUN. 신규 파일명 단서의 제한적 os.walk 탐색 11,971개 이름, 일치 0. 전수 Slack/전체 디스크 재감사 없음.
+- 실제 명령: collect_track_a_evidence.py --local-records <지정 아카이브 기록 폴더>, 일회성 상태 JSON 갱신 후 python -X utf8 scripts/check_research_state.py --write. 개인 경로·서명 URL·PDF 전체는 Git에 반입하지 않음.
+- A1/A2 BLOCKED, A3 NOT_RUN, A4 NO-GO. 정상 운전·새 시뮬레이터/SCM/Recovery/Safety 실행 없음. 원시 기록/PDF/시각 확인 이미지는 지정 아카이브의 10_TrackA_원환경_복원Gate에 보존.
+- 로컬 검증 통과: validate_track_a_recovery.py, unittest discover(16개), validate_benchmark_decision.py, validate_feasibility.py, validate_diagnostics.py, graphs/final/verify_and_load.py(39 hash), check_asset_manifest.py, validate_pr_integration.py, src/verify_recovery.py. 마지막 명령은 기존 점수 독립 대조이며 새 discovery 실행은 아니다. 12조건 시뮬레이션 재실행 없음.
+
+## 2026-10-24 — Track B 참조 구조 타당성 감사
+
+- git fetch origin 후 사용자 변경 없음 확인. PR #6 OPEN/head5fe3997, Actions39963153945 성공, 변경16파일 검토. main7b16638은 그대로 두고 feature/track-b-reference-validity를 PR6 head에서 분기했다. PR base는 feature/track-a-recovery-gate이다. 자동 병합 없음.
+- RESEARCH_DESIGN/상태 JSON/우선순위/Track A·호환성·신뢰성 보고서/GRAPH_REPRODUCIBILITY/TASK_SPEC/PILOT_PLAN 재사용. 원자료 검색·Slack 전수 감사·기존 12조건 실행은 반복하지 않았다. 사용자의 MATLAB/정상 ZIP 위치 모름 답변을 차단 해제로 해석하지 않음.
+- 고정 Python source의 simulator/backend/controllers/constants 4파일 SHA를 기존 로그와 대조하고, 상태→측정·명령→밸브·제어기 주기·RNG 조건 분기를 코드로 검사했다. 코드 의존성을 GT로 변환하지 않았다.
+- 사전 범위 TRACK_B_SMALL_CHECK_PLAN.md 기록 후 `python -X utf8 scripts/audit_track_b_source.py --source ../tep-python-candidate --output docs/research_design/track_b_evidence/source_probe.json` 실행. 최초는 잘못된 process._process 접근 AttributeError로 실패/결과 파일 없음. 실제 API 직접 process로 고쳐 재실행 성공. 수동/폐루프 기준·조작 4객체 각30step, seed465120799/dt1초/IDV0, step6에 XMV10+0.1pp 1회 명령. 해당 구간 RNG·잡음 digest 일치, 상태 유한/계속 실행. 폐루프는 명령값을 controller가 갱신. 효과/복구/안전 점수 계산 없음.
+- 공식 Rieth DataCite/Dataverse API 메타데이터 HTTP200. v1.0 네 RData 목록·provider MD5·custom public-domain 이용 조건 확인. 데이터 본체는 다운로드하지 않았고 CC0로 축약하지 않음. Ricker/CIPCaD/Studio 공식 출처·기존 로컬 LICENSE 정적 확인. 외부 구현 재설치/교체 없음.
+- Q1 PARTIAL/Q2 BLOCKED/Q3 BLOCKED/Q4 UNKNOWN/Q5 VERIFIED(결과 분리 설계). 현재 채택 NO-GO, 가설 검증 INSUFFICIENT_EVIDENCE. 연구 질문·RESEARCH_DESIGN·7 frozen·Step6·기존 raw/evidence 미변경. Track B 채택/새 GT 생성 없음.
+- canonical JSON에 REF-B/SIM-B/DESIGN-B 및 PR6 미병합 의존성을 추가, `python -X utf8 scripts/check_research_state.py --write` 실행. `validate_track_b_audit.py`, `validate_track_a_recovery.py`, `python -X utf8 -m unittest discover -s tests -v`(16개) 통과. 새 source probe는 외부 source 필요로 CI 재실행과 분리한다.
+- 추가 통과: validate_benchmark_decision.py, validate_pr_integration.py, graphs/final/verify_and_load.py(39파일 hash), check_asset_manifest.py, check_research_state.py, check_research_docs.py --base origin/feature/track-a-recovery-gate. SIM-02의 구형 다음 행동 문구는 이미 확보된 2시간 기록 보존으로 정정했다. 작은 probe는 초기 RNG 스냅샷을 별도 저장하지 못한 제한을 보고서에 명시했다.
+
+## 2026-10-24 — REF-B 냉각수 최소 블록 검산 및 중단
+
+- git fetch origin/status 확인: 미커밋 변경 없음, main7b16638, PR6 OPEN/CI39963153945 성공, PR7 OPEN/head8634e5d/CI40076485580 성공. PR7은 PR6 기반 stacked임을 확인. feature/ref-b-minimal-subsystem을 PR7 위에서 생성. 자동 병합 없음.
+- 고정 Python source의 backend 상태·열/에너지/밸브 식, 센서식, PI/cascade의 호출 순서·3step 주기를 읽고 source 4파일 SHA를 대조했다. 동일 계보 teprob.f의 대응 식은 정적으로만 대조. source 수정·재설치 없음.
+- REF_B_MINIMAL_CHECK_PLAN.md를 먼저 기록한 후 `python -X utf8 scripts/validate_ref_b_subsystem_source.py --source ../tep-python-candidate --output docs/research_design/ref_b_minimal_evidence/local_checks.json` 실행 성공. t0/IDV0/초기점의 전체 process deepcopy에서 17회 고정 평가·2개 epsilon의 편미분, 별도 액체 엔탈피 이분법, 제어기 복사본의 phase 검산 수행. 0 국소 결과를 비간선 정답으로 사용하지 않았다.
+- 별도 수동2객체에 XMV10+0.1pp, dt1초, 각6step만 실행. 밸브/W/E 변화와 평가·상태 시계의 차이를 기록. 물리 dead time/총효과 성능으로 해석하지 않음. 원시 선택값·RNG·환경·해시는 새 evidence에 보존. 기존 raw 파일 변경 없음.
+- 국소 구현 검산은 PASS, 구조는 CANDIDATE 유지. REF-B PARTIAL로 국소 진전만 기록하며 전체 Q2 BLOCKED/Track B NO-GO 유지. 관측 projection/발견 알고리즘 의미 불일치/정확도·효과 계약 부재로 중단 기준 충족. 추가 GT 후보·실험 확장 없음.
+- canonical JSON 갱신 후 `python -X utf8 scripts/check_research_state.py --write` 실행. 기존 감사 JSON·RESEARCH_DESIGN·frozen·Step6·data·시뮬레이터 원시는 보존. 새 GT·precision/F1·새 학습·Recovery/Safety 계산 없음.
+- 검증 통과: validate_ref_b_minimal_records.py(저장된 차분/해석식·독립 역산·시간/제어 순서·보존), validate_track_b_audit.py, validate_track_a_recovery.py, validate_benchmark_decision.py, 단위 테스트16개, graph39파일 hash/시계열 재변환, validate_pr_integration.py, check_asset_manifest.py, 상태/문서 동기화 및 git diff --check. 외부 source 단위 검산 실행은 CI 기록 검사와 분리했다.
+
+## 2026-10-24 — 구조 지표→추천 MVP 기술 실행
+
+- git fetch/status 및 PR6/7/8 OPEN·stacked·각 CI 성공 확인. PR8 head d508ab0 위 feature/causal-metric-decision-mvp 생성. main7b16638·기존 사용자 변경 보존, 자동 병합 없음.
+- 기존7 frozen/Step6 최종7행·loop_vs_flow 원본 ZIP member와 3개 적합 JSON을 해시로 재사용. 적합·discovery 재실행 없음. 고정12과제×7의 경로 edge recall/완전 복원/confirmed 도달성/직접XY 84행을 별도 benchmark 진단으로 산출. Task 선택은 미리 고정한 냉각수 API/공정 의미만 사용.
+- PLAN_v1.json 사전 기록 후 `python -X utf8 scripts/run_decision_mvp.py --source ../tep-python-candidate --step6-archive ../work/asset_recovery/TEP_step6_results_slack.zip --output research_runs/decision_mvp/run_20261024_v1` 실행. 기존 정적3개로 공통 grid/비용/목적 dry-run 추천 생성. 추천은 simulator 미적용. 같은 코드에서 잘못된 연구 환경 join 호출을 실제 거부하고 기록.
+- Python 후보에서 사전 지정 baseline/+0.1pp(10초)·수동·IDV0·2seed·2반복·60step의8run 실행. v1 명목 격자를 보완하는 CLOCK_REVISION을 먼저 남긴 후 동일 조건의 v2 별도8run을 실행해 source 실제 평가/상태 시각을 기록했다. 총16run, 최종v2의8run은60step/명령반영/유한값/동일조건 raw byte exact. 시계 보완 외 조건 변경 없음, v1 보존. 기존 방정식 검산·12조건 진단 반복 아님.
+- 미확정 X-Y를 비간선 정답으로 인정하지 않도록 파생 표시를 UNRESOLVED/null로 후처리 보완. 보완 전 파생 파일/원시 hash 보존, simulator 추가 실행·모델 추천 변경 없음. v2 실행 코드 hash는 후처리 보완 전 기록이며 현재 코드는 X-Y 처리 보완을 포함한다.
+- causalAssembly 공식 commit8da3729의 실제 FCM 소스/README/pyproject와 참조/do/seed API를 읽고 기록. 헤더 AGPL-3.0-or-later, LICENSE URL404 확인. 외부 코드 Git 반입·환경 설치·runtime/생산 generator 실행/채택 없음. 기존 TEP GT 이식 없음.
+- G1 BLOCKED/G2 PASS_TECHNICAL/G3 PARTIAL_TECHNICAL_ONLY/G4 NOT_RUN_RESEARCH/G5 BLOCKED. 실제 목표 달성·효과오차·Recovery/Safety·지표 상관/순위는 null. 기술 실행과 가설 검증을 분리. 상태 JSON/현재 MD와 우선순위를 ENV/POLICY/EVAL-MVP 중심으로 갱신. 과거 감사 validator의 고정 상위우선순위 검사는 과거 ID 보존 검사로만 변경하여 현재 우선순위 진화를 허용.
+- 검증 통과: 단위 테스트23개, validate_decision_mvp.py(v1/v2 raw hash·시계·명령·반복·84행·재사용·Gate·성능null), Track A/B/REF-B·benchmark validators, graph39파일 hash/lag 재변환, PR integration, asset manifest, canonical 상태/문서 동기화, git diff --check. 16개 raw CSV 약0.93MB는 반복 증거로 보존하며 대용량 외부 데이터는 반입하지 않음.
+
+## 2026-10-24 — ENV-MVP 승인된 예제 acceptance 실행
+
+- git fetch/status: 사용자 변경 없음, PR6→7→8→9 OPEN/stacked·각 최신 CI 성공 확인. main7b16638은 유지하고 PR9 headbaf03e9에서 feature/env-mvp-acceptance 생성. 병합 없음.
+- 사용자가 소규모 acceptance 실제 실행을 별도 승인했다. 제조 generator/R/DRF·학습·Track B 채택은 제외. 지정 archive04/로컬실행환경/.venv에 Python3.11 격리 venv 생성(시스템 site-packages false), numpy2.4.6/pandas3.0.3/sympy1.14.0/networkx3.6.1/scipy1.17.1/matplotlib3.11.2 설치. 전역 환경 변경 없음. 원시 설치/실행 console은 로컬 archive에 보존, Git에는 lock과 정제 기록만 반입.
+- PLAN_v1을 실행 전에 고정하고 원본 hashc1f1b7f의 models_fcm.py만 직접 import했다. `격리python -X utf8 scripts/run_env_acceptance.py --module <고정 원본> --output research_runs/env_acceptance/run_20261024_v1 --execution-approved` 실행 성공. 원본 파일 수정·전체 package 설치·제조 generator 실행 없음.
+- 선언4노드 IID Gaussian FCM의 adjacency/관측 재구성/do A식·부모 대체/원본 구조 보존을 실행 확인. 3seed×3조건×2회=18batch 각64행, hook 없는 원본API9통제 exact(총 sampler27회). train3101/holdout7101·7102 분리, 새seed관측 상이, 같은조건2회 data/noise CSV exact. 각 행 source 잡음으로 재구성 오차0. 이 표본 수는 검정력 근거 아님.
+- 같은seed 관측vsdo의 u_R/u_M/u_Y는6비교 모두 행별 불일치, u_A 제거. 분포수준 do만 허용하며 strict counterfactual/물리 시계 검증 안 됨. Action A/Target Y는 무차원 fixture에만 해당. PR9 static_mean_response를 선언 oracle 산술 입력으로 재사용, 환경 guard는 fixture동일계약 수용/CPCaD혼합 거부 확인. 적합/추천 성능 결과 아님.
+- 승인 flag 없는 negative CLI를 별도 실행해 PermissionError/exit1로 source 실행 전 거부된 FAILURE.json/source·plan SHA 보존. 정상 acceptance 예기치 않은 실패 없음. 단위 테스트26개 통과; 변조source 거부·잘못된 식 탐지·삭제된 noise 없는 do 재구성 포함.
+- 예제 acceptance PASS_EXAMPLE_IID_FCM_ONLY, ENV-EXAMPLE VERIFIED, broader ENV-MVP PARTIAL로 기록. 제조/TrackB 채택·discovery/SCM 학습·Recovery/Safety 없음. 기존 CPCaD GT/frozenF1/적합/진단/과거MVP기록 불변. canonical JSON에서 상태 MD 재생성.
+- 추가 검증 통과: validate_env_acceptance.py(저장된 graph/data/noise 식·do·seed/split·hash·negative guard), validate_decision_mvp.py, REF-B/TrackA/TrackB/benchmark validators, graph39파일 hash·lag변환, PR integration, asset manifest, 상태·문서 동기화, git diff --check. CI는 이 기록 검사와 로컬26단위 테스트만 수행하며 후보 실행을 반복하지 않는다.
+
+## 2026-10-24 — 첫 번째 합성 통합 실험
+- PR6~10 OPEN/stacked 및 각 최신 CI success 재확인. PR10 ee5e0bd에서 feature/first-integrated-pilot 생성. main/사용자 변경 덮어쓰기 없음.
+- 사전 PLAN_v1 고정 후 fresh Gaussian/Uniform sampler·hard do acceptance 통과. 실제 PC-stable/BOSS/DirectLiNGAM 각2잡음군=6학습, train512/validation256, 공통 Ridge·목표1.5·비용0.2A²·5후보 추천을 holdout 전에 SHA 동결.
+- 잡음군별 6정책(5후보+독립 기준)×3seed×1024=18432 do 표본 실제 생성. PC/BOSS 확정 경로 부재는 기준0 대체로 기록; Direct는 두군 모두0.5 추천. Gaussian Direct는 비정규성 가정 불일치 진단. Uniform BOSS 준Gaussian 점수 한계 포함.
+- 새 격리환경 설치2회 실패 및3번째 성공 로그 보존. 같은 seed 전체 replay 데이터/모형/추천/평가/요약 exact, 독립 표본 수 추가하지 않음. 결과·코드·환경·source SHA와 원시 noise/CSV 보존.
+- research_runs/first_integrated_pilot/ 및 한국어 FIRST_INTEGRATED_PILOT_REPORT.md 추가. 기존 src/decision_mvp.py 평균 전개와 pilot_fit.py fit_ridge 재사용, 기존 적합/7 frozen/Step6/TEP data/진단 log/RESEARCH_DESIGN.md 불변. 제조 채택·Recovery/Safety·가설 입증 없음.
+- 실제 명령·실패 이력은 해당 README/SETUP_AND_EXECUTION.md. canonical 상태에서 PILOT-IID만 합성범위 VERIFIED; POLICY/EVAL-MVP는 PARTIAL로 업데이트하고 다음 독립 반복/과제 계약을 최우선으로 둔다.
+- 최종 검사: 단위31개·신규 raw/통계/native그래프/추천 검증·기존8종 기록검사·39 graph hash·asset/PR 통합·상태/문서 동기화·diff 검사 통과. 하위 subprocess의 다른 Python 선택으로 난 NumPy 미설치 실패는 원시 로그 보존 후 실험 venv 명시 재검사로 해결했다. validation_results.json(첫 실패 요약)/validation_results_final.json(재검사)을 구분한다.
+
+## 2026-10-24 — PR6~11 순차 통합과 반복·다중과제 실제 실행
+- 사용자 명시 승인 범위 #6→#7→#8→#9→#10→#11만 최신 main retarget/차이 대조/CI·로컬검사 후 일반 merge. 원래 commit 계보 보존, 보호 설정·공개 여부 변경/강제 push 없음. merge커밋은 docs/research_design/PR6_11_INTEGRATION_RECORD.md 및 integration/merge_commits.json.
+- 최종 main34b8dbe tree=원래 PR11 head6d37d09. 단위31·기록/해시/JSON-MD 검사와 main CI40093211965 success 후 로컬 main ff-only 동기화, feature/repeated-metric-pilot 생성. 첫 실험/TEP/frozen/Step6/fit/raw/RESEARCH_DESIGN.md 불변. 실제 local dataset·GT도 고정 원본 SHA 일치.
+- 실행 전 PLAN_v1/SHA f04caba2 고정. 2잡음×2표본수(256/512)×3독립데이터×3알고리즘=36학습 실제 완료/실패0. 검증용 seed 별도; 새 API12조건에서 A/R/M do식 대체·hook 통제·정확 반복 확인.
+- 4과제×3미확정 정책×36그래프=432추천 모두 SHA 동결 후 55296개 독립 do 표본 생성. 공통 action의 원시 평가를 재사용. 동치류는 skeleton/고정방향/비차폐 충돌/비순환을 보존, GT 없이 열거. 계산된0·경로부재 대체·모호성 보류를 구분.
+- 새 실행 약42.523초, 학습 기록 합28.590초. 더 큰 반복/36graph 전체 replay NOT_RUN. 탐색적 Spearman은 사전 변동/cluster 조건에 맞는 층만 계산; LODO범위는 CI 아님. 조건별 독립데이터3개로 공식 지표 순위·p-value·Recovery/Safety 없음. 정책 변경 자체가 손실을 바꾸므로 구조 지표의 인과 효과로 주장하지 않음.
+- 실제 명령은 research_runs/repeated_metric_pilot/README.md, 원시 log는 지정 아카이브 2026-10-24/06_순차통합과_반복다중과제에 보존. 신규 PLAN/run_v1/analysis_v1·한국어 보고서·검증코드와 canonical JSON/MD 동기화. 후속 PR은 승인 없이 병합하지 않음.
+- 최종 검증: 단위39개, 새36학습/432추천/원시55296행·동치류/손실/통계/해시 및 기존 전종 기록 validators, graph39파일, 원본data/GT hash, 자산/PR통합, JSON→MD·문서 동기화, diff 검사를 모두 통과했다. 12학습CSV hash 모두 다름. 개인경로 미반입 확인. 추가 약15MB는 재사용 do 원시/noise와 모델/추천/분석 기록이며 평가를 그래프별 중복 생성하지 않았다.
+
+## 2026-10-24 — 8개 합성 구조의 실제 비교
+- PR12 OPEN/head23d19f5/CI40097602131 success와 clean 작업사본 확인 후 feature/diverse-causal-structures 분기. PR12·main 병합 없음. 연구 질문·TEP/GT/7frozen/Step6/적합/기존원시/첫·반복 실험은 불변.
+- PLAN SHA0d010bf8를 실제 생성 전에 고정.5~8변수8개 DAG·모든계수·독립Uniform·양성16과제+음성1·48데이터 seed·144시도·3정책·구조 통째 제외 모형/정규화/한도를 사전 고정.
+- S1/S2 source GT·관측/do 식/32표본·새seed/동일seed/hook 통제 통과 뒤 나머지6개 통과, 이후48관측학습/검증 생성. GT 없는 worker 설정과 해시로 PC/BOSS/Direct 실제144학습 완료. 실패/timeout/보조정책 제한0. 고정 모듈/기존 venv 재사용, 외부 source 패치/재설치 없음.
+-918개 실제 discovery 정책 추천 및 별도60개 인위적 graph 모형/120추천을 동결한 뒤17고유Action×6조건×3seed×256=78336개 do 표본 생성/재사용. 원래 graph 점수는 정책별 고정, 통제오류 graph/음성대조는 일차 분석 제외.
+-8fold LOSO의 imputation/scaling/손실 표준화는7훈련구조만 사용.14개 사전 모형/고정alpha로 계산, 새 결과를 본 뒤 지표나 설정 선택 없음. 경로단독 macroMAE .133671, 연결 .174327, 공변량 조정 후 연결 .147939/경로 .148120. 공식 우월성·p-value·독립 인과효과 주장 없음.
+-방향/정규화SHD 상관-.978, 방향/경로 .901;112행렬 full rank/최대condition40.31은 수치 계산 가능성만 의미. Direct 내부경로 지표16과제 상수. 음성대조 baseline 평균구간은목표0 포함, 사전 수치cutoff 통과가 통계적 안정 보장 아님. 기본예측 outcome은 scale 정규화로 유지.
+-전체 실행1001.555초.144학습 전체 replay NOT_RUN; API 반복과 모든 원시식/평균/SE/추천/손실/hash/LOSO분리 검증. 코드·도식·표·한국어 보고서 및 실제 명령은research_runs/diverse_structure_pilot와DIVERSE_STRUCTURE_PILOT_REPORT.md. 원시console는지정날짜아카이브07_다양한_인과구조_비교에만 보관.
+- 단위49개와 모든 과학적/원시/고정추천/LOSO/기존자산 검사는 통과. 최초 staged diff형식 검사는 Matplotlib SVG의 자동 끝공백·console EOF빈줄로 실패했다. 최초전체로그/SHA를 보존하고 해당 생성SVG/console에만 whitespace 예외를 추가해 원시바이트/hash를 유지했다. 코드/문서 일반형식 검사는 그대로 적용한다.
+- 한정된 생성파일 형식예외 적용 후 diff/cached-diff, raw/source/MEC/LOSO 해시 재검사, JSON-MD/문서동기화 재검사 모두 통과. 기존 과학적 검사49단위/전종validators 결과와 최초 형식실패를 별도 기록했다.
+
+### 2026-10-24 — PR #13 clean-checkout CI correction
+- First GitHub run 40102302710 failed: two original, SHA-listed PNG figures were excluded by the inherited `*.png` ignore rule. Local files existed, so the local validation had passed.
+- Added only the two exact generated PNGs with `git add -f`; no sampling, graph, recommendation, analysis, or hash manifest changed. Research state and priorities are unchanged because this is packaging repair, not a new experiment.
+- Preserve the failed CI record; rerun CI and verify the committed tree, rather than reporting the first run as passed.
+
+## 2026-10-25 — 기존144회 실제 재현 + 12구조 독립 확인
+- Base: unmerged PR13 a4ae769 above unmerged PR12; branch feature/independent-causal-confirmation. No merges; frozen TEP/Step6/data/fits/previous synthetic records/RESEARCH_DESIGN.md preserved.
+- Re-executed original serial 144-learning/recommendation/do/LOSO code with identical installed lock and seeds into a separate archive directory. 672 records compared, scientific numeric difference0, discrete graph/action equality; runtime metadata excluded under prewritten 1e-9 numeric tolerance. Raw replay retained locally; Git stores compact logs/hash comparison without duplicate datasets.
+- Before confirmation samples: executed exploratory reason/fixed-action/path-present/algorithm/overlap/incremental checks; fixed5 prediction models on S1..S8 only. Rule-generated12 structures,9 rejected candidates; PLAN c2efb756 and all primary analysis/runner code frozen before sampling. All12 external FCM observation/GT/do/noise/repeat controls passed.
+- Actual216 learner calls generated216 graph records, but2 C12 PC outputs have directed cycles and SCM fit was refused. Source graphs preserved; no edge removal or loss imputation. Runner exit2 denotes COMPLETED_WITH_RECORDED_EXCEPTIONS. 214 SCMs usable;3 other PC graphs lack a consistent DAG extension for auxiliary policies. All5184 attempt rows retained:5088 EVALUATED,48 fit-failed,48 policy-blocked. Primary428 rows, actual do184320 samples, separate552 artificial models/1104 control rows.
+- Locked primary M1-M2 deltaMAE .014264, structure bootstrap [.002912,.025278],9/12 favor M2; meets predeclared narrow endpoint. Increment beyond M0 (.004668) and beyond M1 (.000965) has intervals including0. Analytic-mean delta .006317 and cost.4 delta .004874 are unclear; do not claim stable incremental superiority or manufacturing validation.
+- Fixed do(.5) prediction and path-retaining error contrasts executed; recommendation-selection artifact is not the sole pattern, but algorithm heterogeneity, selection, metric overlap and path-model constraints remain. No fitting on confirmation losses, posthoc clipping, graph repair, new seeds or outcome-based model selection.
+- Added code, lossless compressed raw evidence, Korean report and canonical current state; generate status/priority MD from JSON. Old current 144-replay field updated with new evidence while original historical report/outputs remain untouched.
+- Pre-sampling tests:54 pass+1 future stored-evidence skip; post-run evidence checks passed before and after528-file lossless compression. An optional system-interpreter check was blocked by missing NetworkX (actual pinned venv unaffected); NetworkX now declared for clean static CI. Initial publication scan found only NumPy wheel builder's path; sanitized metadata with original retained locally. No scientific data changed. Final full checks/CI are recorded with validation results and PR.
+
+### 2026-10-25 — 완료 후 검증
+- Pinned venv full55 unit tests passed (no final skips);22 local code/raw/hash/freeze/bootstrap/state/doc/privacy/table/protected-diff checks passed. Same-host replay144 is actually rerun; new216 second replay/other-OS training/manufacturing Recovery/Safety remain NOT_RUN.
+- Primary model comparison is narrowly INDEPENDENT_SUPPORT, while broader incremental superiority remains unresolved. Two fit failures and three incompatible-MEC auxiliary blocks are explicit PARTIAL outcomes, not erased by validation PASS.
+- Lossless528-record compression preserves both original and compressed SHA. No original TEP or prior run bytes changed. Optional system-interpreter rule check was blocked before sampling by missing NetworkX; clean static CI installs the declared dependency. NumPy wheel-builder metadata path sanitized and original retained locally.
+- Staged diff check initially classified preserved CRLF endings in two new Windows-written scripts as trailing spaces because their executed bytes are marked -text. Added only cr-at-eol for those two files; source/plan hashes remain unchanged. Rechecked staged diff after this formatting-policy correction.
+
+
+## 2026-10-25 — PR12~14 통합과 경로 지표 추가 정보
+
+사용자의 이번3개 한정 검토 예외 승인 후 실제 diff·원시 기록·CI·39/49/55개 단위 검사를 검토하여 #12→#13→#14를 일반 병합했다. 별도 APPROVED 검토 생성 없음. merge94dab9b/5e78b98/e960fa8, main tree=검증 PR14 head. main CI40157415320 성공. 과거 결과·동결 파일 불변.
+
+`run_path_incremental_development.py --output research_runs/path_metric_incremental_validation/development_v1` 및 `run_path_development_supplement.py --output .../development_supplement_v1` 실제 실행: 기존20구조/360graph/2160정책행의 이론 운영 손실, M0~M6 구조 LOSO, 과제 대조·정책·알고리즘·C07 분석. 실패24행은 실제 기준 조작 손실로 평가. M1→M4 .005200, M5→M6 .004642 모두 개발 구간0 포함. 새 독립 확인 정밀도150구조/1350학습 필요 추정으로 사전30/288 범위 초과하여 NOT_RUN. 확인 seed/구조를 만들지 않음.
+
+`run_path_mc_calibration.py --source <verified pinned FCM> --output .../mc_calibration_v1` 실제 실행: 기존3구조 새18 do조건/69120유일표본 및69120재실행 exact 검산. C07 6조건은 상한8192에서도 목표 반폭 미달. 원시 표본/잡음 압축·계획/hash 보존. 제조 검증/새 발견학습 없음. 보고서: `docs/research_design/PATH_METRIC_INCREMENTAL_VALIDATION_REPORT.md`. 정밀도 차단을 성공으로 재분류하지 않음.
+
+
+## 2026-10-25 — 오류 위치·효과 크기·실제 조작 선택
+
+PR15 OPEN/e769ef5/CI40158875287 success/승인검토0 확인, 병합 안 함. 로컬 validate_path_metric_incremental 재실행PASS. 실무 RESEARCH_COMPASS와 CHECKPOINT 작성, 원 설계 보존. PLAN_v1/SHA 고정 후 `run_decision_reliability_next.py --output research_runs/decision_reliability_next/run_v1` 실제 실행: 기존통제1224행 추천 재계산,720발견행 평가,새C07 정답구조 Ridge6개 진단. 중첩 구조CV9후보 실행. 신규발견학습/do/제조운전0.
+
+`summarize_decision_reliability_next.py --input .../run_v1 --output .../audit_supplement_v1`: 명칭중복108 표시 후324실제오류쌍,162현재과제핵심–주변/114양쪽경로유지쌍. C07 같은F1에서도 손실14.542543 대.36, C03은 핵심오류 쪽이 개선되는 반례. 기본정책720행 중 악화20/큰악화4. 저차원 중첩선택 기본19/경로1, MAE.323129. 추가정보 부호는 기준모형에 따라 상이, 정밀도 거친 추정132구조/1188학습으로 새독립확인NOT_RUN. 소스/계산/실제저장do 근거 분리. 개별5검사(원시/수식/중첩/6적합 재계산 포함)PASS. 제조 평가환경의 정합성 확보 우선, 새제조실험NO-GO 유지.
+
+최종 로컬 검사: 65개 단위검사 PASS(89.755초),39개 동결파일 hash/변수/시차 변환 PASS,Step6 독립 점수 PASS,상태JSON/MD·자산manifest·기존 통합 검사 PASS. `research_runs/decision_reliability_next/validation/`에 실제 명령/로그/hash 보존.
+
+실행/검증 코드 commit eb7f6bd,브랜치 feature/decision-reliability-next push 완료. PR16 생성(base=미병합PR15 브랜치);두PR 자동병합 없음. CHECKPOINT에 실행commit/의존PR/실제 검사 및 다음행동 기록. 새 문서 정리 commit은 실행/계획/SHA를 바꾸지 않는다.
+
+
+## 2026-10-27 — 제조 타당성 Gate 감사
+
+main e960fa8,PR15 OPEN/e769ef5,PR16 OPEN/d12c6be 및 clean 작업트리 재확인. feature/manufacturing-validity-gate를 PR16 head위에분기. 원설계/동결/원시불변.
+
+`audit_manufacturing_validity.py --output research_runs/manufacturing_validity_gate/review_v4 --step6-zip <고정28824bc2 ZIP>` 실제성공:7graph/84과제/198쌍,원본평가기strict·기존10000draw21조건 재집계,자기상관·id/Boolean guard probe. CSV unnamed index포함/손실F1동률/과도한정밀도가정의3실패를review_v1~v3에보존. 정수TP유일복원으로원래baseline평균/p일치;원표변경없음. 회수평가기5d120b84와Finalfreeze c8af472a hash다름을scope명시. Python후보고정ZIP4source hash일치검산,새운전없음.
+
+PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이지12과제추천실행아님. Var의GT상비도달133중89도달로밀도위험확인. 현행guard는이름다르면차단하나동일이름+true이면metadata검사없이통과. 다음정확한작업은ENV-CONTRACT 구현제안. 직접제조가설A/B NO-GO,기술인터페이스만CONDITIONAL,권고D. 새발견/SCM/do/시뮬레이터/비선형 fitting0.
+
+이번 로컬 검사15개 단위검사PASS,동결39파일/변수순서·엄격시차3개PASS,REF-B저장차분·시계/명령·TrackA/B/benchmark 및새histogram감사8개script검사PASS. 외부runtime시뮬레이터는실행하지않음. 개인경로·비밀/대용량검사·git diff --check 및기존동결/실험/원설계불변확인.
+
+감사실행코드 commit a6872ad push 후 PR17 생성(base=미병합PR16 브랜치). PR15/16/17 자동병합 없음. 상태JSON에실제PR17과의존성을기록. 후속문서정리commit은원시검산/실험조건을바꾸지않는다.
+
+### 2026-10-27 — 환경 계약과 Python TEP 국소 실행 (PR17 위 후속)
+
+- fetch/PR15~17 OPEN·main e960fa8·PR17 a41683b·clean tree 확인 후 feature/tep-environment-bridge-feasibility 분기. 기존 PR 병합 없음.
+- environment_contract/독립 모듈 진입점 구현: 12분야 metadata·실제 근거 SHA·등급·양성/음성쌍 완전성·내부/센서 의미 검사. 15사례의 구조화 거부/fixture 정합성; 현 CPCaD/Python 연결·부분참조 전체F1 계속 거부. metadata≠물리승인.
+- 사전 PLAN/hash 이후 고정소스4hash·tracked clean 확인. Python3.11.15/NumPy1.26.4로8fresh arms×6step 실제 실행. manual +.1pp 명령 유지/밸브 분리,폐루프 controller 갱신,센서cache/상태1초차,4조건 uninstrumented 반복 exact. 6초조건 RNG draw/count 일치만 확인.
+- 별도 CLOSURE_PLAN/hash 이후3고정점: 실제밸브 ±.001pp에서 동일41센서/12명령/RNG지만 냉각수 변화율 다름. source 수정/rollout/새GT 없음. 현재값 관측 충분성의 국소 반례, history/latent 불가능성 증명 아님.
+- 실행: scripts/run_tep_environment_bridge.py --source <pinned> --output <fresh>; scripts/check_tep_observation_closure.py --source <pinned> --output <fresh>. 원시/hash/환경은 research_runs/tep_environment_bridge. 고정표·이전결과 변경 없음.
+- 상태 갱신 첫 보조 명령은 잘못된 JSON key git_integration 접근으로 KeyError. 파일 쓰기 전 중단되어 기존파일 변화0; 실제 github_current로 정정. 원자료나 실험 실패를 숨기거나 재분류하지 않음.
+- 한국어 보고서·canonical JSON/상단MD·다음1과제 동기화. 권고D;Python 국소기술만가능,전체구조–효과 NO-GO. 새학습/SCM/Recovery/Safety0. 단위/기존검증 결과는 validation/CHECKS.json과 로그에 기록.
+
+- 전체81검사 첫 실행의3실패는 과거 고정 decision_mvp 파일에 wrapper를 추가한 때문. 원바이트 복원·독립모듈 사용으로 해결하며 과거 기대hash/원시를 바꾸지 않음. 실패로그 보존 후 전체 재실행.
+
+- 최종 전체81단위검사 PASS(초기3실패 보존),10개 새/기존검증 PASS. 실행코드256b656 push 및 미병합 PR18 생성(base PR17). metadata정합성과 제조과학승인 분리·원본보존 재확인.
+
+### 2026-10-27 — 밸브 cache 전이·동적 참조 범위 결정
+
+- PR15~18 OPEN/head와main e960fa8/clean 확인,PR18 2a03e1d 위 feature/tep-valve-transition-reference-gate 분기. 병합없음.
+- PLAN/hash 사전고정 후 고정source9a6c8e5/4SHA/tracked clean 확인. manual·IDV0 두arm×두step만 새실행,양의시간+.001pp. u_req/u_eval/cache전후/v전후/실제미분·tau/dt h/제어기·종료 상태를 actual evaluate observer로기록. 4행독립Euler/미분오차0. source변경없음.
+- 기존24대수step은cache미기록이므로full contract BLOCKED로보존,3기존고정점미분재계산. stiction/clip/단위/명령덮어쓰기/shutdown/비유한/source 등12거부는모의입력뿐;Fault실행0.
+- 독립kernel·검증기·9개단위검사·한국어 TEP_DYNAMIC_REFERENCE_DECISION/SCOPE_PROPOSAL 작성. L1만VERIFIED,L2 PARTIAL,L3/L4 BLOCKED. 기존자료/기대hash/설계변경없음.
+- 우선권고B는내부상태·시간전개를포함한제한설계안의사용자검토이지GT/환경채택아님. 다음은기술검산반복이아니라DYNAMIC-SCOPE결정. source모드/기본기록검산/전체검사로그는 research_runs/tep_valve_transition에구분보존.
+
+- 최종 전체90단위검사(신규9포함)와7개 새/기존 검증script PASS. 현재자료/동결hash39/상태·환경계약/변경사항 재검산,원자료·old code bytes 불변. 실패0. source실행4step과CI/로컬저장검산을구분.
+
+- 실행코드0a1fe052eed76859e6436d5495cbe7b9dc271fed push,PR19 생성(base PR18). 미병합·연구범위미채택. 실제검사결과와동적설계선택안을같은PR에기록.
+
+### 2026-10-27 — 제한 내부 동적 연구계약 설계 검토
+
+- 사용자승인은PR19권고B의설계검토만. PR15~19 OPEN/계보·main e960fa8·clean 확인,PR19 5d3d627 위 feature/tep-bounded-dynamic-research-protocol 분기. 기존PR병합없음.
+- 단일냉각수–에너지후보 V={u,v,W,E},dt1s 전이후보12쌍을제안으로정의. c/Q/T_R/Y9는중복/대수/시계의진단으로구분. 전부미채점이며공식GT/새F1없음.
+- source구간정적읽기와이전cache·폐쇄반례근거재사용: W/E/T_R에조성/holdup/UA/엔탈피흐름/반응열의내생부모가남고baseline경계고정은다른개입모델이됨. 알고리즘의정적/동적/PAG추정대상불일치와상수입력·결정론성·선택과제미정을명시. 공식문서/원논문만추가참조.
+- 완결된초안/PROTOCOL/DECISION에서판정2:현재계약미정당화·실행NO-GO,PROPOSED_FOR_REVIEW 유지. B본실험확대중단. 다음은C별도효과중심설계검토여부결정이며전체F1가설보류/수정의한계를명시. 원설계공식변경없음.
+- 새코드는최소정적schema/일관성검사와6개문서회귀검사뿐. simulator/source수치평가·발견/SCM학습·새do/GT0. 전체기존검사의저장산술재검산은새실험이아님. 명령과결과는 validation/에기록.
+
+- 최종전체96단위검사(새정적6포함)/계약정적검사/상태JSON-MD/동결39SHA/환경계약/assetmanifest·diff검사PASS. 신규model실행0,src와과거산출물전체불변. 검사통과는판정2를GO로바꾸지않음.
+
+- 검토/정적검사커밋676a462dbf8b7a4621deb7978dee5335d51fa712 push,PR20 생성(base PR19). PROPOSED_FOR_REVIEW/판정2 유지,기존PR미병합·연구변경미채택.
+
+### 2026-10-28 — Python TEP 효과·조작 선택 설계 최종 검토
+
+- PR15~20 OPEN/계보·main e960fa8/clean 확인. PR20 7ad4887 위 feature/tep-effect-decision-feasibility 분기;기존PR미병합.
+- 최대2후보(manual XMV10→Y9,closed-loop reactor setpoint→Y9)만검토하고manual을계약검토대상으로선택. 실제API/기존반응성은있으나허용정책집합·목표/H·비자명성·실패손실을정당화못함.
+- 새정적사실: setter17은배열만쓰고ctrl18은별도120.40초기값으로읽힘;모드배열122.9와동일하지않음. 호출실험/패치없고모든setpointAPI고장으로일반화안함. 공식Ricker자료는전체상태+MV운전구성이고단일command범위를인증하지않음을확인.
+- PROTOCOL/DECISION에서STOP-TEP-EFFECT-TRACK으로종료. GT없음자체가원인아니며,최대2개구현확인만남은조건부계약도아님. 비용없는tracking과경제최적화/기대제곱손실과평균손실/단일경로와평균효과/D,V,R,F분할·empirical최적선택편향/실패를명확히구분.
+- 현재TEP효과경로동결,추가TEP시험·패치·검토문서권고없음. 다음은기존합성독립확인·민감도·오류대조의최종주장정리. 새연구/학습승인없음. 원설계/old자료/src/tests/기대값불변. 새연구코드·단위검사추가없음;기존검사재사용.
+
+- 기존 전체96단위검사 PASS(신규검사0);상태JSON-MD/동결39SHA·변수순서/환경계약/이전B정적계약/asset manifest·diff PASS. PR20 기준 기존보호경로5084개불변,근거11개LF-SHA일치. src/verify_recovery.py main은과거출력을덮어쓰므로실행안함. 신규실험미실행.
+
+- 검토/검사커밋 b6c7aa53980db3c803cfec2ee60be0f03b979e40 push,PR21 생성(base PR20). STOP/FROZEN 유지,PR15~21 미병합·신규실행/연구변경미채택.
+
+### 2026-10-29 — 합성 최종 주장·근거 통합 분석
+
+- PR15~21 OPEN/계보확인,main e960fa8,PR21 18e14d8 위 feature/synthetic-final-claims-evidence 분기. 시작clean·기존PR병합없음.
+- 기존확인예측행으로구조동일가중MAE재계산,명목432/중복108/고유324/유효162·경로유지114 분모검산. 원래216명목유효요약과162고유분모차이를보존.
+- 주장7개(A/B1/B2/C/D/E/F)의원시행선택자·실제값·지지·반례·허용/금지해석을통합. 당시M1-M2지지와이론민감도/추가정보불확실성분리. C07/반례/동률삭제없음.
+- 새표본/구조/발견/SCM학습/do0. 새집계코드는stdlib만읽고기존MAE/오류쌍/정책손실/상태를검사;모형적합없음. 과거원시/모형/검증값/원설계불변.
+
+- 기존 전체96단위검사PASS(신규0),요약--check·상태·동결39SHA/변수·환경계약·asset검사PASS. 보호경로5142개불변. 기존단위검사의과거적합/CV재계산과신규연구모형학습을구분;외부sampler/발견재실행없음.
+
+- 분석커밋 ebe20f9e0d21fb35a05c937e7d3e3bf09d91af30 push,PR22 생성(base PR21). 원설계/과거자료불변·PR15~22미병합. 연구기여의합성범위와제조미검증/추가정보미확립유지.
+
+### 2026-10-29 — 독립 오류 위치 확인의 사전 계약·예산
+
+- PR15~22 OPEN/stack·main e960fa8·시작clean확인. PR22 e9dae0c 위 feature/independent-error-location-protocol 분기,병합없음.
+- 한과제/두경로군의새합성SCM생성규칙과동일점수한간선누락/반전대응쌍·현재과제K/P·중복/기각/경로유지·동률/실패운영규칙·Ridge고정·이론평균손실·구조단위평균/군별구간을설계. 실제생성/계수추출/자료/적합/do/최종검정0. 새generator/검사code추가없음.
+- 기존고유쌍을구조별평균한SD1.245862/유지1.465278과동률·극단보존,SD2배민감도로폭계획.30개와유지15개반폭0.445826/0.741533;0.1폭은일차총598/유지총1650근사.옛MAE기준과별개,검정력보장아님.
+- 30개예시최대3690graph적합/36900node풀이/18000pair-data셀,발견0/do0;과거전체시간은새Ridge/근접구조검사순수시간이아님. REDESIGN_REQUIRED,미해결2개=정밀도자원/종단비용근거.다음은자원확대또는종료결정이며자동기술/문서반복안함.
+
+- 정적JSON/예산산술/기존근거16hash/보존검사PASS. 기존전체96단위검사PASS(신규0),상태·동결39SHA·변수순서·환경계약·asset검사PASS. 기존보호5159파일불변. 기존suite의과거적합/CV재검산은새실험이아니며이번신규SCM/실험적합/do/최종검정0.
+
+- 설계/산술검토커밋 7bb887340281ce400ec98791a5aa61c4cf7b172b push,PR23 생성(base PR22). REDESIGN_REQUIRED/실행불가유지;기존PR15~23미병합·신규실험없음.
+
+### 2026-10-29 — TEP 대체 통합 제조 벤치마크 소스 검토
+
+- PR23 OPEN/head1728d85/basePR22,main e960fa8·시작clean확인후 feature/integrated-manufacturing-benchmark-search 분기.기존PR병합없음.
+- CausalMan/Chambers/PenSimPy/IndustrialBenchmark/causRCA5후보×14항목을공식논문·고정Git소스/metadata로대조. 외부코드저장소복사/설치/import/pickle/대형데이터/시뮬레이터·발견/적합/do연구실험0.
+- CausalMan17529da의6반환vsREADME/CLI4unpack,no-op apply_interventions,level1sample/level2return·pruning·mask변동을정적확인. GT잠재투영과직접DAG채점의차이명시.전체YES아님.
+- CONDITIONAL-CANDIDATE:CausalMan micro우선.미해결2개=artifact/변수/graph계약과식별가능한조작선택. AGPLcode와paper/data권리분리,defaultobjects약7.65GiB,smallN의fullbatch비용주의.다음은별도승인후한번의micro계약acceptance이며공식채택아님.
+- 연구A결과/TEP STOP/PR23예산·Gate/원설계및과거원시불변.제안force2arm품질task는물리actuator동등성·효과ID/선택변동미검증.허위안전범위/비용/GT없음.
+
+- 기존전체96단위검사PASS(66.685초/신규0),동결39SHA·변수순서/시계변환·환경계약15case·asset·상태검사PASS.5×14항목과보고서일치/기존상태보존검사PASS;5215이전보호파일불변.첫정적검사는evidence id 누락으로실패후기존note의식별자를추가하여PASS.외부후보실행PASS아님.
+
+- 소스/적합성검토커밋d14155dc3133e1522e1b87f76cdd3ab6a7150c65 push,PR24 생성(base PR23).후보실행/공식채택/기존PR병합없음.현재PR메타데이터를canonical상태에연결.
+
+- PR24최종head의Actions는별도확인하며고정JSON에재귀selfSHA를기입하지않음.연구산출물3+필수상태5파일만변경·대형/민감경로검사PASS.
+
+### 2026-10-29 — CausalMan micro 실제 동일환경 수용 검사
+
+- PR24 OPEN/bc46dc9·시작clean·main e960fa8 확인후 feature/causalman-micro-acceptance 분기.고정17529da/tree07d305e의micro+소스1049파일실제취득·blob/SHA256/root tree대조.외부소스/바이너리/raw는Git밖,별도venv·job/audit제한.
+- 최초검증기active-process제한이Windowsvenv위임을막은실패보존후같은2GiBjob내child포함측정으로수정. import/생성자PASS,첫관측은미선언SciPy부족실패.환경만1회보완·원CONTRACT/SHA보존;원본모델/seed/조작변경없음.
+- 관측42와do16000/1042 각각101경로/14813내부행에서32행6반환성공.관측V*24열을do전동결,do는22열이나full에V*모두존재.모든경로L1/활성157노드170간선·L2는251간선.81조건부계층차이를버그로단정안함.
+- do16000은상수치환/후속계산성공하지만101개mutilated graph에Force부모2개잔존.원본in_edges tuple삭제구성결함확인후진행중do30000중단(최소44경로/6149행),replay/distinct미실행.원본patch/추가외부retry없음.
+- 관측ADMG의A→M→Y·A↔M↔Y hedge를typed4edge로확인:반환참조가타당하다는조건에서비모수graph-only점효과비식별;알려진물리식제약까지불가능하다는뜻아님.30000은경험범위밖이며수학적support밖으로단정안함.
+- CONDITIONAL_NOT_ACCEPTED/자원차단아님.미해결2개=고정hard-do graph결함/타당하고식별가능한관측계약.실측payload270118144bytes·disk898101516bytes·최대jobRSS532656128bytes·누적약667.253초,계측한계기록.발견/SCM연구학습/F1SHD/최적화/공식채택/기존PR병합0.
+
+- 기존96+신규9소프트웨어fixture=전체105단위검사PASS(104.220초).추가파일탐지순서의ownfixture실패1건은코드검사순서를고쳐원래기대값그대로통과.상태/동결39SHA·순서·환경계약15case/asset/JSON·diff PASS.이전보호5218파일불변.기존suite의옛fit/CV replay는신규연구학습아님.
+- 현재MFG-INTEGRATED 대시보드는후속실행결과를가리키도록갱신하고중복실행대기열에서제외;과거PR24정적판정과실험JSON은보존.새우선작업은MFG-MICRO의방법론결정하나.
+
+- 수용검사커밋c6b3e386cc9838e245fd226f50ccd809af479fc7 push,PR25(basePR24) 생성.최종head CI는별도확인하며자체CI가외부acceptance성공을뜻하지않음.원본미수정/CONDITIONAL_NOT_ACCEPTED/후속sampling중단유지.
+
+## 2026-11-05 — 예산 제약 구조 개선 연구 설계 후보
+main cdb2c7d 기반 별도 브랜치에 Phase1~5 프로토콜·지표·16개 정책·oracle/비용·독립평가 및 미결정 항목 초안 작성. 새 학습·SCM·개입·시뮬레이션 미실행. 기존 공식 설계와 미병합 PR은 보존.
+
+## 2026-11-10 — Step0 연구 계약 전환
+15개 지표 조합을 archived design으로 보존하고 FN/FP/REV 7조합 × Global/T, baseline·후회·oracle·독립 평가 및 문헌 검토를 문서화. 신규 실험·확인 데이터 열람 없음. Step1 이후 미실행.
+
+## 2026-11-10 — Step1 소형 DAG 정책 검증
+공통 seed 회전 균형 유형 일정으로 Global/T의 유형 교란을 완화. FN/FP/REV, cycle, 순서, 비용, 불변 ID, 점수·14정책 및 정보 경계를 소형 fixture 17건으로 확인. 장래 엔진/기준선과 실제 실험 미실행. STEP1_POLICY_SPEC.md 참고.
+
+## 2026-11-10 — Step2 정책 엔진 구현
+14개 개선 정책·세 baseline·예산 장부 및 graph-only adapter 구현. 소형 엔진/Step1 관련 34개 검사와 동결39개 hash 확인; 전체 기존 단위검사 및 원격 CI 확인 중. 신규 SCM·실험은 실행하지 않음.
+
+전체 기존 단위검사139개 통과(82.070초); 이후 입력 검증·import 및 양의 Path F1 개선 경계를 보강한 최종 코드에 대해 관련34개를 재통과했다. 외부 CI는 최종 커밋에서 별도 확인한다.
+
+첫 엔진 커밋9b83d51의 GitHub Actions 전체 성공(42776999729). 이후 공개 Path F1 입력 DAG 검증 및 모의 평가 경계·120 임의 DAG 대조 테스트를 추가; 새 HEAD의 CI는 별도 확인 필요. 관련36개 테스트 통과.
+
+Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단위검사 및 관련36개 검사 확인. Step2 DONE, Step3 본 파일럿 미실행. mock 정보경계는 실제 SCM 연동 검사와 구분한다.
+
+- 2026-11-10: 예산 연구 Step3 실제 Ridge 연결 및 S1/S7 개발 파일럿 114회(실패 0, 전부 후회 0); 단일 FN 조건으로 구별력 제한, 확인 실험 아님. `research/budget_aware_refinement/STEP3_PILOT_REPORT.md`. Step3 IN_PROGRESS.
+
+- 2026-11-10: Step3 직접 과제의 상류 누락 간선과 무변경 예측을 확인; 사전계획된 S1/S7 단일·복합 오류 및 직접·경로 과제 456회 개발 진단, 실패 0. 원본 114회 보존. 상세 `research/budget_aware_refinement/STEP3_SUPPLEMENT_REPORT.md`; 확인 연구 아님.
+
+- 2026-11-10: Step3 구현 531486a GitHub Actions 42780815082 성공 및 로컬 전체 149개 검사 통과; Step3 DONE, Step4 사전등록 미시작.
+
+- 2026-11-10: Step4 기존 456행 교차 분석: 경로 부재 248회가 양의 후회 248회와 동일. 신규 확인 결과 생성 없이 표본·통계·실패 계약 초안 작성; 생성기 적격성 및 자원·실패 규칙 미동결로 IN_PROGRESS.
+
+- 2026-11-10: 저장소 통합 준비. 원격 38개 기존 브랜치의 SHA별 주석 태그와 병합 전 main 기반 attic 인덱스를 보존했다. PR #26–35와 미확인 작업은 검토 필요로 유지. PR #36 개발 통합은 최소 1명 리뷰 및 최종 검사 후에만 수행; 연구 완료로 간주하지 않는다.
+
+- 2026-11-11: 통합 문서 작성 중 보호된 RESEARCH_DESIGN.md의 변경으로 기존 검증 3개가 실패해 즉시 문서를 원복했다. 이후 전체 151개 검사와 동결 39개 hash·상태 검사가 통과했다. 보관 인덱스에 브랜치별 고유 commit 목록과 main 대비 경로 및 merge base를 추가했다.
+
+- 2026-11-15: 저장소 운영자의 명시적 요청으로 Solo Research Self-Review 정책을 채택했다. PR #36의 개발 통합과 Research Completion을 분리하고, 공식 자기 APPROVE 없이 검사 결과를 PR Conversation에 남기는 절차로 전환했다. 이번 문서 변경은 연구 상태를 바꾸지 않으며 Step 4는 IN_PROGRESS/NOT FROZEN이다. Windows Python 3.14 로컬 전체 151개 중 1개가 저장된 실험의 부동소수점 정확 일치 검사에서 실패했다. 관련 46개 검사는 통과했다. 비추적 `data/local/datasetTE.csv`가 없어 로컬 복구 검사는 완료하지 못했다. 최종 HEAD의 Python 3.11 CI, 병합 및 main CI 결과를 별도로 확인한다.
+- 2026-11-15: Step4A partial implementation added topology-only DAG templates and atomic FN/FP/REV injection. Eight focused tests pass. One fixed multiple-path probe exposed infeasibility for a path-preserving FN/FP/REV recipe under its density augmentation; chain B is structurally infeasible. No full matrix, SCM coefficients, observations, or outcomes were generated. See `research/budget_aware_refinement/STEP4A_GENERATOR_FEASIBILITY_REPORT.md`; Step4 remains IN_PROGRESS.
+
+## 2026-11-15 — Step 4B-3 estimand·RNG structural audit
+
+- Branch `feature/step4b-task-budget-feasibility`, PR #38 (Draft, unmerged). Preserved v4 P matrix re-run with Step 2 graph-only engine: 34,370 policy/Matched Random pairs, all same final graph at B=4; edit-sequence differences only in 412/14,000 A pairs. Artifact `research/budget_aware_refinement/step4b3_p_b4_random_audit_v1.json.gz`, SHA-256 `f879ea7a30ff74659329fe99d6f054f3c2f3815234b7e5a4bf8aef4152400d26`.
+- Added context-keyed SHA-256 RNG streams and separate policy schedule seed. New structural-only grid contains 100 topology attempts, 1,000 planned P rows, 600 planned Q cells; no retries/replacements, failed rows retained. Q-common support 34/100 topologies; accepted Q FN/FP/REV 34/197/55 and 121/286 accepted cells differ in rank/final graph at B=1. Raw v1 SHA-256 `ed55c075c5f20210f0c80e0c84bb4570376829065290a23e2b29802728ff1707`; settings SHA-256 `ecc8e548d7904751fd9f88581257655f4489c2edfbd7e14f3410691b60a5f4ed`.
+- Tests: Python 3.11 focused Step4B1/B2/B3 suite 28 PASS; research state/docs checks PASS; `git diff --check` PASS; frozen graph manifest normalized hashes 39/39 PASS. Full `unittest discover -s tests -q` attempted: 146 tests discovered, 16 import errors because this local Python 3.11 runtime lacks NumPy; do not report full suite as passed. Windows `scripts/check_asset_manifest.py` separately reports config hash mismatch under CRLF checkout; normalized frozen-file hashes pass. GitHub Actions run #199 passed on exact code HEAD `3d0bd230962c49ec24c77de5b385ad2c393b0865`, including full test discovery and repository checks; a documentation-only follow-up will receive a separate HEAD check.
+- Added proposed Q-common/B=1 H2 primary estimand and retained P/B=4 as exploratory; no coefficients, observations, fitted SCM, effects, regret, policy performance, confirmation SCM, or Step5 run. Statistical/sample/failure/resource limits remain open; Step4 IN_PROGRESS / NOT FROZEN.
+
+- Step 4B-3 gate disposition: DONE for the requested structural decision and RNG audit, based on exact code HEAD `3d0bd230962c49ec24c77de5b385ad2c393b0865` CI run #199 and the documentation/status follow-up HEAD `d9c6541de3361fd0317d256781228e3617584287` CI run #201; current Self-Review comment is anchored to the follow-up HEAD. Step 4B-1/2 historical status and the overall Step 4 IN_PROGRESS / NOT FROZEN state are unchanged. Next: Step 4B-4 sample, weighting, inferential, failure and resource contracts.
+
+
+- 2026-11-15: Step 4B-4 partial outcome-free readiness work on `feature/step4b-task-budget-feasibility`: 2,000 topology attempts for Q-common yield (637 eligible; raw `research/budget_aware_refinement/step4b4_q_yield_v1.json.gz`), SCM paired-difference statistical calibration (paired-t type-I 0.136 and CI coverage 0.864 under zero-heavy skew; percentile bootstrap coverage 0.8545), k=0/failure contract helpers and tests, identical-final-graph invariance test using the existing Step3 unit fixture, and bounded Python 3.14 graph/Ridge fixture microbenchmark. Step4B-4 remains IN_PROGRESS because inferential calibration, stratum-aware cap, and full 10-node compute/storage/resume evidence are unresolved. No new SCM, observations, effects, regret, confirmation sample or Step5. Tests: Python 3.11 Step4B4 contracts 6 PASS and Step4 B1/B2/B3 relevant suites 43 PASS; Python 3.14 Step3 fixture suite 7 PASS. See `research/budget_aware_refinement/STEP4B4_READINESS_REPORT.md`; PR #38 remains unmerged.
+
+
+- 2026-11-15: Step 4B-4 remediation v2 on `feature/step4b-task-budget-feasibility`: corrected true-mean CI calibration with v1 preserved, independent-seed t miscalibration reproduction, 8 abstract difference scenarios, studentized/percentile bootstrap and conservative-bound diagnostics; stratified yield interval/caps; normal paired precision, MCAR missingness completion, 512x10 dummy-resource path, and mock restart idempotence. New regression tests cover truth-specific coverage, exact/near-constant handling, strata, report/raw agreement and failure rules. Step4B4 remains IN_PROGRESS due no valid mean inference and no enforced end-to-end cap. No SCM/effect/Regret/confirmation/Step5. Python 3.11 local tests and 3.14 numeric runner results recorded in PR #38 after exact-head CI.
+
+- 2026-11-15: Step 4B-4 Final Decision Gate on `feature/step4b-task-budget-feasibility`: selected Option B and retained Q-common/indirect/B1/gamma1 Global-vs-Task-Focused SCM mean estimand while suspending confirmatory superiority claims; current contracts justify neither finite regret bounds nor t/bootstrap calibration under severe skew. Fixed operational estimation targets N=64/200 and finite planning caps 362/1,036; no power/yield guarantee. Added fsynced stage ledger and dummy graph/Ridge/recommendation/truth-stub mock runner plus process-kill/resume, torn-tail, duplicate, policy/GT failure, missing-vector, disk and stage-time tests. Disk cap enforced; time checked at stage boundaries; RSS monitoring-only. Python 3.14 Step4B1–B4/Step3 relevant suite: 115 passed; research-state/docs sync, py_compile, diff check and normalized frozen manifest 39/39 passed. Full local Python 3.14 discovery: 219 tests, one unrelated saved-experiment exact-float assertion failed (`test_diverse_structure_pilot.test_actual_saved_experiment`); exact-head Python 3.11 Actions PR run #209 (`43722451360`) succeeded on `9bcf3ae62576456013af769f682df27082a5bbba`, including full unittest discovery and repository validators. Self-Review comment `6895660448` is anchored to that exact HEAD. No new SCM, observation, effect, regret, confirmation or Step5. See `research/budget_aware_refinement/STEP4B4_FINAL_DECISION.md`; Step4B4 design decision DONE; Step4 overall IN_PROGRESS / NOT FROZEN.
+
+- 2026-11-16: Step 4C-2 freeze audit on `feature/step4b-task-budget-feasibility`: unexpected proposal exceptions, malformed/unknown results and replay mismatch now persist fatal generator errors and stop at the same candidate; Q rejection/yield denominator unchanged. Added opt-in whole-cohort storage accounting distinct from the per-ledger cap. Fixed-fixture resource qualification reused deterministic inputs at 6–10 nodes, 3 repeats each: production-path median 0.145–0.280 s, max ledger 91–136 KB, resume median 0.004–0.006 s; not independent SCMs or cohort-scale tail guarantees. Final local Python 3.11.15 `unittest discover`: 257 passed; focused cohort/production tests 28 passed; manifest hash test, research-state, docs sync against origin/main, `git diff --check` passed. The Git-blob check confirms 39/39 frozen assets; Windows worktree raw-byte verification shows CRLF-only mismatches on 31/39, while CRLF-normalized data matches. Current-head Linux CI/Self-Review pending. No study cohort, research regret experiment, Step5/6 or main merge. See `research/budget_aware_refinement/STEP4C2_FINAL_FREEZE_AUDIT.md` and `step4c2_resource_qualification_v1.json`; Step4C2 IN_PROGRESS, Step4 NOT FROZEN.
+- GitHub Actions run #237 on `f2c1ec7e91beba258e442ee934c9b1665306418d` ran the full suite and found only the production manifest test's `.txt` newline-normalization omission (`requirements.txt`: LF in CI, CRLF in Windows working tree). The manifest test now normalizes `.txt/.toml/.yml/.yaml` alongside `.py/.md/.json`, and manifest hashes were regenerated using the same rule. This correction is separately committed and awaits exact-head CI; the corrected full Python 3.11.15 suite passes 257 tests locally. Run #237 remains recorded as failed, not passed.
+- GitHub Actions run #239 passed on exact implementation HEAD `890b0d23753b23c6cdee57421f022466ff5ef338`, including full 257-test Python 3.11 discovery, Linux frozen-asset validation, research-state, PR integration and document sync. A subsequent documentation/status follow-up records that result and will receive its own exact-head Actions run before Self-Review. PR #38 remains Draft/unmerged; Step 4C-2 remains IN_PROGRESS.
+- 2026-11-16: Step 7 final synthesis on `research/final-synthesis-v1`: created Korean final report, executive summary, claim/evidence matrix, Step5/6 result cross-check, limitations/future-work note, and 14-slide outline. Read original research lineage, Step3 diagnostics, frozen Step4 contract, and Step5/6 run/analysis reports. Read-only rechecked all 66 Step5 and 202 Step6 raw inventory entries by file path/size/SHA-256 (0 mismatches), and recomputed mean/median/sign counts and type means from the tracked 64/200-row SCM CSVs; results agree with JSON summaries and reports. No new SCM, data, GT, or regret was generated; Step4 assets/raw cohort files unchanged. `git diff --check` passed. Step4 remains FROZEN; Step5 and Step6 results are reported separately under Option B, with no confirmatory superiority claim. See `research/budget_aware_refinement/FINAL_RESEARCH_REPORT.md`, `STEP5_STEP6_CROSS_CHECK.md`; Step7 synthesis artifacts await review.
+- 2026-11-16: Step 8 scientific review on `research/final-scientific-review-v1` based on Step7 synthesis commit `efa984c505736e2b2938ff787c952bf8213b2fbc`. Reviewed seven synthesis artifacts; read the two selected Step6 raw ledgers and Registry in read-only mode, recorded exact ledger hashes, and documented one positive and one negative policy example including edits, k, GT loss, and regret. Added an academic review, related-work/novelty assessment with verified primary-source references, final claim audit, case study, figure-source note, five static SVGs and 14-slide presentation revision. The renderer uses saved SCM-summary CSVs and explicit audited case values; no new SCM/outcome was generated. SVG XML and local markdown links validated; `git diff --check` passed. Frozen Step4 code/settings and Step5/6 raw outputs were not modified. Step4 remains FROZEN; no full production suite/CI run because changes are documentation and visualization only. See `research/budget_aware_refinement/FINAL_SCIENTIFIC_REVIEW.md` and `FINAL_RESEARCH_REPORT.md`.
+- 2026-11-16: Step 9 presentation production on `research/final-presentation-v1` from source HEAD `6b463da1cb8a4b37d09d9dacd12fccaf672e57e1`. Corrected Step8 sensitivity bar overlap and a deferred-generator bug that repeated REV means in the type chart; regenerated and visually reviewed all five SVG figures. Recomputed cohort means/signs/type means/sensitivity values from saved SCM summary CSVs; no new research data or outcomes. Built a 14-slide editable 16:9 PPTX with 14 speaker-note parts and a matching 14-page PDF; package/layout checks report zero findings, and selected slide/PDF renders were visually inspected. `git diff --check` passed. PPTX/PDF hashes and QA details are in `research/budget_aware_refinement/final_presentation/PRESENTATION_QA_REPORT.md`. Step4 frozen assets/code, Step5/6 raw data, and estimates were not changed.
+
+- 2026-11-17: Original objective recovery audit on `research/original-objective-recovery-audit-v1` (read-only with respect to research data/code). Read the local source DOCX copies for the four original error metrics and cost model, then compared them with archived A–D, Step 1 policy contract, frozen Step 4, and Step 5/6 reports/code. Finding: completed Step 4–6 did not implement/evaluate the original four metrics or the cost-weighted metric-combination optimization; it evaluated the narrower Q-common/B=1 Global vs Task-Focused oracle correction-order estimand. Added four audit/recovery documents at repository root. No SCM, regret, tests, raw-data, or frozen-contract changes. `git diff --check` and source/path review performed; stage status remains unchanged. DOCX SHA-256 values: metric source `FE83334F7D8B34FB555D6E60E7E3BD2FD8EC2B51E913D57BD046853865CBE165`; cost source `A3D26FE83B736A6950C64CE54E2FCA7B131582E6DA19E3EA6E6AEDBDEF7C0818`.
+
+- 2026-11-17: Original research specification gate on `research/original-research-spec-gate-v1`, based on audit commit `3b710ed0f544913e4aa47d169dc29badb2a879e2`. Created five design-only documents: four-metric calculation proposal; task-zone FP assignment alternatives with six hand-built DAG examples; 16 strategy catalog and candidate scheduling contract; cost/penalty/regret separation; append-only design decision log. Explicitly marked unresolved denominator, FP assignment, M4 scalarization, λ interpretation, operation/cost and budget choices as proposals needing approval. No code, Step4 frozen assets, Step5/6 data, report/presentation, SCM, costs, or regret were changed/generated. Validation was document/path/consistency review and `git diff --check`; no test or CI run because this is specification-only. No preregistration or experiment authorization is implied.
+- 2026-11-17: Original specification gate V2 review on `research/original-research-spec-gate-v2`, base `79bf8c97d48301e8319e16c1aabe39179f117098`. Preserved v1 and added versioned metric/task-zone/policy/cost proposals plus methodology review, fixture audit, and decision options. Corrected V1 FP example that conflated a GT edge with an FP; hand-checked open backdoor versus collider-blocked route, exact-once pair-event buckets, unresolved-direction accuracy escape, M4 weight double-count risk, and equal-quota versus shared-greedy B=1..4 on a fixed hand graph. All definitions/choices remain proposals; no SCM, regret, cost-weight fit, code, frozen Step4, or Step5/6 source data changed. Documentation/fixture review only; no CI or research tests run.
+- 2026-11-17: Original research contract candidate and fixture validation on research/original-research-contract-candidate-v1, based on 244a208a0762851818c861a6687f7284d7e0fe82. Drafted an executable-but-unapproved four-metric/oracle/cost/greedy contract, an open decision register, and deterministic hand-DAG validation. Independent arithmetic caught and corrected the initial M3 unresolved denominator in the fixture (matched adjacency denominator is 1, not all off-task GT edges). Validated M1/M2/M3/M4 counts, M2 denominator-only apparent improvement, M3 unresolved avoidance, quota vs greedy, 15 subsets + S0, B=0..4, c_ori=1..3, DAG validity and trajectory overlap with scripts/validate_original_research_fixture_contract.py. No SCM, observations, effects, regret, fitted weights, or study data generated; Step4 frozen contract and Step5/6 results unchanged. Specification remains unapproved/not preregistered; PROJECT_STATUS/PRIORITIES unchanged because no research-stage status changed.
+- 2026-11-17: Original contract fixture validation remediation on research/original-research-fixture-validation-v1, based on dba423e54e5ff50a261a5bc29f4547d7840cfa43. Replaced hard-coded greedy gains with graph-state event-count/fixed-opportunity calculations; added unresolved graph state transitions, M4 FN/FP/REV/UNRES and FP A/B attribution, exact event partition assertions, multi-candidate gain/cost selection, and scheduler-level DAG-cycle rejection. Updated fixture trajectory counts and normalization counterexample; documented P_S/U_S/P_all distinction and kept beta/normalization OPEN. `python scripts/validate_original_research_fixture_contract.py` passes. No SCM, observation, intervention, regret or fitted weights generated; frozen Step4 and Step5/6 paths unchanged. `git diff --check` passed; research status unchanged and no broader test suite run.
+- 2026-11-23: Research C 연구 계보·팀 인수인계 문서 및 README를 현재 로컬 브랜치 기준으로 작성했다. Held-out 결과는 기존 감사 보고서에서 읽어 반영했고 신규 SCM/실험/분석을 생성하지 않았다. research_state에 RC-HELDOUT VERIFIED와 정창민의 사용자 지정 후속 분석을 기록했다. 원시 C:\DAT_RESEARCH 결과, frozen 자료, .build_reframed/는 변경하지 않았다. GitHub main 대비 기존 연구 브랜치가 41 commits / 117 files ahead라 전체 범위 공개 Push는 보류한다. 문서 검증 및 커밋 SHA는 이 기록에 후속 기입한다.
+
+- 2026-11-23: 문서 인수인계 커밋 9deb36869ec117cfdff8bd1ebc9387a548817ba를 docs/research-journey-team-handoff-20261123에 생성하고 origin에 일반 Push했다. PR은 생성하지 않았다. 문서 링크 검사, research-state 생성기, git diff --check 통과; 전체 실험 테스트는 문서만 변경하여 실행하지 않았다.
+
+- Correction (2026-11-23): the earlier entry recorded Push as held, but after inspecting the 41-commit / 117-file range and scanning for common credential patterns and files over 5 MB, the user-authorized new branch was pushed. The remote branch contains the full existing research history plus handoff commits; no PR was created.
+
+- 2026-11-25: PR #39 병합 main에서 Research D 외부 검증 타당성 감사를 수행했다. Mk1 표준 DAG 두 개에는 strict indirect-only 과제가 없고, Mk2 linked_leds에서 경로와 다섯 개 이상 실측 명령 수준을 확인했다. 참조 비간선 범위, 상수 노드 처리, 독립 평가 분할과 독립 실험 단위 확인을 조건으로 CONDITIONAL_GO. Research C 동결 결과·정의 및 TEP/CausalMan 보류 유지. 외부 손실·Regret 본평가 없이 스키마와 배정만 검사했다. 근거 및 재현 방법은 research/external_validation에 있다.
+
+- 2026-11-25: Research D Step 1 Mk2 qualification을 Step 0 audit commit `89a49224a997f33aee5a5075842144df48e39d45` 기반 별도 branch에서 진행. 공식 Mk2 v1.0 PDF, SPICE 논문 v2, catalog commit 고정 generator 및 Causal Chamber SDK protocol source를 대조했다. lt_spice_v1 기존 ZIP(SHA-256 `5e9f37c29b4823df34798e3ca9a39bf6f3a4e0ef71c8a92c45e6ed52ae99a118`)의 Step0 schema/assignment metadata를 재사용하고 Y/매개 반응값 및 정책 성능은 분석하지 않았다. Reference Figure second-pass check 90 nodes/142 edges/DAG; complete DAG/negative-pair evidence not established. 20×5500 rows are blocks within one experiment submit per condition, not independent sessions; noisy/low-noise share command schedule and differ in `sps_current_ls` 4/7. Constant count cross-check corrected to 67 constant CSV columns, 59 reference nodes, 31 variable reference nodes and 8 constant non-node columns. SPICE paper roles (green confounder, ir_1 treatment, ir_2 outcome, current_ls_raw proxy) differ from proposed new Research D task; published result table snippet was exposed by search extraction and logged, not used for task selection. Step 1 decision is ELIGIBLE_CONDITIONAL_PHYSICAL_CASE only, with action/effect alignment and independent session provenance blockers. No remote lab call, experiment submission, response analysis, policy/regret evaluation, C frozen artifact change or new cohort. Focused metadata validator/tests added; test and CI outcomes to be appended after verification.
+- Validation: qualification-only unittest 2/2 PASS; `validate_qualification.py --dataset-zip .../lt_spice_v1.zip` PASS with 40,572,526 bytes and SHA-256 matching Step 0 manifest; research-state check and `git diff --check` PASS. Full repository command `python -X utf8 -m unittest discover -s tests -q` ran 362 tests and ended with 2 pre-existing checkout/environment-bound failures: frozen dependency fingerprint expects another NumPy/Pandas/NetworkX set; one raw Step4B4 file SHA differs in this Windows checkout. No pinned file was changed to work around them; exact Linux GitHub Actions result will be checked after push.
+- GitHub Actions run #298 on exact commit `7c5bd93bfa798eeb2e3b3e3549cb68538f1688b8` completed SUCCESS (Ubuntu, Python 3.11): full 362-test suite, frozen graph verification, all repository validation scripts, research state and asset manifest checks. Local Windows-only dependency/hash mismatches did not reproduce in CI.
+- 2026-11-25: Research D finite numeric hard-do adapter qualification: deterministic root/nonroot/state/RNG/input fixtures 7/7 PASS; pinned causalAssembly upstream integer hard-do fixture exactly matched; pinned causalAssembly 1.2.1 Station1 and R 4.5.3 / DRF 1.3.1 float smoke PASS (seed 2718, two successful runs × 4 rows = 8 generated response rows). Two integration attempts failed before response sampling (first package import path, then qualification snapshot NameError); both were corrected, and the final bounded run passed with fitted training-data/native R fit-state preservation. All eight smoke rows are exploratory exposure, discarded, and barred from later development/evaluation. No response values/summaries, learner/recommendation, policy metric, loss, regret, or final evaluation was run. `PASS_FLOAT_HARD_DO_ADAPTER` is technical qualification only; Research D remains conditional pending a separately reviewed contract and future train/evaluator isolation. Physical evaluation remains deferred and Research C frozen artifacts remain unchanged.
+- Validation on exact code commit `9f85005e5924e9cd22936a2709bb3e37d65cf93f`: CI run #305 PASS (Ubuntu): 374 tests, 373 passed/1 skipped, pinned graph and asset-manifest checks and repository validators passed. Local Windows `check_asset_manifest.py` and `graphs/final/verify_and_load.py` reported frozen-byte hash mismatches; the protected files are unchanged in Git, and the same checks passed in CI. No rules or frozen hashes were relaxed.
+
+- 2026-11-25: Research D external semisynthetic Development contract and pipeline were implemented without changing Research C code/contract/frozen assets. Outcome-blind 64-seed Station1 structural preflight retained all seeds (12 no-error; 23 with task-zone errors; 12 DAG-rejected proposals). A separate 32-seed Development cohort was locked; all G0 hashes were regenerated and matched. Exact source/action/target/scale/seeds/code hashes were locked before the evaluator run. Pinned causalAssembly/R DRF same-seed refit check matched exactly; fitted parent-column order matched sampling order; evaluator subprocess loaded no policy modules and generated 1,280 finite, exact-action rows. B=2 Primary development `Δ_D=+0.003338`; the two-source 95% bootstrap interval `[-0.065322,0.075465]` includes zero. Full Greedy changed six of 32 actions; each had lower pilot loss, while 26 paired actions tied. M4 chose the same action as Full Greedy in all 32 seeds. This is one fixed semisynthetic DGP and not a physical validation or independent SCM cohort; final evaluation was not generated.
+- Validation: targeted new/adapter tests 16/16 passed, including lock tampering, duplicate G0 IDs, existing evaluator output, sample cap, multi-parent order, graph-policy-to-Ridge fixture, and evaluator E2E fixture. Full local Windows discovery ran before commit and reported 2 environment/worktree-bound failures (381-test run before the last two boundary tests): the clean-worktree guard ran on a dirty tree, and a frozen Step 4B4 raw-ledger hash mismatched this checkout (`e8a1…` vs pinned `9c12…`). No frozen file, manifest, or guard was changed. Final clean-revision test and GitHub Actions checks remain to be recorded.
+- 2026-11-25: Post-commit clean-suite review caught a source-file terminator corruption from documentation whitespace cleanup; the module was repaired without changing executable statements. The pilot lock code digest and current pipeline.py SHA-256 differ, so the pilot aggregate provenance is explicitly downgraded pending a newly locked repeat run; no result was hidden. Targeted Research D pipeline tests pass after repair. Full-suite rerun and Actions are in progress.
+
+- 2026-11-25: Clean Windows full discovery: 383 tests, 382 passed, 1 failed on the pre-existing frozen Step4B4 raw-file SHA mismatch (local e8a1c6… vs pinned 9c12a2…). Research D/adapter targeted tests: 16 passed after source repair. State/docs validators and diff check passed. G3 is DEVELOPMENT_PILOT_INCOMPLETE because pipeline.py current SHA differs from the pre-run run-lock digest; pilot aggregates are archived as exploratory. Awaiting remote Ubuntu Actions for frozen-byte check.
+- GitHub Actions run #45549419632 on commit a6f535dc61e3e077b42ecdca18c39d7889e15e60: SUCCESS (Ubuntu); full 383-test discovery, frozen graph verification, state/asset checks and repository validators passed. This clears the Windows-only Step4B4 SHA mismatch as a local checkout issue; G3 remains DEVELOPMENT_PILOT_INCOMPLETE solely because the run lock code digest no longer matches current pipeline.py bytes.\n
+# 2026-11-25 — Research D same-condition Development Reproduction completion
+
+- Branch `research/research-d-design-resolution`. Response-vector persistence and comparison support were committed in `a13e9170ff7544561d7ac6d30a72610b68a5c203`; deterministic metadata ordering and verified input reuse were committed in `4f0bda50816b2fa08b8bf8cce31fc3fea44582eb`. Earlier failed run `...-01` and the post-training lock-order failure for `...-02` remain preserved. The latter had generated one 512-row learner frame and 32 deterministic G0 records; action values matched, only support-check metadata ordering differed. The training and G0 request hashes were verified and exact prior inputs reused.
+- Actual-input preflight attempt `rd-development-reproduction-20261125-02-preflight-03` passed with zero samples. The one completed evaluator run created 2,720 recommendations and 1,280 rows (five actions × 256) under the original scientific settings. Run lock/tree: `4f0bda50816b2fa08b8bf8cce31fc3fea44582eb` / `595379c1020649c9bbaec3b9794e0937aa2a2fa1`; clean worktree. Lock SHA-256 `1476308f85c01b0c02941275d6b37d2d8ea973a0487f33efa4cff8a40abad8fa`; response-vector SHA-256 `251ee7d5fbfb6ec473fa79229ac8741af0ce6d4a325a0377d5f9d3fb388ca803`.
+- Original versus reproduction: DRF diagnostic, training numeric digest, action grid, target/scale, 32 G0 hashes, all recommendation actions/costs/graph hashes, five response hashes/means/variances/losses, Primary `+0.0033381254737865317`, Secondary and baseline match. Independent bootstrap from saved response vectors matches all three evaluator intervals. Historical raw response rows are unavailable, so the old bootstrap was not independently rerun. No final samples generated.
+- A post-run analyzer axis/summary lookup issue was corrected in a separate v2 analyzer and regression test; evaluator data were not regenerated. GitHub Actions `45573197045` on `4f0bda5`: SUCCESS, 393 tests discovered, 392 passed, 1 skipped; remaining workflow and frozen checks passed. Final gate: `READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW`; final study remains unapproved. User review remains for training design A/B, precision target and final sample/resource limits.
+
+- 2026-11-25: Same-condition Research D reproduction completed and compared against retained pilot aggregates; 2,720 recommendations, 1,280 evaluator rows, zero final-evaluation rows. Commit 5f7f1017f08f1ac7c9378dbba68cd8ff69a2826d; Actions run #45578030405 SUCCESS, 394 tests (393 passed, 1 skipped), all validation steps passed. Local Windows full discovery also found 394 tests but 2 environment-bound exceptions: frozen runtime dependency fingerprint (local NumPy 2.4.6/Pandas 3.0.3/NetworkX 3.6.1 vs frozen pins) and raw Step4B4 JSONL SHA mismatch due checkout byte representation; neither protected files nor guards were changed. Research D focused tests 27/27 pass. Final evaluation remains unapproved; status READY_FOR_EXTERNAL_FINAL_CONTRACT_REVIEW.
+
+# 2026-11-26 — Research D final external semisynthetic evaluation
+
+- Final contract locked and executed once on source commit a6d751e3f157fca63a93931d62b9f7a9318c6cb5 (tree fa1aaf635518e6d7a1f292f410185d220ccacc99). 200 graph-corruption draws, 17,000 recommendations and 12,500 fixed-action DRF hard-do rows completed; no new training rows. Final gate EXTERNAL_FINAL_EVALUATION_VERIFIED. Independent artifact audit: 27 checks PASS. Process-tree supervisor: 407.563 s, peak sampled RSS 1,917,583,360 bytes; no limit breach. Primary B=2 S0−Full Greedy +0.03422490; two-source 95% interval +0.00617347 to +0.06535080. Action-MC and combined precision targets were missed and reported. M4 used 71.1% fewer edits than Full Greedy and chose the same action 99% of the time. This remains one DRF-based semisynthetic DGP, not physical validation or 200 independent SCMs. Research C contracts, ledgers, policy code and frozen manifests remain unchanged; final raw vectors/data stay outside Git. Actions 45641341413 SUCCESS, 399 tests (398 passed, 1 skipped).
+
+- 2026-11-25: 정창민 담당 M1–M4 메커니즘 분석을 `claude/project-thread-sjj7ri`에서 `research/research_c_mechanism_analysis/`로 추가했다(PR #40). 원본 SQLite(`C:\DAT_RESEARCH`)에 접근할 수 없어 문서화된 seed·target·cap(Dev 2026112301/64/386, Held-out 2026112303/200/1104)으로 Linux CPython 3.11.18·동일 lock에서 `run_approved_research_proposal_cohort`를 직접 호출해 분석용 ledger를 재생성했다(승인 gate 미경유, research 결과 아님). 17×5 평균 Regret, P1 delta·CI 구성값, 개선/악화/동률, 수정 건수가 기존 결과 문서와 일치했다. 재생성 DB는 Git에 넣지 않았다. 승인 코드·Manifest·기존 ledger는 변경하지 않았다. 분석은 Held-out 열람 후 사후 탐색이다.
+
+- 2026-11-26: Research C original-ledger mechanism audit completed read-only; Research D final artifacts re-audited read-only. The earlier PR #40 entry records the then-available regenerated-ledger analysis; this follow-up verified the stored approved ledgers and narrowed SCM-level comparison claims to what the original audit and retained PR outputs support. See research/final_integration/ORIGINAL_LEDGER_MECHANISM_AUDIT.md and RESEARCH_D_FINAL_REAUDIT.md. Scientific report and README now state the 1/|S| normalization correction, the six-versus-five M4 mechanism distinction, the no-path/flat-loss empirical scope, and the limitations of both studies. PR #40 and Research D histories remain intact; no new SCM or intervention responses were generated.
+
+- 2026-11-26: 최종 Research C–D 통합 PR #41이 main에 merge commit `4564e4d28fea62a0caebbad0ed6dd415d7f29cda`로 병합되었다. PR #41 CI 및 병합 후 main Actions 성공. 통합 상태는 FINAL_RESEARCH_INTEGRATION_VERIFIED; 동결 Research C 자산과 원본/외부 평가 원자료는 공개 저장소에 추가하지 않았다.
+
+- 2026-11-26: PR #42 merged as `fc863182efd4ee721a7f5250c871d46afe9bf244`; main Actions run 45656538612 SUCCESS (399 tests, 398 passed, 1 skipped). Final integration status is VERIFIED; no new experiment or response sampling.
+
+- 2026-11-26: Research E post-hoc budget/cost extension began on `research/research-e-budget-adaptive-repair`, based on main `bf72d8dd38a2209f365fac7356e8595974509e6c`. Read-only checks verified the four original C cohort/proposal SQLite hashes and integrity; deterministic reconstruction matched all 264 original truth, observation, task and G0 bindings, then replayed all 22,440 original B0–4 unit results exactly before evaluating C-only budgets 5–9. E1 C analyses, D aggregate-only analysis, C saturation diagnostics, one-blocker Adaptive M4 and fixed-action target sensitivity are exploratory; no new SCM/G0 or Research D intervention rows were created. D unit-level E extensions remain unavailable in the designated store and are not imputed. Initial Research E tests passed 9/9; locked reruns, full suite, immutable-input recheck, CI, commit and PR remain pending.
+
+- 2026-11-26: Locked Research E reruns completed from analysis revision `bb7b275867274113db28cee664267298c0a25bd7`: E1 read-only C ledgers plus the saved D aggregate audit; E2 exact C restoration/replay and B5–7/9 analytic extensions; E3 C-only Adaptive M4 and fixed-action target sensitivity. E2 elapsed 124.13 s; E3 48.20 s; no new SCM/G0, DRF fit or D intervention rows. Generated 19 aggregate CSVs and 19 validated SVG figures; unit-level outputs are locally ignored and excluded from Git. Research E focused tests passed 9/9; full Windows discovery ran 408 tests (406 passed, 1 failure, 1 error), both attributable to the existing frozen dependency fingerprint and CRLF raw-ledger binding; the seven graph config frozen hashes match after LF normalization. The frozen checker was not weakened and no protected files changed. State consistency, diff check, source/output SHA-256 and SVG XML checks passed. D unit-level E2/E3 remains unavailable; gate `RESEARCH_E_CORE_COMPLETED_WITH_LIMITATIONS`. PR/remote CI pending.
+
+- 2026-11-26: Research E PR #44 opened from `research/research-e-budget-adaptive-repair` (head `460fa40b1978bb028fd69abcae7803dcfc1aa626`; base main `bf72d8dd38a2209f365fac7356e8595974509e6c`). Actions run `45753646125` completed SUCCESS: 408 tests, 407 passed, 1 skipped; all existing validation, research-state synchronization and frozen asset checks passed on Ubuntu. Local Research E focused tests 9/9 passed; Windows full discovery had 1 dependency-fingerprint error and 1 CRLF-sensitive JSONL failure, with LF normalization matching the historical hashes. Final live gate `RESEARCH_E_CORE_COMPLETED_WITH_LIMITATIONS`; E1, C E2 and C-only E3 completed, while D unit-level E extensions remain unverified/unavailable. Main was not merged. Next work is owner review and final presentation/report preparation, not further data generation.
+
+- 2026-11-26: PR #44 post-merge closeout: merge commit 5e2b7fd7702a92ecbcb1c20ccd5ccb3ffc72ef6a; PR Actions 45760776088 SUCCESS. Follow-up state sync records Research C–D–E closeout and report/presentation handoff. No new experimental data generated.
+
+- 2026-11-26: Research F-Lite PR #46 opened on `research/research-f-lite-verification` (head `ee1ae8e0fce114a432a35e809c153dd021e36798`, follow-up `3f4b15a9fc7e3f07a92884f82281ab2c87f0c81b`). Reused Research C Development 64/Held-out 200 only; no new SCM, G0, observations or interventions. The proposed decision-weighted query policy beat Random on reused Held-out but was worse than fit-based and suspicion-only; hypothetical expert-noise sensitivity preserved this ordering. F-Lite tests 17/17 passed. First CI exposed import-time `psutil` dependency in the optional bounded noise runner; moved the import to the executing RSS monitor while retaining fail-closed resource enforcement. Follow-up CI passed unit tests and existing validators but failed the required research-doc synchronization because this live work log was not updated. Local full discovery: 427 tests (425 passed, 1 failed, 1 error); the unrelated failures were the existing Windows dependency fingerprint and CRLF-sensitive frozen JSONL binding. Local frozen verification could not run because the external `datasetTE.csv` is absent. No frozen checker was changed.
+
+- 2026-11-26: Research F-Lite final PR head `21f63a259276ac94fcb62f0464299b05f04ec73b` passed GitHub Actions run `45782305862`: 427 tests discovered, 426 passed, 1 skipped; all required validators, frozen asset manifest, research-state checks and live-document synchronization passed. First CI run exposed the optional RSS monitor import and the next run exposed missing work-log synchronization; both were corrected without changing the study policy or weakening checks. Final gate remains `RESEARCH_F_LITE_COMPLETED_WITH_LIMITATIONS`; PR #46 is open and not merged.
+2026-11-26: Research F-Lite final audit. Read-only analysis used saved F recommendations/evaluations/query-score replay and original C SQLite payloads; did not invoke the historical restoration helper that regenerates SCM/observation arrays. All four original C DB hashes and saved F artifact hashes matched; C hashes were unchanged after audit. Corrected Random B4 Held-out action change to 4.09% mean share of 32 repeats versus 27.0% ever-changed SCMs. Added a common-index 10,000-resample pointwise paired bootstrap (historical intervals preserved), replayed B4 pending relations (6 policy–SCM rows; 0 individually DAG-feasible), clarified the distinct 46/64 versus 46/3 mechanism counts, and documented query/edit separation and graph-free structural-error n/a. Added final audit report, machine summary/manifest, paper outline, novelty boundaries, defense Q&A and regression tests. No new SCM, G0, observation, intervention response, expert answer or policy run. PR #46 merge verification pending.
+2026-11-26: F-Lite audit validation: focused tests 19/19 PASS; full Windows discovery 429 run (427 pass, one known frozen raw-data hash failure caused by CRLF checkout, one frozen runtime dependency fingerprint error: NumPy 2.4.6/Pandas 3.0.3/NetworkX 3.6.1). `graphs/final/verify_and_load.py` exact-byte check had 31 CRLF mismatches; all 39 manifest files matched after LF normalization and no frozen graph paths changed in Git. `src/verify_recovery.py` unavailable locally because private `data/local/datasetTE.csv` is absent. Research-state generator/check PASS; diff check PASS. PR Actions 45798376385 and post-merge main Actions 45798944410 passed. No validation guard was weakened.
+
+2026-11-26: PR #46 merged as `b9bbce631cb4b40d191b96db5a75f2c17c1f3ab9`; Actions 45798376385 (PR) and 45798944410 (main) SUCCESS. Project gate `PROJECT_RESEARCH_C_D_E_F_CLOSED_WITH_DOCUMENTED_LIMITATIONS`. No new SCM/G0/observations/interventions/expert responses were generated. Remaining work: final report review and presentation preparation; Research G/H are future work only.
+
+
+2026-11-26: Supplementary S1/S2 post-hoc robustness and metric validation completed on saved Research C Development/Held-out inputs; 64/200 original SCMs, no new samples. Research D unit-level material unavailable; SID/AID not run without a verified compatible implementation. Corrected a supplementary weighted-AUROC calculation after range checks and added regression tests. Branch CI/publishing pending; C–F contracts and outputs remain frozen.
+
+2026-11-26: PR #48 final head 06549f6b1116c80242cfc4748df2c79f25076372 passed GitHub Actions run 45825256872 (437 tests and all workflow validators). The initial PR run failed only the required current-priority-document check; commit 06549f6 added the generated priority entry and the rerun passed. PR remains open; no merge performed.
+
+2026-11-26: PR #48 supplementary final audit correction. Read-only SQLite input checks preserved C Development/Held-out cohort/proposal hashes (`dd4264…`, `1d00d1…`, `37b3c2…`, `59f1ab…`). Saved S1 unit and S2 graph/prediction artifacts were reaggregated; no SCM/G0/observation/intervention/expert samples were added. Corrected Full Greedy identity to `M1+M2+M3+M4` (Canonical Oracle distinct), regenerated shared-index pointwise paired contrasts, relabeled the blank-DAG learner `EMPTY_DAG_LEARNER`, and kept Research F's association baseline separate. Corrected S2 to nested B_original/E_nested/F_nested from saved graph rows; common-graph S1/S2 correlation comparison uses 36 Development SCMs/84 graph rows and 121 Held-out SCMs/250 graph rows. AP uses tied-score-group weighted Average Precision; added perfect/reversed/all-tied/nonuniform-weight/tie-permutation fixtures. Verified original C Development M4/Full Greedy selected actions match 61/64 (not 46/64). Local focused suite 12/12 PASS. Full unittest discovery 441 tests: 439 passed, 1 failed due CRLF byte mismatch against a frozen raw artifact, 1 errored due local NumPy/Pandas/NetworkX fingerprint mismatch; no frozen checks were altered. PR fresh CI and merge remain pending.
+
+2026-11-26: Supplementary audit closeout. PR #48 merged to main as d55baebaea341ef39263b8a62ba313795ce31ef3. PR Actions 45835101426 and post-merge main Actions 45835806361 both SUCCESS; each workflow discovered 441 tests, 440 passed and 1 skipped. Corrected current SUPP-01 from pending to VERIFIED_WITH_LIMITATIONS-equivalent status (`VERIFIED` with limitations in evidence), set project gate PROJECT_RESEARCH_C_D_E_F_AND_SUPPLEMENTARY_CLOSED_WITH_DOCUMENTED_LIMITATIONS, and handed off to final report/presentation. No new samples or analyses generated in this state-only update.
+
+2026-11-27: Supplementary S3 completed as a post-hoc within-task repair prioritization extension on the same original 64 Development and 200 Held-out Research C SCMs. Read-only SQLite hashes and original input bindings matched; S0/M4/Full Greedy B0-4 replay matched. Evaluated all 63 T1-T6 greedy subsets for B1-4 and 13 prelisted 2-step lookahead subsets at B2; 10,000 paired SCM-bootstrap draws were used for specified pointwise contrasts. Deterministic restoration reconstructed 264 original observation matrices in memory; no new SCM, G0, independent observation draw, intervention row or Research D run. The first exploratory run preceded a committed S3 revision, so results remain post-hoc; multi-edit interaction, gamma sensitivity, full 63-lookahead and D unit-level reanalysis were not completed. New public outputs aggregate by cohort only; private unit-level files are ignored. See research/within_task_repair_prioritization/.
+
+
+2026-11-27: S3 correction replay completed on PR #50 branch at immutable analysis revision `616ec21499eb4cd4b43139423240cd380a643d86`, using correction contract committed at `b832001c701f8183cb7ddb53ba02950785a36a9a`. Recomputed 63 T1–T6 Greedy subsets at B=1–4 and all 63 two-step Lookahead sets at B=2, plus S0, Full Greedy, Canonical Oracle, frozen M4, four error-type-first variants, and exact uniform Random-M4 sequence expectations at B=1/2. The four source SQLite hashes matched before/after; no new SCM/G0/independent observation/intervention rows were generated. Historical S3 output remains preserved and marked superseded for corrected graph/Regret results. Ex-post best edit/sequence, gamma sensitivity, Holm-adjusted inference, and Research D unit-level extension remain NOT_RUN; Gate is `S3_CORRECTION_RECOMPUTED_WITH_LIMITATIONS`, PR #50 open and unmerged.
+
+2026-11-27: S3 completion reanalysis on branch `research/s4-error-value-mechanisms` used only the original Research C Development/Held-out cohorts and deterministic reconstruction guarded by exact source/input digests; no new SCM/G0/observational/intervention rows. Completed aggregate-only ex-post single/<=2-edit diagnostics, all 63 metric-subset candidate rankings and lookahead fallbacks, gamma 0/.2/.5 summaries, SCM-clustered interaction and paired-bootstrap summaries. Focused tests passed 20/20. Full local discovery: 461 run, 459 pass, one frozen JSONL raw-byte failure (LF-normalized Git blob matches), one frozen dependency-fingerprint error (local NumPy/Pandas/NetworkX differ); frozen guards were not changed. Local frozen byte checks also report CRLF checkout mismatches while Git blob hashes match recorded values. S3 remains post-hoc exploratory; exact optimization is limited to the enumerated <=2-edit universe. Research D unit-level extension and independent S4 cohort are NOT_RUN. S4 contract is PROPOSED and execution is unauthorized. See `research/within_task_repair_prioritization/s4_completion/`.
+
+2026-11-27 — Research S4/S5 bounded closeout: S3 preflight source/input hashes rechecked; one locked exploratory S4 pilot completed (32 general + 32 opportunity-rich SCMs, 32,768 observations, 0 sampled intervention rows); existing S4 private checkpoint reused after technical evaluator/summary fixes without regenerating units. Aggregate-only pilot tables and limitations committed. S5 blocked because approved Research D unit-level artifacts are unavailable. Confirmation and external replay remain unrun/not authorized.
+
+2026-11-27 — S4-1B retrospective closeout: verified all entries in the original pilot artifact manifest and continuation lock before analysis, rechecked the full pilot manifest afterward, and reaggregated B=1 for all 63 T subsets from saved single-edit values and the locked recommendation manifest (4,032 unit-policy records; published aggregates only). No evaluator call or new SCM/G0/observational/intervention rows. Corrected the interpretation of the S4 General cohort because Q-common admission is stricter than frozen Research C, and paired policy contrasts now use same-budget M4. Opportunity-rich mean initial K=2.34375; M4 B2 matched the limited <=2-edit ex-post benchmark in 31/32 per cohort. S4-2 matched corruption/objective robustness remain proposals; S5 unit artifacts remain unavailable. Analysis lock/source commit 5b64b9ec77f6aeaac56c140624962b3e8541789e; outputs and hashes in retrospective_manifest.json.
+
+2026-11-27 — S4-1B validation: new artifact tests + existing S4 pilot and S3 structural metric tests passed 19/19. Full local discovery ran 472 tests: 470 passed, one failed on `step4b4_mock_pipeline_run_v2.jsonl` raw SHA mismatch against its frozen manifest, and one errored because local NumPy 2.4.6/Pandas 3.0.3/NetworkX 3.6.1 differ from the frozen runtime fingerprint. No frozen guard was changed. Research-state validation and diff checks pass. CI has not run because this work is not in a PR; PR #50/main were not touched.
+
+2026-11-27 — S4-1B final source correction: the locked reaggregation was aligned to the existing S3 selector’s no-positive-T-gain fallback (positive M4 gain, otherwise no edit), then rerun from saved candidate values and locked recommendations at commit 5dae72c34e61d89f9364c1acf8b8738ee83f7a0b. Cohort-policy regret aggregates were unchanged; final-graph/action redundancy was recomputed. Final output hashes and private-row hashes are in the retrospective manifest. Final revision full discovery: 472 tests; 470 passed, 1 frozen raw-ledger SHA failure, 1 frozen dependency-fingerprint error; focused S4/S3/retrospective suite 19/19 PASS; research-state and diff checks PASS.
+2026-11-27 — S4-1B K-stratified B1 retrospective analysis completed from hash-verified saved pilot and private unit results at code revision e9f77f15a27b22b162542d896377d4eb8a6b13e4. Added locked descriptive K strata contract, aggregate-only 567-row cohort×K×T-subset table, report interpretation, and regression checks; no SCM/G0/observations/interventions generated. K=0/1 General and K=3 cells were entirely tied; opportunity-rich K=2 had non-tied units in 60/63 subset aggregates, while General K=4 differences came from a single SCM. These are descriptive and do not establish a causal K effect. Focused S4 retrospective tests 4/4 PASS. Full discovery 473: 471 passed, 1 frozen raw JSONL hash failure in Windows checkout and 1 frozen dependency fingerprint error (NumPy 2.4.6/Pandas 3.0.3/NetworkX 3.6.1); no guards relaxed. Main and PR #50 unchanged; feature branch push pending.
+2026-11-27 — First push Actions run `45963311418` failed on this commit with two aggregate hash assertions caused by Windows CRLF versus Linux LF checkout and one existing S4 resource-monitor test invoking Windows-only RSS on Ubuntu. Kept original Windows execution-byte SHA values, added separate canonical-LF content hashes (newline bytes only; numeric/field content unchanged), and made the resource test verify Windows RSS versus non-Windows fail-closed behavior. Production guard and frozen checks unchanged. Focused S4 tests 11/11 PASS; state validator and diff check PASS. Correction commit and replacement Actions run pending.
+2026-11-27 — Replacement GitHub Actions run 45964027681 on code revision `d0867aebcd57099652c16a54f1ac9068458c1965` succeeded: 473 tests discovered, 472 passed, 1 skipped, 0 failed. The line-ending-aware aggregate digest checks, S4 resource-test OS branch, state validation, frozen asset validation and remaining workflow validators all passed. Initial failed run 45963311418 is retained as history; branch result is validated by the succeeding run. Main and PR #50 remain untouched.
+
+2026-11-28 — Original-PC continuation: verified remote main and S4-S5 branch refs; the four reported other-PC commits and feature ref are absent. Read-only check found S4 pilot private records and v3 aggregates, but no S4-3 archive. Corrected the interpretation of the prior outside-task-FN zero as no direct M4 edit evaluation (the saved runner filters candidate edits through direct_task_edit), not evidence of zero decision value. The designated Research D root contains only the historical final-reaudit JSON, SHA-256 6fa458199ea814a61248a1088bbe5a3b96a586916516c02a1dd6b54c0331292b. The observed Python numerical packages differ from the historical fingerprint and R/Rscript/rpy2 are unavailable; no rebuild, download, DRF refit, G0 or response sampling was attempted. S5 is blocked before execution; counts generated this continuation: 0 SCM/G0/observations/recommendations/responses.
+
+2026-11-28 — Authorized S4 reconstruction and S5 continuation started on `research/s4-reconstruction-s5-validation`, based on verified remote research branch HEAD `6a5418ade299a8c746c0c1db1c84cbea4afd23b4`. Confirmed cross-PC S4-3 source commit remains unavailable; locally present S4 private pilot and C Development/Held-out SQLite sources were hash/integrity checked read-only. Added a separate S4 reconstruction runner/contract and regression tests; no new SCM/G0/observation or intervention response has yet been generated. Python 3.11.15 venv launch is blocked by Windows application-control, so isolated external package targets are being used with the verified interpreter. Official CRAN R 4.5.3 installer MD5/SHA-256 verified and installed in an S5-only path; drf 1.3.1 binary dependencies are being installed to its isolated R library.
+2026-11-28 — S4 development reconstruction completed under external lock for execution revision f60f50f0d6f11cc2b8135607e7ddf99a7e19d730: 80 SCMs, 40,960 observations, 80 G0 analysis draws, 11,360 policy-budget rows, 367 sealed recommendation rows, 0 sampled intervention rows. Initial feasible M4 candidates: mean 1.0375; 23/80 had at least two. T5−M4 B1 mean −0.0039669 (SCM bootstrap 95% [−0.0102206, 0]), 2 better/0 worse/78 ties; exploratory only. Private archive SHA-256 e661150559f0e94dab658f339a4568bfb1d0e0325bb8716047c7b45aa42da358 stored on same device only. Historical other-PC S4-3 remains unverified. S5 runtime smoke confirms Python 3.11.15/R 4.5.3/drf 1.3.1/rpy2 3.6.2 but causalAssembly import initially resolved to the PyPI package until PYTHONPATH was corrected to the pinned source checkout; no S5 fitting or outcomes generated yet.
+2026-11-28 — S4 independent T5 replication completed using the precommitted code and a new seed namespace: 160 SCMs, 81,920 observations, 160 G0 analysis draws, 746 sealed recommendation states, 22,720 policy-budget rows, 0 intervention response rows. Primary T5−M4 B1 gamma0 mean −0.0086644; 95% common-index paired SCM bootstrap interval [−0.0203910, 0]; better/worse/tie 4/1/155; target half-width .010 missed slightly (~.01020). T5 graph/action agreement with M4 148/160 and 155/160; equal mean edit cost .60625. No superiority or equivalence claim. Private archive SHA-256 b5b62bd6702b9fd54ddaaa03248e129e44d108b9763a031b9416a45090fa53bf, same device only; no off-device backup.
+2026-11-28 — Completed direct retrospective single-edit replay on 304 saved S4 units (historical pilot 64, reconstructed Development 80, independent replication 160): enumerated 759 reference-relative corrections, 747 DAG-legal and 12 infeasible; no new sample generation. Direct outside-task FN edits were neutral in the exact 77 legal cases observed, while outside-task FP/REV include neutral and nonzero counterexamples. Results are descriptive and candidate edits are clustered within unit. Private archive SHA-256 99ec206b7509261ddcce5e1d01c3f0d45c2dbcafdfd9f56da5aa0b33223eda28, same device only. S5-specific Python/R/DRF/causalAssembly smoke passed using pinned source import; 8 observational smoke rows and one hard-do row are excluded from final estimates but counted against total response cap.
+2026-11-28 — S5 run implementation preflight: added separate recommendation/evaluation locks, exact Git tree binding and RNG collision checks including fit, action, Random-M4 and bootstrap streams. The Windows process-tree supervisor will enforce cumulative wall/RSS limits and preserve interrupted output without retry. Focused S4/S5 contracts: 15 passed; code compiles; research-state check and diff check pass. No S5 G0 or evaluator response has been generated yet.
+2026-11-28 — S5 technical attempts: attempt 01 failed before sampling because R_HOME pointed one directory above the installed R executable; 0 study rows generated. Attempt 02 corrected R_HOME, fit the pinned DRF, and generated the one locked 512×6 training frame; recommendation failed before G0 at a helper NameError. Preserved the frame (raw SHA-256 1362a55c49fa765b7ddb7b2c6da12b67e829a77fe94a83de6dcac64137ce74fd; numeric SHA-256 6f752a68fbe657fb4f0c9e4938aadb3a3e0ff9b38ccc4630eea4f66092976c75). Added hash-locked byte-exact training continuation; no new frame draw, G0 or intervention response will replace it.
+2026-11-28 — The first continuation-revision Actions run failed only because the new contract test imported pytest, which is not installed by the repository's unittest-only CI requirements. No G0 or response rows were generated. Replaced that assertion helper with standard-library unittest; preserved the single existing training frame and will keep its raw/numeric hashes bound in the next execution lock.
+
+2026-11-28 — Final Research E extension and project integration: read-only re-aggregated 16,560 preserved S4 (80 development + 160 replication SCMs) and S5 (200 conditional G0 draws) unit-policy-budget records over their available B=0–4 range; wrote cohort-specific marginal, Pareto, lambda and shared-index paired bootstrap tables. No new SCM, G0, observations, DRF fit or intervention responses. S4/S5 B=5–9 not run because sealed recommendation/evaluator records stop at B=4; no extrapolation. Added final evidence matrix, scientific integrity review, integrated report and report/presentation outlines. Focused new tests 3/3 pass; state generator/check pass; full CI pending on pushed revision. Same-device S5 archive remains without off-device backup.
+
+- 2026-11-28 E-EXTENSION-CLOSEOUT 마감: 저장된 S4/S5 결과 16,560 unit-policy-budget rows를 재집계하고 C/S4 regret과 S5 tracking loss를 분리했다. 신규 SCM/G0/관측/개입 표본, Research F 및 B5–9 replay는 실행하지 않았다. focused tests 4개 PASS, git diff --check PASS. 최종 documentation cleanup commit 65a49c0592ef915c6886e5821cefe7a196cdca2a의 GitHub Actions 46051744319 성공. E extension은 범위 제한에 따라 PARTIAL 유지; 후속은 보고서/발표 준비.
+
+2026-11-28 — S6/S7 integration checkpoint: S6 saved-record reaggregation and limitations were added to the final framework/evidence matrix. S7 live status was sampled read-only at 14:53 KST: 0/400 G0, 0/24,000 recommendations, zero completion in the previous 10 minutes; task_zone recursive path traversal at policy_engine.py:93 remained active. 11,195/14,400 wall seconds elapsed; RSS 86,867,968/4,294,967,296 bytes. No intervention evaluation launched. Training frame is the only checkpoint; exact resume at unit boundary is unavailable. Pushed d057fe15c70420e0e651e36a3f58e74ce1664eae; draft PR #51 remains unmerged; CI runs 46113812900 and 46113889243 passed.

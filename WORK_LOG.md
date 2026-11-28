@@ -2,6 +2,13 @@
 
 기록 원칙: 실질 작업마다 날짜, 브랜치/커밋, 실행 명령, 실제 결과, 미수행/차단 사항을 추가한다. 이 문서는 작업 성공을 추정하지 않는다.
 
+## 2026-11-16 — Step 4C-2 final freeze closure
+
+- Requalified the production-isolated fixed-fixture path on Windows/CPython 3.11.15: 14/14 preserved strict-Q topology fixtures completed with 14/14 identical-ledger replays, no 2-second unit timeout, max stage 1.219 s, full-path max 9.255 s, sampled child RSS max 70,930,432 bytes, shared fixture-root storage 1,730,470 bytes. Six source topology strata had no accepted fixture and remain unavailable; no study SCM was sampled (`independent_scm_n=0`). Evidence: `research/budget_aware_refinement/step4c2_resource_qualification_v2.json`.
+- Separate fixed-key proposal timing covered 20 strata (7 accepted timing fixtures, 13 structural rejections); this is not a yield estimate. Conservative measured-cost extrapolation was ~737 s for 64 admissions/386 proposals and ~2,264 s for 200/1,104, without a worst-case guarantee.
+- Frozen safe-stop settings are 2 s/unit, 1,800 s/SCM active stages, 7,200 s/cohort active stages, sampled 512 MiB RSS, 100 MiB individual ledger and dedicated cohort root, 5 MiB failure reserve, and 1 GiB free-disk floor. The content manifest excludes itself; commit/tree are recorded externally.
+- Python 3.11.15 full local suite: 261 PASS. Research-state and docs checks plus `git diff --check` passed; Git-blob SHA-256 matched all 39 frozen assets. Exact-head GitHub Actions and PR Self-Review remain pending the final commit. No development/held-out cohort, research Decision Regret analysis, Step 5/6 or manufacturing intervention effect was run. PR #38 remains Draft/unmerged; protocol freeze is not cohort authorization.
+
 ## 2026-10-23 — Slack 자산 및 연구 운영 정비
 
 - 브랜치: `feature/slack-assets-research-ops` (커밋/PR은 이 작업 완료 시 Git 이력 참조).
@@ -331,3 +338,57 @@ PC/BOSS1/12·Direct/DAGMA3/12확정경로;이는조건부기준대체진단이�
 - 현재MFG-INTEGRATED 대시보드는후속실행결과를가리키도록갱신하고중복실행대기열에서제외;과거PR24정적판정과실험JSON은보존.새우선작업은MFG-MICRO의방법론결정하나.
 
 - 수용검사커밋c6b3e386cc9838e245fd226f50ccd809af479fc7 push,PR25(basePR24) 생성.최종head CI는별도확인하며자체CI가외부acceptance성공을뜻하지않음.원본미수정/CONDITIONAL_NOT_ACCEPTED/후속sampling중단유지.
+
+## 2026-11-05 — 예산 제약 구조 개선 연구 설계 후보
+main cdb2c7d 기반 별도 브랜치에 Phase1~5 프로토콜·지표·16개 정책·oracle/비용·독립평가 및 미결정 항목 초안 작성. 새 학습·SCM·개입·시뮬레이션 미실행. 기존 공식 설계와 미병합 PR은 보존.
+
+## 2026-11-10 — Step0 연구 계약 전환
+15개 지표 조합을 archived design으로 보존하고 FN/FP/REV 7조합 × Global/T, baseline·후회·oracle·독립 평가 및 문헌 검토를 문서화. 신규 실험·확인 데이터 열람 없음. Step1 이후 미실행.
+
+## 2026-11-10 — Step1 소형 DAG 정책 검증
+공통 seed 회전 균형 유형 일정으로 Global/T의 유형 교란을 완화. FN/FP/REV, cycle, 순서, 비용, 불변 ID, 점수·14정책 및 정보 경계를 소형 fixture 17건으로 확인. 장래 엔진/기준선과 실제 실험 미실행. STEP1_POLICY_SPEC.md 참고.
+
+## 2026-11-10 — Step2 정책 엔진 구현
+14개 개선 정책·세 baseline·예산 장부 및 graph-only adapter 구현. 소형 엔진/Step1 관련 34개 검사와 동결39개 hash 확인; 전체 기존 단위검사 및 원격 CI 확인 중. 신규 SCM·실험은 실행하지 않음.
+
+전체 기존 단위검사139개 통과(82.070초); 이후 입력 검증·import 및 양의 Path F1 개선 경계를 보강한 최종 코드에 대해 관련34개를 재통과했다. 외부 CI는 최종 커밋에서 별도 확인한다.
+
+첫 엔진 커밋9b83d51의 GitHub Actions 전체 성공(42776999729). 이후 공개 Path F1 입력 DAG 검증 및 모의 평가 경계·120 임의 DAG 대조 테스트를 추가; 새 HEAD의 CI는 별도 확인 필요. 관련36개 테스트 통과.
+
+Step2 엔진 f1494e7 GitHub Actions 42777224302 최종 성공, 전체141개 단위검사 및 관련36개 검사 확인. Step2 DONE, Step3 본 파일럿 미실행. mock 정보경계는 실제 SCM 연동 검사와 구분한다.
+
+- 2026-11-10: 예산 연구 Step3 실제 Ridge 연결 및 S1/S7 개발 파일럿 114회(실패 0, 전부 후회 0); 단일 FN 조건으로 구별력 제한, 확인 실험 아님. `research/budget_aware_refinement/STEP3_PILOT_REPORT.md`. Step3 IN_PROGRESS.
+
+- 2026-11-10: Step3 직접 과제의 상류 누락 간선과 무변경 예측을 확인; 사전계획된 S1/S7 단일·복합 오류 및 직접·경로 과제 456회 개발 진단, 실패 0. 원본 114회 보존. 상세 `research/budget_aware_refinement/STEP3_SUPPLEMENT_REPORT.md`; 확인 연구 아님.
+
+- 2026-11-10: Step3 구현 531486a GitHub Actions 42780815082 성공 및 로컬 전체 149개 검사 통과; Step3 DONE, Step4 사전등록 미시작.
+
+- 2026-11-10: Step4 기존 456행 교차 분석: 경로 부재 248회가 양의 후회 248회와 동일. 신규 확인 결과 생성 없이 표본·통계·실패 계약 초안 작성; 생성기 적격성 및 자원·실패 규칙 미동결로 IN_PROGRESS.
+
+- 2026-11-10: 저장소 통합 준비. 원격 38개 기존 브랜치의 SHA별 주석 태그와 병합 전 main 기반 attic 인덱스를 보존했다. PR #26–35와 미확인 작업은 검토 필요로 유지. PR #36 개발 통합은 최소 1명 리뷰 및 최종 검사 후에만 수행; 연구 완료로 간주하지 않는다.
+
+- 2026-11-11: 통합 문서 작성 중 보호된 RESEARCH_DESIGN.md의 변경으로 기존 검증 3개가 실패해 즉시 문서를 원복했다. 이후 전체 151개 검사와 동결 39개 hash·상태 검사가 통과했다. 보관 인덱스에 브랜치별 고유 commit 목록과 main 대비 경로 및 merge base를 추가했다.
+
+- 2026-11-15: 저장소 운영자의 명시적 요청으로 Solo Research Self-Review 정책을 채택했다. PR #36의 개발 통합과 Research Completion을 분리하고, 공식 자기 APPROVE 없이 검사 결과를 PR Conversation에 남기는 절차로 전환했다. 이번 문서 변경은 연구 상태를 바꾸지 않으며 Step 4는 IN_PROGRESS/NOT FROZEN이다. Windows Python 3.14 로컬 전체 151개 중 1개가 저장된 실험의 부동소수점 정확 일치 검사에서 실패했다. 관련 46개 검사는 통과했다. 비추적 `data/local/datasetTE.csv`가 없어 로컬 복구 검사는 완료하지 못했다. 최종 HEAD의 Python 3.11 CI, 병합 및 main CI 결과를 별도로 확인한다.
+- 2026-11-15: Step4A partial implementation added topology-only DAG templates and atomic FN/FP/REV injection. Eight focused tests pass. One fixed multiple-path probe exposed infeasibility for a path-preserving FN/FP/REV recipe under its density augmentation; chain B is structurally infeasible. No full matrix, SCM coefficients, observations, or outcomes were generated. See `research/budget_aware_refinement/STEP4A_GENERATOR_FEASIBILITY_REPORT.md`; Step4 remains IN_PROGRESS.
+
+## 2026-11-15 — Step 4B-3 estimand·RNG structural audit
+
+- Branch `feature/step4b-task-budget-feasibility`, PR #38 (Draft, unmerged). Preserved v4 P matrix re-run with Step 2 graph-only engine: 34,370 policy/Matched Random pairs, all same final graph at B=4; edit-sequence differences only in 412/14,000 A pairs. Artifact `research/budget_aware_refinement/step4b3_p_b4_random_audit_v1.json.gz`, SHA-256 `f879ea7a30ff74659329fe99d6f054f3c2f3815234b7e5a4bf8aef4152400d26`.
+- Added context-keyed SHA-256 RNG streams and separate policy schedule seed. New structural-only grid contains 100 topology attempts, 1,000 planned P rows, 600 planned Q cells; no retries/replacements, failed rows retained. Q-common support 34/100 topologies; accepted Q FN/FP/REV 34/197/55 and 121/286 accepted cells differ in rank/final graph at B=1. Raw v1 SHA-256 `ed55c075c5f20210f0c80e0c84bb4570376829065290a23e2b29802728ff1707`; settings SHA-256 `ecc8e548d7904751fd9f88581257655f4489c2edfbd7e14f3410691b60a5f4ed`.
+- Tests: Python 3.11 focused Step4B1/B2/B3 suite 28 PASS; research state/docs checks PASS; `git diff --check` PASS; frozen graph manifest normalized hashes 39/39 PASS. Full `unittest discover -s tests -q` attempted: 146 tests discovered, 16 import errors because this local Python 3.11 runtime lacks NumPy; do not report full suite as passed. Windows `scripts/check_asset_manifest.py` separately reports config hash mismatch under CRLF checkout; normalized frozen-file hashes pass. GitHub Actions run #199 passed on exact code HEAD `3d0bd230962c49ec24c77de5b385ad2c393b0865`, including full test discovery and repository checks; a documentation-only follow-up will receive a separate HEAD check.
+- Added proposed Q-common/B=1 H2 primary estimand and retained P/B=4 as exploratory; no coefficients, observations, fitted SCM, effects, regret, policy performance, confirmation SCM, or Step5 run. Statistical/sample/failure/resource limits remain open; Step4 IN_PROGRESS / NOT FROZEN.
+
+- Step 4B-3 gate disposition: DONE for the requested structural decision and RNG audit, based on exact code HEAD `3d0bd230962c49ec24c77de5b385ad2c393b0865` CI run #199 and the documentation/status follow-up HEAD `d9c6541de3361fd0317d256781228e3617584287` CI run #201; current Self-Review comment is anchored to the follow-up HEAD. Step 4B-1/2 historical status and the overall Step 4 IN_PROGRESS / NOT FROZEN state are unchanged. Next: Step 4B-4 sample, weighting, inferential, failure and resource contracts.
+
+
+- 2026-11-15: Step 4B-4 partial outcome-free readiness work on `feature/step4b-task-budget-feasibility`: 2,000 topology attempts for Q-common yield (637 eligible; raw `research/budget_aware_refinement/step4b4_q_yield_v1.json.gz`), SCM paired-difference statistical calibration (paired-t type-I 0.136 and CI coverage 0.864 under zero-heavy skew; percentile bootstrap coverage 0.8545), k=0/failure contract helpers and tests, identical-final-graph invariance test using the existing Step3 unit fixture, and bounded Python 3.14 graph/Ridge fixture microbenchmark. Step4B-4 remains IN_PROGRESS because inferential calibration, stratum-aware cap, and full 10-node compute/storage/resume evidence are unresolved. No new SCM, observations, effects, regret, confirmation sample or Step5. Tests: Python 3.11 Step4B4 contracts 6 PASS and Step4 B1/B2/B3 relevant suites 43 PASS; Python 3.14 Step3 fixture suite 7 PASS. See `research/budget_aware_refinement/STEP4B4_READINESS_REPORT.md`; PR #38 remains unmerged.
+
+
+- 2026-11-15: Step 4B-4 remediation v2 on `feature/step4b-task-budget-feasibility`: corrected true-mean CI calibration with v1 preserved, independent-seed t miscalibration reproduction, 8 abstract difference scenarios, studentized/percentile bootstrap and conservative-bound diagnostics; stratified yield interval/caps; normal paired precision, MCAR missingness completion, 512x10 dummy-resource path, and mock restart idempotence. New regression tests cover truth-specific coverage, exact/near-constant handling, strata, report/raw agreement and failure rules. Step4B4 remains IN_PROGRESS due no valid mean inference and no enforced end-to-end cap. No SCM/effect/Regret/confirmation/Step5. Python 3.11 local tests and 3.14 numeric runner results recorded in PR #38 after exact-head CI.
+
+- 2026-11-15: Step 4B-4 Final Decision Gate on `feature/step4b-task-budget-feasibility`: selected Option B and retained Q-common/indirect/B1/gamma1 Global-vs-Task-Focused SCM mean estimand while suspending confirmatory superiority claims; current contracts justify neither finite regret bounds nor t/bootstrap calibration under severe skew. Fixed operational estimation targets N=64/200 and finite planning caps 362/1,036; no power/yield guarantee. Added fsynced stage ledger and dummy graph/Ridge/recommendation/truth-stub mock runner plus process-kill/resume, torn-tail, duplicate, policy/GT failure, missing-vector, disk and stage-time tests. Disk cap enforced; time checked at stage boundaries; RSS monitoring-only. Python 3.14 Step4B1–B4/Step3 relevant suite: 115 passed; research-state/docs sync, py_compile, diff check and normalized frozen manifest 39/39 passed. Full local Python 3.14 discovery: 219 tests, one unrelated saved-experiment exact-float assertion failed (`test_diverse_structure_pilot.test_actual_saved_experiment`); exact-head Python 3.11 Actions PR run #209 (`43722451360`) succeeded on `9bcf3ae62576456013af769f682df27082a5bbba`, including full unittest discovery and repository validators. Self-Review comment `6895660448` is anchored to that exact HEAD. No new SCM, observation, effect, regret, confirmation or Step5. See `research/budget_aware_refinement/STEP4B4_FINAL_DECISION.md`; Step4B4 design decision DONE; Step4 overall IN_PROGRESS / NOT FROZEN.
+
+- 2026-11-16: Step 4C-2 freeze audit on `feature/step4b-task-budget-feasibility`: unexpected proposal exceptions, malformed/unknown results and replay mismatch now persist fatal generator errors and stop at the same candidate; Q rejection/yield denominator unchanged. Added opt-in whole-cohort storage accounting distinct from the per-ledger cap. Fixed-fixture resource qualification reused deterministic inputs at 6–10 nodes, 3 repeats each: production-path median 0.145–0.280 s, max ledger 91–136 KB, resume median 0.004–0.006 s; not independent SCMs or cohort-scale tail guarantees. Final local Python 3.11.15 `unittest discover`: 257 passed; focused cohort/production tests 28 passed; manifest hash test, research-state, docs sync against origin/main, `git diff --check` passed. The Git-blob check confirms 39/39 frozen assets; Windows worktree raw-byte verification shows CRLF-only mismatches on 31/39, while CRLF-normalized data matches. Current-head Linux CI/Self-Review pending. No study cohort, research regret experiment, Step5/6 or main merge. See `research/budget_aware_refinement/STEP4C2_FINAL_FREEZE_AUDIT.md` and `step4c2_resource_qualification_v1.json`; Step4C2 IN_PROGRESS, Step4 NOT FROZEN.
+- GitHub Actions run #237 on `f2c1ec7e91beba258e442ee934c9b1665306418d` ran the full suite and found only the production manifest test's `.txt` newline-normalization omission (`requirements.txt`: LF in CI, CRLF in Windows working tree). The manifest test now normalizes `.txt/.toml/.yml/.yaml` alongside `.py/.md/.json`, and manifest hashes were regenerated using the same rule. This correction is separately committed and awaits exact-head CI; the corrected full Python 3.11.15 suite passes 257 tests locally. Run #237 remains recorded as failed, not passed.
+- GitHub Actions run #239 passed on exact implementation HEAD `890b0d23753b23c6cdee57421f022466ff5ef338`, including full 257-test Python 3.11 discovery, Linux frozen-asset validation, research-state, PR integration and document sync. A subsequent documentation/status follow-up records that result and will receive its own exact-head Actions run before Self-Review. PR #38 remains Draft/unmerged; Step 4C-2 remains IN_PROGRESS.

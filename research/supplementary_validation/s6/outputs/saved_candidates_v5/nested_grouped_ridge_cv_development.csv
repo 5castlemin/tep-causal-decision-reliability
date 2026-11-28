@@ -1,0 +1,4 @@
+cohort,model,n_scms_with_oof_predictions,candidate_rows,mean_scm_balanced_mae,median_scm_mae,alpha,folds,features,status
+development80,A,48,83,0.1196333083743426,0.07557750374488387,1.0,deterministic 5-fold SCM grouped,"M4 gain, initial candidate count, operation indicators",POST_HOC_AUXILIARY
+development80,B,48,83,0.11976690404997488,0.07544066242839058,1.0,deterministic 5-fold SCM grouped,A + error-type indicators,POST_HOC_AUXILIARY
+development80,C,48,83,0.12487179632000979,0.06740005188079995,1.0,deterministic 5-fold SCM grouped,B + T1-T6 gains,POST_HOC_AUXILIARY

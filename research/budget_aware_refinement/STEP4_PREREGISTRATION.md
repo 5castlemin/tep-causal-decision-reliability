@@ -1,0 +1,23 @@
+# HISTORICAL PROPOSAL — SUPERSEDED
+
+> Current status (2026-11-16): Step 4 protocol/execution contract is FROZEN in `STEP4_CURRENT_ACTIVE_CONTRACT.md` and `STEP4_FROZEN_PROTOCOL.md`. This document preserves earlier proposals and is not an execution instruction. Step 5/6 cohorts remain NOT RUN.
+
+This document preserves earlier preregistration drafts. The active contract is `STEP4_CURRENT_ACTIVE_CONTRACT.md`; this file is not the current execution authority. Step 4 remains NOT FROZEN.
+
+# Step 4 provisional registration — NOT FROZEN
+
+## Current design disposition (2026-11-15; prospective, still NOT FROZEN)
+
+The prior P/B=4 selected-policy-versus-Random question is historical and is not the current primary. The current planned target is Q-common indirect-only at B=1, gamma=1, Task-Focused versus ID-ordered Global, with equal FN/FP/REV weighting in one SCM-level mean. See `STEP4B4_FINAL_DECISION.md` for the inferential restriction: Option B suspends confirmatory superiority claims because neither a finite paired-regret range/variance nor acceptable tail calibration is justified by current contracts. Report the arithmetic SCM mean and distribution; any t interval is an explicitly assumption-dependent reference only. Do not claim 5% superiority or equivalence.
+
+Use operational target counts N=64 development and N=200 confirmation for descriptive estimation; these are not power guarantees and development does not adapt confirmation N. The topology proposal chooses each of 20 template×node-count strata with probability 1/20 and accepts all Q-common candidates. Candidate caps are 362 and 1,036 respectively; these planning ceilings are not guaranteed yield. Shortfall or any incomplete three-type SCM vector suspends target-population inferential claims. Historical proposals below are retained as version history and are superseded by this addendum.
+
+2026-11-10; reference commit `42b7c2a0e9d6c11ed72aae4205c0bb7114221a2a`; source and recorded SHA: `STEP4_READINESS_AUDIT.md`. The present documents are a reviewable proposed contract, not authorization to generate or view confirmation SCMs. No confirmatory analysis has been run. Freeze requires resolution of the readiness audit, version-pinned code, immutable hashes and a dated pre-execution registration. Do not treat these numbers as executed or validated.
+
+Proposed cohorts: 64 newly generated development SCMs and 200 independently generated confirmation SCMs, fixed prior to execution. No S1–S8/C01–C12 in either. Assign independent top-level `SeedSequence` children to cohort/SCM and disjoint children to topology, coefficients, noise, observed data and error graph; log entropy, spawn keys and generator version, and check duplicate graph+equation content hashes before access. A duplicate or failed generation is retained and replaced only according to a prespecified bounded structure-only retry rule, which remains unresolved. Never screen by GT effects or regret.
+
+Candidates: two balanced, preselected direct/path tasks per SCM, three structural error conditions, n=512 common training rows, Ridge alpha=1, five existing k levels, ddof=1, delta balanced by SCM/task index, budgets {0,1,2,4,6}, gamma=1. All policies share each task/data/initial graph. No-edit and 14 policies are evaluated; random oracle has five seeds; Path F1 has extra truth-path access. See generation, sample size, statistical and failure drafts. Candidate budgets are not frozen until their feasibility and runtime are checked.
+
+Development policy: at B=4, gamma=1 average each policy's regret over the same two tasks and three error conditions with equal weights, then average over 64 independent SCMs; select minimum. Exact numerical ties resolve by fewer allowed types, then fixed lexicographic policy ID (not outcomes). If there are execution failures, do not select a winner until the failure contract in the companion document is implemented. Freeze the selected ID, schedule, task and weighting rules, code hashes and analysis before opening confirmation data. Confirmation may refit the fixed learner to its own train set, never reselect the policy.
+
+For selected allowed-type set, matched random uses that same set, same initial graph, type schedule, gamma, budget and DAG rules; random seeds {0,6,12,18,24} keep `seed % m = 0` for m=1,2,3, matching policy schedule seed 0 while varying its RNG. Verify this engine coupling in tests; equal starting schedule does not force equal realized edits. Matched Path F1 uses the selected type set and schedule seed 0, but additionally accesses reference path edges and can spend less. Full-pool random/path are exploratory only. Existing Step 3 full-pool results remain unchanged.

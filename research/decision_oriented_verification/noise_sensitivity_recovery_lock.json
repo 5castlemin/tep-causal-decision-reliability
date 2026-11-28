@@ -1,0 +1,22 @@
+{
+  "study": "Research F-Lite hypothetical expert-noise sensitivity",
+  "run_id": "f-lite-noise-sensitivity-v1-recovery",
+  "status_at_lock": "DEVELOPMENT_REUSED_HELDOUT_PENDING",
+  "runner_commit": "68afbd0abcde2a53110c7c599352ba8a68049201",
+  "runner_path": "research/decision_oriented_verification/run_expert_noise_sensitivity.py",
+  "runner_raw_sha256": "993fd36f6f97d427bbcb21ae922fb44e1002715e13fe4c8820745692cd224131",
+  "runner_git_blob": "8d58f195cbe7227b05ac51127eb7696dafbf1836",
+  "original_sensitivity_lock_sha256": "f2cb747a833875bab447229cda0979e48392d980a7be20be0f04e7bd6a6cd209",
+  "source_execution_lock_sha256": "70aeb723faa5f87fc1023026894a099b144134f8a3fcb332651f530a0b598ece",
+  "inputs": {
+    "C_DEVELOPMENT_cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "C_DEVELOPMENT_proposal": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "C_HELDOUT_cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "C_HELDOUT_proposal": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+  },
+  "contract": {"accuracies": [0.9, 0.8], "repeats_per_scm_accuracy": 16, "budget": 4, "policies": ["RANDOM_VERIFICATION", "SUSPICION_ONLY", "DECISION_IMPACT_ONLY", "DECISION_WEIGHTED_VERIFICATION"], "development_scm": 64, "heldout_scm": 200, "max_total_trajectories": 33800, "max_queries": 135200},
+  "seed_namespaces": ["hypothetical-expert-noise", "hypothetical-expert-noise-random-policy"],
+  "resources": {"wall_cap_seconds": 7200, "rss_cap_bytes": 4294967296, "previous_attempt_elapsed_seconds": 647.8},
+  "recovery": {"attempt_1": "Development recommendations and evaluator rows completed and persisted (8192 each); summary failed because query history has no correct field. No hidden replacement; these exact saved files are reused read-only.", "attempt_2": "aggregates saved Development rows, then runs Held-out once with same seed derivation. No new Development trajectories.", "new_input_samples": 0}
+}
+

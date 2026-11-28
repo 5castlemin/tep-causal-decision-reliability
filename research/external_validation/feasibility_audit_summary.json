@@ -1,0 +1,51 @@
+{
+  "audit_date": "2026-11-25",
+  "base_main": "7742180cef09b506e3d26e56d58a03b3d6a4e37d",
+  "research_c_integration_pr": 39,
+  "decision": "CONDITIONAL_GO",
+  "candidate_adopted": false,
+  "experiment_authorized": false,
+  "policy_outcomes_computed": false,
+  "preferred_candidate": "lt_spice_v1",
+  "physical_chamber_archives": 9,
+  "physical_chamber_experiment_csvs": 165,
+  "physical_chamber_rows_not_independent_n": 1643815,
+  "proposed_task": {
+    "configuration": "lt_mk2_linked_leds v1.0",
+    "command": "green",
+    "outcome": "current_led_2_uv",
+    "outcome_unit": "A",
+    "reference_path": ["green", "ir_1", "led_2_uv", "current_led_2_uv"],
+    "example_actions": [30, 45, 60, 75, 90],
+    "rows_per_action_per_configuration": [410, 1656, 3035, 1802, 418],
+    "batches_present_per_action_per_configuration": [20, 20, 20, 20, 20],
+    "independent_device_count": null,
+    "independent_evaluation_session_count": null,
+    "first_evaluation_type_proposed": 2
+  },
+  "gate_order": ["A", "B", "C", "D", "E"],
+  "gates": {
+    "lt_spice_v1": ["PASS", "CONDITIONAL", "CONDITIONAL", "CONDITIONAL", "CONDITIONAL"],
+    "lt_mk1_standard": ["PASS", "CONDITIONAL", "FAIL", "CONDITIONAL", "CONDITIONAL"],
+    "lt_malus_v1": ["PASS", "CONDITIONAL", "FAIL", "CONDITIONAL", "CONDITIONAL"],
+    "wt_mk1_standard": ["PASS", "CONDITIONAL", "FAIL", "CONDITIONAL", "CONDITIONAL"],
+    "wt_mk1_pressure_control": ["PASS", "FAIL", "FAIL", "FAIL", "FAIL"],
+    "ess_accp": ["PASS", "FAIL", "FAIL", "FAIL", "FAIL"],
+    "causal_assembly": ["PASS", "CONDITIONAL", "CONDITIONAL", "FAIL", "CONDITIONAL"],
+    "causal_man_micro": ["PASS", "FAIL", "FAIL", "FAIL", "NOT_VERIFIED"],
+    "tep": ["CONDITIONAL", "FAIL", "FAIL", "FAIL", "NOT_VERIFIED"]
+  },
+  "remaining_requirements": [
+    "Independent graph transcription review and applicable negative-pair universe",
+    "Command fidelity, temporal alignment, stability and carryover",
+    "Outcome-blind repeatable split and common finite action support",
+    "Independent device or evaluation session provenance and precision criteria",
+    "Approved treatment of constant variables and redundant measurement columns",
+    "Outcome-blind corruption feasibility and budget interpretation"
+  ],
+  "evidence": {
+    "candidate_gates": "DATASET_CANDIDATE_MATRIX.md",
+    "download_inventory": "dataset_manifest.json",
+    "file_inspection": "inspection_results.json"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "artifact_sha256": {
+    "run_step4b4_mock_pipeline.py": "a82d177bea7ddb1bf373edcfccac32de888025df5fe5f25e071214bb2266e82e",
+    "step4b4_mock_pipeline_run_v2.jsonl": "9c12a2b9d7d8fe15b886783be9f53b0486d137a742c467d0f00b653b62905c21",
+    "step4b4_mock_runner.py": "239b5c74b73f72ed17ea9809a904f34024e59b038dc6a1a9ab9dd1c4c6b1d4d3"
+  },
+  "baseline_head": "de11e99b5ba212cc4b0c89e78b95d91c6426492b",
+  "protocol": "STEP4B4_FINAL_GATE_MANIFEST_V1",
+  "settings": {
+    "acceptance": "all outcome-blind Q-common eligible proposals",
+    "candidate_caps": {
+      "confirmation": 1036,
+      "development": 362
+    },
+    "confirmation_eligible_target": 200,
+    "development_eligible_target": 64,
+    "estimand": "Q-common|indirect-only|B=1|gamma=1|Global-vs-Task-Focused|equal-FN-FP-REV",
+    "failure_rules": "incomplete FN/FP/REV vector suspends target-population inference; no zero imputation or complete-case substitution",
+    "independent_unit": "SCM",
+    "inference": "Option B; descriptive arithmetic mean; no confirmatory superiority",
+    "proposal_stratum_probability": "1/20 over 4 templates x 5 node counts",
+    "protocol": "step4b4-final-decision-v1",
+    "resource_caps": {
+      "ledger_bytes": 104857600,
+      "rss_bytes": 536870912,
+      "unit_seconds": 2,
+      "wall_seconds": 1800
+    },
+    "resource_enforcement": {
+      "ledger": "hard pre-append",
+      "rss": "stage-boundary monitoring",
+      "wall_and_unit": "stage-boundary detection"
+    }
+  },
+  "settings_sha256": "81ec984a921f8c783e4e84d26df27d1180f4848b3b5e49df626ac1c9e19044c7"
+}

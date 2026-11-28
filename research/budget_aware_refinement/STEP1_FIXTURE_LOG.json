@@ -1,0 +1,1125 @@
+{
+  "purpose": "toy DAG verification only, no SCM or empirical regret",
+  "nodes": [
+    "a",
+    "b",
+    "c",
+    "d"
+  ],
+  "oracle_reference": [
+    [
+      "a",
+      "b"
+    ],
+    [
+      "b",
+      "c"
+    ]
+  ],
+  "runs": [
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FN"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FN",
+          "operations": [
+            [
+              "FN",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        {
+          "type": "FN",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FN",
+          "b",
+          "c"
+        ]
+      ],
+      "final_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "b",
+          "c"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "spent_budget": 1,
+      "unused_budget": 1,
+      "failure_reason": null,
+      "policy_id": "G-FN",
+      "seed": 0,
+      "type_opportunities": [
+        "FN",
+        "FN"
+      ],
+      "termination_reason": "no_candidates"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FN"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FN",
+          "operations": [
+            [
+              "FN",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        {
+          "type": "FN",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FN",
+          "b",
+          "c"
+        ]
+      ],
+      "final_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "b",
+          "c"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "spent_budget": 1,
+      "unused_budget": 1,
+      "failure_reason": null,
+      "policy_id": "T-FN",
+      "seed": 0,
+      "type_opportunities": [
+        "FN",
+        "FN"
+      ],
+      "termination_reason": "no_candidates"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FP"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FP",
+          "operations": [
+            [
+              "FP",
+              "c",
+              "d"
+            ]
+          ]
+        },
+        {
+          "type": "FP",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FP",
+          "c",
+          "d"
+        ]
+      ],
+      "final_graph": [
+        [
+          "b",
+          "a"
+        ]
+      ],
+      "spent_budget": 1,
+      "unused_budget": 1,
+      "failure_reason": null,
+      "policy_id": "G-FP",
+      "seed": 0,
+      "type_opportunities": [
+        "FP",
+        "FP"
+      ],
+      "termination_reason": "no_candidates"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FP"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FP",
+          "operations": [
+            [
+              "FP",
+              "c",
+              "d"
+            ]
+          ]
+        },
+        {
+          "type": "FP",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FP",
+          "c",
+          "d"
+        ]
+      ],
+      "final_graph": [
+        [
+          "b",
+          "a"
+        ]
+      ],
+      "spent_budget": 1,
+      "unused_budget": 1,
+      "failure_reason": null,
+      "policy_id": "T-FP",
+      "seed": 0,
+      "type_opportunities": [
+        "FP",
+        "FP"
+      ],
+      "termination_reason": "no_candidates"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "REV"
+      ],
+      "candidate_operations": [
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        },
+        {
+          "type": "REV",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "REV",
+          "b",
+          "a"
+        ]
+      ],
+      "final_graph": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "spent_budget": 1,
+      "unused_budget": 1,
+      "failure_reason": null,
+      "policy_id": "G-REV",
+      "seed": 0,
+      "type_opportunities": [
+        "REV",
+        "REV"
+      ],
+      "termination_reason": "no_candidates"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "REV"
+      ],
+      "candidate_operations": [
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        },
+        {
+          "type": "REV",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "REV",
+          "b",
+          "a"
+        ]
+      ],
+      "final_graph": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "spent_budget": 1,
+      "unused_budget": 1,
+      "failure_reason": null,
+      "policy_id": "T-REV",
+      "seed": 0,
+      "type_opportunities": [
+        "REV",
+        "REV"
+      ],
+      "termination_reason": "no_candidates"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FN",
+        "FP"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FN",
+          "operations": [
+            [
+              "FN",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        {
+          "type": "FP",
+          "operations": [
+            [
+              "FP",
+              "c",
+              "d"
+            ]
+          ]
+        },
+        {
+          "type": "FN",
+          "operations": []
+        },
+        {
+          "type": "FP",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FN",
+          "b",
+          "c"
+        ],
+        [
+          "FP",
+          "c",
+          "d"
+        ]
+      ],
+      "final_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "spent_budget": 2,
+      "unused_budget": 0,
+      "failure_reason": null,
+      "policy_id": "G-FN-FP",
+      "seed": 0,
+      "type_opportunities": [
+        "FN",
+        "FP",
+        "FN",
+        "FP"
+      ],
+      "termination_reason": "budget_exhausted"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FN",
+        "FP"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FN",
+          "operations": [
+            [
+              "FN",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        {
+          "type": "FP",
+          "operations": [
+            [
+              "FP",
+              "c",
+              "d"
+            ]
+          ]
+        },
+        {
+          "type": "FN",
+          "operations": []
+        },
+        {
+          "type": "FP",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FN",
+          "b",
+          "c"
+        ],
+        [
+          "FP",
+          "c",
+          "d"
+        ]
+      ],
+      "final_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "spent_budget": 2,
+      "unused_budget": 0,
+      "failure_reason": null,
+      "policy_id": "T-FN-FP",
+      "seed": 0,
+      "type_opportunities": [
+        "FN",
+        "FP",
+        "FN",
+        "FP"
+      ],
+      "termination_reason": "budget_exhausted"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FN",
+        "REV"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FN",
+          "operations": [
+            [
+              "FN",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        },
+        {
+          "type": "FN",
+          "operations": []
+        },
+        {
+          "type": "REV",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FN",
+          "b",
+          "c"
+        ],
+        [
+          "REV",
+          "b",
+          "a"
+        ]
+      ],
+      "final_graph": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "spent_budget": 2,
+      "unused_budget": 0,
+      "failure_reason": null,
+      "policy_id": "G-FN-REV",
+      "seed": 0,
+      "type_opportunities": [
+        "FN",
+        "REV",
+        "FN",
+        "REV"
+      ],
+      "termination_reason": "budget_exhausted"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FN",
+        "REV"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FN",
+          "operations": [
+            [
+              "FN",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        },
+        {
+          "type": "FN",
+          "operations": []
+        },
+        {
+          "type": "REV",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FN",
+          "b",
+          "c"
+        ],
+        [
+          "REV",
+          "b",
+          "a"
+        ]
+      ],
+      "final_graph": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "spent_budget": 2,
+      "unused_budget": 0,
+      "failure_reason": null,
+      "policy_id": "T-FN-REV",
+      "seed": 0,
+      "type_opportunities": [
+        "FN",
+        "REV",
+        "FN",
+        "REV"
+      ],
+      "termination_reason": "budget_exhausted"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FP",
+        "REV"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FP",
+          "operations": [
+            [
+              "FP",
+              "c",
+              "d"
+            ]
+          ]
+        },
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        },
+        {
+          "type": "FP",
+          "operations": []
+        },
+        {
+          "type": "REV",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FP",
+          "c",
+          "d"
+        ],
+        [
+          "REV",
+          "b",
+          "a"
+        ]
+      ],
+      "final_graph": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "spent_budget": 2,
+      "unused_budget": 0,
+      "failure_reason": null,
+      "policy_id": "G-FP-REV",
+      "seed": 0,
+      "type_opportunities": [
+        "FP",
+        "REV",
+        "FP",
+        "REV"
+      ],
+      "termination_reason": "budget_exhausted"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FP",
+        "REV"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FP",
+          "operations": [
+            [
+              "FP",
+              "c",
+              "d"
+            ]
+          ]
+        },
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        },
+        {
+          "type": "FP",
+          "operations": []
+        },
+        {
+          "type": "REV",
+          "operations": []
+        }
+      ],
+      "rejected_operations": [],
+      "edit_sequence": [
+        [
+          "FP",
+          "c",
+          "d"
+        ],
+        [
+          "REV",
+          "b",
+          "a"
+        ]
+      ],
+      "final_graph": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "spent_budget": 2,
+      "unused_budget": 0,
+      "failure_reason": null,
+      "policy_id": "T-FP-REV",
+      "seed": 0,
+      "type_opportunities": [
+        "FP",
+        "REV",
+        "FP",
+        "REV"
+      ],
+      "termination_reason": "budget_exhausted"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FN",
+        "FP",
+        "REV"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FN",
+          "operations": [
+            [
+              "FN",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        {
+          "type": "FP",
+          "operations": [
+            [
+              "FP",
+              "c",
+              "d"
+            ]
+          ]
+        },
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        },
+        {
+          "type": "FN",
+          "operations": []
+        },
+        {
+          "type": "FP",
+          "operations": []
+        },
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        }
+      ],
+      "rejected_operations": [
+        [
+          [
+            "REV",
+            "b",
+            "a"
+          ],
+          "budget"
+        ],
+        [
+          [
+            "REV",
+            "b",
+            "a"
+          ],
+          "budget"
+        ]
+      ],
+      "edit_sequence": [
+        [
+          "FN",
+          "b",
+          "c"
+        ],
+        [
+          "FP",
+          "c",
+          "d"
+        ]
+      ],
+      "final_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "spent_budget": 2,
+      "unused_budget": 0,
+      "failure_reason": null,
+      "policy_id": "G-FN-FP-REV",
+      "seed": 0,
+      "type_opportunities": [
+        "FN",
+        "FP",
+        "REV",
+        "FN",
+        "FP",
+        "REV"
+      ],
+      "termination_reason": "budget_exhausted"
+    },
+    {
+      "initial_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "allowed_types": [
+        "FN",
+        "FP",
+        "REV"
+      ],
+      "candidate_operations": [
+        {
+          "type": "FN",
+          "operations": [
+            [
+              "FN",
+              "b",
+              "c"
+            ]
+          ]
+        },
+        {
+          "type": "FP",
+          "operations": [
+            [
+              "FP",
+              "c",
+              "d"
+            ]
+          ]
+        },
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        },
+        {
+          "type": "FN",
+          "operations": []
+        },
+        {
+          "type": "FP",
+          "operations": []
+        },
+        {
+          "type": "REV",
+          "operations": [
+            [
+              "REV",
+              "b",
+              "a"
+            ]
+          ]
+        }
+      ],
+      "rejected_operations": [
+        [
+          [
+            "REV",
+            "b",
+            "a"
+          ],
+          "budget"
+        ],
+        [
+          [
+            "REV",
+            "b",
+            "a"
+          ],
+          "budget"
+        ]
+      ],
+      "edit_sequence": [
+        [
+          "FN",
+          "b",
+          "c"
+        ],
+        [
+          "FP",
+          "c",
+          "d"
+        ]
+      ],
+      "final_graph": [
+        [
+          "b",
+          "a"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "spent_budget": 2,
+      "unused_budget": 0,
+      "failure_reason": null,
+      "policy_id": "T-FN-FP-REV",
+      "seed": 0,
+      "type_opportunities": [
+        "FN",
+        "FP",
+        "REV",
+        "FN",
+        "FP",
+        "REV"
+      ],
+      "termination_reason": "budget_exhausted"
+    }
+  ],
+  "sequences_for_order_case": [
+    [],
+    [
+      [
+        "FP",
+        "c",
+        "a"
+      ]
+    ],
+    [
+      [
+        "FP",
+        "c",
+        "a"
+      ],
+      [
+        "FN",
+        "a",
+        "b"
+      ]
+    ]
+  ]
+}

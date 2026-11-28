@@ -1,0 +1,6060 @@
+{
+  "analysis": {
+    "Global_regret_by_error_type": {
+      "FN": {
+        "maximum": 1.370357506445357,
+        "mean": 0.049373697069717434,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 200,
+        "negative_n": 0,
+        "positive_n": 28,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.17621770862520525,
+        "zero_fraction": 0.86,
+        "zero_n": 172
+      },
+      "FP": {
+        "maximum": 0.43436065759011844,
+        "mean": 0.010899121733097792,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 200,
+        "negative_n": 0,
+        "positive_n": 16,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.052310138756591185,
+        "zero_fraction": 0.92,
+        "zero_n": 184
+      },
+      "REV": {
+        "maximum": 0.9454768720582,
+        "mean": 0.04198442007945811,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 200,
+        "negative_n": 0,
+        "positive_n": 28,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.14933908711739013,
+        "zero_fraction": 0.86,
+        "zero_n": 172
+      }
+    },
+    "SCM_composite_D_i": {
+      "maximum": 0.6097471190130656,
+      "mean": 0.020072511261796423,
+      "median": 0.0,
+      "minimum": -0.14478688586337282,
+      "n": 200,
+      "negative_n": 8,
+      "positive_n": 25,
+      "q1_linear": 0.0,
+      "q3_linear": 0.0,
+      "sample_sd": 0.08242730265178631,
+      "zero_fraction": 0.835,
+      "zero_n": 167
+    },
+    "TaskFocused_regret_by_error_type": {
+      "FN": {
+        "maximum": 1.370357506445357,
+        "mean": 0.018600460234611472,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 200,
+        "negative_n": 0,
+        "positive_n": 18,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.11079168647824153,
+        "zero_fraction": 0.91,
+        "zero_n": 182
+      },
+      "FP": {
+        "maximum": 0.43436065759011844,
+        "mean": 0.008720414209421394,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 200,
+        "negative_n": 0,
+        "positive_n": 13,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.04824125331045841,
+        "zero_fraction": 0.935,
+        "zero_n": 187
+      },
+      "REV": {
+        "maximum": 0.5572633638565425,
+        "mean": 0.014718830652851199,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 200,
+        "negative_n": 0,
+        "positive_n": 19,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.06668376042772214,
+        "zero_fraction": 0.905,
+        "zero_n": 181
+      }
+    },
+    "by_delta": {
+      "-1": {
+        "maximum": 0.6097471190130656,
+        "mean": 0.019045346678567544,
+        "median": 0.0,
+        "minimum": -0.14478688586337282,
+        "n": 100,
+        "negative_n": 7,
+        "positive_n": 11,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.0960276712313464,
+        "zero_fraction": 0.82,
+        "zero_n": 82
+      },
+      "1": {
+        "maximum": 0.4071321006165944,
+        "mean": 0.021099675845025305,
+        "median": 0.0,
+        "minimum": -0.023205055853003365,
+        "n": 100,
+        "negative_n": 1,
+        "positive_n": 14,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.06658606644989697,
+        "zero_fraction": 0.85,
+        "zero_n": 85
+      }
+    },
+    "by_error_type_D_Global_minus_TaskFocused": {
+      "FN": {
+        "maximum": 0.9146206785195983,
+        "mean": 0.030773236835105963,
+        "median": 0.0,
+        "minimum": -0.10291239716066802,
+        "n": 200,
+        "negative_n": 2,
+        "positive_n": 12,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.1415717716340032,
+        "zero_fraction": 0.93,
+        "zero_n": 186
+      },
+      "FP": {
+        "maximum": 0.23158627972754497,
+        "mean": 0.002178707523676397,
+        "median": 0.0,
+        "minimum": 0.0,
+        "n": 200,
+        "negative_n": 0,
+        "positive_n": 3,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.021149976522943134,
+        "zero_fraction": 0.985,
+        "zero_n": 197
+      },
+      "REV": {
+        "maximum": 0.9454768720582,
+        "mean": 0.027265589426606916,
+        "median": 0.0,
+        "minimum": -0.43436065759011844,
+        "n": 200,
+        "negative_n": 8,
+        "positive_n": 17,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.14918647754033063,
+        "zero_fraction": 0.875,
+        "zero_n": 175
+      }
+    },
+    "by_node_count": {
+      "10": {
+        "maximum": 0.20108682054650062,
+        "mean": 0.006932420283064327,
+        "median": 0.0,
+        "minimum": -0.09690703768495694,
+        "n": 60,
+        "negative_n": 1,
+        "positive_n": 4,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.03690716670539288,
+        "zero_fraction": 0.9166666666666666,
+        "zero_n": 55
+      },
+      "6": {
+        "maximum": 0.5710779269325148,
+        "mean": 0.03719370854317853,
+        "median": 0.0,
+        "minimum": -0.023205055853003365,
+        "n": 31,
+        "negative_n": 1,
+        "positive_n": 6,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.11775337115006905,
+        "zero_fraction": 0.7741935483870968,
+        "zero_n": 24
+      },
+      "7": {
+        "maximum": 0.6097471190130656,
+        "mean": 0.03859084758552051,
+        "median": 0.0,
+        "minimum": -0.03964196816494773,
+        "n": 24,
+        "negative_n": 1,
+        "positive_n": 4,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.1334733193687838,
+        "zero_fraction": 0.7916666666666666,
+        "zero_n": 19
+      },
+      "8": {
+        "maximum": 0.3151589573527333,
+        "mean": 0.013218948608165202,
+        "median": 0.0,
+        "minimum": -0.14478688586337282,
+        "n": 28,
+        "negative_n": 1,
+        "positive_n": 3,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.07210826357023867,
+        "zero_fraction": 0.8571428571428571,
+        "zero_n": 24
+      },
+      "9": {
+        "maximum": 0.4071321006165944,
+        "mean": 0.02016212574483812,
+        "median": 0.0,
+        "minimum": -0.039696395640304104,
+        "n": 57,
+        "negative_n": 4,
+        "positive_n": 8,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.07027825631501838,
+        "zero_fraction": 0.7894736842105263,
+        "zero_n": 45
+      }
+    },
+    "by_template": {
+      "chain_mediation": {
+        "maximum": 0.20108682054650062,
+        "mean": 0.006730072417513382,
+        "median": 0.0,
+        "minimum": -0.09690703768495694,
+        "n": 49,
+        "negative_n": 3,
+        "positive_n": 3,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.04369980948462667,
+        "zero_fraction": 0.8775510204081632,
+        "zero_n": 43
+      },
+      "fork_branch": {
+        "maximum": 0.10365391836774884,
+        "mean": 0.0018253651975281583,
+        "median": 0.0,
+        "minimum": -0.039696395640304104,
+        "n": 28,
+        "negative_n": 2,
+        "positive_n": 2,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.021853505163407432,
+        "zero_fraction": 0.8571428571428571,
+        "zero_n": 24
+      },
+      "multiple_directed_paths": {
+        "maximum": 0.6097471190130656,
+        "mean": 0.03380763491892441,
+        "median": 0.0,
+        "minimum": -0.03964196816494773,
+        "n": 88,
+        "negative_n": 2,
+        "positive_n": 16,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.10635842120500993,
+        "zero_fraction": 0.7954545454545454,
+        "zero_n": 70
+      },
+      "observed_common_cause": {
+        "maximum": 0.4071321006165944,
+        "mean": 0.018815617300142647,
+        "median": 0.0,
+        "minimum": -0.14478688586337282,
+        "n": 35,
+        "negative_n": 1,
+        "positive_n": 4,
+        "q1_linear": 0.0,
+        "q3_linear": 0.0,
+        "sample_sd": 0.08200472817395206,
+        "zero_fraction": 0.8571428571428571,
+        "zero_n": 30
+      }
+    }
+  },
+  "approved_commit": "06cbd7d4e1efbbff45559eef84b280acc9d081ce",
+  "approved_tree": "661f50e7cd859f5c32d909730f686cb93251cc59",
+  "cohort": "confirmation",
+  "counts": {
+    "composite_available": 200,
+    "delta_counts": {
+      "-1": 100,
+      "1": 100
+    },
+    "fallback_uses": 0,
+    "node_count_counts": {
+      "10": 60,
+      "6": 31,
+      "7": 24,
+      "8": 28,
+      "9": 57
+    },
+    "post_admission_failures": 0,
+    "pre_admission_topology_or_task_failures": 9,
+    "q_common_structural_rejections": 466,
+    "q_common_structurally_eligible": 200,
+    "registry_accepted": 200,
+    "resource_cap_reached": false,
+    "scm_generation_success": 200,
+    "shortfall_eligible": 0,
+    "status_reason_counts": {
+      "completed|(none)": 200,
+      "proposal_failed|no_indirect_only_task": 9,
+      "structural_rejected|missing_same_type_two_candidate_support": 466
+    },
+    "template_counts": {
+      "chain_mediation": 49,
+      "fork_branch": 28,
+      "multiple_directed_paths": 88,
+      "observed_common_cause": 35
+    },
+    "three_type_evaluation_complete": 200,
+    "topology_proposals": 675,
+    "unexpected_generator_errors": 0
+  },
+  "extreme_D_i": {
+    "highest": [
+      {
+        "D_i": 0.29191707081694407,
+        "accepted_ordinal": 180,
+        "action": "V02",
+        "delta": 1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.8757512124508322,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "node_count": 6,
+        "proposal_id": "confirmation-proposal-000617",
+        "scm_id": "rep-scm-confirmation-proposal-000617-a0000",
+        "target": "V00",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.8757512124508322,
+          "FP": 0.0,
+          "REV": 0.0
+        }
+      },
+      {
+        "D_i": 0.3151589573527333,
+        "accepted_ordinal": 111,
+        "action": "V00",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.9454768720582
+        },
+        "node_count": 8,
+        "proposal_id": "confirmation-proposal-000426",
+        "scm_id": "rep-scm-confirmation-proposal-000426-a0000",
+        "target": "V06",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.9454768720582
+        }
+      },
+      {
+        "D_i": 0.4071321006165944,
+        "accepted_ordinal": 186,
+        "action": "V02",
+        "delta": 1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.6106981509248915,
+          "FP": 0.0,
+          "REV": 0.6106981509248915
+        },
+        "node_count": 9,
+        "proposal_id": "confirmation-proposal-000629",
+        "scm_id": "rep-scm-confirmation-proposal-000629-a0000",
+        "target": "V00",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "observed_common_cause",
+        "type_differences": {
+          "FN": 0.6106981509248915,
+          "FP": 0.0,
+          "REV": 0.6106981509248915
+        }
+      },
+      {
+        "D_i": 0.5710779269325148,
+        "accepted_ordinal": 57,
+        "action": "V05",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.8566168903987722,
+          "FP": 0.0,
+          "REV": 0.8566168903987722
+        },
+        "node_count": 6,
+        "proposal_id": "confirmation-proposal-000250",
+        "scm_id": "rep-scm-confirmation-proposal-000250-a0000",
+        "target": "V02",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.8566168903987722,
+          "FP": 0.0,
+          "REV": 0.8566168903987722
+        }
+      },
+      {
+        "D_i": 0.6097471190130656,
+        "accepted_ordinal": 53,
+        "action": "V04",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.9146206785195983,
+          "FP": 0.0,
+          "REV": 0.9146206785195983
+        },
+        "node_count": 7,
+        "proposal_id": "confirmation-proposal-000238",
+        "scm_id": "rep-scm-confirmation-proposal-000238-a0000",
+        "target": "V02",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.9146206785195983,
+          "FP": 0.0,
+          "REV": 0.9146206785195983
+        }
+      }
+    ],
+    "lowest": [
+      {
+        "D_i": -0.14478688586337282,
+        "accepted_ordinal": 175,
+        "action": "V03",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.43436065759011844,
+          "FP": 0.43436065759011844,
+          "REV": 0.0
+        },
+        "node_count": 8,
+        "proposal_id": "confirmation-proposal-000606",
+        "scm_id": "rep-scm-confirmation-proposal-000606-a0000",
+        "target": "V02",
+        "task_focused_regret": {
+          "FN": 0.43436065759011844,
+          "FP": 0.43436065759011844,
+          "REV": 0.43436065759011844
+        },
+        "template": "observed_common_cause",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": -0.43436065759011844
+        }
+      },
+      {
+        "D_i": -0.09690703768495694,
+        "accepted_ordinal": 153,
+        "action": "V08",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "node_count": 10,
+        "proposal_id": "confirmation-proposal-000559",
+        "scm_id": "rep-scm-confirmation-proposal-000559-a0000",
+        "target": "V02",
+        "task_focused_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.2907211130548708
+        },
+        "template": "chain_mediation",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": -0.2907211130548708
+        }
+      },
+      {
+        "D_i": -0.039696395640304104,
+        "accepted_ordinal": 85,
+        "action": "V00",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.1190891869209123,
+          "FP": 0.1190891869209123,
+          "REV": 0.0
+        },
+        "node_count": 9,
+        "proposal_id": "confirmation-proposal-000335",
+        "scm_id": "rep-scm-confirmation-proposal-000335-a0000",
+        "target": "V08",
+        "task_focused_regret": {
+          "FN": 0.1190891869209123,
+          "FP": 0.1190891869209123,
+          "REV": 0.1190891869209123
+        },
+        "template": "fork_branch",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": -0.1190891869209123
+        }
+      },
+      {
+        "D_i": -0.03964196816494773,
+        "accepted_ordinal": 139,
+        "action": "V05",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.1189259044948432,
+          "FP": 0.1189259044948432,
+          "REV": 0.0
+        },
+        "node_count": 7,
+        "proposal_id": "confirmation-proposal-000516",
+        "scm_id": "rep-scm-confirmation-proposal-000516-a0000",
+        "target": "V03",
+        "task_focused_regret": {
+          "FN": 0.1189259044948432,
+          "FP": 0.1189259044948432,
+          "REV": 0.1189259044948432
+        },
+        "template": "multiple_directed_paths",
+        "type_differences": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": -0.1189259044948432
+        }
+      },
+      {
+        "D_i": -0.03430413238688934,
+        "accepted_ordinal": 5,
+        "action": "V05",
+        "delta": -1,
+        "fallback_any": false,
+        "global_regret": {
+          "FN": 0.0,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "node_count": 9,
+        "proposal_id": "confirmation-proposal-000025",
+        "scm_id": "rep-scm-confirmation-proposal-000025-a0000",
+        "target": "V01",
+        "task_focused_regret": {
+          "FN": 0.10291239716066802,
+          "FP": 0.0,
+          "REV": 0.0
+        },
+        "template": "chain_mediation",
+        "type_differences": {
+          "FN": -0.10291239716066802,
+          "FP": 0.0,
+          "REV": 0.0
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "Option B descriptive analysis only; no confirmatory superiority/equivalence claim.",
+    "Confirmation cohort is a held-out descriptive replication, not confirmatory superiority/equivalence evidence or a population-level guarantee.",
+    "All three error types are repeated measures within SCM; the independent unit is SCM."
+  ],
+  "master_seed": 20261116,
+  "paired_policy_comparisons": {
+    "FN": {
+      "n": 200,
+      "same_action_n": 200,
+      "same_final_graph_n": 124,
+      "same_final_graph_rate": 0.62,
+      "same_selected_k_n": 186
+    },
+    "FP": {
+      "n": 200,
+      "same_action_n": 200,
+      "same_final_graph_n": 91,
+      "same_final_graph_rate": 0.455,
+      "same_selected_k_n": 197
+    },
+    "REV": {
+      "n": 200,
+      "same_action_n": 200,
+      "same_final_graph_n": 107,
+      "same_final_graph_rate": 0.535,
+      "same_selected_k_n": 175
+    }
+  },
+  "per_scm": [
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 0,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000006",
+      "scm_id": "rep-scm-confirmation-proposal-000006-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 1,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000008",
+      "scm_id": "rep-scm-confirmation-proposal-000008-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 2,
+      "action": "V09",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000011",
+      "scm_id": "rep-scm-confirmation-proposal-000011-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 3,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000012",
+      "scm_id": "rep-scm-confirmation-proposal-000012-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 4,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 1.370357506445357,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000017",
+      "scm_id": "rep-scm-confirmation-proposal-000017-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 1.370357506445357,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": -0.03430413238688934,
+      "accepted_ordinal": 5,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000025",
+      "scm_id": "rep-scm-confirmation-proposal-000025-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.10291239716066802,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": -0.10291239716066802,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 6,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000043",
+      "scm_id": "rep-scm-confirmation-proposal-000043-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 7,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000044",
+      "scm_id": "rep-scm-confirmation-proposal-000044-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 8,
+      "action": "V08",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000047",
+      "scm_id": "rep-scm-confirmation-proposal-000047-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 9,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000049",
+      "scm_id": "rep-scm-confirmation-proposal-000049-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 10,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000056",
+      "scm_id": "rep-scm-confirmation-proposal-000056-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 11,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000072",
+      "scm_id": "rep-scm-confirmation-proposal-000072-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 12,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000076",
+      "scm_id": "rep-scm-confirmation-proposal-000076-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 13,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000080",
+      "scm_id": "rep-scm-confirmation-proposal-000080-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 14,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000082",
+      "scm_id": "rep-scm-confirmation-proposal-000082-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 15,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000085",
+      "scm_id": "rep-scm-confirmation-proposal-000085-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 16,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000086",
+      "scm_id": "rep-scm-confirmation-proposal-000086-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.2052476785180181,
+      "accepted_ordinal": 17,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.6157430355540543
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000088",
+      "scm_id": "rep-scm-confirmation-proposal-000088-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.6157430355540543
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 18,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000089",
+      "scm_id": "rep-scm-confirmation-proposal-000089-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": -0.009224192089201,
+      "accepted_ordinal": 19,
+      "action": "V08",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.027672576267603,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000097",
+      "scm_id": "rep-scm-confirmation-proposal-000097-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.027672576267603,
+        "FP": 0.027672576267603,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": -0.027672576267603,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 20,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000098",
+      "scm_id": "rep-scm-confirmation-proposal-000098-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 21,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000106",
+      "scm_id": "rep-scm-confirmation-proposal-000106-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 22,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.06724808527811499,
+        "FP": 0.0,
+        "REV": 0.03335602947377092
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000107",
+      "scm_id": "rep-scm-confirmation-proposal-000107-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.06724808527811499,
+        "FP": 0.0,
+        "REV": 0.03335602947377092
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 23,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000111",
+      "scm_id": "rep-scm-confirmation-proposal-000111-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 24,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000114",
+      "scm_id": "rep-scm-confirmation-proposal-000114-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 25,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000124",
+      "scm_id": "rep-scm-confirmation-proposal-000124-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.04967045916654145,
+      "accepted_ordinal": 26,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.14901137749962434
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000128",
+      "scm_id": "rep-scm-confirmation-proposal-000128-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.14901137749962434
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 27,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000130",
+      "scm_id": "rep-scm-confirmation-proposal-000130-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 28,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000135",
+      "scm_id": "rep-scm-confirmation-proposal-000135-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 29,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000139",
+      "scm_id": "rep-scm-confirmation-proposal-000139-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 30,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000143",
+      "scm_id": "rep-scm-confirmation-proposal-000143-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 31,
+      "action": "V08",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000151",
+      "scm_id": "rep-scm-confirmation-proposal-000151-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.10365391836774884,
+      "accepted_ordinal": 32,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.31096175510324653,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000153",
+      "scm_id": "rep-scm-confirmation-proposal-000153-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.31096175510324653,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 33,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.4279396649301338,
+        "FP": 0.4279396649301338,
+        "REV": 0.4279396649301338
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000154",
+      "scm_id": "rep-scm-confirmation-proposal-000154-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.4279396649301338,
+        "FP": 0.4279396649301338,
+        "REV": 0.4279396649301338
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 34,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000157",
+      "scm_id": "rep-scm-confirmation-proposal-000157-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 35,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000169",
+      "scm_id": "rep-scm-confirmation-proposal-000169-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 36,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000183",
+      "scm_id": "rep-scm-confirmation-proposal-000183-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 37,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000186",
+      "scm_id": "rep-scm-confirmation-proposal-000186-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 38,
+      "action": "V09",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.3689661636531274,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000202",
+      "scm_id": "rep-scm-confirmation-proposal-000202-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.3689661636531274,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 39,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000206",
+      "scm_id": "rep-scm-confirmation-proposal-000206-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 40,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000210",
+      "scm_id": "rep-scm-confirmation-proposal-000210-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 41,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.134397378058845,
+        "FP": 0.134397378058845,
+        "REV": 0.134397378058845
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000212",
+      "scm_id": "rep-scm-confirmation-proposal-000212-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.134397378058845,
+        "FP": 0.134397378058845,
+        "REV": 0.134397378058845
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 42,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000216",
+      "scm_id": "rep-scm-confirmation-proposal-000216-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 43,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000219",
+      "scm_id": "rep-scm-confirmation-proposal-000219-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.1267306234752402,
+      "accepted_ordinal": 44,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.19009593521286028,
+        "REV": 0.19009593521286028
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000221",
+      "scm_id": "rep-scm-confirmation-proposal-000221-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.19009593521286028,
+        "REV": 0.19009593521286028
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 45,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000222",
+      "scm_id": "rep-scm-confirmation-proposal-000222-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 46,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000225",
+      "scm_id": "rep-scm-confirmation-proposal-000225-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 47,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.09895642402603366,
+        "FP": 0.09895642402603366,
+        "REV": 0.09895642402603366
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000228",
+      "scm_id": "rep-scm-confirmation-proposal-000228-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.09895642402603366,
+        "FP": 0.09895642402603366,
+        "REV": 0.09895642402603366
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 48,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000230",
+      "scm_id": "rep-scm-confirmation-proposal-000230-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 49,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000233",
+      "scm_id": "rep-scm-confirmation-proposal-000233-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 50,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000234",
+      "scm_id": "rep-scm-confirmation-proposal-000234-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 51,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000236",
+      "scm_id": "rep-scm-confirmation-proposal-000236-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.2505494538373625,
+      "accepted_ordinal": 52,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.7516483615120875,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000237",
+      "scm_id": "rep-scm-confirmation-proposal-000237-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.7516483615120875,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.6097471190130656,
+      "accepted_ordinal": 53,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.9146206785195983,
+        "FP": 0.0,
+        "REV": 0.9146206785195983
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000238",
+      "scm_id": "rep-scm-confirmation-proposal-000238-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.9146206785195983,
+        "FP": 0.0,
+        "REV": 0.9146206785195983
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 54,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000240",
+      "scm_id": "rep-scm-confirmation-proposal-000240-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 55,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000242",
+      "scm_id": "rep-scm-confirmation-proposal-000242-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 56,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000247",
+      "scm_id": "rep-scm-confirmation-proposal-000247-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.5710779269325148,
+      "accepted_ordinal": 57,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.8566168903987722,
+        "FP": 0.0,
+        "REV": 0.8566168903987722
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000250",
+      "scm_id": "rep-scm-confirmation-proposal-000250-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.8566168903987722,
+        "FP": 0.0,
+        "REV": 0.8566168903987722
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 58,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000252",
+      "scm_id": "rep-scm-confirmation-proposal-000252-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 59,
+      "action": "V09",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000253",
+      "scm_id": "rep-scm-confirmation-proposal-000253-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.19759643010556294,
+      "accepted_ordinal": 60,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.5927892903166888,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000254",
+      "scm_id": "rep-scm-confirmation-proposal-000254-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.5927892903166888,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 61,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000258",
+      "scm_id": "rep-scm-confirmation-proposal-000258-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.03328884717178093,
+      "accepted_ordinal": 62,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0998665415153428,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000259",
+      "scm_id": "rep-scm-confirmation-proposal-000259-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0998665415153428,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 63,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000260",
+      "scm_id": "rep-scm-confirmation-proposal-000260-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.19192666349685408,
+      "accepted_ordinal": 64,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.5757799904905623
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000263",
+      "scm_id": "rep-scm-confirmation-proposal-000263-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.5757799904905623
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 65,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000269",
+      "scm_id": "rep-scm-confirmation-proposal-000269-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0962605744097476,
+      "accepted_ordinal": 66,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.2887817232292428
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000270",
+      "scm_id": "rep-scm-confirmation-proposal-000270-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.2887817232292428
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 67,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000282",
+      "scm_id": "rep-scm-confirmation-proposal-000282-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 68,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000283",
+      "scm_id": "rep-scm-confirmation-proposal-000283-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 69,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000284",
+      "scm_id": "rep-scm-confirmation-proposal-000284-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 70,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000285",
+      "scm_id": "rep-scm-confirmation-proposal-000285-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 71,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000286",
+      "scm_id": "rep-scm-confirmation-proposal-000286-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 72,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000289",
+      "scm_id": "rep-scm-confirmation-proposal-000289-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 73,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000298",
+      "scm_id": "rep-scm-confirmation-proposal-000298-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 74,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000299",
+      "scm_id": "rep-scm-confirmation-proposal-000299-a0000",
+      "target": "V09",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.10188321422576363,
+      "accepted_ordinal": 75,
+      "action": "V08",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.3056496426772909,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000302",
+      "scm_id": "rep-scm-confirmation-proposal-000302-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.3056496426772909,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 76,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000306",
+      "scm_id": "rep-scm-confirmation-proposal-000306-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 77,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.01167400533353613,
+        "FP": 0.01167400533353613,
+        "REV": 0.01167400533353613
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000307",
+      "scm_id": "rep-scm-confirmation-proposal-000307-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.01167400533353613,
+        "FP": 0.01167400533353613,
+        "REV": 0.01167400533353613
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 78,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000308",
+      "scm_id": "rep-scm-confirmation-proposal-000308-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 79,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000311",
+      "scm_id": "rep-scm-confirmation-proposal-000311-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 80,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000316",
+      "scm_id": "rep-scm-confirmation-proposal-000316-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.015510623071562516,
+      "accepted_ordinal": 81,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.04653186921468755
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000326",
+      "scm_id": "rep-scm-confirmation-proposal-000326-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.04653186921468755
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 82,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000329",
+      "scm_id": "rep-scm-confirmation-proposal-000329-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 83,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000331",
+      "scm_id": "rep-scm-confirmation-proposal-000331-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 84,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000332",
+      "scm_id": "rep-scm-confirmation-proposal-000332-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": -0.039696395640304104,
+      "accepted_ordinal": 85,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.1190891869209123,
+        "FP": 0.1190891869209123,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000335",
+      "scm_id": "rep-scm-confirmation-proposal-000335-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.1190891869209123,
+        "FP": 0.1190891869209123,
+        "REV": 0.1190891869209123
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": -0.1190891869209123
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 86,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000337",
+      "scm_id": "rep-scm-confirmation-proposal-000337-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 87,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000339",
+      "scm_id": "rep-scm-confirmation-proposal-000339-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 88,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.014059289794874141,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000352",
+      "scm_id": "rep-scm-confirmation-proposal-000352-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.014059289794874141
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.014059289794874141,
+        "REV": -0.014059289794874141
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 89,
+      "action": "V08",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000357",
+      "scm_id": "rep-scm-confirmation-proposal-000357-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 90,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000360",
+      "scm_id": "rep-scm-confirmation-proposal-000360-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 91,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000365",
+      "scm_id": "rep-scm-confirmation-proposal-000365-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": -0.023205055853003365,
+      "accepted_ordinal": 92,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0696151675590101,
+        "FP": 0.0696151675590101,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000367",
+      "scm_id": "rep-scm-confirmation-proposal-000367-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0696151675590101,
+        "FP": 0.0696151675590101,
+        "REV": 0.0696151675590101
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": -0.0696151675590101
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 93,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000369",
+      "scm_id": "rep-scm-confirmation-proposal-000369-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 94,
+      "action": "V08",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000370",
+      "scm_id": "rep-scm-confirmation-proposal-000370-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 95,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000373",
+      "scm_id": "rep-scm-confirmation-proposal-000373-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 96,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000374",
+      "scm_id": "rep-scm-confirmation-proposal-000374-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 97,
+      "action": "V08",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000375",
+      "scm_id": "rep-scm-confirmation-proposal-000375-a0000",
+      "target": "V09",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.059167874180717304,
+      "accepted_ordinal": 98,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.1775036225421519
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000384",
+      "scm_id": "rep-scm-confirmation-proposal-000384-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.1775036225421519
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 99,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000387",
+      "scm_id": "rep-scm-confirmation-proposal-000387-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 100,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000390",
+      "scm_id": "rep-scm-confirmation-proposal-000390-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 101,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000391",
+      "scm_id": "rep-scm-confirmation-proposal-000391-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.16592543138045165,
+      "accepted_ordinal": 102,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.49777629414135494
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000397",
+      "scm_id": "rep-scm-confirmation-proposal-000397-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.49777629414135494
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 103,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000406",
+      "scm_id": "rep-scm-confirmation-proposal-000406-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 104,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000407",
+      "scm_id": "rep-scm-confirmation-proposal-000407-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 105,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000411",
+      "scm_id": "rep-scm-confirmation-proposal-000411-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 106,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000412",
+      "scm_id": "rep-scm-confirmation-proposal-000412-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 107,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000416",
+      "scm_id": "rep-scm-confirmation-proposal-000416-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.00926516295726428,
+      "accepted_ordinal": 108,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.02779548887179284
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000417",
+      "scm_id": "rep-scm-confirmation-proposal-000417-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.02779548887179284
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 109,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000419",
+      "scm_id": "rep-scm-confirmation-proposal-000419-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 110,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000421",
+      "scm_id": "rep-scm-confirmation-proposal-000421-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.3151589573527333,
+      "accepted_ordinal": 111,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.9454768720582
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000426",
+      "scm_id": "rep-scm-confirmation-proposal-000426-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.9454768720582
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 112,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000431",
+      "scm_id": "rep-scm-confirmation-proposal-000431-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 113,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000436",
+      "scm_id": "rep-scm-confirmation-proposal-000436-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 114,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000443",
+      "scm_id": "rep-scm-confirmation-proposal-000443-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 115,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000445",
+      "scm_id": "rep-scm-confirmation-proposal-000445-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 116,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000449",
+      "scm_id": "rep-scm-confirmation-proposal-000449-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 117,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000451",
+      "scm_id": "rep-scm-confirmation-proposal-000451-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 118,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000454",
+      "scm_id": "rep-scm-confirmation-proposal-000454-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.01068443806417807,
+      "accepted_ordinal": 119,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.03205331419253421
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000459",
+      "scm_id": "rep-scm-confirmation-proposal-000459-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.03205331419253421
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 120,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000465",
+      "scm_id": "rep-scm-confirmation-proposal-000465-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 121,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000467",
+      "scm_id": "rep-scm-confirmation-proposal-000467-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 122,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000471",
+      "scm_id": "rep-scm-confirmation-proposal-000471-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 123,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000472",
+      "scm_id": "rep-scm-confirmation-proposal-000472-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 124,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000474",
+      "scm_id": "rep-scm-confirmation-proposal-000474-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 125,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000476",
+      "scm_id": "rep-scm-confirmation-proposal-000476-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 126,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000477",
+      "scm_id": "rep-scm-confirmation-proposal-000477-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 127,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000478",
+      "scm_id": "rep-scm-confirmation-proposal-000478-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 128,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000484",
+      "scm_id": "rep-scm-confirmation-proposal-000484-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 129,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000487",
+      "scm_id": "rep-scm-confirmation-proposal-000487-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 130,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000488",
+      "scm_id": "rep-scm-confirmation-proposal-000488-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 131,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000495",
+      "scm_id": "rep-scm-confirmation-proposal-000495-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 132,
+      "action": "V08",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000498",
+      "scm_id": "rep-scm-confirmation-proposal-000498-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.20108682054650062,
+      "accepted_ordinal": 133,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.30163023081975093,
+        "FP": 0.0,
+        "REV": 0.30163023081975093
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000502",
+      "scm_id": "rep-scm-confirmation-proposal-000502-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.30163023081975093,
+        "FP": 0.0,
+        "REV": 0.30163023081975093
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 134,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000506",
+      "scm_id": "rep-scm-confirmation-proposal-000506-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 135,
+      "action": "V09",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000509",
+      "scm_id": "rep-scm-confirmation-proposal-000509-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 136,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000510",
+      "scm_id": "rep-scm-confirmation-proposal-000510-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 137,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000511",
+      "scm_id": "rep-scm-confirmation-proposal-000511-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 138,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000513",
+      "scm_id": "rep-scm-confirmation-proposal-000513-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": -0.03964196816494773,
+      "accepted_ordinal": 139,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.1189259044948432,
+        "FP": 0.1189259044948432,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000516",
+      "scm_id": "rep-scm-confirmation-proposal-000516-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.1189259044948432,
+        "FP": 0.1189259044948432,
+        "REV": 0.1189259044948432
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": -0.1189259044948432
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 140,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000517",
+      "scm_id": "rep-scm-confirmation-proposal-000517-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.10354533589607924,
+      "accepted_ordinal": 141,
+      "action": "V09",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.31063600768823774
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000519",
+      "scm_id": "rep-scm-confirmation-proposal-000519-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.31063600768823774
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 142,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000520",
+      "scm_id": "rep-scm-confirmation-proposal-000520-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 143,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000527",
+      "scm_id": "rep-scm-confirmation-proposal-000527-a0000",
+      "target": "V09",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 144,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000529",
+      "scm_id": "rep-scm-confirmation-proposal-000529-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 145,
+      "action": "V06",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000537",
+      "scm_id": "rep-scm-confirmation-proposal-000537-a0000",
+      "target": "V09",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 146,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000540",
+      "scm_id": "rep-scm-confirmation-proposal-000540-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 147,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000541",
+      "scm_id": "rep-scm-confirmation-proposal-000541-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 148,
+      "action": "V08",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000542",
+      "scm_id": "rep-scm-confirmation-proposal-000542-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 149,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.08424072103130498
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000546",
+      "scm_id": "rep-scm-confirmation-proposal-000546-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.08424072103130498
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 150,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000549",
+      "scm_id": "rep-scm-confirmation-proposal-000549-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 151,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000556",
+      "scm_id": "rep-scm-confirmation-proposal-000556-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 152,
+      "action": "V07",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000557",
+      "scm_id": "rep-scm-confirmation-proposal-000557-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": -0.09690703768495694,
+      "accepted_ordinal": 153,
+      "action": "V08",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000559",
+      "scm_id": "rep-scm-confirmation-proposal-000559-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.2907211130548708
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": -0.2907211130548708
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 154,
+      "action": "V03",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000560",
+      "scm_id": "rep-scm-confirmation-proposal-000560-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 155,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000565",
+      "scm_id": "rep-scm-confirmation-proposal-000565-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 156,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000566",
+      "scm_id": "rep-scm-confirmation-proposal-000566-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 157,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000567",
+      "scm_id": "rep-scm-confirmation-proposal-000567-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 158,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000570",
+      "scm_id": "rep-scm-confirmation-proposal-000570-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 159,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000571",
+      "scm_id": "rep-scm-confirmation-proposal-000571-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 160,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.06652505250074814,
+        "FP": 0.0,
+        "REV": 0.03297985264940917
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000572",
+      "scm_id": "rep-scm-confirmation-proposal-000572-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.06652505250074814,
+        "FP": 0.0,
+        "REV": 0.03297985264940917
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 161,
+      "action": "V06",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000574",
+      "scm_id": "rep-scm-confirmation-proposal-000574-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 162,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000575",
+      "scm_id": "rep-scm-confirmation-proposal-000575-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": -0.02353173526083437,
+      "accepted_ordinal": 163,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.07059520578250311,
+        "FP": 0.07059520578250311,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000577",
+      "scm_id": "rep-scm-confirmation-proposal-000577-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.07059520578250311,
+        "FP": 0.07059520578250311,
+        "REV": 0.07059520578250311
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": -0.07059520578250311
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 164,
+      "action": "V08",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000578",
+      "scm_id": "rep-scm-confirmation-proposal-000578-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 165,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000581",
+      "scm_id": "rep-scm-confirmation-proposal-000581-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 166,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000582",
+      "scm_id": "rep-scm-confirmation-proposal-000582-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 167,
+      "action": "V05",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000586",
+      "scm_id": "rep-scm-confirmation-proposal-000586-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 168,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000589",
+      "scm_id": "rep-scm-confirmation-proposal-000589-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 169,
+      "action": "V06",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.03291627740631575,
+        "FP": 0.03291627740631575,
+        "REV": 0.03291627740631575
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000591",
+      "scm_id": "rep-scm-confirmation-proposal-000591-a0000",
+      "target": "V08",
+      "task_focused_regret": {
+        "FN": 0.03291627740631575,
+        "FP": 0.03291627740631575,
+        "REV": 0.03291627740631575
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 170,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000592",
+      "scm_id": "rep-scm-confirmation-proposal-000592-a0000",
+      "target": "V07",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 171,
+      "action": "V06",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000593",
+      "scm_id": "rep-scm-confirmation-proposal-000593-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 172,
+      "action": "V05",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000596",
+      "scm_id": "rep-scm-confirmation-proposal-000596-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.08148947475099651,
+      "accepted_ordinal": 173,
+      "action": "V00",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.24446842425298954
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000598",
+      "scm_id": "rep-scm-confirmation-proposal-000598-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.24446842425298954
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 174,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000605",
+      "scm_id": "rep-scm-confirmation-proposal-000605-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": -0.14478688586337282,
+      "accepted_ordinal": 175,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.43436065759011844,
+        "FP": 0.43436065759011844,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000606",
+      "scm_id": "rep-scm-confirmation-proposal-000606-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.43436065759011844,
+        "FP": 0.43436065759011844,
+        "REV": 0.43436065759011844
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": -0.43436065759011844
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 176,
+      "action": "V08",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.1962783387013931,
+        "FP": 0.1962783387013931,
+        "REV": 0.1962783387013931
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000607",
+      "scm_id": "rep-scm-confirmation-proposal-000607-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.1962783387013931,
+        "FP": 0.1962783387013931,
+        "REV": 0.1962783387013931
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 177,
+      "action": "V06",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000610",
+      "scm_id": "rep-scm-confirmation-proposal-000610-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 178,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000615",
+      "scm_id": "rep-scm-confirmation-proposal-000615-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 179,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000616",
+      "scm_id": "rep-scm-confirmation-proposal-000616-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.29191707081694407,
+      "accepted_ordinal": 180,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.8757512124508322,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000617",
+      "scm_id": "rep-scm-confirmation-proposal-000617-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.8757512124508322,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 181,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000621",
+      "scm_id": "rep-scm-confirmation-proposal-000621-a0000",
+      "target": "V09",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 182,
+      "action": "V06",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0016620548130312773,
+        "FP": 0.0016620548130312773,
+        "REV": 0.0016620548130312773
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000623",
+      "scm_id": "rep-scm-confirmation-proposal-000623-a0000",
+      "target": "V09",
+      "task_focused_regret": {
+        "FN": 0.0016620548130312773,
+        "FP": 0.0016620548130312773,
+        "REV": 0.0016620548130312773
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 183,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000624",
+      "scm_id": "rep-scm-confirmation-proposal-000624-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 184,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 6,
+      "proposal_id": "confirmation-proposal-000626",
+      "scm_id": "rep-scm-confirmation-proposal-000626-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 185,
+      "action": "V02",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000628",
+      "scm_id": "rep-scm-confirmation-proposal-000628-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.4071321006165944,
+      "accepted_ordinal": 186,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.6106981509248915,
+        "FP": 0.0,
+        "REV": 0.6106981509248915
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000629",
+      "scm_id": "rep-scm-confirmation-proposal-000629-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.6106981509248915,
+        "FP": 0.0,
+        "REV": 0.6106981509248915
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 187,
+      "action": "V03",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000631",
+      "scm_id": "rep-scm-confirmation-proposal-000631-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.15008803037272367,
+      "accepted_ordinal": 188,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.450264091118171,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000638",
+      "scm_id": "rep-scm-confirmation-proposal-000638-a0000",
+      "target": "V04",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.450264091118171,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.07719542657584832,
+      "accepted_ordinal": 189,
+      "action": "V06",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.23158627972754497,
+        "REV": 0.0
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000640",
+      "scm_id": "rep-scm-confirmation-proposal-000640-a0000",
+      "target": "V00",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.23158627972754497,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 190,
+      "action": "V04",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000641",
+      "scm_id": "rep-scm-confirmation-proposal-000641-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "fork_branch",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 191,
+      "action": "V08",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000643",
+      "scm_id": "rep-scm-confirmation-proposal-000643-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 192,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000644",
+      "scm_id": "rep-scm-confirmation-proposal-000644-a0000",
+      "target": "V01",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 193,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.2147354950927911,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000654",
+      "scm_id": "rep-scm-confirmation-proposal-000654-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.2147354950927911
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.2147354950927911,
+        "FP": 0.0,
+        "REV": -0.2147354950927911
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 194,
+      "action": "V00",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.5572633638565425
+      },
+      "node_count": 9,
+      "proposal_id": "confirmation-proposal-000656",
+      "scm_id": "rep-scm-confirmation-proposal-000656-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.5572633638565425
+      },
+      "template": "observed_common_cause",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 195,
+      "action": "V01",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000657",
+      "scm_id": "rep-scm-confirmation-proposal-000657-a0000",
+      "target": "V03",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 196,
+      "action": "V02",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000658",
+      "scm_id": "rep-scm-confirmation-proposal-000658-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 197,
+      "action": "V07",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 8,
+      "proposal_id": "confirmation-proposal-000665",
+      "scm_id": "rep-scm-confirmation-proposal-000665-a0000",
+      "target": "V05",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "chain_mediation",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 198,
+      "action": "V01",
+      "delta": 1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 10,
+      "proposal_id": "confirmation-proposal-000666",
+      "scm_id": "rep-scm-confirmation-proposal-000666-a0000",
+      "target": "V02",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    },
+    {
+      "D_i": 0.0,
+      "accepted_ordinal": 199,
+      "action": "V04",
+      "delta": -1,
+      "fallback_any": false,
+      "global_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "node_count": 7,
+      "proposal_id": "confirmation-proposal-000674",
+      "scm_id": "rep-scm-confirmation-proposal-000674-a0000",
+      "target": "V06",
+      "task_focused_regret": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      },
+      "template": "multiple_directed_paths",
+      "type_differences": {
+        "FN": 0.0,
+        "FP": 0.0,
+        "REV": 0.0
+      }
+    }
+  ],
+  "registry_integrity": "ok",
+  "schema_version": 1,
+  "uncompleted_admissions": []
+}

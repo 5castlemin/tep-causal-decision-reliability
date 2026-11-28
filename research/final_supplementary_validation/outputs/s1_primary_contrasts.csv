@@ -1,0 +1,7 @@
+cohort,condition,contrast,source_policy_a,source_policy_b,mean_difference,ci95_low,ci95_high,better,worse,tie,n,interval
+C_DEVELOPMENT,original_target_gamma_0.2_B2,FullGreedy-S0,CANONICAL_ORACLE,S0,-0.007971364163438436,-0.022936893780099474,0.0029604500276500696,3,1,60,64,pointwise paired SCM percentile bootstrap
+C_DEVELOPMENT,original_target_gamma_0.2_B2,M4-FullGreedy,M4,CANONICAL_ORACLE,-0.008488963814719504,-0.021912407933227105,0.0023453600763234193,4,2,58,64,pointwise paired SCM percentile bootstrap
+C_DEVELOPMENT,original_target_gamma_0.2_B2,M4-S0,M4,S0,-0.01646032797815794,-0.03567008971940229,-0.0005211418895346961,6,2,56,64,pointwise paired SCM percentile bootstrap
+C_HELDOUT,original_target_gamma_0.2_B2,FullGreedy-S0,CANONICAL_ORACLE,S0,-0.011879223794687302,-0.020661655296726672,-0.00428352616597632,11,2,187,200,pointwise paired SCM percentile bootstrap
+C_HELDOUT,original_target_gamma_0.2_B2,M4-FullGreedy,M4,CANONICAL_ORACLE,-0.018826497680916512,-0.02918671114455833,-0.009355902834706975,17,1,182,200,pointwise paired SCM percentile bootstrap
+C_HELDOUT,original_target_gamma_0.2_B2,M4-S0,M4,S0,-0.030705721475603815,-0.044039201453181166,-0.01884854007094012,27,2,171,200,pointwise paired SCM percentile bootstrap

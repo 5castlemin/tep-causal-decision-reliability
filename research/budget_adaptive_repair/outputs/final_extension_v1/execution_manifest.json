@@ -1,0 +1,35 @@
+{
+  "aggregate_rows": 98,
+  "budgets_available": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "classification": "post-hoc descriptive decision-economic extension",
+  "input_sha256": {
+    "s4_confirmation": "a9e9c6109ba0ce75974cd7be120f69cb2deae43bbfa419cc5cc1d7de2c568b0f",
+    "s4_development": "e899c927ad452394f0c03af03911f77f2c8d332f4891ee24b0c0c88de7040a0f",
+    "s5_saved_unit_losses": "6332af831d25bc487bb3026a3f506ae6a10ab8c58efb55d66f4a6224a53c7242"
+  },
+  "limits": [
+    "S4/S5 source unit records available only for B=0..4; no B=5..9 values inferred",
+    "S5 loss scale is not combined with S4 regret",
+    "S5 G0 draws are conditional on one semisynthetic DGP, not independent SCMs"
+  ],
+  "new_drf_fits": 0,
+  "new_g0": 0,
+  "new_intervention_rows": 0,
+  "new_observations": 0,
+  "new_scm": 0,
+  "outputs_sha256": {
+    "budget_policy_aggregate.csv": "5fc28224779b6cb4c99de8a14a03c4cebc53cd36f055e42883df623f2644e5a7",
+    "lambda_breakpoints.csv": "62770442fc59b6793ffa1ade68da69fd0f013cee50ee8913c4cfd8755c423c11",
+    "marginal_benefit.csv": "572adf572b5a1c59d909553c3db16e8a26f96b6819851fced3b0485587d3fa80",
+    "paired_bootstrap_uncertainty.csv": "b6cc37103c85f1a5e822b83dd5516287e40d2191cd517f2ee37527bcd67f41cc",
+    "pareto_frontier.csv": "bdc5ebfb4fdf68ad8843c746947060dd5a0ab99dddf32a1bebca622812a58e1b"
+  },
+  "schema": "RESEARCH_E_EXTENSION_SAVED_RESULT_AGGREGATION_V1",
+  "unit_rows_read": 16560
+}

@@ -1,0 +1,46 @@
+{
+  "status": "PASS_HASH_IDENTICAL_RECONSTRUCTION_AND_B0_B4_REPLAY",
+  "cohorts": [
+    {
+      "cohort": "C_DEVELOPMENT",
+      "n": 64,
+      "initial_error_min": 0,
+      "initial_error_mean": 2.140625,
+      "initial_error_median": 2.0,
+      "initial_error_q90": 4.0,
+      "initial_error_q95": 5.849999999999994,
+      "initial_error_q99": 6.369999999999997,
+      "initial_error_max": 7,
+      "B_max": 7
+    },
+    {
+      "cohort": "C_HELDOUT",
+      "n": 200,
+      "initial_error_min": 0,
+      "initial_error_mean": 2.17,
+      "initial_error_median": 2.0,
+      "initial_error_q90": 5.0,
+      "initial_error_q95": 5.0,
+      "initial_error_q99": 7.0,
+      "initial_error_max": 9,
+      "B_max": 9
+    }
+  ],
+  "unit": "original Research C SCM; exact restoration, not new cohort",
+  "added_evaluations": "budgets 5..B_max for all 17 policies using original deterministic truth/observations and analytic evaluator",
+  "reconstruction_arrays": "generated in memory and discarded; each truth, 512-row observation matrix, task and G0 checked against ledger bindings before analysis",
+  "B0_B4_verification": "all original graphs, edit sequences, chosen actions and regrets re-matched for all SCMs/policies/budgets",
+  "source_hashes": {
+    "C_DEVELOPMENT:cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "C_DEVELOPMENT:proposal_stage": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "C_HELDOUT:cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "C_HELDOUT:proposal_stage": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6"
+  },
+  "elapsed_seconds": 124.13434000010602,
+  "new_scm_or_g0_count": 0,
+  "new_intervention_rows": 0,
+  "outputs": [
+    "c_extended_budget_results.csv",
+    "c_extended_budget_aggregate.csv"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "assumption": "MCAR independent missing event probability; diagnostic only, not a claim about likely study failures",
+  "missing_rates": {
+    "0.001": {
+      "complete_if_each_of_three_type_cells_is_event": 0.5486469074854967,
+      "complete_if_one_scm_row_is_event": 0.8186488294786356,
+      "event_missing_rate": 0.001,
+      "probability_at_least_one_missing_scm_row": 0.1813511705213644,
+      "probability_at_least_one_missing_type_cell": 0.4513530925145033
+    },
+    "0.005": {
+      "complete_if_each_of_three_type_cells_is_event": 0.04941382211003858,
+      "complete_if_one_scm_row_is_event": 0.36695782172616703,
+      "event_missing_rate": 0.005,
+      "probability_at_least_one_missing_scm_row": 0.6330421782738329,
+      "probability_at_least_one_missing_type_cell": 0.9505861778899615
+    },
+    "0.01": {
+      "complete_if_each_of_three_type_cells_is_event": 0.0024050092913110673,
+      "complete_if_one_scm_row_is_event": 0.13397967485796172,
+      "event_missing_rate": 0.01,
+      "probability_at_least_one_missing_scm_row": 0.8660203251420383,
+      "probability_at_least_one_missing_type_cell": 0.997594990708689
+    },
+    "0.02": {
+      "complete_if_each_of_three_type_cells_is_event": 5.440582691025467e-06,
+      "complete_if_one_scm_row_is_event": 0.0175879466057215,
+      "event_missing_rate": 0.02,
+      "probability_at_least_one_missing_scm_row": 0.9824120533942785,
+      "probability_at_least_one_missing_type_cell": 0.999994559417309
+    }
+  },
+  "n_confirmation_scm": 200,
+  "protocol": "STEP4B4_FAILURE_FEASIBILITY_V2"
+}

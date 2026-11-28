@@ -1,0 +1,54 @@
+{
+  "status": "E1_ANALYZED_WITH_D_UNIT_LEVEL_LIMITATION",
+  "source_hashes": {
+    "c_development_cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "c_development_proposal": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "c_heldout_cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "c_heldout_proposal": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6",
+    "d_local_audit": "6fa458199ea814a61248a1088bbe5a3b96a586916516c02a1dd6b54c0331292b"
+  },
+  "rows": {
+    "c_development": 5440,
+    "c_heldout": 17000,
+    "d_aggregate": 85
+  },
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 2026112601,
+    "unit": "paired SCM for C; no new D bootstrap"
+  },
+  "d_limit": "Only 85 aggregate policy-budget rows and five action summary rows in the locally accessible final audit JSON; no per-G0 recommendations or raw response vectors found in the designated local Research D store. E1 D paired variability cannot be recomputed; E2/E3 D extensions blocked.",
+  "d_audit_status": "PASS",
+  "generated_outputs": [
+    ".gitignore",
+    "adaptive_m4_aggregate.csv",
+    "adaptive_m4_unit_results.csv",
+    "budget_policy_summary.csv",
+    "c_development_unit_results.csv",
+    "c_extended_budget_aggregate.csv",
+    "c_extended_budget_results.csv",
+    "c_heldout_unit_results.csv",
+    "d_final_aggregate_results.csv",
+    "e1_summary.json",
+    "e2_decision_saturation.csv",
+    "e2_e3_summary.json",
+    "e2_extended_budget_aggregate.csv",
+    "e2_extended_marginal_benefit.csv",
+    "e2_extended_pareto_frontiers.csv",
+    "e2_reconstruction_summary.json",
+    "e2_saturation_diagnostics.csv",
+    "e3_adaptive_paired_comparisons.csv",
+    "e3_adaptive_pareto.csv",
+    "e3_summary.json",
+    "fixed_and_cross_budget_frontiers.csv",
+    "heldout_b4_leave_one_out.csv",
+    "lambda_exact_intervals.csv",
+    "lambda_optima.csv",
+    "marginal_benefit.csv",
+    "pareto_bootstrap_stability.csv",
+    "pareto_frontiers.csv",
+    "reference_graph_learner_diagnostic.csv",
+    "target_sensitivity_aggregate.csv",
+    "target_sensitivity_unit_results.csv"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "S5_EXTERNAL_RECONSTRUCTION_CONTRACT_V1",
+  "status": "LOCKED_BEFORE_GENERATION",
+  "classification": "NEW_CONDITIONAL_EXTERNAL_SEMISYNTHETIC_RECONSTRUCTION",
+  "run_id": "s5-station1-reconstruction-20261128-v1",
+  "source": {
+    "package": "causalAssembly",
+    "version": "1.2.1",
+    "commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+    "sample_sha256": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e",
+    "reference_sha256": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8"
+  },
+  "generator": {"kind": "one Station1 DRF semisynthetic DGP refit from pinned public sample", "fit_seed": 184202611, "reference_nodes": 6, "reference_edges": 7},
+  "training": {"rows": 512, "seed": 3817241091, "rule": "one seeded sample_from_drf draw; outside intervention evaluation", "target_rule": "mean(Y_train)+sample_sd(Y_train, ddof=1)", "scale_rule": "sample_sd(Y_train, ddof=1)"},
+  "task": {"action_node": "Station1_mp_0", "target_node": "Station1_mp_4", "reference_path": ["Station1_mp_0", "Station1_mp_1", "Station1_mp_4"], "strict_indirect": true, "intervention": "virtual numeric hard-do"},
+  "action_grid": {"rule": "training X empirical quantiles at probabilities [0.1,0.3,0.5,0.7,0.9], linear interpolation; ascending five unique values; all within observed and fitted conditional support", "probabilities": [0.1,0.3,0.5,0.7,0.9]},
+  "g0": {"count": 200, "id_start": 811001, "namespace": "research-s5-external-reconstruction-20261128-v1", "true_corruption_rate": 0.15, "false_adjacency_rate": 0.05, "dag_invalid": "reject without redraw", "all_draws_retained": true},
+  "policies": ["S0", "M1", "M2", "M3", "M4", "all 17 frozen Research D catalog policies", "Random-M4 one preseeded trajectory", "T5-guided M4", "Full T1-T6", "graph-free observational association", "reference-graph learner diagnostic"],
+  "budgets": [0,1,2,3,4],
+  "primary": {"contrast": "loss(No-repair)-loss(Frozen M4)", "budget": 2, "objective_gamma": 0, "positive_favors_M4": true},
+  "secondary": ["M4 versus Full Greedy", "T5-guided M4 versus M4", "T5-guided M4 versus Full T", "Full Greedy versus No-repair", "graph-free association", "reference-graph learner", "actual edge edits and unused budget"],
+  "evaluation": {"rows_per_action": 4999, "action_count": 5, "total_intervention_rows": 24995, "smoke_intervention_rows_before_run": 1, "total_intervention_cap_including_smoke": 25000, "estimator": "((sample_mean-target)^2 - sample_variance/n)/scale^2; ddof=1; no clipping", "bootstrap_replicates": 10000, "bootstrap_seed_g0_only": 221704811, "bootstrap_seed_action_mc_only": 221704812, "bootstrap_seed_two_source": 221704813, "chunk_size": 128},
+  "resources": {"wall_time_cap_seconds": 14400, "aggregate_process_tree_rss_bytes": 4294967296, "parallelism": 1},
+  "evidence_scope": "200 graph corruption draws conditional on one fixed Station1 DAG, one fitted DRF and one newly generated 512-row training frame; not 200 independent SCMs, not physical manufacturing validation, not exact Research D reproduction",
+  "prohibitions": ["no post-outcome contract changes", "no replacing G0 or evaluator streams", "no outcome-informed recommendation", "no public raw vectors or unit records"]
+}

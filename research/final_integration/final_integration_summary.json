@@ -1,0 +1,40 @@
+{
+  "status": "FINAL_RESEARCH_INTEGRATION_VERIFIED",
+  "as_of": "2026-11-26",
+  "research_c": {
+    "status": "frozen and audited",
+    "development_scms": 64,
+    "heldout_independent_scms": 200,
+    "heldout_primary_b2": 0.07483635742836832,
+    "paired_t_ci95": [
+      0.05089822,
+      0.0987745
+    ]
+  },
+  "mechanism_analysis": {
+    "status": "original ledger verified; post-hoc exploratory",
+    "details": "See original_ledger_mechanism_audit.json"
+  },
+  "research_d": {
+    "status": "final artifact re-audit PASS",
+    "checks": 27,
+    "failures": 0,
+    "primary_b2": 0.03422489689372574,
+    "two_source_ci95": [
+      0.00617347,
+      0.0653508
+    ],
+    "precision_targets_met": false,
+    "physical_validation": false
+  },
+  "integration": {
+    "main_merge": "Scientific integration PR #41 merged as 4564e4d28fea62a0caebbad0ed6dd415d7f29cda; final status closeout PR #42 merged as fc863182efd4ee721a7f5250c871d46afe9bf244; post-merge Actions 45656538612 SUCCESS.",
+    "new_experiments": 0,
+    "new_response_sampling": 0,
+    "protected_research_c_assets_modified": false,
+    "pull_request": 41,
+    "merge_commit": "4564e4d28fea62a0caebbad0ed6dd415d7f29cda",
+    "main_actions_run": 45654187713,
+    "main_actions_conclusion": "success"
+  }
+}

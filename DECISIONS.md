@@ -146,3 +146,24 @@ RESEARCH_COMPASS는 실무 안내이며 RESEARCH_DESIGN을 대체/수정하지 �
 
 - 실제import·관측·숫자do성공을연구수용과구분한다.원본mutilated graph의부모삭제결함과조건부참조/관측ADMG식별계약이남아CONDITIONAL_NOT_ACCEPTED.81간선계층차이만으로원시모델버그를선언하지않으며설치실패를과학적기각으로취급하지않음.
 - 다음은관측-only점효과식별을필수로유지할지방법론결정하나.현재micro의학습/추천본연결은보류하며,privileged-state/알려진함수/부분식별대안은새승인계약이다.자동패치·smoke반복·공식채택·TEP재개·기존PR병합없음.
+
+## 2026-11-05 — 예산 기반 구조 개선 후보 설계
+기존 설계와 독립된 제안으로 수정 비용 및 의사결정 후회를 비교한다. 균등 할당은 제안이며 자유 배분 oracle과 구별한다. 지표·예산·표본·손실은 검토 전 동결하지 않는다. 기존 연구 방향과 미병합 외부 검증 판정은 그대로 유지한다.
+
+## 2026-11-10 — Step0 최종 계약 전환
+오류 유형·과제 위치 중심 14개 정책 및 세 기준선을 채택하고 이전 지표 조합 설계는 보존한다. 비용과 정규화 평균반응 후회를 채택하되 예산 grid와 독립 표본 수는 사전등록 전 확정하지 않는다. GT 개입결과로 수정 순서를 선택하지 않는다.
+
+## 2026-11-10 — Global/T 공통 유형 기회
+Step0의 전체 후보 위치 정렬과 유형 우선 정렬을 공통 seed 회전 균형 유형 순환으로 변경한다. 동일 유형에서만 위치 우선이 다르며 DAG와 예산 때문에 실현 수가 달라질 수 있음을 기록한다. 과거 규칙의 결과와 새로운 정책 결과를 동일 추정량으로 합치지 않는다.
+
+## 2026-11-15 — Solo Research Self-Review 운영 전환
+
+저장소 운영자의 명시적 결정에 따라 PR의 기본 검토는 `CONTRIBUTING.md`의 증거 기반 Self-Review로 운영한다. PR 작성자의 공식 APPROVE를 가장하거나 플랫폼 필수 보호 규칙을 우회하지 않는다. PR #36의 개발 통합 결정은 이번 요청에 한정하며 후속 PR의 자동 병합 승인이 아니다. 과거 연구 가설과 Step 4의 NOT FROZEN 상태는 유지한다. 협업 형태가 바뀌면 검토 정책을 다시 결정한다.
+
+## 2026-11-16 — Step 4 protocol/execution freeze
+
+Q-common strict indirect-only, B=1/gamma=1, Task-Focused vs ID-ordered Global, FN/FP/REV equal within-SCM weighting, alternating delta, 64/200 eligible-admission targets with 386/1,104 caps, and Option B descriptive estimation are frozen as the Step 4 protocol and execution contract. Production runtime/resource controls and content hashes are pinned in `research/budget_aware_refinement/step4c2_operational_settings.json` and `step4c2_final_freeze_manifest.json`. This does not constitute a study cohort or authorize Step 5/6 execution; PR #38 remains Draft/unmerged. Fixed-fixture qualification is software evidence only, with six template×node-count strata unavailable in the preserved strict-Q fixture source. Reconsider only via a new versioned protocol and freeze review.
+
+## 2026-11-28 — Final Research E extension scope
+
+Re-aggregate only preserved unit-level S4/S5 records for available budgets B=0–4. Keep S4 Development, S4 replication and conditional S5 G0 cohorts separate; never pool analytic regret with standardized external tracking loss. Do not infer S4/S5 B=5–9, as their sealed recommendations/evaluations do not cover that range. New samples, DRF refits, and intervention responses are outside this extension. Pareto/lambda results are in-sample descriptive measures using graph edit count as a proxy, not actual economic cost. This is a post-hoc extension and cannot alter frozen Research C primary evidence or promote T5 to a confirmatory winner.

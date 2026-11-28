@@ -1,0 +1,81 @@
+{
+  "initial_m4_candidate_count": {
+    "histogram": {
+      "0": 63,
+      "1": 56,
+      "2": 27,
+      "3": 8,
+      "4": 6
+    },
+    "max": 4,
+    "mean": 0.9875,
+    "median": 1.0,
+    "min": 0,
+    "n_ge_2": 41
+  },
+  "input_sha256": "65dbdc2befa7df610cb71912db6a94c6fb77542bdc3f45f10ae4641e5d0e8fe0",
+  "n_scm": 160,
+  "phase": "confirmation",
+  "policy_redundancy_rows": 126,
+  "policy_results_sha256": "a9e9c6109ba0ce75974cd7be120f69cb2deae43bbfa419cc5cc1d7de2c568b0f",
+  "policy_rows": 22720,
+  "primary_and_secondary_paired_contrasts": [
+    {
+      "better_left": 4,
+      "bootstrap_seed": 3694021587,
+      "ci95_high": 0.0,
+      "ci95_low": -0.020390953110052346,
+      "contrast": "T5_GUIDED_M4-M4_B1",
+      "mean_difference": -0.008664396007484304,
+      "median_difference": 0.0,
+      "n_scm": 160,
+      "replicates": 10000,
+      "tie": 155,
+      "worse_left": 1
+    },
+    {
+      "better_left": 4,
+      "bootstrap_seed": 3694021587,
+      "ci95_high": 0.0027888911913953977,
+      "ci95_low": -0.01998548478445514,
+      "contrast": "T_GREEDY_B1:T1+T2+T3+T4+T5+T6-M4_B1",
+      "mean_difference": -0.007426004783993803,
+      "median_difference": 0.0,
+      "n_scm": 160,
+      "replicates": 10000,
+      "tie": 155,
+      "worse_left": 1
+    },
+    {
+      "better_left": 31,
+      "bootstrap_seed": 3694021587,
+      "ci95_high": -0.03961766118250389,
+      "ci95_low": -0.09527096890912662,
+      "contrast": "M4-S0_B2",
+      "mean_difference": -0.06584659438626433,
+      "median_difference": 0.0,
+      "n_scm": 160,
+      "replicates": 10000,
+      "tie": 128,
+      "worse_left": 1
+    },
+    {
+      "better_left": 21,
+      "bootstrap_seed": 3694021587,
+      "ci95_high": -0.019602503886061873,
+      "ci95_low": -0.07464636870233445,
+      "contrast": "FULL_GREEDY-S0_B2",
+      "mean_difference": -0.045583394179976255,
+      "median_difference": 0.0,
+      "n_scm": 160,
+      "replicates": 10000,
+      "tie": 136,
+      "worse_left": 3
+    }
+  ],
+  "schema": "S4_RECONSTRUCTION_ANALYSIS_V1",
+  "t_subset_policy_count_b1": 63,
+  "t_subset_policy_count_b2": 63,
+  "unique_scm_ids": 160,
+  "unit_results_sha256": "e2e3032ece0012946fafc1acfb77afc6f748a273c133539225031aa52d57c020"
+}

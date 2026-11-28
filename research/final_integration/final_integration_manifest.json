@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "date": "2026-11-26",
+  "source_branches": {
+    "main": "7742180cef09b506e3d26e56d58a03b3d6a4e37d",
+    "research_d": "research/research-d-design-resolution",
+    "research_d_head": "0bb051d69a0123a083c241fe2770e7c873f222fa",
+    "research_c_mechanism": "claude/project-thread-sjj7ri",
+    "research_c_mechanism_head": "fa2fa311629734f51a3f595f879ff1f8bd4a538e"
+  },
+  "external_data": {
+    "causalassembly_sample_sha256": "afc079bfca962a4746afd316713743d7702ebc7ea00f98255cd8289d72ecef0e",
+    "station1_reference_sha256": "86378888c66089aebb94616dce121b5e8400414112eb221b78dff3a4ca84cab8",
+    "raw_response_vectors_public": false
+  },
+  "original_ledger_audit": "original_ledger_mechanism_audit.json",
+  "research_d_reaudit": "RESEARCH_D_FINAL_REAUDIT.md",
+  "claims_matrix": "FINAL_CLAIMS_EVIDENCE_MATRIX.md",
+  "note": "Public integration records contain hashes and aggregated findings only. No raw SQLite, training CSV, recommendation manifests, fitted model, or evaluator response vectors are published.",
+  "integration_result": {
+    "pull_request": 41,
+    "merge_commit": "4564e4d28fea62a0caebbad0ed6dd415d7f29cda",
+    "main_actions_run": 45654187713,
+    "main_actions_conclusion": "success"
+  }
+}

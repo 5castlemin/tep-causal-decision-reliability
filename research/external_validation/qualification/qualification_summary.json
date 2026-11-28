@@ -1,0 +1,92 @@
+{
+  "qualification_date": "2026-11-25",
+  "base_audit_commit": "89a49224a997f33aee5a5075842144df48e39d45",
+  "candidate": "Causal Chamber Light Tunnel Mk2 lt_spice_v1",
+  "decision": "ELIGIBLE_CONDITIONAL_PHYSICAL_CASE",
+  "not_approved": [
+    "final_dataset_adoption",
+    "Research D primary experiment",
+    "measured policy regret analysis",
+    "remote device control"
+  ],
+  "outcome_exposure": {
+    "public_paper_and_benchmark_outcome_context_seen": true,
+    "published_paper_result_table_snippet_exposed_by_search_extraction": true,
+    "exposure_used_for_task_or_action_selection": false,
+    "response_values_or_policy_performance_examined_in_this_step": false,
+    "pristine_unseen_external_holdout_claim": false
+  },
+  "reference_graph": {
+    "nodes": 90,
+    "edges": 142,
+    "dag": true,
+    "figure_reviewed_against_existing_step0_transcription": true,
+    "full_independent_node_edge_transcription_and_diff": false,
+    "independent_expert_review": false,
+    "complete_ground_truth_dag_verified": false,
+    "candidate_path": [
+      "green",
+      "ir_1",
+      "led_2_uv",
+      "current_led_2_uv"
+    ],
+    "green_to_current_led_2_uv_direct_nonedge": "REFERENCE_ABSENT_BUT_UNVERIFIED"
+  },
+  "primary_csvs": {
+    "rows_each": 110000,
+    "columns_each": 104,
+    "constant_columns_each": 67,
+    "constant_reference_nodes_each": 59,
+    "variable_reference_nodes_each": 31,
+    "constant_non_graph_columns_each": 8,
+    "green_order_matches_generator": "110000/110000 per file (Step 0 check)",
+    "noise_condition_sequences_identical": true,
+    "counter_duplicate_values_count": 9999,
+    "timestamp_unique_and_monotone": true,
+    "flag_constant_zero": true,
+    "intervention_constant_zero": true
+  },
+  "experiment_design": {
+    "generator_batches_per_experiment": 20,
+    "rows_per_batch": 5500,
+    "wait_between_batches_seconds": 1,
+    "experiment_submit_calls_per_run": 1,
+    "device_id_verified": false,
+    "independent_session_count_verified": false,
+    "batch_reset_verified": false
+  },
+  "original_spice_paper_design": {
+    "roles": {
+      "confounder": "green",
+      "treatment": "ir_1 measurement",
+      "outcome": "ir_2 measurement",
+      "proxy": "current_ls_raw"
+    },
+    "proposed_research_d_task_is_same_as_paper_estimand": false,
+    "reported_repetitions": 20,
+    "reported_split_per_repetition": "5000 train + 500 test",
+    "noise_configuration": "sps_current_ls ADC data rate 4 (low-noise) vs 7 (noisy)",
+    "paper_slope_f2": 0.064,
+    "generator_csv_slope_f2": 0.0624,
+    "rowwise_train_test_markers_in_csv": false
+  },
+  "estimand": {
+    "assignment_command_regime_itt": "conditional candidate only; alignment and serial-dependence contract unresolved",
+    "physical_actuation_effect": "not identified from available CSV telemetry",
+    "fixed_command_steady_state_effect": "not supported by random per-row command design"
+  },
+  "data_role": {
+    "rowwise_input_set_experiment": true,
+    "unmanipulated_observational_cohort_available_in_lt_spice_v1": false,
+    "intervention_flag_consistent_with_sdk_set_schedule": false,
+    "observational_graph_discovery_transfer_assumed": false
+  },
+  "checks": {
+    "dataset_sha256": "5e9f37c29b4823df34798e3ca9a39bf6f3a4e0ef71c8a92c45e6ed52ae99a118",
+    "dataset_bytes": 40572526,
+    "catalog_commit": "c2b307036446b8d3ca173e9f41ff465b7111819a",
+    "license": "CC-BY-4.0",
+    "metadata_source": "../inspection_results.json",
+    "download_manifest": "../dataset_manifest.json"
+  }
+}

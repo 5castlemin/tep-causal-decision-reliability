@@ -1,0 +1,103 @@
+{
+  "gate": "RESEARCH_E_CORE_COMPLETED_WITH_LIMITATIONS",
+  "classification": "POST_HOC_BUDGET_AND_COST_EFFECTIVENESS_EXTENSION",
+  "scope": {
+    "e1": "C Development/Held-out unit results plus D saved aggregate-only audit",
+    "e2": "C original inputs restored hash-identically; B0-B4 replay then B5-Bmax analytic extension",
+    "e3": "C-only exploratory Adaptive M4 and target sensitivity",
+    "new_scm_or_g0": 0,
+    "new_drf_fits": 0,
+    "new_d_intervention_rows": 0
+  },
+  "cohorts": [
+    {
+      "cohort": "C_DEVELOPMENT",
+      "n": 64,
+      "initial_error_min": 0,
+      "initial_error_mean": 2.140625,
+      "initial_error_median": 2.0,
+      "initial_error_q90": 4.0,
+      "initial_error_q95": 5.849999999999994,
+      "initial_error_q99": 6.369999999999997,
+      "initial_error_max": 7,
+      "B_max": 7
+    },
+    {
+      "cohort": "C_HELDOUT",
+      "n": 200,
+      "initial_error_min": 0,
+      "initial_error_mean": 2.17,
+      "initial_error_median": 2.0,
+      "initial_error_q90": 5.0,
+      "initial_error_q95": 5.0,
+      "initial_error_q99": 7.0,
+      "initial_error_max": 9,
+      "B_max": 9
+    }
+  ],
+  "e1_rows": {
+    "c_development": 5440,
+    "c_heldout": 17000,
+    "d_aggregate": 85
+  },
+  "bootstrap": {
+    "e1_c": {
+      "replicates": 10000,
+      "seed": 2026112601,
+      "unit": "paired SCM for C; no new D bootstrap"
+    },
+    "pareto_stability": {
+      "replicates": 10000,
+      "seed": 2026112604,
+      "unit": "paired original SCM"
+    }
+  },
+  "limitations": [
+    "D unit-level reaggregation and D E2/E3 unavailable from accessible saved artifacts.",
+    "No Research E result is confirmatory; Research C/D frozen conclusions are unchanged.",
+    "Atomic edit count is not monetary, labor, safety or deployment cost.",
+    "No physical manufacturing intervention validation."
+  ],
+  "public_aggregate_sha256": {
+    "adaptive_m4_aggregate.csv": "5341f464dda518b68e1f5dfc3def8b6b6585b4e352d8e7b8296b9351f8e9d885",
+    "budget_policy_summary.csv": "2ffdc2e4fb456579f560e3ffbe676cfcda56d3e70e7c334d9be4e8ae7f6336fc",
+    "c_extended_budget_aggregate.csv": "0243d1534f3f3313c328001843e65b006a8fc2a08782bd7fe8e2dab3ac9808cd",
+    "d_final_aggregate_results.csv": "3490154529464afe5b652db171b36abdfc83aa651d94b3b94aef5f1762de7ff2",
+    "e2_decision_saturation.csv": "ad104d54377d17ca071e07627cd85abbdb94c06ff0f3b81564b08dae74ce7a2b",
+    "e2_extended_budget_aggregate.csv": "ed86323b5468be938d4b6c75faef9964f48b6ca97fef1c038fe46d808a960106",
+    "e2_extended_marginal_benefit.csv": "c9364afec79bd8c6a3a0c389008cd116584f3738563b8f1bb86ddc92ac584803",
+    "e2_extended_pareto_frontiers.csv": "4e318b2789878444991a28a84bf638bffce03d4a572f22d03db4f31336b18de8",
+    "e2_saturation_diagnostics.csv": "eb63c77247c296f15df708e355e03e922aa486f2ef9d9bda26cfcf5781e9de5a",
+    "e3_adaptive_paired_comparisons.csv": "5d35f0f888af10bc4e57932b23496d39f248da353fc573cc0a661eb12ed25e26",
+    "e3_adaptive_pareto.csv": "9e6754977f24d603cec9816481c658f1a068f1c0905042ff5ccc115779f3bb33",
+    "fixed_and_cross_budget_frontiers.csv": "45fd6b58a50554d01bf4b781fdf59d632b64a5861f211c937d18821d28a2d89b",
+    "heldout_b4_leave_one_out.csv": "55b3d54d14d6b14700d2f20be76f866adf4427b81d2ebad51c1eecdad004315f",
+    "lambda_exact_intervals.csv": "e6fb72dc7d26799e7850bdf1280367d0e04d8145aa2b4dca243ca5bdeabb3863",
+    "lambda_optima.csv": "03ff8f90dec556a34caf3786820758503bb15ec2a57c5060d3ea74bef502a090",
+    "marginal_benefit.csv": "1e91114024594f56fb42eb912fbe3480942fe2614ca1841c59c03c6cc3ac7de1",
+    "pareto_bootstrap_stability.csv": "22fda5b6ebf5a35dd8789943dbc206432af0c0569f8da4d983b0ef25d7dfb939",
+    "pareto_frontiers.csv": "5fb818e3b0a30c234524a34a018870be1e8503bf64e73211127bf2b7f1651632",
+    "target_sensitivity_aggregate.csv": "b395b6dd7f8201b858615773cbca90cd7eaf8fd34b2d4aba6dc01c78d59c8f6a"
+  },
+  "public_figure_sha256": {
+    "E1_policy_budget_heatmap.svg": "f62d5c4c09f730f6fda72496a42ba95950534dc3c4eed500a4b1ffad5c31df0e",
+    "E2_curves_C_DEVELOPMENT.svg": "8afec5bb38afda36f7ed0cc866db7031d9b1b38170f644a609d26edeb8f9b997",
+    "E2_curves_C_HELDOUT.svg": "cabefc42644079fb32fa35d300190fd411ac71d2475f0b3e24db128199c53220",
+    "E2_key_policy_curves_C_DEVELOPMENT.svg": "63238a08688e950450cdddaf10a4cf0b713bfd6f95757457d33fa80e6ee57f7d",
+    "E2_key_policy_curves_C_HELDOUT.svg": "f4a8c1f073dc8e1f603b4ddc9512d0306014df0a1048cac6cca0ec9d0fcd384f",
+    "E3_marginal_benefit_C_DEVELOPMENT.svg": "bd5a6abbf2ae1ebcd7b19ef2b0b6220d1322b056c97b0ac3f9a4e6bf4b007580",
+    "E3_marginal_benefit_C_HELDOUT.svg": "e30481e1dffe64155c35dea7aac5d930817517697cdd479c67cec40d5d255f49",
+    "E4_pareto_C_DEVELOPMENT.svg": "e881d40bdf796fd6bf6898c1b288d0d4d28a9233127989e7bff197a349cccec5",
+    "E4_pareto_C_HELDOUT.svg": "a122a50c2773e29fc088fab51b87d7ab628bbae53c7d640dde1a845258514c65",
+    "E4_pareto_D_FINAL.svg": "738e0fd60c00bb3c836bd4669eb30ac2fbf3827d60846455aefd18045275c987",
+    "E5_lambda_choices_C_DEVELOPMENT.svg": "94ae9bda7a4174d62fe15840a3fc80bbc74d6f7b3dce9710db7e7bea0a0d4aab",
+    "E5_lambda_choices_C_HELDOUT.svg": "3f65cf2b90d0464678243638a69920040ce4bd684a8cb058d74c81cbf6bb0f97",
+    "E5_lambda_choices_D_FINAL.svg": "ae11d8de0a7fc470e0f6b1a4b640ccc738fcc244ac9ab382b9c69169cfc9299d",
+    "E6_saturation_C_DEVELOPMENT.svg": "0aedba357a524b8dbb6b2b93a072c038758f6657c55710231791adab66ed5869",
+    "E6_saturation_C_HELDOUT.svg": "57bccd7a193d7f6e9129c1bc9649f2aa4340d8cb13f94463998cc8c4fef995e7",
+    "E7_adaptive_M4_C_DEVELOPMENT.svg": "1ab21583c460888622ad10a50b0182a355f85e2ad0effe385a84bc6798679a2b",
+    "E7_adaptive_M4_C_HELDOUT.svg": "375b0b01ab2bb3e4c7b6935aef63284bc1e916cab942c05823825c772d88ee8b",
+    "E8_target_sensitivity_C_DEVELOPMENT.svg": "e9b044c270f12c19247f26d973597023818dc67b77468b21f5c47012eca8dd83",
+    "E8_target_sensitivity_C_HELDOUT.svg": "d0b12c237c2ef0650ffd85b57592a0b10fd089fc3384860a574dd3394d11397a"
+  }
+}

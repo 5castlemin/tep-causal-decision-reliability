@@ -1,0 +1,40 @@
+{
+  "study": "Research S4 within-task causal repair mechanisms and optimal prioritization",
+  "status": "PROPOSED_NOT_EXECUTED",
+  "classification": "independent confirmatory follow-up proposed after post-hoc S3",
+  "question": "Among task-relevant causal graph errors, what determines repair decision value, and how close do structural policies come to an outcome-informed feasible optimum?",
+  "cohorts": [
+    {
+      "name": "general",
+      "eligibility": "independent SCM sampling; no outcome-based selection"
+    },
+    {
+      "name": "opportunity_rich_diagnostic",
+      "eligibility": "at least two initially feasible M4 edits, based only on structural feasibility"
+    }
+  ],
+  "unit": "SCM; matched corruption variants are blocked within SCM",
+  "proposed_primary": {
+    "contrast": "Frozen M4 vs one Development-selected comparator",
+    "budget": 2,
+    "outcome": "paired SCM-level Decision Regret difference",
+    "direction": "freeze sign convention in final protocol before any new outcome access"
+  },
+  "secondary": [
+    "single-edit value heterogeneity",
+    "two-edit interaction",
+    "structural-policy gap",
+    "regret-greedy to <=2-edit ex-post search gap",
+    "action changes and structural recovery"
+  ],
+  "oracle_information": "Reference DAG repair remains oracle-assisted; ex-post regret benchmarks are privileged diagnostics and not deployable policies.",
+  "sample_size": "NOT_ESTIMATED: requires approved independent pilot variance and prespecified meaningful effect or precision target",
+  "multiplicity": "One primary contrast; Holm family and exploratory 63-subset family prespecified before execution",
+  "execution_authorized": false,
+  "new_scm": 0,
+  "new_g0": 0,
+  "new_observational_rows": 0,
+  "new_intervention_rows": 0,
+  "research_d_unit_level_extension": "NOT_RUN_UNAVAILABLE_PRIVATE_UNIT_ARTIFACTS",
+  "evidence_status": "S3 existing-cohort reanalysis is post-hoc exploratory; S4 independent confirmation is proposed only"
+}

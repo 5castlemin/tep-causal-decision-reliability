@@ -1,0 +1,23 @@
+{
+  "study": "Research F-Lite — Budget-Constrained Decision-Oriented Causal Graph Verification",
+  "classification": "POST_HOC_REFERENCE_BLIND_QUERY_POLICY_EVALUATION",
+  "contract_version": "1.0",
+  "cohorts": {"C_DEVELOPMENT": 64, "C_HELDOUT": 200},
+  "research_d_included": false,
+  "new_scms": 0,
+  "new_g0": 0,
+  "new_observations": 0,
+  "new_interventions": 0,
+  "budgets": [0, 1, 2, 3, 4],
+  "policies": ["S0", "RANDOM_VERIFICATION", "FIT_BASED_VERIFICATION", "SUSPICION_ONLY", "DECISION_IMPACT_ONLY", "DECISION_WEIGHTED_VERIFICATION", "ORACLE_ASSISTED_M4_DIAGNOSTIC", "GRAPH_FREE_ASSOCIATION_DIAGNOSTIC"],
+  "random_repeats_per_scm": 32,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed_namespace": "research-f-lite-v1",
+  "primary_budget": 4,
+  "primary_estimand": "comparator regret minus decision-weighted regret; paired within SCM, cohorts separate",
+  "expert_accuracy_main": 1.0,
+  "optional_expert_accuracy": [0.9, 0.8],
+  "optional_noise_repeats_per_scm": 16,
+  "limits_seconds": {"development": 7200, "heldout": 10800, "memory_bytes": 4294967296},
+  "raw_unit_results_public": false
+}

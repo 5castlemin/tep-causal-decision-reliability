@@ -1,0 +1,52 @@
+{
+  "rows": 200000,
+  "columns_loaded": [
+    "timestamp",
+    "config",
+    "counter",
+    "flag",
+    "intervention",
+    "load_in",
+    "load_out",
+    "hatch"
+  ],
+  "blocks": 2000,
+  "block_size_min": 100,
+  "block_size_max": 100,
+  "inconsistent_assignment_blocks": 0,
+  "flag_sequence_matches_0_to_1999": true,
+  "intervention_first_row_only_each_block": true,
+  "rng_seed_42_matching_blocks": 2000,
+  "candidate_arm_block_counts": {
+    "0.10": 24,
+    "0.30": 23,
+    "0.50": 20,
+    "0.70": 12,
+    "0.90": 18
+  },
+  "config_counts": {
+    "standard": 200000
+  },
+  "load_out_unique": [
+    0.1000000014901161
+  ],
+  "hatch_unique": [
+    0.0
+  ],
+  "intervention_counts": {
+    "0.0": 198000,
+    "1.0": 2000
+  },
+  "counter_unique": 100001,
+  "timestamp_gap_seconds": {
+    "median": 0.15152455800125608,
+    "p99": 1.225712036116049,
+    "max": 9.322028210001008,
+    "block_boundary_min": 8.25208993400156,
+    "block_boundary_max": 9.322028210001008
+  },
+  "response_values_read": false,
+  "archive_bytes": 14047460,
+  "archive_sha256": "e5d58a67f6307b9099177425e91c449b9e62e7c712f8c6f34d1dc80ce4db01e3",
+  "manifest_match": true
+}

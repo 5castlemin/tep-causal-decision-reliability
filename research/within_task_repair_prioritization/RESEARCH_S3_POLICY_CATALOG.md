@@ -1,0 +1,9 @@
+# S3 policy catalog
+
+The corrected analysis enumerates all 63 nonempty subsets of T1–T6. At a current graph, for edit e and subset J, the score is `(mean_j∈J [Tj(after)-Tj(before)]) / atomic_cost`. Equal fixed weights are used; zero-support metrics contribute zero while remaining in the denominator. If at least one candidate has positive T-subset gain (>1e-12), candidates are ranked by T-subset gain/cost; within the fixed absolute 1e-12 tolerance the frozen M4 normalized gain/cost is the secondary key, then canonical M4 metric/pair/operation order. If no candidate has positive T gain, the frozen M4 gain/cost fallback is used. Candidates remain the original initial M4 error pool and must still correct the same reference-relative error and preserve DAG validity. The first S3 results from the pre-correction implementation remain historical and are not overwritten.
+
+The original M4 policy is replayed unchanged. The Random-M4 comparator is the exact SCM-level expectation over uniformly selected currently legal initial M4 edits at B=1 (or no edit when none exist); it is not a finite Monte Carlo draw.
+
+Lookahead selects the shortest improving feasible sequence (one or two edits), then compares selected structural gain/cost, frozen M4 gain/cost, and canonical sequence order. A two-step sequence may begin with a zero-gain edit if its total structural gain is positive. If no legal two-step sequence exists, it invokes the exact one-step Greedy selector for the same metric subset. The correction run will evaluate all 63 subsets only if a fixed, pre-outcome compute feasibility check passes; otherwise it uses the historical fixed 13-set list: T1–T6, T1+…+T6, and T3+T4, T3+T5, T3+T6, T4+T5, T4+T6, T5+T6.
+
+Ex-post best feasible single-edit/sequence oracle was not executed; it would use observed Regret for selection and must remain separate from deployable policies.

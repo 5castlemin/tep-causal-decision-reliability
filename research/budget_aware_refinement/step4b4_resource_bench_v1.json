@@ -1,0 +1,49 @@
+{
+  "graph_policy_refine": {
+    "max_seconds": 0.0015301999519579113,
+    "median_seconds": 0.0005517999525181949,
+    "p95_seconds": 0.0006234000320546329,
+    "repetitions": 200
+  },
+  "limits": [
+    "tracemalloc excludes native NumPy/RSS allocations",
+    "3-node Ridge fixture cannot estimate 10-node model scaling",
+    "single machine microbenchmark is not a full-run wall-time guarantee",
+    "no resume/restart benchmark in this run"
+  ],
+  "no_new_scm_or_observations": true,
+  "numpy": "2.4.3",
+  "path_f1": {
+    "max_seconds": 0.0004354999982751906,
+    "median_seconds": 7.190002361312509e-05,
+    "p95_seconds": 0.00010369997471570969,
+    "repetitions": 200
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "protocol": "STEP4B4_FIXED_FIXTURE_BENCH_V1",
+  "python": "3.14.3",
+  "python_tracemalloc_peak_bytes": 222261,
+  "repetitions": 200,
+  "ridge_fit_fixed_3node_fixture": {
+    "max_seconds": 0.0009329000022262335,
+    "median_seconds": 0.00025260000256821513,
+    "p95_seconds": 0.0003342999843880534,
+    "repetitions": 200
+  },
+  "sample_jsonl_row_bytes": 177,
+  "step3_fixed_fixture": {
+    "columns": 3,
+    "rows": 4,
+    "source": "tests/test_budget_refinement_step3.py::Step3.setUp"
+  },
+  "topology_fixture": {
+    "edges": 14,
+    "nodes": 10,
+    "seed": 1904,
+    "task": [
+      "V00",
+      "V09"
+    ],
+    "template": "multiple_directed_paths"
+  }
+}

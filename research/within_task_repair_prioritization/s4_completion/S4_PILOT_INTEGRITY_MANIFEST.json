@@ -1,0 +1,91 @@
+{
+  "branch": "research/s4-s5-independent-pilot",
+  "cohorts": {
+    "general": {
+      "g0_screening_draws": 32,
+      "proposal_admitted": 32,
+      "retained": 32,
+      "screening_attempts": 123,
+      "shortfall": 0,
+      "structural_eligibility": "existing outcome-blind indirect task and Q-common proposal admission",
+      "target": 32
+    },
+    "opportunity_rich_diagnostic": {
+      "g0_screening_draws": 110,
+      "proposal_admitted": 110,
+      "retained": 32,
+      "screening_attempts": 379,
+      "shortfall": 0,
+      "structural_eligibility": "same proposal admission plus at least two initially DAG-feasible M4 edits; structure only",
+      "target": 32
+    }
+  },
+  "environment": {
+    "evaluator": "analytic SCM interventional mean; no Monte Carlo response rows",
+    "numpy": "2.4.3",
+    "os": "Windows",
+    "pandas": "3.0.1",
+    "python": "3.11.15"
+  },
+  "execution_revisions": {
+    "aggregate_analysis": "752f1da7c58c72ba29df87eb0a3dfbf93178bf88",
+    "candidate_pair_fix": "3115c0ce7ec67b38f52c9cc5e2e332f8f3260975",
+    "evaluator_result_tables": "5f33aedd5b7dd32d6ba06334a9d159568abc786a",
+    "evaluator_table_resume_script_raw_sha256": "78277cc3336f2c51fe11cfe55dd17c427c47ade5f9352d8ab0dc057ec40505d4",
+    "evaluator_table_runner_raw_sha256": "c00fcc24d31e966855ae43fe04b87245d3d2716a32ccd668cc693a76d831742b",
+    "generation_and_recommendation": "5bf2bf7f77efc278a0cd0abbbb581f2f8f2aca80",
+    "generation_and_recommendation_raw_sha256": "e7b4505210b3216ac00c431916018e06d18d1a550ff5604f712c1440330478df",
+    "provenance_note": "The evaluator table hashes were written at the 5f33a runtime; the later a6fca continuation verified and reused those files and only wrote aggregate summary/manifest outputs. Current runner includes an equivalent helper extraction committed after execution; current code hash is separately recorded in public_source_sha256.",
+    "summary_finalizer_resume_script_raw_sha256": "e5d07b6299cc09c74402d84202df15fb01933ca6c818002c1a326115e8af6957",
+    "summary_finalizer_runner_raw_sha256": "4c2b2dac654163c838417887294bd624a1f1ee01d04729c39e7990faad6d42aa",
+    "summary_only_recovery": "a6fca0032041855c3190128600ab471240fbd1eb"
+  },
+  "generation_counts": {
+    "new_g0_screening_draws": 142,
+    "new_observation_rows": 32768,
+    "new_sampled_intervention_rows": 0,
+    "new_scm": 64,
+    "proposal_attempts": 502
+  },
+  "input_integrity": {
+    "research_c_development_cohort": "dd4264d5085adbabe9510bf99b564ec6c2b33e35d4eeb346a079cc4ccfb9b716",
+    "research_c_development_proposals": "1d00d1790788c342e15a81a0c405768e5e2a3e46ee75c57c0bbe34f8c0fcb584",
+    "research_c_heldout_cohort": "37b3c265ecb65b09a97eda91d29411844c3a3851c9fbff6cfa06445f919a3eba",
+    "research_c_heldout_proposals": "59f1abcf5661a5b3d0658d0db0f7e6afe601ebd09997035228df0716800538d6",
+    "research_d_historical_reaudit_summary": "6fa458199ea814a61248a1088bbe5a3b96a586916516c02a1dd6b54c0331292b"
+  },
+  "limits": [
+    "no numeric process peak RSS or total end-to-end wall time persisted",
+    "S5 unit-level artifacts unavailable",
+    "confirmation and external execution not performed"
+  ],
+  "manifest_creation_parent_commit": "ec46db1ac23b0fd91749f57ad75bc73e3c29dd3e",
+  "private_checkpoint_lock_sha256": "d7446ab164250af8f64f101bc6ffc5f8829444470186a47785b792b7e3d113ac",
+  "private_run_manifest_sha256": "8558524d195b3f4e1d01ba1b47bd153b2776dbdd7d445ceac0fdec603db03faa",
+  "private_unit_records_publicly_committed": false,
+  "public_aggregate_sha256": {
+    "outputs_pilot_v2/aggregate_summary.json": "29b9821523aeae25e3ecedc3c7f28499f33ddb7e3a499ff210a26ecdb1837737",
+    "outputs_pilot_v2/all_63_T_subset_aggregates.csv": "97bb78949c342f7334fbeed57314a3eda7815510165743856623371c8bc0688a",
+    "outputs_pilot_v2/policy_aggregates.csv": "c1ea2797f2925c0d590183b6d6a707d259909698ce8a55fa4314721b40f93d49",
+    "outputs_pilot_v2/single_edit_aggregates.csv": "ad8f3a01a2a0fde9fb71455c2b88998c75a5f67955830798a3c0d07e93ba9b98",
+    "outputs_pilot_v2/two_edit_interaction_aggregates.csv": "936231e9b39f5da6512c2a4adb4fef15547ce972f0ae52d76fee488e17d55c8a"
+  },
+  "public_source_sha256": {
+    "research/within_task_repair_prioritization/s4_completion/S4_PILOT_SCIENTIFIC_CONTRACT.md": "95bd022617cfce21efb08f4283f1bf4ec9246a82f796fdfc062c011aa0da1b6d",
+    "research/within_task_repair_prioritization/s4_completion/aggregate_s4_pilot.py": "d9946c7ae50f43b0fa242f52f35a83443828b5b2fe88eaa5212e29a2ac4f8300",
+    "research/within_task_repair_prioritization/s4_completion/resume_s4_evaluator.py": "e5d07b6299cc09c74402d84202df15fb01933ca6c818002c1a326115e8af6957",
+    "research/within_task_repair_prioritization/s4_completion/run_s4_pilot.py": "2fa3342a9adbcd4eb82bc1ef63beff4db3f565ea2197d7a9783e89fa296d9620",
+    "research/within_task_repair_prioritization/s4_completion/s4_pilot_lock.json": "27645ffcce100f11b5fb5ae4fb7f93293994661872723a19b83ca6bae64ce188"
+  },
+  "recorded_at": "2026-11-27",
+  "run_id": "s4-independent-pilot-20261127-v1",
+  "status": "EXPLORATORY_PILOT_EXECUTED_WITH_LIMITATIONS",
+  "verification": {
+    "asset_manifest_check": "failed locally at frozen config hash under Windows checkout; no frozen source or manifest changed",
+    "focused_s4_tests": "7 passed",
+    "full_local_suite": "469 discovered; 468 passed; 1 failed on protected JSONL Git LF blob vs Windows CRLF working-tree bytes",
+    "git_diff_check": "passed",
+    "remote_ci": "no PR-triggered workflow run exists for this pushed feature commit; repository policy leaves PR creation to owner",
+    "research_state_check": "passed"
+  }
+}

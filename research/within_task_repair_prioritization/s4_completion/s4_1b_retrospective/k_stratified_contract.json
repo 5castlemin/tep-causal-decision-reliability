@@ -1,0 +1,21 @@
+{
+  "analysis_id": "s4-1b-k-stratified-descriptive-20261127-v1",
+  "status": "LOCKED_BEFORE_STRATIFIED_REAGGREGATION",
+  "classification": "post_hoc_descriptive",
+  "inputs": {
+    "pilot_root_env": "S4_PILOT_INPUT",
+    "private_reaggregation_env": "S4_RETROSPECTIVE_PRIVATE_OUT",
+    "policy_results_private_sha256": "347cc564358c76cc422a8e01ea001b33a7b4d7c091074a06a6ab93026cbf5904",
+    "b1_recommendations_sha256": "8a5ce1a063d013f959690a2ca5078977ad9f8048e74399a12daaea89d86650b8",
+    "k_diagnostics_sha256": "8a7c3eb27c06072caf05b35f3221da8531838543d05eefc53c0214f190fcb332"
+  },
+  "method": {
+    "strata": "cohort x exact initial K",
+    "contrast": "B1 T-subset regret minus saved M4 B1 regret, paired by SCM; negative favors T",
+    "summaries": ["n", "mean paired difference", "median", "T-better/worse/tie", "same final graph", "same selected action"],
+    "inference": "descriptive only; no within-K confidence intervals or claims of independent strata",
+    "new_model_fit": false,
+    "new_evaluator_call": false,
+    "new_samples": {"SCM": 0, "G0": 0, "observations": 0, "intervention_rows": 0}
+  }
+}

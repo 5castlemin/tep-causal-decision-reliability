@@ -1,0 +1,57 @@
+{
+  "schema": "RESEARCH_S7_EXTERNAL_CONTRACT_V1",
+  "run_id": "s7-causalassembly-two-station-tasks-20261128-v1",
+  "classification": "NEW_CONDITIONAL_EXTERNAL_SEMISYNTHETIC_RECONSTRUCTION",
+  "design": {
+    "source_package": "causalAssembly",
+    "source_version": "1.2.1",
+    "source_commit": "8da3729e6383f0e1cbe7740bb6ab7ac4977ac7f9",
+    "fitted_dgp_count": 1,
+    "full_joint_graph": true,
+    "full_graph_node_count": 98,
+    "full_graph_edge_count": 485,
+    "source_observational_rows": 500,
+    "task_strata": {
+      "Station2": {"action": "Station2_mp_13", "target": "Station2_mp_33", "station_local_path_edges": 2},
+      "Station3": {"action": "Station3_mp_43", "target": "Station3_mp_45", "station_local_path_edges": 2}
+    },
+    "task_selection": "within each eligible station: directed backdoor-free strict-indirect pairs first, then shortest station-local directed path, then lexical action/target; graph-only selection"
+  },
+  "generator": {
+    "true_adjacency_corruption_rate": 0.15,
+    "false_adjacency_rate": 0.05,
+    "dag_rejections_redrawn": false,
+    "g0_count_per_task_stratum": 200,
+    "g0_id_start": 971000,
+    "seed_namespace": "s7-final-causalassembly-20261128-v1",
+    "training_rows": 512,
+    "fit_seed": 2026112807,
+    "training_seed": 2026112808
+  },
+  "decision": {
+    "learner": "existing Ridge learner, alpha=1.0",
+    "target_rule": "training Y mean + 1 sample SD; scale is training Y sample SD",
+    "action_grid_rule": "training X empirical quantiles 0.1, 0.3, 0.5, 0.7, 0.9 (linear); five distinct values required",
+    "policies": ["S0", "M1", "M2", "M3", "M4", "FULL_GREEDY", "T5_GUIDED_M4", "FULL_T_GUIDED_M4", "RANDOM_M4", "TYPE_RANKED_M4", "GRAPH_FREE_ASSOCIATION", "REFERENCE_GRAPH_LEARNER"],
+    "budgets": [0, 1, 2, 3, 4],
+    "primary": {"contrast": "L(S0)-L(Frozen M4)", "budget": 2, "gamma": 0, "positive_favors_m4": true},
+    "secondary_contrasts": ["M4-FULL_GREEDY", "M4-GRAPH_FREE_ASSOCIATION", "T5_GUIDED_M4-M4", "FULL_T_GUIDED_M4-M4"],
+    "edit_cost": "one per atomic directed-edge repair",
+    "tracking_loss": "((mean(Y_action)-target)^2 - sample_variance(Y_action)/n) / scale^2; ddof=1; no clipping"
+  },
+  "evaluation": {
+    "recommendations_sealed_before_intervention_sampling": true,
+    "shared_action_vectors_within_task_stratum": true,
+    "response_rows_per_action": 5000,
+    "actions_per_task_stratum": 5,
+    "response_rows_per_task_stratum": 25000,
+    "total_response_rows": 50000,
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 2026112809,
+    "uncertainty": ["G0-only", "action-MC-only", "two-source paired"],
+    "interval": "pointwise percentile 95%; shared action-loss table and common G0/action resamples across policy contrasts"
+  },
+  "resource_limits": {"wall_seconds_cumulative": 14400, "aggregate_process_tree_rss_bytes": 4294967296, "response_rows_per_task_stratum_max": 25000, "parallel_sampling": 1},
+  "stopping_and_resume": ["No replacement seeds or response draws after outcome review.", "No overwrite of any run output.", "Recommendation and response outputs remain in the external private run root.", "A cap or technical failure preserves completed files and is reported as partial; it does not authorize a changed cohort."],
+  "limitations": ["Two station task strata share one fitted full-line DGP and one training frame; no independent environment-level inference.", "G0 units are corruption draws conditional on one fitted DGP, not independent SCMs.", "Reference-DAG-assisted repair, semisynthetic DRF assumptions, five-action grid, one target rule, and atomic edge-count cost condition all results.", "No physical manufacturing intervention or deployment claim.", "The official source is AGPL-3.0; raw source data and private model/output artifacts are not redistributed in this repository."]
+}

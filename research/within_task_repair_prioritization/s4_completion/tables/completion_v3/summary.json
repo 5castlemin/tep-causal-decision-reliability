@@ -1,0 +1,40 @@
+{
+  "status": "S3_COMPLETION_RECOMPUTED_WITH_LIMITATIONS",
+  "classification": "post-hoc exploratory",
+  "input_rows": {
+    "S3_policy_unit_rows": 88440,
+    "single_edit_candidate_rows": 203,
+    "ordered_interaction_rows": 198
+  },
+  "cohort_n": {
+    "C_DEVELOPMENT": 64,
+    "C_HELDOUT": 200
+  },
+  "gamma": [
+    0.0,
+    0.2,
+    0.5
+  ],
+  "bootstrap": {
+    "replicates": 10000,
+    "seed_by_cohort": {
+      "C_DEVELOPMENT": 2026112703,
+      "C_HELDOUT": 2026112704
+    },
+    "common_indices_reused_across_objectives_and_contrasts": true,
+    "unit": "SCM",
+    "interval": "pointwise percentile"
+  },
+  "new_scm": 0,
+  "new_g0": 0,
+  "new_observations": 0,
+  "new_interventions": 0,
+  "public_aggregate_only": true,
+  "limitations": [
+    "existing cohort reuse and post-hoc selection remain",
+    "candidate/rank data are summarized within SCM; no causal error-type effect",
+    "only B<=2 ex-post feasible edit universe was enumerated",
+    "no Research D unit-level data",
+    "no independent S4 cohort run"
+  ]
+}
