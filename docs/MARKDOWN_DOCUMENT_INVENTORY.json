@@ -1,20 +1,16 @@
 {
   "schema_version": 1,
   "as_of": "2026-11-28",
-  "scope": "Markdown files present in the working tree at taxonomy integration; classification is navigational and does not change source authority. Frozen/historical source documents are intentionally left in place.",
-  "total_markdown_files": 419,
+  "scope": "Tracked Markdown files at final documentation QA; ignored working-tree cache files are excluded. Classification is navigational and does not change source authority. Frozen/historical source documents remain in place.",
+  "total_markdown_files": 418,
   "classification_counts": {
+    "HISTORICAL_DOCUMENT": 370,
     "ACTIVE_DOCUMENT": 20,
-    "HISTORICAL_DOCUMENT": 371,
     "FROZEN_DOCUMENT": 26,
     "ARCHIVE_DOCUMENT": 1,
     "GENERATED_DOCUMENT": 1
   },
   "documents": [
-    {
-      "path": ".pytest_cache/README.md",
-      "classification": "HISTORICAL_DOCUMENT"
-    },
     {
       "path": "AGENTS.md",
       "classification": "HISTORICAL_DOCUMENT"

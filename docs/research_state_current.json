@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-28 20:45 KST",
+  "checked_at": "2026-11-28 21:30 KST",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -1599,24 +1599,25 @@
     "s7_wall_cap_seconds": 14400,
     "s7_rss_bytes_observed": 86867968,
     "s7_rss_cap_bytes": 4294967296,
-    "project_closeout": "PROJECT_FINALIZED_WITH_CLEANUP_LIMITATIONS_PENDING_PR51_REVIEW_AND_MERGE",
+    "project_closeout": "PROJECT_FINALIZED_WITH_CLEANUP_LIMITATIONS",
     "details": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md; research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md",
     "s7_wall_remaining_seconds": null,
-    "latest_commit": "5eced12d1847868b7b6a9fb9433d92169bf7c5ba",
-    "draft_pr": 51,
+    "latest_commit": "54933cb522bc7ec1e64164e1e17e0926cc396d63",
+    "draft_pr": null,
     "ci_runs": [
-      46125340291,
-      46125346890
+      429,
+      430
     ],
-    "ci_status": "SUCCESS_FOR_5eced12d",
+    "ci_status": "SUCCESS_MAIN_54933cb_AND_TAG_final-research-v1.0",
     "s7_termination_reason": "NOT_VERIFIABLE_FINAL_SUPERVISOR_REPORT_MISSING",
     "s7_task_zone_feasibility": "PASS_EXACTNESS; runtime discrepancy .7613s JSON vs 1.474s prose; no outcome access",
     "validated_revision": "ebcb457ef59700da26d063413aff25c242cdd2a5",
-    "pr_status": "OPEN_DRAFT_NO_REVIEW_SUBMISSIONS",
+    "pr_status": "PR51_AND_PR52_MERGED; 0_OPEN_PRS; 3_REMOTE_BRANCHES",
     "local_full_suite": "488 discovered; 480 passed; 1 skipped; 4 failures; 4 errors",
     "focused_tests": "7 passed",
     "research_state_check": "PASS",
-    "diff_check": "PASS"
+    "diff_check": "PASS",
+    "closeout_qa": "DOCUMENTATION_RELEASE_QA_IN_PROGRESS; no new experiment"
   },
   "history": [],
   "canonical_research_taxonomy": {

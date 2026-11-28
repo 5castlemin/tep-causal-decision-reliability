@@ -1,3 +1,10 @@
+# 2026-11-28 — Final documentation and release QA
+
+- Branch `docs/final-release-polish`, based on main `54933cb`; documentation-only commit `7b6148e48c1581280529f31258ad06ee152c69e4` is under PR #53. Research artifacts, frozen contracts, experiment outputs, and generated datasets were not changed.
+- Corrected Research 3.2 S5 links, added the Research 0.2 preliminary pilot source, aligned current-facing naming and the saved S6 v6 value/interval, refreshed the tracked Markdown inventory, and clarified current repository/archive status versus historical snapshots.
+- Local QA: 19 current Markdown documents link/anchor scanned with no unresolved local links; taxonomy JSON, research-state generator/check, and `git diff --check` passed. One Python 3.11.15 full run discovered 488 tests: 486 passed, 1 skipped, 1 failed, 1 errored. Windows frozen-config hash mismatch remains unmodified; see repository closeout. Existing bundle checks passed; backups are same-device only.
+- No scientific experiment or replay was run. PR-head GitHub Actions remains the authoritative release check.
+
 # 작업 기록
 
 # 2026-11-25 — Research D provenance recovery and reproduction closeout

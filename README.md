@@ -1,6 +1,6 @@
 # DAT 제조공정 인과그래프 수리 연구 — Research 0–4
 
-> **현재 최종 상태 (2026-11-28):** Research 0–4 taxonomy와 연구 종료 문서는 PR #51을 통해 main에 통합됐습니다. main merge `f95ec7e` 및 CI run `46132707728`이 성공했습니다. 저장소에는 원격 브랜치 3개와 열린 PR 0개가 남았습니다. 역사적 Research D/외부 검증과 미완료 S7 한계는 아래와 연결 문서에 기록되어 있습니다. 이 저장소는 실제 제조설비 개입 효능이나 경제성을 입증하지 않습니다.
+> **현재 최종 상태 (2026-11-28):** Research 0–4 taxonomy와 종료 문서는 PR #51 및 #52를 통해 main에 통합됐습니다. 현재 main은 `54933cb522bc7ec1e64164e1e17e0926cc396d63`, 제출용 기준 태그는 `final-research-v1.0`이며 main CI run `429`와 tag CI run `430`이 성공했습니다. 별도 장치 백업은 완료되지 않았습니다. 저장소에는 원격 브랜치 3개와 열린 PR 0개가 남았습니다. 역사적 Research D/외부 검증과 미완료 S7 한계는 아래와 연결 문서에 기록되어 있습니다. 이 저장소는 실제 제조설비 개입 효능이나 경제성을 입증하지 않습니다.
 
 ## 최종보고서 및 발표자료 작성 가이드
 
@@ -9,7 +9,7 @@
 권장 순서:
 
 1. [팀 가이드](FINAL_RESEARCH_TEAM_GUIDE.md): 연구 동기, 개념, 연구 흐름을 빠르게 파악합니다.
-2. [최종 연구 framework](FINAL_RESEARCH_FRAMEWORK.md): Study 구성, 수식, 결과, 보고서 목차와 발표 스토리라인을 확인합니다.
+2. [최종 연구 framework](FINAL_RESEARCH_FRAMEWORK.md): Research 0–4 구성, 수식, 결과, 보고서 목차와 발표 스토리라인을 확인합니다.
 3. [Evidence Matrix](FINAL_RESEARCH_EVIDENCE_MATRIX.md): 각 주장에 연결된 단위, 추정량, 불확실성 및 근거 파일을 인용합니다.
 4. [최종 연구 보고서 참고본](research/final_integration/FINAL_RESEARCH_REPORT.md)과 [결과표](research/final_integration/FINAL_RESULTS_TABLES.md)를 사용합니다.
 5. [발표 증거 가이드](research/final_integration/FINAL_PRESENTATION_EVIDENCE_GUIDE.md), [주장 및 한계](FINAL_RESEARCH_CLAIMS_AND_LIMITATIONS.md), [무결성 검토](FINAL_SCIENTIFIC_INTEGRITY_REVIEW.md)로 슬라이드와 결론을 교차 점검합니다.
@@ -27,14 +27,14 @@
 2. 원본 Ledger 기반 사후 분석은 경로 가용성과 효과 방향이 일부 결정 차이를 설명함을 보였으나, off-task 수정도 경로를 만들거나 DAG 제약을 해소할 수 있었고 구조 수정 뒤 성능이 악화된 반례도 있었다.
 3. Research D의 단일 외부 반합성 DRF 생성환경에서는 조건부 양의 대비가 관찰됐으나 graph-free baseline이 Full Greedy와 같은 손실이었고 정밀도 목표는 미달했다. Research E의 사후 확장에서는 예산 편익이 비단조이고 정책 선택이 비용 선호도와 목표값에 따라 달라졌다.
 
-## 세 증거 층위
+## 연구 결과 요약
 
-- **Research C:** 사전 동결된 통제 합성 SCM 실험. Held-out 표본 단위는 독립 synthetic SCM 200개다. [계약](RESEARCH_C_EXPERIMENT_CONTRACT_V1.md) · [Held-out 결과](RESEARCH_C_HELDOUT_V1_RESULTS.md)
+- **Research 1.1 (기존 C):** 사전 동결된 통제 합성 SCM 실험. Held-out 표본 단위는 독립 synthetic SCM 200개다. [계약](RESEARCH_C_EXPERIMENT_CONTRACT_V1.md) · [Held-out 결과](RESEARCH_C_HELDOUT_V1_RESULTS.md)
 - **메커니즘 분석:** Research C 저장 Ledger를 이번 통합에서 read-only로 재검증한 사후 탐색 분석. 정창민의 PR #40 기여 및 커밋 이력을 보존한다. 재생성본의 SCM별 전체 결과는 원본과 완전 대조할 수 없었다.
-- **Research D:** 공개 반합성 자료에 재적합한 단일 DRF DGP, 고정 학습 프레임, 200 graph-corruption draws에 조건부인 평가. 실측 개입/독립 외부 SCM 검증이 아니다.
-- **Research E:** 같은 C cohorts의 예산 B 확장, edit-count Pareto/lambda 분석, 제한적 Adaptive M4 및 target sensitivity. 이미 본 C 결과의 post-hoc 확장이고 새 SCM cohort가 아니다. [최종 감사](research/final_integration/RESEARCH_E_FINAL_AUDIT.md) · [E9 Pareto](research/final_integration/research_e_audit/figures/E9_expanded_pareto.svg) · [E10 λ](research/final_integration/research_e_audit/figures/E10_lambda_lower_envelope.svg)
-- **S6:** 저장된 S4 Development 80/replication 160 candidate records를 이용해 B=1 정책행렬 v6를 사후 재집계했다. Replication의 T5−Frozen M4는 −.008664 (common-index SCM bootstrap 95% pointwise CI [−.020398, 0], better/worse/tie 4/1/155; Holm-adjusted paired-t p=1.0)였고 우월성은 확립되지 않았다. Type-ranked M4−Frozen M4는 −.002204 (CI [−.009283, .003545], 2/1/157; Holm p=1.0)였다. [S6 closeout](research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md)
-- **S7:** 98-node/485-edge full-line recommendation run에서 저장 완료 0/400 G0, 0/24,000 recommendations였고 evaluator는 시작하지 않았다. 마지막 supervisor report가 없어 종료 원인/cap 적용 여부는 확인할 수 없다. 별도 계산 최적화 feasibility는 통과했지만 JSON과 closeout에 기재된 수행시간(.761초와 1.474초)이 달라 해소되지 않았다. 전체 S7 평가는 미완료다. [S7 closeout](research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md)
+- **Research 3.1 (기존 D):** 공개 반합성 자료에 재적합한 단일 DRF DGP, 고정 학습 프레임, 200 graph-corruption draws에 조건부인 평가. 실측 개입/독립 외부 SCM 검증이 아니다.
+- **Research 4.1 (기존 E):** 같은 C cohorts의 예산 B 확장, edit-count Pareto/lambda 분석, 제한적 Adaptive M4 및 target sensitivity. 이미 본 C 결과의 post-hoc 확장이고 새 SCM cohort가 아니다. [최종 감사](research/final_integration/RESEARCH_E_FINAL_AUDIT.md) · [E9 Pareto](research/final_integration/research_e_audit/figures/E9_expanded_pareto.svg) · [E10 λ](research/final_integration/research_e_audit/figures/E10_lambda_lower_envelope.svg)
+- **Research 2.4 (기존 S6):** 저장된 S4 Development 80/replication 160 candidate records를 이용해 B=1 정책행렬 v6를 사후 재집계했다. Replication의 T5−Frozen M4는 −.008664 (common-index SCM bootstrap 95% pointwise CI [−.020398, 0], better/worse/tie 4/1/155; Holm-adjusted paired-t p=1.0)였고 우월성은 확립되지 않았다. Type-ranked M4−Frozen M4는 −.002204 (CI [−.009283, .003545], 2/1/157; Holm p=1.0)였다. [S6 closeout](research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md)
+- **Research 3.3 (기존 S7):** 98-node/485-edge full-line recommendation run에서 저장 완료 0/400 G0, 0/24,000 recommendations였고 evaluator는 시작하지 않았다. 마지막 supervisor report가 없어 종료 원인/cap 적용 여부는 확인할 수 없다. 별도 계산 최적화 feasibility는 통과했지만 JSON과 closeout에 기재된 수행시간(.761초와 1.474초)이 달라 해소되지 않았다. 전체 S7 평가는 미완료다. [S7 closeout](research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md)
 
 ## 결과 요약
 
@@ -88,7 +88,7 @@ F-Lite 최종 저장자료 감사 및 지표 정정은 [감사 보고서](resear
 
 2026-11-28 기준 후속 S4 재구축(Development 80, 별도 replication 160)과 S5 conditional external semisynthetic reconstruction(단일 DRF DGP, 200 G0 draws)이 별도 cohort로 완료되어 있다. 기존 Research E C 예산 확장에 더해 이번 최종 extension은 저장된 S4/S5 B=0–4 unit results 16,560행을 재집계했다. 신규 SCM/G0/관측·개입표본은 만들지 않았다. S4/S5 B=5–9는 저장된 sealed results가 없어 실행하지 않았으며 외삽하지 않는다.
 
-최종 연구의 연구 질문·Study mapping·결과·한계·최종보고서 및 발표 구성은 [FINAL_RESEARCH_FRAMEWORK.md](FINAL_RESEARCH_FRAMEWORK.md)에서 확인한다. [증거 행렬](FINAL_RESEARCH_EVIDENCE_MATRIX.md), [팀 가이드](FINAL_RESEARCH_TEAM_GUIDE.md), [무결성 검토](FINAL_SCIENTIFIC_INTEGRITY_REVIEW.md), [주장과 한계](FINAL_RESEARCH_CLAIMS_AND_LIMITATIONS.md)도 함께 읽는다. Research C의 frozen primary는 유지되고, S4/S5 및 E extension은 각자의 조건과 post-hoc/conditional 증거 수준으로 구분한다. S5의 action-MC 및 two-source interval은 0을 포함하며 graph-free baseline은 M4와 경쟁했다. T5 우월성은 입증되지 않았다.
+최종 연구의 질문·Research 0–4 mapping·결과·한계·최종보고서 및 발표 구성은 [FINAL_RESEARCH_FRAMEWORK.md](FINAL_RESEARCH_FRAMEWORK.md)에서 확인한다. [증거 행렬](FINAL_RESEARCH_EVIDENCE_MATRIX.md), [팀 가이드](FINAL_RESEARCH_TEAM_GUIDE.md), [무결성 검토](FINAL_SCIENTIFIC_INTEGRITY_REVIEW.md), [주장과 한계](FINAL_RESEARCH_CLAIMS_AND_LIMITATIONS.md)도 함께 읽는다. Research C의 frozen primary는 유지되고, S4/S5 및 E extension은 각자의 조건과 post-hoc/conditional 증거 수준으로 구분한다. S5의 action-MC 및 two-source interval은 0을 포함하며 graph-free baseline은 M4와 경쟁했다. T5 우월성은 입증되지 않았다.
 
 Research E extension 결과와 집계는 [E extension report](research/budget_adaptive_repair/RESEARCH_E_EXTENSION_RESULTS.md), [marginal benefit](research/budget_adaptive_repair/RESEARCH_E_MARGINAL_BENEFIT_REPORT.md), [cost-weighted analysis](research/budget_adaptive_repair/RESEARCH_E_COST_WEIGHTED_POLICY_REPORT.md), [S5 budget analysis](research/budget_adaptive_repair/RESEARCH_E_EXTERNAL_BUDGET_ANALYSIS.md), `research/budget_adaptive_repair/outputs/final_extension_v1/`에 있다. C regret과 S5 standardized tracking loss는 통합하거나 같은 척도로 비교하지 않는다. Same-device private archive는 외부 장치 백업이 완료되지 않았다.
 

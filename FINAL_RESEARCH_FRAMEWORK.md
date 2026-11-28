@@ -10,6 +10,8 @@
 
 ## 1. Executive Summary
 
+The canonical narrative uses Research 0–4; legacy experiment IDs in source artifacts remain for provenance. See the [naming map](docs/RESEARCH_NAMING_MAP.md) for the complete mapping.
+
 이 연구는 인과그래프를 전체적으로 더 정확하게 만드는 일과, 주어진 조작 과제의 추천 손실을 줄이는 일이 같지 않다는 문제에서 출발했다. 최종 질문은 **불완전한 그래프에서 제한된 수정 예산을 어떤 구조 오류에 배분할 때 의사결정 손실이 어떻게 달라지는가**이다.
 
 동결된 Research C 합성 평가의 Held-out 200 SCM에서 B=2 Full Greedy는 무수정 대비 평균 regret을 0.07483636 낮췄다(95% paired-t CI [0.05089822, 0.09877450]). Development에서 선택된 M4는 Held-out에서 더 적은 편집으로 낮은 평균 regret을 보였지만, 이는 보조적 정책 비교이며 모든 환경의 우월성을 뜻하지 않는다. 원본 Ledger에 대한 사후 메커니즘 분석은 과제 관련 경로와 효과 방향이 중요할 수 있음을 보였고 동시에 off-task 오류가 DAG 제약을 풀거나 유효한 경로를 끊는 반례도 확인했다.
@@ -64,7 +66,7 @@ M1은 task-zone 밖 FN, M2는 task-zone 밖 FP, M3는 task-zone 밖 REV/UNRES, M
 
 **S4 재구축.** 기존 PC에서 새로 구축한 Development 80과 독립 replication 160은 서로 분리한다. 다른 PC의 과거 Unified S4/S4-3 실행은 단위 자료가 확보되지 않아 `REPORTED_COMPLETED_NOT_INDEPENDENTLY_VERIFIABLE`로 남는다. 현재 확인된 replication은 Q-common-admitted strict-indirect 모집단이며 C unconditional population과 같지 않다.
 
-Replication의 frozen primary는 B=1, gamma=0에서 T5-guided M4 − M4 = −0.0086644, 95% paired SCM interval [−0.020391, 0], better/worse/tie 4/1/155였다. interval은 0을 포함하고 목표 half-width .010을 약간 넘었다. T5 superiority와 Full T 대비 noninferiority 모두 입증되지 않았다. S4 unit records에서 재집계한 B=2 M4 mean regret은 Development .009218 (0.888 edits), replication .020615 (0.863 edits); replication Full Greedy .040878 (1.600 edits). 이는 별도 cohort 내부의 descriptive analytic results다.
+Replication의 frozen primary는 B=1, gamma=0에서 T5-guided M4 − M4 = −0.008664, 95% paired SCM interval [−0.020398, 0], better/worse/tie 4/1/155였다. interval은 0을 포함하고 목표 half-width .010을 약간 넘었다. T5 superiority와 Full T 대비 noninferiority 모두 입증되지 않았다. S4 unit records에서 재집계한 B=2 M4 mean regret은 Development .009218 (0.888 edits), replication .020615 (0.863 edits); replication Full Greedy .040878 (1.600 edits). 이는 별도 cohort 내부의 descriptive analytic results다.
 
 직접 outside-task 편집 진단에서 747개 합법 수정 중 77개 outside-task FN 편집은 해당 관측 단위들에서 regret/action 변화 0을 보였다. 이 77은 독립 SCM 수가 아니며 편집하지 않은 오류의 가치가 0임을 뜻하지 않는다. 이번 통합에서 미실행 상태인 S4 gamma sensitivity, matched corruption, formal interactions는 완료로 표시하지 않는다.
 
@@ -88,7 +90,7 @@ Pareto frontier와 (J_\lambda=\bar L+\lambda\bar C) lower envelope는 관측 표
 |---|---|---|---|
 | C primary | 독립 Held-out SCM 200, B2 | S0−Full Greedy +0.07483636 | paired-t 95% CI [0.05089822, 0.09877450], frozen-contract confirmatory |
 | C M4 secondary | Held-out SCM 200, B2 | mean regret .00398775, cost .695 | Development-selected secondary |
-| S4 replication primary | SCM 160, B1, gamma0 | T5−M4 −.0086644 | paired 95% CI [−.020391, 0], 4/1/155; superiority 미확립 |
+| S4 replication primary | SCM 160, B1, gamma0 | T5−M4 −.008664 | paired 95% CI [−.020398, 0], 4/1/155; superiority 미확립 |
 | S5 external primary | G0 200, B2 | S0−M4 +.00685175 | G0-only CI excludes 0; Action-MC/two-source CI include 0 |
 | E C extension | C Held-out, M4 B0–9 | .093439 → .001299 with nonmonotonic plateau | post-hoc |
 | E S4/S5 extension | 80/160 SCM and 200 conditional G0; B0–4 | 저장 unit rows 재집계 | paired bootstrap is cohort-specific; S5 G0-only fixed evaluator table |
@@ -133,11 +135,11 @@ Pareto frontier와 (J_\lambda=\bar L+\lambda\bar C) lower envelope는 관측 표
 |---|---|---|---|
 | 1. 제조 인과발견의 한계 | 구조 점수와 개입 품질은 왜 다른가? | 초기 TEP 적격성·한계 문서 | 관측 구조 비교만으로 결정 효과를 알 수 없어 합성 통제환경으로 전환 |
 | 2. 연구 질문과 프레임 | 제한 예산의 구조 수리 문제를 어떻게 정의하는가? | Decision Regret 수식, 연구 mapping | 전체 정확도에서 task decision quality로 초점 이동 |
-| 3. Preliminary & Research C | task-zone 수리가 무수정보다 나은가? | C primary 결과표, policy comparison figure | WHERE 질문의 frozen synthetic evidence |
+| 3. Research 0 → Research 1 | task-zone 수리가 무수정보다 나은가? | C primary 결과표, policy comparison figure | WHERE 질문의 frozen synthetic evidence |
 | 4. S1/S2: 목적·구조 정보 | 효과 목표에 따라 구조 지표와 예측이 어떻게 달라지는가? | gamma별 regret 및 nested feature MAE | 과업 정의 의존성 제시 |
 | 5. S3/S4: 오류 내부 우선순위 | task 내부 오류 중요도와 T5의 추가 가치는 확인됐는가? | S4 paired CI, metric-selection 결과, edit-value table | WHAT & WHY; 우월성 미확립도 포함 |
-| 6. Research D/S5 | 외부 반합성 환경으로 어떤 범위까지 일반화되는가? | S5 uncertainty 표와 action loss | conditional external evidence, graph-free 기준선 |
-| 7. Research E | 예산과 편집 비용의 한계편익은 어떠한가? | budget/regret, cost, Pareto, λ figures | HOW MUCH; 비단조성과 서로 다른 척도 |
+| 6. Research 3 | 외부 반합성 환경으로 어떤 범위까지 일반화되는가? | S5 uncertainty 표와 action loss | conditional external evidence, graph-free 기준선 |
+| 7. Research 4 | 예산과 편집 비용의 한계편익은 어떠한가? | budget/regret, cost, Pareto, λ figures | HOW MUCH; 비단조성과 서로 다른 척도 |
 | 8. 통합 토론 | 어떤 결론은 가능하며 무엇은 미입증인가? | Evidence Matrix | 네 연구의 조건부 결론 및 경영 시사점 |
 | 9. 한계와 결론 | 실제 적용 전 어떤 증거가 부족한가? | Integrity Review, Claims & Limitations | reference DAG·실측개입·경제비용 부재를 명확히 함 |
 
@@ -150,13 +152,13 @@ Pareto frontier와 (J_\lambda=\bar L+\lambda\bar C) lower envelope는 관측 표
 | 1 | 불완전한 그래프, 어디부터 고칠 것인가? | 연구 제목·RQ | 본편 |
 | 2 | 높은 구조 점수만으로 개입 결정의 질을 알 수 없다 | TEP→SCM 연구 전환과 한계 | 본편 |
 | 3 | Decision Regret과 제한 편집 예산 | (R(G)), B, 실제 비용 정의 | 본편 |
-| 4 | Study 1 — 전체가 아니라 과제 영역을 본다 | C S0 vs Full Greedy B2 평균·CI | 본편 |
+| 4 | Research 1 — 전체가 아니라 과제 영역을 본다 | C S0 vs Full Greedy B2 평균·CI | 본편 |
 | 5 | M1–M4는 서로 다른 오류 영역을 우선한다 | 오류 영역 도식, 대표 반례 | 본편 |
 | 6 | 구조 수정의 가치는 오류 위치와 과제에 따라 달라진다 | 원본 ledger 사례 / S1 gamma 결과 | 본편, 사후 분석 표기 |
-| 7 | Study 2 — T5의 추가 가치는 아직 불확실하다 | S4 replication −.0086644, CI [−.020391,0] | 본편 |
-| 8 | Study 3 — 외부 반합성 결과도 조건부다 | S5 primary 3개 구간 | 본편 |
+| 7 | Research 2 — T5의 추가 가치는 아직 불확실하다 | S4 replication −.008664, CI [−.020398,0] | 본편 |
+| 8 | Research 3 — 외부 반합성 결과도 조건부다 | S5 primary 3개 구간 | 본편 |
 | 9 | Graph-free 기준선도 경쟁한다 | S5 .867868 vs M4 .868384 | 본편 |
-| 10 | Study 4 — 더 많이 고치는 것이 항상 낫지는 않다 | C B0–9, S4/S5 B0–4 curves | 본편 |
+| 10 | Research 4 — 더 많이 고치는 것이 항상 낫지는 않다 | C B0–9, S4/S5 B0–4 curves | 본편 |
 | 11 | 예산 선택은 손실과 가정한 편집 비용의 trade-off | Pareto, λ lower envelope | 본편, λ 가상값 명시 |
 | 12 | 최종 답: 우선순위는 조건부이며 현장 효능은 미입증 | 핵심 주장·한계·의의 | 본편 |
 | 부록 A | 정책·metric 정의, 모든 budget tables | 완전 결과표 | 부록 |
