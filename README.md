@@ -17,7 +17,7 @@
 - **Research D:** 공개 반합성 자료에 재적합한 단일 DRF DGP, 고정 학습 프레임, 200 graph-corruption draws에 조건부인 평가. 실측 개입/독립 외부 SCM 검증이 아니다.
 - **Research E:** 같은 C cohorts의 예산 B 확장, edit-count Pareto/lambda 분석, 제한적 Adaptive M4 및 target sensitivity. 이미 본 C 결과의 post-hoc 확장이고 새 SCM cohort가 아니다. [최종 감사](research/final_integration/RESEARCH_E_FINAL_AUDIT.md) · [E9 Pareto](research/final_integration/research_e_audit/figures/E9_expanded_pareto.svg) · [E10 λ](research/final_integration/research_e_audit/figures/E10_lambda_lower_envelope.svg)
 - **S6:** 저장된 S4 Development/replication unit 결과를 이용한 오류 유형별 single-edit value 및 정책 비교의 사후 재분석이다. 후보는 SCM 안에 중첩되며 오류 유형 인과효과나 정책 우월성을 입증하지 않는다. [S6–S7 closeout](research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md)
-- **S7:** Station2/Station3 task strata에 같은 98-node/485-edge full-line DRF DGP를 쓰는 외부 검증이다. 2026-11-28 14:53 KST에는 첫 G0 생성 중으로 G0 0/400, recommendations 0/24,000이었고 intervention evaluation은 시작하지 않았다. [Live progress](research/supplementary_validation/s7/RESEARCH_S7_LIVE_PROGRESS_REPORT.md)
+- **S7:** Station2/Station3 task strata에 같은 98-node/485-edge full-line DRF DGP를 쓰는 외부 검증이다. 2026-11-28 15:05 KST에는 첫 G0 생성 중으로 G0 0/400, recommendations 0/24,000이었고 intervention evaluation은 시작하지 않았다. [Live progress](research/supplementary_validation/s7/RESEARCH_S7_LIVE_PROGRESS_REPORT.md)
 
 ## 결과 요약
 

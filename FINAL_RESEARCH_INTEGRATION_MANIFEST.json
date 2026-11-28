@@ -33,28 +33,33 @@
     "s5": "new conditional external semisynthetic reconstruction; one DGP and 200 G0 draws",
     "research_e": "original C B0-9 extension retained; saved S4/S5 reaggregation B0-4; new B5-9 replay NOT_RUN",
     "s6": "saved S4 unit-level candidate results reaggregated; post-hoc and SCM-clustered",
-    "s7": "partial: 0/400 G0 and 0/24,000 recommendations at 2026-11-28 14:53 KST; first task-zone graph enumeration still running; evaluator not started"
+    "s7": "partial: 0/400 persisted G0 and 0/24,000 recommendations at 2026-11-28 15:05 KST; last reliable in-memory snapshot at 14:58 also zero; first task-zone graph enumeration still running; evaluator not started"
   },
   "s6_s7_status": {
     "s6": "POST_HOC_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
     "s7": "RECOMMENDATION_STAGE_ACTIVE_ZERO_COMPLETED_UNITS",
-    "s7_elapsed_wall_seconds": 11195,
+    "s7_elapsed_wall_seconds": 11927,
     "s7_wall_cap_seconds": 14400,
     "s7_observed_rss_bytes": 86867968,
     "s7_rss_cap_bytes": 4294967296,
     "s7_last_10m_completed_units": 0,
+    "s7_snapshot_time": "2026-11-28 15:05:23 KST",
+    "s7_last_in_memory_snapshot_time": "2026-11-28 14:58 KST",
+    "s7_persisted_g0": 0,
+    "s7_recommendations_sealed": 0,
+    "s7_checkpoint": "training.csv only; no safe unit-boundary resume checkpoint",
     "s7_execution_lock": "research/supplementary_validation/s7/RESEARCH_S7_EXECUTION_LOCK.json",
     "s7_progress_report": "research/supplementary_validation/s7/RESEARCH_S7_LIVE_PROGRESS_REPORT.md",
     "s6_s7_closeout": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md"
   },
   "github_validation": {
     "branch": "feature/final-s6-s7-validation",
-    "commit": "d057fe15c70420e0e651e36a3f58e74ce1664eae",
+    "commit": "75852a3b1357651bff3675b1f628dee5b0121475",
     "draft_pr": 51,
     "draft_pr_url": "https://github.com/5castlemin/tep-causal-decision-reliability/pull/51",
     "pr_ci_runs": [
-      46113812900,
-      46113889243
+      46114336552,
+      46114340838
     ],
     "pr_ci": "SUCCESS",
     "main_merge": "NOT_PERFORMED"
@@ -64,16 +69,14 @@
   "main_merge": "NOT_PERFORMED",
   "pr_50": "UNCHANGED",
   "public_file_sha256": {
-    "FINAL_RESEARCH_EVIDENCE_MATRIX.md": "e845efefb094129df6fb2c491098e14cddbd6f4988ab9e005bca0f7cefb2dd15",
-    "FINAL_RESEARCH_FRAMEWORK.md": "c3f1aef6305aebfc5732738c9075cb1674f969a90bfa2995cab0b9bd1fed9cbc",
-    "FINAL_SCIENTIFIC_INTEGRITY_REVIEW.md": "26670257b231565b3e3e20dcbc2d8f6ce570cccbb59ab484f336a38a5e04b006",
-    "README.md": "e586e8eb11a4c378ef1223988e829982bd3d4c05ca03b744f62fb14b1c5aef3e",
-    "docs/current/PRIORITIES_CURRENT.md": "cdef60f142433053d56062114a8eb8b49d80e024cd0823dd14a71f88ec261024",
-    "docs/current/PROJECT_STATUS_CURRENT.md": "5b81707b35e3c37788b22036f1cf0e79731399485c7cfc722b1c499680307650",
-    "docs/current/WORK_LOG_CURRENT.md": "4b00333b549e8d10579b7e182a8b1bd18ba2c8cac6476d4379e55502780ccec5",
-    "docs/research_state_current.json": "c9f223d3a1c90a853a64a24a10ed7e046a4946f3351eb6d486c36a849ee70538",
-    "research/budget_adaptive_repair/build_final_integration_manifest.py": "868527ab2b027ac61b30a0eef992357ece871e8c26bd1d740620ffac19ec9e35",
-    "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md": "a7f55145c803cf3a853b2f794ae1631af0b9c70de8faa1e267144f462c887750",
-    "research/supplementary_validation/s7/RESEARCH_S7_LIVE_PROGRESS_REPORT.md": "9e84b0c1b114ee6e73edfd5b48eb6327d5245b3668a452b11b623d96465da72c"
+    "FINAL_RESEARCH_EVIDENCE_MATRIX.md": "3183e8f7af2a3b8d93563c1c4eb2e8af7b625176683ffa4dc48cb821c2326daa",
+    "FINAL_RESEARCH_FRAMEWORK.md": "cd28e3440d52197d6e3c19ebc1aa1bc9a697e1463b14ac5025cf930f9da6cc35",
+    "README.md": "33371013a76443459491b0633e991942910d05d8bfaffc0e35a987119abe4480",
+    "docs/current/PRIORITIES_CURRENT.md": "ad98d86beb5fa1dcb420491c9419318d9911f9d896d7a13217f55a98c3fcbd32",
+    "docs/current/PROJECT_STATUS_CURRENT.md": "88ff4b3f3c4f18ce7fa1a7a746b3ee2069126bffcd8b3ad3f05edcbdfb2c20de",
+    "docs/research_state_current.json": "bca104799bd27cff20f242999c6b7f7d68e6582d2cf3d5f021b8c412421bffcd",
+    "research/budget_adaptive_repair/build_final_integration_manifest.py": "fab1f952cdc38fd8cddc2e58dae78b4cca5a2365787c338f1c5e4a0b20e67d21",
+    "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md": "b3281d69beb23a735b2f5653ed6364afbebff5c526985b48a6f5d64d6d450045",
+    "research/supplementary_validation/s7/RESEARCH_S7_LIVE_PROGRESS_REPORT.md": "6507242d3a10b3d5c6679cb4ec141e65e68ea0cb9ad0008a95dedecb264fc285"
   }
 }
