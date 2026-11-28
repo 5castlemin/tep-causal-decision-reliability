@@ -28,7 +28,7 @@ def pick(rows,rule,order):
     else: raise ValueError(rule)
     if not pool: return None
     best=max(score(r) for r in pool)
-    if rule!="ORACLE" and best<=TOL: return None
+    if best<=TOL: return None
     return min((r for r in pool if best-score(r)<=TOL),key=canon)
 def load(path, unit_path):
     groups=defaultdict(list)
