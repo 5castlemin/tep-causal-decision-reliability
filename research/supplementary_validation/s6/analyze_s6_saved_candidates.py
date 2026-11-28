@@ -4,6 +4,8 @@ import argparse, csv, hashlib, itertools, json
 from collections import defaultdict
 from pathlib import Path
 import numpy as np
+HERE=Path(__file__).resolve().parent
+LOCK=HERE/'RESEARCH_S6_EXECUTION_LOCK.json'
 
 TOL=1e-12; BOOT=10_000; SEED=2026112806; TYPES=("FN","FP","REV","UNRES")
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -44,6 +46,9 @@ def write(path,rows):
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--development',type=Path,required=True); ap.add_argument('--development-units',type=Path,required=True); ap.add_argument('--confirmation',type=Path,required=True); ap.add_argument('--confirmation-units',type=Path,required=True); ap.add_argument('--output',type=Path,required=True); a=ap.parse_args()
     if a.output.exists() and any(a.output.iterdir()): raise FileExistsError(f"refusing overwrite: {a.output}")
+    lock=json.loads(LOCK.read_text(encoding='utf-8')); expected=lock['inputs']
+    actual={'development_candidate_values_sha256':sha(a.development),'confirmation_candidate_values_sha256':sha(a.confirmation),'development_inputs_sha256':sha(a.development_units),'confirmation_inputs_sha256':sha(a.confirmation_units)}
+    if actual!=expected: raise ValueError(f'S6 input hash mismatch: {actual}')
     cohorts=[("development80",load(a.development,a.development_units),a.development,80),("replication160",load(a.confirmation,a.confirmation_units),a.confirmation,160)]
     order=None; errors=[]; within_type=[]; aggregates=[]; contrasts=[]; redundancy=[]
     for label,units,src,expected in cohorts:
@@ -91,6 +96,6 @@ def main():
             redundancy.append({'cohort':label,'left_policy':left,'right_policy':right,'n_scm':expected,'same_selected_edit_count':same,'same_selected_edit_rate':same/expected,'both_noop_count':sum(chosen[left][s] is None and chosen[right][s] is None for s in sids)})
     a.output.mkdir(parents=True,exist_ok=True)
     write(a.output/'error_type_summary.csv',errors); write(a.output/'within_scm_type_contrasts.csv',within_type); write(a.output/'policy_budget_aggregates.csv',aggregates); write(a.output/'paired_policy_contrasts.csv',contrasts); write(a.output/'policy_redundancy.csv',redundancy)
-    (a.output/'execution_manifest.json').write_text(json.dumps({'schema':'S6_SAVED_CANDIDATE_MANIFEST_V1','cohorts':{k:len(v) for k,v,_,_ in cohorts},'bootstrap_replicates':BOOT,'bootstrap_seed':SEED,'type_priority_development_only':order,'input_sha256':{'development_candidates':sha(a.development),'development_unit_inputs':sha(a.development_units),'replication_candidates':sha(a.confirmation),'replication_unit_inputs':sha(a.confirmation_units)},'scope':'retrospective B=1 replay from saved initial legal single-edit values; units without candidates retained as no-op; no new samples; intervals pointwise'},sort_keys=True,indent=2)+'\n',encoding='utf-8')
+    (a.output/'execution_manifest.json').write_text(json.dumps({'schema':'S6_SAVED_CANDIDATE_MANIFEST_V1','status':'EXECUTED','analysis_script_sha256':sha(Path(__file__)),'contract_lock_sha256':sha(LOCK),'cohorts':{k:len(v) for k,v,_,_ in cohorts},'bootstrap_replicates':BOOT,'bootstrap_seed':SEED,'type_priority_development_only':order,'input_sha256':actual,'scope':'retrospective B=1 replay from saved initial legal single-edit values; units without candidates retained as no-op; no new samples; intervals pointwise'},sort_keys=True,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'type_priority':order,'aggregate_rows':len(aggregates),'paired_contrasts':len(contrasts),'output':str(a.output)},sort_keys=True))
 if __name__=='__main__': main()
