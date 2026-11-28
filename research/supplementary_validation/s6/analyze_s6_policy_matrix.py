@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse, csv, hashlib, json
 from pathlib import Path
 import numpy as np
-from scipy.stats import ttest_1samp
 TOL=1e-12; BOOT=10_000; SEED=2026112810
 KINDS=("FN","FP","REV","UNRES")
 TMETRICS=tuple(f"T{i}_gain" for i in range(1,7))
@@ -64,6 +63,9 @@ def grouped_ridge_cv(ids,by):
         v=np.asarray([np.mean(e) for e in d.values()]);out.append({'cohort':'development80','model':m,'n_scms_with_oof_predictions':len(v),'candidate_rows':int(np.isfinite(preds[m]).sum()),'mean_scm_balanced_mae':float(v.mean()) if len(v) else None,'median_scm_mae':float(np.median(v)) if len(v) else None,'alpha':1.0,'folds':'deterministic 5-fold SCM grouped','features':{'A':'M4 gain, initial candidate count, operation indicators','B':'A + error-type indicators','C':'B + T1-T6 gains'}[m],'status':'POST_HOC_AUXILIARY'})
     return out
 def main():
+    # SciPy is needed only for the optional inferential reaggregation, not for
+    # importing policy selectors in the minimal repository test environment.
+    from scipy.stats import ttest_1samp
     ap=argparse.ArgumentParser()
     for n in ['development-candidates','development-inputs','development-units','replication-candidates','replication-inputs','replication-units','baseline-aggregates']:ap.add_argument('--'+n,type=Path,required=True)
     ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
