@@ -33,3 +33,9 @@ Private raw ledgers, candidate records, training frames, recommendation records,
 ## Canonical taxonomy navigation
 
 The final narrative now uses Research 0–4. Start at `research/README.md`; the canonical-to-legacy mapping is in `docs/RESEARCH_NAMING_MAP.md`, machine-readable IDs and evidence paths in `docs/RESEARCH_TAXONOMY.json`, and the 419-file Markdown classification in `docs/MARKDOWN_DOCUMENT_INVENTORY.json`. Existing frozen/history directories remain in place. This update does not mean all historical Markdown was rewritten.
+
+## Final remote archive snapshot
+
+The multi-parent archive tag `archive/2026-11-28/unique-branch-tips` points to archive commit `df0b58c69abad88d4f96a92ed2f6af9516415d16`. Its 14 parent tips preserve the 13 deleted unique historical branch tips plus the retained legacy attic tip. The exact branch-to-tip mapping is recorded in `BRANCH_CLEANUP_DECISIONS.csv`; `git merge-base --is-ancestor <tip-sha> <archive-commit>` verifies reachability. The tag's tree is the finalized main tree at PR #51 merge. No private artifacts were added to the tag.
+
+After the cleanup-record PR is merged and its main CI succeeds, the final submission tag `final-research-v1.0` will identify that final main snapshot. The remaining attic branch and active Research D worktree are intentionally retained.

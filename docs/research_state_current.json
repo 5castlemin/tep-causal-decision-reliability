@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-28 20:00 KST",
+  "checked_at": "2026-11-28 20:45 KST",
   "workstreams": [
     {
       "id": "SRC-01",
@@ -762,7 +762,8 @@
     "2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run.",
     "2026-11-28: S6 saved-record reaggregation completed; candidate edits remain nested within SCM and evidence is post-hoc.",
     "2026-11-28: S7 locked recommendation run is active but has no completed G0/recommendation at 14:42 KST; evaluator remains gated on a sealed recommendation manifest.",
-    "Canonical research narrative: Research 0–4; legacy experiment IDs and frozen source paths remain unchanged. See docs/RESEARCH_NAMING_MAP.md and research/README.md."
+    "Canonical research narrative: Research 0–4; legacy experiment IDs and frozen source paths remain unchanged. See docs/RESEARCH_NAMING_MAP.md and research/README.md.",
+    "2026-11-28: Research 0–4 taxonomy integration and post-merge repository cleanup recorded; main CI passed, archive ref verified, no scientific status changed."
   ],
   "integration_review": {
     "user_approved": true,
@@ -830,7 +831,7 @@
     "pr11_status": "MERGED",
     "pr11_head": "6d37d095998bf45bc532606fe8113fedd1b8f913",
     "pr11_merge_commit": "34b8dbecdc6ecb1d5d850a3d46b0190ed29dc0b2",
-    "main_commit": "e960fa81cf8ef1ce097516c84f5fd724e592ac2e",
+    "main_commit": "f95ec7e646a11f1dd8ed727b398003911c54947d",
     "current_feature": "feature/final-s6-s7-validation",
     "pr12_status": "MERGED",
     "pr12_head": "23d19f56cd6510783398cfa95f66f1d1d8194937",
@@ -870,13 +871,18 @@
     "pr24_head": "bc46dc924f2cf5171144c6e73e7a48373d83dc34",
     "pr25_status": "OPEN",
     "pr25_acceptance_commit": "c6b3e386cc9838e245fd226f50ccd809af479fc7",
-    "current_pr_status": "OPEN_DRAFT_NOT_MERGED",
-    "current_pr_head": "d057fe15c70420e0e651e36a3f58e74ce1664eae",
+    "current_pr_status": "MERGED",
+    "current_pr_head": "e11bf25a58550dbfb5dbe24b26f03de257e056a6",
     "current_pr_ci_runs": [
-      46113812900,
-      46113889243
+      46132424976,
+      46132429041
     ],
-    "current_pr_ci": "SUCCESS"
+    "current_pr_ci": "SUCCESS",
+    "main_ci_run": 46132707728,
+    "main_ci": "SUCCESS",
+    "taxonomy_archive_tag": "archive/2026-11-28/unique-branch-tips",
+    "taxonomy_archive_target": "df0b58c69abad88d4f96a92ed2f6af9516415d16",
+    "pr50_status": "CLOSED_VIA_PR_51"
   },
   "track_a_gate": {
     "A1": "BLOCKED",
@@ -1612,5 +1618,32 @@
     "research_state_check": "PASS",
     "diff_check": "PASS"
   },
-  "history": []
+  "history": [],
+  "canonical_research_taxonomy": {
+    "ids": [
+      "Research 0",
+      "Research 1",
+      "Research 2",
+      "Research 3",
+      "Research 4"
+    ],
+    "mapping": "docs/RESEARCH_NAMING_MAP.md",
+    "index": "research/README.md",
+    "historical_ids_preserved": true
+  },
+  "repository_cleanup": {
+    "as_of": "2026-11-28",
+    "remote_branches_before": 48,
+    "remote_branches_after": 3,
+    "open_prs_before": 12,
+    "open_prs_after": 0,
+    "deleted_remote_branches": 45,
+    "archive_tag": "archive/2026-11-28/unique-branch-tips",
+    "archive_tag_target": "df0b58c69abad88d4f96a92ed2f6af9516415d16",
+    "retained_branches": [
+      "attic/legacy-research-2026-11-10",
+      "main",
+      "research/research-d-design-resolution"
+    ]
+  }
 }
