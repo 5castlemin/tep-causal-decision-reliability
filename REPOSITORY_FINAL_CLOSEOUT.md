@@ -1,5 +1,11 @@
 # Repository final closeout — status report
 
+## Current release status (2026-11-28)
+
+The final integration is complete on `main` at `54933cb522bc7ec1e64164e1e17e0926cc396d63`. PRs #51 and #52 are merged; there are 0 open PRs and 3 remote branches (`main`, the retained legacy attic branch, and the separate `repo-step1` worktree branch). Research 0–4 navigation is published. `final-research-v1.0` points to the prior completed integration snapshot. The archive tag `archive/2026-11-28/unique-branch-tips` preserves historical unique branch tips. Research 3.3/S7 remains computationally incomplete, and no off-device backup is claimed. This file’s earlier PR-pending and cleanup-pending sections below are historical snapshots and are not current instructions.
+
+## Historical closeout snapshots
+
 **As of:** 2026-11-28 (KST)
 
 **Target:** `feature/final-s6-s7-validation`, PR #51
@@ -35,7 +41,7 @@ To finish the repository closeout: push this documented change on PR #51, verify
 
 ## Canonical Research 0–4 taxonomy update (2026-11-28)
 
-The current narrative and navigation now use Research 0–4: Research 0 (problem identification), Research 1 (WHERE), Research 2 (WHAT & WHY), Research 3 (GENERALIZATION), and Research 4 (HOW MUCH). The legacy experiment identifiers remain in frozen contracts, result paths, manifests, and historical records. Numeric entrypoints were added under `research/00_problem_identification/` through `research/04_how_much/`; original evidence directories were not moved or duplicated. `docs/RESEARCH_TAXONOMY.json`, `docs/RESEARCH_NAMING_MAP.md`, and `research/README.md` provide machine-readable, mapping, and navigation views. The markdown inventory classifies 419 current Markdown files (20 active/current, 371 historical, 26 frozen, 1 archive, 1 generated); this is a path inventory, not a claim that every historical file was edited.
+The current narrative and navigation now use Research 0–4: Research 0 (problem identification), Research 1 (WHERE), Research 2 (WHAT & WHY), Research 3 (GENERALIZATION), and Research 4 (HOW MUCH). The legacy experiment identifiers remain in frozen contracts, result paths, manifests, and historical records. Numeric entrypoints were added under `research/00_problem_identification/` through `research/04_how_much/`; original evidence directories were not moved or duplicated. `docs/RESEARCH_TAXONOMY.json`, `docs/RESEARCH_NAMING_MAP.md`, and `research/README.md` provide machine-readable, mapping, and navigation views. The initial taxonomy inventory classified 419 working-tree Markdown files (including one ignored pytest cache file). The release-QA inventory now covers 418 tracked Markdown files (20 active/current, 370 historical, 26 frozen, 1 archive, 1 generated); this is a path inventory, not a claim that every historical file was edited.
 
 No experiment was run. Main remains `ad11afceb60a22958175b5a971f869869beac3e3`; PR #51 was still draft at head `df6b9f1e6e8d1c3a489df6537e894eec4fcef293` before these taxonomy edits. User-reported CI runs 46128275976 and 46128272208 succeeded for that prior head. Fresh CI is required after the taxonomy commit. PR #51 currently has no submitted reviews; the classic branch-protection endpoint was not readable, so no assumption about approval requirements is made. No PR closure, archive tag addition, remote branch deletion, or final research snapshot tag has yet been performed in this update.
 
@@ -48,3 +54,10 @@ PR #51 was merged by the normal merge API as `f95ec7e646a11f1dd8ed727b398003911c
 Remote branches fell from 48 to 3. Forty-five branches were deleted only after exact-SHA rechecks: 32 tips were reachable from main, and 13 unique historical tips were preserved as parents of archive commit `df0b58c69abad88d4f96a92ed2f6af9516415d16`, reachable from remote tag `archive/2026-11-28/unique-branch-tips`. The `attic/legacy-research-2026-11-10` branch remains pending a separate recovery-level review; `research/research-d-design-resolution` remains because the separate `repo-step1` worktree is using it. The third branch is main. The branch decision ledger records each exact deleted tip and disposition.
 
 The remaining work is a small, protected follow-up PR to publish this post-merge cleanup record and then verify main. The final snapshot tag will be created only on the resulting main commit. The pre-cleanup bundle remains same-device only; no off-device backup is claimed.
+
+
+## Final documentation release QA (2026-11-28)
+
+The release-QA pass corrected the Research 3.2 S5 relative paths, connected Research 0.2 to the original diverse-structure pilot evidence, refreshed the tracked Markdown inventory to 418 files, updated current repository/archive status while retaining pre-cleanup narratives as historical snapshots, and aligned the canonical slide/storyboard labels and S6 reported interval with the saved v6 closeout. A relative-link and heading-anchor scan of 19 current representative Markdown documents found no unresolved local links. The official research-state check and `git diff --check` pass. The project CI contract uses Python 3.11; an isolated Python 3.11.15 environment was built from the declared requirements. One full local run discovered 488 tests: 486 passed, 1 skipped, 1 failed and 1 errored. The local frozen-asset manifest check also reports a config hash mismatch in this Windows checkout. No frozen source, expected checksum, or validation rule was altered; the remote main CI remains a separate verification.
+
+The pre-cleanup and final snapshot bundles both pass `git bundle verify` and match their recorded SHA-256 values; they are same-device copies only. No new experiment or result replay was run.

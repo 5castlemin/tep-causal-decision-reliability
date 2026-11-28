@@ -22,11 +22,11 @@
 
 S3/S4는 과제 관련 구조 지표가 오류 내부의 우선순위를 더 잘 가릴 수 있는지 살폈다. T5-guided M4는 task-ancestor F1 gain을 사용하며 기존 M4 gain을 tie-break로 쓴다. S4의 새 독립 replication에서 점 추정치는 T5 쪽이었지만 interval에 0이 포함되고 precision 목표를 미달했다. 이를 “T5가 이겼다”라고 말하지 않는다. S5에서는 저장된 200 G0 전부에서 T5와 M4 첫 편집이 같았다.
 
-## Research C와 D/S5의 차이는?
+## Research 1.1과 Research 3의 차이는?
 
 C는 여러 독립 synthetic SCM에서 analytic true-SCM regret을 비교한 frozen contract 실험이다. D는 별도의 DRF 기반 Station1 semisynthetic DGP 평가였고, S5는 D 자료를 정확히 재현한 것이 아니라 같은 공개 benchmark 소스를 쓴 신규 conditional reconstruction이다. S5의 분석 단위는 독립 SCM이 아니라 단일 DGP에 조건부인 G0 corruption draw다. 둘의 절대 loss/regret은 직접 비교하거나 합산하지 않는다.
 
-## Research E가 경영학적으로 중요한 이유는?
+## Research 4가 경영학적으로 중요한 이유는?
 
 실제로 오류를 고치는 일에는 제한된 전문가 시간과 검증 자원이 필요하다. 이 연구는 최대 허용 budget, 실제 사용된 edit count, regret 개선량을 분리해 비용-성과 trade-off를 보여준다. 다만 λ는 편집 수에 붙인 가상 가중치다. 금액·인건비·안전 비용을 측정하지 않았으므로 산업 비용 절감은 입증되지 않았다.
 
