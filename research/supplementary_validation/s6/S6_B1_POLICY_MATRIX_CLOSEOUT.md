@@ -1,7 +1,7 @@
 # S6 B=1 Policy Matrix Closeout
 
-**Status:** `POST_HOC_RETROSPECTIVE_REAGGREGATION_COMPLETE_WITH_LIMITATIONS`  
-**Data:** saved S4 Development (80 SCM) and independent replication (160 SCM) candidate-level artifacts only. No SCM, G0, observations, or intervention responses were generated. Candidate rows are clustered within SCM.  
+**Status:** `POST_HOC_RETROSPECTIVE_REAGGREGATION_COMPLETE_WITH_LIMITATIONS`\
+**Data:** saved S4 Development (80 SCM) and independent replication (160 SCM) candidate-level artifacts only. No SCM, G0, observations, or intervention responses were generated. Candidate rows are clustered within SCM.\
 **Runtime:** approximately 5 seconds for the v6 aggregate replay; no evaluator was called.
 
 ## Methods and integrity

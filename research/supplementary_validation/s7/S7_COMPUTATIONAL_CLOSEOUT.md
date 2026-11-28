@@ -1,6 +1,6 @@
 # S7 Computational Feasibility Closeout
 
-**Gate:** `RESOURCE_LIMITATION_WITH_EXIT_TELEMETRY_UNVERIFIED`  
+**Gate:** `RESOURCE_LIMITATION_WITH_EXIT_TELEMETRY_UNVERIFIED`\
 **Original run:** `s7-causalassembly-two-station-tasks-20261128-v1`, attempt 02. No experiment settings were changed and the runner was not restarted.
 
 ## Original run disposition
