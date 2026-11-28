@@ -4,7 +4,7 @@
 
 영문 제목 후보: **Beyond Structural Accuracy: Decision-Oriented Repair Prioritization in Imperfect Causal Graphs**  
 팀: 닦고조이고기름치자  
-상태: C–D–E, S4/S5 및 저장 결과에 대한 S6 사후 재분석을 통합했다. S7은 2026-11-28 15:05 KST에 G0 0/400, recommendation 0/24,000으로 실행 중이었으며 외부 결과가 아직 없다. 전체 S6/S7 실행 상태는 [S6–S7 closeout](research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md)에 기록한다.
+상태: C–D–E, S4/S5 및 S6 사후 재분석을 통합했다. S6 B=1 policy matrix를 Development 80/replication 160 저장 SCM records에서 보완 재집계했다. S7 본 실행은 0/400 G0, 0/24,000 recommendations로 끝났으며 evaluator는 시작하지 않았다. 마지막 supervisor resource report가 없어 실행 cap 적용 여부와 종료 사유는 검증되지 않았다. 별도 exact task-zone feasibility만 성공했다. 전체 상태와 한계는 [S6–S7 closeout](research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md), [S6 policy matrix](research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md), [S7 computational closeout](research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md)에 기록한다.
 
 ## 1. Executive Summary
 

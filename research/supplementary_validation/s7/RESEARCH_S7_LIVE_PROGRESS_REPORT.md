@@ -1,5 +1,7 @@
 # S7 Live Progress and Resource Check
 
+> **Historical checkpoint, not current state.** This 15:05 KST live observation was superseded by the final closeout. The worker was later absent, but the attempt-specific supervisor report is missing; cap enforcement and the actual termination reason are unverified. Persisted units remain 0/400 G0 and 0/24,000 recommendations, and no evaluator ran. See [S7 computational closeout](S7_COMPUTATIONAL_CLOSEOUT.md).
+
 **Observed:** 2026-11-28 15:05 KST
 **Run:** `s7-causalassembly-two-station-tasks-20261128-v1`, attempt 02  
 **State:** `RECOMMENDATION_STAGE_ACTIVE`; no intervention evaluation started.

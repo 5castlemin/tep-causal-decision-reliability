@@ -1,5 +1,7 @@
 # S6–S7 진행 현황 및 과학적 종료 기록
 
+> **최종 상태 정정 (2026-11-28):** 아래 본문은 15:05 관측 시점의 진행 기록이며 현재 상태가 아니다. S6 B=1 비교는 [S6 policy matrix closeout](s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md)에서 저장 candidate 자료로 추가 보완했다. S7 worker는 이후 사라졌으나 attempt 02 최종 supervisor resource report가 없어 종료 원인/cap 준수는 확인할 수 없다. 저장 G0/recommendation은 계속 0이며 evaluator는 실행되지 않았다. 별도 task-zone 계산 feasibility만 성공했다. 현재 기준은 [S7 computational closeout](s7/S7_COMPUTATIONAL_CLOSEOUT.md)이다.
+
 관측 기준: 2026-11-28 15:05 KST. S7 recommendation worker는 이 기록 시점에도 실행 중이었다. 완료 단위의 마지막 안전한 in-memory snapshot은 14:58 KST이며, 15:05에는 새 stack 및 파일 상태를 확인했다. 이 문서는 S6 결과를 별도로 닫고 S7 상태를 실제 완료 단위로 기록한다.
 
 ## S6 — 저장 결과 재집계

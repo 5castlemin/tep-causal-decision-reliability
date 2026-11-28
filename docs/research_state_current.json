@@ -1579,29 +1579,31 @@
     "frozen_checks": "not weakened; both local failures retained and explicitly reported"
   },
   "s6_s7_closeout": {
-    "checked_at": "2026-11-28 14:53 KST",
-    "s6_status": "POST_HOC_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
-    "s7_status": "RECOMMENDATION_STAGE_ACTIVE_ZERO_COMPLETED_UNITS",
+    "checked_at": "2026-11-28 17:10 KST",
+    "s6_status": "POST_HOC_B1_POLICY_MATRIX_REAGGREGATION_COMPLETE_WITH_LIMITATIONS",
+    "s7_status": "RESOURCE_LIMITATION_EXIT_TELEMETRY_UNVERIFIED",
     "s7_completed_g0": 0,
     "s7_planned_g0": 400,
     "s7_completed_recommendations": 0,
     "s7_planned_recommendations": 24000,
     "s7_recent_10m_completed_units": 0,
     "s7_intervention_evaluator": "NOT_STARTED",
-    "s7_elapsed_wall_seconds": 11195,
+    "s7_elapsed_wall_seconds": null,
     "s7_wall_cap_seconds": 14400,
     "s7_rss_bytes_observed": 86867968,
     "s7_rss_cap_bytes": 4294967296,
-    "project_closeout": "PARTIAL_PENDING_S7_CAP_AND_FINAL_REMOTE_VALIDATION",
-    "details": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md",
-    "s7_wall_remaining_seconds": 3205,
-    "latest_commit": "d057fe15c70420e0e651e36a3f58e74ce1664eae",
+    "project_closeout": "PARTIAL_S7_RESOURCE_LIMITATION",
+    "details": "research/supplementary_validation/S6_S7_CURRENT_CLOSEOUT.md; research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md",
+    "s7_wall_remaining_seconds": null,
+    "latest_commit": "fccf2e9c9dc661a7d6f20443cb8fe9c74e6945d5",
     "draft_pr": 51,
     "ci_runs": [
       46113812900,
       46113889243
     ],
-    "ci_status": "SUCCESS"
+    "ci_status": "PENDING_FOR_CLOSEOUT_CHANGES",
+    "s7_termination_reason": "NOT_VERIFIABLE_FINAL_SUPERVISOR_REPORT_MISSING",
+    "s7_task_zone_feasibility": "PASS_EXACTNESS_SMALL_DAGS_AND_FULL_GRAPH; 1.474 seconds; no outcome/evaluator access"
   },
   "history": []
 }
