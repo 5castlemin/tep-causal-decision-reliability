@@ -1,5 +1,7 @@
 # DAT 제조공정 프로젝트 최종 연구 보고서
 
+> 최종 서술의 공식 taxonomy는 Research 0–4입니다. 과거 연구 식별자는 원본 실행·자료와 연결하기 위해 provenance 문맥에서 보존합니다. [Research Naming Map](../../docs/RESEARCH_NAMING_MAP.md) · [숫자순 Research Index](../README.md).
+
 팀: 닦고조이고기름치자
 
 상태: Research C 실험·감사, 원본 Ledger 메커니즘 재검증, Research D 외부 반합성 평가, Research E 사후 예산·비용 확장 감사 완료. Research D/E 일부 자료 접근 제한을 아래에 구분한다. 본 문서는 새 실험을 보고하지 않는다.

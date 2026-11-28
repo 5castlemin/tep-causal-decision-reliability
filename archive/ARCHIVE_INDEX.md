@@ -29,3 +29,7 @@ For a future branch deletion, first create and push an `archive/2026-11-28/<bran
 ## Private data
 
 Private raw ledgers, candidate records, training frames, recommendation records, response vectors and fitted objects are not included in GitHub public refs, tags or this bundle unless already part of the public repository. Existing private artifact archives remain subject to their own manifests and access limits. No off-device private-data backup is claimed.
+
+## Canonical taxonomy navigation
+
+The final narrative now uses Research 0–4. Start at `research/README.md`; the canonical-to-legacy mapping is in `docs/RESEARCH_NAMING_MAP.md`, machine-readable IDs and evidence paths in `docs/RESEARCH_TAXONOMY.json`, and the 419-file Markdown classification in `docs/MARKDOWN_DOCUMENT_INVENTORY.json`. Existing frozen/history directories remain in place. This update does not mean all historical Markdown was rewritten.

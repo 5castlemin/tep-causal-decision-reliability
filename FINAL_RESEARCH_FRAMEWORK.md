@@ -1,5 +1,7 @@
 # 불완전한 인과그래프, 어디부터 고칠 것인가?
 
+> **Canonical taxonomy:** 이 최종 서술은 Research 0–4를 사용합니다. 기존 실행 ID는 원본 계약과 provenance 추적을 위해 유지합니다. 상세 매핑과 숫자순 자료 경로는 [Research Naming Map](docs/RESEARCH_NAMING_MAP.md) 및 [Research Index](research/README.md)를 참조하세요.
+
 ## 의사결정 중심의 오류 수정 우선순위와 제한된 자원의 배분
 
 영문 제목 후보: **Beyond Structural Accuracy: Decision-Oriented Repair Prioritization in Imperfect Causal Graphs**  
@@ -44,11 +46,11 @@ R(G)=L(a_{\mathrm{selected}}\mid G)-\min_{a\in\mathcal A}L(a)
 
 ## 4. 연구별 구성과 근거
 
-### Preliminary Study — 문제 발견
+### Research 0 — 구조 정확도와 의사결정 성능의 불일치
 
 초기 TEP 구조 탐색 및 합성 SCM 단계에서 전역 그래프 일치도와 downstream 의사결정 결과가 서로 다른 평가 대상임을 확인했다. TEP 참고 그래프와 관측자료의 한계 때문에 이 단계의 결과는 제조설비에서의 인과효과 검증이 아니다. 초기 탐색, source 회수 및 환경 적격성 이력은 [`RESEARCH_EVOLUTION.md`](RESEARCH_EVOLUTION.md), [`RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md`](RESEARCH_JOURNEY_AND_TEAM_HANDOFF.md), `docs/research_design/`에서 확인한다.
 
-### Study 1 — WHERE: 어느 영역의 오류를 고칠까?
+### Research 1 — WHERE: 어느 영역의 오류를 고칠까?
 
 **Research C.** 64 Development SCM으로 정책을 구성하고 200 independent synthetic SCM Held-out에서 frozen primary를 평가했다. B=2에서 S0 mean regret 0.09343898, Full Greedy 0.01860262, primary S0−Full Greedy +0.07483636 (95% paired-t CI [0.05089822, 0.09877450]); better/worse/tie 45/1/154. M4 secondary mean regret 0.00398775, mean edit cost 0.695이며 Full Greedy보다 적은 수정을 사용했다. M4는 Development-selected secondary라 사후 선택의 영향을 받는다.
 
@@ -56,7 +58,7 @@ M1은 task-zone 밖 FN, M2는 task-zone 밖 FP, M3는 task-zone 밖 REV/UNRES, M
 
 **S1/S2.** 사후 보강은 objective와 task-zone 구조 지표의 연관 및 nested predictive feature 비교를 다뤘다. Held-out gamma=.2, B=2에서 S0/Full Greedy/M4/M2+M4 평균 regret은 .117959/.092235/.087253/.090312. gamma=.5에서는 Full Greedy 평균이 M4보다 낮았고 gamma=1에서는 비교 정책들이 모두 (k=0)을 선택했다. S2 nested feature model B/E/F의 Held-out MAE는 .06966/.06153/.03768이었다. 이는 task 관련 feature의 연관성을 보여주는 post-hoc 결과이며 repair 정책의 인과효과와 동일하지 않다.
 
-### Study 2 — WHAT & WHY: task 내부에서 무엇을 먼저 고칠까?
+### Research 2 — WHAT & WHY: task 내부에서 무엇을 먼저 고칠까?
 
 **S3.** T1–T6 지표의 Greedy/lookahead 분석은 구현 정정 및 재분석 이후에도 exploratory historical evidence다. 정정 전 수치는 superseded로 보존한다. 여러 지표 조합의 선택은 후보 부족, metric redundancy, tie-break 및 cohort에 따라 달랐다.
 
@@ -66,13 +68,13 @@ Replication의 frozen primary는 B=1, gamma=0에서 T5-guided M4 − M4 = −0.0
 
 직접 outside-task 편집 진단에서 747개 합법 수정 중 77개 outside-task FN 편집은 해당 관측 단위들에서 regret/action 변화 0을 보였다. 이 77은 독립 SCM 수가 아니며 편집하지 않은 오류의 가치가 0임을 뜻하지 않는다. 이번 통합에서 미실행 상태인 S4 gamma sensitivity, matched corruption, formal interactions는 완료로 표시하지 않는다.
 
-### Study 3 — GENERALIZATION: 외부 반합성 환경에서도 관찰되는가?
+### Research 3 — GENERALIZATION: 외부 반합성 환경에서도 관찰되는가?
 
 **Historical Research D**는 한 DRF 기반 Station1 semisynthetic DGP에서 fixed training frame과 200 G0 corruption draws를 평가했다. B=2에서 S0 평균 loss는 .823587, Full Greedy는 .789362, M4는 .790592였다. 따라서 사전 primary contrast는 **S0−Full Greedy = +.03422490**이며, two-source 95% interval은 [.00617347, .06535080]이다. 이 구간은 0을 포함하지 않지만 사전 action-MC 및 two-source precision targets는 충족하지 못했다. 이 수치를 S0−M4로 귀속하지 않는다. 표시된 평균에서 S0−M4는 약 +.032995다. 원시 D unit artifacts는 이번 최종 재감사에서 이용할 수 없었다.
 
 **S5**는 Research D의 정확한 재현이 아니라 새로 조건을 고정해 만든 conditional external semisynthetic reconstruction이다. 한 DRF DGP, 512행 training frame, 200 G0, 22,000 recommendations, action당 4,999 response rows(총 24,995; 별도 smoke 1개)다. B=2 S0−M4 = +0.00685175; G0-only CI [0.00486307, 0.00902371], Action-MC-only CI [−0.00889635, 0.02319934], two-source CI [−0.00926095, 0.02273504]. graph-free association mean loss .867868은 M4 .868384보다 낮았고 edge edit 비용은 0으로 셌다. 이는 total modeling cost 0이 아니다. S5의 200개는 독립 SCM이 아니라 동일 DGP 아래의 corruption draws다.
 
-### Study 4 — HOW MUCH: 언제까지 수정하는가?
+### Research 4 — HOW MUCH: 언제까지 수정하는가?
 
 기존 Research E C 확장은 64 Development/200 Held-out의 budget curves를 B=0–7/0–9까지 분석했다. Held-out M4 regret은 B0 .093439, B1 .029327, B2 .003988, B3 .001435, B4 .001435, B5–9 .001299; 실제 평균 편집 수는 각각 0, .515, .695, .760, .780, .780이다. 따라서 B3→4의 plateau 뒤 B5에서 추가 개선이 있었으며 B3을 일반 포화점이라 부를 수 없다. Adaptive/M2+M4와 cost-weighted results는 [`RESEARCH_E_FINAL_AUDIT.md`](research/final_integration/RESEARCH_E_FINAL_AUDIT.md) 및 `research/budget_adaptive_repair/outputs/`에 보존돼 있다.
 

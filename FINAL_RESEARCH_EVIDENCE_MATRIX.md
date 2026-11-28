@@ -1,5 +1,7 @@
 # Final Research Evidence Matrix
 
+> Canonical narrative IDs are Research 0–4. Legacy study identifiers in claim records are retained for traceability to frozen contracts and result artifacts; see the [naming map](docs/RESEARCH_NAMING_MAP.md).
+
 All effects are conditional on their stated cohort, outcome definition, and information boundary. Confidence intervals are pointwise unless explicitly described otherwise.
 
 | ID | Claim | Study / cohort / unit | Estimand and estimate | Uncertainty / evidence grade | Counterevidence and limits | Source |

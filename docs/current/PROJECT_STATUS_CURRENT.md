@@ -1,6 +1,6 @@
 # 프로젝트 현재 상태
 
-기준일: 2026-11-28 19:00 KST. 현재 상태는 이 표와 `docs/research_state_current.json`에만 정의한다.
+기준일: 2026-11-28 20:00 KST. 현재 상태는 이 표와 `docs/research_state_current.json`에만 정의한다.
 과거 문서는 `docs/history/`, 시간순 기록은 `WORK_LOG.md`에 보존한다. 외부 PR의 증거는 병합 여부를 명시한다.
 
 | ID | 연구 흐름 | 상태 | 근거 | 다음 행동 |

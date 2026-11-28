@@ -1,5 +1,7 @@
 # 팀 연구 가이드 — 질문에서 최종 결과까지
 
+> 공식 최종 taxonomy는 Research 0–4입니다. 아래의 이전 연구 ID는 원본 근거를 찾기 위한 provenance로만 사용합니다. [숫자순 Research Index](research/README.md) · [기존 ID 매핑](docs/RESEARCH_NAMING_MAP.md).
+
 ## 왜 이 연구를 시작했나?
 
 초기에는 TEP 관측자료에서 causal discovery 그래프가 참고 구조와 얼마나 비슷한지 비교했다. 하지만 전체 그래프 F1/SHD나 관측 예측 성능만으로 실제 조작 결과가 좋아지는지 알 수 없었다. TEP의 참고 구조와 시뮬레이터 개입을 본 연구의 완전한 물리 ground truth라고 놓기에도 근거가 부족했다. 그래서 구조와 개입 결과를 통제할 수 있는 합성 SCM을 이용해 더 좁고 검증 가능한 질문으로 바꿨다.

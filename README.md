@@ -1,8 +1,10 @@
-# DAT 제조공정 인과그래프 수리 연구
+# DAT 제조공정 인과그래프 수리 연구 — Research 0–4
 
 > **현재 최종 상태 (2026-11-28):** 연구 문서는 PR #51에서 최종 통합 검토 중입니다. S6 저장 결과 사후 재집계가 완료됐고, S7 full-line 작업은 recommendation 0/24,000으로 외부 성능 결과가 없습니다. S7 종료 telemetry와 task-zone 시간 기록에는 미해결 한계가 있습니다. main 기준 최종 통합 여부는 PR #51 병합 뒤 갱신합니다. 이 저장소는 실제 제조설비 개입 효능이나 경제성을 입증하지 않습니다.
 
 ## 최종보고서 및 발표자료 작성 가이드
+
+현재 프로젝트의 공식 명명 체계는 **Research 0–4**입니다. [연구 전체 index](research/README.md)에서 숫자 순서대로 탐색하고, 이전 연구 ID와 원본 근거 경로는 [naming map](docs/RESEARCH_NAMING_MAP.md)을 확인하세요. 원본 계약·결과 파일의 legacy ID는 재현성과 provenance를 위해 유지합니다.
 
 권장 순서:
 
@@ -49,6 +51,10 @@
 ## 주장 범위와 한계
 
 Research C와 D는 모두 reference DAG를 활용한 oracle-assisted 구조 수리다. 현장처럼 참 구조를 모르는 상황의 오류 발견을 해결하지 않는다. D의 200개는 독립 SCM이 아니라 하나의 DGP에서 뽑은 graph-corruption draw다. 어느 실험도 실제 공장 개입, 안전성, 실제 전문가 시간·금전 비용, 배포 가능성을 입증하지 않는다. M4의 보편적 우월성 및 graph-based 방법의 보편적 우월성은 주장하지 않는다. Research E와 F-Lite는 기존 입력을 재사용한 post-hoc 확장이다. F-Lite에서 decision-weighted query policy는 Held-out에서 Random보다 낮은 regret을 보였지만 fit-based 및 suspicion-only보다 높았고 impact-only와 거의 같았다. 따라서 결합 heuristic의 추가 이점은 확인되지 않았다. 기존 targeted causal elicitation 연구와의 중복도 커서 새 개념의 최초성을 주장하지 않는다. G/H는 향후 연구 제안으로만 남기며 수행하지 않았다. 수치와 주장별 근거·반례는 [C–D 최종 결과표](research/final_integration/FINAL_RESULTS_TABLES.md), [F-Lite 결과](research/decision_oriented_verification/RESEARCH_F_FINAL_RESULTS.md), [F-Lite 주장–근거 매트릭스](research/decision_oriented_verification/RESEARCH_F_CLAIMS_EVIDENCE_MATRIX.md), [최종 보고서](research/final_integration/FINAL_RESEARCH_REPORT.md)에 있다.
+
+## Research 0–4
+
+공식 연구 탐색은 [숫자순 index](research/README.md)에서 시작합니다. 기존 연구 ID와 세부 연구의 결과 경로는 [naming map](docs/RESEARCH_NAMING_MAP.md), [machine-readable taxonomy](docs/RESEARCH_TAXONOMY.json), [Markdown inventory](docs/MARKDOWN_DOCUMENT_INVENTORY.json)에 정리했습니다. 원본 실험 자료와 frozen 계약은 기존 경로에 유지됩니다.
 
 ## 저장소 구조와 재현성
 

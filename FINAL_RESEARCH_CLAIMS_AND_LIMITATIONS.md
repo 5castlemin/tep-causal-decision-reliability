@@ -1,5 +1,7 @@
 # Final Claims and Limitations
 
+> Canonical narrative IDs are Research 0–4; legacy IDs remain where needed to identify original evidence. See [Research Naming Map](docs/RESEARCH_NAMING_MAP.md).
+
 ## Claims supported within scope
 
 1. **A repair policy can reduce downstream decision regret relative to no repair under a controlled synthetic SCM contract.** Supported by Research C's frozen B=2 held-out primary, without extrapolation to manufacturing.

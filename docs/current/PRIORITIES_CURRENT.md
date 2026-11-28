@@ -1,6 +1,6 @@
 # 연구 우선순위
 
-기준일: 2026-11-28 19:00 KST. 담당자·기한은 아직 배정하지 않았다.
+기준일: 2026-11-28 20:00 KST. 담당자·기한은 아직 배정하지 않았다.
 
 ## 다음 가장 중요한 작업 3개
 
@@ -110,5 +110,6 @@
 - 2026-11-28 E-EXTENSION-CLOSEOUT added: saved S4/S5 B0–4 unit-result analysis and final cross-study research integration; no new research samples; S4/S5 B5–9 not run.
 - 2026-11-28: S6 saved-record reaggregation completed; candidate edits remain nested within SCM and evidence is post-hoc.
 - 2026-11-28: S7 locked recommendation run is active but has no completed G0/recommendation at 14:42 KST; evaluator remains gated on a sealed recommendation manifest.
+- Canonical research narrative: Research 0–4; legacy experiment IDs and frozen source paths remain unchanged. See docs/RESEARCH_NAMING_MAP.md and research/README.md.
 
 새 알고리즘·비선형 탐색과 기존 과제 재선정은 현재 작업 범위에 포함하지 않는다.

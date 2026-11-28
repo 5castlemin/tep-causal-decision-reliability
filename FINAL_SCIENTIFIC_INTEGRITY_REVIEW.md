@@ -1,5 +1,7 @@
 # Final Scientific Integrity Review
 
+> This review uses the canonical Research 0–4 taxonomy. Original experiment IDs remain unchanged for provenance; see [Research Naming Map](docs/RESEARCH_NAMING_MAP.md).
+
 ## S6/S7 supplementary status (2026-11-28)
 
 S6 reaggregates saved S4 candidate results; it is post-hoc and candidate observations are clustered within SCM. Its B=1 replication comparison of T5-guided M4 with Frozen M4 was −.008664 regret (95% common-index SCM bootstrap CI [−.020398, 0]); better/worse/tie was 4/1/155 and Holm-adjusted paired-t p=1.0, so policy superiority is not established. Type-ranked M4−Frozen M4 was −.002204 (95% interval [−.009283,.003545], 2/1/157; adjusted p=1.0). S7 generated no persisted G0 or recommendations (0/400; 0/24,000); no evaluator ran. Its final supervisor report is missing, so actual cap enforcement and termination/resource reason cannot be verified. The JSON and prose report disagree on task-zone feasibility runtime (.7613 vs 1.474 seconds). Static review confirmed a direction-loss defect in the frozen S7 learner-fitting path: canonical unordered pair keys are passed where directed `(source,target)` edges are expected. Since no recommendation was persisted, no S7 performance output exists; the frozen runner was not changed. Separate task-zone exactness feasibility did not exercise that fitting path. See `research/supplementary_validation/s6/S6_B1_POLICY_MATRIX_CLOSEOUT.md` and `research/supplementary_validation/s7/S7_COMPUTATIONAL_CLOSEOUT.md`.

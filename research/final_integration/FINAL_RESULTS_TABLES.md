@@ -1,5 +1,7 @@
 # 최종 검증 결과표
 
+> 표의 legacy ID는 결과 원본을 식별하기 위한 것입니다. 최종 연구 흐름에서의 canonical 위치는 [Research Naming Map](../../docs/RESEARCH_NAMING_MAP.md) 및 [Research Index](../README.md)를 참조하십시오.
+
 ## Research C — frozen synthetic SCM study
 
 | 결과 | Development V1 | Held-out V1 |

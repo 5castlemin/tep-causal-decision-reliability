@@ -1,5 +1,7 @@
 # 최종 발표 증거 가이드
 
+> 슬라이드의 공식 흐름은 Research 0 → Research 1 (WHERE) → Research 2 (WHAT & WHY) → Research 3 (GENERALIZATION) → Research 4 (HOW MUCH)입니다. 원래 실행 이름은 근거 경로 추적에만 사용합니다. [Research Index](../README.md) · [Naming Map](../../docs/RESEARCH_NAMING_MAP.md).
+
 ## 발표 중심축
 
 질문은 “한정된 그래프 수정 예산을 어떤 오류에 배분해야 의사결정 성능을 효율적으로 개선할 수 있는가?”로 둔다. 현장 적용 성과가 아니라, oracle-assisted 구조 수리 정책을 통제된 synthetic/semisynthetic 조건에서 비교한 연구다.
